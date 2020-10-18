@@ -40,6 +40,7 @@
 #include "playerabout.h"
 #include "seqplayer.h"
 #include "connections.h"
+#include "iconutils.h"
 
 using namespace drumstick::rt;
 using namespace drumstick::widgets;
@@ -81,8 +82,12 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     connect(m_ui->toolBar->toggleViewAction(), &QAction::toggled,
             m_ui->actionShowToolbar, &QAction::setChecked);
 
+    m_ui->actionPlay->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/play.png")));
     m_ui->actionPlay->setShortcut( Qt::Key_MediaPlay );
+    m_ui->actionStop->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/stop.png")));
     m_ui->actionStop->setShortcut( Qt::Key_MediaStop );
+    m_ui->actionPause->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/pause.png")));
+    m_ui->actionMIDISetup->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/setup.png")));
 
     SettingsFactory settings;
     readSettings(*settings.getQSettings());
@@ -287,7 +292,6 @@ void GUIPlayer::openFile(const QString& fileName)
             updateTempoLabel(m_player->currentBPM());
             m_ui->progressBar->setMaximum(m_player->song()->songLengthTicks());
             m_ui->progressBar->setValue(0);
-
         }
     }
 }
@@ -296,10 +300,9 @@ void GUIPlayer::open()
 {
     QString fileName = QFileDialog::getOpenFileName(this,
           "Open MIDI File", m_lastDirectory,
-          "All files (*.kar *.mid *.midi *.ove *.wrk);;"
+          "All files (*.kar *.mid *.midi *.wrk);;"
           "Karaoke files (*.kar);;"
           "MIDI Files (*.mid *.midi);;"
-          "Overture Files (*.ove);;"
           "Cakewalk files (*.wrk)" );
     if (!fileName.isEmpty() && isSupported(fileName)) {
         stop();
@@ -408,30 +411,18 @@ void GUIPlayer::dropEvent( QDropEvent * event )
     }
 }
 
-bool GUIPlayer::event( QEvent * event )
-{
-    if(event->type() == QEvent::Polish) {
-        /* Process the command line arguments.
-           The first argument should be a MIDI file name */
-        QStringList args = QCoreApplication::arguments();
-        if (args.size() > 1) {
-            QString first = args.at(1);
-            if (isSupported(first)) {
-                openFile(first);
-            }
-        }
-        event->accept();
-    }
-    return QMainWindow::event(event);
-}
-
 bool GUIPlayer::isSupported(QString fileName)
 {
-    return fileName.endsWith(".ove", Qt::CaseInsensitive) ||
-       fileName.endsWith(".mid", Qt::CaseInsensitive) ||
-       fileName.endsWith(".midi", Qt::CaseInsensitive) ||
-       fileName.endsWith(".kar", Qt::CaseInsensitive) ||
-       fileName.endsWith(".wrk", Qt::CaseInsensitive);
+    return  fileName.endsWith(".mid", Qt::CaseInsensitive) ||
+            fileName.endsWith(".midi", Qt::CaseInsensitive) ||
+            fileName.endsWith(".kar", Qt::CaseInsensitive) ||
+            fileName.endsWith(".wrk", Qt::CaseInsensitive);
+}
+
+void GUIPlayer::connectOutput(const QString &driver, const QString &connection)
+{
+    m_lastOutputBackend = driver;
+    m_lastOutputConnection = connection;
 }
 
 void GUIPlayer::readSettings(QSettings &settings)

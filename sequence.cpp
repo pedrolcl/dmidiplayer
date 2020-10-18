@@ -156,7 +156,7 @@ void Sequence::clear()
     while (!m_list.isEmpty()) {
         delete m_list.takeFirst();
     }
-    timeCalculations();
+    //timeCalculations();
 }
 
 Sequence::~Sequence()
@@ -202,6 +202,7 @@ void Sequence::loadFile(const QString& fileName)
 void Sequence::timeCalculations()
 {
     m_ticks2millis = (1.0 * m_tempo) / (1000.0 * m_division * m_tempoFactor);
+    qDebug() << Q_FUNC_INFO << "tempo:" << m_tempo << "div:" << m_division << "ticks2millis:" << m_ticks2millis;
 }
 
 qreal Sequence::tempoFactor() const
@@ -212,6 +213,7 @@ qreal Sequence::tempoFactor() const
 void Sequence::setTempoFactor(const qreal factor)
 {
     if (m_tempoFactor != factor && factor >= 0.1 && factor <= 10.0) {
+        qDebug() << Q_FUNC_INFO << factor;
         m_tempoFactor = factor;
         timeCalculations();
     }
@@ -316,6 +318,7 @@ int Sequence::songLengthTicks() const
 
 void Sequence::updateTempo(int newTempo)
 {
+    qDebug() << Q_FUNC_INFO << newTempo;
     m_tempo = newTempo;
     timeCalculations();
 }
@@ -336,6 +339,7 @@ void Sequence::appendSMFEvent(MIDIEvent *ev)
     ev->setTick(tick);
     ev->setMillis(millis);
     ev->setTag(m_track);
+    qDebug() << Q_FUNC_INFO << tick << millis << m_track;
     m_list.append(ev);
     if (tick > m_ticksDuration) {
         m_ticksDuration = tick;
@@ -343,11 +347,11 @@ void Sequence::appendSMFEvent(MIDIEvent *ev)
     smfUpdateLoadProgress();
 }
 
-void Sequence::smfHeaderEvent(int /*format*/, int /*ntrks*/, int division)
+void Sequence::smfHeaderEvent(int format, int ntrks, int division)
 {
+    qDebug() << "SMF Header:" << QString("Format=%1, Tracks=%2, Division=%3").arg(format).arg(ntrks).arg(division);
     m_division = division;
     timeCalculations();
-    //qDebug() << "SMF Header:" << QString("Format=%1, Tracks=%2, Division=%3").arg(format).arg(ntrks).arg(division);
     smfUpdateLoadProgress();
 }
 
@@ -401,6 +405,7 @@ void Sequence::smfSysexEvent(const QByteArray& data)
 
 void Sequence::smfTempoEvent(int tempo)
 {
+    qDebug() << Q_FUNC_INFO << tempo;
     MIDIEvent* ev = new TempoEvent(tempo);
     appendSMFEvent(ev);
 }
@@ -412,6 +417,7 @@ void Sequence::smfTrackStartEvent()
         m_ticksDuration = tick;
     }
     m_track++;
+    qDebug() << Q_FUNC_INFO << m_track;
 }
 
 void Sequence::smfErrorHandler(const QString& errorStr)

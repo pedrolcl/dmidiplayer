@@ -37,6 +37,8 @@ SET(guiplayer_SRCS
     guiplayer.h
     guiplayer.qrc
     guiplayer.ui
+    iconutils.cpp
+    iconutils.h
     playerabout.cpp
     playerabout.h
     playerabout.ui

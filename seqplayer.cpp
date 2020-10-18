@@ -95,16 +95,16 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
         return;
     if (ev->isText()) {
         //TextEvent* event = static_cast<TextEvent*>(ev);
-        //qDebug() << ev->tick() << " Text(" << event->textType() << "): " << event->text();
+        //qDebug() << m_songPosition << event->tick() << " Text(" << event->textType() << "): " << event->text();
     } else
     if (ev->isTempo()) {
         TempoEvent* event = static_cast<TempoEvent*>(ev);
         int tempo = event->tempo();
+        qDebug() << m_songPosition << event->tick() << " Tempo: " << bpm(tempo);
         m_song.updateTempo(tempo);
-        //qDebug() << event->tick() << " Tempo: " << bpm(tempo);
     } else
     if (ev->isMetaEvent()) {
-        //qDebug() << ev->tick() << " Meta-event";
+        //qDebug() << m_songPosition << event->tick() << " Meta-event";
     } else
     switch(ev->status()) {
     case MIDI_STATUS_NOTEOFF: {
@@ -113,7 +113,7 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
             if (event->channel() != MIDI_GM_STD_DRUM_CHANNEL)
                 key += m_pitchShift;
             m_port->sendNoteOff(event->channel(), key, event->velocity());
-            //qDebug() << ev->tick() << " NoteOff: "  << event->key();
+            qDebug() << m_songPosition << event->tick() << " NoteOff: "  << event->key();
         }
         break;
     case MIDI_STATUS_NOTEON: {
@@ -122,7 +122,7 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
             if (event->channel() != MIDI_GM_STD_DRUM_CHANNEL)
                 key += m_pitchShift;
             m_port->sendNoteOn(event->channel(), key, event->velocity());
-            //qDebug() << ev->tick() << " NoteOn: "  << event->key();
+            qDebug() << m_songPosition << event->tick() << " NoteOn: "  << event->key();
         }
         break;
     case MIDI_STATUS_KEYPRESURE: {
@@ -131,7 +131,7 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
             if (event->channel() != MIDI_GM_STD_DRUM_CHANNEL)
                 key += m_pitchShift;
             m_port->sendKeyPressure(event->channel(), key, event->velocity());
-            //qDebug() << ev->tick() << " KeyPress: "  << event->key();
+            qDebug() << m_songPosition << event->tick() << " KeyPress: "  << event->key();
         }
         break;
     case MIDI_STATUS_CONTROLCHANGE: {
@@ -146,35 +146,35 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
                 event->setValue(value);
             }
             m_port->sendController(event->channel(), event->param(), event->value());
-            //qDebug() << ev->tick() << " CtrlChg: " << event->param();
+            qDebug() << m_songPosition << event->tick() << " CtrlChg: " << event->param();
         }
         break;
     case MIDI_STATUS_PROGRAMCHANGE: {
             ProgramChangeEvent* event = static_cast<ProgramChangeEvent*>(ev);
             m_port->sendProgram(event->channel(), event->program());
-            //qDebug() << ev->tick() << " PgmChg: " << event->program();
+            qDebug() << m_songPosition << event->tick() << " PgmChg: " << event->program();
         }
         break;
     case MIDI_STATUS_CHANNELPRESSURE: {
             ChanPressEvent* event = static_cast<ChanPressEvent*>(ev);
             m_port->sendChannelPressure(event->channel(), event->value());
-            //qDebug() << ev->tick() << " ChanPress: "  << event->value();
+            qDebug() << m_songPosition << event->tick() << " ChanPress: "  << event->value();
         }
         break;
     case MIDI_STATUS_PITCHBEND: {
             PitchBendEvent* event = static_cast<PitchBendEvent*>(ev);
             m_port->sendPitchBend(event->channel(), event->value());
-            //qDebug() << ev->tick() << " Bender: "  << event->value();
+            qDebug() << m_songPosition << event->tick() << " Bender: "  << event->value();
         }
         break;
     case MIDI_STATUS_SYSEX: {
             SysExEvent* event = static_cast<SysExEvent*>(ev);
             m_port->sendSysex(event->data());
-            //qDebug() << ev->tick() << " SysEx: "  << event->data().toHex();
+            qDebug() << m_songPosition << event->tick() << " SysEx: "  << event->data().toHex();
         }
         break;
     default:
-        qDebug() << ev->tick() << " unknown status: " << ev->status();
+        qDebug() << m_songPosition << ev->tick() << " unknown status: " << ev->status();
         break;
     }
 }

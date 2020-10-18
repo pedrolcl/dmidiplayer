@@ -44,7 +44,7 @@ class SequencePlayer;
 class About;
 
 const QString QSTR_DOMAIN("drumstick.sourceforge.net");
-const QString QSTR_APPNAME("GUIPlayer");
+const QString QSTR_APPNAME("Drumstick-GUIPlayer");
 
 enum PlayerState {
     InvalidState,
@@ -71,8 +71,8 @@ public:
     void dragEnterEvent(QDragEnterEvent* event);
     void dropEvent(QDropEvent* event);
     void closeEvent(QCloseEvent* event);
-    bool event(QEvent* event);
     bool isSupported(QString fileName);
+    void connectOutput(const QString &driver, const QString &connection);
     void openFile(const QString &fileName);
     void readSettings(QSettings &settings);
     void writeSettings(QSettings &settings);
