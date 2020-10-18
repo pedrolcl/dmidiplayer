@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="/" >
+    <file>resources/qtlogo.png</file>
+    <file>resources/drumstick.png</file>
+    <file>resources/about.png</file>
+    <file>resources/open.png</file>
+    <file>resources/pause.png</file>
+    <file>resources/play.png</file>
+    <file>resources/quit.png</file>
+    <file>resources/setup.png</file>
+    <file>resources/stop.png</file>
+    <file>resources/vol.png</file>
+  </qresource>
+</RCC>

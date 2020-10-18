@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Drumstick MIDI Player
+Exec=drumstick-guiplayer
+Icon=drumstick
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;Midi;Education;Music;
+MimeType=audio/midi;audio/x-midi;audio/cakewalk;audio/overture;
+Comment=Drumstick MIDI Player
+Comment[es]=Reproductor MIDI de Drumstick  
