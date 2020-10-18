@@ -373,7 +373,7 @@ void GUIPlayer::tempoSlider(int value)
     m_player->song()->setTempoFactor(factor);
     updateTempoLabel(m_player->currentBPM());
     // Slider tooltip
-    QString tip = QString("%1\%").arg(factor*100.0, 0, 'f', 0);
+    QString tip = QString("%1%%").arg(factor*100.0, 0, 'f', 0);
     m_ui->sliderTempo->setToolTip(tip);
     QToolTip::showText(QCursor::pos(), tip, this);
 }

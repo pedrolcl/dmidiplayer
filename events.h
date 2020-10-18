@@ -30,10 +30,6 @@
  * @{
  */
 
-#ifndef DRUMSTICK_EXPORT
-#define DRUMSTICK_EXPORT
-#endif
-
 /**
  * Constant SequencerEventType is the QEvent::type() of any MIDIEvent
  * object to be used to check the argument in QObject::customEvent().
@@ -45,7 +41,7 @@ const QEvent::Type MIDIEventType = QEvent::Type(QEvent::User + 3161);
  *
  * All event classes share this base class. It provides common properties
  */
-class DRUMSTICK_EXPORT MIDIEvent : public QEvent
+class MIDIEvent : public QEvent
 {
 public:
     MIDIEvent();
@@ -74,7 +70,7 @@ protected:
 /**
  * Base class for the events having a Channel property
  */
-class DRUMSTICK_EXPORT ChannelEvent : public MIDIEvent
+class ChannelEvent : public MIDIEvent
 {
 public:
     ChannelEvent() : MIDIEvent(), m_channel(0) {}
@@ -99,7 +95,7 @@ protected:
 /**
  * Base class for the events having Key and Velocity properties.
  */
-class DRUMSTICK_EXPORT KeyEvent : public ChannelEvent
+class KeyEvent : public ChannelEvent
 {
 public:
     KeyEvent() : ChannelEvent(), m_note(0), m_velocity(0) {}
@@ -137,7 +133,7 @@ protected:
 /**
  * Event representing a note-on MIDI event
  */
-class DRUMSTICK_EXPORT NoteOnEvent : public KeyEvent
+class NoteOnEvent : public KeyEvent
 {
 public:
     NoteOnEvent() : KeyEvent() { }
@@ -148,7 +144,7 @@ public:
 /**
  * Event representing a note-off MIDI event
  */
-class DRUMSTICK_EXPORT NoteOffEvent : public KeyEvent
+class NoteOffEvent : public KeyEvent
 {
 public:
     NoteOffEvent() : KeyEvent() {}
@@ -159,7 +155,7 @@ public:
 /**
  * Event representing a MIDI key pressure, or polyphonic after-touch event
  */
-class DRUMSTICK_EXPORT KeyPressEvent : public KeyEvent
+class KeyPressEvent : public KeyEvent
 {
 public:
     KeyPressEvent() : KeyEvent() { }
@@ -170,7 +166,7 @@ public:
 /**
  * Event representing a MIDI control change event
  */
-class DRUMSTICK_EXPORT ControllerEvent : public ChannelEvent
+class ControllerEvent : public ChannelEvent
 {
 public:
     ControllerEvent() : ChannelEvent(), m_param(0), m_value(0) {}
@@ -283,7 +279,7 @@ protected:
 /**
  * Event representing a MIDI program change event
  */
-class DRUMSTICK_EXPORT ProgramChangeEvent : public ChannelEvent
+class ProgramChangeEvent : public ChannelEvent
 {
 public:
     ProgramChangeEvent() : ChannelEvent(), m_program(0) { }
@@ -300,7 +296,7 @@ protected:
 /**
  * Event representing a MIDI bender, or pitch wheel event
  */
-class DRUMSTICK_EXPORT PitchBendEvent : public ChannelEvent
+class PitchBendEvent : public ChannelEvent
 {
 public:
     PitchBendEvent() : ChannelEvent(), m_value(0) { }
@@ -317,7 +313,7 @@ protected:
 /**
  * Event representing a MIDI channel pressure or after-touch event
  */
-class DRUMSTICK_EXPORT ChanPressEvent : public ChannelEvent
+class ChanPressEvent : public ChannelEvent
 {
 public:
     ChanPressEvent() : ChannelEvent(), m_value(0) { }
@@ -334,7 +330,7 @@ protected:
 /**
  * Base class for variable length events
  */
-class DRUMSTICK_EXPORT VariableEvent : public MIDIEvent
+class VariableEvent : public MIDIEvent
 {
 public:
     VariableEvent();
@@ -351,7 +347,7 @@ protected:
 /**
  * Event representing a MIDI system exclusive event
  */
-class DRUMSTICK_EXPORT SysExEvent : public VariableEvent
+class SysExEvent : public VariableEvent
 {
 public:
     SysExEvent();
@@ -366,7 +362,7 @@ public:
  * This event type is not intended to be transmitted over the wire to an
  * external device, but it is useful for sequencer programs or MIDI applications
  */
-class DRUMSTICK_EXPORT TextEvent : public VariableEvent
+class TextEvent : public VariableEvent
 {
 public:
     TextEvent();
@@ -383,7 +379,7 @@ protected:
 /**
  * Generic event
  */
-class DRUMSTICK_EXPORT SystemEvent : public MIDIEvent
+class SystemEvent : public MIDIEvent
 {
 public:
     SystemEvent() : MIDIEvent() {}
@@ -396,7 +392,7 @@ public:
 /**
  * Event representing a tempo change
  */
-class DRUMSTICK_EXPORT TempoEvent : public MIDIEvent
+class TempoEvent : public MIDIEvent
 {
 public:
     TempoEvent();
