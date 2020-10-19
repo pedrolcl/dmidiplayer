@@ -36,98 +36,53 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
     m_tempoFactor(1.0)
 {
     m_smf = new QSmf(this);
-    connect(m_smf, SIGNAL(signalSMFHeader(int,int,int)),
-                   SLOT(smfHeaderEvent(int,int,int)));
-    connect(m_smf, SIGNAL(signalSMFNoteOn(int,int,int)),
-                   SLOT(smfNoteOnEvent(int,int,int)));
-    connect(m_smf, SIGNAL(signalSMFNoteOff(int,int,int)),
-                   SLOT(smfNoteOffEvent(int,int,int)));
-    connect(m_smf, SIGNAL(signalSMFKeyPress(int,int,int)),
-                   SLOT(smfKeyPressEvent(int,int,int)));
-    connect(m_smf, SIGNAL(signalSMFCtlChange(int,int,int)),
-                   SLOT(smfCtlChangeEvent(int,int,int)));
-    connect(m_smf, SIGNAL(signalSMFPitchBend(int,int)),
-                   SLOT(smfPitchBendEvent(int,int)));
-    connect(m_smf, SIGNAL(signalSMFProgram(int,int)),
-                   SLOT(smfProgramEvent(int,int)));
-    connect(m_smf, SIGNAL(signalSMFChanPress(int,int)),
-                   SLOT(smfChanPressEvent(int,int)));
-    connect(m_smf, SIGNAL(signalSMFSysex(const QByteArray&)),
-                   SLOT(smfSysexEvent(const QByteArray&)));
-    connect(m_smf, SIGNAL(signalSMFText(int,const QString&)),
-                   SLOT(smfUpdateLoadProgress()));
-    connect(m_smf, SIGNAL(signalSMFTempo(int)),
-                   SLOT(smfTempoEvent(int)));
-    connect(m_smf, SIGNAL(signalSMFTrackStart()),
-                   SLOT(smfUpdateLoadProgress()));
-    connect(m_smf, SIGNAL(signalSMFTrackEnd()),
-                   SLOT(smfUpdateLoadProgress()));
-    connect(m_smf, SIGNAL(signalSMFendOfTrack()),
-                   SLOT(smfUpdateLoadProgress()));
-    connect(m_smf, SIGNAL(signalSMFError(const QString&)),
-                   SLOT(smfErrorHandler(const QString&)));
+    connect(m_smf, &QSmf::signalSMFHeader, this, &Sequence::smfHeaderEvent);
+    connect(m_smf, &QSmf::signalSMFNoteOn, this, &Sequence::smfNoteOnEvent);
+    connect(m_smf, &QSmf::signalSMFNoteOff, this, &Sequence::smfNoteOffEvent);
+    connect(m_smf, &QSmf::signalSMFKeyPress, this, &Sequence::smfKeyPressEvent);
+    connect(m_smf, &QSmf::signalSMFCtlChange, this, &Sequence::smfCtlChangeEvent);
+    connect(m_smf, &QSmf::signalSMFPitchBend, this, &Sequence::smfPitchBendEvent);
+    connect(m_smf, &QSmf::signalSMFProgram, this, &Sequence::smfProgramEvent);
+    connect(m_smf, &QSmf::signalSMFChanPress, this, &Sequence::smfChanPressEvent);
+    connect(m_smf, &QSmf::signalSMFSysex, this, &Sequence::smfSysexEvent);
+    connect(m_smf, &QSmf::signalSMFText, this, &Sequence::smfUpdateLoadProgress);
+    connect(m_smf, &QSmf::signalSMFTempo, this, &Sequence::smfTempoEvent);
+    connect(m_smf, &QSmf::signalSMFTrackStart, this, &Sequence::smfUpdateLoadProgress);
+    connect(m_smf, &QSmf::signalSMFTrackEnd, this, &Sequence::smfUpdateLoadProgress);
+    connect(m_smf, &QSmf::signalSMFendOfTrack, this, &Sequence::smfUpdateLoadProgress);
+    connect(m_smf, &QSmf::signalSMFError, this, &Sequence::smfErrorHandler);
 
     m_wrk = new QWrk(this);
-    connect(m_wrk, SIGNAL(signalWRKError(const QString&)),
-                   SLOT(wrkErrorHandler(const QString&)));
-    connect(m_wrk, SIGNAL(signalWRKUnknownChunk(int,const QByteArray&)),
-                   SLOT(wrkUpdateLoadProgress()));
-    connect(m_wrk, SIGNAL(signalWRKHeader(int,int)),
-                   SLOT(wrkFileHeader(int,int)));
-    connect(m_wrk, SIGNAL(signalWRKEnd()),
-                   SLOT(wrkEndOfFile()));
-    connect(m_wrk, SIGNAL(signalWRKStreamEnd(long)),
-                   SLOT(wrkStreamEndEvent(long)));
-    connect(m_wrk, SIGNAL(signalWRKGlobalVars()),
-                   SLOT(wrkUpdateLoadProgress()));
-    connect(m_wrk, SIGNAL(signalWRKTrack(const QString&, const QString&, int,int,int,int,int,bool,bool,bool)),
-                   SLOT(wrkTrackHeader(const QString&, const QString&, int,int,int,int,int,bool,bool,bool)));
-    connect(m_wrk, SIGNAL(signalWRKTimeBase(int)),
-                   SLOT(wrkTimeBase(int)));
-    connect(m_wrk, SIGNAL(signalWRKNote(int,long,int,int,int,int)),
-                   SLOT(wrkNoteEvent(int,long,int,int,int,int)));
-    connect(m_wrk, SIGNAL(signalWRKKeyPress(int,long,int,int,int)),
-                   SLOT(wrkKeyPressEvent(int,long,int,int,int)));
-    connect(m_wrk, SIGNAL(signalWRKCtlChange(int,long,int,int,int)),
-                   SLOT(wrkCtlChangeEvent(int,long,int,int,int)));
-    connect(m_wrk, SIGNAL(signalWRKPitchBend(int,long,int,int)),
-                   SLOT(wrkPitchBendEvent(int,long,int,int)));
-    connect(m_wrk, SIGNAL(signalWRKProgram(int,long,int,int)),
-                   SLOT(wrkProgramEvent(int,long,int,int)));
-    connect(m_wrk, SIGNAL(signalWRKChanPress(int,long,int,int)),
-                   SLOT(wrkChanPressEvent(int,long,int,int)));
-    connect(m_wrk, SIGNAL(signalWRKSysexEvent(int,long,int)),
-                   SLOT(wrkSysexEvent(int,long,int)));
-    connect(m_wrk, SIGNAL(signalWRKSysex(int,const QString&,bool,int,const QByteArray&)),
-                   SLOT(wrkSysexEventBank(int,const QString&,bool,int,const QByteArray&)));
-    connect(m_wrk, SIGNAL(signalWRKText(int,long,int,const QString&)),
-                   SLOT(wrkUpdateLoadProgress()));
-    connect(m_wrk, SIGNAL(signalWRKTimeSig(int,int,int)),
-                   SLOT(wrkUpdateLoadProgress()));
-    connect(m_wrk, SIGNAL(signalWRKKeySig(int,int)),
-                   SLOT(wrkUpdateLoadProgress()));
-    connect(m_wrk, SIGNAL(signalWRKTempo(long,int)),
-                   SLOT(wrkTempoEvent(long,int)));
-    connect(m_wrk, SIGNAL(signalWRKTrackPatch(int,int)),
-                   SLOT(wrkTrackPatch(int,int)));
-    connect(m_wrk, SIGNAL(signalWRKComments(const QString&)),
-                   SLOT(wrkUpdateLoadProgress()));
-    connect(m_wrk, SIGNAL(signalWRKVariableRecord(const QString&,const QByteArray&)),
-                   SLOT(wrkUpdateLoadProgress()));
-    connect(m_wrk, SIGNAL(signalWRKNewTrack(const QString&,int,int,int,int,int,bool,bool,bool)),
-                   SLOT(wrkNewTrackHeader(const QString&,int,int,int,int,int,bool,bool,bool)));
-    connect(m_wrk, SIGNAL(signalWRKTrackName(int,const QString&)),
-                   SLOT(wrkUpdateLoadProgress()));
-    connect(m_wrk, SIGNAL(signalWRKTrackVol(int,int)),
-                   SLOT(wrkTrackVol(int,int)));
-    connect(m_wrk, SIGNAL(signalWRKTrackBank(int,int)),
-                   SLOT(wrkTrackBank(int,int)));
-    connect(m_wrk, SIGNAL(signalWRKSegment(int,long,const QString&)),
-                   SLOT(wrkUpdateLoadProgress()));
-    connect(m_wrk, SIGNAL(signalWRKChord(int,long,const QString&,const QByteArray&)),
-                   SLOT(wrkUpdateLoadProgress()));
-    connect(m_wrk, SIGNAL(signalWRKExpression(int,long,int,const QString&)),
-                   SLOT(wrkUpdateLoadProgress()));
+    connect(m_wrk, &QWrk::signalWRKError, this, &Sequence::wrkErrorHandler);
+    connect(m_wrk, &QWrk::signalWRKUnknownChunk, this, &Sequence::wrkUpdateLoadProgress);
+    connect(m_wrk, &QWrk::signalWRKHeader, this, &Sequence::wrkFileHeader);
+    connect(m_wrk, &QWrk::signalWRKEnd, this, &Sequence::wrkEndOfFile);
+    connect(m_wrk, &QWrk::signalWRKStreamEnd, this, &Sequence::wrkStreamEndEvent);
+    connect(m_wrk, &QWrk::signalWRKGlobalVars, this, &Sequence::wrkUpdateLoadProgress);
+    connect(m_wrk, &QWrk::signalWRKTrack, this, &Sequence::wrkTrackHeader);
+    connect(m_wrk, &QWrk::signalWRKTimeBase, this, &Sequence::wrkTimeBase);
+    connect(m_wrk, &QWrk::signalWRKNote, this, &Sequence::wrkNoteEvent);
+    connect(m_wrk, &QWrk::signalWRKKeyPress, this, &Sequence::wrkKeyPressEvent);
+    connect(m_wrk, &QWrk::signalWRKCtlChange, this, &Sequence::wrkCtlChangeEvent);
+    connect(m_wrk, &QWrk::signalWRKPitchBend, this, &Sequence::wrkPitchBendEvent);
+    connect(m_wrk, &QWrk::signalWRKProgram, this, &Sequence::wrkProgramEvent);
+    connect(m_wrk, &QWrk::signalWRKChanPress, this, &Sequence::wrkChanPressEvent);
+    connect(m_wrk, &QWrk::signalWRKSysexEvent, this, &Sequence::wrkSysexEvent);
+    connect(m_wrk, &QWrk::signalWRKSysex, this, &Sequence::wrkSysexEventBank);
+    connect(m_wrk, &QWrk::signalWRKText, this, &Sequence::wrkUpdateLoadProgress);
+    connect(m_wrk, &QWrk::signalWRKTimeSig, this, &Sequence::wrkUpdateLoadProgress);
+    connect(m_wrk, &QWrk::signalWRKKeySig, this, &Sequence::wrkUpdateLoadProgress);
+    connect(m_wrk, &QWrk::signalWRKTempo, this, &Sequence::wrkTempoEvent);
+    connect(m_wrk, &QWrk::signalWRKTrackPatch, this, &Sequence::wrkTrackPatch);
+    connect(m_wrk, &QWrk::signalWRKComments, this, &Sequence::wrkUpdateLoadProgress);
+    connect(m_wrk, &QWrk::signalWRKVariableRecord, this, &Sequence::wrkUpdateLoadProgress);
+    connect(m_wrk, &QWrk::signalWRKNewTrack, this, &Sequence::wrkNewTrackHeader);
+    connect(m_wrk, &QWrk::signalWRKTrackName, this, &Sequence::wrkUpdateLoadProgress);
+    connect(m_wrk, &QWrk::signalWRKTrackVol, this, &Sequence::wrkTrackVol);
+    connect(m_wrk, &QWrk::signalWRKTrackBank, this, &Sequence::wrkTrackBank);
+    connect(m_wrk, &QWrk::signalWRKSegment, this, &Sequence::wrkUpdateLoadProgress);
+    connect(m_wrk, &QWrk::signalWRKChord, this, &Sequence::wrkUpdateLoadProgress);
+    connect(m_wrk, &QWrk::signalWRKExpression, this, &Sequence::wrkUpdateLoadProgress);
 }
 
 static inline bool eventLessThan(const MIDIEvent* s1, const MIDIEvent *s2)
@@ -243,9 +198,7 @@ int Sequence::nextEventDeltaTime()
 
 int Sequence::eventTime(MIDIEvent* ev) const
 {
-    int deltaTicks = ev->tick() - m_lastEventTicks;
-    int deltaMillis = qFloor(m_ticks2millis * deltaTicks);
-    return m_lastEventTime + deltaMillis;
+    return qFloor(m_ticks2millis * ev->tick());
 }
 
 int Sequence::nextEventTime()
@@ -318,9 +271,16 @@ int Sequence::songLengthTicks() const
 
 void Sequence::updateTempo(int newTempo)
 {
-    qDebug() << Q_FUNC_INFO << newTempo;
-    m_tempo = newTempo;
-    timeCalculations();
+    if (m_tempo != newTempo) {
+        qDebug() << Q_FUNC_INFO << newTempo;
+        m_tempo = newTempo;
+        timeCalculations();
+    }
+}
+
+int Sequence::millisOfTick()
+{
+    return qCeil(m_ticks2millis);
 }
 
 /* **************************************** *
@@ -408,6 +368,9 @@ void Sequence::smfTempoEvent(int tempo)
     qDebug() << Q_FUNC_INFO << tempo;
     MIDIEvent* ev = new TempoEvent(tempo);
     appendSMFEvent(ev);
+    if (ev->tick() == 0) {
+        updateTempo(tempo);
+    }
 }
 
 void Sequence::smfTrackStartEvent()
@@ -587,6 +550,9 @@ void Sequence::wrkTempoEvent(long time, int tempo)
     double bpm = tempo / 100.0;
     MIDIEvent* ev = new TempoEvent(qRound ( 6e7 / bpm ) );
     appendWRKEvent(time, ev);
+    if (time == 0) {
+        updateTempo(tempo);
+    }
 }
 
 void Sequence::wrkTrackPatch(int track, int patch)

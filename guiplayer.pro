@@ -13,6 +13,7 @@ HEADERS += \
     guiplayer.h \
     playerabout.h \
     events.h \
+    iconutils.h \
     seqplayer.h \
     sequence.h \
     connections.h
@@ -20,6 +21,7 @@ SOURCES += playermain.cpp \
     guiplayer.cpp \
     playerabout.cpp \
     events.cpp \
+    iconutils.cpp \
     seqplayer.cpp \
     sequence.cpp \
     connections.cpp

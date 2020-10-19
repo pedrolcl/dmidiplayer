@@ -24,7 +24,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-find_package(Qt5 5.12 COMPONENTS Widgets REQUIRED)
+find_package(Qt5 5.12 COMPONENTS Core Gui Widgets REQUIRED)
 find_package(Drumstick 2.0 COMPONENTS File RT Widgets REQUIRED)
 
 SET(guiplayer_SRCS

@@ -54,6 +54,7 @@ public:
     QString getName() const { return m_lblName; }
     int songLengthTicks() const;
     void updateTempo(int newTempo);
+    int millisOfTick();
 
 signals:
     void loadingStart(int size);

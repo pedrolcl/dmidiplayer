@@ -100,10 +100,10 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
 
     m_player = new SequencePlayer();
     m_player->moveToThread(&m_playerThread);
-    connect(m_player, SIGNAL(songFinished()), SLOT(playerFinished()));
-    connect(m_player, SIGNAL(songStopped()), SLOT(playerStopped()));
-    connect(m_player, SIGNAL(songEchoTime(int,int)), SLOT(playerEcho(int,int)));
-    m_player->connect(&m_playerThread, SIGNAL(started()), SLOT(start()));
+    connect(m_player, &SequencePlayer::songFinished, this, &GUIPlayer::playerFinished);
+    connect(m_player, &SequencePlayer::songStopped, this, &GUIPlayer::playerStopped);
+    connect(m_player, &SequencePlayer::songEchoTime, this, &GUIPlayer::playerEcho);
+    connect(&m_playerThread, &QThread::started, m_player, &SequencePlayer::start);
 
     try {
         BackendManager man;
@@ -253,9 +253,8 @@ void GUIPlayer::progressDialogInit(const QString& type, int max)
     m_pd->setMinimumDuration(0); // 1000
     m_pd->setMaximum(max);
     m_pd->setValue(0);
-    //connect(m_player->song(), SIGNAL(loadingStart(int)), m_pd, SLOT(setMaximum(int)));
-    connect(m_player->song(), SIGNAL(loadingProgress(int)), SLOT(progressDialogUpdate(int)));
-    connect(m_player->song(), SIGNAL(loadingFinished()), SLOT(progressDialogClose()));
+    connect(m_player->song(), &Sequence::loadingProgress, this, &GUIPlayer::progressDialogUpdate);
+    connect(m_player->song(), &Sequence::loadingFinished, this, &GUIPlayer::progressDialogClose);
 }
 
 void GUIPlayer::progressDialogUpdate(int pos)
@@ -289,6 +288,7 @@ void GUIPlayer::openFile(const QString& fileName)
             m_ui->lblName->setText(finfo.fileName());
             updateState(StoppedState);
             updateTimeLabel(0);
+            m_player->resetPosition();
             updateTempoLabel(m_player->currentBPM());
             m_ui->progressBar->setMaximum(m_player->song()->songLengthTicks());
             m_ui->progressBar->setValue(0);

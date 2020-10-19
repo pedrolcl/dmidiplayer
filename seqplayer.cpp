@@ -69,7 +69,7 @@ void SequencePlayer::timerCleanup()
         delete m_timer;
         m_timer = nullptr;
     }
-    disconnect(thread(), SIGNAL(finished()), this, SLOT(timerCleanup()));
+    disconnect(thread(), &QThread::finished, this, &SequencePlayer::timerCleanup);
     emit songStopped();
 }
 
@@ -100,7 +100,7 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
     if (ev->isTempo()) {
         TempoEvent* event = static_cast<TempoEvent*>(ev);
         int tempo = event->tempo();
-        qDebug() << m_songPosition << event->tick() << " Tempo: " << bpm(tempo);
+        qDebug() << m_songPosition << event->tick() << " Tempo: " << tempo;
         m_song.updateTempo(tempo);
     } else
     if (ev->isMetaEvent()) {
@@ -181,9 +181,9 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
 
 void SequencePlayer::timerExpired()
 {
-    int delta = m_clock.restart();
+    auto delta = m_clock.restart();
     m_songPosition += delta;
-    while ( (m_songPosition >= m_nextEventTime) && m_song.hasMoreEvents() ) {
+    while ((m_nextEventTime <= m_songPosition) && m_song.hasMoreEvents()) {
         MIDIEvent* ev = m_song.nextEvent();
         playEvent(ev);
         if (m_song.hasMoreEvents()) {
@@ -210,7 +210,7 @@ void SequencePlayer::start()
 {
     //qDebug() << Q_FUNC_INFO;
     m_timer = new QTimer(this);
-    m_timer->setInterval(1);
+    m_timer->setInterval(m_song.millisOfTick());
     m_timer->setTimerType(Qt::PreciseTimer);
     m_timer->setSingleShot(false);
     thread()->setPriority(QThread::HighPriority);
