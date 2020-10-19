@@ -280,7 +280,11 @@ void Sequence::updateTempo(int newTempo)
 
 int Sequence::millisOfTick()
 {
-    return qCeil(m_ticks2millis);
+    auto res = qRound(m_ticks2millis);
+    if (res < 1) {
+        res = 1;
+    }
+    return res;
 }
 
 /* **************************************** *
@@ -299,7 +303,7 @@ void Sequence::appendSMFEvent(MIDIEvent *ev)
     ev->setTick(tick);
     ev->setMillis(millis);
     ev->setTag(m_track);
-    qDebug() << Q_FUNC_INFO << tick << millis << m_track;
+    //qDebug() << Q_FUNC_INFO << tick << millis << m_track;
     m_list.append(ev);
     if (tick > m_ticksDuration) {
         m_ticksDuration = tick;

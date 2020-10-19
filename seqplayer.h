@@ -79,6 +79,7 @@ private:
     drumstick::rt::MIDIOutput* m_port;
     QTimer* m_timer;
     QElapsedTimer m_clock;
+    QElapsedTimer m_songclock;
     int m_songPosition;
     int m_echoResolution;
     int m_pitchShift;

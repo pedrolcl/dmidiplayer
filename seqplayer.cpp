@@ -75,14 +75,12 @@ void SequencePlayer::timerCleanup()
 
 void SequencePlayer::stop()
 {
-    //qDebug() << Q_FUNC_INFO;
-    m_clock.invalidate();
     thread()->quit();
 }
 
 void SequencePlayer::shutupSound()
 {
-    if (m_port != 0) {
+    if (m_port != nullptr) {
         for (int channel = 0; channel < 16; ++channel) {
             m_port->sendController(channel, ControllerEvent::MIDI_CTL_ALL_SOUNDS_OFF, 0);
         }
@@ -91,7 +89,7 @@ void SequencePlayer::shutupSound()
 
 void SequencePlayer::playEvent(MIDIEvent* ev)
 {
-    if (m_port == 0)
+    if (m_port == nullptr)
         return;
     if (ev->isText()) {
         //TextEvent* event = static_cast<TextEvent*>(ev);
@@ -100,7 +98,7 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
     if (ev->isTempo()) {
         TempoEvent* event = static_cast<TempoEvent*>(ev);
         int tempo = event->tempo();
-        qDebug() << m_songPosition << event->tick() << " Tempo: " << tempo;
+        //qDebug() << m_songPosition << event->tick() << " Tempo: " << tempo;
         m_song.updateTempo(tempo);
     } else
     if (ev->isMetaEvent()) {
@@ -113,7 +111,7 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
             if (event->channel() != MIDI_GM_STD_DRUM_CHANNEL)
                 key += m_pitchShift;
             m_port->sendNoteOff(event->channel(), key, event->velocity());
-            qDebug() << m_songPosition << event->tick() << " NoteOff: "  << event->key();
+            //qDebug() << m_songPosition << event->tick() << " NoteOff: "  << event->key();
         }
         break;
     case MIDI_STATUS_NOTEON: {
@@ -122,7 +120,7 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
             if (event->channel() != MIDI_GM_STD_DRUM_CHANNEL)
                 key += m_pitchShift;
             m_port->sendNoteOn(event->channel(), key, event->velocity());
-            qDebug() << m_songPosition << event->tick() << " NoteOn: "  << event->key();
+            //qDebug() << m_songPosition << event->tick() << " NoteOn: "  << event->key();
         }
         break;
     case MIDI_STATUS_KEYPRESURE: {
@@ -131,7 +129,7 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
             if (event->channel() != MIDI_GM_STD_DRUM_CHANNEL)
                 key += m_pitchShift;
             m_port->sendKeyPressure(event->channel(), key, event->velocity());
-            qDebug() << m_songPosition << event->tick() << " KeyPress: "  << event->key();
+            //qDebug() << m_songPosition << event->tick() << " KeyPress: "  << event->key();
         }
         break;
     case MIDI_STATUS_CONTROLCHANGE: {
@@ -146,31 +144,31 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
                 event->setValue(value);
             }
             m_port->sendController(event->channel(), event->param(), event->value());
-            qDebug() << m_songPosition << event->tick() << " CtrlChg: " << event->param();
+            //4qDebug() << m_songPosition << event->tick() << " CtrlChg: " << event->param();
         }
         break;
     case MIDI_STATUS_PROGRAMCHANGE: {
             ProgramChangeEvent* event = static_cast<ProgramChangeEvent*>(ev);
             m_port->sendProgram(event->channel(), event->program());
-            qDebug() << m_songPosition << event->tick() << " PgmChg: " << event->program();
+            //qDebug() << m_songPosition << event->tick() << " PgmChg: " << event->program();
         }
         break;
     case MIDI_STATUS_CHANNELPRESSURE: {
             ChanPressEvent* event = static_cast<ChanPressEvent*>(ev);
             m_port->sendChannelPressure(event->channel(), event->value());
-            qDebug() << m_songPosition << event->tick() << " ChanPress: "  << event->value();
+            //qDebug() << m_songPosition << event->tick() << " ChanPress: "  << event->value();
         }
         break;
     case MIDI_STATUS_PITCHBEND: {
             PitchBendEvent* event = static_cast<PitchBendEvent*>(ev);
             m_port->sendPitchBend(event->channel(), event->value());
-            qDebug() << m_songPosition << event->tick() << " Bender: "  << event->value();
+            //qDebug() << m_songPosition << event->tick() << " Bender: "  << event->value();
         }
         break;
     case MIDI_STATUS_SYSEX: {
             SysExEvent* event = static_cast<SysExEvent*>(ev);
             m_port->sendSysex(event->data());
-            qDebug() << m_songPosition << event->tick() << " SysEx: "  << event->data().toHex();
+            //qDebug() << m_songPosition << event->tick() << " SysEx: "  << event->data().toHex();
         }
         break;
     default:
@@ -201,6 +199,7 @@ void SequencePlayer::timerExpired()
         m_nextEchoTime += m_echoResolution;
     }
     if (!m_song.hasMoreEvents()) {
+        qDebug() << Q_FUNC_INFO << "time since start:" << m_songclock.elapsed() << "song Position:" << m_songPosition;
         stop();
         emit songFinished();
     }
@@ -208,11 +207,11 @@ void SequencePlayer::timerExpired()
 
 void SequencePlayer::start()
 {
-    //qDebug() << Q_FUNC_INFO;
+    qDebug() << Q_FUNC_INFO << "timer interval:" << m_song.millisOfTick();
     m_timer = new QTimer(this);
-    m_timer->setInterval(m_song.millisOfTick());
     m_timer->setTimerType(Qt::PreciseTimer);
     m_timer->setSingleShot(false);
+    m_timer->setInterval(m_song.millisOfTick());
     thread()->setPriority(QThread::HighPriority);
     connect(thread(), &QThread::finished, this, &SequencePlayer::timerCleanup);
     connect(m_timer, &QTimer::timeout, this, &SequencePlayer::timerExpired);
@@ -221,6 +220,7 @@ void SequencePlayer::start()
     m_nextEchoTime = m_nextEventTime + m_echoResolution;
     m_timer->start();
     m_clock.start();
+    m_songclock.start();
 }
 
 void SequencePlayer::setPort(drumstick::rt::MIDIOutput *p)
