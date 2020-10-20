@@ -144,7 +144,7 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
                 event->setValue(value);
             }
             m_port->sendController(event->channel(), event->param(), event->value());
-            //4qDebug() << m_songPosition << event->tick() << " CtrlChg: " << event->param();
+            //qDebug() << m_songPosition << event->tick() << " CtrlChg: " << event->param();
         }
         break;
     case MIDI_STATUS_PROGRAMCHANGE: {
@@ -179,10 +179,10 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
 
 void SequencePlayer::timerExpired()
 {
-    static int cnt = 0;
+    //static int cnt = 0;
     auto delta = m_clock.restart();
     m_songPosition += delta;
-    cnt++;
+    //cnt++;
     while ((m_nextEventTime <= m_songPosition) && m_song.hasMoreEvents()) {
         MIDIEvent* ev = m_song.nextEvent();
         playEvent(ev);
@@ -192,8 +192,10 @@ void SequencePlayer::timerExpired()
             if (m_nextEventTime <= m_songPosition) {
                 continue;
             }
-            qDebug() << Q_FUNC_INFO << "cnt:" << cnt;
-            cnt = 0;
+            auto nextDelta = m_song.nextEventDeltaTime();
+            m_timer->start(nextDelta);
+//            qDebug() << Q_FUNC_INFO << "cnt:" << cnt;
+//            cnt = 0;
         } else {
             break;
         }
@@ -211,18 +213,18 @@ void SequencePlayer::timerExpired()
 
 void SequencePlayer::start()
 {
-    qDebug() << Q_FUNC_INFO << "timer interval:" << m_song.millisOfTick();
+    qDebug() << Q_FUNC_INFO; // << "timer interval:" << m_song.millisOfTick();
     m_timer = new QTimer(this);
     m_timer->setTimerType(Qt::PreciseTimer);
-    m_timer->setSingleShot(false);
-    m_timer->setInterval(m_song.millisOfTick());
+    m_timer->setSingleShot(true);
+    //m_timer->setInterval(m_song.millisOfTick());
     thread()->setPriority(QThread::HighPriority);
     connect(thread(), &QThread::finished, this, &SequencePlayer::timerCleanup);
     connect(m_timer, &QTimer::timeout, this, &SequencePlayer::timerExpired);
     m_nextEventTime = m_song.nextEventTime();
     m_nextEventTick = m_song.nextEventTicks();
     m_nextEchoTime = m_nextEventTime + m_echoResolution;
-    m_timer->start();
+    m_timer->start(m_nextEventTime);
     m_clock.start();
     m_songclock.start();
 }

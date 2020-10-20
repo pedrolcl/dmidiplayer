@@ -168,7 +168,7 @@ qreal Sequence::tempoFactor() const
 void Sequence::setTempoFactor(const qreal factor)
 {
     if (m_tempoFactor != factor && factor >= 0.1 && factor <= 10.0) {
-        qDebug() << Q_FUNC_INFO << factor;
+        //qDebug() << Q_FUNC_INFO << factor;
         m_tempoFactor = factor;
         timeCalculations();
     }
@@ -185,28 +185,25 @@ MIDIEvent *Sequence::nextEvent()
     return 0;
 }
 
+int Sequence::eventTime(MIDIEvent* ev) const
+{
+    return qFloor(m_ticks2millis * ev->tick());
+}
+
 int Sequence::nextEventDeltaTime()
 {
     if(m_pos < m_list.count()) {
         MIDIEvent* ev = m_list[m_pos];
-        int deltaTicks = ev->tick() - m_lastEventTicks;
-        int deltaMillis = qFloor(m_ticks2millis * deltaTicks);
-        return deltaMillis;
+        return eventTime(ev) - m_lastEventTime;
     }
     return 0;
-}
-
-int Sequence::eventTime(MIDIEvent* ev) const
-{
-    return qFloor(m_ticks2millis * ev->tick());
 }
 
 int Sequence::nextEventTime()
 {
     if(m_pos < m_list.count()) {
         MIDIEvent* ev = m_list[m_pos];
-        int time = eventTime(ev);
-        return time;
+        return eventTime(ev);
     }
     return 0;
 }
@@ -272,7 +269,7 @@ int Sequence::songLengthTicks() const
 void Sequence::updateTempo(int newTempo)
 {
     if (m_tempo != newTempo) {
-        qDebug() << Q_FUNC_INFO << newTempo;
+        //qDebug() << Q_FUNC_INFO << newTempo;
         m_tempo = newTempo;
         timeCalculations();
     }
@@ -369,7 +366,7 @@ void Sequence::smfSysexEvent(const QByteArray& data)
 
 void Sequence::smfTempoEvent(int tempo)
 {
-    qDebug() << Q_FUNC_INFO << tempo;
+    //qDebug() << Q_FUNC_INFO << tempo;
     MIDIEvent* ev = new TempoEvent(tempo);
     appendSMFEvent(ev);
     if (ev->tick() == 0) {
@@ -384,7 +381,7 @@ void Sequence::smfTrackStartEvent()
         m_ticksDuration = tick;
     }
     m_track++;
-    qDebug() << Q_FUNC_INFO << m_track;
+    //qDebug() << Q_FUNC_INFO << m_track;
 }
 
 void Sequence::smfErrorHandler(const QString& errorStr)
