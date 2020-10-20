@@ -56,8 +56,8 @@ SequencePlayer::~SequencePlayer()
 
 bool SequencePlayer::isRunning()
 {
-    return (m_timer != nullptr) && m_timer->isActive();
-    //return thread()->isRunning();
+    //return (m_timer != nullptr) && m_timer->isActive();
+    return thread()->isRunning();
 }
 
 void SequencePlayer::timerCleanup()
@@ -179,8 +179,10 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
 
 void SequencePlayer::timerExpired()
 {
+    static int cnt = 0;
     auto delta = m_clock.restart();
     m_songPosition += delta;
+    cnt++;
     while ((m_nextEventTime <= m_songPosition) && m_song.hasMoreEvents()) {
         MIDIEvent* ev = m_song.nextEvent();
         playEvent(ev);
@@ -190,6 +192,8 @@ void SequencePlayer::timerExpired()
             if (m_nextEventTime <= m_songPosition) {
                 continue;
             }
+            qDebug() << Q_FUNC_INFO << "cnt:" << cnt;
+            cnt = 0;
         } else {
             break;
         }

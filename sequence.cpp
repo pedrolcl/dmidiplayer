@@ -299,9 +299,9 @@ void Sequence::smfUpdateLoadProgress()
 void Sequence::appendSMFEvent(MIDIEvent *ev)
 {
     long tick = m_smf->getCurrentTime();
-    long millis = long(m_smf->getRealTime() / 1.6);
+    //long millis = long(m_smf->getRealTime() / 1.6);
     ev->setTick(tick);
-    ev->setMillis(millis);
+    //ev->setMillis(millis);
     ev->setTag(m_track);
     //qDebug() << Q_FUNC_INFO << tick << millis << m_track;
     m_list.append(ev);

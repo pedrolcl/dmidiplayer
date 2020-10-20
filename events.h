@@ -48,10 +48,10 @@ public:
     virtual ~MIDIEvent() = default;
     virtual MIDIEvent *clone() { return new MIDIEvent(*this); }
 
-    int millis() const { return m_millis; }
-    void setMillis(const int milliseconds);
-    int tick() const { return m_tick; }
-    void setTick(const int tick);
+//    int millis() const { return m_millis; }
+//    void setMillis(const int milliseconds);
+    long tick() const { return m_tick; }
+    void setTick(const long tick);
     int tag() const { return m_tag; }
     void setTag(const int aTag);
     int status() const { return m_status; }
@@ -61,8 +61,8 @@ public:
     virtual bool isText() { return false; }
     virtual bool isMetaEvent() { return false; }
 protected:
-    int m_millis;
-    int m_tick;
+//    int m_millis;
+    long m_tick;
     int m_tag;
     int m_status;
 };

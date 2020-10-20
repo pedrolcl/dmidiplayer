@@ -27,19 +27,20 @@ using namespace drumstick::rt;
  * Default constructor.
  */
 MIDIEvent::MIDIEvent() : QEvent(MIDIEventType),
-    m_millis(0), m_tick(0), m_tag(0), m_status(0)
+    //m_millis(0),
+    m_tick(0), m_tag(0), m_status(0)
 { }
 
-void MIDIEvent::setMillis(const int milliseconds)
-{
-     m_millis = milliseconds;
-}
+//void MIDIEvent::setMillis(const int milliseconds)
+//{
+//     m_millis = milliseconds;
+//}
 
 /**
  * Sets the event to be scheduled in musical time (ticks) units.
  * @param tick The time in ticks.
  */
-void MIDIEvent::setTick(int tick)
+void MIDIEvent::setTick(long tick)
 {
     m_tick = tick;
 }
