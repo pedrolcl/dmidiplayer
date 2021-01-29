@@ -1,4 +1,4 @@
-/*
+﻿/*
     Drumstick MIDI File player graphic program
     Copyright (C) 2006-2020, Pedro Lopez-Cabanillas <plcl@users.sf.net>
 
@@ -16,6 +16,9 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <thread>
+#include <chrono>
+
 #include <QStringList>
 #include <QTextStream>
 #include <QtAlgorithms>
@@ -32,11 +35,7 @@
 using namespace drumstick::rt;
 
 SequencePlayer::SequencePlayer() :
-    m_nextEventTime(0),
-    m_nextEchoTime(0),
-    m_nextEventTick(0),
     m_port(nullptr),
-    m_timer(nullptr),
     m_songPosition(0),
     m_echoResolution(50),
     m_pitchShift(0),
@@ -56,26 +55,12 @@ SequencePlayer::~SequencePlayer()
 
 bool SequencePlayer::isRunning()
 {
-    //return (m_timer != nullptr) && m_timer->isActive();
-    return thread()->isRunning();
-}
-
-void SequencePlayer::timerCleanup()
-{
-    //qDebug() << Q_FUNC_INFO;
-    shutupSound();
-    if (m_timer != nullptr) {
-        m_timer->stop();
-        delete m_timer;
-        m_timer = nullptr;
-    }
-    disconnect(thread(), &QThread::finished, this, &SequencePlayer::timerCleanup);
-    emit songStopped();
+    return thread()->isRunning() && !thread()->isInterruptionRequested();
 }
 
 void SequencePlayer::stop()
 {
-    thread()->quit();
+    thread()->requestInterruption();
 }
 
 void SequencePlayer::shutupSound()
@@ -97,12 +82,12 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
     } else
     if (ev->isTempo()) {
         TempoEvent* event = static_cast<TempoEvent*>(ev);
-        int tempo = event->tempo();
-        //qDebug() << m_songPosition << event->tick() << " Tempo: " << tempo;
+        auto tempo = event->tempo();
         m_song.updateTempo(tempo);
+        //qDebug() << m_songPosition << ev->tick() << " Tempo: " << tempo << "bpm:" << bpm(tempo) << "ticks2millis:" << m_song.ticks2millis();
     } else
     if (ev->isMetaEvent()) {
-        //qDebug() << m_songPosition << event->tick() << " Meta-event";
+        //qDebug() << m_songPosition << ev->tick() << " Meta-event";
     } else
     switch(ev->status()) {
     case MIDI_STATUS_NOTEOFF: {
@@ -111,7 +96,7 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
             if (event->channel() != MIDI_GM_STD_DRUM_CHANNEL)
                 key += m_pitchShift;
             m_port->sendNoteOff(event->channel(), key, event->velocity());
-            //qDebug() << m_songPosition << event->tick() << " NoteOff: "  << event->key();
+            //qDebug() << m_songPosition << ev->tick() << " NoteOff: "  << event->channel() << event->key();
         }
         break;
     case MIDI_STATUS_NOTEON: {
@@ -120,7 +105,7 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
             if (event->channel() != MIDI_GM_STD_DRUM_CHANNEL)
                 key += m_pitchShift;
             m_port->sendNoteOn(event->channel(), key, event->velocity());
-            //qDebug() << m_songPosition << event->tick() << " NoteOn: "  << event->key();
+            //qDebug() << m_songPosition << ev->tick() << " NoteOn: " << event->channel() << event->key();
         }
         break;
     case MIDI_STATUS_KEYPRESURE: {
@@ -177,56 +162,43 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
     }
 }
 
-void SequencePlayer::timerExpired()
+void SequencePlayer::playerLoop()
 {
-    //static int cnt = 0;
-    auto delta = m_clock.restart();
-    m_songPosition += delta;
-    //cnt++;
-    while ((m_nextEventTime <= m_songPosition) && m_song.hasMoreEvents()) {
+    using namespace std::chrono;
+    typedef system_clock Clock;
+    milliseconds deltaTime{0}, echoDelta{ m_echoResolution };
+    Clock::time_point currentTime{ Clock::now() },
+        nextTime{ currentTime }, nextEcho{ currentTime };
+        long echoPosition{ 0 };
+
+    while (m_song.hasMoreEvents() && !thread()->isInterruptionRequested()) {
         MIDIEvent* ev = m_song.nextEvent();
-        playEvent(ev);
-        if (m_song.hasMoreEvents()) {
-            m_nextEventTime = m_song.nextEventTime();
-            m_nextEventTick = m_song.nextEventTicks();
-            if (m_nextEventTime <= m_songPosition) {
-                continue;
+        if (ev->delta() > 0) {
+            deltaTime = m_song.deltaTimeOfEvent(ev);
+            nextTime = currentTime + deltaTime;
+            nextEcho = currentTime + echoDelta;
+            echoPosition = m_songPosition;
+            while (nextEcho < nextTime) {
+                std::this_thread::sleep_until(nextEcho);
+                echoPosition += echoDelta.count();
+                emit songEchoTime(echoPosition, ev->tick());
+                currentTime = Clock::now();
+                nextEcho = currentTime + echoDelta;
             }
-            auto nextDelta = m_song.nextEventDeltaTime();
-            m_timer->start(nextDelta);
-//            qDebug() << Q_FUNC_INFO << "cnt:" << cnt;
-//            cnt = 0;
-        } else {
-            break;
+            std::this_thread::sleep_until(nextTime);
+            m_songPosition += deltaTime.count();
+            currentTime = Clock::now();
+            emit songEchoTime(m_songPosition, ev->tick());
         }
+        playEvent(ev);
     }
-    if (m_songPosition >= m_nextEchoTime) {
-        emit songEchoTime(m_songPosition, m_nextEventTick);
-        m_nextEchoTime += m_echoResolution;
-    }
+
+    emit songStopped();
     if (!m_song.hasMoreEvents()) {
-        qDebug() << Q_FUNC_INFO << "time since start:" << m_songclock.elapsed() << "song Position:" << m_songPosition;
-        stop();
+        qDebug() << "Final Song Position:" << m_songPosition;
         emit songFinished();
     }
-}
-
-void SequencePlayer::start()
-{
-    qDebug() << Q_FUNC_INFO; // << "timer interval:" << m_song.millisOfTick();
-    m_timer = new QTimer(this);
-    m_timer->setTimerType(Qt::PreciseTimer);
-    m_timer->setSingleShot(true);
-    //m_timer->setInterval(m_song.millisOfTick());
-    thread()->setPriority(QThread::HighPriority);
-    connect(thread(), &QThread::finished, this, &SequencePlayer::timerCleanup);
-    connect(m_timer, &QTimer::timeout, this, &SequencePlayer::timerExpired);
-    m_nextEventTime = m_song.nextEventTime();
-    m_nextEventTick = m_song.nextEventTicks();
-    m_nextEchoTime = m_nextEventTime + m_echoResolution;
-    m_timer->start(m_nextEventTime);
-    m_clock.start();
-    m_songclock.start();
+    thread()->quit();
 }
 
 void SequencePlayer::setPort(drumstick::rt::MIDIOutput *p)
@@ -239,7 +211,7 @@ MIDIOutput *SequencePlayer::port() const
     return m_port;
 }
 
-qreal SequencePlayer::bpm(int tempo) const
+qreal SequencePlayer::bpm(qreal tempo) const
 {
     return 6e7 / tempo;
 }
@@ -296,7 +268,7 @@ void SequencePlayer::resetPosition()
     }
 }
 
-void SequencePlayer::setPosition(int pos)
+void SequencePlayer::setPosition(long pos)
 {
     m_song.setTickPosition(pos);
     m_songPosition = pos;

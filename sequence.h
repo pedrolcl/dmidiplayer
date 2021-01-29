@@ -19,6 +19,7 @@
 #ifndef SEQUENCE_H
 #define SEQUENCE_H
 
+#include <chrono>
 #include <QObject>
 #include <QList>
 #include <QString>
@@ -40,21 +41,19 @@ public:
     qreal tempoFactor() const;
     void setTempoFactor(const qreal factor);
     MIDIEvent *nextEvent();
-    int nextEventDeltaTime();
-    int nextEventTime();
-    int nextEventTicks();
     int eventTime(MIDIEvent* ev) const;
+    std::chrono::milliseconds deltaTimeOfEvent(MIDIEvent* ev) const;
     bool hasMoreEvents();
     int getDivision() const { return m_division; }
     bool isEmpty();
     void resetPosition();
-    void setTickPosition(int time);
-    void setTimePosition(int time);
+    void setTickPosition(long tick);
+    void setTimePosition(long time);
     qreal currentTempo() const;
     QString getName() const { return m_lblName; }
     int songLengthTicks() const;
-    void updateTempo(int newTempo);
-    int millisOfTick();
+    void updateTempo(qreal newTempo);
+    qreal ticks2millis() const { return m_ticks2millis; }
 
 signals:
     void loadingStart(int size);
@@ -116,13 +115,10 @@ private: // members
     drumstick::File::QSmf* m_smf;
     drumstick::File::QWrk* m_wrk;
     int m_ticksDuration;
-    int m_lastEventTicks;
-    int m_lastEventTime;
     int m_division;
-    int m_tempo;
-    bool m_stopped;
     int m_pos;
     int m_track;
+    qreal m_tempo;
     qreal m_tempoFactor;
     qreal m_ticks2millis;
     QString m_lblName;

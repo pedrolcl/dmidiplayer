@@ -66,7 +66,7 @@ public:
     void appendWRKEvent(unsigned long ticks, MIDIEvent* ev);
     void appendOVEEvent(unsigned long ticks, MIDIEvent* ev);
 
-    void updateTimeLabel(int milliseconds);
+    void updateTimeLabel(long milliseconds);
     void updateTempoLabel(float ftempo);
     void dragEnterEvent(QDragEnterEvent* event);
     void dropEvent(QDropEvent* event);
@@ -93,7 +93,7 @@ public slots:
     void pitchShift(int value);
     void playerFinished();
     void playerStopped();
-    void playerEcho(int time, int ticks);
+    void playerEcho(long time, long ticks);
 
     void progressDialogInit(const QString& type, int max);
     void progressDialogUpdate(int pos);

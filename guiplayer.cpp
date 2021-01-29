@@ -103,7 +103,7 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     connect(m_player, &SequencePlayer::songFinished, this, &GUIPlayer::playerFinished);
     connect(m_player, &SequencePlayer::songStopped, this, &GUIPlayer::playerStopped);
     connect(m_player, &SequencePlayer::songEchoTime, this, &GUIPlayer::playerEcho);
-    connect(&m_playerThread, &QThread::started, m_player, &SequencePlayer::start);
+    connect(&m_playerThread, &QThread::started, m_player, &SequencePlayer::playerLoop);
 
     try {
         BackendManager man;
@@ -124,7 +124,7 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
 
         if (m_midiOut != 0 && !m_lastOutputConnection.isEmpty()) {
             MIDIConnection conn;
-            for(const auto& c : m_midiOut->connections(m_advanced)) {
+            foreach(const auto& c, m_midiOut->connections(m_advanced)) {
                 if (c.first == m_lastOutputConnection) {
                     conn = c;
                     break;
@@ -165,10 +165,9 @@ void GUIPlayer::findOutput(QString name, QList<MIDIOutput *> &outputs)
     }
 }
 
-void GUIPlayer::updateTimeLabel(int milliseconds)
+void GUIPlayer::updateTimeLabel(long milliseconds)
 {
-    double fracpart, intpart;
-    double seconds = milliseconds / 1000.0;
+    double fracpart, intpart, seconds = milliseconds / 1000.0;
     fracpart = modf(seconds, &intpart);
     QTime t = QTime(0,0).addSecs(intpart).addMSecs(ceil(fracpart*1000));
     m_ui->lblTime->setText(t.toString("mm:ss.zzz").left(8));
@@ -333,6 +332,7 @@ void GUIPlayer::playerFinished()
 
 void GUIPlayer::playerStopped()
 {
+    m_playerThread.wait();
     //qDebug() << Q_FUNC_INFO;
     m_player->allNotesOff();
     if (m_state == PlayingState) {
@@ -346,7 +346,7 @@ void GUIPlayer::updateTempoLabel(float ftempo)
     m_ui->lblOther->setText(stempo);
 }
 
-void GUIPlayer::playerEcho(int millis, int ticks)
+void GUIPlayer::playerEcho(long millis, long ticks)
 {
     updateTempoLabel(m_player->currentBPM());
     updateTimeLabel(millis);

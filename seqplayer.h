@@ -43,7 +43,7 @@ public:
     void info();
     void setPort(drumstick::rt::MIDIOutput *p);
     drumstick::rt::MIDIOutput* port() const;
-    qreal bpm(int tempo) const;
+    qreal bpm(qreal tempo) const;
     qreal currentBPM() const;
     bool isRunning();
     Sequence *song();
@@ -52,35 +52,27 @@ public:
     int getPitchShift();
     int getVolumeFactor();
     void resetPosition();
-    void setPosition(int pos);
+    void setPosition(long pos);
     void setPitchShift(unsigned int pitch);
     void setVolumeFactor(unsigned int vol);
     void allNotesOff();
     void sendVolumeEvents();
 
 public slots:
-    void timerExpired();
-    void start();
+    void playerLoop();
 
 signals:
     void songFinished();
-    void songEchoTime(int millis, int ticks);
+    void songEchoTime(long millis, long ticks);
     void songStopped();
 
 private slots:
-    void timerCleanup();
     void playEvent(MIDIEvent* ev);
 
 private:
     Sequence m_song;
-    int m_nextEventTime;
-    int m_nextEchoTime;
-    int m_nextEventTick;
     drumstick::rt::MIDIOutput* m_port;
-    QTimer* m_timer;
-    QElapsedTimer m_clock;
-    QElapsedTimer m_songclock;
-    int m_songPosition;
+    long m_songPosition;
     int m_echoResolution;
     int m_pitchShift;
     int m_volumeFactor;
