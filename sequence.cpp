@@ -191,6 +191,11 @@ std::chrono::milliseconds Sequence::deltaTimeOfEvent(MIDIEvent *ev) const
     return std::chrono::milliseconds(std::lround(ev->delta() * m_ticks2millis));
 }
 
+std::chrono::milliseconds Sequence::timeOfTicks(const int ticks) const
+{
+    return std::chrono::milliseconds(std::lround(ticks * m_ticks2millis));
+}
+
 bool Sequence::hasMoreEvents()
 {
     return m_pos < m_list.count();

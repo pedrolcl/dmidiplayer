@@ -43,6 +43,7 @@ public:
     MIDIEvent *nextEvent();
     int eventTime(MIDIEvent* ev) const;
     std::chrono::milliseconds deltaTimeOfEvent(MIDIEvent* ev) const;
+    std::chrono::milliseconds timeOfTicks(const int ticks) const;
     bool hasMoreEvents();
     int getDivision() const { return m_division; }
     bool isEmpty();

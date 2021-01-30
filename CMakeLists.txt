@@ -60,6 +60,10 @@ target_link_libraries(drumstick-guiplayer
     Drumstick::Widgets
 )
 
+if(WIN32)
+    target_link_libraries(drumstick-guiplayer winmm)
+endif()
+
 target_compile_definitions(drumstick-guiplayer PRIVATE
     VERSION=${CMAKE_PROJECT_VERSION}
 )

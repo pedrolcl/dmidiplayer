@@ -218,7 +218,7 @@ void GUIPlayer::play()
         if (m_player->getPosition() == 0) {
             m_player->sendVolumeEvents();
         }
-        m_playerThread.start();
+        m_playerThread.start(QThread::HighPriority);
         updateState(PlayingState);
     }
 }

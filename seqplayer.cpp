@@ -16,6 +16,10 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#ifdef WIN32
+#include <windows.h>
+#endif
+
 #include <thread>
 #include <chrono>
 
@@ -166,32 +170,43 @@ void SequencePlayer::playerLoop()
 {
     using namespace std::chrono;
     typedef system_clock Clock;
+    long echoPosition{ 0 }, echoTicks{ 0 };
     milliseconds deltaTime{0}, echoDelta{ m_echoResolution };
     Clock::time_point currentTime{ Clock::now() },
         nextTime{ currentTime }, nextEcho{ currentTime };
-        long echoPosition{ 0 };
+
+#ifdef WIN32
+    timeBeginPeriod(1);
+#endif
 
     while (m_song.hasMoreEvents() && !thread()->isInterruptionRequested()) {
         MIDIEvent* ev = m_song.nextEvent();
         if (ev->delta() > 0) {
             deltaTime = m_song.deltaTimeOfEvent(ev);
+            echoDelta = m_song.timeOfTicks(m_echoResolution);
             nextTime = currentTime + deltaTime;
             nextEcho = currentTime + echoDelta;
             echoPosition = m_songPosition;
             while (nextEcho < nextTime) {
                 std::this_thread::sleep_until(nextEcho);
                 echoPosition += echoDelta.count();
-                emit songEchoTime(echoPosition, ev->tick());
+                echoTicks += m_echoResolution;
+                emit songEchoTime(echoPosition, echoTicks);
                 currentTime = Clock::now();
                 nextEcho = currentTime + echoDelta;
             }
             std::this_thread::sleep_until(nextTime);
+            echoTicks = ev->tick();
             m_songPosition += deltaTime.count();
             currentTime = Clock::now();
             emit songEchoTime(m_songPosition, ev->tick());
         }
         playEvent(ev);
     }
+
+#ifdef WIN32
+    timeEndPeriod(1);
+#endif
 
     emit songStopped();
     if (!m_song.hasMoreEvents()) {
