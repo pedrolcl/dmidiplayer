@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>437</width>
-    <height>266</height>
+    <width>450</width>
+    <height>313</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -256,8 +256,17 @@
          <property name="toolTip">
           <string>Pitch Control</string>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
          <property name="statusTip">
           <string>Pitch transpose between -12 and +12 semitones</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: white;
+background-color: black;
+selection-color: white;
+selection-background-color: blue;</string>
          </property>
          <property name="minimum">
           <number>-12</number>
@@ -436,8 +445,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>437</width>
-     <height>24</height>
+     <width>450</width>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
