@@ -1,5 +1,5 @@
 /*
-    Drumstick MIDI File player graphic program
+    Drumstick MIDI File Player Multiplatform Program
     Copyright (C) 2006-2020, Pedro Lopez-Cabanillas <plcl@users.sf.net>
 
     This program is free software; you can redistribute it and/or modify
@@ -16,6 +16,7 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <drumstick/backendmanager.h>
 #include "playerabout.h"
 
 About::About(QWidget *parent)
@@ -24,6 +25,8 @@ About::About(QWidget *parent)
     ui.setupUi(this);
     QString aboutText = ui.AboutTextView->toHtml();
     aboutText.replace("%VERSION%", QT_STRINGIFY(VERSION));
+    aboutText.replace("%PROJECT_DESCRIPTION%", "Drumstick MIDI File Player Multiplatform Program");
+    aboutText.replace("%DRUMSTICK_VERSION%", drumstick::rt::BackendManager::QSTR_DRUMSTICK_VERSION);
     ui.AboutTextView->setHtml(aboutText);
     connect(ui.aboutQt, &QPushButton::clicked, qApp, &QApplication::aboutQt);
 }

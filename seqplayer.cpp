@@ -1,5 +1,5 @@
 ﻿/*
-    Drumstick MIDI File player graphic program
+    Drumstick MIDI File Player Multiplatform Program
     Copyright (C) 2006-2020, Pedro Lopez-Cabanillas <plcl@users.sf.net>
 
     This program is free software; you can redistribute it and/or modify
