@@ -9,6 +9,6 @@
         <file>resources/setup.png</file>
         <file>resources/stop.png</file>
         <file>resources/vol.png</file>
-        <file alias="dmidiplayer.png">icons/dmidiplayer_24x24.png</file>
+        <file alias="dmidiplayer.png">icons/dmidiplayer_32x32.png</file>
     </qresource>
 </RCC>

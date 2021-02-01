@@ -17,6 +17,8 @@
 */
 
 #include <QApplication>
+#include <QLibraryInfo>
+#include <QTranslator>
 #include <QMessageBox>
 #include <QSettings>
 #include <QCommandLineParser>
@@ -29,7 +31,7 @@ using namespace drumstick::rt;
 
 int main(int argc, char *argv[])
 {
-    const QString PGM_DESCRIPTION("Drumstick MIDI file player");
+    const QString PGM_DESCRIPTION("Drumstick MIDI File Player Multiplatform Program");
     const QString errorstr = "Fatal error from the Operating System. "
         "This usually happens when the OS doesn't have MIDI support, "
         "or the MIDI support is not enabled. "
@@ -40,6 +42,19 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName(QSTR_APPNAME);
     QCoreApplication::setApplicationVersion(QT_STRINGIFY(VERSION));
     QApplication app(argc, argv);
+
+    QLocale locale;
+    QTranslator qtTranslator;
+    if (qtTranslator.load(locale, "qt", "_", QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
+        QCoreApplication::installTranslator(&qtTranslator);
+    }
+
+    QTranslator appTranslator;
+    if (appTranslator.load(locale, "dmidiplayer", "_", QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
+        QCoreApplication::installTranslator(&appTranslator);
+    } else if (appTranslator.load(locale, "dmidiplayer", "_", QApplication::applicationDirPath() + "/../share/dmidiplayer/")) {
+        QCoreApplication::installTranslator(&appTranslator);
+    }
 
     QCommandLineParser parser;
     parser.setApplicationDescription(PGM_DESCRIPTION);
