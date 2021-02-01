@@ -1,6 +1,6 @@
 TEMPLATE = app
-TARGET = drumstick-guiplayer
-VERSION = 2.0.0
+TARGET = dmidiplayer
+VERSION = 1.0.0
 QT += gui widgets
 CONFIG += qt thread exceptions c++11
 INCLUDEPATH += $$(DRUMSTICKINCLUDES)
@@ -26,3 +26,4 @@ SOURCES += playermain.cpp \
     sequence.cpp \
     connections.cpp
 RESOURCES += guiplayer.qrc
+TRANSLATIONS += translations/dmidiplayer_es.ts

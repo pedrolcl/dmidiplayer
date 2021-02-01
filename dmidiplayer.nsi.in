@@ -8,8 +8,8 @@ RequestExecutionLevel admin
 # Defines
 !define SOURCE_FILES "@CMAKE_SOURCE_DIR@"
 !define BINARY_FILES "@CMAKE_BINARY_DIR@"
-!define FUIDSYNTH_FILES "@FLUIDSYNTH_PREFIX@/bin"
-!define DRUMSTICK_FILES "@DRUMSTICK_PREFIX@"
+!define FUIDSYNTH_FILES "@FLUIDSYNTH_PREFIX@"
+!define DRUMSTICK_FILES "@Drumstick_DIR@/lib"
 !define REGKEY "SOFTWARE\$(^Name)"
 !define VERSION @PROJECT_VERSION@
 !define PROGNAME "@PROJECT_NAME@"
@@ -79,8 +79,8 @@ VIAddVersionKey FileDescription "@PROJECT_DESCRIPTION@"
 VIAddVersionKey LegalCopyright "Copyright (C) 2021, Pedro Lopez-Cabanillas <plcl@users.sf.net>"
 InstallDirRegKey HKLM "${REGKEY}" Path
 ShowUninstDetails show
-Icon ${SOURCE_FILES}\icons\${PROJECT_NAME}.ico
-UninstallIcon ${SOURCE_FILES}\icons\${PROJECT_NAME}.ico
+Icon ${SOURCE_FILES}\icons\${PROGNAME}.ico
+UninstallIcon ${SOURCE_FILES}\icons\${PROGNAME}.ico
 
 # Installer sections
 Section -Main SEC0000
@@ -90,6 +90,7 @@ Section -Main SEC0000
     CreateDirectory $INSTDIR\platforms
     CreateDirectory $INSTDIR\styles
     CreateDirectory $INSTDIR\translations
+    CreateDirectory $INSTDIR\drumstick2
     SetOutPath $INSTDIR
     SetOverwrite on
     File ${BINARY_FILES}\${PROGNAME}.exe
@@ -97,6 +98,14 @@ Section -Main SEC0000
     File ${BINARY_FILES}\${PROGNAME}_es.qm
     File ${BINARY_FILES}\translations\qt_es.qm
 
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\libdrumstick-file.dll $INSTDIR\libdrumstick-file.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\libdrumstick-rt.dll $INSTDIR\libdrumstick-rt.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\libdrumstick-widgets.dll $INSTDIR\libdrumstick-widgets.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\drumstick2\libdrumstick-rt-fluidsynth.dll $INSTDIR\drumstick2\libdrumstick-rt-fluidsynth.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\drumstick2\libdrumstick-rt-net-in.dll $INSTDIR\drumstick2\libdrumstick-rt-net-in.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\drumstick2\libdrumstick-rt-net-out.dll $INSTDIR\drumstick2\libdrumstick-rt-net-out.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\drumstick2\libdrumstick-rt-win-in.dll $INSTDIR\drumstick2\libdrumstick-rt-win-in.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\drumstick2\libdrumstick-rt-win-out.dll $INSTDIR\drumstick2\libdrumstick-rt-win-out.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\libfluidsynth-2.dll $INSTDIR\libfluidsynth-2.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\libglib-2.0-0.dll $INSTDIR\libglib-2.0-0.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\libgobject-2.0-0.dll $INSTDIR\libgobject-2.0-0.dll $INSTDIR
@@ -167,10 +176,18 @@ done${UNSECTION_ID}:
 
 # Uninstaller sections
 Section /o -un.Main UNSEC0000
-    Delete /REBOOTOK $INSTDIR\translations\
     Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_es.qm
     Delete /REBOOTOK $INSTDIR\translations\qt_es.qm
     Delete /REBOOTOK $INSTDIR\${PROGNAME}.exe
+
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libdrumstick-file.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libdrumstick-rt.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libdrumstick-widgets.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick2\libdrumstick-rt-fluidsynth.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick2\libdrumstick-rt-net-in.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick2\libdrumstick-rt-net-out.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick2\libdrumstick-rt-win-in.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick2\libdrumstick-rt-win-out.dll
 
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libfluidsynth-2.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libglib-2.0-0.dll
@@ -212,6 +229,7 @@ Section /o -un.Main UNSEC0000
     RMDir /REBOOTOK $INSTDIR\iconengines
     RMDir /REBOOTOK $INSTDIR\imageformats
     RMDir /REBOOTOK $INSTDIR\bearer
+    RMDir /REBOOTOK $INSTDIR\drumstick2
     DeleteRegValue HKLM "${REGKEY}\Components" Main
 SectionEnd
 

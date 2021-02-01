@@ -69,20 +69,21 @@ endif()
 add_custom_target (translations ALL DEPENDS ${QM_FILES})
 
 if (WIN32)
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.nsi.in
-                 ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.nsi IMMEDIATE @ONLY)
-  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.rc.in
-                 ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.rc IMMEDIATE @ONLY)
-  set (RC_FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.rc)
-  set (RES_FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.res.obj)
-  find_program (WINDRES_EXECUTABLE NAMES windres mingw32-windres i686-mingw32-windres)
-  if (MINGW)
+    set(FLUIDSYNTH_PREFIX $ENV{FLUIDSYNTH})
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.nsi.in
+        ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.nsi IMMEDIATE @ONLY)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.rc.in
+        ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.rc IMMEDIATE @ONLY)
+    set (RC_FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.rc)
+    set (RES_FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.res.obj)
+    find_program (WINDRES_EXECUTABLE NAMES windres mingw32-windres i686-mingw32-windres)
+    if (MINGW)
     exec_program (${WINDRES_EXECUTABLE}
-      ARGS "-i ${RC_FILE} -o ${RES_FILE} --include-dir=${CMAKE_CURRENT_SOURCE_DIR}/icons")
+        ARGS "-i ${RC_FILE} -o ${RES_FILE} --include-dir=${CMAKE_CURRENT_SOURCE_DIR}/icons")
     list (APPEND SOURCES ${RES_FILE})
-  else ()
+    else ()
     list (APPEND SOURCES ${RC_FILE})
-  endif ()
+    endif ()
 endif ()
 
 if (APPLE)
