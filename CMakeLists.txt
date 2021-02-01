@@ -87,7 +87,7 @@ if (WIN32)
 endif ()
 
 if (APPLE)
-  set (ICON_FILE ${CMAKE_CURRENT_SOURCE_DIR}/images/${PROJECT_NAME}.icns)
+  set (ICON_FILE ${CMAKE_CURRENT_SOURCE_DIR}/icons/${PROJECT_NAME}.icns)
   list (APPEND SOURCES ${ICON_FILE} ${QM_FILES})
   set (MACOSX_BUNDLE_ICON_FILE ${PROJECT_NAME}.icns)
   set_source_files_properties (${ICON_FILE} PROPERTIES
@@ -118,29 +118,30 @@ endif ()
 if (APPLE)
     set_target_properties (${PROJECT_NAME} PROPERTIES
     MACOSX_BUNDLE true
-    MACOSX_BUNDLE_GUI_IDENTIFIER "net.sourceforge.drumstick.${PROJECT_NAME}"
+    MACOSX_BUNDLE_GUI_IDENTIFIER "net.sourceforge.${PROJECT_NAME}"
     MACOSX_BUNDLE_BUNDLE_NAME "${PROJECT_NAME}"
     MACOSX_BUNDLE_DISPLAY_NAME "${PROJECT_NAME}"
     MACOSX_BUNDLE_INFO_STRING "${PROJECT_DESCRIPTION}"
     MACOSX_BUNDLE_LONG_VERSION_STRING "${PROJECT_VERSION}"
     MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
     MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION}"
-    MACOSX_BUNDLE_COPYRIGHT "Copyright © 2021, Pedro López-Cabanillas <plcl@users.sf.net>")
+    MACOSX_BUNDLE_COPYRIGHT "Copyright © 2021, Pedro López-Cabanillas &lt;plcl@users.sf.net&gt;")
 endif ()
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE VERSION=${PROJECT_VERSION})
 
-include(GNUInstallDirs)
+if(UNIX AND NOT APPLE)
+    include(GNUInstallDirs)
+    add_subdirectory(icons)
 
-add_subdirectory(icons)
+    install(TARGETS ${PROJECT_NAME}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
-install(TARGETS ${PROJECT_NAME}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+    install(FILES ${PROJECT_NAME}.desktop
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
 
-install(FILES ${PROJECT_NAME}.desktop
-    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
-
-install(FILES ${QM_FILES}
-    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME})
-
-include(DeploymentUtils)
+    install(FILES ${QM_FILES}
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME})
+else()
+    include(DeploymentUtils)
+endif()
