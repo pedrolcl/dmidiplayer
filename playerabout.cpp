@@ -25,7 +25,7 @@ About::About(QWidget *parent)
     ui.setupUi(this);
     QString aboutText = ui.AboutTextView->toHtml();
     aboutText.replace("%VERSION%", QT_STRINGIFY(VERSION));
-    aboutText.replace("%PROJECT_DESCRIPTION%", "Drumstick MIDI File Player Multiplatform Program");
+    aboutText.replace("%PROJECT_DESCRIPTION%", tr("Drumstick MIDI File Player Multiplatform"));
     aboutText.replace("%DRUMSTICK_VERSION%", drumstick::rt::BackendManager::QSTR_DRUMSTICK_VERSION);
     ui.AboutTextView->setHtml(aboutText);
     connect(ui.aboutQt, &QPushButton::clicked, qApp, &QApplication::aboutQt);

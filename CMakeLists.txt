@@ -31,7 +31,7 @@ set(CMAKE_AUTOUIC ON)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}")
 
 find_package (QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
-find_package (Qt${QT_VERSION_MAJOR} COMPONENTS Core Gui Widgets LinguistTools REQUIRED)
+find_package (Qt${QT_VERSION_MAJOR} COMPONENTS Gui Widgets LinguistTools REQUIRED)
 find_package (Drumstick 2.0 COMPONENTS File RT Widgets REQUIRED)
 
 SET(SOURCES

@@ -2,6 +2,13 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="es_ES">
 <context>
+    <name>About</name>
+    <message>
+        <source>Drumstick MIDI File Player Multiplatform</source>
+        <translation>Reproductor Drumstick multiplataforma de archivos MIDI</translation>
+    </message>
+</context>
+<context>
     <name>AboutClass</name>
     <message>
         <source>About</source>
@@ -235,6 +242,10 @@ CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de
     <message>
         <source>Show or hide the status bar</source>
         <translation>Mostar u ocultar la barra de estado</translation>
+    </message>
+    <message>
+        <source>Drumstick MIDI File Player Multiplatform</source>
+        <translation>Reproductor Drumstick multiplataforma de archivos MIDI</translation>
     </message>
 </context>
 </TS>

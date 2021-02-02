@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Drumstick MIDI Player</string>
+   <string>Drumstick MIDI File Player Multiplatform</string>
   </property>
   <property name="windowIcon">
    <iconset resource="guiplayer.qrc">
