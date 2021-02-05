@@ -44,7 +44,7 @@ class SequencePlayer;
 class About;
 
 const QString QSTR_DOMAIN("drumstick.sourceforge.net");
-const QString QSTR_APPNAME("Drumstick-GUIPlayer");
+const QString QSTR_APPNAME("Drumstick MIDI File Player");
 
 enum PlayerState {
     InvalidState,

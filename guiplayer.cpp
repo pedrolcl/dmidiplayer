@@ -45,6 +45,20 @@
 using namespace drumstick::rt;
 using namespace drumstick::widgets;
 
+#if defined(Q_OS_LINUX)
+    const QString defaultBackend = QStringLiteral("SonivoxEAS");
+    const QString defaultConn = QStringLiteral("SonivoxEAS");
+#elif defined(Q_OS_OSX)
+    const QString defaultBackend = QStringLiteral("DLS Synth");
+    const QString defaultConn = QStringLiteral("DLS Synth");
+#elif defined(Q_OS_WIN)
+    const QString defaultBackend = QStringLiteral("Windows MM");
+    const QString defaultConn = QStringLiteral("Microsoft GS Wavetable Synth");
+#else
+    const QString defaultBackend = QStringLiteral("Network");
+    const QString defaultConn = QStringLiteral("21928");
+#endif
+
 GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     : QMainWindow(parent, flags),
     m_state(InvalidState),
@@ -53,17 +67,6 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     m_ui(new Ui::GUIPlayerClass),
     m_pd(nullptr)
 {
-    QString nativeBackend;
-#if defined(Q_OS_LINUX)
-    nativeBackend = QLatin1Literal("ALSA");
-#elif defined(Q_OS_OSX)
-    nativeBackend = QLatin1Literal("CoreMIDI");
-#elif defined(Q_OS_WIN)
-    nativeBackend = QLatin1Literal("Windows MM");
-#else
-    nativeBackend = QLatin1Literal("Network");
-#endif
-
 	m_ui->setupUi(this);
 	setAcceptDrops(true);
     connect(m_ui->actionAbout, &QAction::triggered, this, &GUIPlayer::about);
@@ -93,8 +96,8 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     readSettings(*settings.getQSettings());
 
     settings->beginGroup(BackendManager::QSTR_DRUMSTICKRT_GROUP);
-    settings->setValue(BackendManager::QSTR_DRUMSTICKRT_PUBLICNAMEOUT, QLatin1String("GUIPlayerOUT"));
-    settings->setValue(BackendManager::QSTR_DRUMSTICKRT_PUBLICNAMEIN, QLatin1String("GUIPlayerIN"));
+    settings->setValue(BackendManager::QSTR_DRUMSTICKRT_PUBLICNAMEOUT, QLatin1String("MIDIPlayerOUT"));
+    settings->setValue(BackendManager::QSTR_DRUMSTICKRT_PUBLICNAMEIN, QLatin1String("MIDIPlayerIN"));
     settings->endGroup();
     settings->sync();
 
@@ -112,7 +115,7 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
 
         findOutput(m_lastOutputBackend, outputs);
         if (m_midiOut == 0) {
-            findOutput(nativeBackend, outputs);
+            findOutput(defaultBackend, outputs);
         }
         if (m_midiOut == 0) {
             qFatal("Can't find a suitable MIDI out port.");
@@ -123,8 +126,9 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
         dlgConnections.setAdvanced(m_advanced);
 
         if (m_midiOut != 0 && !m_lastOutputConnection.isEmpty()) {
-            MIDIConnection conn;
-            foreach(const auto& c, m_midiOut->connections(m_advanced)) {
+            auto outConnections = m_midiOut->connections(m_advanced);
+            MIDIConnection conn = outConnections.first();
+            foreach(const auto& c, outConnections) {
                 if (c.first == m_lastOutputConnection) {
                     conn = c;
                     break;
@@ -433,8 +437,8 @@ void GUIPlayer::readSettings(QSettings &settings)
     settings.endGroup();
 
     settings.beginGroup("Connections");
-    m_lastOutputBackend = settings.value("outputBackend").toString();
-    m_lastOutputConnection = settings.value("outputConnection").toString();
+    m_lastOutputBackend = settings.value("outputBackend", defaultBackend).toString();
+    m_lastOutputConnection = settings.value("outputConnection", defaultConn).toString();
     m_advanced = settings.value("advanced", false).toBool();
     settings.endGroup();
 

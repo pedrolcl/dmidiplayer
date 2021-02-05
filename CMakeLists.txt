@@ -17,7 +17,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 project(dmidiplayer
-    VERSION 1.0.0
+    VERSION 1.0.1
     DESCRIPTION "Drumstick MIDI File Player Multiplatform Program"
     LANGUAGES CXX)
 

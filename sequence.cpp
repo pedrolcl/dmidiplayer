@@ -152,6 +152,7 @@ void Sequence::loadFile(const QString& fileName)
                 m_lblName = finfo.fileName();
             }
         } catch (...) {
+            qDebug() << "corrupted file";
             clear();
         }
     }
