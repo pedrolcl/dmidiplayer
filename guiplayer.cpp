@@ -16,24 +16,14 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QApplication>
+#include <QDebug>
 #include <QFileDialog>
-#include <QInputDialog>
-#include <QDragEnterEvent>
-#include <QDropEvent>
-#include <QCloseEvent>
 #include <QToolTip>
-#include <QSpinBox>
 #include <QMessageBox>
-#include <QStatusBar>
-#include <QSettings>
-#include <QUrl>
 #include <QFileInfo>
-#include <QTextCodec>
 #include <QTime>
 #include <QMimeData>
 #include <QtMath>
-#include <QDebug>
 #include <drumstick/settingsfactory.h>
 #include "guiplayer.h"
 #include "ui_guiplayer.h"
@@ -41,6 +31,7 @@
 #include "seqplayer.h"
 #include "connections.h"
 #include "iconutils.h"
+#include "pianola.h"
 
 using namespace drumstick::rt;
 using namespace drumstick::widgets;
@@ -84,6 +75,8 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     connect(m_ui->spinPitch, QOverload<int>::of(&QSpinBox::valueChanged), this, &GUIPlayer::pitchShift);
     connect(m_ui->toolBar->toggleViewAction(), &QAction::toggled,
             m_ui->actionShowToolbar, &QAction::setChecked);
+    connect(m_ui->actionPianoPlayer, &QAction::toggled, this, &GUIPlayer::slotShowPianola);
+    connect(m_ui->actionChannels, &QAction::toggled, this, &GUIPlayer::slotShowChannels);
 
     m_ui->actionPlay->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/play.png")));
     m_ui->actionPlay->setShortcut( Qt::Key_MediaPlay );
@@ -91,7 +84,6 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     m_ui->actionStop->setShortcut( Qt::Key_MediaStop );
     m_ui->actionPause->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/pause.png")));
     m_ui->actionMIDISetup->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/setup.png")));
-
     SettingsFactory settings;
     readSettings(*settings.getQSettings());
 
@@ -107,6 +99,23 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     connect(m_player, &SequencePlayer::songStopped, this, &GUIPlayer::playerStopped);
     connect(m_player, &SequencePlayer::songEchoTime, this, &GUIPlayer::playerEcho);
     connect(&m_playerThread, &QThread::started, m_player, &SequencePlayer::playerLoop);
+
+    m_pianola = new Pianola(this);
+    connect(m_pianola, &Pianola::closed, this, &GUIPlayer::slotPianolaClosed);
+    connect(m_player, &SequencePlayer::midiNoteOn, m_pianola.data(), &Pianola::slotNoteOn);
+    connect(m_player, &SequencePlayer::midiNoteOff, m_pianola.data(), &Pianola::slotNoteOff);
+
+    m_channels = new Channels(this);
+    connect(m_channels.data(), &Channels::closed, this, &GUIPlayer::slotChannelsClosed);
+    connect(m_player, &SequencePlayer::midiNoteOn, m_channels.data(), &Channels::slotNoteOn);
+    connect(m_player, &SequencePlayer::midiNoteOff, m_channels.data(), &Channels::slotNoteOff);
+    connect(m_player, &SequencePlayer::midiProgram, m_channels.data(), &Channels::slotPatch);
+    connect(m_channels.data(), &Channels::name, m_pianola.data(), &Pianola::slotLabel);
+
+    connect(m_channels.data(), &Channels::mute, m_player, &SequencePlayer::setMuted);
+    connect(m_channels.data(), &Channels::volume, m_player, &SequencePlayer::setVolume);
+    connect(m_channels.data(), &Channels::lock, m_player, &SequencePlayer::setLocked);
+    connect(m_channels.data(), &Channels::patch, m_player, &SequencePlayer::setPatch);
 
     try {
         BackendManager man;
@@ -138,6 +147,9 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
             if (!conn.first.isEmpty())
                 m_midiOut->open(conn);
             m_player->setPort(m_midiOut);
+            connect(m_pianola.data(), &Pianola::noteOn, m_midiOut, &MIDIOutput::sendNoteOn);
+            connect(m_pianola.data(), &Pianola::noteOff, m_midiOut, &MIDIOutput::sendNoteOff);
+            connect(m_channels.data(), &Channels::patch, m_midiOut, &MIDIOutput::sendProgram);
         }
 
         tempoReset();
@@ -295,6 +307,27 @@ void GUIPlayer::openFile(const QString& fileName)
             updateTempoLabel(m_player->currentBPM());
             m_ui->progressBar->setMaximum(m_player->song()->songLengthTicks());
             m_ui->progressBar->setValue(0);
+
+            if (m_pianola != 0) {
+                int loNote = m_player->song()->lowestMidiNote();
+                int hiNote = m_player->song()->highestMidiNote();
+                m_pianola->setNoteRange(loNote, hiNote);
+                for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+                    m_pianola->enableChannel(i, m_player->song()->channelUsed(i));
+                    m_pianola->slotLabel(i, m_player->song()->channelLabel(i));
+                }
+            }
+            if (m_channels != 0) {
+                for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+                    m_player->setLocked(i, false);
+                    m_player->setMuted(i, false);
+                    m_channels->setLockChannel(i, false);
+                    m_channels->setSoloChannel(i, false);
+                    m_channels->setMuteChannel(i, false);
+                    m_channels->enableChannel(i, m_player->song()->channelUsed(i));
+                    m_channels->setChannelName(i, m_player->song()->channelLabel(i));
+                }
+            }
         }
     }
 }
@@ -336,9 +369,15 @@ void GUIPlayer::playerFinished()
 
 void GUIPlayer::playerStopped()
 {
-    m_playerThread.wait();
     //qDebug() << Q_FUNC_INFO;
+    m_playerThread.wait();
     m_player->allNotesOff();
+    if (m_pianola != nullptr) {
+        m_pianola->allNotesOff();
+    }
+    if (m_channels != nullptr) {
+        m_channels->allNotesOff();
+    }
     if (m_state == PlayingState) {
         updateState(StoppedState);
     }
@@ -486,4 +525,28 @@ void GUIPlayer::quit()
 {
     stop();
     close();
+}
+
+void GUIPlayer::slotShowPianola(bool checked)
+{
+    if (m_pianola != 0) {
+        m_pianola->setVisible(checked);
+    }
+}
+
+void GUIPlayer::slotPianolaClosed()
+{
+    m_ui->actionPianoPlayer->setChecked(false);
+}
+
+void GUIPlayer::slotShowChannels(bool checked)
+{
+    if (m_channels != 0) {
+        m_channels->setVisible(checked);
+    }
+}
+
+void GUIPlayer::slotChannelsClosed()
+{
+    m_ui->actionChannels->setChecked(false);
 }

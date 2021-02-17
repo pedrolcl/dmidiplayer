@@ -29,6 +29,8 @@
 #include <QPointer>
 #include <QThread>
 #include "connections.h"
+#include "pianola.h"
+#include "channels.h"
 
 class MIDIEvent;
 
@@ -99,6 +101,11 @@ public slots:
     void progressDialogUpdate(int pos);
     void progressDialogClose();
 
+    void slotShowPianola(bool checked);
+    void slotPianolaClosed();
+    void slotShowChannels(bool checked);
+    void slotChannelsClosed();
+
 private:
     void findOutput(QString name, QList<drumstick::rt::MIDIOutput*> &outputs);
 
@@ -113,6 +120,8 @@ private:
     Connections dlgConnections;
     QString m_lastDirectory;
     QThread m_playerThread;
+    QPointer<Pianola> m_pianola;
+    QPointer<Channels> m_channels;
 };
 
 #endif // INCLUDED_GUIPLAYER_H

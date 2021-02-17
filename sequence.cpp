@@ -17,21 +17,30 @@
 */
 
 #include <chrono>
-#include <QtMath>
-#include <QTextStream>
-#include <QFileInfo>
 #include <QDebug>
+#include <QtMath>
+#include <QFileInfo>
 #include "sequence.h"
 
 using namespace drumstick::File;
+using namespace drumstick::rt;
 
 Sequence::Sequence(QObject *parent) : QObject(parent),
+    m_codec(nullptr),
     m_ticksDuration(0),
     m_division(-1),
     m_pos(0),
     m_track(-1),
     m_tempo(500000.0),
-    m_tempoFactor(1.0)
+    m_tempoFactor(1.0),
+    m_duration(0),
+    m_lastBeat(0),
+    m_beatLength(0),
+    m_beatMax(0),
+    m_barCount(0),
+    m_beatCount(0),
+    m_lowestMidiNote(127),
+    m_highestMidiNote(0)
 {
     m_smf = new QSmf(this);
     connect(m_smf, &QSmf::signalSMFHeader, this, &Sequence::smfHeaderEvent);
@@ -42,11 +51,12 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
     connect(m_smf, &QSmf::signalSMFPitchBend, this, &Sequence::smfPitchBendEvent);
     connect(m_smf, &QSmf::signalSMFProgram, this, &Sequence::smfProgramEvent);
     connect(m_smf, &QSmf::signalSMFChanPress, this, &Sequence::smfChanPressEvent);
+    connect(m_smf, &QSmf::signalSMFMetaMisc, this, &Sequence::smfMetaEvent);
     connect(m_smf, &QSmf::signalSMFSysex, this, &Sequence::smfSysexEvent);
     connect(m_smf, &QSmf::signalSMFText, this, &Sequence::smfUpdateLoadProgress);
     connect(m_smf, &QSmf::signalSMFTempo, this, &Sequence::smfTempoEvent);
     connect(m_smf, &QSmf::signalSMFTrackStart, this, &Sequence::smfTrackStartEvent);
-    connect(m_smf, &QSmf::signalSMFTrackEnd, this, &Sequence::smfUpdateLoadProgress);
+    connect(m_smf, &QSmf::signalSMFTrackEnd, this, &Sequence::smfTrackEnd);
     connect(m_smf, &QSmf::signalSMFendOfTrack, this, &Sequence::smfUpdateLoadProgress);
     connect(m_smf, &QSmf::signalSMFError, this, &Sequence::smfErrorHandler);
 
@@ -81,6 +91,12 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
     connect(m_wrk, &QWrk::signalWRKSegment, this, &Sequence::wrkUpdateLoadProgress);
     connect(m_wrk, &QWrk::signalWRKChord, this, &Sequence::wrkUpdateLoadProgress);
     connect(m_wrk, &QWrk::signalWRKExpression, this, &Sequence::wrkUpdateLoadProgress);
+
+    for(int i=0; i<MIDI_STD_CHANNELS; ++i) {
+        m_channelUsed[i] = false;
+        m_channelEvents[i] = 0;
+        m_channelPatches[i] = -1;
+    }
 }
 
 static inline bool eventLessThan(const MIDIEvent* s1, const MIDIEvent *s2)
@@ -90,8 +106,7 @@ static inline bool eventLessThan(const MIDIEvent* s1, const MIDIEvent *s2)
 
 void Sequence::sort()
 {
-    // qDebug() << Q_FUNC_INFO;
-
+    //qDebug() << Q_FUNC_INFO;
     qStableSort(m_list.begin(), m_list.end(), eventLessThan);
     // Calculate deltas
     long lastEventTicks = 0;
@@ -138,6 +153,19 @@ void Sequence::loadFile(const QString& fileName)
     QFileInfo finfo(fileName);
     if (finfo.exists()) {
         clear();
+        m_lastBeat = 0;
+        m_barCount = 0;
+        m_beatCount = 0;
+        m_beatMax = 4;
+        m_lowestMidiNote = 127;
+        m_highestMidiNote = 0;
+        for(int i=0; i<MIDI_STD_CHANNELS; ++i) {
+            m_channelUsed[i] = false;
+            m_channelEvents[i] = 0;
+            m_channelLabel[i].clear();
+            m_channelPatches[i] = -1;
+            m_trackLabel.clear();
+        }
         try {
             emit loadingStart(finfo.size());
             QString ext = finfo.suffix().toLower();
@@ -277,7 +305,9 @@ void Sequence::appendSMFEvent(MIDIEvent *ev)
 
 void Sequence::smfHeaderEvent(int format, int ntrks, int division)
 {
-    qDebug() << "SMF Header:" << QString("Format=%1, Tracks=%2, Division=%3").arg(format).arg(ntrks).arg(division);
+    Q_UNUSED(format)
+    Q_UNUSED(ntrks)
+    //qDebug() << "SMF Header:" << QString("Format=%1, Tracks=%2, Division=%3").arg(format).arg(ntrks).arg(division);
     m_division = division;
     timeCalculations();
     smfUpdateLoadProgress();
@@ -285,42 +315,64 @@ void Sequence::smfHeaderEvent(int format, int ntrks, int division)
 
 void Sequence::smfNoteOnEvent(int chan, int pitch, int vol)
 {
+    if (pitch > m_highestMidiNote)
+        m_highestMidiNote = pitch;
+    if (pitch < m_lowestMidiNote)
+        m_lowestMidiNote = pitch;
+    m_channelUsed[chan] = true;
+    m_channelEvents[chan]++;
     MIDIEvent* ev = new NoteOnEvent (chan, pitch, vol);
     appendSMFEvent(ev);
 }
 
 void Sequence::smfNoteOffEvent(int chan, int pitch, int vol)
 {
+    if (pitch > m_highestMidiNote)
+        m_highestMidiNote = pitch;
+    if (pitch < m_lowestMidiNote)
+        m_lowestMidiNote = pitch;
+    m_channelUsed[chan] = true;
+    m_channelEvents[chan]++;
     MIDIEvent* ev = new NoteOffEvent (chan, pitch, vol);
     appendSMFEvent(ev);
 }
 
 void Sequence::smfKeyPressEvent(int chan, int pitch, int press)
 {
+    m_channelUsed[chan] = true;
+    m_channelEvents[chan]++;
     MIDIEvent* ev = new KeyPressEvent (chan, pitch, press);
     appendSMFEvent(ev);
 }
 
 void Sequence::smfCtlChangeEvent(int chan, int ctl, int value)
 {
+    m_channelUsed[chan] = true;
+    m_channelEvents[chan]++;
     MIDIEvent* ev = new ControllerEvent (chan, ctl, value);
     appendSMFEvent(ev);
 }
 
 void Sequence::smfPitchBendEvent(int chan, int value)
 {
+    m_channelUsed[chan] = true;
+    m_channelEvents[chan]++;
     MIDIEvent* ev = new PitchBendEvent (chan, value);
     appendSMFEvent(ev);
 }
 
 void Sequence::smfProgramEvent(int chan, int patch)
 {
+    m_channelUsed[chan] = true;
+    m_channelEvents[chan]++;
     MIDIEvent* ev = new ProgramChangeEvent (chan, patch);
     appendSMFEvent(ev);
 }
 
 void Sequence::smfChanPressEvent(int chan, int press)
 {
+    m_channelUsed[chan] = true;
+    m_channelEvents[chan]++;
     MIDIEvent* ev = new ChanPressEvent (chan, press);
     appendSMFEvent(ev);
 }
@@ -329,6 +381,30 @@ void Sequence::smfSysexEvent(const QByteArray& data)
 {
     MIDIEvent* ev = new SysExEvent (data);
     appendSMFEvent(ev);
+}
+
+void Sequence::smfMetaEvent(int type, const QByteArray& data)
+{
+    if ( (type >= Sequence::FIRST_TYPE) && (type <= Sequence::Cue) ) {
+        //qint64 tick = m_smf->getCurrentTime();
+        //addMetaData(static_cast<Sequence::TextType>(type), data, tick);
+        switch ( type ) {
+        case Sequence::Lyric:
+        case Sequence::Text:
+            if ((data.length() > 0) && (data[0] != '@') && (data[0] != '%') ) {
+                TextEvent *ev = new TextEvent(data, type);
+                ev->setTag(type);
+                appendSMFEvent(ev);
+            }
+            break;
+        case Sequence::TrackName:
+        case Sequence::InstrumentName:
+            if (m_trackLabel.isEmpty()) {
+                m_trackLabel = data;
+            }
+            break;
+        }
+    }
 }
 
 void Sequence::smfTempoEvent(int tempo)
@@ -348,7 +424,29 @@ void Sequence::smfTrackStartEvent()
         m_ticksDuration = tick;
     }
     m_track++;
+    m_trackLabel.clear();
+    for(int i=0; i<MIDI_STD_CHANNELS; ++i) {
+        m_channelEvents[i] = 0;
+    }
     //qDebug() << "starting track:" << m_track << "ticks:" << tick;
+    smfUpdateLoadProgress();
+}
+
+void Sequence::smfTrackEnd()
+{
+    int max = 0;
+    int chan = -1;
+    //qDebug() << Q_FUNC_INFO << m_trackLabel;
+    if (!m_trackLabel.isEmpty()) {
+        for(int i=0; i<MIDI_STD_CHANNELS; ++i)
+            if (m_channelEvents[i] > max) {
+                max = m_channelEvents[i];
+                chan = i;
+            }
+        //qDebug() << Q_FUNC_INFO << m_trackLabel << chan;
+        if (chan >= 0 && chan < MIDI_STD_CHANNELS)
+            m_channelLabel[chan] = m_trackLabel;
+    }
     smfUpdateLoadProgress();
 }
 
@@ -425,12 +523,19 @@ void Sequence::wrkNoteEvent(int track, long time, int chan, int pitch, int vol, 
     int velocity = vol + rec.velocity;
     if (rec.channel > -1)
         channel = rec.channel;
+    if (pitch > m_highestMidiNote)
+        m_highestMidiNote = pitch;
+    if (pitch < m_lowestMidiNote)
+        m_lowestMidiNote = pitch;
+    m_channelUsed[channel] = true;
     MIDIEvent* ev = new NoteOnEvent(channel, key, velocity);
     ev->setTag(track);
     appendWRKEvent(time, ev);
+    m_channelEvents[channel]++;
     ev = new NoteOffEvent(channel, key, velocity);
     ev->setTag(track);
     appendWRKEvent(time + dur, ev);
+    m_channelEvents[channel]++;
 }
 
 void Sequence::wrkKeyPressEvent(int track, long time, int chan, int pitch, int press)
@@ -440,6 +545,8 @@ void Sequence::wrkKeyPressEvent(int track, long time, int chan, int pitch, int p
     int key = pitch + rec.pitch;
     if (rec.channel > -1)
         channel = rec.channel;
+    m_channelUsed[channel] = true;
+    m_channelEvents[channel]++;
     MIDIEvent* ev = new KeyPressEvent(channel, key, press);
     ev->setTag(track);
     appendWRKEvent(time, ev);
@@ -451,6 +558,8 @@ void Sequence::wrkCtlChangeEvent(int track, long time, int chan, int ctl, int va
     TrackMapRec rec = m_trackMap[track];
     if (rec.channel > -1)
         channel = rec.channel;
+    m_channelUsed[channel] = true;
+    m_channelEvents[channel]++;
     MIDIEvent* ev = new ControllerEvent(channel, ctl, value);
     ev->setTag(track);
     appendWRKEvent(time, ev);
@@ -462,6 +571,8 @@ void Sequence::wrkPitchBendEvent(int track, long time, int chan, int value)
     TrackMapRec rec = m_trackMap[track];
     if (rec.channel > -1)
         channel = rec.channel;
+    m_channelUsed[channel] = true;
+    m_channelEvents[channel]++;
     MIDIEvent* ev = new PitchBendEvent(channel, value);
     ev->setTag(track);
     appendWRKEvent(time, ev);
@@ -473,6 +584,8 @@ void Sequence::wrkProgramEvent(int track, long time, int chan, int patch)
     TrackMapRec rec = m_trackMap[track];
     if (rec.channel > -1)
         channel = rec.channel;
+    m_channelUsed[channel] = true;
+    m_channelEvents[channel]++;
     MIDIEvent* ev = new ProgramChangeEvent(channel, patch);
     ev->setTag(track);
     appendWRKEvent(time, ev);
@@ -484,6 +597,8 @@ void Sequence::wrkChanPressEvent(int track, long time, int chan, int press)
     TrackMapRec rec = m_trackMap[track];
     if (rec.channel > -1)
         channel = rec.channel;
+    m_channelUsed[channel] = true;
+    m_channelEvents[channel]++;
     MIDIEvent* ev = new ChanPressEvent(channel, press);
     ev->setTag(track);
     appendWRKEvent(time, ev);
@@ -580,4 +695,33 @@ void Sequence::wrkTrackBank(int track, int bank)
 void Sequence::wrkEndOfFile()
 {
     wrkUpdateLoadProgress();
+}
+
+bool Sequence::channelUsed(int channel)
+{
+    if (channel >= 0 && channel < MIDI_STD_CHANNELS)
+        return m_channelUsed[channel];
+    return false;
+}
+
+QString Sequence::channelLabel(int channel)
+{
+    if ((channel >= 0) && (channel < MIDI_STD_CHANNELS) &&
+        !m_channelLabel[channel].isEmpty()) {
+        if (m_codec == NULL)
+            return QString(m_channelLabel[channel]);
+        else
+            return m_codec->toUnicode(m_channelLabel[channel]);
+    }
+    return QString();
+}
+
+int Sequence::lowestMidiNote()
+{
+    return m_lowestMidiNote;
+}
+
+int Sequence::highestMidiNote()
+{
+    return m_highestMidiNote;
 }

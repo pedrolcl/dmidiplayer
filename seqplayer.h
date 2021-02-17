@@ -20,10 +20,6 @@
 #define SEQPLAYER_H_
 
 #include <QObject>
-#include <QString>
-#include <QList>
-#include <QTimer>
-#include <QElapsedTimer>
 #include <drumstick/backendmanager.h>
 
 #include "sequence.h"
@@ -57,19 +53,47 @@ public:
     void setVolumeFactor(unsigned int vol);
     void allNotesOff();
     void sendVolumeEvents();
+    qreal volume(int channel);
+    bool isMuted(int channel);
+    bool isLocked(int channel);
 
 public slots:
     void playerLoop();
+    void setVolume(int channel, qreal);
+    void setMuted(int channel, bool mute);
+    void setLocked(int channel, bool lock);
+    void setPatch(int channel, int patch);
 
 signals:
     void songFinished();
-    void songEchoTime(long millis, long ticks);
     void songStopped();
+    void songEchoTime(long millis, long ticks);
+    void volumeChanged(int channel, qreal newVolume);
+    void mutedChanged(int channel, bool);
+    void lockedChanged(int channel, bool);
+
+    /**
+     * Sequenced SMF events (for feedback to the application)
+     */
+    void tempoChanged(const qreal tempo);
+    void timeSignatureChanged(const int numerator, const int denominator);
+    void midiText(const int type, const QString &txt);
+    void midiNoteOn(const int chan, const int note, const int vel);
+    void midiNoteOff(const int chan, const int note, const int vel);
+    void midiController(const int chan, const int control, const int value);
+    void midiKeyPressure(const int chan, const int note, const int value);
+    void midiProgram(const int chan, const int program);
+    void midiChannelPressure(const int chan, const int value);
+    void midiPitchBend(const int chan, const int value);
+    void midiSysex(const QByteArray &data);
+    void beat(const int bar, const int beat, const int max);
 
 private slots:
     void playEvent(MIDIEvent* ev);
 
 private:
+    void initChannels();
+
     Sequence m_song;
     drumstick::rt::MIDIOutput* m_port;
     long m_songPosition;
@@ -77,6 +101,11 @@ private:
     int m_pitchShift;
     int m_volumeFactor;
     int m_volume[drumstick::rt::MIDI_STD_CHANNELS];
+    int m_lastpgm[drumstick::rt::MIDI_STD_CHANNELS];
+    int m_lockedpgm[drumstick::rt::MIDI_STD_CHANNELS];
+    qreal m_volumeShift[drumstick::rt::MIDI_STD_CHANNELS];
+    bool m_muted[drumstick::rt::MIDI_STD_CHANNELS];
+    bool m_locked[drumstick::rt::MIDI_STD_CHANNELS];
 };
 
 #endif /*SEQPLAYER_H_*/

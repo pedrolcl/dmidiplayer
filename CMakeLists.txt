@@ -35,6 +35,8 @@ find_package (Qt${QT_VERSION_MAJOR} COMPONENTS Gui Widgets LinguistTools REQUIRE
 find_package (Drumstick 2.0 COMPONENTS File RT Widgets REQUIRED)
 
 SET(SOURCES
+    channels.cpp
+    channels.h
     connections.cpp
     connections.h
     connections.ui
@@ -46,6 +48,10 @@ SET(SOURCES
     guiplayer.ui
     iconutils.cpp
     iconutils.h
+    instrumentset.cpp
+    instrumentset.h
+    pianola.cpp
+    pianola.h
     playerabout.cpp
     playerabout.h
     playerabout.ui
@@ -54,6 +60,8 @@ SET(SOURCES
     seqplayer.h
     sequence.cpp
     sequence.h
+    vumeter.cpp
+    vumeter.h
 )
 
 set ( TRANSLATIONS

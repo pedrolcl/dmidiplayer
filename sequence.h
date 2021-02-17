@@ -19,19 +19,36 @@
 #ifndef SEQUENCE_H
 #define SEQUENCE_H
 
-#include <chrono>
 #include <QObject>
 #include <QList>
-#include <QString>
 #include <QMap>
+#include <QTextCodec>
 #include <drumstick/qsmf.h>
 #include <drumstick/qwrk.h>
+#include <drumstick/rtmidioutput.h>
 #include "events.h"
 
 class Sequence : public QObject
 {
     Q_OBJECT
 public:
+    /**
+     * For Karaoke files, there may be additional metadata
+     * FileType: @KMIDI KARAOKE FILE
+     * Version: @V0100
+     * Information: @I<text>
+     * Language: @L<lang>
+     * Title: @T<title, author, ...>
+     * Warning?: @W<bla bla bla>
+     */
+    enum TextType {
+        Text = 1, Copyright = 2, TrackName = 3,
+        InstrumentName = 4, Lyric = 5, Marker = 6, Cue = 7,
+        KarFileType = 8, KarVersion = 9, KarInformation = 10,
+        KarLanguage = 11, KarTitles = 12, KarWarnings = 13,
+        FIRST_TYPE = Text, LAST_TYPE = KarWarnings
+    };
+
     Sequence(QObject* parent = 0);
     virtual ~Sequence();
     void clear();
@@ -56,6 +73,11 @@ public:
     void updateTempo(qreal newTempo);
     qreal ticks2millis() const { return m_ticks2millis; }
 
+    bool channelUsed(int channel);
+    QString channelLabel(int channel);
+    int lowestMidiNote();
+    int highestMidiNote();
+
 signals:
     void loadingStart(int size);
     void loadingProgress(int pos);
@@ -73,8 +95,10 @@ public slots:
     void smfProgramEvent(int chan, int patch);
     void smfChanPressEvent(int chan, int press);
     void smfSysexEvent(const QByteArray& data);
+    void smfMetaEvent(int type, const QByteArray &data);
     void smfTempoEvent(int tempo);
     void smfTrackStartEvent();
+    void smfTrackEnd();
     void smfErrorHandler(const QString& errorStr);
     void smfUpdateLoadProgress();
 
@@ -115,6 +139,8 @@ private: // members
     QList<MIDIEvent*> m_list;
     drumstick::File::QSmf* m_smf;
     drumstick::File::QWrk* m_wrk;
+    QTextCodec *m_codec;
+
     int m_ticksDuration;
     int m_division;
     int m_pos;
@@ -137,6 +163,21 @@ private: // members
         int velocity;
     };
     QMap<int,TrackMapRec> m_trackMap;
+
+    QString m_encoding;
+    qreal m_duration;
+    qint64 m_lastBeat;
+    qint64 m_beatLength;
+    int m_beatMax;
+    int m_barCount;
+    int m_beatCount;
+    int m_lowestMidiNote;
+    int m_highestMidiNote;
+    QByteArray m_trackLabel;
+    bool m_channelUsed[drumstick::rt::MIDI_STD_CHANNELS];
+    int m_channelEvents[drumstick::rt::MIDI_STD_CHANNELS];
+    QByteArray m_channelLabel[drumstick::rt::MIDI_STD_CHANNELS];
+    int m_channelPatches[drumstick::rt::MIDI_STD_CHANNELS];
 };
 
 #endif // SEQUENCE_H

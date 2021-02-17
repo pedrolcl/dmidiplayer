@@ -60,6 +60,7 @@ public:
     virtual bool isTempo() { return false; }
     virtual bool isText() { return false; }
     virtual bool isMetaEvent() { return false; }
+
 protected:
     long m_delta;
     long m_tick;
