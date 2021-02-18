@@ -34,6 +34,7 @@ Channels::Channels( QWidget* parent ) :
     m_volumeFactor(1.0)
 {
     setObjectName("ChannelsWindow");
+    setWindowFlag(Qt::Tool, true);
     setAttribute(Qt::WA_DeleteOnClose, false);
     setWindowTitle(tr("MIDI Channels"));
     QGridLayout *layout = new QGridLayout;

@@ -116,8 +116,9 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
                 NoteOffEvent* event = static_cast<NoteOffEvent*>(ev);
                 int key = event->key();
                 int vel = event->velocity();
-                if (chan != MIDI_GM_STD_DRUM_CHANNEL)
+                if (chan != MIDI_GM_STD_DRUM_CHANNEL) {
                     key += m_pitchShift;
+                }
                 m_port->sendNoteOff(chan, key, vel);
                 //qDebug() << m_songPosition << ev->tick() << " NoteOff: " << chan << key << vel;
                 emit midiNoteOff(chan, key, vel);
@@ -127,8 +128,9 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
                 NoteOnEvent* event = static_cast<NoteOnEvent*>(ev);
                 int vel = event->velocity();
                 int key = event->key();
-                if (chan != MIDI_GM_STD_DRUM_CHANNEL)
+                if (chan != MIDI_GM_STD_DRUM_CHANNEL) {
                     key += m_pitchShift;
+                }
                 m_port->sendNoteOn(chan, key, vel);
                 //qDebug() << m_songPosition << ev->tick() << " NoteOn: " << chan << key << vel;
                 emit midiNoteOn(chan, key, vel);
@@ -152,7 +154,7 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
                 int val = event->value();
                 if (par == ControllerEvent::MIDI_CTL_MSB_MAIN_VOLUME) {
                     m_volume[chan] = val;
-                    val = qFloor(val * m_volumeFactor / 100.0);
+                    val = qFloor(val * m_volumeShift[chan]);
                     if (val < 0) val = 0;
                     if (val > 127) val = 127;
                 }
@@ -397,12 +399,18 @@ void SequencePlayer::setVolume(int channel, qreal value)
     //qDebug() << Q_FUNC_INFO << channel << value;
     if (channel >= 0 && channel < MIDI_STD_CHANNELS) {
         m_volumeShift[channel] = value;
-        m_port->sendController(channel, MIDI_CONTROL_MSB_MAIN_VOLUME, m_volume[channel]);
+        int volume = qFloor(m_volume[channel] * value);
+        if (volume < 0) volume = 0;
+        if (volume > 127) volume = 127;
+        m_port->sendController(channel, MIDI_CONTROL_MSB_MAIN_VOLUME, volume);
         emit volumeChanged( channel, value );
     } else if ( channel == -1 ) {
         for (int chan = 0; chan < MIDI_STD_CHANNELS; ++chan) {
             m_volumeShift[chan] = value;
-            m_port->sendController(chan, MIDI_CONTROL_MSB_MAIN_VOLUME, m_volume[chan]);
+            int volume = qFloor(m_volume[chan] * value);
+            if (volume < 0) volume = 0;
+            if (volume > 127) volume = 127;
+            m_port->sendController(chan, MIDI_CONTROL_MSB_MAIN_VOLUME, volume);
             emit volumeChanged( chan, value );
         }
     }

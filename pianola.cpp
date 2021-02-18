@@ -32,6 +32,7 @@ using namespace drumstick::widgets;
 Pianola::Pianola( QWidget* parent ) : QMainWindow(parent)
 {
     setObjectName("PlayerPianoWindow");
+    setWindowFlag(Qt::Tool, true);
     setAttribute(Qt::WA_DeleteOnClose, false);
     setWindowTitle(tr("Player Piano"));
     QMenu* chmenu = menuBar()->addMenu(tr("MIDI Channels"));

@@ -308,7 +308,7 @@ void GUIPlayer::openFile(const QString& fileName)
             m_ui->progressBar->setMaximum(m_player->song()->songLengthTicks());
             m_ui->progressBar->setValue(0);
 
-            if (m_pianola != 0) {
+            if (m_pianola != nullptr) {
                 int loNote = m_player->song()->lowestMidiNote();
                 int hiNote = m_player->song()->highestMidiNote();
                 m_pianola->setNoteRange(loNote, hiNote);
@@ -317,7 +317,7 @@ void GUIPlayer::openFile(const QString& fileName)
                     m_pianola->slotLabel(i, m_player->song()->channelLabel(i));
                 }
             }
-            if (m_channels != 0) {
+            if (m_channels != nullptr) {
                 for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
                     m_player->setLocked(i, false);
                     m_player->setMuted(i, false);
@@ -429,7 +429,12 @@ void GUIPlayer::volumeSlider(int value)
     QString tip = QString::number(value)+'%';
     m_ui->lblVolume->setText(tip);
     m_ui->volumeSlider->setToolTip(tip);
-    m_player->setVolumeFactor(value);
+    if (m_player != nullptr) {
+        m_player->setVolumeFactor(value);
+    }
+    if (m_channels != nullptr) {
+        m_channels->setVolumeFactor(value*0.01);
+    }
     QToolTip::showText(QCursor::pos(), tip, this);
 }
 
@@ -541,7 +546,7 @@ void GUIPlayer::slotPianolaClosed()
 
 void GUIPlayer::slotShowChannels(bool checked)
 {
-    if (m_channels != 0) {
+    if (m_channels != nullptr) {
         m_channels->setVisible(checked);
     }
 }
