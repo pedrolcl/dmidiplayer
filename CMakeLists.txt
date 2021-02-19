@@ -56,6 +56,8 @@ SET(SOURCES
     playerabout.h
     playerabout.ui
     playermain.cpp
+    recentfileshelper.cpp
+    recentfileshelper.h
     seqplayer.cpp
     seqplayer.h
     sequence.cpp

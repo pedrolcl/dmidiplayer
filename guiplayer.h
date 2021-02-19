@@ -22,13 +22,13 @@
 #include <QMainWindow>
 #include <QProgressDialog>
 #include <QObject>
-#include <QSettings>
 #include <QString>
 #include <QList>
 #include <QHash>
 #include <QPointer>
 #include <QThread>
 #include "connections.h"
+#include "recentfileshelper.h"
 #include "pianola.h"
 #include "channels.h"
 
@@ -120,6 +120,7 @@ private:
     Connections dlgConnections;
     QString m_lastDirectory;
     QThread m_playerThread;
+    RecentFilesHelper* m_recentFiles;
     QPointer<Pianola> m_pianola;
     QPointer<Channels> m_channels;
 };

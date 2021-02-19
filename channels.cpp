@@ -23,6 +23,7 @@
 #include <QComboBox>
 #include <QLineEdit>
 #include <QCloseEvent>
+#include <drumstick/settingsfactory.h>
 #include "channels.h"
 #include "vumeter.h"
 
@@ -126,20 +127,22 @@ Channels::~Channels()
 
 void Channels::readSettings()
 {
-    QSettings settings;
-    settings.beginGroup("ChannelsWindow");
-    restoreGeometry(settings.value("Geometry").toByteArray());
-    restoreState(settings.value("State").toByteArray());
-    settings.endGroup();
+    using namespace drumstick::widgets;
+    SettingsFactory settings;
+    settings->beginGroup("ChannelsWindow");
+    restoreGeometry(settings->value("Geometry").toByteArray());
+    restoreState(settings->value("State").toByteArray());
+    settings->endGroup();
 }
 
 void Channels::writeSettings()
 {
-    QSettings settings;
-    settings.beginGroup("ChannelsWindow");
-    settings.setValue("Geometry", saveGeometry());
-    settings.setValue("State", saveState());
-    settings.endGroup();
+    using namespace drumstick::widgets;
+    SettingsFactory settings;
+    settings->beginGroup("ChannelsWindow");
+    settings->setValue("Geometry", saveGeometry());
+    settings->setValue("State", saveState());
+    settings->endGroup();
 }
 
 void Channels::closeEvent(QCloseEvent *event)

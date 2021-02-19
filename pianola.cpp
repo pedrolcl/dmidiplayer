@@ -22,6 +22,7 @@
 #include <QLabel>
 #include <QMenuBar>
 #include <QAction>
+#include <drumstick/settingsfactory.h>
 #include <drumstick/pianokeybd.h>
 #include <drumstick/rtmidioutput.h>
 #include "pianola.h"
@@ -104,20 +105,22 @@ Pianola::~Pianola()
 
 void Pianola::readSettings()
 {
-    QSettings settings;
-    settings.beginGroup("PlayerPianoWindow");
-    restoreGeometry(settings.value("Geometry").toByteArray());
-    restoreState(settings.value("State").toByteArray());
-    settings.endGroup();
+    using namespace drumstick::widgets;
+    SettingsFactory settings;
+    settings->beginGroup("PlayerPianoWindow");
+    restoreGeometry(settings->value("Geometry").toByteArray());
+    restoreState(settings->value("State").toByteArray());
+    settings->endGroup();
 }
 
 void Pianola::writeSettings()
 {
-    QSettings settings;
-    settings.beginGroup("PlayerPianoWindow");
-    settings.setValue("Geometry", saveGeometry());
-    settings.setValue("State", saveState());
-    settings.endGroup();
+    using namespace drumstick::widgets;
+    SettingsFactory settings;
+    settings->beginGroup("PlayerPianoWindow");
+    settings->setValue("Geometry", saveGeometry());
+    settings->setValue("State", saveState());
+    settings->endGroup();
 }
 
 void Pianola::closeEvent(QCloseEvent *event)

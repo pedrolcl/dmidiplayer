@@ -20,7 +20,6 @@
 #include <QLibraryInfo>
 #include <QTranslator>
 #include <QMessageBox>
-#include <QSettings>
 #include <QCommandLineParser>
 #include <QFileInfo>
 #include <QDebug>

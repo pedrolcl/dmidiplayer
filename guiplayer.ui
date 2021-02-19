@@ -481,6 +481,12 @@ selection-background-color: blue;</string>
      <string>File</string>
     </property>
     <addaction name="actionOpen"/>
+    <widget class="QMenu" name="menuRecentFiles">
+     <property name="title">
+      <string>Open Recent Files</string>
+     </property>
+    </widget>
+    <addaction name="menuRecentFiles"/>
     <addaction name="separator"/>
     <addaction name="actionPlay"/>
     <addaction name="actionPause"/>

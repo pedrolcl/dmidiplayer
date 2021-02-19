@@ -93,6 +93,10 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     settings->endGroup();
     settings->sync();
 
+    m_recentFiles = new RecentFilesHelper(m_ui->menuRecentFiles);
+    connect(m_recentFiles, &RecentFilesHelper::selectedFile, this, &GUIPlayer::openFile);
+    m_recentFiles->updateRecentFileActions();
+
     m_player = new SequencePlayer();
     m_player->moveToThread(&m_playerThread);
     connect(m_player, &SequencePlayer::songFinished, this, &GUIPlayer::playerFinished);
@@ -301,6 +305,7 @@ void GUIPlayer::openFile(const QString& fileName)
         } else {
             m_lastDirectory = finfo.absolutePath();
             m_ui->lblName->setText(finfo.fileName());
+            m_recentFiles->setCurrentFile(finfo.absoluteFilePath());
             updateState(StoppedState);
             updateTimeLabel(0);
             m_player->resetPosition();
@@ -475,7 +480,7 @@ void GUIPlayer::connectOutput(const QString &driver, const QString &connection)
 
 void GUIPlayer::readSettings(QSettings &settings)
 {
-    settings.beginGroup("Window");
+    settings.beginGroup("MainWindow");
     restoreGeometry(settings.value("Geometry").toByteArray());
     restoreState(settings.value("State").toByteArray());
     settings.endGroup();
@@ -493,7 +498,7 @@ void GUIPlayer::readSettings(QSettings &settings)
 
 void GUIPlayer::writeSettings(QSettings &settings)
 {
-    settings.beginGroup("Window");
+    settings.beginGroup("MainWindow");
     settings.setValue("Geometry", saveGeometry());
     settings.setValue("State", saveState());
     settings.endGroup();
