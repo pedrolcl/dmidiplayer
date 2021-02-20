@@ -35,7 +35,9 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent)
     setObjectName("PlayerPianoWindow");
     setWindowFlag(Qt::Tool, true);
     setAttribute(Qt::WA_DeleteOnClose, false);
+    setAttribute(Qt::WA_MacAlwaysShowToolWindow, true);
     setWindowTitle(tr("Player Piano"));
+    menuBar()->setNativeMenuBar(false);
     QMenu* chmenu = menuBar()->addMenu(tr("MIDI Channels"));
     QAction *a = new QAction(this);
     a->setText(tr("Show all channels"));
@@ -63,6 +65,7 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent)
     //hpalette.setColor(0, Qt::red);
     for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
         m_frame[i] = new QFrame(this);
+        m_frame[i]->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         QGridLayout* glayout = new QGridLayout;
         glayout->setSpacing(0);
         glayout->setContentsMargins(0,0,0,0);
