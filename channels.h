@@ -23,6 +23,11 @@
 #include <drumstick/rtmidioutput.h>
 #include "instrumentset.h"
 
+#if defined(Q_OS_WINDOWS)
+#include "winsnap.h"
+#endif
+
+
 class QToolButton;
 class QComboBox;
 class Vumeter;
@@ -74,8 +79,9 @@ public slots:
     void allNotesOff();
 
 protected:
-    void closeEvent(QCloseEvent *event);
-    void timerEvent( QTimerEvent *event );
+    void closeEvent( QCloseEvent *event)  override;
+    void timerEvent( QTimerEvent *event ) override;
+    bool nativeEvent( const QByteArray &eventType, void *message, long *result ) override;
 
 private:
     int m_timerId;
@@ -90,6 +96,9 @@ private:
     Vumeter* m_vumeter[drumstick::rt::MIDI_STD_CHANNELS];
     QComboBox* m_patch[drumstick::rt::MIDI_STD_CHANNELS];
     QLineEdit* m_name[drumstick::rt::MIDI_STD_CHANNELS];
+#if defined(Q_OS_WINDOWS)
+    WinSnap m_snapper;
+#endif
 };
 
 #endif /* CHANNELS_H */

@@ -266,3 +266,14 @@ void Pianola::tightenKeys(bool enabled)
         setNoteRange(m_lowerNote, m_upperNote);
     }
 }
+
+bool Pianola::nativeEvent(const QByteArray &eventType, void *message, long *result)
+{
+#if defined(Q_OS_WINDOWS)
+    if (m_snapper.HandleMessage(message)) {
+        result = 0;
+        return true;
+    }
+#endif
+    return QWidget::nativeEvent(eventType, message, result);
+}

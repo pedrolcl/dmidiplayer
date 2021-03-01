@@ -560,3 +560,14 @@ void GUIPlayer::slotChannelsClosed()
 {
     m_ui->actionChannels->setChecked(false);
 }
+
+bool GUIPlayer::nativeEvent(const QByteArray &eventType, void *message, long *result)
+{
+#if defined(Q_OS_WINDOWS)
+    if (m_snapper.HandleMessage(message)) {
+        result = 0;
+        return true;
+    }
+#endif
+    return QWidget::nativeEvent(eventType, message, result);
+}

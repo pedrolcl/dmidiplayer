@@ -22,6 +22,10 @@
 #include <QMainWindow>
 #include <drumstick/rtmidioutput.h>
 
+#if defined(Q_OS_WINDOWS)
+#include "winsnap.h"
+#endif
+
 class QFrame;
 class QLabel;
 
@@ -58,8 +62,9 @@ public slots:
     void tightenKeys(bool enabled);
 
 protected:
-    void closeEvent(QCloseEvent *event);
-    void showEvent( QShowEvent * event );
+    void closeEvent( QCloseEvent *event ) override;
+    void showEvent( QShowEvent * event ) override;
+    bool nativeEvent( const QByteArray &eventType, void *message, long *result ) override;
 
 private:
     drumstick::widgets::PianoKeybd* m_piano[drumstick::rt::MIDI_STD_CHANNELS];
@@ -69,6 +74,9 @@ private:
     bool m_tightenKeys;
     int m_lowerNote;
     int m_upperNote;
+#if defined(Q_OS_WINDOWS)
+    WinSnap m_snapper;
+#endif
 };
 
 #endif /* PIANOLA_H */

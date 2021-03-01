@@ -32,6 +32,10 @@
 #include "pianola.h"
 #include "channels.h"
 
+#if defined(Q_OS_WINDOWS)
+#include "winsnap.h"
+#endif
+
 class MIDIEvent;
 
 namespace drumstick { namespace rt {
@@ -70,15 +74,18 @@ public:
 
     void updateTimeLabel(long milliseconds);
     void updateTempoLabel(float ftempo);
-    void dragEnterEvent(QDragEnterEvent* event);
-    void dropEvent(QDropEvent* event);
-    void closeEvent(QCloseEvent* event);
     bool isSupported(QString fileName);
     void connectOutput(const QString &driver, const QString &connection);
     void openFile(const QString &fileName);
     void readSettings(QSettings &settings);
     void writeSettings(QSettings &settings);
     void updateState(PlayerState newState);
+
+protected:
+    void dragEnterEvent( QDragEnterEvent* event ) override;
+    void dropEvent( QDropEvent* event ) override;
+    void closeEvent( QCloseEvent* event ) override;
+    bool nativeEvent( const QByteArray &eventType, void *message, long *result ) override;
 
 public slots:
     void about();
@@ -123,6 +130,9 @@ private:
     RecentFilesHelper* m_recentFiles;
     QPointer<Pianola> m_pianola;
     QPointer<Channels> m_channels;
+#if defined(Q_OS_WINDOWS)
+    WinSnap m_snapper;
+#endif
 };
 
 #endif // INCLUDED_GUIPLAYER_H

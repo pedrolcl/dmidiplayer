@@ -340,3 +340,14 @@ void Channels::slotNameChannel(int channel)
 {
     emit name(channel, m_name[channel]->text());
 }
+
+bool Channels::nativeEvent(const QByteArray &eventType, void *message, long *result)
+{
+#if defined(Q_OS_WINDOWS)
+    if (m_snapper.HandleMessage(message)) {
+        result = 0;
+        return true;
+    }
+#endif
+    return QWidget::nativeEvent(eventType, message, result);
+}

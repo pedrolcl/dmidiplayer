@@ -66,6 +66,12 @@ SET(SOURCES
     vumeter.h
 )
 
+if (WIN32)
+    list(APPEND SOURCES
+        winsnap.cpp
+        winsnap.h)
+endif()
+
 set ( TRANSLATIONS
    translations/${PROJECT_NAME}_es.ts
 )
@@ -122,7 +128,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 
 if (WIN32)
     set_target_properties (${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE true)
-    target_link_libraries(${PROJECT_NAME} PRIVATE winmm)
+    target_link_libraries(${PROJECT_NAME} PRIVATE winmm dwmapi)
 endif ()
 
 if (APPLE)
