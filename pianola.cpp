@@ -22,6 +22,7 @@
 #include <QLabel>
 #include <QMenuBar>
 #include <QAction>
+#include <QCloseEvent>
 #include <drumstick/settingsfactory.h>
 #include <drumstick/pianokeybd.h>
 #include <drumstick/rtmidioutput.h>
