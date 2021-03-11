@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = dmidiplayer
-VERSION = 1.0.0
+VERSION = 1.0.1
 QT += gui widgets
 CONFIG += qt thread exceptions c++11
 INCLUDEPATH += $$(DRUMSTICKINCLUDES)
@@ -16,7 +16,12 @@ HEADERS += \
     iconutils.h \
     seqplayer.h \
     sequence.h \
-    connections.h
+    connections.h \
+    pianola.h \
+    channels.h \
+    instrumentset.h \
+    recentfileshelper.h \
+    vumeter.h
 SOURCES += playermain.cpp \
     guiplayer.cpp \
     playerabout.cpp \
@@ -24,7 +29,12 @@ SOURCES += playermain.cpp \
     iconutils.cpp \
     seqplayer.cpp \
     sequence.cpp \
-    connections.cpp
+    connections.cpp \
+    pianola.cpp \
+    channels.cpp \
+    instrumentset.cpp \
+    recentfileshelper.cpp \
+    vumeter.cpp
 RESOURCES += guiplayer.qrc
 TRANSLATIONS += \
   translations/dmidiplayer_es.ts \

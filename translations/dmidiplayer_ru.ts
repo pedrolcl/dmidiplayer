@@ -58,6 +58,44 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>Channels</name>
+    <message>
+        <location filename="../channels.cpp" line="40"/>
+        <source>MIDI Channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../channels.cpp" line="47"/>
+        <source>Channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../channels.cpp" line="50"/>
+        <source>Mute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../channels.cpp" line="53"/>
+        <source>Solo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../channels.cpp" line="56"/>
+        <source>Level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../channels.cpp" line="59"/>
+        <source>Lock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../channels.cpp" line="62"/>
+        <source>Patch (sound setting)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ConnectionsClass</name>
     <message>
         <location filename="../connections.ui" line="14"/>
@@ -362,6 +400,700 @@ p, li { white-space: pre-wrap; }
         <location filename="../guiplayer.ui" line="772"/>
         <source>Show or Hide Rhythm</source>
         <translation>Показать или скрыть ритм</translation>
+    </message>
+</context>
+<context>
+    <name>InstrumentSet</name>
+    <message>
+        <location filename="../instrumentset.cpp" line="33"/>
+        <source>Acoustic Grand Piano</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="34"/>
+        <source>Bright Acoustic Piano</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="35"/>
+        <source>Electric Grand Piano</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="36"/>
+        <source>Honky-Tonk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="37"/>
+        <source>Rhodes Piano</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="38"/>
+        <source>Chorused Piano</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="39"/>
+        <source>Harpsichord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="40"/>
+        <source>Clavinet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="41"/>
+        <source>Celesta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="42"/>
+        <source>Glockenspiel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="43"/>
+        <source>Music Box</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="44"/>
+        <source>Vibraphone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="45"/>
+        <source>Marimba</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="46"/>
+        <source>Xylophone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="47"/>
+        <source>Tubular Bells</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="48"/>
+        <source>Dulcimer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="49"/>
+        <source>Hammond Organ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="50"/>
+        <source>Percussive Organ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="51"/>
+        <source>Rock Organ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="52"/>
+        <source>Church Organ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="53"/>
+        <source>Reed Organ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="54"/>
+        <source>Accordion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="55"/>
+        <source>Harmonica</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="56"/>
+        <source>Tango Accordion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="57"/>
+        <source>Acoustic Guitar (Nylon)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="58"/>
+        <source>Acoustic Guitar (Steel)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="59"/>
+        <source>Electric Guitar (Jazz)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="60"/>
+        <source>Electric Guitar (Clean)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="61"/>
+        <source>Electric Guitar (Muted)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="62"/>
+        <source>Overdriven Guitar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="63"/>
+        <source>Distortion Guitar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="64"/>
+        <source>Guitar Harmonics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="65"/>
+        <source>Acoustic Bass</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="66"/>
+        <source>Electric Bass (Finger)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="67"/>
+        <source>Electric Bass (Pick)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="68"/>
+        <source>Fretless Bass</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="69"/>
+        <source>Slap Bass 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="70"/>
+        <source>Slap Bass 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="71"/>
+        <source>Synth Bass 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="72"/>
+        <source>Synth Bass 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="73"/>
+        <source>Violin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="74"/>
+        <source>Viola</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="75"/>
+        <source>Cello</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="76"/>
+        <source>Contrabass</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="77"/>
+        <source>Tremolo Strings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="78"/>
+        <source>Pizzicato Strings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="79"/>
+        <source>Orchestral Harp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="80"/>
+        <source>Timpani</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="81"/>
+        <source>String Ensemble 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="82"/>
+        <source>String Ensemble 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="83"/>
+        <source>Synth Strings 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="84"/>
+        <source>Synth Strings 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="85"/>
+        <source>Choir Aahs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="86"/>
+        <source>Voice Oohs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="87"/>
+        <source>Synth Voice</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="88"/>
+        <source>Orchestra Hit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="89"/>
+        <source>Trumpet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="90"/>
+        <source>Trombone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="91"/>
+        <source>Tuba</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="92"/>
+        <source>Muted Trumpet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="93"/>
+        <source>French Horn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="94"/>
+        <source>Brass Section</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="95"/>
+        <source>Synth Brass 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="96"/>
+        <source>Synth Brass 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="97"/>
+        <source>Soprano Sax</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="98"/>
+        <source>Alto Sax</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="99"/>
+        <source>Tenor Sax</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="100"/>
+        <source>Baritone Sax</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="101"/>
+        <source>Oboe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="102"/>
+        <source>English Horn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="103"/>
+        <source>Bassoon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="104"/>
+        <source>Clarinet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="105"/>
+        <source>Piccolo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="106"/>
+        <source>Flute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="107"/>
+        <source>Recorder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="108"/>
+        <source>Pan Flute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="109"/>
+        <source>Blown Bottle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="110"/>
+        <source>Shakuhachi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="111"/>
+        <source>Whistle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="112"/>
+        <source>Ocarina</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="113"/>
+        <source>Lead 1 - Square Wave</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="114"/>
+        <source>Lead 2 - Saw Tooth</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="115"/>
+        <source>Lead 3 - Calliope</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="116"/>
+        <source>Lead 4 - Chiflead</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="117"/>
+        <source>Lead 5 - Charang</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="118"/>
+        <source>Lead 6 - Voice</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="119"/>
+        <source>Lead 7 - Fifths</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="120"/>
+        <source>Lead 8 - Bass+Lead</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="121"/>
+        <source>Pad 1 - New Age</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="122"/>
+        <source>Pad 2 - Warm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="123"/>
+        <source>Pad 3 - Polysynth</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="124"/>
+        <source>Pad 4 - Choir</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="125"/>
+        <source>Pad 5 - Bow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="126"/>
+        <source>Pad 6 - Metallic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="127"/>
+        <source>Pad 7 - Halo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="128"/>
+        <source>Pad 8 - Sweep</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="129"/>
+        <source>FX 1 - Rain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="130"/>
+        <source>FX 2 - Soundtrack</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="131"/>
+        <source>FX 3 - Crystal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="132"/>
+        <source>FX 4 - Atmosphere</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="133"/>
+        <source>FX 5 - Brightness</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="134"/>
+        <source>FX 6 - Goblins</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="135"/>
+        <source>FX 7 - Echoes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="136"/>
+        <source>FX 8 - Sci-fi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="137"/>
+        <source>Sitar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="138"/>
+        <source>Banjo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="139"/>
+        <source>Shamisen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="140"/>
+        <source>Koto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="141"/>
+        <source>Kalimba</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="142"/>
+        <source>Bagpipe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="143"/>
+        <source>Fiddle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="144"/>
+        <source>Shannai</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="145"/>
+        <source>Tinkle Bell</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="146"/>
+        <source>Agogo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="147"/>
+        <source>Steel Drum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="148"/>
+        <source>Wood Block</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="149"/>
+        <source>Taiko Drum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="150"/>
+        <source>Melodic Tom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="151"/>
+        <source>Synth Drum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="152"/>
+        <source>Reverse Cymbal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="153"/>
+        <source>Guitar Fret Noise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="154"/>
+        <source>Breath Noise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="155"/>
+        <source>Seashore</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="156"/>
+        <source>Bird Tweet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="157"/>
+        <source>Telephone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="158"/>
+        <source>Helicopter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="159"/>
+        <source>Applause</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="160"/>
+        <source>Gunshot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../instrumentset.cpp" line="164"/>
+        <source>Percussion %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Pianola</name>
+    <message>
+        <location filename="../pianola.cpp" line="40"/>
+        <source>Player Piano</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pianola.cpp" line="42"/>
+        <source>MIDI Channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pianola.cpp" line="44"/>
+        <source>Show all channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pianola.cpp" line="48"/>
+        <source>Hide all channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pianola.cpp" line="55"/>
+        <source>Tighten the number of keys</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pianola.cpp" line="98"/>
+        <source>Channel %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RecentFilesHelper</name>
+    <message>
+        <location filename="../recentfileshelper.cpp" line="37"/>
+        <source>Clear recent files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../recentfileshelper.cpp" line="86"/>
+        <source>&amp;%1 %2</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
