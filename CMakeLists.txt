@@ -79,6 +79,7 @@ endif()
 
 set ( TRANSLATIONS
    translations/${PROJECT_NAME}_es.ts
+   translations/${PROJECT_NAME}_ru.ts
 )
 
 if (QT_VERSION VERSION_LESS 5.15.0)
