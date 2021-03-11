@@ -26,4 +26,6 @@ SOURCES += playermain.cpp \
     sequence.cpp \
     connections.cpp
 RESOURCES += guiplayer.qrc
-TRANSLATIONS += translations/dmidiplayer_es.ts
+TRANSLATIONS += \
+  translations/dmidiplayer_es.ts \
+  translations/dmidiplayer_ru.ts
