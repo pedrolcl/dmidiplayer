@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Drumstick MIDI File Player
+Name[ru]=Проигрыватель файлов Drumstick MIDI
 Exec=dmidiplayer %f
 Icon=dmidiplayer
 Terminal=false
@@ -8,3 +9,4 @@ Categories=AudioVideo;Audio;Midi;
 Keywords=Music;Midi;Player;
 MimeType=audio/midi;audio/x-midi;audio/cakewalk;
 Comment=Drumstick MIDI File Player
+Comment[ru]=Проигрыватель файлов Drumstick MIDI
