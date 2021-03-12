@@ -62,6 +62,8 @@ SET(SOURCES
     seqplayer.h
     sequence.cpp
     sequence.h
+    settings.cpp
+    settings.h
     vumeter.cpp
     vumeter.h
 )

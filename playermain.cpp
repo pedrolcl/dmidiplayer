@@ -17,57 +17,64 @@
 */
 
 #include <QApplication>
-#include <QLibraryInfo>
-#include <QTranslator>
 #include <QMessageBox>
 #include <QCommandLineParser>
 #include <QFileInfo>
 #include <QDebug>
-#include <drumstick/backendmanager.h>
 #include "guiplayer.h"
-
-using namespace drumstick::rt;
+#include "settings.h"
 
 int main(int argc, char *argv[])
 {
-    const QString PGM_DESCRIPTION("Drumstick MIDI File Player Multiplatform Program");
-    const QString errorstr = "Fatal error from the Operating System. "
+    const QString PGM_DESCRIPTION = QCoreApplication::tr(
+        "Copyright (C) 2006-2021 Pedro Lopez-Cabanillas\n"
+        "This program comes with ABSOLUTELY NO WARRANTY;\n"
+        "This is free software, and you are welcome to redistribute it\n"
+        "under certain conditions; see the LICENSE for details.");
+
+    const QString errorstr = QCoreApplication::tr(
+        "Fatal error from the Operating System. "
         "This usually happens when the OS doesn't have MIDI support, "
         "or the MIDI support is not enabled. "
-        "Please check your OS/MIDI configuration.";
+        "Please check your OS/MIDI configuration.");
 
     QCoreApplication::setOrganizationName(QSTR_DOMAIN);
     QCoreApplication::setOrganizationDomain(QSTR_DOMAIN);
     QCoreApplication::setApplicationName(QSTR_APPNAME);
     QCoreApplication::setApplicationVersion(QT_STRINGIFY(VERSION));
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication app(argc, argv);
-
-    QLocale locale;
-    QTranslator qtTranslator;
-    if (qtTranslator.load(locale, "qt", "_", QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
-        QCoreApplication::installTranslator(&qtTranslator);
-    }
-
-    QTranslator appTranslator;
-    if (appTranslator.load(locale, "dmidiplayer", "_", QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
-        QCoreApplication::installTranslator(&appTranslator);
-    } else if (appTranslator.load(locale, "dmidiplayer", "_", QApplication::applicationDirPath() + "/../share/dmidiplayer/")) {
-        QCoreApplication::installTranslator(&appTranslator);
-    }
+    app.setWindowIcon(QIcon(":/dmidiplayer.png"));
 
     QCommandLineParser parser;
-    parser.setApplicationDescription(PGM_DESCRIPTION);
+    parser.setApplicationDescription(QString("%1 v.%2\n\n%3").arg(
+        QCoreApplication::applicationName(),
+        QCoreApplication::applicationVersion(),
+        PGM_DESCRIPTION));
     auto helpOption = parser.addHelpOption();
     auto versionOption = parser.addVersionOption();
-    QCommandLineOption driverOption({"d", "driver"}, "MIDI Out Driver.", "driver");
+    QCommandLineOption portableOption({"p", "portable"}, QCoreApplication::tr("Portable settings mode."));
+    QCommandLineOption portableFileName("f", "file", QCoreApplication::tr("Portable settings file name."), "portableFile");
+    parser.addOption(portableOption);
+    parser.addOption(portableFileName);
+    QCommandLineOption driverOption({"d", "driver"}, QCoreApplication::tr("MIDI Out Driver."), "driver");
     parser.addOption(driverOption);
-    QCommandLineOption portOption({"c", "connection"}, "MIDI Out Connection.", "connection");
+    QCommandLineOption portOption({"c", "connection"}, QCoreApplication::tr("MIDI Out Connection."), "connection");
     parser.addOption(portOption);
     parser.addPositionalArgument("file", "Input SMF/KAR/WRK file name.", "file");
     parser.process(app);
 
     if (parser.isSet(versionOption) || parser.isSet(helpOption)) {
         return 0;
+    }
+    if (parser.isSet(portableOption) || parser.isSet(portableFileName)) {
+        QString portableFile;
+        if (parser.isSet(portableFileName)) {
+            portableFile = parser.value(portableFileName);
+        }
+        Settings::setPortableConfig(portableFile);
+    } else {
+        QSettings::setDefaultFormat(QSettings::NativeFormat);
     }
 
     QStringList fileNames, positionalArgs = parser.positionalArguments();

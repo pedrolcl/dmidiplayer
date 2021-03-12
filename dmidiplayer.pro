@@ -10,31 +10,38 @@ FORMS += guiplayer.ui \
     playerabout.ui \
     connections.ui
 HEADERS += \
-    guiplayer.h \
-    playerabout.h \
+    channels.h \
+    connections.h \
     events.h \
+    guiplayer.h \
     iconutils.h \
+    instrumentset.h \
+    pianola.h \
+    playerabout.h \
+    recentfileshelper.h \
     seqplayer.h \
     sequence.h \
-    connections.h \
-    pianola.h \
-    channels.h \
-    instrumentset.h \
-    recentfileshelper.h \
+    settings.h \
     vumeter.h
-SOURCES += playermain.cpp \
-    guiplayer.cpp \
-    playerabout.cpp \
+SOURCES += \
+    channels.cpp \
+    connections.cpp \
     events.cpp \
+    guiplayer.cpp \
     iconutils.cpp \
+    instrumentset.cpp \
+    pianola.cpp \
+    playerabout.cpp \
+    playermain.cpp \
+    recentfileshelper.cpp \
     seqplayer.cpp \
     sequence.cpp \
-    connections.cpp \
-    pianola.cpp \
-    channels.cpp \
-    instrumentset.cpp \
-    recentfileshelper.cpp \
+    settings.cpp \
     vumeter.cpp
+win32 {
+    HEADERS += winsnap.h
+    SOURCES += winsnap.cpp
+}
 RESOURCES += guiplayer.qrc
 TRANSLATIONS += \
   translations/dmidiplayer_es.ts \

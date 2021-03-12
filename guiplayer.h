@@ -26,6 +26,7 @@
 #include <QList>
 #include <QHash>
 #include <QPointer>
+#include <QTranslator>
 #include <QThread>
 #include "connections.h"
 #include "recentfileshelper.h"
@@ -50,7 +51,7 @@ class SequencePlayer;
 class About;
 
 const QString QSTR_DOMAIN("drumstick.sourceforge.net");
-const QString QSTR_APPNAME("Drumstick MIDI File Player");
+const QString QSTR_APPNAME("Drumstick MIDI File Multiplatform Player");
 
 enum PlayerState {
     InvalidState,
@@ -77,8 +78,6 @@ public:
     bool isSupported(QString fileName);
     void connectOutput(const QString &driver, const QString &connection);
     void openFile(const QString &fileName);
-    void readSettings(QSettings &settings);
-    void writeSettings(QSettings &settings);
     void updateState(PlayerState newState);
 
 protected:
@@ -113,23 +112,25 @@ public slots:
     void slotShowChannels(bool checked);
     void slotChannelsClosed();
 
+    void slotAboutTranslation();
+    void slotSwitchLanguage(QAction *action);
+
 private:
-    void findOutput(QString name, QList<drumstick::rt::MIDIOutput*> &outputs);
+    void createLanguageMenu();
+    void retranslateUi();
 
     PlayerState m_state;
     drumstick::rt::MIDIOutput* m_midiOut;
     SequencePlayer* m_player;
     Ui::GUIPlayerClass* m_ui;
     QPointer<QProgressDialog> m_pd;
-    bool m_advanced;
-    QString m_lastOutputBackend;
-    QString m_lastOutputConnection;
     Connections dlgConnections;
-    QString m_lastDirectory;
     QThread m_playerThread;
     RecentFilesHelper* m_recentFiles;
     QPointer<Pianola> m_pianola;
     QPointer<Channels> m_channels;
+    QTranslator *m_trq, *m_trp, *m_trl;
+    QAction *m_currentLang;
 #if defined(Q_OS_WINDOWS)
     WinSnap m_snapper;
 #endif

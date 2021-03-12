@@ -32,23 +32,10 @@
 #include "connections.h"
 #include "iconutils.h"
 #include "pianola.h"
+#include "settings.h"
 
 using namespace drumstick::rt;
 using namespace drumstick::widgets;
-
-#if defined(Q_OS_LINUX)
-    const QString defaultBackend = QStringLiteral("SonivoxEAS");
-    const QString defaultConn = QStringLiteral("SonivoxEAS");
-#elif defined(Q_OS_OSX)
-    const QString defaultBackend = QStringLiteral("DLS Synth");
-    const QString defaultConn = QStringLiteral("DLS Synth");
-#elif defined(Q_OS_WIN)
-    const QString defaultBackend = QStringLiteral("Windows MM");
-    const QString defaultConn = QStringLiteral("Microsoft GS Wavetable Synth");
-#else
-    const QString defaultBackend = QStringLiteral("Network");
-    const QString defaultConn = QStringLiteral("21928");
-#endif
 
 GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     : QMainWindow(parent, flags),
@@ -58,6 +45,25 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     m_ui(new Ui::GUIPlayerClass),
     m_pd(nullptr)
 {
+    m_trq = new QTranslator(this);
+    m_trp = new QTranslator(this);
+    m_trl = new QTranslator(this);
+    QString lang = Settings::instance()->language();
+    if (!m_trq->load("qt_" + lang, Settings::systemLocales()) && !lang.startsWith("en")) {
+        qWarning() << "Failure loading Qt5 system translations for" << lang
+                   << "from" << Settings::systemLocales();
+    }
+    if (!m_trp->load("dmidiplayer_" + lang, Settings::localeDirectory()) && !lang.startsWith("en")) {
+        qWarning() << "Failure loading application translations for" << lang
+                   << "from" << Settings::localeDirectory();
+    }
+    if (!m_trl->load("drumstick_widgets_" + lang, Settings::drumstickLocales()) && !lang.startsWith("en")) {
+        qWarning() << "Failure loading widgets library translations for" << lang
+                   << "from" << Settings::drumstickLocales();
+    }
+    QCoreApplication::installTranslator(m_trq);
+    QCoreApplication::installTranslator(m_trp);
+    QCoreApplication::installTranslator(m_trl);
 	m_ui->setupUi(this);
 	setAcceptDrops(true);
     connect(m_ui->actionAbout, &QAction::triggered, this, &GUIPlayer::about);
@@ -84,14 +90,13 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     m_ui->actionStop->setShortcut( Qt::Key_MediaStop );
     m_ui->actionPause->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/pause.png")));
     m_ui->actionMIDISetup->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/setup.png")));
-    SettingsFactory settings;
-    readSettings(*settings.getQSettings());
 
-    settings->beginGroup(BackendManager::QSTR_DRUMSTICKRT_GROUP);
-    settings->setValue(BackendManager::QSTR_DRUMSTICKRT_PUBLICNAMEOUT, QLatin1String("MIDIPlayerOUT"));
-    settings->setValue(BackendManager::QSTR_DRUMSTICKRT_PUBLICNAMEIN, QLatin1String("MIDIPlayerIN"));
-    settings->endGroup();
-    settings->sync();
+    Settings::instance()->ReadSettings();
+    createLanguageMenu();
+    restoreGeometry(Settings::instance()->mainWindowGeometry());
+    restoreState(Settings::instance()->mainWindowState());
+    m_ui->actionShowStatusbar->setChecked(Settings::instance()->showStatusBar());
+    m_ui->actionShowToolbar->setChecked(Settings::instance()->showToolBar());
 
     m_recentFiles = new RecentFilesHelper(m_ui->menuRecentFiles);
     connect(m_recentFiles, &RecentFilesHelper::selectedFile, this, &GUIPlayer::openFile);
@@ -123,26 +128,30 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
 
     try {
         BackendManager man;
-        man.refresh(settings.getQSettings());
+        man.refresh(Settings::instance()->settingsMap());
         QList<MIDIOutput*> outputs = man.availableOutputs();
 
-        findOutput(m_lastOutputBackend, outputs);
-        if (m_midiOut == 0) {
-            findOutput(defaultBackend, outputs);
-        }
-        if (m_midiOut == 0) {
-            qFatal("Can't find a suitable MIDI out port.");
+        m_midiOut = man.outputBackendByName(Settings::instance()->lastOutputBackend());
+        if (m_midiOut == nullptr) {
+            if (Settings::instance()->lastOutputBackend() != Settings::instance()->nativeOutput()) {
+                qWarning() << "Last MIDI OUT driver" << Settings::instance()->lastOutputBackend() << "not found";
+            }
+            m_midiOut = man.outputBackendByName(Settings::instance()->nativeOutput());
+            if (m_midiOut == nullptr) {
+                qWarning() << "Default MIDI OUT driver" << Settings::instance()->nativeOutput() << "not found";
+            }
         }
 
+        SettingsFactory settings;
         dlgConnections.setOutputs(outputs);
         dlgConnections.setOutput(m_midiOut);
-        dlgConnections.setAdvanced(m_advanced);
+        dlgConnections.setAdvanced(Settings::instance()->advanced());
 
-        if (m_midiOut != 0 && !m_lastOutputConnection.isEmpty()) {
-            auto outConnections = m_midiOut->connections(m_advanced);
+        if (m_midiOut != 0 && !Settings::instance()->lastOutputConnection().isEmpty()) {
+            auto outConnections = m_midiOut->connections(Settings::instance()->advanced());
             MIDIConnection conn = outConnections.first();
             foreach(const auto& c, outConnections) {
-                if (c.first == m_lastOutputConnection) {
+                if (c.first == Settings::instance()->lastOutputConnection()) {
                     conn = c;
                     break;
                 }
@@ -172,17 +181,6 @@ GUIPlayer::~GUIPlayer()
         delete m_player;
     }
     delete m_ui;
-}
-
-void GUIPlayer::findOutput(QString name, QList<MIDIOutput *> &outputs)
-{
-    foreach(MIDIOutput* output, outputs) {
-        //qDebug() << Q_FUNC_INFO << output->backendName();
-        if (m_midiOut == 0 && (output->backendName() == name))  {
-            m_midiOut = output;
-            break;
-        }
-    }
 }
 
 void GUIPlayer::updateTimeLabel(long milliseconds)
@@ -303,7 +301,7 @@ void GUIPlayer::openFile(const QString& fileName)
             m_ui->lblName->clear();
             updateState(EmptyState);
         } else {
-            m_lastDirectory = finfo.absolutePath();
+            Settings::instance()->setLastDirectory(finfo.absolutePath());
             m_ui->lblName->setText(finfo.fileName());
             m_recentFiles->setCurrentFile(finfo.absoluteFilePath());
             updateState(StoppedState);
@@ -340,7 +338,7 @@ void GUIPlayer::openFile(const QString& fileName)
 void GUIPlayer::open()
 {
     QString fileName = QFileDialog::getOpenFileName(this,
-          "Open MIDI File", m_lastDirectory,
+          "Open MIDI File", Settings::instance()->lastDirectory(),
           "All files (*.kar *.mid *.midi *.wrk);;"
           "Karaoke files (*.kar);;"
           "MIDI Files (*.mid *.midi);;"
@@ -359,8 +357,10 @@ void GUIPlayer::setup()
             m_midiOut->disconnect();
         }
         m_midiOut = dlgConnections.getOutput();
-        m_advanced = dlgConnections.advanced();
         m_player->setPort(m_midiOut);
+        Settings::instance()->setAdvanced(dlgConnections.advanced());
+        Settings::instance()->setLastOutputBackend(m_midiOut->backendName());
+        Settings::instance()->setLastOutputConnection(m_midiOut->currentConnection().first);
     }
 }
 
@@ -474,54 +474,17 @@ bool GUIPlayer::isSupported(QString fileName)
 
 void GUIPlayer::connectOutput(const QString &driver, const QString &connection)
 {
-    m_lastOutputBackend = driver;
-    m_lastOutputConnection = connection;
-}
-
-void GUIPlayer::readSettings(QSettings &settings)
-{
-    settings.beginGroup("MainWindow");
-    restoreGeometry(settings.value("Geometry").toByteArray());
-    restoreState(settings.value("State").toByteArray());
-    settings.endGroup();
-
-    settings.beginGroup("Connections");
-    m_lastOutputBackend = settings.value("outputBackend", defaultBackend).toString();
-    m_lastOutputConnection = settings.value("outputConnection", defaultConn).toString();
-    m_advanced = settings.value("advanced", false).toBool();
-    settings.endGroup();
-
-    settings.beginGroup("Preferences");
-    m_lastDirectory = settings.value("LastDirectory").toString();
-    settings.endGroup();
-}
-
-void GUIPlayer::writeSettings(QSettings &settings)
-{
-    settings.beginGroup("MainWindow");
-    settings.setValue("Geometry", saveGeometry());
-    settings.setValue("State", saveState());
-    settings.endGroup();
-
-    settings.beginGroup("Connections");
-    if (m_midiOut != nullptr) {
-        settings.setValue("outputBackend", m_midiOut->backendName());
-        settings.setValue("outputConnection", m_midiOut->currentConnection().first);
-    }
-    settings.setValue("advanced", m_advanced);
-    settings.endGroup();
-
-    settings.beginGroup("Preferences");
-    settings.setValue("LastDirectory", m_lastDirectory);
-    settings.endGroup();
-
-    settings.sync();
+    Settings::instance()->setLastOutputBackend(driver);
+    Settings::instance()->setLastOutputConnection(connection);
 }
 
 void GUIPlayer::closeEvent( QCloseEvent *event )
 {
-    SettingsFactory settings;
-    writeSettings(*settings.getQSettings());
+    Settings::instance()->setShowStatusBar(m_ui->actionShowStatusbar->isChecked());
+    Settings::instance()->setShowToolBar(m_ui->actionShowToolbar->isChecked());
+    Settings::instance()->setMainWindowGeometry(saveGeometry());
+    Settings::instance()->setMainWindowState(saveState());
+    Settings::instance()->SaveSettings();
     event->accept();
 }
 
@@ -570,4 +533,80 @@ bool GUIPlayer::nativeEvent(const QByteArray &eventType, void *message, long *re
     }
 #endif
     return QWidget::nativeEvent(eventType, message, result);
+}
+
+void GUIPlayer::createLanguageMenu()
+{
+    QString currentLang = Settings::instance()->language();
+    QActionGroup *languageGroup = new QActionGroup(this);
+    languageGroup->setExclusive(true);
+    connect(languageGroup, &QActionGroup::triggered, this, &GUIPlayer::slotSwitchLanguage);
+    QDir dir(Settings::localeDirectory());
+    QStringList fileNames = dir.entryList({"*.qm"}, QDir::NoFilter, QDir::NoSort);
+    QStringList locales;
+    locales << "en";
+    foreach (const QString& fileName, fileNames) {
+        QFileInfo f(fileName);
+        QString locale = f.fileName();
+        if (locale.startsWith("dmidiplayer_")) {
+            locale.remove(0, locale.indexOf('_') + 1);
+            locale.truncate(locale.lastIndexOf('.'));
+            locales << locale;
+        }
+    }
+    locales.sort();
+    m_ui->menuLanguage->clear();
+    foreach (const QString& loc, locales) {
+        QLocale qlocale(loc);
+        QString localeName = loc == "en" ? QLocale::languageToString(qlocale.language()) : qlocale.nativeLanguageName();
+        QAction *action = new QAction(localeName.section(" ", 0, 0), this);
+        action->setCheckable(true);
+        action->setData(loc);
+        m_ui->menuLanguage->addAction(action);
+        languageGroup->addAction(action);
+        if (currentLang.startsWith(loc)) {
+            action->setChecked(true);
+            m_currentLang = action;
+        }
+    }
+}
+
+void GUIPlayer::slotAboutTranslation()
+{
+    QString common = tr("<p>This program is developed and translated thanks to the "
+        "volunteer work of many people from around the world. If you want to "
+        "join the team or have any question, please visit the web site at "
+        "<a href='http://sourceforge.net/projects/dmidiplayer/'>SourceForge</a>"
+        "</p>");
+    QMessageBox::information(this, tr("Translation Information"), common);
+}
+
+void GUIPlayer::retranslateUi()
+{
+    m_trq->load("qt_" + Settings::instance()->language(), Settings::systemLocales());
+    m_trp->load("dmidiplayer_" + Settings::instance()->language(), Settings::localeDirectory());
+    m_trl->load("drumstick_widgets_" + Settings::instance()->language(), Settings::drumstickLocales());
+    Settings::instance()->retranslatePalettes();
+    m_ui->retranslateUi(this);
+    //createLanguageMenu();
+}
+
+void GUIPlayer::slotSwitchLanguage(QAction *action)
+{
+    QString lang = action->data().toString();
+    QLocale qlocale(lang);
+    QString localeName = qlocale.nativeLanguageName();
+    if ( QMessageBox::question (this, tr("Language Changed"),
+            tr("The language for this application is going to change to %1. "
+               "Do you want to continue?").arg(localeName),
+            QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes )
+    {
+        Settings::instance()->setLanguage(lang);
+        retranslateUi();
+    } else {
+        if (m_currentLang == nullptr) {
+            m_currentLang = action;
+        }
+        m_currentLang->setChecked(true);
+    }
 }
