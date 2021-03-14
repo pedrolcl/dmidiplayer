@@ -97,6 +97,7 @@ public slots:
     void smfSysexEvent(const QByteArray& data);
     void smfMetaEvent(int type, const QByteArray &data);
     void smfTempoEvent(int tempo);
+    void smfTimeSigEvent(int b0, int b1, int b2, int b3);
     void smfTrackStartEvent();
     void smfTrackEnd();
     void smfErrorHandler(const QString& errorStr);
@@ -130,8 +131,10 @@ public slots:
             bool selected, bool muted, bool loop);
     void wrkTrackVol(int track, int vol);
     void wrkTrackBank(int track, int bank);
+    void wrkTimeSignatureEvent(int bar, int num, int den);
 
 private: // methods
+    void insertBeats(qint64 ticks);
     void timeCalculations();
     void sort();
 
@@ -164,10 +167,19 @@ private: // members
     };
     QMap<int,TrackMapRec> m_trackMap;
 
+    struct TimeSigRec {
+        int bar;
+        int num;
+        int den;
+        long time;
+    };
+    QList<TimeSigRec> m_bars;
+
     QString m_encoding;
     qreal m_duration;
     qint64 m_lastBeat;
     qint64 m_beatLength;
+    qint64 m_tick;
     int m_beatMax;
     int m_barCount;
     int m_beatCount;

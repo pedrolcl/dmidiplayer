@@ -58,6 +58,8 @@ SET(SOURCES
     playermain.cpp
     recentfileshelper.cpp
     recentfileshelper.h
+    rhythmview.cpp
+    rhythmview.h
     seqplayer.cpp
     seqplayer.h
     sequence.cpp

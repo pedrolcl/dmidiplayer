@@ -95,8 +95,10 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
         //qDebug() << m_songPosition << ev->tick() << " Tempo: " << tempo << "bpm:" << bpm(tempo); // << "ticks2millis:" << m_song.ticks2millis();
         emit tempoChanged(tempo);
     } else
-    if (ev->isMetaEvent()) {
+    if (ev->isBeatEvent()) {
         //qDebug() << m_songPosition << ev->tick() << " Meta-event";
+        BeatEvent* event = static_cast<BeatEvent*>(ev);
+        emit beat(event->bar(), event->beat(), event->max());
     } else
     if (ev->status() == MIDI_STATUS_SYSEX) {
         SysExEvent* event = static_cast<SysExEvent*>(ev);

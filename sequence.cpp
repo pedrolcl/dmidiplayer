@@ -36,6 +36,7 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
     m_duration(0),
     m_lastBeat(0),
     m_beatLength(0),
+    m_tick(0),
     m_beatMax(0),
     m_barCount(0),
     m_beatCount(0),
@@ -59,6 +60,7 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
     connect(m_smf, &QSmf::signalSMFTrackEnd, this, &Sequence::smfTrackEnd);
     connect(m_smf, &QSmf::signalSMFendOfTrack, this, &Sequence::smfUpdateLoadProgress);
     connect(m_smf, &QSmf::signalSMFError, this, &Sequence::smfErrorHandler);
+    connect(m_smf, &QSmf::signalSMFTimeSig, this, &Sequence::smfTimeSigEvent);
 
     m_wrk = new QWrk(this);
     connect(m_wrk, &QWrk::signalWRKError, this, &Sequence::wrkErrorHandler);
@@ -78,7 +80,7 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
     connect(m_wrk, &QWrk::signalWRKSysexEvent, this, &Sequence::wrkSysexEvent);
     connect(m_wrk, &QWrk::signalWRKSysex, this, &Sequence::wrkSysexEventBank);
     connect(m_wrk, &QWrk::signalWRKText, this, &Sequence::wrkUpdateLoadProgress);
-    connect(m_wrk, &QWrk::signalWRKTimeSig, this, &Sequence::wrkUpdateLoadProgress);
+    connect(m_wrk, &QWrk::signalWRKTimeSig, this, &Sequence::wrkTimeSignatureEvent);
     connect(m_wrk, &QWrk::signalWRKKeySig, this, &Sequence::wrkUpdateLoadProgress);
     connect(m_wrk, &QWrk::signalWRKTempo, this, &Sequence::wrkTempoEvent);
     connect(m_wrk, &QWrk::signalWRKTrackPatch, this, &Sequence::wrkTrackPatch);
@@ -153,6 +155,7 @@ void Sequence::loadFile(const QString& fileName)
     QFileInfo finfo(fileName);
     if (finfo.exists()) {
         clear();
+        m_tick = 0;
         m_lastBeat = 0;
         m_barCount = 0;
         m_beatCount = 0;
@@ -180,7 +183,7 @@ void Sequence::loadFile(const QString& fileName)
                 m_lblName = finfo.fileName();
             }
         } catch (...) {
-            qDebug() << "corrupted file";
+            qWarning() << "corrupted file";
             clear();
         }
     }
@@ -281,12 +284,34 @@ void Sequence::updateTempo(qreal newTempo)
     }
 }
 
+void Sequence::insertBeats(qint64 ticks)
+{
+    if ((ticks > m_tick) && (m_beatLength > 0)) {
+        qint64 diff = ticks - m_lastBeat;
+        while (diff >= m_beatLength) {
+            MIDIEvent* ev = new BeatEvent(m_barCount, m_beatCount, m_beatMax);
+            ev->setTick(m_lastBeat);
+            m_list.append(ev);
+
+            m_lastBeat += m_beatLength;
+            diff -= m_beatLength;
+            m_beatCount++;
+            if (m_beatCount > m_beatMax) {
+                m_beatCount = 1;
+                m_barCount++;
+            }
+        }
+        m_tick = ticks;
+    }
+}
+
 /* **************************************** *
  * SMF (Standard MIDI file) format handling
  * **************************************** */
 
 void Sequence::smfUpdateLoadProgress()
 {
+    insertBeats(m_smf->getCurrentTime());
     emit loadingProgress(m_smf->getFilePos());
 }
 
@@ -309,6 +334,11 @@ void Sequence::smfHeaderEvent(int format, int ntrks, int division)
     Q_UNUSED(ntrks)
     //qDebug() << "SMF Header:" << QString("Format=%1, Tracks=%2, Division=%3").arg(format).arg(ntrks).arg(division);
     m_division = division;
+    m_beatLength = m_division;
+    m_beatMax = 4;
+    m_lastBeat = 0;
+    m_beatCount = 1;
+    m_barCount = 1;
     timeCalculations();
     smfUpdateLoadProgress();
 }
@@ -417,6 +447,17 @@ void Sequence::smfTempoEvent(int tempo)
     }
 }
 
+void Sequence::smfTimeSigEvent(int b0, int b1, int b2, int b3)
+{
+    Q_UNUSED(b2)
+    Q_UNUSED(b3)
+    //qDebug() << Q_FUNC_INFO << b0 << b1 << b2 << b3;
+    MIDIEvent* ev = new TimeSignatureEvent(b0, b1);
+    appendSMFEvent(ev);
+    m_beatMax = b0;
+    m_beatLength = m_division * 4 / ::pow(2, b1);
+}
+
 void Sequence::smfTrackStartEvent()
 {
     int tick = m_smf->getCurrentTime();
@@ -471,6 +512,7 @@ void Sequence::appendWRKEvent(long ticks, MIDIEvent* ev)
     if (ticks > m_ticksDuration) {
         m_ticksDuration = ticks;
     }
+    insertBeats(ticks);
     wrkUpdateLoadProgress();
 }
 
@@ -484,6 +526,11 @@ void Sequence::wrkFileHeader(int /*verh*/, int /*verl*/)
 {
     m_track = 0;
     m_division = 120;
+    m_beatLength = m_division;
+    m_beatMax = 4;
+    m_lastBeat = 0;
+    m_beatCount = 1;
+    m_barCount = 1;
     wrkUpdateLoadProgress();
 }
 
@@ -690,6 +737,38 @@ void Sequence::wrkTrackBank(int track, int bank)
     msb = bank / 0x80;
     wrkCtlChangeEvent(track, 0, channel, ControllerEvent::MIDI_CTL_MSB_BANK, msb);
     wrkCtlChangeEvent(track, 0, channel, ControllerEvent::MIDI_CTL_LSB_BANK, lsb);
+}
+
+void Sequence::wrkTimeSignatureEvent(int bar, int num, int den)
+{
+    MIDIEvent* ev = new TimeSignatureEvent(num, den);
+    m_beatMax = num;
+    m_beatLength = m_division * 4 / den;
+
+    TimeSigRec newts;
+    newts.bar = bar;
+    newts.num = num;
+    newts.den = den;
+    newts.time = 0;
+    if (m_bars.isEmpty()) {
+        m_bars.append(newts);
+    } else {
+        bool found = false;
+        foreach(const TimeSigRec& ts, m_bars) {
+            if (ts.bar == bar) {
+                newts.time = ts.time;
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            TimeSigRec& lasts = m_bars.last();
+            newts.time = lasts.time +
+                    (lasts.num * 4 / lasts.den * m_division * (bar - lasts.bar));
+            m_bars.append(newts);
+        }
+    }
+    appendWRKEvent(newts.time, ev);
 }
 
 void Sequence::wrkEndOfFile()

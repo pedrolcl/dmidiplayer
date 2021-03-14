@@ -107,6 +107,16 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     connect(m_player, &SequencePlayer::songFinished, this, &GUIPlayer::playerFinished);
     connect(m_player, &SequencePlayer::songStopped, this, &GUIPlayer::playerStopped);
     connect(m_player, &SequencePlayer::songEchoTime, this, &GUIPlayer::playerEcho);
+    connect(m_player, &SequencePlayer::timeSignatureChanged, this, [=](const int num, const int){
+        m_ui->rhythm->setRhythm(num);
+    });
+    connect(m_player, &SequencePlayer::beat, this, [=](const int /*bar*/, const int beat, const int max){
+        //qDebug() << "beat(" << bar << beat << max << ")";
+        if (m_ui->rhythm->currentRhythm() != max) {
+            m_ui->rhythm->setRhythm(max);
+        }
+        m_ui->rhythm->beat(beat);
+    });
     connect(&m_playerThread, &QThread::started, m_player, &SequencePlayer::playerLoop);
 
     m_pianola = new Pianola(this);

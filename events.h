@@ -59,7 +59,7 @@ public:
     virtual bool isChannel() { return false; }
     virtual bool isTempo() { return false; }
     virtual bool isText() { return false; }
-    virtual bool isMetaEvent() { return false; }
+    virtual bool isBeatEvent() { return false; }
 
 protected:
     long m_delta;
@@ -404,6 +404,41 @@ public:
     void setTempo(const qreal t) { m_tempo = t; }
 protected:
     qreal m_tempo;
+};
+
+/**
+ * Event representing a time signature change
+ */
+class TimeSignatureEvent : public MIDIEvent
+{
+public:
+    TimeSignatureEvent();
+    TimeSignatureEvent(const int numerator, const int denominator);
+    virtual TimeSignatureEvent *clone() { return new TimeSignatureEvent(*this); }
+    int numerator() const { return m_numerator; }
+    int denominator() const { return m_denominator; }
+protected:
+    int m_numerator;
+    int m_denominator;
+};
+
+/**
+ * Event representing a rhythm beat
+ */
+class BeatEvent : public MIDIEvent
+{
+public:
+    BeatEvent();
+    BeatEvent(const int bar, const int beat, const int max);
+    virtual BeatEvent *clone() { return new BeatEvent(*this); }
+    virtual bool isBeatEvent() { return true; }
+    int bar() const { return m_bar; }
+    int beat() const { return m_beat; }
+    int max() const { return m_max; }
+protected:
+    int m_bar;
+    int m_beat;
+    int m_max;
 };
 
 /** @} */

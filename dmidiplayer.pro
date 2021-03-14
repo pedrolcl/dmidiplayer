@@ -19,6 +19,7 @@ HEADERS += \
     pianola.h \
     playerabout.h \
     recentfileshelper.h \
+    rhythmview.h \
     seqplayer.h \
     sequence.h \
     settings.h \
@@ -34,6 +35,7 @@ SOURCES += \
     playerabout.cpp \
     playermain.cpp \
     recentfileshelper.cpp \
+    rhythmview.cpp \
     seqplayer.cpp \
     sequence.cpp \
     settings.cpp \
