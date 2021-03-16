@@ -50,7 +50,7 @@ Settings::Settings(QObject *parent) : QObject(parent)
     m_defaultOutputConnection = m_defaultInputConnection;
 #endif
     ResetDefaults();
-    //ReadSettings();
+    ReadSettings();
 }
 
 Settings* Settings::instance()
@@ -98,7 +98,7 @@ QString Settings::localeDirectory()
 #if defined(TRANSLATIONS_EMBEDDED)
     return QLatin1String(":/");
 #elif defined(Q_OS_LINUX)
-    return Settings::dataDirectory() + "locale/";
+    return Settings::dataDirectory();
 #elif defined(Q_OS_WIN)
     return Settings::dataDirectory() + "translations/";
 #else

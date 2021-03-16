@@ -17,7 +17,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 project(dmidiplayer
-    VERSION 1.0.1
+    VERSION 1.1.0
     DESCRIPTION "Drumstick MIDI File Player Multiplatform Program"
     LANGUAGES CXX)
 
@@ -126,6 +126,15 @@ if (APPLE)
     MACOSX_PACKAGE_LOCATION translations)
   list (APPEND SOURCES ${QT_TRANSLATIONS})
 endif ()
+
+message (STATUS "Drumstick MIDI File Player v${PROJECT_VERSION}
+     install prefix: ${CMAKE_INSTALL_PREFIX}
+     Build configuration: ${CMAKE_BUILD_TYPE}
+     Operating System: ${CMAKE_SYSTEM_NAME}
+     Processor: ${CMAKE_SYSTEM_PROCESSOR}
+     Qt: ${QT_VERSION}
+     Drumstick: ${Drumstick_VERSION}"
+)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

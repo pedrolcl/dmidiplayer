@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
     auto helpOption = parser.addHelpOption();
     auto versionOption = parser.addVersionOption();
     QCommandLineOption portableOption({"p", "portable"}, QCoreApplication::tr("Portable settings mode."));
-    QCommandLineOption portableFileName("f", "file", QCoreApplication::tr("Portable settings file name."), "portableFile");
+    QCommandLineOption portableFileName({"f", "file"}, QCoreApplication::tr("Portable settings file name."), "portableFile");
     parser.addOption(portableOption);
     parser.addOption(portableFileName);
     QCommandLineOption driverOption({"d", "driver"}, QCoreApplication::tr("MIDI Out Driver."), "driver");

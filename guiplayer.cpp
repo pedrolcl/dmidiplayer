@@ -91,7 +91,7 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     m_ui->actionPause->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/pause.png")));
     m_ui->actionMIDISetup->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/setup.png")));
 
-    Settings::instance()->ReadSettings();
+    //Settings::instance()->ReadSettings();
     createLanguageMenu();
     restoreGeometry(Settings::instance()->mainWindowGeometry());
     restoreState(Settings::instance()->mainWindowState());
