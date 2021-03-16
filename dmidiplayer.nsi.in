@@ -9,7 +9,7 @@ RequestExecutionLevel admin
 !define SOURCE_FILES "@CMAKE_SOURCE_DIR@"
 !define BINARY_FILES "@CMAKE_BINARY_DIR@"
 !define FUIDSYNTH_FILES "@FLUIDSYNTH_PREFIX@"
-!define DRUMSTICK_FILES "@Drumstick_DIR@/lib"
+!define DRUMSTICK_FILES "@Drumstick_DIR@"
 !define REGKEY "SOFTWARE\$(^Name)"
 !define VERSION @PROJECT_VERSION@
 !define PROGNAME "@PROJECT_NAME@"
@@ -156,23 +156,27 @@ Section -Main SEC0000
     File ${BINARY_FILES}\${PROGNAME}.exe
     SetOutPath $INSTDIR\translations
     File ${BINARY_FILES}\${PROGNAME}_es.qm
+    File ${BINARY_FILES}\${PROGNAME}_ru.qm
     File ${BINARY_FILES}\translations\qt_es.qm
+    File ${BINARY_FILES}\translations\qt_ru.qm
+    File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_es.qm
+    File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_ru.qm
 
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\libdrumstick-file.dll $INSTDIR\libdrumstick-file.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\libdrumstick-rt.dll $INSTDIR\libdrumstick-rt.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\libdrumstick-widgets.dll $INSTDIR\libdrumstick-widgets.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\drumstick2\libdrumstick-rt-fluidsynth.dll $INSTDIR\drumstick2\libdrumstick-rt-fluidsynth.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\drumstick2\libdrumstick-rt-net-in.dll $INSTDIR\drumstick2\libdrumstick-rt-net-in.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\drumstick2\libdrumstick-rt-net-out.dll $INSTDIR\drumstick2\libdrumstick-rt-net-out.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\drumstick2\libdrumstick-rt-win-in.dll $INSTDIR\drumstick2\libdrumstick-rt-win-in.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\drumstick2\libdrumstick-rt-win-out.dll $INSTDIR\drumstick2\libdrumstick-rt-win-out.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\libfluidsynth-2.dll $INSTDIR\libfluidsynth-2.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\libglib-2.0-0.dll $INSTDIR\libglib-2.0-0.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\libgobject-2.0-0.dll $INSTDIR\libgobject-2.0-0.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\libgthread-2.0-0.dll $INSTDIR\libgthread-2.0-0.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\libinstpatch-2.dll $INSTDIR\libinstpatch-2.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\libintl-8.dll $INSTDIR\libintl-8.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\libsndfile-1.dll $INSTDIR\libsndfile-1.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\libdrumstick-file.dll $INSTDIR\libdrumstick-file.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\libdrumstick-rt.dll $INSTDIR\libdrumstick-rt.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\libdrumstick-widgets.dll $INSTDIR\libdrumstick-widgets.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\libdrumstick-rt-fluidsynth.dll $INSTDIR\drumstick2\libdrumstick-rt-fluidsynth.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\libdrumstick-rt-net-in.dll $INSTDIR\drumstick2\libdrumstick-rt-net-in.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\libdrumstick-rt-net-out.dll $INSTDIR\drumstick2\libdrumstick-rt-net-out.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\libdrumstick-rt-win-in.dll $INSTDIR\drumstick2\libdrumstick-rt-win-in.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\libdrumstick-rt-win-out.dll $INSTDIR\drumstick2\libdrumstick-rt-win-out.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libfluidsynth-2.dll $INSTDIR\libfluidsynth-2.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libglib-2.0-0.dll $INSTDIR\libglib-2.0-0.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libgobject-2.0-0.dll $INSTDIR\libgobject-2.0-0.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libgthread-2.0-0.dll $INSTDIR\libgthread-2.0-0.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libinstpatch-2.dll $INSTDIR\libinstpatch-2.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libintl-8.dll $INSTDIR\libintl-8.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libsndfile-1.dll $INSTDIR\libsndfile-1.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Core.dll $INSTDIR\Qt5Core.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Gui.dll $INSTDIR\Qt5Gui.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Network.dll $INSTDIR\Qt5Network.dll $INSTDIR

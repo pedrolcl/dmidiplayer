@@ -28,6 +28,7 @@
 #endif
 
 
+class QLabel;
 class QToolButton;
 class QComboBox;
 class Vumeter;
@@ -44,6 +45,7 @@ public:
     void setVolumeFactor(qreal factor);
     void readSettings();
     void writeSettings();
+    void retranslateUi();
 
     QString channelName(int channel) const;
     bool isChannelMuted(int channel) const;
@@ -90,6 +92,7 @@ private:
     int m_voices[drumstick::rt::MIDI_STD_CHANNELS];
     qreal m_level[drumstick::rt::MIDI_STD_CHANNELS];
     qreal m_factor[drumstick::rt::MIDI_STD_CHANNELS];
+    QLabel *m_lbl1, *m_lbl2, *m_lbl3, *m_lbl4, *m_lbl5, *m_lbl6;
     QToolButton* m_mute[drumstick::rt::MIDI_STD_CHANNELS];
     QToolButton* m_solo[drumstick::rt::MIDI_STD_CHANNELS];
     QToolButton* m_lock[drumstick::rt::MIDI_STD_CHANNELS];

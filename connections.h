@@ -36,6 +36,7 @@ public:
     drumstick::rt::MIDIOutput *getOutput() { return m_midiOut; }
     void setAdvanced(bool value);
     bool advanced();
+    void retranslateUi();
 
 public slots:
     void configureOutputDriver();

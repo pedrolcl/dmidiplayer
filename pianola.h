@@ -43,6 +43,7 @@ public:
     void setNoteRange(int lowerNote, int upperNote);
     void readSettings();
     void writeSettings();
+    void retranslateUi();
 
 signals:
     void closed();
@@ -68,6 +69,8 @@ protected:
 
 private:
     drumstick::widgets::PianoKeybd* m_piano[drumstick::rt::MIDI_STD_CHANNELS];
+    QMenu *m_chmenu;
+    QAction *m_a1, *m_a2, *m_a3;
     QFrame* m_frame[drumstick::rt::MIDI_STD_CHANNELS];
     QAction* m_action[drumstick::rt::MIDI_STD_CHANNELS];
     QLabel* m_label[drumstick::rt::MIDI_STD_CHANNELS];

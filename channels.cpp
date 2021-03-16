@@ -37,30 +37,23 @@ Channels::Channels( QWidget* parent ) :
     setObjectName("ChannelsWindow");
     setWindowFlag(Qt::Tool, true);
     setAttribute(Qt::WA_DeleteOnClose, false);
-    setWindowTitle(tr("MIDI Channels"));
     QGridLayout *layout = new QGridLayout;
     layout->setHorizontalSpacing(10);
     QWidget* centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
     centralWidget->setLayout(layout);
-    QLabel* lbl = new QLabel(this);
-    lbl->setText(tr( "Channel"));
-    layout->addWidget(lbl, 0, 0, 1, 2);
-    lbl = new QLabel(this);
-    lbl->setText(tr( "Mute"));
-    layout->addWidget(lbl, 0, 2);
-    lbl = new QLabel(this);
-    lbl->setText(tr( "Solo"));
-    layout->addWidget(lbl, 0, 3);
-    lbl = new QLabel(this);
-    lbl->setText(tr( "Level"));
-    layout->addWidget(lbl, 0, 4);
-    lbl = new QLabel(this);
-    lbl->setText(tr( "Lock"));
-    layout->addWidget(lbl, 0, 5);
-    lbl = new QLabel(this);
-    lbl->setText(tr("Patch (sound setting)"));
-    layout->addWidget(lbl, 0, 6);
+    m_lbl1 = new QLabel(this);
+    layout->addWidget(m_lbl1, 0, 0, 1, 2);
+    m_lbl2 = new QLabel(this);
+    layout->addWidget(m_lbl2, 0, 2);
+    m_lbl3 = new QLabel(this);
+    layout->addWidget(m_lbl3, 0, 3);
+    m_lbl4 = new QLabel(this);
+    layout->addWidget(m_lbl4, 0, 4);
+    m_lbl5 = new QLabel(this);
+    layout->addWidget(m_lbl5, 0, 5);
+    m_lbl6 = new QLabel(this);
+    layout->addWidget(m_lbl6, 0, 6);
     layout->setColumnStretch(1,1);
     QSize ledSize(12,12);
     QPixmap pixMuteOn(ledSize);
@@ -77,15 +70,15 @@ Channels::Channels( QWidget* parent ) :
     QIcon soloIcon;
     soloIcon.addPixmap(pixSoloOn, QIcon::Normal, QIcon::On);
     soloIcon.addPixmap(pixSoloOff,QIcon::Normal, QIcon::Off);
-    QIcon locked = QIcon::fromTheme("object-locked");
-    QIcon unlocked = QIcon::fromTheme("object-unlocked");
+    QIcon locked(":/resources/locked.png");
+    QIcon unlocked(":/resources/unlocked.png");
     QIcon lockIcon;
     QSize lockSize(16,16);
     lockIcon.addPixmap(locked.pixmap(lockSize), QIcon::Normal, QIcon::On);
     lockIcon.addPixmap(unlocked.pixmap(lockSize), QIcon::Normal, QIcon::Off);
     for (int i = 0; i < MIDI_STD_CHANNELS; ++i) {
         int row = i + 1;
-        lbl = new QLabel(this);
+        QLabel *lbl = new QLabel(this);
         lbl->setNum(row);
         layout->addWidget(lbl, row, 0, Qt::AlignRight | Qt::AlignVCenter);
         m_name[i] = new QLineEdit(this);
@@ -118,11 +111,23 @@ Channels::Channels( QWidget* parent ) :
         m_factor[i] = m_volumeFactor;
     }
     readSettings();
+    retranslateUi();
 }
 
 Channels::~Channels()
 {
     //qDebug() << Q_FUNC_INFO;
+}
+
+void Channels::retranslateUi()
+{
+    setWindowTitle(tr("MIDI Channels"));
+    m_lbl1->setText(tr( "Channel"));
+    m_lbl2->setText(tr( "Mute"));
+    m_lbl3->setText(tr( "Solo"));
+    m_lbl4->setText(tr( "Level"));
+    m_lbl5->setText(tr( "Lock"));
+    m_lbl6->setText(tr("Patch (sound setting)"));
 }
 
 void Channels::readSettings()

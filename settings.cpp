@@ -111,7 +111,7 @@ QString Settings::drumstickLocales()
 #if defined(TRANSLATIONS_EMBEDDED)
     return QLatin1String(":/");
 #elif defined(Q_OS_WIN)
-    return QCoreApplication::applicationDirPath() + "/";
+    return QCoreApplication::applicationDirPath() + "/translations/";
 #elif defined(Q_OS_MAC)
     return QCoreApplication::applicationDirPath() + "/../Resources/";
 #elif defined(Q_OS_UNIX)
@@ -204,7 +204,7 @@ void Settings::internalRead(QSettings &settings)
     m_highlightPaletteId = settings.value("PaletteId", PAL_SINGLE).toInt();
     m_language = settings.value("Language", QLocale::system().name()).toString();
 #if defined(Q_OS_WINDOWS)
-    m_winSnap = settings.value(QSTR_WINSNAP, true).toBool();
+    m_winSnap = settings.value("WindowSnapping", true).toBool();
 #endif
     settings.endGroup();
 
@@ -250,7 +250,7 @@ void Settings::internalSave(QSettings &settings)
     settings.setValue("PaletteId", m_highlightPaletteId);
     settings.setValue("Language", m_language);
 #if defined(Q_OS_WINDOWS)
-    settings.setValue("Window Snapping", m_winSnap);
+    settings.setValue("WindowSnapping", m_winSnap);
 #endif
     settings.endGroup();
 

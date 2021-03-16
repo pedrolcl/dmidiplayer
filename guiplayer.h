@@ -124,9 +124,9 @@ private:
     SequencePlayer* m_player;
     Ui::GUIPlayerClass* m_ui;
     QPointer<QProgressDialog> m_pd;
-    Connections dlgConnections;
     QThread m_playerThread;
     RecentFilesHelper* m_recentFiles;
+    QPointer<Connections> m_connections;
     QPointer<Pianola> m_pianola;
     QPointer<Channels> m_channels;
     QTranslator *m_trq, *m_trp, *m_trl;

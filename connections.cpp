@@ -114,6 +114,11 @@ bool Connections::advanced()
     return ui.m_advanced->isChecked();
 }
 
+void Connections::retranslateUi()
+{
+    ui.retranslateUi(this);
+}
+
 void Connections::configureOutputDriver()
 {
     QString driver = ui.m_outputBackends->currentText();

@@ -57,7 +57,7 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
         qWarning() << "Failure loading application translations for" << lang
                    << "from" << Settings::localeDirectory();
     }
-    if (!m_trl->load("drumstick_widgets_" + lang, Settings::drumstickLocales()) && !lang.startsWith("en")) {
+    if (!m_trl->load("drumstick-widgets_" + lang, Settings::drumstickLocales()) && !lang.startsWith("en")) {
         qWarning() << "Failure loading widgets library translations for" << lang
                    << "from" << Settings::drumstickLocales();
     }
@@ -153,9 +153,10 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
         }
 
         SettingsFactory settings;
-        dlgConnections.setOutputs(outputs);
-        dlgConnections.setOutput(m_midiOut);
-        dlgConnections.setAdvanced(Settings::instance()->advanced());
+        m_connections = new Connections(this);
+        m_connections->setOutputs(outputs);
+        m_connections->setOutput(m_midiOut);
+        m_connections->setAdvanced(Settings::instance()->advanced());
 
         if (m_midiOut != 0 && !Settings::instance()->lastOutputConnection().isEmpty()) {
             auto outConnections = m_midiOut->connections(Settings::instance()->advanced());
@@ -178,7 +179,6 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
         tempoReset();
         volumeReset();
         updateState(EmptyState);
-
     } catch (...) {
         qWarning() << "Error";
     }
@@ -361,14 +361,14 @@ void GUIPlayer::open()
 
 void GUIPlayer::setup()
 {
-    dlgConnections.refresh();
-    if (dlgConnections.exec() == QDialog::Accepted) {
+    m_connections->refresh();
+    if (m_connections->exec() == QDialog::Accepted) {
         if (m_midiOut != 0) {
             m_midiOut->disconnect();
         }
-        m_midiOut = dlgConnections.getOutput();
+        m_midiOut = m_connections->getOutput();
         m_player->setPort(m_midiOut);
-        Settings::instance()->setAdvanced(dlgConnections.advanced());
+        Settings::instance()->setAdvanced(m_connections->advanced());
         Settings::instance()->setLastOutputBackend(m_midiOut->backendName());
         Settings::instance()->setLastOutputConnection(m_midiOut->currentConnection().first);
     }
@@ -595,10 +595,12 @@ void GUIPlayer::retranslateUi()
 {
     m_trq->load("qt_" + Settings::instance()->language(), Settings::systemLocales());
     m_trp->load("dmidiplayer_" + Settings::instance()->language(), Settings::localeDirectory());
-    m_trl->load("drumstick_widgets_" + Settings::instance()->language(), Settings::drumstickLocales());
+    m_trl->load("drumstick-widgets_" + Settings::instance()->language(), Settings::drumstickLocales());
     Settings::instance()->retranslatePalettes();
     m_ui->retranslateUi(this);
-    //createLanguageMenu();
+    m_connections->retranslateUi();
+    m_pianola->retranslateUi();
+    m_channels->retranslateUi();
 }
 
 void GUIPlayer::slotSwitchLanguage(QAction *action)

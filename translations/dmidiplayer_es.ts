@@ -58,31 +58,31 @@ CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de
     <name>Channels</name>
     <message>
         <source>MIDI Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Canales MIDI</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Canal</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Callar</translation>
     </message>
     <message>
         <source>Solo</source>
-        <translation type="unfinished"></translation>
+        <translation>Solo</translation>
     </message>
     <message>
         <source>Level</source>
-        <translation type="unfinished"></translation>
+        <translation>Nivel</translation>
     </message>
     <message>
         <source>Lock</source>
-        <translation type="unfinished"></translation>
+        <translation>Fijar</translation>
     </message>
     <message>
         <source>Patch (sound setting)</source>
-        <translation type="unfinished"></translation>
+        <translation>Programa (sonido)</translation>
     </message>
 </context>
 <context>
@@ -102,6 +102,25 @@ CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de
     <message>
         <source>...</source>
         <translation>...</translation>
+    </message>
+</context>
+<context>
+    <name>GUIPlayer</name>
+    <message>
+        <source>&lt;p&gt;This program is developed and translated thanks to the volunteer work of many people from around the world. If you want to join the team or have any question, please visit the web site at &lt;a href=&apos;http://sourceforge.net/projects/dmidiplayer/&apos;&gt;SourceForge&lt;/a&gt;&lt;/p&gt;</source>
+        <translation>&lt;p&gt;Este programa se desarrolla y traduce gracias al trabajo voluntario de mucha gente de todo el mundo. Si usted quiere unirse al quipo o tiene cualquier pregunta, por favor visite el sitio web en &lt;a href=&apos;http://sourceforge.net/projects/dmidiplayer/&apos;&gt;SourceForge&lt;/a&gt;&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <source>Translation Information</source>
+        <translation>Información de traducción</translation>
+    </message>
+    <message>
+        <source>Language Changed</source>
+        <translation>Cambio de idioma</translation>
+    </message>
+    <message>
+        <source>The language for this application is going to change to %1. Do you want to continue?</source>
+        <translation>El idioma para esta aplicación está a punto de cambiar a %1. ¿Desea continuar?</translation>
     </message>
 </context>
 <context>
@@ -184,7 +203,7 @@ CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de
     </message>
     <message>
         <source>Help</source>
-        <translation>Ayuda</translation>
+        <translation type="vanished">Ayuda</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -280,608 +299,649 @@ CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de
     </message>
     <message>
         <source>Open Recent Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir archivos recientes</translation>
     </message>
     <message>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver</translation>
     </message>
     <message>
         <source>Lyrics and Texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Letras y textos</translation>
     </message>
     <message>
         <source>Show or Hide Lyrics and Texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar u ocultar letras y textos</translation>
     </message>
     <message>
         <source>Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista de reproducción</translation>
     </message>
     <message>
         <source>Show or Hide Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar u ocultar lista de reproducción</translation>
     </message>
     <message>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Canales</translation>
     </message>
     <message>
         <source>Show or Hide Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar u ocultar canales</translation>
     </message>
     <message>
         <source>Piano Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Pianola</translation>
     </message>
     <message>
         <source>Show or Hide Piano Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar u ocultar pianola</translation>
     </message>
     <message>
         <source>Rhythm</source>
-        <translation type="unfinished"></translation>
+        <translation>Ritmo</translation>
     </message>
     <message>
         <source>Show or Hide Rhythm</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar u ocultar ritmo</translation>
+    </message>
+    <message>
+        <source>&amp;Help</source>
+        <translation>&amp;Ayuda</translation>
+    </message>
+    <message>
+        <source>&amp;Language</source>
+        <translation>&amp;Idioma</translation>
     </message>
 </context>
 <context>
     <name>InstrumentSet</name>
     <message>
         <source>Acoustic Grand Piano</source>
-        <translation type="unfinished"></translation>
+        <translation>Piano de cola</translation>
     </message>
     <message>
         <source>Bright Acoustic Piano</source>
-        <translation type="unfinished"></translation>
+        <translation>Piano de cola brillante</translation>
     </message>
     <message>
         <source>Electric Grand Piano</source>
-        <translation type="unfinished"></translation>
+        <translation>Piano de cola eléctrico</translation>
     </message>
     <message>
         <source>Honky-Tonk</source>
-        <translation type="unfinished"></translation>
+        <translation>Piano de cantina</translation>
     </message>
     <message>
         <source>Rhodes Piano</source>
-        <translation type="unfinished"></translation>
+        <translation>Piano Rhodes</translation>
     </message>
     <message>
         <source>Chorused Piano</source>
-        <translation type="unfinished"></translation>
+        <translation>Piano con coro</translation>
     </message>
     <message>
         <source>Harpsichord</source>
-        <translation type="unfinished"></translation>
+        <translation>Clavicordio</translation>
     </message>
     <message>
         <source>Clavinet</source>
-        <translation type="unfinished"></translation>
+        <translation>Clavinet</translation>
     </message>
     <message>
         <source>Celesta</source>
-        <translation type="unfinished"></translation>
+        <translation>Celesta</translation>
     </message>
     <message>
         <source>Glockenspiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Glockenspiel</translation>
     </message>
     <message>
         <source>Music Box</source>
-        <translation type="unfinished"></translation>
+        <translation>Caja de música</translation>
     </message>
     <message>
         <source>Vibraphone</source>
-        <translation type="unfinished"></translation>
+        <translation>Vibráfono</translation>
     </message>
     <message>
         <source>Marimba</source>
-        <translation type="unfinished"></translation>
+        <translation>Marimba</translation>
     </message>
     <message>
         <source>Xylophone</source>
-        <translation type="unfinished"></translation>
+        <translation>Xilófono</translation>
     </message>
     <message>
         <source>Tubular Bells</source>
-        <translation type="unfinished"></translation>
+        <translation>Campanas tubulares</translation>
     </message>
     <message>
         <source>Dulcimer</source>
-        <translation type="unfinished"></translation>
+        <translation>Dulcémele</translation>
     </message>
     <message>
         <source>Hammond Organ</source>
-        <translation type="unfinished"></translation>
+        <translation>Órgano Hammond</translation>
     </message>
     <message>
         <source>Percussive Organ</source>
-        <translation type="unfinished"></translation>
+        <translation>Órgano percusivo</translation>
     </message>
     <message>
         <source>Rock Organ</source>
-        <translation type="unfinished"></translation>
+        <translation>Órgano de rock</translation>
     </message>
     <message>
         <source>Church Organ</source>
-        <translation type="unfinished"></translation>
+        <translation>Órgano de iglesia</translation>
     </message>
     <message>
         <source>Reed Organ</source>
-        <translation type="unfinished"></translation>
+        <translation>Armonio</translation>
     </message>
     <message>
         <source>Accordion</source>
-        <translation type="unfinished"></translation>
+        <translation>Acordeón</translation>
     </message>
     <message>
         <source>Harmonica</source>
-        <translation type="unfinished"></translation>
+        <translation>Armónica</translation>
     </message>
     <message>
         <source>Tango Accordion</source>
-        <translation type="unfinished"></translation>
+        <translation>Bandoneón</translation>
     </message>
     <message>
         <source>Acoustic Guitar (Nylon)</source>
-        <translation type="unfinished"></translation>
+        <translation>Guitarra española</translation>
     </message>
     <message>
         <source>Acoustic Guitar (Steel)</source>
-        <translation type="unfinished"></translation>
+        <translation>Guitarra acústica (metal)</translation>
     </message>
     <message>
         <source>Electric Guitar (Jazz)</source>
-        <translation type="unfinished"></translation>
+        <translation>Guitarra eléctrica (jazz)</translation>
     </message>
     <message>
         <source>Electric Guitar (Clean)</source>
-        <translation type="unfinished"></translation>
+        <translation>Guitarra eléctrica (limpia)</translation>
     </message>
     <message>
         <source>Electric Guitar (Muted)</source>
-        <translation type="unfinished"></translation>
+        <translation>Guitarra eléctrica (con sordina)</translation>
     </message>
     <message>
         <source>Overdriven Guitar</source>
-        <translation type="unfinished"></translation>
+        <translation>Guitarra sobre-saturada</translation>
     </message>
     <message>
         <source>Distortion Guitar</source>
-        <translation type="unfinished"></translation>
+        <translation>Guitarra con distorsión</translation>
     </message>
     <message>
         <source>Guitar Harmonics</source>
-        <translation type="unfinished"></translation>
+        <translation>Armónicos de guitarra</translation>
     </message>
     <message>
         <source>Acoustic Bass</source>
-        <translation type="unfinished"></translation>
+        <translation>Bajo acústico</translation>
     </message>
     <message>
         <source>Electric Bass (Finger)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bajo eléctrico (pulsado)</translation>
     </message>
     <message>
         <source>Electric Bass (Pick)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bajo eléctrico (punteado)</translation>
     </message>
     <message>
         <source>Fretless Bass</source>
-        <translation type="unfinished"></translation>
+        <translation>Bajo sin trastes</translation>
     </message>
     <message>
         <source>Slap Bass 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Bajo palmeado 1</translation>
     </message>
     <message>
         <source>Slap Bass 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Bajo palmeado 2</translation>
     </message>
     <message>
         <source>Synth Bass 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Bajo sintetizado 1</translation>
     </message>
     <message>
         <source>Synth Bass 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Bajo sintetizado 2</translation>
     </message>
     <message>
         <source>Violin</source>
-        <translation type="unfinished"></translation>
+        <translation>Violín</translation>
     </message>
     <message>
         <source>Viola</source>
-        <translation type="unfinished"></translation>
+        <translation>Viola</translation>
     </message>
     <message>
         <source>Cello</source>
-        <translation type="unfinished"></translation>
+        <translation>Violoncelo</translation>
     </message>
     <message>
         <source>Contrabass</source>
-        <translation type="unfinished"></translation>
+        <translation>Contrabajo</translation>
     </message>
     <message>
         <source>Tremolo Strings</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuerdas con trémolo</translation>
     </message>
     <message>
         <source>Pizzicato Strings</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuerdas con pizzicato</translation>
     </message>
     <message>
         <source>Orchestral Harp</source>
-        <translation type="unfinished"></translation>
+        <translation>Arpa orquestal</translation>
     </message>
     <message>
         <source>Timpani</source>
-        <translation type="unfinished"></translation>
+        <translation>Timbales</translation>
     </message>
     <message>
         <source>String Ensemble 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Conjunto de cuerdas 1</translation>
     </message>
     <message>
         <source>String Ensemble 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Conjunto de cuerdas 2</translation>
     </message>
     <message>
         <source>Synth Strings 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuerdas sintetizadas 1</translation>
     </message>
     <message>
         <source>Synth Strings 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuerdas sintetizadas 2</translation>
     </message>
     <message>
         <source>Choir Aahs</source>
-        <translation type="unfinished"></translation>
+        <translation>Coro aahs</translation>
     </message>
     <message>
         <source>Voice Oohs</source>
-        <translation type="unfinished"></translation>
+        <translation>Voz oohs</translation>
     </message>
     <message>
         <source>Synth Voice</source>
-        <translation type="unfinished"></translation>
+        <translation>Voz sintetizada</translation>
     </message>
     <message>
         <source>Orchestra Hit</source>
-        <translation type="unfinished"></translation>
+        <translation>Golpe de orquesta</translation>
     </message>
     <message>
         <source>Trumpet</source>
-        <translation type="unfinished"></translation>
+        <translation>Trompeta</translation>
     </message>
     <message>
         <source>Trombone</source>
-        <translation type="unfinished"></translation>
+        <translation>Trombón</translation>
     </message>
     <message>
         <source>Tuba</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuba</translation>
     </message>
     <message>
         <source>Muted Trumpet</source>
-        <translation type="unfinished"></translation>
+        <translation>Trompeta con sordina</translation>
     </message>
     <message>
         <source>French Horn</source>
-        <translation type="unfinished"></translation>
+        <translation>Trompa</translation>
     </message>
     <message>
         <source>Brass Section</source>
-        <translation type="unfinished"></translation>
+        <translation>Sección de metal</translation>
     </message>
     <message>
         <source>Synth Brass 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Metales sintetizados 1</translation>
     </message>
     <message>
         <source>Synth Brass 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Metales sintetizados 2</translation>
     </message>
     <message>
         <source>Soprano Sax</source>
-        <translation type="unfinished"></translation>
+        <translation>Saxo soprano</translation>
     </message>
     <message>
         <source>Alto Sax</source>
-        <translation type="unfinished"></translation>
+        <translation>Saxo alto</translation>
     </message>
     <message>
         <source>Tenor Sax</source>
-        <translation type="unfinished"></translation>
+        <translation>Saxo tenor</translation>
     </message>
     <message>
         <source>Baritone Sax</source>
-        <translation type="unfinished"></translation>
+        <translation>Saxo barítono</translation>
     </message>
     <message>
         <source>Oboe</source>
-        <translation type="unfinished"></translation>
+        <translation>Oboe</translation>
     </message>
     <message>
         <source>English Horn</source>
-        <translation type="unfinished"></translation>
+        <translation>Corno inglés</translation>
     </message>
     <message>
         <source>Bassoon</source>
-        <translation type="unfinished"></translation>
+        <translation>Fagot</translation>
     </message>
     <message>
         <source>Clarinet</source>
-        <translation type="unfinished"></translation>
+        <translation>Clarinete</translation>
     </message>
     <message>
         <source>Piccolo</source>
-        <translation type="unfinished"></translation>
+        <translation>Flautín</translation>
     </message>
     <message>
         <source>Flute</source>
-        <translation type="unfinished"></translation>
+        <translation>Flauta</translation>
     </message>
     <message>
         <source>Recorder</source>
-        <translation type="unfinished"></translation>
+        <translation>Flauta dulce</translation>
     </message>
     <message>
         <source>Pan Flute</source>
-        <translation type="unfinished"></translation>
+        <translation>Flauta de pan</translation>
     </message>
     <message>
         <source>Blown Bottle</source>
-        <translation type="unfinished"></translation>
+        <translation>Soplo de botella</translation>
     </message>
     <message>
         <source>Shakuhachi</source>
-        <translation type="unfinished"></translation>
+        <translation>Shakuhachi</translation>
     </message>
     <message>
         <source>Whistle</source>
-        <translation type="unfinished"></translation>
+        <translation>Silbido</translation>
     </message>
     <message>
         <source>Ocarina</source>
-        <translation type="unfinished"></translation>
+        <translation>Ocarina</translation>
     </message>
     <message>
         <source>Lead 1 - Square Wave</source>
-        <translation type="unfinished"></translation>
+        <translation>Melodía 1 - Onda cuadrada</translation>
     </message>
     <message>
         <source>Lead 2 - Saw Tooth</source>
-        <translation type="unfinished"></translation>
+        <translation>Melodía 2 - Onda dentada</translation>
     </message>
     <message>
         <source>Lead 3 - Calliope</source>
-        <translation type="unfinished"></translation>
+        <translation>Melodía 3 - Calíope</translation>
     </message>
     <message>
         <source>Lead 4 - Chiflead</source>
-        <translation type="unfinished"></translation>
+        <translation>Melodía 4 - Siseo</translation>
     </message>
     <message>
         <source>Lead 5 - Charang</source>
-        <translation type="unfinished"></translation>
+        <translation>Melodía 5 - Charango</translation>
     </message>
     <message>
         <source>Lead 6 - Voice</source>
-        <translation type="unfinished"></translation>
+        <translation>Melodía 6 - Voz</translation>
     </message>
     <message>
         <source>Lead 7 - Fifths</source>
-        <translation type="unfinished"></translation>
+        <translation>Melodía 7 - Quintas</translation>
     </message>
     <message>
         <source>Lead 8 - Bass+Lead</source>
-        <translation type="unfinished"></translation>
+        <translation>Melodía 8 - Bajo+melodía</translation>
     </message>
     <message>
         <source>Pad 1 - New Age</source>
-        <translation type="unfinished"></translation>
+        <translation>Fondo 1 - Nueva era</translation>
     </message>
     <message>
         <source>Pad 2 - Warm</source>
-        <translation type="unfinished"></translation>
+        <translation>Fondo 2 - Cálido</translation>
     </message>
     <message>
         <source>Pad 3 - Polysynth</source>
-        <translation type="unfinished"></translation>
+        <translation>Fondo 3 - Polisintético</translation>
     </message>
     <message>
         <source>Pad 4 - Choir</source>
-        <translation type="unfinished"></translation>
+        <translation>Fondo 4 - Coros</translation>
     </message>
     <message>
         <source>Pad 5 - Bow</source>
-        <translation type="unfinished"></translation>
+        <translation>Fondo 5 - De arco</translation>
     </message>
     <message>
         <source>Pad 6 - Metallic</source>
-        <translation type="unfinished"></translation>
+        <translation>Fondo 6 - Metálico</translation>
     </message>
     <message>
         <source>Pad 7 - Halo</source>
-        <translation type="unfinished"></translation>
+        <translation>Fondo 7 - Celestial</translation>
     </message>
     <message>
         <source>Pad 8 - Sweep</source>
-        <translation type="unfinished"></translation>
+        <translation>Fondo 8 - Escobillas</translation>
     </message>
     <message>
         <source>FX 1 - Rain</source>
-        <translation type="unfinished"></translation>
+        <translation>Efecto 1 - Lluvia</translation>
     </message>
     <message>
         <source>FX 2 - Soundtrack</source>
-        <translation type="unfinished"></translation>
+        <translation>Efecto 2 - Banda sonora</translation>
     </message>
     <message>
         <source>FX 3 - Crystal</source>
-        <translation type="unfinished"></translation>
+        <translation>Efecto 3 - Cristal</translation>
     </message>
     <message>
         <source>FX 4 - Atmosphere</source>
-        <translation type="unfinished"></translation>
+        <translation>Efecto 4 - Atmósfera</translation>
     </message>
     <message>
         <source>FX 5 - Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>Efecto 5 - Brillo</translation>
     </message>
     <message>
         <source>FX 6 - Goblins</source>
-        <translation type="unfinished"></translation>
+        <translation>Efecto 6 - Duendes</translation>
     </message>
     <message>
         <source>FX 7 - Echoes</source>
-        <translation type="unfinished"></translation>
+        <translation>Efecto 7 - Ecos</translation>
     </message>
     <message>
         <source>FX 8 - Sci-fi</source>
-        <translation type="unfinished"></translation>
+        <translation>Efecto 8 - Ci-fi</translation>
     </message>
     <message>
         <source>Sitar</source>
-        <translation type="unfinished"></translation>
+        <translation>Sitar</translation>
     </message>
     <message>
         <source>Banjo</source>
-        <translation type="unfinished"></translation>
+        <translation>Banjo</translation>
     </message>
     <message>
         <source>Shamisen</source>
-        <translation type="unfinished"></translation>
+        <translation>Shamisen</translation>
     </message>
     <message>
         <source>Koto</source>
-        <translation type="unfinished"></translation>
+        <translation>Koto</translation>
     </message>
     <message>
         <source>Kalimba</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalimba</translation>
     </message>
     <message>
         <source>Bagpipe</source>
-        <translation type="unfinished"></translation>
+        <translation>Gaita</translation>
     </message>
     <message>
         <source>Fiddle</source>
-        <translation type="unfinished"></translation>
+        <translation>Violín popular</translation>
     </message>
     <message>
         <source>Shannai</source>
-        <translation type="unfinished"></translation>
+        <translation>Shannai</translation>
     </message>
     <message>
         <source>Tinkle Bell</source>
-        <translation type="unfinished"></translation>
+        <translation>Campanilla</translation>
     </message>
     <message>
         <source>Agogo</source>
-        <translation type="unfinished"></translation>
+        <translation>Agogó</translation>
     </message>
     <message>
         <source>Steel Drum</source>
-        <translation type="unfinished"></translation>
+        <translation>Tambor metálico</translation>
     </message>
     <message>
         <source>Wood Block</source>
-        <translation type="unfinished"></translation>
+        <translation>Bloque de madera</translation>
     </message>
     <message>
         <source>Taiko Drum</source>
-        <translation type="unfinished"></translation>
+        <translation>Tambor Taiko</translation>
     </message>
     <message>
         <source>Melodic Tom</source>
-        <translation type="unfinished"></translation>
+        <translation>Timbal melódico</translation>
     </message>
     <message>
         <source>Synth Drum</source>
-        <translation type="unfinished"></translation>
+        <translation>Tambor sintetizado</translation>
     </message>
     <message>
         <source>Reverse Cymbal</source>
-        <translation type="unfinished"></translation>
+        <translation>Platillo invertido</translation>
     </message>
     <message>
         <source>Guitar Fret Noise</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruido de trasteo de guitarra</translation>
     </message>
     <message>
         <source>Breath Noise</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruido de respiración</translation>
     </message>
     <message>
         <source>Seashore</source>
-        <translation type="unfinished"></translation>
+        <translation>Orilla del mar</translation>
     </message>
     <message>
         <source>Bird Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Piar de pájaros</translation>
     </message>
     <message>
         <source>Telephone</source>
-        <translation type="unfinished"></translation>
+        <translation>Teléfono</translation>
     </message>
     <message>
         <source>Helicopter</source>
-        <translation type="unfinished"></translation>
+        <translation>Helicóptero</translation>
     </message>
     <message>
         <source>Applause</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplausos</translation>
     </message>
     <message>
         <source>Gunshot</source>
-        <translation type="unfinished"></translation>
+        <translation>Disparo</translation>
     </message>
     <message>
         <source>Percussion %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Percusión %1</translation>
     </message>
 </context>
 <context>
     <name>Pianola</name>
     <message>
         <source>Player Piano</source>
-        <translation type="unfinished"></translation>
+        <translation>Pianola</translation>
     </message>
     <message>
         <source>MIDI Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Canales MIDI</translation>
     </message>
     <message>
         <source>Show all channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar todos los canales</translation>
     </message>
     <message>
         <source>Hide all channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Ocultar todos los canales</translation>
     </message>
     <message>
         <source>Tighten the number of keys</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajustar el número de teclas</translation>
     </message>
     <message>
         <source>Channel %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Canal %1</translation>
+    </message>
+</context>
+<context>
+    <name>QCoreApplication</name>
+    <message>
+        <source>Copyright (C) 2006-2021 Pedro Lopez-Cabanillas
+This program comes with ABSOLUTELY NO WARRANTY;
+This is free software, and you are welcome to redistribute it
+under certain conditions; see the LICENSE for details.</source>
+        <translation>Copyright (C) 2006-2021 Pedro Lopez-Cabanillas
+Este programa no tiene ABSOLUTAMENTE NINGUNA GARANTÍA;
+Esto es software libre; y usted puede redistribuirlo
+bajo ciertas condiciones; vea la LICENCIA para detalles.</translation>
+    </message>
+    <message>
+        <source>Fatal error from the Operating System. This usually happens when the OS doesn&apos;t have MIDI support, or the MIDI support is not enabled. Please check your OS/MIDI configuration.</source>
+        <translation>Error fatal desde el sistema operativo. Esto ocurre normalmente cuando el S.O. no tiene soporte MIDI, o el soporte MIDI no está habilitado. Por favor, compruebe su configuración del S.O./MIDI.</translation>
+    </message>
+    <message>
+        <source>Portable settings mode.</source>
+        <translation>Modo portable de ajustes.</translation>
+    </message>
+    <message>
+        <source>Portable settings file name.</source>
+        <translation>Nombre de archivo de ajustes portable.</translation>
+    </message>
+    <message>
+        <source>MIDI Out Driver.</source>
+        <translation>Controlador de salida MIDI.</translation>
+    </message>
+    <message>
+        <source>MIDI Out Connection.</source>
+        <translation>Conexión de salida MIDI.</translation>
     </message>
 </context>
 <context>
     <name>RecentFilesHelper</name>
     <message>
         <source>Clear recent files</source>
-        <translation type="unfinished"></translation>
+        <translation>Limpiar archivos recientes</translation>
     </message>
     <message>
         <source>&amp;%1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;%1 %2</translation>
     </message>
 </context>
 </TS>

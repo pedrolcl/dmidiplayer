@@ -37,25 +37,24 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent)
     setWindowFlag(Qt::Tool, true);
     setAttribute(Qt::WA_DeleteOnClose, false);
     setAttribute(Qt::WA_MacAlwaysShowToolWindow, true);
-    setWindowTitle(tr("Player Piano"));
     menuBar()->setNativeMenuBar(false);
-    QMenu* chmenu = menuBar()->addMenu(tr("MIDI Channels"));
-    QAction *a = new QAction(this);
-    a->setText(tr("Show all channels"));
-    connect(a, &QAction::triggered, this, &Pianola::slotShowAllChannels);
-    chmenu->addAction(a);
-    a = new QAction(this);
-    a->setText(tr("Hide all channels"));
-    connect(a, &QAction::triggered, this, &Pianola::slotHideAllChannels);
-    chmenu->addAction(a);
-    a = new QAction(this);
-    a->setCheckable(true);
+    m_chmenu = menuBar()->addMenu(tr("MIDI Channels"));
+    m_a1 = new QAction(this);
+    //m_a1->setText(tr("Show all channels"));
+    connect(m_a1, &QAction::triggered, this, &Pianola::slotShowAllChannels);
+    m_chmenu->addAction(m_a1);
+    m_a2 = new QAction(this);
+    //m_a2->setText(tr("Hide all channels"));
+    connect(m_a2, &QAction::triggered, this, &Pianola::slotHideAllChannels);
+    m_chmenu->addAction(m_a2);
+    m_a3 = new QAction(this);
+    m_a3->setCheckable(true);
     m_tightenKeys = true;
-    a->setChecked(true);
-    a->setText(tr("Tighten the number of keys"));
-    connect(a, &QAction::triggered, this, &Pianola::tightenKeys);
-    chmenu->addAction(a);
-    chmenu->addSeparator();
+    m_a3->setChecked(true);
+    //m_a3->setText(tr("Tighten the number of keys"));
+    connect(m_a3, &QAction::triggered, this, &Pianola::tightenKeys);
+    m_chmenu->addAction(m_a3);
+    m_chmenu->addSeparator();
     QVBoxLayout *vlayout = new QVBoxLayout;
     vlayout->setSpacing(0);
     vlayout->setContentsMargins(0,0,0,0);
@@ -95,16 +94,28 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent)
         m_frame[i]->setVisible(false);
         m_action[i] = new QAction(this);
         m_action[i]->setCheckable(true);
-        m_action[i]->setText(tr("Channel %1").arg(i+1));
         connect(m_action[i], &QAction::triggered, this, [=]{ slotShowChannel(i); });
-        chmenu->addAction(m_action[i]);
+        m_chmenu->addAction(m_action[i]);
     }
     readSettings();
+    retranslateUi();
 }
 
 Pianola::~Pianola()
 {
     //qDebug() << Q_FUNC_INFO;
+}
+
+void Pianola::retranslateUi()
+{
+    setWindowTitle(tr("Player Piano"));
+    m_chmenu->setTitle(tr("MIDI Channels"));
+    m_a1->setText(tr("Show all channels"));
+    m_a2->setText(tr("Hide all channels"));
+    m_a3->setText(tr("Tighten the number of keys"));
+    for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+        m_action[i]->setText(tr("Channel %1").arg(i+1));
+    }
 }
 
 void Pianola::readSettings()
