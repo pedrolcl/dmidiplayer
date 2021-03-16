@@ -128,6 +128,13 @@ void Channels::retranslateUi()
     m_lbl4->setText(tr( "Level"));
     m_lbl5->setText(tr( "Lock"));
     m_lbl6->setText(tr("Patch (sound setting)"));
+    m_instSet.reloadNames();
+    for (int i = 0; i < MIDI_STD_CHANNELS; ++i) {
+        int curr = m_patch[i]->currentIndex();
+        m_patch[i]->clear();
+        m_patch[i]->addItems(m_instSet.names(i == MIDI_GM_STD_DRUM_CHANNEL));
+        m_patch[i]->setCurrentIndex(curr);
+    }
 }
 
 void Channels::readSettings()

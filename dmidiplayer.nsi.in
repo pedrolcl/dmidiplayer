@@ -241,7 +241,11 @@ done${UNSECTION_ID}:
 # Uninstaller sections
 Section /o -un.Main UNSEC0000
     Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_es.qm
+    Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_ru.qm
+    Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_es.qm
+    Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_ru.qm
     Delete /REBOOTOK $INSTDIR\translations\qt_es.qm
+    Delete /REBOOTOK $INSTDIR\translations\qt_ru.qm
     Delete /REBOOTOK $INSTDIR\${PROGNAME}.exe
 
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libdrumstick-file.dll
