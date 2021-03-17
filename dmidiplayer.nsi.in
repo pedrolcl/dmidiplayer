@@ -130,13 +130,13 @@ CRCCheck on
 XPStyle on
 ShowInstDetails show
 VIProductVersion @PROJECT_VERSION@.0
-VIAddVersionKey ProductName @PROJECT_NAME@
-VIAddVersionKey ProductVersion ${VERSION}
-VIAddVersionKey CompanyName "${COMPANY}"
-VIAddVersionKey CompanyWebsite "${URL}"
-VIAddVersionKey FileVersion ${VERSION}
-VIAddVersionKey FileDescription "@PROJECT_DESCRIPTION@"
-VIAddVersionKey LegalCopyright "Copyright (C) 2021, Pedro Lopez-Cabanillas <plcl@users.sf.net>"
+VIAddVersionKey /LANG=0 ProductName @PROJECT_NAME@
+VIAddVersionKey /LANG=0 ProductVersion ${VERSION}
+VIAddVersionKey /LANG=0 CompanyName "${COMPANY}"
+VIAddVersionKey /LANG=0 CompanyWebsite "${URL}"
+VIAddVersionKey /LANG=0 FileVersion ${VERSION}
+VIAddVersionKey /LANG=0 FileDescription "@PROJECT_DESCRIPTION@"
+VIAddVersionKey /LANG=0 LegalCopyright "Copyright (C) 2021, Pedro Lopez-Cabanillas <plcl@users.sf.net>"
 InstallDirRegKey HKLM "${REGKEY}" Path
 ShowUninstDetails show
 Icon ${SOURCE_FILES}\icons\${PROGNAME}.ico
