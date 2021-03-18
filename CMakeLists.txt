@@ -119,9 +119,9 @@ if (APPLE)
   set_source_files_properties (${ICON_FILE} PROPERTIES
     MACOSX_PACKAGE_LOCATION Resources)
   set_source_files_properties (${QM_FILES} PROPERTIES
-    MACOSX_PACKAGE_LOCATION translations)
+    MACOSX_PACKAGE_LOCATION Resources)
   include(TranslationUtils)
-  add_qt_translations(QT_TRANSLATIONS es)
+  add_qt_translations(QT_TRANSLATIONS es ru)
   set_source_files_properties (${QT_TRANSLATIONS} PROPERTIES
     MACOSX_PACKAGE_LOCATION translations)
   list (APPEND SOURCES ${QT_TRANSLATIONS})
@@ -161,6 +161,7 @@ if (APPLE)
     MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
     MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION}"
     MACOSX_BUNDLE_COPYRIGHT "Copyright © 2021, Pedro López-Cabanillas &lt;plcl@users.sf.net&gt;")
+    target_link_libraries(${PROJECT_NAME} PRIVATE "-framework CoreFoundation -framework Cocoa")
 endif ()
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE VERSION=${PROJECT_VERSION})
