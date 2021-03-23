@@ -17,7 +17,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 project(dmidiplayer
-    VERSION 1.1.0
+    VERSION 1.2.0
     DESCRIPTION "Drumstick MIDI File Player Multiplatform Program"
     LANGUAGES CXX)
 
@@ -91,7 +91,6 @@ if (QT_VERSION VERSION_LESS 5.15.0)
 else()
     qt_add_translation (QM_FILES ${TRANSLATIONS})
 endif()
-
 add_custom_target (translations ALL DEPENDS ${QM_FILES})
 
 if (WIN32)
@@ -104,27 +103,27 @@ if (WIN32)
     set (RES_FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.res.obj)
     find_program (WINDRES_EXECUTABLE NAMES windres mingw32-windres i686-mingw32-windres)
     if (MINGW)
-    exec_program (${WINDRES_EXECUTABLE}
-        ARGS "-i ${RC_FILE} -o ${RES_FILE} --include-dir=${CMAKE_CURRENT_SOURCE_DIR}/icons")
-    list (APPEND SOURCES ${RES_FILE})
+        exec_program (${WINDRES_EXECUTABLE}
+            ARGS "-i ${RC_FILE} -o ${RES_FILE} --include-dir=${CMAKE_CURRENT_SOURCE_DIR}/icons")
+        list (APPEND SOURCES ${RES_FILE})
     else ()
-    list (APPEND SOURCES ${RC_FILE})
+        list (APPEND SOURCES ${RC_FILE})
     endif ()
 endif ()
 
 if (APPLE)
-  set (ICON_FILE ${CMAKE_CURRENT_SOURCE_DIR}/icons/${PROJECT_NAME}.icns)
-  list (APPEND SOURCES ${ICON_FILE} ${QM_FILES})
-  set (MACOSX_BUNDLE_ICON_FILE ${PROJECT_NAME}.icns)
-  set_source_files_properties (${ICON_FILE} PROPERTIES
-    MACOSX_PACKAGE_LOCATION Resources)
-  set_source_files_properties (${QM_FILES} PROPERTIES
-    MACOSX_PACKAGE_LOCATION Resources)
-  include(TranslationUtils)
-  add_qt_translations(QT_TRANSLATIONS es ru)
-  set_source_files_properties (${QT_TRANSLATIONS} PROPERTIES
-    MACOSX_PACKAGE_LOCATION translations)
-  list (APPEND SOURCES ${QT_TRANSLATIONS})
+    set (ICON_FILE ${CMAKE_CURRENT_SOURCE_DIR}/icons/${PROJECT_NAME}.icns)
+    list (APPEND SOURCES ${ICON_FILE} ${QM_FILES})
+    set (MACOSX_BUNDLE_ICON_FILE ${PROJECT_NAME}.icns)
+    set_source_files_properties (${ICON_FILE} PROPERTIES
+        MACOSX_PACKAGE_LOCATION Resources)
+    set_source_files_properties (${QM_FILES} PROPERTIES
+        MACOSX_PACKAGE_LOCATION Resources)
+    include(TranslationUtils)
+    add_qt_translations(QT_TRANSLATIONS es ru)
+    set_source_files_properties (${QT_TRANSLATIONS} PROPERTIES
+        MACOSX_PACKAGE_LOCATION translations)
+    list (APPEND SOURCES ${QT_TRANSLATIONS})
 endif ()
 
 message (STATUS "Drumstick MIDI File Player v${PROJECT_VERSION}
@@ -169,15 +168,14 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE VERSION=${PROJECT_VERSION})
 if(UNIX AND NOT APPLE)
     include(GNUInstallDirs)
     add_subdirectory(icons)
-
     install(TARGETS ${PROJECT_NAME}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-
     install(FILES ${PROJECT_NAME}.desktop
         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
-
     install(FILES ${QM_FILES}
         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME})
+    install(FILES "net.sourceforge.dmidiplayer.appdata.xml"
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo)
 else()
     include(DeploymentUtils)
 endif()

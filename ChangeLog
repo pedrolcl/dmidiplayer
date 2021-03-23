@@ -1,0 +1,157 @@
+2021-03-20  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	release v1.1.0
+
+2021-03-18  Pedro López-Cabanillas  <plcl@users.sf.net>
+
+	macOS build
+
+2021-03-18  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	revised text
+
+2021-03-17  Pedro Lopez-Cabanillas  <plcl@users.sourceforge.net>
+
+	windows packaging
+
+2021-03-16  Pedro Lopez-Cabanillas  <plcl@users.sourceforge.net>
+
+	windows packaging, translations
+
+	new icons
+
+	more release preps
+
+2021-03-16  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	release preparations
+
+2021-03-14  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	implemented rhythm view
+
+2021-03-13  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	Included portable settings
+	* Added two cmd line options: -p/--portable and -f/--file
+	* Added a new Language menu (under Help)
+	* Fixed both cmake and qmake build systems
+
+2021-03-11  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	added russian translation to cmake bs
+
+	updated buildsystems and translations
+
+2021-03-11  Pedro López-Cabanillas  <pedrolcl@users.noreply.github.com>
+
+	Merge pull request #1 from SBasalaev/master
+	Russian translation
+
+2021-03-11  Sergey Basalaev  <sbasalaev@gmail.com>
+
+	Russian translation
+
+2021-03-06  Pedro Lopez-Cabanillas  <plcl@users.sourceforge.net>
+
+	missing include
+
+2021-03-03  Pedro Lopez-Cabanillas  <plcl@users.sourceforge.net>
+
+	Check the compiler at configuration time
+
+2021-03-01  Pedro Lopez-Cabanillas  <plcl@users.sourceforge.net>
+
+	sticky window snapping
+
+2021-02-20  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	minimal layout tweaks
+
+2021-02-19  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	imported recent files helper
+
+2021-02-18  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	fixed channels solo buttons
+
+2021-02-17  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	imported channels and pianola views
+
+2021-02-05  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	Default backend policy fixed
+
+2021-02-03  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	Copyright year updated
+
+2021-02-02  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	release v1.0.0
+
+	documentation and translation
+
+2021-02-01  Pedro López-Cabanillas  <plcl@users.sf.net>
+
+	macOS deployment
+
+2021-02-01  Pedro Lopez-Cabanillas  <plcl@users.sourceforge.net>
+
+	Include all languages in the NSIS installer script
+
+	Windows build and deployment
+
+2021-02-01  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	translation and deplopyment
+
+	linux .desktop file
+
+2021-01-31  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	more icons
+
+	use new icons
+
+	icons
+
+2021-01-30  Pedro Lopez-Cabanillas  <plcl@users.sourceforge.net>
+
+	UI refinements
+
+	Windows adaptations
+
+2021-01-29  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	switched to playerLoop, and std::chrono
+
+2020-10-20  Pedro Lopez-Cabanillas  <plcl@users.sourceforge.net>
+
+	Periodic timer with 1ms interval doesn't work on windows. Change to single shot timer is on the way...
+
+2020-10-20  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	more instrumentation
+
+2020-10-19  Pedro Lopez-Cabanillas  <plcl@users.sourceforge.net>
+
+	instrumentation
+
+2020-10-19  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	fixes
+
+2020-10-18  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	debug and polishing
+
+2020-10-18  Pedro Lopez-Cabanillas  <plcl@users.sourceforge.net>
+
+	msvc build
+
+2020-10-18  Pedro López-Cabanillas  <plcl@users.sourceforge.net>
+
+	Initial commit

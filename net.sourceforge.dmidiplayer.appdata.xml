@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2021 dmidiplayer developers -->
+<component type="desktop-application">
+    <id>net.sourceforge.dmidiplayer</id>
+    <name>dmidiplayer</name>
+    <summary>Drumstick Multiplatform MIDI File Player</summary>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-3.0+</project_license>
+    <description>
+        <p>Multiplatform MIDI File Player for Linux, Windows and macOS with advanced features:</p>
+        <ul>
+            <li>MIDI Output to hardware MIDI ports, or any other Drumstick backend.</li>
+            <li>Transpose song tonality between -12 and +12 semitones.</li>
+            <li>Change MIDI volume level (using MIDI CC7).</li> 
+            <li>Scale song speed between half and double tempo.</li>
+            <li>Pianola, Channels and Rhythm views.</li>
+        </ul>
+    </description>
+    <launchable type="desktop-id">dmidiplayer.desktop</launchable>
+    <url type="homepage">https://sourceforge.net/p/dmidiplayer/</url>
+    <translation type="qt">dmidiplayer</translation>
+   <!-- <content_rating type="oars-1.1" />-->
+    <screenshots>
+        <screenshot type="default">
+            <image>https://a.fsdn.com/con/app/proj/dmidiplayer/screenshots/mainwindow.png</image>
+            <caption>Main window</caption>
+        </screenshot>
+        <screenshot>
+            <image>https://a.fsdn.com/con/app/proj/dmidiplayer/screenshots/channels.png</image>
+            <caption>MIDI Channels window</caption>
+        </screenshot>
+        <screenshot>
+            <image>https://a.fsdn.com/con/app/proj/dmidiplayer/screenshots/pianola.png</image>
+            <caption>Piano Player window</caption>
+        </screenshot>
+    </screenshots>
+    <releases>
+        <release version="1.1.0" date="2021-03-20">
+            <description>
+                <p>This release implements the following new features:</p>
+                <ul>
+                    <li>Pianola, Channels and Rhythm views</li>
+                    <li>Sticky Window Snapping (Windows OS only)</li>
+                    <li>Russian translation (Thanks to Sergey Basalaev)</li>
+                    <li>Spanish translation updated</li>
+                    <li>Recent files menu options</li>
+                    <li>Language choice menu options</li>
+                    <li>Command line options: --portable and --file (for portable configuration)</li>
+                </ul>
+            </description>
+            <url>https://sourceforge.net/p/dmidiplayer/blog/2021/03/drumstick-midi-file-player---multiplatform-110-released/</url>
+        </release>
+        <release version="1.0.0" date="2021-02-02" />
+    </releases>
+</component>
