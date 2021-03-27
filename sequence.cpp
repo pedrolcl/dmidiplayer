@@ -26,22 +26,27 @@ using namespace drumstick::File;
 using namespace drumstick::rt;
 
 Sequence::Sequence(QObject *parent) : QObject(parent),
-    m_codec(nullptr),
+    m_smf(nullptr),
+    m_wrk(nullptr),
+    m_uchardetErrors(0),
+    m_format(0),
+    m_numTracks(0),
     m_ticksDuration(0),
     m_division(-1),
     m_pos(0),
-    m_track(-1),
-    m_tempo(500000.0),
-    m_tempoFactor(1.0),
-    m_duration(0),
-    m_lastBeat(0),
-    m_beatLength(0),
-    m_tick(0),
+    m_curTrack(-1),
     m_beatMax(0),
     m_barCount(0),
     m_beatCount(0),
     m_lowestMidiNote(127),
-    m_highestMidiNote(0)
+    m_highestMidiNote(0),
+    m_tempo(500000.0),
+    m_tempoFactor(1.0),
+    m_ticks2millis(0),
+    m_duration(0),
+    m_lastBeat(0),
+    m_beatLength(0),
+    m_tick(0)
 {
     m_smf = new QSmf(this);
     connect(m_smf, &QSmf::signalSMFHeader, this, &Sequence::smfHeaderEvent);
@@ -94,10 +99,32 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
     connect(m_wrk, &QWrk::signalWRKChord, this, &Sequence::wrkUpdateLoadProgress);
     connect(m_wrk, &QWrk::signalWRKExpression, this, &Sequence::wrkUpdateLoadProgress);
 
-    for(int i=0; i<MIDI_STD_CHANNELS; ++i) {
-        m_channelUsed[i] = false;
-        m_channelEvents[i] = 0;
-        m_channelPatches[i] = -1;
+    m_handle = uchardet_new();
+    initCodecs();
+    clear();
+}
+
+Sequence::~Sequence()
+{
+    clear();
+    uchardet_delete(m_handle);
+}
+
+void Sequence::initCodecs()
+{
+    foreach(const auto& k, m_ucharsets) {
+        auto codec = QTextCodec::codecForName(k);
+        if (codec == nullptr) {
+            if (!m_umibs.contains(k)) {
+                qWarning() << "\tCHECK!!!" << k ;
+            }
+        } else {
+            if (!m_umibs.contains(k)) {
+                m_umibs.insert(k, codec->mibEnum());
+            } else if (codec->mibEnum() != m_umibs[k]) {
+                qWarning() << "\tMismatch: charset=" << k << "codec->mib=" << codec->mibEnum() << "umibs=" << m_umibs[k];
+            }
+        }
     }
 }
 
@@ -109,7 +136,8 @@ static inline bool eventLessThan(const MIDIEvent* s1, const MIDIEvent *s2)
 void Sequence::sort()
 {
     //qDebug() << Q_FUNC_INFO;
-    qStableSort(m_list.begin(), m_list.end(), eventLessThan);
+    //qStableSort(m_list.begin(), m_list.end(), eventLessThan);
+    std::stable_sort(m_list.begin(), m_list.end(), eventLessThan);
     // Calculate deltas
     long lastEventTicks = 0;
     foreach(MIDIEvent* ev, m_list) {
@@ -124,19 +152,33 @@ void Sequence::clear()
     m_lblName.clear();
     m_ticksDuration = 0;
     m_division = -1;
-    m_track = -1;
+    m_curTrack = -1;
     m_pos = 0;
     m_tempo = 500000.0;
+    m_tick = 0;
+    m_lastBeat = 0;
+    m_barCount = 0;
+    m_beatCount = 0;
+    m_beatMax = 4;
+    m_lowestMidiNote = 127;
+    m_highestMidiNote = 0;
+    m_curTrack = 0;
+    for(int i=0; i<MIDI_STD_CHANNELS; ++i) {
+        m_channelUsed[i] = false;
+        m_channelEvents[i] = 0;
+        m_channelPatches[i] = -1;
+        m_channelLabel[i].clear();
+    }
+    m_trackLabel.clear();
     m_trackMap.clear();
     m_savedSysexEvents.clear();
+    m_charset.clear();
+    m_textEvents.clear();
+    m_trkScore.clear();
+    m_typScore.clear();
     while (!m_list.isEmpty()) {
         delete m_list.takeFirst();
     }
-}
-
-Sequence::~Sequence()
-{
-    clear();
 }
 
 bool Sequence::isEmpty()
@@ -155,21 +197,8 @@ void Sequence::loadFile(const QString& fileName)
     QFileInfo finfo(fileName);
     if (finfo.exists()) {
         clear();
-        m_tick = 0;
-        m_lastBeat = 0;
-        m_barCount = 0;
-        m_beatCount = 0;
-        m_beatMax = 4;
-        m_lowestMidiNote = 127;
-        m_highestMidiNote = 0;
-        for(int i=0; i<MIDI_STD_CHANNELS; ++i) {
-            m_channelUsed[i] = false;
-            m_channelEvents[i] = 0;
-            m_channelLabel[i].clear();
-            m_channelPatches[i] = -1;
-            m_trackLabel.clear();
-        }
         try {
+            uchardet_reset(m_handle);
             emit loadingStart(finfo.size());
             QString ext = finfo.suffix().toLower();
             if (ext == "wrk") {
@@ -177,16 +206,112 @@ void Sequence::loadFile(const QString& fileName)
             } else if (ext == "mid" || ext == "midi" || ext == "kar") {
                 m_smf->readFromFile(fileName);
             }
+            uchardet_data_end(m_handle);
             emit loadingFinished();
             if (!m_list.isEmpty()) {
                 sort();
                 m_lblName = finfo.fileName();
+                m_currentFile = finfo.fileName();
             }
+            m_charset = QByteArray(uchardet_get_charset(m_handle));
         } catch (...) {
             qWarning() << "corrupted file";
             clear();
         }
     }
+}
+
+int Sequence::numUchardetErrors()
+{
+    return m_uchardetErrors;
+}
+
+int Sequence::detectedUchardetMIB() const
+{
+    if (!m_charset.isNull() && m_umibs.contains(m_charset)) {
+        return m_umibs[m_charset];
+    }
+    return -1;
+}
+
+QByteArray Sequence::detectedCharset() const
+{
+    return m_charset;
+}
+
+QString Sequence::currentFile() const
+{
+    return m_currentFile;
+}
+
+int Sequence::getNumTracks() const
+{
+    return m_numTracks;
+}
+
+void Sequence::appendStringToList(QStringList &list, QString &s, TextType type)
+{
+    if (type == Text || type >= KarFileType)
+        s.replace(QRegExp("@[IKLTVW]"), QString(QChar::LineSeparator));
+    if (type == Text || type == Lyric)
+        s.replace(QRegExp("[/\\\\]+"), QString(QChar::LineSeparator));
+    s.replace(QRegExp("[\r\n]+"), QString(QChar::LineSeparator));
+    s.replace('\0', QChar::Space);
+    list.append(s);
+}
+
+QStringList Sequence::getText(const TextType type, const int mib)
+{
+     QStringList output;
+     QTextCodec *codec = QTextCodec::codecForMib(mib);
+     if ( (codec != nullptr) && (type >= FIRST_TYPE) && (type <= LAST_TYPE) ) {
+         foreach(const auto& e, m_textEvents) {
+             if (e.m_type == type) {
+                 QString s = codec->toUnicode(e.m_text);
+                 appendStringToList(output, s, type);
+             }
+         }
+     }
+     return output;
+}
+
+QStringList Sequence::getText(const int track, const TextType type, const int mib)
+{
+    QStringList output;
+    QTextCodec *codec = QTextCodec::codecForMib(mib);
+    if (codec != nullptr && (type < TextType::KarFileType) ) {
+        foreach(const auto &e, m_textEvents) {
+            if ((track == 0 || e.m_track == track) &&
+                (type == TextType::None || e.m_type == type))
+            {
+                QString s = codec->toUnicode(e.m_text);
+                appendStringToList(output, s, e.m_type);
+            }
+        }
+    }
+    return output;
+}
+
+int Sequence::trackMaxPoints()
+{
+    int k = -1;
+    auto values = m_trkScore.values();
+    if (!values.isEmpty()) {
+        int v = *std::max_element(values.begin(), values.end());
+        k = m_trkScore.key(v, -1);
+    }
+    return k;
+}
+
+int Sequence::typeMaxPoints()
+{
+    int k = -1;
+    auto values = m_typScore.values();
+    if (!values.isEmpty()) {
+        int v = *std::max_element(values.begin(), values.end());
+        k = m_typScore.key(v, -1);
+    }
+    return k;
 }
 
 void Sequence::timeCalculations()
@@ -319,7 +444,7 @@ void Sequence::appendSMFEvent(MIDIEvent *ev)
 {
     long ticks = m_smf->getCurrentTime();
     ev->setTick(ticks);
-    ev->setTag(m_track);
+    ev->setTag(m_curTrack);
     m_list.append(ev);
     if (ticks > m_ticksDuration) {
         m_ticksDuration = ticks;
@@ -330,9 +455,9 @@ void Sequence::appendSMFEvent(MIDIEvent *ev)
 
 void Sequence::smfHeaderEvent(int format, int ntrks, int division)
 {
-    Q_UNUSED(format)
-    Q_UNUSED(ntrks)
     //qDebug() << "SMF Header:" << QString("Format=%1, Tracks=%2, Division=%3").arg(format).arg(ntrks).arg(division);
+    m_format = format;
+    m_numTracks = ntrks;
     m_division = division;
     m_beatLength = m_division;
     m_beatMax = 4;
@@ -413,17 +538,52 @@ void Sequence::smfSysexEvent(const QByteArray& data)
     appendSMFEvent(ev);
 }
 
-void Sequence::smfMetaEvent(int type, const QByteArray& data)
+void Sequence::addMetaData(int type, const QByteArray& data)
 {
-    if ( (type >= Sequence::FIRST_TYPE) && (type <= Sequence::Cue) ) {
-        //qint64 tick = m_smf->getCurrentTime();
-        //addMetaData(static_cast<Sequence::TextType>(type), data, tick);
-        switch ( type ) {
+    //if ((data.length() > 0) && (data[0] == '%'))
+        //return; // ignored?
+    int retval = uchardet_handle_data(m_handle, data.data(), data.length());
+    if (retval == 0)
+    {
+        if (m_trkScore.contains(m_curTrack)) {
+            m_trkScore[m_curTrack]++;
+        } else {
+            m_trkScore[m_curTrack] = 1;
+        }
+        if (m_typScore.contains(type)) {
+            m_typScore[type]++;
+        } else {
+            m_typScore[type] = 1;
+        }
+        TextType t = static_cast<TextType>(type);
+        if ((data.length() > 1) && (data[0] == '@')) {
+            switch(data[1]) {
+            case 'K':
+                t = KarFileType;
+                break;
+            case 'V':
+                t = KarVersion;
+                break;
+            case 'I':
+                t = KarInformation;
+                break;
+            case 'L':
+                t = KarLanguage;
+                break;
+            case 'T':
+                t = KarTitles;
+                break;
+            case 'W':
+                t = KarWhatever;
+                break;
+            }
+        }
+        m_textEvents.append(TextRec(m_curTrack, t, data));
+        switch ( t ) {
         case Sequence::Lyric:
-        case Sequence::Text:
-            if ((data.length() > 0) && (data[0] != '@') && (data[0] != '%') ) {
+        case Sequence::Text: {
                 TextEvent *ev = new TextEvent(data, type);
-                ev->setTag(type);
+                ev->setTag(t);
                 appendSMFEvent(ev);
             }
             break;
@@ -433,7 +593,21 @@ void Sequence::smfMetaEvent(int type, const QByteArray& data)
                 m_trackLabel = data;
             }
             break;
+        default:
+            break;
         }
+    } else {
+        m_uchardetErrors++;
+        qWarning() << "uchardet - handle data error:" << retval;
+    }
+}
+
+void Sequence::smfMetaEvent(int type, const QByteArray& data)
+{
+    if ( (data.length() > 0) &&
+         (type > Sequence::None) &&
+         (type <= Sequence::Cue) ) {
+        addMetaData(type, data);
     }
 }
 
@@ -464,7 +638,7 @@ void Sequence::smfTrackStartEvent()
     if (tick > m_ticksDuration) {
         m_ticksDuration = tick;
     }
-    m_track++;
+    m_curTrack++;
     m_trackLabel.clear();
     for(int i=0; i<MIDI_STD_CHANNELS; ++i) {
         m_channelEvents[i] = 0;
@@ -524,7 +698,7 @@ void Sequence::wrkErrorHandler(const QString& errorStr)
 
 void Sequence::wrkFileHeader(int /*verh*/, int /*verl*/)
 {
-    m_track = 0;
+    m_curTrack = 0;
     m_division = 120;
     m_beatLength = m_division;
     m_beatMax = 4;
@@ -786,11 +960,12 @@ bool Sequence::channelUsed(int channel)
 QString Sequence::channelLabel(int channel)
 {
     if ((channel >= 0) && (channel < MIDI_STD_CHANNELS) &&
-        !m_channelLabel[channel].isEmpty()) {
-        if (m_codec == NULL)
+        (!m_channelLabel[channel].isEmpty())) {
+        QTextCodec *codec = QTextCodec::codecForMib(detectedUchardetMIB());
+        if (codec == nullptr)
             return QString(m_channelLabel[channel]);
         else
-            return m_codec->toUnicode(m_channelLabel[channel]);
+            return codec->toUnicode(m_channelLabel[channel]);
     }
     return QString();
 }

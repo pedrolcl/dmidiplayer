@@ -491,6 +491,7 @@ selection-background-color: blue;</string>
      </property>
     </widget>
     <addaction name="actionOpen"/>
+    <addaction name="actionFileInfo"/>
     <addaction name="menuRecentFiles"/>
     <addaction name="separator"/>
     <addaction name="actionPlay"/>
@@ -783,6 +784,11 @@ selection-background-color: blue;</string>
    </property>
    <property name="visible">
     <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionFileInfo">
+   <property name="text">
+    <string>File Info</string>
    </property>
   </action>
  </widget>

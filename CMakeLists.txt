@@ -16,10 +16,12 @@
 
 cmake_minimum_required(VERSION 3.10)
 
-project(dmidiplayer
+project ( dmidiplayer
     VERSION 1.2.0
+    LANGUAGES CXX
     DESCRIPTION "Drumstick MIDI File Player Multiplatform Program"
-    LANGUAGES CXX)
+#   HOMEPAGE_URL "https://sourceforge.net/p/dmidiplayer/"
+)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -33,6 +35,9 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}")
 find_package (QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
 find_package (Qt${QT_VERSION_MAJOR} COMPONENTS Gui Widgets LinguistTools REQUIRED)
 find_package (Drumstick 2.0 COMPONENTS File RT Widgets REQUIRED)
+
+find_package( PkgConfig )
+pkg_check_modules( UCHARDET REQUIRED IMPORTED_TARGET uchardet )
 
 SET(SOURCES
     channels.cpp
@@ -131,17 +136,19 @@ message (STATUS "Drumstick MIDI File Player v${PROJECT_VERSION}
      Build configuration: ${CMAKE_BUILD_TYPE}
      Operating System: ${CMAKE_SYSTEM_NAME}
      Processor: ${CMAKE_SYSTEM_PROCESSOR}
-     Qt: ${QT_VERSION}
-     Drumstick: ${Drumstick_VERSION}"
+     Qt Version: ${QT_VERSION}
+     Drumstick Version: ${Drumstick_VERSION}
+     Uchardet Version: ${UCHARDET_VERSION}"
 )
 
-add_executable(${PROJECT_NAME} ${SOURCES})
+add_executable ( ${PROJECT_NAME} ${SOURCES} )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE
+target_link_libraries ( ${PROJECT_NAME} PRIVATE
     Qt5::Widgets
     Drumstick::File
     Drumstick::RT
     Drumstick::Widgets
+    PkgConfig::UCHARDET
 )
 
 if (WIN32)

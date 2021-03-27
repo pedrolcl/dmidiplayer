@@ -114,6 +114,7 @@ public slots:
 
     void slotAboutTranslation();
     void slotSwitchLanguage(QAction *action);
+    void slotFileInfo();
 
 private:
     void createLanguageMenu();
