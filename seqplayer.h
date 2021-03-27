@@ -65,6 +65,7 @@ public slots:
     void setPatch(int channel, int patch);
 
 signals:
+    void songStarted();
     void songFinished();
     void songStopped();
     void songEchoTime(long millis, long ticks);
@@ -77,7 +78,7 @@ signals:
      */
     void tempoChanged(const qreal tempo);
     void timeSignatureChanged(const int numerator, const int denominator);
-    void midiText(const int type, const QString &txt);
+    void midiText(const int track, const int type, const QByteArray &text);
     void midiNoteOn(const int chan, const int note, const int vel);
     void midiNoteOff(const int chan, const int note, const int vel);
     void midiController(const int chan, const int control, const int value);

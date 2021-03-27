@@ -91,9 +91,8 @@ public:
     int typeMaxPoints();
 
     QString currentFile() const;
-    QStringList getText(const int track, const TextType type, const int mib);
+    QByteArray getRawText(const int track, const TextType type);
     QStringList getText(const TextType type, const int mib);
-
 
 signals:
     void loadingStart(int size);

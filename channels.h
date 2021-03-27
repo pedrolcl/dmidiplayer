@@ -27,7 +27,6 @@
 #include "winsnap.h"
 #endif
 
-
 class QLabel;
 class QToolButton;
 class QComboBox;

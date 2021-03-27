@@ -718,7 +718,7 @@ selection-background-color: blue;</string>
     <string>Show or Hide Lyrics and Texts</string>
    </property>
    <property name="visible">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
   </action>
   <action name="actionPlaylist">
@@ -773,6 +773,9 @@ selection-background-color: blue;</string>
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Rhythm</string>
    </property>
@@ -783,7 +786,7 @@ selection-background-color: blue;</string>
     <string>Show or Hide Rhythm</string>
    </property>
    <property name="visible">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
   </action>
   <action name="actionFileInfo">

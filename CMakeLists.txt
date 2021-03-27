@@ -55,6 +55,8 @@ SET(SOURCES
     iconutils.h
     instrumentset.cpp
     instrumentset.h
+    lyrics.cpp
+    lyrics.h
     pianola.cpp
     pianola.h
     playerabout.cpp

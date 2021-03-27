@@ -252,10 +252,10 @@ int Sequence::getNumTracks() const
 void Sequence::appendStringToList(QStringList &list, QString &s, TextType type)
 {
     if (type == Text || type >= KarFileType)
-        s.replace(QRegExp("@[IKLTVW]"), QString(QChar::LineSeparator));
+        s.replace(QRegExp("@[IKLTVW]"), "\n");
     if (type == Text || type == Lyric)
-        s.replace(QRegExp("[/\\\\]+"), QString(QChar::LineSeparator));
-    s.replace(QRegExp("[\r\n]+"), QString(QChar::LineSeparator));
+        s.replace(QRegExp("[/\\\\]+"), "\n");
+    s.replace(QRegExp("[\r\n]+"), "\n");
     s.replace('\0', QChar::Space);
     list.append(s);
 }
@@ -275,17 +275,15 @@ QStringList Sequence::getText(const TextType type, const int mib)
      return output;
 }
 
-QStringList Sequence::getText(const int track, const TextType type, const int mib)
+QByteArray Sequence::getRawText(const int track, const TextType type)
 {
-    QStringList output;
-    QTextCodec *codec = QTextCodec::codecForMib(mib);
-    if (codec != nullptr && (type < TextType::KarFileType) ) {
+    QByteArray output;
+    if (type < TextType::KarFileType) {
         foreach(const auto &e, m_textEvents) {
             if ((track == 0 || e.m_track == track) &&
                 (type == TextType::None || e.m_type == type))
             {
-                QString s = codec->toUnicode(e.m_text);
-                appendStringToList(output, s, e.m_type);
+                output.append(e.m_text);
             }
         }
     }
@@ -582,8 +580,8 @@ void Sequence::addMetaData(int type, const QByteArray& data)
         switch ( t ) {
         case Sequence::Lyric:
         case Sequence::Text: {
-                TextEvent *ev = new TextEvent(data, type);
-                ev->setTag(t);
+                TextEvent *ev = new TextEvent(data, t);
+                ev->setTag(m_curTrack);
                 appendSMFEvent(ev);
             }
             break;

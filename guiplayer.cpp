@@ -82,6 +82,8 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     connect(m_ui->spinPitch, QOverload<int>::of(&QSpinBox::valueChanged), this, &GUIPlayer::pitchShift);
     connect(m_ui->toolBar->toggleViewAction(), &QAction::toggled,
             m_ui->actionShowToolbar, &QAction::setChecked);
+    connect(m_ui->actionLyrics, &QAction::toggled, this, &GUIPlayer::slotShowLyrics);
+    connect(m_ui->actionRhythm, &QAction::toggled, this, &GUIPlayer::slotShowRhythm);
     connect(m_ui->actionPianoPlayer, &QAction::toggled, this, &GUIPlayer::slotShowPianola);
     connect(m_ui->actionChannels, &QAction::toggled, this, &GUIPlayer::slotShowChannels);
 
@@ -92,10 +94,7 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     m_ui->actionPause->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/pause.png")));
     m_ui->actionMIDISetup->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/setup.png")));
 
-    //Settings::instance()->ReadSettings();
     createLanguageMenu();
-    restoreGeometry(Settings::instance()->mainWindowGeometry());
-    restoreState(Settings::instance()->mainWindowState());
     m_ui->actionShowStatusbar->setChecked(Settings::instance()->showStatusBar());
     m_ui->actionShowToolbar->setChecked(Settings::instance()->showToolBar());
 
@@ -122,20 +121,25 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
 
     m_pianola = new Pianola(this);
     connect(m_pianola, &Pianola::closed, this, &GUIPlayer::slotPianolaClosed);
-    connect(m_player, &SequencePlayer::midiNoteOn, m_pianola.data(), &Pianola::slotNoteOn);
-    connect(m_player, &SequencePlayer::midiNoteOff, m_pianola.data(), &Pianola::slotNoteOff);
+    connect(m_player, &SequencePlayer::midiNoteOn, m_pianola, &Pianola::slotNoteOn);
+    connect(m_player, &SequencePlayer::midiNoteOff, m_pianola, &Pianola::slotNoteOff);
 
     m_channels = new Channels(this);
-    connect(m_channels.data(), &Channels::closed, this, &GUIPlayer::slotChannelsClosed);
-    connect(m_player, &SequencePlayer::midiNoteOn, m_channels.data(), &Channels::slotNoteOn);
-    connect(m_player, &SequencePlayer::midiNoteOff, m_channels.data(), &Channels::slotNoteOff);
-    connect(m_player, &SequencePlayer::midiProgram, m_channels.data(), &Channels::slotPatch);
-    connect(m_channels.data(), &Channels::name, m_pianola.data(), &Pianola::slotLabel);
+    connect(m_channels, &Channels::closed, this, &GUIPlayer::slotChannelsClosed);
+    connect(m_player, &SequencePlayer::midiNoteOn, m_channels, &Channels::slotNoteOn);
+    connect(m_player, &SequencePlayer::midiNoteOff, m_channels, &Channels::slotNoteOff);
+    connect(m_player, &SequencePlayer::midiProgram, m_channels, &Channels::slotPatch);
+    connect(m_channels, &Channels::name, m_pianola, &Pianola::slotLabel);
 
-    connect(m_channels.data(), &Channels::mute, m_player, &SequencePlayer::setMuted);
-    connect(m_channels.data(), &Channels::volume, m_player, &SequencePlayer::setVolume);
-    connect(m_channels.data(), &Channels::lock, m_player, &SequencePlayer::setLocked);
-    connect(m_channels.data(), &Channels::patch, m_player, &SequencePlayer::setPatch);
+    connect(m_channels, &Channels::mute, m_player, &SequencePlayer::setMuted);
+    connect(m_channels, &Channels::volume, m_player, &SequencePlayer::setVolume);
+    connect(m_channels, &Channels::lock, m_player, &SequencePlayer::setLocked);
+    connect(m_channels, &Channels::patch, m_player, &SequencePlayer::setPatch);
+
+    m_lyrics = new Lyrics(this);
+    connect(m_lyrics, &Lyrics::closed, this, &GUIPlayer::slotLyricsClosed);
+    connect(m_player, &SequencePlayer::songStarted, m_lyrics, &Lyrics::displayText);
+    connect(m_player, &SequencePlayer::midiText, m_lyrics, &Lyrics::slotMidiText);
 
     try {
         BackendManager man;
@@ -342,6 +346,9 @@ void GUIPlayer::openFile(const QString& fileName)
                     m_channels->setChannelName(i, m_player->song()->channelLabel(i));
                 }
             }
+            if (m_lyrics != nullptr) {
+                m_lyrics->initSong( m_player->song() );
+            }
         }
     }
 }
@@ -385,7 +392,7 @@ void GUIPlayer::playerFinished()
 
 void GUIPlayer::playerStopped()
 {
-    //qDebug() << Q_FUNC_INFO;
+    qDebug() << Q_FUNC_INFO;
     m_playerThread.wait();
     m_player->allNotesOff();
     if (m_pianola != nullptr) {
@@ -513,7 +520,7 @@ void GUIPlayer::quit()
 
 void GUIPlayer::slotShowPianola(bool checked)
 {
-    if (m_pianola != 0) {
+    if (m_pianola != nullptr) {
         m_pianola->setVisible(checked);
     }
 }
@@ -535,6 +542,23 @@ void GUIPlayer::slotChannelsClosed()
     m_ui->actionChannels->setChecked(false);
 }
 
+void GUIPlayer::slotShowLyrics(bool checked)
+{
+    if (m_lyrics != nullptr) {
+        m_lyrics->setVisible(checked);
+    }
+}
+
+void GUIPlayer::slotLyricsClosed()
+{
+    m_ui->actionLyrics->setChecked(false);
+}
+
+void GUIPlayer::slotShowRhythm(bool checked)
+{
+    m_ui->rhythm->setVisible(checked);
+}
+
 bool GUIPlayer::nativeEvent(const QByteArray &eventType, void *message, long *result)
 {
 #if defined(Q_OS_WINDOWS)
@@ -544,6 +568,16 @@ bool GUIPlayer::nativeEvent(const QByteArray &eventType, void *message, long *re
     }
 #endif
     return QWidget::nativeEvent(eventType, message, result);
+}
+
+void GUIPlayer::showEvent(QShowEvent *event)
+{
+    QMainWindow::showEvent(event);
+    if (m_firstShown) {
+        restoreGeometry(Settings::instance()->mainWindowGeometry());
+        restoreState(Settings::instance()->mainWindowState());
+        m_firstShown = false;
+    }
 }
 
 void GUIPlayer::createLanguageMenu()

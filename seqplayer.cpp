@@ -23,7 +23,7 @@
 #include <thread>
 #include <chrono>
 
-//#include <QDebug>
+#include <QDebug>
 #include <QAbstractEventDispatcher>
 #include <QThread>
 #include <QtMath>
@@ -85,8 +85,9 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
     if (m_port == nullptr)
         return;
     if (ev->isText()) {
-        //TextEvent* event = static_cast<TextEvent*>(ev);
-        //qDebug() << m_songPosition << event->tick() << " Text(" << event->textType() << "): " << event->text();
+        TextEvent* event = static_cast<TextEvent*>(ev);
+        //qDebug() << m_songPosition << event->tick() << " Text(" << event->textType() << "): " << event->data();
+        emit midiText(event->tag(), event->textType(), event->data());
     } else
     if (ev->isTempo()) {
         TempoEvent* event = static_cast<TempoEvent*>(ev);
@@ -205,6 +206,7 @@ void SequencePlayer::playerLoop()
     milliseconds deltaTime{0}, echoDelta{ m_echoResolution };
     Clock::time_point currentTime{ Clock::now() },
         nextTime{ currentTime }, nextEcho{ currentTime };
+    emit songStarted();
     QAbstractEventDispatcher* dispatcher = thread()->eventDispatcher();
     QEventLoop::ProcessEventsFlags eventFilter = QEventLoop::ExcludeUserInputEvents;
     dispatcher->processEvents(eventFilter);

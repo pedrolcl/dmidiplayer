@@ -32,6 +32,7 @@
 #include "recentfileshelper.h"
 #include "pianola.h"
 #include "channels.h"
+#include "lyrics.h"
 
 #if defined(Q_OS_WINDOWS)
 #include "winsnap.h"
@@ -85,6 +86,7 @@ protected:
     void dropEvent( QDropEvent* event ) override;
     void closeEvent( QCloseEvent* event ) override;
     bool nativeEvent( const QByteArray &eventType, void *message, long *result ) override;
+    void showEvent(QShowEvent *event) override;
 
 public slots:
     void about();
@@ -111,6 +113,9 @@ public slots:
     void slotPianolaClosed();
     void slotShowChannels(bool checked);
     void slotChannelsClosed();
+    void slotShowLyrics(bool checked);
+    void slotLyricsClosed();
+    void slotShowRhythm(bool checked);
 
     void slotAboutTranslation();
     void slotSwitchLanguage(QAction *action);
@@ -130,8 +135,10 @@ private:
     QPointer<Connections> m_connections;
     QPointer<Pianola> m_pianola;
     QPointer<Channels> m_channels;
+    QPointer<Lyrics> m_lyrics;
     QTranslator *m_trq, *m_trp, *m_trl;
     QAction *m_currentLang;
+    bool m_firstShown{true};
 #if defined(Q_OS_WINDOWS)
     WinSnap m_snapper;
 #endif

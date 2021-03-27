@@ -211,8 +211,8 @@ TextEvent::TextEvent()
  * @param text The event's text
  * @param textType The SMF text type
  */
-TextEvent::TextEvent(const QString& text, const int textType)
-    : VariableEvent(text.toUtf8()), m_textType(textType)
+TextEvent::TextEvent(const QByteArray &text, const int textType)
+    : VariableEvent(text), m_textType(textType)
 { }
 
 /**
@@ -223,15 +223,6 @@ TextEvent::TextEvent(const QString& text, const int textType)
 TextEvent::TextEvent(const unsigned int datalen, char* dataptr)
     : VariableEvent(datalen, dataptr), m_textType(1)
 { }
-
-/**
- * Gets the event's text content.
- * @return The text content.
- */
-QString TextEvent::text() const
-{
-    return QString::fromUtf8(m_data.data(), m_data.size());
-}
 
 /**
  * Gets the event's SMF text type.

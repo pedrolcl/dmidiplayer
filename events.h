@@ -368,10 +368,9 @@ class TextEvent : public VariableEvent
 public:
     TextEvent();
     TextEvent(const unsigned int datalen, char* dataptr);
-    explicit TextEvent(const QString& text, const int textType = 1);
+    explicit TextEvent(const QByteArray& text, const int textType = 1);
     virtual bool isText() { return true; }
     virtual TextEvent *clone() { return new TextEvent(*this); }
-    QString text() const;
     int textType() const;
 protected:
     int m_textType;

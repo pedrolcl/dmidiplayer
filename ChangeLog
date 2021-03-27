@@ -3,6 +3,7 @@
       (see https://www.freedesktop.org/wiki/Software/uchardet/)
     * Lyrics and other metadata processing
     * FileInfo dialog displaying Karaoke metadata
+    * Implemented Lyrics view.
 
 2021-03-20 Release v1.1.0:
 
