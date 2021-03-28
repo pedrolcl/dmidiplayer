@@ -16,7 +16,7 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QDebug>
+//#include <QDebug>
 #include <QApplication>
 #include <QWidget>
 #include <QCloseEvent>
@@ -226,12 +226,17 @@ void Lyrics::populateCodecsCombo()
     }
 }
 
-void Lyrics::populateTracksCombo(int numTracks)
+void Lyrics::populateTracksCombo()
 {
     m_comboTrack->clear();
     m_comboTrack->addItem(tr("All Tracks"));
-    for(int i=0; i < numTracks; ++i) {
-        m_comboTrack->addItem(tr("Track %1").arg(i+1));
+    for(int track = 1; track <= m_song->getNumTracks(); ++track) {
+        QString name = sanitizeText( m_song->trackName(track) );
+        if (name.isEmpty()) {
+            m_comboTrack->addItem(tr("Track %1").arg(track));
+        } else {
+            m_comboTrack->addItem(QString::number(track) + ": " + name);
+        }
     }
 }
 
@@ -242,7 +247,7 @@ void Lyrics::displayText()
     QByteArray text = m_song->getRawText(m_track, static_cast<Sequence::TextType>(m_type));
     QString s = sanitizeText(text);
     //qDebug() << Q_FUNC_INFO << s;
-    m_textViewer->setPlainText(s);
+    m_textViewer->setPlainText(s.trimmed());
 }
 
 void Lyrics::initSong( Sequence *song )
@@ -250,18 +255,17 @@ void Lyrics::initSong( Sequence *song )
     //qDebug() << Q_FUNC_INFO;
     m_song = song;
     setWindowTitle(tr("Lyrics Viewer (%1)").arg(m_song->currentFile()));
-    populateTracksCombo(song->getNumTracks());
     m_mib = song->detectedUchardetMIB();
     m_track = song->trackMaxPoints();
     m_type = song->typeMaxPoints();
-    //m_text = text;
     m_textViewer->clear();
-    m_comboTrack->setCurrentIndex(m_track);
-    m_comboType->setCurrentIndex(m_type);
     // selected Codec:
     int idx = m_comboCodec->findData(m_mib);
     m_comboCodec->setCurrentIndex(idx);
     m_codec = QTextCodec::codecForMib(m_mib);
+    populateTracksCombo();
+    m_comboTrack->setCurrentIndex(m_track);
+    m_comboType->setCurrentIndex(m_type);
     // populate text browser:
     displayText();
 }

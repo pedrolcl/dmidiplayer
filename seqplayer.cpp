@@ -23,7 +23,7 @@
 #include <thread>
 #include <chrono>
 
-#include <QDebug>
+//#include <QDebug>
 #include <QAbstractEventDispatcher>
 #include <QThread>
 #include <QtMath>

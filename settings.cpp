@@ -18,7 +18,7 @@
 
 #include <QFileInfo>
 #include <QDir>
-#include <QDebug>
+//#include <QDebug>
 #include <QTouchDevice>
 #include <QLibraryInfo>
 

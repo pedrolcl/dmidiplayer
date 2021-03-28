@@ -176,6 +176,7 @@ void Sequence::clear()
     m_textEvents.clear();
     m_trkScore.clear();
     m_typScore.clear();
+    m_trkName.clear();
     while (!m_list.isEmpty()) {
         delete m_list.takeFirst();
     }
@@ -310,6 +311,11 @@ int Sequence::typeMaxPoints()
         k = m_typScore.key(v, -1);
     }
     return k;
+}
+
+QByteArray Sequence::trackName(int track) const
+{
+    return m_trkName.value(track);
 }
 
 void Sequence::timeCalculations()
@@ -589,6 +595,12 @@ void Sequence::addMetaData(int type, const QByteArray& data)
         case Sequence::InstrumentName:
             if (m_trackLabel.isEmpty()) {
                 m_trackLabel = data;
+            }
+            if (!m_trkName.contains(m_curTrack)) {
+                m_trkName[m_curTrack] = data;
+            } else {
+                m_trkName[m_curTrack].append(' ');
+                m_trkName[m_curTrack].append(data);
             }
             break;
         default:

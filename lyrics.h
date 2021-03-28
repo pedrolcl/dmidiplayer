@@ -62,7 +62,7 @@ protected:
 
 private: // methods
     void populateCodecsCombo();
-    void populateTracksCombo(int numTracks);
+    void populateTracksCombo();
     QString sanitizeText(const QByteArray& text);
 
 private: // member vars

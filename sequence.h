@@ -89,6 +89,7 @@ public:
     int getNumTracks() const;
     int trackMaxPoints();
     int typeMaxPoints();
+    QByteArray trackName(int track) const;
 
     QString currentFile() const;
     QByteArray getRawText(const int track, const TextType type);
@@ -287,8 +288,9 @@ private: // members
     int m_channelEvents[drumstick::rt::MIDI_STD_CHANNELS];
     QByteArray m_channelLabel[drumstick::rt::MIDI_STD_CHANNELS];
     int m_channelPatches[drumstick::rt::MIDI_STD_CHANNELS];
-    QMap<int,int> m_trkScore;
-    QMap<int,int> m_typScore;
+    QMap<int, QByteArray> m_trkName;
+    QMap<int, int> m_trkScore;
+    QMap<int, int> m_typScore;
 };
 
 #endif // SEQUENCE_H
