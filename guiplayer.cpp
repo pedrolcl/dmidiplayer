@@ -636,6 +636,7 @@ void GUIPlayer::retranslateUi()
     m_connections->retranslateUi();
     m_pianola->retranslateUi();
     m_channels->retranslateUi();
+    m_lyrics->retranslateUi();
 }
 
 void GUIPlayer::slotSwitchLanguage(QAction *action)
