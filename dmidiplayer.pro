@@ -1,10 +1,11 @@
 TEMPLATE = app
 TARGET = dmidiplayer
-VERSION = 1.1.0
+VERSION = 1.2.0
 QT += gui widgets
-CONFIG += qt thread exceptions c++11
+CONFIG += qt thread exceptions c++11 link_pkgconfig
 INCLUDEPATH += $$(DRUMSTICKINCLUDES)
 LIBS += -L $$(DRUMSTICKLIBS) -ldrumstick-rt -ldrumstick-file -ldrumstick-widgets
+PKGCONFIG += uchardet
 DEFINES += VERSION=$$VERSION
 FORMS += guiplayer.ui \
     playerabout.ui \
@@ -16,6 +17,7 @@ HEADERS += \
     guiplayer.h \
     iconutils.h \
     instrumentset.h \
+    lyrics.h \
     pianola.h \
     playerabout.h \
     recentfileshelper.h \
@@ -31,6 +33,7 @@ SOURCES += \
     guiplayer.cpp \
     iconutils.cpp \
     instrumentset.cpp \
+    lyrics.cpp \
     pianola.cpp \
     playerabout.cpp \
     playermain.cpp \

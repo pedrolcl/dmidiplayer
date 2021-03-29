@@ -14,5 +14,6 @@
         <file alias="dmidiplayer.png">icons/dmidiplayer_64x64.png</file>
         <file>resources/locked.png</file>
         <file>resources/unlocked.png</file>
+        <file>resources/wrench.png</file>
     </qresource>
 </RCC>

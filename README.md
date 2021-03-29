@@ -22,6 +22,12 @@ New in v1.1.0:
 * Language choice menu options
 * Command line options: --portable and --file (for portable configuration)
 
+New in v1.2.0:
+
+* Lyrics view (karaoke window)
+* Character encoding detection
+* File Info (metadata) dialog
+
 This multiplatform version offers equivalent functionality replacing Drumstick::ALSA by Drumstick::RT. The MIDI events scheduling/timing is performed inside the program with the only  help of the C++ standard library (threads and chrono). The MIDI output still has access to each operating system's MIDI infrastructure, but also to additional backends like ipMidi and soft synths.
 
 Alright, these are the build requirements:

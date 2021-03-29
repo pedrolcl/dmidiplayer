@@ -34,6 +34,7 @@
 #include <QTextCodec>
 #include <QScrollBar>
 #include <drumstick/settingsfactory.h>
+#include "iconutils.h"
 #include "lyrics.h"
 #include "sequence.h"
 
@@ -124,6 +125,7 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
 
     m_fontButton = new QToolButton(m_frame);
     m_fontButton->setObjectName(QString::fromUtf8("fontButton"));
+    m_fontButton->setIcon(IconUtils::GetPixmap(this,":/resources/wrench.png"));
 
     m_horizontalLayout->addWidget(m_fontButton);
 

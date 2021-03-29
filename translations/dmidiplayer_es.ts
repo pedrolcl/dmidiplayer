@@ -122,6 +122,50 @@ CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de
         <source>The language for this application is going to change to %1. Do you want to continue?</source>
         <translation>El idioma para esta aplicación está a punto de cambiar a %1. ¿Desea continuar?</translation>
     </message>
+    <message>
+        <source>&lt;b&gt;No file loaded&lt;/b&gt;</source>
+        <translation>&lt;b&gt;Sin archivo&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;File:&lt;/b&gt;&lt;br&gt;%1&lt;br&gt;</source>
+        <translation>&lt;b&gt;Archivo:&lt;/b&gt;&lt;br&gt;%1&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;br&gt;</source>
+        <translation>&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Copyright:&lt;/b&gt;%1&lt;br&gt;</source>
+        <translation>&lt;b&gt;Copyright:&lt;/b&gt;%1&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Karaoke type:&lt;/b&gt;%1&lt;br&gt;</source>
+        <translation>&lt;b&gt;Tipo de Karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Karaoke version:&lt;/b&gt;%1&lt;br&gt;</source>
+        <translation>&lt;b&gt;Versión de Karaoke :&lt;/b&gt;%1&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Karaoke info:&lt;/b&gt;%1&lt;br&gt;</source>
+        <translation>&lt;b&gt;Información de Karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Karaoke language:&lt;/b&gt;%1&lt;br&gt;</source>
+        <translation>&lt;b&gt;Idiooma del Karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Karaoke title:&lt;/b&gt;%1&lt;br&gt;</source>
+        <translation>&lt;b&gt;Título del Karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Karaoke things:&lt;/b&gt;%1&lt;br&gt;</source>
+        <translation>&lt;b&gt;Cosas del Karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>SMF Information</source>
+        <translation>Información del SMF</translation>
+    </message>
 </context>
 <context>
     <name>GUIPlayerClass</name>
@@ -352,6 +396,10 @@ CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de
     <message>
         <source>&amp;Language</source>
         <translation>&amp;Idioma</translation>
+    </message>
+    <message>
+        <source>File Info</source>
+        <translation>Información del archivo</translation>
     </message>
 </context>
 <context>
@@ -871,6 +919,81 @@ CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de
     <message>
         <source>Percussion %1</source>
         <translation>Percusión %1</translation>
+    </message>
+</context>
+<context>
+    <name>Lyrics</name>
+    <message>
+        <source>Lyrics Viewer</source>
+        <translation>Visor de letras</translation>
+    </message>
+    <message>
+        <source>Lyrics</source>
+        <translation>Letras</translation>
+    </message>
+    <message>
+        <source>Track:</source>
+        <translation>Pista:</translation>
+    </message>
+    <message>
+        <source>Type:</source>
+        <translation>Tipo:</translation>
+    </message>
+    <message>
+        <source>All Types</source>
+        <translation>Todos los tipos</translation>
+    </message>
+    <message>
+        <source>Texts</source>
+        <translation>Textos</translation>
+    </message>
+    <message>
+        <source>Copyright Notice</source>
+        <translation>Nota de copyright</translation>
+    </message>
+    <message>
+        <source>Sequence Name</source>
+        <translation>Nombre de secuencia</translation>
+    </message>
+    <message>
+        <source>Instrument Name</source>
+        <translation>Nombre de instrumento</translation>
+    </message>
+    <message>
+        <source>Lyric Events</source>
+        <translation>Eventos de letra</translation>
+    </message>
+    <message>
+        <source>Marker</source>
+        <translation>Marcador</translation>
+    </message>
+    <message>
+        <source>Cue Point</source>
+        <translation>Señal</translation>
+    </message>
+    <message>
+        <source>Encoding:</source>
+        <translation>Codificación:</translation>
+    </message>
+    <message>
+        <source>Font:</source>
+        <translation>Fuente:</translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <source>All Tracks</source>
+        <translation>Todas las pistas</translation>
+    </message>
+    <message>
+        <source>Track %1</source>
+        <translation>Pista %1</translation>
+    </message>
+    <message>
+        <source>Lyrics Viewer (%1)</source>
+        <translation>Visor de letra (%1)</translation>
     </message>
 </context>
 <context>
