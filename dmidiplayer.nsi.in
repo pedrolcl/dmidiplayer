@@ -10,6 +10,7 @@ RequestExecutionLevel admin
 !define BINARY_FILES "@CMAKE_BINARY_DIR@"
 !define FUIDSYNTH_FILES "@FLUIDSYNTH_PREFIX@"
 !define DRUMSTICK_FILES "@Drumstick_DIR@"
+!define UCHARDET_FILES "@UCHARDET_PREFIX@"
 !define REGKEY "SOFTWARE\$(^Name)"
 !define VERSION @PROJECT_VERSION@
 !define PROGNAME "@PROJECT_NAME@"
@@ -177,6 +178,7 @@ Section -Main SEC0000
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libinstpatch-2.dll $INSTDIR\libinstpatch-2.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libintl-8.dll $INSTDIR\libintl-8.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libsndfile-1.dll $INSTDIR\libsndfile-1.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${UCHARDET_FILES}\bin\libuchardet.dll $INSTDIR\libuchardet.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Core.dll $INSTDIR\Qt5Core.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Gui.dll $INSTDIR\Qt5Gui.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Network.dll $INSTDIR\Qt5Network.dll $INSTDIR
@@ -256,7 +258,6 @@ Section /o -un.Main UNSEC0000
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick2\libdrumstick-rt-net-out.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick2\libdrumstick-rt-win-in.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick2\libdrumstick-rt-win-out.dll
-
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libfluidsynth-2.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libglib-2.0-0.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libgobject-2.0-0.dll
@@ -264,7 +265,7 @@ Section /o -un.Main UNSEC0000
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libinstpatch-2.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libintl-8.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libsndfile-1.dll
-
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libuchardet.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt5Core.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt5Gui.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt5Network.dll
@@ -277,7 +278,6 @@ Section /o -un.Main UNSEC0000
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libgcc_s_seh-1.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libstdc++-6.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libwinpthread-1.dll
-
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\bearer\qgenericbearer.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\iconengines\qsvgicon.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qgif.dll
@@ -304,7 +304,6 @@ SectionEnd
 Section -un.post UNSEC0001
     DeleteRegKey HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
     Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Uninstall $(^Name).lnk"
-    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\fluidsynth.lnk"
     Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk"
     Delete /REBOOTOK $INSTDIR\uninstall.exe
     DeleteRegValue HKLM "${REGKEY}" StartMenuGroup
@@ -324,11 +323,6 @@ Function .onInit
         MessageBox MB_OK|MB_ICONSTOP "Sorry, this setup package is for 64 bit systems only."
         Quit
     ${EndIf}
-    Call GetDXVersion
-    Pop $R3
-    IntCmp $R3 900 +3 0 +3
-        MessageBox "MB_OK" "Requires DirectX 9.0 or later."
-        Abort
     InitPluginsDir
     Push $0
     ReadRegStr $0 HKLM "${REGKEY}" Path
@@ -346,23 +340,3 @@ Function un.onInit
     !insertmacro SELECT_UNSECTION Main ${UNSEC0000}
 FunctionEnd
 
-Function GetDXVersion
-    Push $0
-    Push $1
- 
-    ReadRegStr $0 HKLM "Software\Microsoft\DirectX" "Version"
-    IfErrors noDirectX
- 
-    StrCpy $1 $0 2 5    ; get the minor version
-    StrCpy $0 $0 2 2    ; get the major version
-    IntOp $0 $0 * 100   ; $0 = major * 100 + minor
-    IntOp $0 $0 + $1
-    Goto done
- 
-    noDirectX:
-      StrCpy $0 0
- 
-    done:
-      Pop $1
-      Exch $0
-FunctionEnd

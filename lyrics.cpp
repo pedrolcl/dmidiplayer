@@ -138,8 +138,8 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     font.setPointSize(36);
     m_textViewer->setFont(font);
     m_textViewer->setReadOnly(true);
-    m_normalColor = qApp->palette().color(QPalette::BrightText);
-    m_otherColor = m_normalColor.darker(300);
+    m_normalColor = qApp->palette().color(QPalette::Text);
+    m_otherColor = Qt::gray;
     m_gridLayout->addWidget(m_textViewer, 1, 0, 1, 1);
 
     this->setCentralWidget(m_centralwidget);

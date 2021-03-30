@@ -38,6 +38,7 @@ if (WIN32 AND WINDEPLOYQT_EXECUTABLE)
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND "${WINDEPLOYQT_EXECUTABLE}"
                 #--verbose=2
+                "-network"
                 "$<TARGET_FILE:${PROJECT_NAME}>"
         COMMENT "Running windeployqt..."
     )
