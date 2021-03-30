@@ -26,7 +26,7 @@
 #include <drumstick/qsmf.h>
 #include <drumstick/qwrk.h>
 #include <drumstick/rtmidioutput.h>
-#include <uchardet/uchardet.h>
+#include <uchardet.h>
 #include "events.h"
 
 class Sequence : public QObject
