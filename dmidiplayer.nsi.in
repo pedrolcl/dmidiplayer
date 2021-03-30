@@ -125,7 +125,7 @@ Var LibInstall
 !insertmacro MUI_LANGUAGE "Hindi"
 
 # Installer attributes
-OutFile ${PROGNAME}-${VERSION}-setup.exe
+OutFile ${PROGNAME}-${VERSION}-win-x64-setup.exe
 #InstallDir $PROGRAMFILES\${PROGNAME}
 CRCCheck on
 XPStyle on
