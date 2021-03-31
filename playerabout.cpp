@@ -24,7 +24,14 @@ About::About(QWidget *parent)
 {
     ui.setupUi(this);
     QString aboutText = ui.AboutTextView->toHtml();
-    aboutText.replace("%VERSION%", QT_STRINGIFY(VERSION));
+    QString strver(QT_STRINGIFY(VERSION));
+#ifdef REVISION
+    strver.append("<br/>");
+    strver.append(tr("Revision"));
+    strver.append("&nbsp;");
+    strver.append(QT_STRINGIFY(REVISION));
+#endif
+    aboutText.replace("%VERSION%", strver);
     aboutText.replace("%PROJECT_DESCRIPTION%", tr("Drumstick MIDI File Player Multiplatform"));
     aboutText.replace("%DRUMSTICK_VERSION%", drumstick::rt::BackendManager::QSTR_DRUMSTICK_VERSION);
     ui.AboutTextView->setHtml(aboutText);

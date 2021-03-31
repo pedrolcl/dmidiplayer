@@ -4,7 +4,12 @@
 <context>
     <name>About</name>
     <message>
-        <location filename="../playerabout.cpp" line="28"/>
+        <location filename="../playerabout.cpp" line="30"/>
+        <source>Revision</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playerabout.cpp" line="35"/>
         <source>Drumstick MIDI File Player Multiplatform</source>
         <translation>Мультиплатформенный проигрыватель файлов Drumstick MIDI</translation>
     </message>
@@ -131,74 +136,74 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="646"/>
+        <location filename="../guiplayer.cpp" line="647"/>
         <source>Language Changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="647"/>
+        <location filename="../guiplayer.cpp" line="648"/>
         <source>The language for this application is going to change to %1. Do you want to continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="665"/>
+        <location filename="../guiplayer.cpp" line="666"/>
         <source>&lt;b&gt;No file loaded&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="668"/>
+        <location filename="../guiplayer.cpp" line="669"/>
         <source>&lt;b&gt;File:&lt;/b&gt;&lt;br&gt;%1&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="670"/>
-        <location filename="../guiplayer.cpp" line="674"/>
-        <location filename="../guiplayer.cpp" line="678"/>
-        <location filename="../guiplayer.cpp" line="682"/>
-        <location filename="../guiplayer.cpp" line="686"/>
-        <location filename="../guiplayer.cpp" line="690"/>
-        <location filename="../guiplayer.cpp" line="694"/>
-        <location filename="../guiplayer.cpp" line="698"/>
+        <location filename="../guiplayer.cpp" line="671"/>
+        <location filename="../guiplayer.cpp" line="675"/>
+        <location filename="../guiplayer.cpp" line="679"/>
+        <location filename="../guiplayer.cpp" line="683"/>
+        <location filename="../guiplayer.cpp" line="687"/>
+        <location filename="../guiplayer.cpp" line="691"/>
+        <location filename="../guiplayer.cpp" line="695"/>
+        <location filename="../guiplayer.cpp" line="699"/>
         <source>&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="672"/>
+        <location filename="../guiplayer.cpp" line="673"/>
         <source>&lt;b&gt;Copyright:&lt;/b&gt;%1&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="676"/>
+        <location filename="../guiplayer.cpp" line="677"/>
         <source>&lt;b&gt;Karaoke type:&lt;/b&gt;%1&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="680"/>
+        <location filename="../guiplayer.cpp" line="681"/>
         <source>&lt;b&gt;Karaoke version:&lt;/b&gt;%1&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="684"/>
+        <location filename="../guiplayer.cpp" line="685"/>
         <source>&lt;b&gt;Karaoke info:&lt;/b&gt;%1&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="688"/>
+        <location filename="../guiplayer.cpp" line="689"/>
         <source>&lt;b&gt;Karaoke language:&lt;/b&gt;%1&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="692"/>
+        <location filename="../guiplayer.cpp" line="693"/>
         <source>&lt;b&gt;Karaoke title:&lt;/b&gt;%1&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="696"/>
+        <location filename="../guiplayer.cpp" line="697"/>
         <source>&lt;b&gt;Karaoke things:&lt;/b&gt;%1&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="699"/>
+        <location filename="../guiplayer.cpp" line="700"/>
         <source>SMF Information</source>
         <translation type="unfinished"></translation>
     </message>

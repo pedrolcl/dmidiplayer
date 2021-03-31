@@ -7,6 +7,10 @@
         <source>Drumstick MIDI File Player Multiplatform</source>
         <translation>Reproductor Drumstick multiplataforma de archivos MIDI</translation>
     </message>
+    <message>
+        <source>Revision</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AboutClass</name>

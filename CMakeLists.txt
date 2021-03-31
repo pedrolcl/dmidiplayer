@@ -30,7 +30,8 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+include(SCMRevision)
 
 find_package (QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
 find_package (Qt${QT_VERSION_MAJOR} COMPONENTS Gui Widgets LinguistTools REQUIRED)
@@ -154,12 +155,12 @@ target_link_libraries ( ${PROJECT_NAME} PRIVATE
 )
 
 if (WIN32)
-    set_target_properties (${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE true)
-    target_link_libraries(${PROJECT_NAME} PRIVATE winmm dwmapi)
+    set_target_properties ( ${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE true )
+    target_link_libraries ( ${PROJECT_NAME} PRIVATE winmm dwmapi )
 endif ()
 
 if (APPLE)
-    set_target_properties (${PROJECT_NAME} PROPERTIES
+    set_target_properties ( ${PROJECT_NAME} PROPERTIES
     MACOSX_BUNDLE true
     MACOSX_BUNDLE_GUI_IDENTIFIER "net.sourceforge.${PROJECT_NAME}"
     MACOSX_BUNDLE_BUNDLE_NAME "${PROJECT_NAME}"
@@ -172,7 +173,12 @@ if (APPLE)
     target_link_libraries(${PROJECT_NAME} PRIVATE "-framework CoreFoundation -framework Cocoa")
 endif ()
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE VERSION=${PROJECT_VERSION})
+target_compile_definitions( ${PROJECT_NAME} PRIVATE
+    VERSION=${PROJECT_VERSION} )
+if (DEFINED PROJECT_WC_REVISION)
+    target_compile_definitions( ${PROJECT_NAME} PRIVATE
+        REVISION=${PROJECT_WC_REVISION} )
+endif()
 
 if(UNIX AND NOT APPLE)
     include(GNUInstallDirs)
