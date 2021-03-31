@@ -9,7 +9,7 @@
     </message>
     <message>
         <source>Revision</source>
-        <translation type="unfinished"></translation>
+        <translation>Revisión</translation>
     </message>
 </context>
 <context>
