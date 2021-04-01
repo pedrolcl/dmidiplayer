@@ -9,15 +9,17 @@
     <description>
         <p>Multiplatform MIDI File Player for Linux, Windows and macOS with advanced features:</p>
         <ul>
-            <li>MIDI Output to hardware MIDI ports, or any other Drumstick backend.</li>
-            <li>Transpose song tonality between -12 and +12 semitones.</li>
-            <li>Change MIDI volume level (using MIDI CC7).</li> 
-            <li>Scale song speed between half and double tempo.</li>
-            <li>Pianola, Channels and Rhythm views.</li>
+            <li>MIDI Output to hardware MIDI ports, or any other Drumstick backend</li>
+            <li>Transpose song tonality between -12 and +12 semitones</li>
+            <li>Change MIDI volume level (using MIDI CC7)</li>
+            <li>Scale song speed between half and double tempo</li>
+            <li>Piano Players, MIDI Channels, Rhythm, and Lyrics (Karaoke) views</li>
         </ul>
     </description>
-    <launchable type="desktop-id">dmidiplayer.desktop</launchable>
+    <launchable type="desktop-id">net.sourceforge.dmidiplayer.desktop</launchable>
     <url type="homepage">https://sourceforge.net/p/dmidiplayer/</url>
+    <developer_name>Pedro López-Cabanillas</developer_name>
+    <update_contact>plcl_AT_users.sourceforge.net</update_contact>
     <translation type="qt">dmidiplayer</translation>
    <!-- <content_rating type="oars-1.1" />-->
     <screenshots>
@@ -26,15 +28,26 @@
             <caption>Main window</caption>
         </screenshot>
         <screenshot>
-            <image>https://a.fsdn.com/con/app/proj/dmidiplayer/screenshots/channels.png</image>
-            <caption>MIDI Channels window</caption>
-        </screenshot>
-        <screenshot>
             <image>https://a.fsdn.com/con/app/proj/dmidiplayer/screenshots/pianola.png</image>
             <caption>Piano Player window</caption>
         </screenshot>
+        <screenshot>
+            <image>https://a.fsdn.com/con/app/proj/dmidiplayer/screenshots/dmidiplayer_1.2.png</image>
+            <caption>All Windows in v1.2</caption>
+        </screenshot>
     </screenshots>
     <releases>
+        <release version="1.2.0" date="2021-03-31">
+            <description>
+                <p>This release implements the following new features:</p>
+                <ul>
+                    <li>Lyrics (Karaoke) view</li>
+                    <li>Character encoding detection</li>
+                    <li>File Info (metadata) dialog</li>
+                </ul>
+            </description>
+            <url>https://sourceforge.net/p/dmidiplayer/blog/2021/03/drumstick-midi-file-player---multiplatform-120-released/</url>
+        </release>
         <release version="1.1.0" date="2021-03-20">
             <description>
                 <p>This release implements the following new features:</p>

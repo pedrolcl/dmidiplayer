@@ -19,3 +19,7 @@ if (NOT DEFINED PROJECT_WC_REVISION)
         message(STATUS "Current revision (Git) is ${PROJECT_WC_REVISION}")
     endif()
 endif()
+
+if (DEFINED PROJECT_WC_REVISION)
+    set(${PROJECT_NAME}_WC_REVISION ${PROJECT_WC_REVISION})
+endif()

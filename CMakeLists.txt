@@ -14,13 +14,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.14)
+set(CMAKE_OSX_DEPLOYMENT_TARGET "10.12" CACHE STRING "Minimum OS X deployment version")
 
 project ( dmidiplayer
-    VERSION 1.2.0
+    VERSION 1.2.1
     LANGUAGES CXX
     DESCRIPTION "Drumstick MIDI File Player Multiplatform Program"
-#   HOMEPAGE_URL "https://sourceforge.net/p/dmidiplayer/"
+    HOMEPAGE_URL "https://sourceforge.net/p/dmidiplayer/"
 )
 
 set(CMAKE_CXX_STANDARD 11)
@@ -185,12 +186,22 @@ if(UNIX AND NOT APPLE)
     add_subdirectory(icons)
     install(TARGETS ${PROJECT_NAME}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-    install(FILES ${PROJECT_NAME}.desktop
-        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
     install(FILES ${QM_FILES}
         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME})
+    install(FILES "net.sourceforge.dmidiplayer.desktop"
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
     install(FILES "net.sourceforge.dmidiplayer.appdata.xml"
         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo)
+
+    # uninstall target
+    if(NOT TARGET uninstall)
+      configure_file(
+        "${CMAKE_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
+        "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+        IMMEDIATE @ONLY)
+      add_custom_target ( uninstall
+        COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
+    endif()
 else()
     include(DeploymentUtils)
 endif()
