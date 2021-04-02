@@ -21,8 +21,9 @@
     <developer_name>Pedro López-Cabanillas</developer_name>
     <update_contact>plcl_AT_users.sourceforge.net</update_contact>
     <translation type="qt">dmidiplayer</translation>
-   <!-- <content_rating type="oars-1.1" />-->
+   <!-- <content_rating type="oars-1.1" /> this is broken, validator fail -->
     <screenshots>
+    <!--TODO: pending better screenshots-->
         <screenshot type="default">
             <image>https://a.fsdn.com/con/app/proj/dmidiplayer/screenshots/mainwindow.png</image>
             <caption>Main window</caption>
