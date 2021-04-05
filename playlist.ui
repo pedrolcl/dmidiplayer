@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PlayList</class>
+ <widget class="QDialog" name="PlayList">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>356</width>
+    <height>262</height>
+   </rect>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="2">
+    <widget class="QLineEdit" name="fileEdit"/>
+   </item>
+   <item row="0" column="2">
+    <widget class="QToolButton" name="fileButton">
+     <property name="text">
+      <string>...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QListWidget" name="fileList"/>
+   </item>
+   <item row="1" column="1" colspan="2">
+    <widget class="QDialogButtonBox" name="listButtons">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::NoButton</set>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3">
+    <widget class="QDialogButtonBox" name="dialogButtons">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>fileEdit</tabstop>
+  <tabstop>fileButton</tabstop>
+  <tabstop>fileList</tabstop>
+  <tabstop>dialogButtons</tabstop>
+  <tabstop>listButtons</tabstop>
+ </tabstops>
+ <resources>
+  <include location="guiplayer.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>dialogButtons</sender>
+   <signal>accepted()</signal>
+   <receiver>PlayList</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>231</x>
+     <y>244</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>256</x>
+     <y>-17</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dialogButtons</sender>
+   <signal>rejected()</signal>
+   <receiver>PlayList</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>161</x>
+     <y>248</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>171</x>
+     <y>-18</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

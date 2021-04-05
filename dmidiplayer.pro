@@ -9,7 +9,8 @@ PKGCONFIG += uchardet
 DEFINES += VERSION=$$VERSION
 FORMS += guiplayer.ui \
     playerabout.ui \
-    connections.ui
+    connections.ui \
+    playlist.ui
 HEADERS += \
     channels.h \
     connections.h \
@@ -20,6 +21,7 @@ HEADERS += \
     lyrics.h \
     pianola.h \
     playerabout.h \
+    playlist.h \
     recentfileshelper.h \
     rhythmview.h \
     seqplayer.h \
@@ -37,6 +39,7 @@ SOURCES += \
     pianola.cpp \
     playerabout.cpp \
     playermain.cpp \
+    playlist.cpp \
     recentfileshelper.cpp \
     rhythmview.cpp \
     seqplayer.cpp \
