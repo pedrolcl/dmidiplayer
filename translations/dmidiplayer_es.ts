@@ -97,7 +97,7 @@ CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de
     </message>
     <message>
         <source>Show advanced connections</source>
-        <translation>Mostrar conextiones avanzadas</translation>
+        <translation>Mostrar conexiones avanzadas</translation>
     </message>
     <message>
         <source>MIDI OUT</source>
@@ -112,7 +112,7 @@ CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de
     <name>GUIPlayer</name>
     <message>
         <source>&lt;p&gt;This program is developed and translated thanks to the volunteer work of many people from around the world. If you want to join the team or have any question, please visit the web site at &lt;a href=&apos;http://sourceforge.net/projects/dmidiplayer/&apos;&gt;SourceForge&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;Este programa se desarrolla y traduce gracias al trabajo voluntario de mucha gente de todo el mundo. Si usted quiere unirse al quipo o tiene cualquier pregunta, por favor visite el sitio web en &lt;a href=&apos;http://sourceforge.net/projects/dmidiplayer/&apos;&gt;SourceForge&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;Este programa es desarrollado y traducido gracias al trabajo voluntario de mucha gente de todo el mundo. Si usted quiere unirse al equipo o tiene alguna pregunta, por favor visite el sitio web en &lt;a href=&apos;http://sourceforge.net/projects/dmidiplayer/&apos;&gt;SourceForge&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <source>Translation Information</source>
@@ -156,7 +156,7 @@ CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de
     </message>
     <message>
         <source>&lt;b&gt;Karaoke language:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation>&lt;b&gt;Idiooma del Karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Idioma del Karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke title:&lt;/b&gt;%1&lt;br&gt;</source>
