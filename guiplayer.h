@@ -33,6 +33,7 @@
 #include "pianola.h"
 #include "channels.h"
 #include "lyrics.h"
+#include "prefsdialog.h"
 
 #if defined(Q_OS_WINDOWS)
 #include "winsnap.h"
@@ -95,6 +96,7 @@ public slots:
     void stop();
     void open();
     void setup();
+    void preferences();
     void tempoReset();
     void volumeReset();
     void tempoSlider(int value);
@@ -136,6 +138,7 @@ private:
     QPointer<Pianola> m_pianola;
     QPointer<Channels> m_channels;
     QPointer<Lyrics> m_lyrics;
+    QPointer<PrefsDialog> m_preferences;
     QTranslator *m_trq, *m_trp, *m_trl;
     QAction *m_currentLang;
     bool m_firstShown{true};

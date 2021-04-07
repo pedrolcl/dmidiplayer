@@ -521,6 +521,7 @@ selection-background-color: blue;</string>
     <addaction name="actionShowToolbar"/>
     <addaction name="actionShowStatusbar"/>
     <addaction name="separator"/>
+    <addaction name="actionPreferences"/>
     <addaction name="actionMIDISetup"/>
    </widget>
    <widget class="QMenu" name="menuView">
@@ -792,6 +793,11 @@ selection-background-color: blue;</string>
   <action name="actionFileInfo">
    <property name="text">
     <string>File Info</string>
+   </property>
+  </action>
+  <action name="actionPreferences">
+   <property name="text">
+    <string>Preferences ...</string>
    </property>
   </action>
  </widget>

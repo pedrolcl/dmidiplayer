@@ -44,6 +44,7 @@ public:
     void writeSettings();
     void retranslateUi();
     void initSong( Sequence *song );
+    void applySettings();
 
 public slots:
     void slotMidiText(const int track, const int type, const QByteArray &text);

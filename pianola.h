@@ -44,6 +44,7 @@ public:
     void readSettings();
     void writeSettings();
     void retranslateUi();
+    void applySettings();
 
 signals:
     void closed();

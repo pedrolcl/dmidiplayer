@@ -33,6 +33,7 @@
 #include "iconutils.h"
 #include "pianola.h"
 #include "settings.h"
+#include "prefsdialog.h"
 
 using namespace drumstick::rt;
 using namespace drumstick::widgets;
@@ -74,6 +75,7 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     connect(m_ui->actionOpen, &QAction::triggered, this, &GUIPlayer::open);
     connect(m_ui->actionFileInfo, &QAction::triggered, this, &GUIPlayer::slotFileInfo);
     connect(m_ui->actionMIDISetup, &QAction::triggered, this, &GUIPlayer::setup);
+    connect(m_ui->actionPreferences, &QAction::triggered, this, &GUIPlayer::preferences);
     connect(m_ui->actionQuit, &QAction::triggered, this, &GUIPlayer::quit);
     connect(m_ui->btnTempo, &QPushButton::clicked, this, &GUIPlayer::tempoReset);
     connect(m_ui->btnVolume, &QPushButton::clicked, this, &GUIPlayer::volumeReset);
@@ -140,6 +142,8 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     connect(m_lyrics, &Lyrics::closed, this, &GUIPlayer::slotLyricsClosed);
     connect(m_player, &SequencePlayer::songStarted, m_lyrics, &Lyrics::displayText);
     connect(m_player, &SequencePlayer::midiText, m_lyrics, &Lyrics::slotMidiText);
+
+    m_preferences = new PrefsDialog(this);
 
     try {
         BackendManager man;
@@ -382,6 +386,20 @@ void GUIPlayer::setup()
     }
 }
 
+void GUIPlayer::preferences()
+{
+    static QPalette defaultPalette = qApp->palette();
+    static QPalette darkPalette(QColor(0x30,0x30,0x30));
+    if (m_preferences->exec() == QDialog::Accepted) {
+#if defined(Q_OS_WINDOWS)
+        m_snapper.SetEnabled(Settings::instance()->winSnap());
+#endif
+        qApp->setPalette( Settings::instance()->getDarkMode() ? darkPalette : defaultPalette );
+        m_lyrics->applySettings();
+        m_pianola->applySettings();
+    }
+}
+
 void GUIPlayer::playerFinished()
 {
     //qDebug() << Q_FUNC_INFO;
@@ -562,7 +580,7 @@ void GUIPlayer::slotShowRhythm(bool checked)
 bool GUIPlayer::nativeEvent(const QByteArray &eventType, void *message, long *result)
 {
 #if defined(Q_OS_WINDOWS)
-    if (m_snapper.HandleMessage(message)) {
+    if (Settings::instance()->winSnap() && m_snapper.HandleMessage(message)) {
         result = 0;
         return true;
     }

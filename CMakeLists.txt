@@ -61,10 +61,16 @@ SET(SOURCES
     lyrics.h
     pianola.cpp
     pianola.h
+#    playlist.cpp
+#    playlist.h
+#    playlist.ui
     playerabout.cpp
     playerabout.h
     playerabout.ui
     playermain.cpp
+    prefsdialog.cpp
+    prefsdialog.h
+    prefsdialog.ui
     recentfileshelper.cpp
     recentfileshelper.h
     rhythmview.cpp

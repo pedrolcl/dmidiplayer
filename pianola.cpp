@@ -26,6 +26,8 @@
 #include <drumstick/settingsfactory.h>
 #include <drumstick/pianokeybd.h>
 #include <drumstick/rtmidioutput.h>
+
+#include "settings.h"
 #include "pianola.h"
 
 using namespace drumstick::rt;
@@ -80,11 +82,11 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent)
         glayout->addWidget(m_label[i],0,1);
         m_piano[i] = new PianoKeybd(this);
         m_piano[i]->setChannel(i);
-        m_piano[i]->setFont(QFont("sans serif", 50));
-        m_piano[i]->setVelocityTint(false);
+        m_piano[i]->setFont(Settings::instance()->notesFont());
+        m_piano[i]->setVelocityTint(Settings::instance()->velocityColor());
         m_piano[i]->setKeyPressedColor(Qt::red);
-        //m_piano[i]->setHighlightPalette(hpalette);
-        //m_piano[i]->setShowLabels(LabelVisibility::ShowAlways);
+        m_piano[i]->setHighlightPalette(Settings::instance()->getPalette(Settings::instance()->highlightPaletteId()));
+        m_piano[i]->setShowLabels(Settings::instance()->namesVisibility());
         m_piano[i]->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         connect(m_piano[i], &PianoKeybd::noteOn, this, &Pianola::playNoteOn);
         connect(m_piano[i], &PianoKeybd::noteOff, this, &Pianola::playNoteOff);
@@ -115,6 +117,19 @@ void Pianola::retranslateUi()
     m_a3->setText(tr("Tighten the number of keys"));
     for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
         m_action[i]->setText(tr("Channel %1").arg(i+1));
+    }
+}
+
+void Pianola::applySettings()
+{
+    int palId = Settings::instance()->highlightPaletteId();
+    PianoPalette p = Settings::instance()->getPalette(palId);
+    for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+        m_piano[i]->setFont(Settings::instance()->notesFont());
+        m_piano[i]->setVelocityTint(Settings::instance()->velocityColor());
+        m_piano[i]->setKeyPressedColor(Qt::red);
+        m_piano[i]->setHighlightPalette(p);
+        m_piano[i]->setShowLabels(Settings::instance()->namesVisibility());
     }
 }
 

@@ -16,9 +16,9 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
+//#include <QDebug>
 #include <QFileInfo>
 #include <QDir>
-//#include <QDebug>
 #include <QTouchDevice>
 #include <QLibraryInfo>
 
@@ -198,32 +198,51 @@ void Settings::internalRead(QSettings &settings)
 
     settings.beginGroup("Preferences");
     m_lastDirectory = settings.value("LastDirectory").toString();
-    m_showStatusBar = settings.value("ShowStatusBar", false).toBool();
-    m_showToolBar = settings.value("ShowToolBar", false).toBool();
-    m_velocityColor = settings.value("VelocityColor", true).toBool();
-    m_highlightPaletteId = settings.value("PaletteId", PAL_SINGLE).toInt();
+    m_showStatusBar = settings.value("ShowStatusBar", true).toBool();
+    m_showToolBar = settings.value("ShowToolBar", true).toBool();
+    m_drumsChannel = settings.value("DrumsChannel", MIDI_GM_STD_DRUM_CHANNEL+1).toInt();
     m_language = settings.value("Language", QLocale::system().name()).toString();
+    m_darkMode = settings.value("DarkMode", false).toBool();
 #if defined(Q_OS_WINDOWS)
     m_winSnap = settings.value("WindowSnapping", true).toBool();
 #endif
     settings.endGroup();
 
     settings.beginGroup("TextSettings");
-    QFont f;
-    if (f.fromString(settings.value("namesFont", "Sans Serif,50").toString())) {
-        setNamesFont(f);
+    QFont lyricsFont;
+    if (lyricsFont.fromString(settings.value("LyricsFont", "Sans Serif,36").toString())) {
+        m_lyricsFont = lyricsFont;
     }
-    setNamesOrientation(static_cast<LabelOrientation>(settings.value("namesOrientation", HorizontalOrientation).toInt()));
-    setNamesVisibility(static_cast<LabelVisibility>(settings.value("namesVisibility", ShowNever).toInt()));
-    setNamesAlterations(static_cast<LabelAlteration>(settings.value("namesAlteration", ShowSharps).toInt()));
-    setNamesOctave(static_cast<LabelCentralOctave>(settings.value("namesOctave", OctaveC4).toInt()));
+    m_futureColor = QColor(settings.value("FutureColor", qApp->palette().color(QPalette::Text).name(QColor::HexRgb)).toString());
+    m_pastColor = QColor(settings.value("PastColor", QColor(Qt::gray).name(QColor::HexRgb)).toString());
     settings.endGroup();
+
+    settings.beginGroup("PlayerPianoSettings");
+    QFont notesFont;
+    if (notesFont.fromString(settings.value("NotesFont", "Sans Serif,50").toString())) {
+        m_notesFont = notesFont;
+    }
+    m_highlightPaletteId = settings.value("PaletteId", PAL_SINGLE).toInt();
+    m_velocityColor = settings.value("VelocityColor", true).toBool();
+    setNamesVisibility(static_cast<LabelVisibility>(settings.value("NamesVisibility", ShowNever).toInt()));
+//  setNamesOrientation(static_cast<LabelOrientation>(settings.value("namesOrientation", HorizontalOrientation).toInt()));
+//  setNamesAlterations(static_cast<LabelAlteration>(settings.value("namesAlteration", ShowSharps).toInt()));
+//  setNamesOctave(static_cast<LabelCentralOctave>(settings.value("namesOctave", OctaveC4).toInt()));
+    settings.endGroup();
+
+//    qDebug() << Q_FUNC_INFO;
+//    qDebug() << "lyrics:" << m_lyricsFont;
+//    qDebug() << "notes:" << m_notesFont;
 
     emit ValuesChanged();
 }
 
 void Settings::internalSave(QSettings &settings)
 {
+//    qDebug() << Q_FUNC_INFO;
+//    qDebug() << "lyrics:" << m_lyricsFont;
+//    qDebug() << "notes:" << m_notesFont;
+
     settings.beginGroup("MainWindow");
     settings.setValue("Geometry", m_mainWindowGeometry);
     settings.setValue("State", m_mainWindowState);
@@ -246,23 +265,61 @@ void Settings::internalSave(QSettings &settings)
     settings.setValue("LastDirectory", m_lastDirectory);
     settings.setValue("ShowStatusBar", m_showStatusBar);
     settings.setValue("ShowToolBar", m_showToolBar);
-    settings.setValue("VelocityColor", m_velocityColor);
-    settings.setValue("PaletteId", m_highlightPaletteId);
     settings.setValue("Language", m_language);
+    settings.setValue("DrumsChannel", m_drumsChannel);
+    settings.setValue("DarkMode", m_darkMode);
 #if defined(Q_OS_WINDOWS)
     settings.setValue("WindowSnapping", m_winSnap);
 #endif
     settings.endGroup();
 
     settings.beginGroup("TextSettings");
-    settings.setValue("namesFont", m_namesFont.toString());
-    settings.setValue("namesOrientation", m_namesOrientation);
-    settings.setValue("namesVisibility", m_namesVisibility);
-    settings.setValue("namesAlteration", m_namesAlteration);
-    settings.setValue("namesOctave", m_namesOctave);
+    settings.setValue("LyricsFont", m_lyricsFont.toString());
+    settings.setValue("FutureColor", m_futureColor.name(QColor::HexRgb));
+    settings.setValue("PastColor", m_pastColor.name(QColor::HexRgb));
+    settings.endGroup();
+
+    settings.beginGroup("PlayerPianoSettings");
+    settings.setValue("NotesFont", m_notesFont.toString());
+    settings.setValue("VelocityColor", m_velocityColor);
+    settings.setValue("PaletteId", m_highlightPaletteId);
+    settings.setValue("NamesVisibility", m_namesVisibility);
+    // settings.setValue("namesOrientation", m_namesOrientation);
+    // settings.setValue("namesAlteration", m_namesAlteration);
+    // settings.setValue("namesOctave", m_namesOctave);
     settings.endGroup();
 
     settings.sync();
+}
+
+QColor Settings::getPastColor() const
+{
+    return m_pastColor;
+}
+
+void Settings::setPastColor(const QColor &pastColor)
+{
+    m_pastColor = pastColor;
+}
+
+QColor Settings::getFutureColor() const
+{
+    return m_futureColor;
+}
+
+void Settings::setFutureColor(const QColor &futureColor)
+{
+    m_futureColor = futureColor;
+}
+
+bool Settings::getDarkMode() const
+{
+    return m_darkMode;
+}
+
+void Settings::setDarkMode(bool darkMode)
+{
+    m_darkMode = darkMode;
 }
 
 bool Settings::showToolBar() const
@@ -313,6 +370,16 @@ QString Settings::language() const
 void Settings::setLanguage(const QString &language)
 {
     m_language = language;
+}
+
+int Settings::drumsChannel() const
+{
+    return m_drumsChannel;
+}
+
+void Settings::setDrumsChannel(int drumsChannel)
+{
+    m_drumsChannel = drumsChannel;
 }
 
 QVariantMap Settings::settingsMap() const
@@ -427,24 +494,24 @@ void Settings::setWinSnap(bool winSnap)
     m_winSnap = winSnap;
 }
 
-QFont Settings::namesFont() const
+QFont Settings::notesFont() const
 {
-    return m_namesFont;
+    return m_notesFont;
 }
 
-void Settings::setNamesFont(const QFont &namesFont)
+QFont Settings::lyricsFont() const
 {
-    m_namesFont = namesFont;
+    return m_lyricsFont;
 }
 
-LabelAlteration Settings::alterations() const
+void Settings::setNotesFont(const QFont &notesFont)
 {
-    return m_namesAlteration;
+    m_notesFont = notesFont;
 }
 
-void Settings::setNamesAlterations(const LabelAlteration alterations)
+void Settings::setLyricsFont(const QFont &lyricsFont)
 {
-    m_namesAlteration = alterations;
+    m_lyricsFont = lyricsFont;
 }
 
 LabelVisibility Settings::namesVisibility() const
@@ -457,22 +524,32 @@ void Settings::setNamesVisibility(const LabelVisibility namesVisibility)
     m_namesVisibility = namesVisibility;
 }
 
-LabelOrientation Settings::namesOrientation() const
-{
-    return m_namesOrientation;
-}
+//LabelAlteration Settings::alterations() const
+//{
+//    return m_namesAlteration;
+//}
 
-void Settings::setNamesOrientation(const LabelOrientation namesOrientation)
-{
-    m_namesOrientation = namesOrientation;
-}
+//void Settings::setNamesAlterations(const LabelAlteration alterations)
+//{
+//    m_namesAlteration = alterations;
+//}
 
-LabelCentralOctave Settings::namesOctave() const
-{
-    return m_namesOctave;
-}
+//LabelOrientation Settings::namesOrientation() const
+//{
+//    return m_namesOrientation;
+//}
 
-void Settings::setNamesOctave(const LabelCentralOctave namesOctave)
-{
-    m_namesOctave = namesOctave;
-}
+//void Settings::setNamesOrientation(const LabelOrientation namesOrientation)
+//{
+//    m_namesOrientation = namesOrientation;
+//}
+
+//LabelCentralOctave Settings::namesOctave() const
+//{
+//    return m_namesOctave;
+//}
+
+//void Settings::setNamesOctave(const LabelCentralOctave namesOctave)
+//{
+//    m_namesOctave = namesOctave;
+//}

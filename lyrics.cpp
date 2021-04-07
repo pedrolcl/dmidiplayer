@@ -34,6 +34,8 @@
 #include <QTextCodec>
 #include <QScrollBar>
 #include <drumstick/settingsfactory.h>
+
+#include "settings.h"
 #include "iconutils.h"
 #include "lyrics.h"
 #include "sequence.h"
@@ -133,13 +135,11 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
 
     m_textViewer = new QTextEdit(m_centralwidget);
     m_textViewer->setObjectName(QString::fromUtf8("textViewer"));
-    QFont font;
-    font.setFamily(QString::fromUtf8("Sans Serif"));
-    font.setPointSize(36);
-    m_textViewer->setFont(font);
+    m_textViewer->setFont(Settings::instance()->lyricsFont());
     m_textViewer->setReadOnly(true);
-    m_normalColor = qApp->palette().color(QPalette::Text);
-    m_otherColor = Qt::gray;
+    m_textViewer->setTextInteractionFlags(Qt::NoTextInteraction);
+    m_normalColor = Settings::instance()->getFutureColor();
+    m_otherColor = Settings::instance()->getPastColor();
     m_gridLayout->addWidget(m_textViewer, 1, 0, 1, 1);
 
     this->setCentralWidget(m_centralwidget);
@@ -199,8 +199,7 @@ void Lyrics::retranslateUi()
     m_label3->setText(QApplication::translate("Lyrics", "Encoding:", nullptr));
     m_label4->setText(QApplication::translate("Lyrics", "Font:", nullptr));
     m_fontButton->setText(QApplication::translate("Lyrics", "...", nullptr));
-} // retranslateUi
-
+}
 
 void Lyrics::closeEvent(QCloseEvent *event)
 {
@@ -272,6 +271,16 @@ void Lyrics::initSong( Sequence *song )
     displayText();
 }
 
+void Lyrics::applySettings()
+{
+    m_textViewer->setFont(Settings::instance()->lyricsFont());
+    m_normalColor = Settings::instance()->getFutureColor();
+    m_otherColor = Settings::instance()->getPastColor();
+    if (!m_textViewer->document()->isEmpty()) {
+        displayText();
+    }
+}
+
 QString Lyrics::sanitizeText(const QByteArray& data)
 {
     QString s;
@@ -333,6 +342,7 @@ void Lyrics::changeFont()
     QFont font = QFontDialog::getFont(&ok, m_textViewer->font(), this);
     if (ok) {
         m_textViewer->setFont(font);
+        //Settings::instance()->setLyricsFont(font);
         displayText();
     }
 }

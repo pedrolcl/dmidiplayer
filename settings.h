@@ -80,20 +80,32 @@ public:
     QList<QString> availablePaletteNames(bool forHighlight);
     void retranslatePalettes();
 
-    LabelOrientation namesOrientation() const;
-    void setNamesOrientation(const LabelOrientation namesOrientation);
+//    LabelOrientation namesOrientation() const;
+//    void setNamesOrientation(const LabelOrientation namesOrientation);
 
     LabelVisibility namesVisibility() const;
     void setNamesVisibility(const LabelVisibility namesVisibility);
 
-    LabelAlteration alterations() const;
-    void setNamesAlterations(const LabelAlteration alterations);
+//    LabelAlteration alterations() const;
+//    void setNamesAlterations(const LabelAlteration alterations);
 
-    LabelCentralOctave namesOctave() const;
-    void setNamesOctave(const LabelCentralOctave namesOctave);
+//    LabelCentralOctave namesOctave() const;
+//    void setNamesOctave(const LabelCentralOctave namesOctave);
 
-    QFont namesFont() const;
-    void setNamesFont(const QFont &namesFont);
+    QFont notesFont() const;
+    void setNotesFont(const QFont &namesFont);
+
+    bool getDarkMode() const;
+    void setDarkMode(bool darkMode);
+
+    QFont lyricsFont() const;
+    void setLyricsFont(const QFont &lyricsFont);
+
+    QColor getFutureColor() const;
+    void setFutureColor(const QColor &futureColor);
+
+    QColor getPastColor() const;
+    void setPastColor(const QColor &pastColor);
 
     // static methods
     static Settings* instance();
@@ -129,11 +141,16 @@ private:
     bool m_showStatusBar;
     bool m_showToolBar;
     bool m_winSnap;
+    bool m_darkMode;
+    int m_drumsChannel;
     LabelVisibility m_namesVisibility;
-    LabelAlteration m_namesAlteration;
-    LabelCentralOctave m_namesOctave;
-    LabelOrientation m_namesOrientation;
-    QFont m_namesFont;
+//    LabelAlteration m_namesAlteration;
+//    LabelCentralOctave m_namesOctave;
+//    LabelOrientation m_namesOrientation;
+    QFont m_notesFont;
+    QFont m_lyricsFont;
+    QColor m_futureColor;
+    QColor m_pastColor;
 
     QString m_defaultOutputBackend;
     QString m_defaultOutputConnection;

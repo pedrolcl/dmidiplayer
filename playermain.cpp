@@ -43,6 +43,9 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName(QSTR_APPNAME);
     QCoreApplication::setApplicationVersion(QT_STRINGIFY(VERSION));
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#if defined(Q_OS_WINDOWS)
+    QApplication::setStyle("fusion");
+#endif
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon(":/dmidiplayer.png"));
 
