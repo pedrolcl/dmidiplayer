@@ -355,6 +355,10 @@ void GUIPlayer::openFile(const QString& fileName)
             if (m_lyrics != nullptr) {
                 m_lyrics->initSong( m_player->song() );
             }
+
+            if ( Settings::instance()->getAutoPlay() ) {
+                play();
+            }
         }
     }
 }

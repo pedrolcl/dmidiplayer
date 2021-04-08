@@ -203,6 +203,7 @@ void Settings::internalRead(QSettings &settings)
     m_drumsChannel = settings.value("DrumsChannel", MIDI_GM_STD_DRUM_CHANNEL+1).toInt();
     m_language = settings.value("Language", QLocale::system().name()).toString();
     m_darkMode = settings.value("DarkMode", false).toBool();
+    m_autoPlay = settings.value("AutoPlay", true).toBool();
 #if defined(Q_OS_WINDOWS)
     m_winSnap = settings.value("WindowSnapping", true).toBool();
 #endif
@@ -261,6 +262,7 @@ void Settings::internalSave(QSettings &settings)
     settings.setValue("Language", m_language);
     settings.setValue("DrumsChannel", m_drumsChannel);
     settings.setValue("DarkMode", m_darkMode);
+    settings.setValue("AutoPlay", m_autoPlay);
 #if defined(Q_OS_WINDOWS)
     settings.setValue("WindowSnapping", m_winSnap);
 #endif
@@ -284,6 +286,16 @@ void Settings::internalSave(QSettings &settings)
     settings.endGroup();
 
     settings.sync();
+}
+
+bool Settings::getAutoPlay() const
+{
+    return m_autoPlay;
+}
+
+void Settings::setAutoPlay(bool autoPlay)
+{
+    m_autoPlay = autoPlay;
 }
 
 QColor Settings::getSingleColor() const

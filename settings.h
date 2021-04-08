@@ -80,15 +80,13 @@ public:
     QList<QString> availablePaletteNames(bool forHighlight);
     void retranslatePalettes();
 
-//    LabelOrientation namesOrientation() const;
-//    void setNamesOrientation(const LabelOrientation namesOrientation);
-
     LabelVisibility namesVisibility() const;
     void setNamesVisibility(const LabelVisibility namesVisibility);
 
+//    LabelOrientation namesOrientation() const;
+//    void setNamesOrientation(const LabelOrientation namesOrientation);
 //    LabelAlteration alterations() const;
 //    void setNamesAlterations(const LabelAlteration alterations);
-
 //    LabelCentralOctave namesOctave() const;
 //    void setNamesOctave(const LabelCentralOctave namesOctave);
 
@@ -109,6 +107,9 @@ public:
 
     QColor getSingleColor() const;
     void setSingleColor(const QColor &singleColor);
+
+    bool getAutoPlay() const;
+    void setAutoPlay(bool autoPlay);
 
     // static methods
     static Settings* instance();
@@ -146,6 +147,7 @@ private:
     bool m_winSnap;
     bool m_darkMode;
     int m_drumsChannel;
+    bool m_autoPlay;
     LabelVisibility m_namesVisibility;
 //    LabelAlteration m_namesAlteration;
 //    LabelCentralOctave m_namesOctave;

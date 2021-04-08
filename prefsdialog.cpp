@@ -62,6 +62,7 @@ void PrefsDialog::restoreDefaults()
     ui->editTextFont->setText("Sans Serif,36");
     setFutureColor(futureColor);
     setPastColor(pastColor);
+    ui->chkAutoPlay->setChecked(true);
 
     ui->chkVelocityColor->setChecked(true);
     ui->cboHighlight->setCurrentIndex(0);
@@ -126,6 +127,7 @@ void PrefsDialog::showEvent ( QShowEvent *event )
 
         ui->chkDarkMode->setChecked( Settings::instance()->getDarkMode() );
         ui->spinPercChannel->setValue( Settings::instance()->drumsChannel() );
+        ui->chkAutoPlay->setChecked( Settings::instance()->getAutoPlay() );
 #if defined(Q_OS_WINDOWS)
         ui->chkSnapping->setChecked( Settings::instance()->winSnap() );
 #endif
@@ -157,6 +159,7 @@ void PrefsDialog::apply()
 {
     Settings::instance()->setDrumsChannel(ui->spinPercChannel->value());
     Settings::instance()->setDarkMode(ui->chkDarkMode->isChecked());
+    Settings::instance()->setAutoPlay(ui->chkAutoPlay->isChecked());
 #if defined(Q_OS_WINDOWS)
     Settings::instance()->setWinSnap( ui->chkSnapping->isChecked() );
 #endif
