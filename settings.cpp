@@ -225,24 +225,17 @@ void Settings::internalRead(QSettings &settings)
     m_highlightPaletteId = settings.value("PaletteId", PAL_SINGLE).toInt();
     m_velocityColor = settings.value("VelocityColor", true).toBool();
     setNamesVisibility(static_cast<LabelVisibility>(settings.value("NamesVisibility", ShowNever).toInt()));
+    m_singleColor = QColor(settings.value("SingleColor", m_paletteList[0].getColor(0).name(QColor::HexRgb)).toString());
 //  setNamesOrientation(static_cast<LabelOrientation>(settings.value("namesOrientation", HorizontalOrientation).toInt()));
 //  setNamesAlterations(static_cast<LabelAlteration>(settings.value("namesAlteration", ShowSharps).toInt()));
 //  setNamesOctave(static_cast<LabelCentralOctave>(settings.value("namesOctave", OctaveC4).toInt()));
     settings.endGroup();
-
-//    qDebug() << Q_FUNC_INFO;
-//    qDebug() << "lyrics:" << m_lyricsFont;
-//    qDebug() << "notes:" << m_notesFont;
 
     emit ValuesChanged();
 }
 
 void Settings::internalSave(QSettings &settings)
 {
-//    qDebug() << Q_FUNC_INFO;
-//    qDebug() << "lyrics:" << m_lyricsFont;
-//    qDebug() << "notes:" << m_notesFont;
-
     settings.beginGroup("MainWindow");
     settings.setValue("Geometry", m_mainWindowGeometry);
     settings.setValue("State", m_mainWindowState);
@@ -284,12 +277,23 @@ void Settings::internalSave(QSettings &settings)
     settings.setValue("VelocityColor", m_velocityColor);
     settings.setValue("PaletteId", m_highlightPaletteId);
     settings.setValue("NamesVisibility", m_namesVisibility);
+    settings.setValue("SingleColor", m_singleColor.name(QColor::HexRgb));
     // settings.setValue("namesOrientation", m_namesOrientation);
     // settings.setValue("namesAlteration", m_namesAlteration);
     // settings.setValue("namesOctave", m_namesOctave);
     settings.endGroup();
 
     settings.sync();
+}
+
+QColor Settings::getSingleColor() const
+{
+    return m_singleColor;
+}
+
+void Settings::setSingleColor(const QColor &singleColor)
+{
+    m_singleColor = singleColor;
 }
 
 QColor Settings::getPastColor() const

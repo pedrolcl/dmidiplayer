@@ -63,8 +63,8 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent)
     QWidget* centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
     centralWidget->setLayout(vlayout);
-    //PianoPalette hpalette(PAL_SINGLE);
-    //hpalette.setColor(0, Qt::red);
+    int palId = Settings::instance()->highlightPaletteId();
+    PianoPalette pal = Settings::instance()->getPalette(palId);
     for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
         m_frame[i] = new QFrame(this);
         m_frame[i]->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -84,8 +84,11 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent)
         m_piano[i]->setChannel(i);
         m_piano[i]->setFont(Settings::instance()->notesFont());
         m_piano[i]->setVelocityTint(Settings::instance()->velocityColor());
-        m_piano[i]->setKeyPressedColor(Qt::red);
-        m_piano[i]->setHighlightPalette(Settings::instance()->getPalette(Settings::instance()->highlightPaletteId()));
+        if (palId == PAL_SINGLE) {
+            m_piano[i]->setKeyPressedColor(Settings::instance()->getSingleColor());
+        } else {
+            m_piano[i]->setHighlightPalette(pal);
+        }
         m_piano[i]->setShowLabels(Settings::instance()->namesVisibility());
         m_piano[i]->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         connect(m_piano[i], &PianoKeybd::noteOn, this, &Pianola::playNoteOn);
@@ -123,13 +126,17 @@ void Pianola::retranslateUi()
 void Pianola::applySettings()
 {
     int palId = Settings::instance()->highlightPaletteId();
-    PianoPalette p = Settings::instance()->getPalette(palId);
+    PianoPalette pal = Settings::instance()->getPalette(palId);
     for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
         m_piano[i]->setFont(Settings::instance()->notesFont());
         m_piano[i]->setVelocityTint(Settings::instance()->velocityColor());
         m_piano[i]->setKeyPressedColor(Qt::red);
-        m_piano[i]->setHighlightPalette(p);
         m_piano[i]->setShowLabels(Settings::instance()->namesVisibility());
+        if (palId == PAL_SINGLE) {
+            m_piano[i]->setKeyPressedColor(Settings::instance()->getSingleColor());
+        } else {
+            m_piano[i]->setHighlightPalette(pal);
+        }
     }
 }
 

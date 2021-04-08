@@ -107,6 +107,9 @@ public:
     QColor getPastColor() const;
     void setPastColor(const QColor &pastColor);
 
+    QColor getSingleColor() const;
+    void setSingleColor(const QColor &singleColor);
+
     // static methods
     static Settings* instance();
     static void setPortableConfig(const QString fileName = QString());
@@ -151,6 +154,7 @@ private:
     QFont m_lyricsFont;
     QColor m_futureColor;
     QColor m_pastColor;
+    QColor m_singleColor;
 
     QString m_defaultOutputBackend;
     QString m_defaultOutputConnection;

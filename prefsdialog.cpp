@@ -1,3 +1,21 @@
+/*
+    Drumstick MIDI File Player Multiplatform Program
+    Copyright (C) 2006-2021, Pedro Lopez-Cabanillas <plcl@users.sf.net>
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #include <QDebug>
 #include <QPushButton>
 #include <QShowEvent>
@@ -23,6 +41,7 @@ PrefsDialog::PrefsDialog(QWidget *parent) :
     connect(ui->btnPastColor, &QToolButton::clicked, this, &PrefsDialog::slotPastColor);
     connect(ui->btnNoteFont, &QToolButton::clicked, this, &PrefsDialog::slotNotesFont);
     connect(ui->btnTextFont, &QToolButton::clicked, this, &PrefsDialog::slotLyricsFont);
+    connect(ui->btnSingleColor, &QToolButton::clicked, this, &PrefsDialog::slotSingleColor);
 }
 
 PrefsDialog::~PrefsDialog()
@@ -41,20 +60,23 @@ void PrefsDialog::restoreDefaults()
     ui->chkDarkMode->setChecked(false);
     ui->spinPercChannel->setValue(MIDI_GM_STD_DRUM_CHANNEL+1);
     ui->editTextFont->setText("Sans Serif,36");
-    ui->editFutureColor->setText(futureColor.name(QColor::HexRgb));
-    ui->editPastColor->setText(pastColor.name(QColor::HexRgb));
+    setFutureColor(futureColor);
+    setPastColor(pastColor);
 
     ui->chkVelocityColor->setChecked(true);
     ui->cboHighlight->setCurrentIndex(0);
     ui->cboNoteNames->setCurrentIndex(0);
     ui->editNoteFont->setText("Sans Serif,50");
+
+    PianoPalette p = Settings::instance()->getPalette(PAL_SINGLE);
+    setSingleColor(p.getColor(0));
 }
 
 void PrefsDialog::slotFutureColor()
 {
     QColor color = QColorDialog::getColor(Settings::instance()->getFutureColor(), this);
     if (color.isValid()) {
-        ui->editFutureColor->setText(color.name(QColor::HexRgb));
+        setFutureColor(color);
     }
 }
 
@@ -62,7 +84,7 @@ void PrefsDialog::slotPastColor()
 {
     QColor color = QColorDialog::getColor(Settings::instance()->getPastColor(), this);
     if (color.isValid()) {
-        ui->editPastColor->setText(color.name(QColor::HexRgb));
+        setPastColor(color);
     }
 }
 
@@ -84,6 +106,14 @@ void PrefsDialog::slotNotesFont()
     }
 }
 
+void PrefsDialog::slotSingleColor()
+{
+    QColor color = QColorDialog::getColor(Settings::instance()->getSingleColor(), this);
+    if (color.isValid()) {
+        setSingleColor(color);
+    }
+}
+
 void PrefsDialog::accept()
 {
     apply();
@@ -93,9 +123,6 @@ void PrefsDialog::accept()
 void PrefsDialog::showEvent ( QShowEvent *event )
 {
     if (event->type() == QEvent::Show) {
-//        qDebug() << Q_FUNC_INFO;
-//        qDebug() << "lyrics:" << Settings::instance()->lyricsFont();
-//        qDebug() << "notes:" << Settings::instance()->notesFont();
 
         ui->chkDarkMode->setChecked( Settings::instance()->getDarkMode() );
         ui->spinPercChannel->setValue( Settings::instance()->drumsChannel() );
@@ -103,8 +130,8 @@ void PrefsDialog::showEvent ( QShowEvent *event )
         ui->chkSnapping->setChecked( Settings::instance()->winSnap() );
 #endif
         ui->editTextFont->setText( Settings::instance()->lyricsFont().toString() );
-        ui->editFutureColor->setText( Settings::instance()->getFutureColor().name(QColor::HexRgb) );
-        ui->editPastColor->setText( Settings::instance()->getPastColor().name(QColor::HexRgb) );
+        setFutureColor(Settings::instance()->getFutureColor());
+        setPastColor( Settings::instance()->getPastColor());
 
         ui->cboHighlight->clear();
         for(int i=0; i<Settings::instance()->availablePalettes(); ++i) {
@@ -120,21 +147,14 @@ void PrefsDialog::showEvent ( QShowEvent *event )
         ui->chkVelocityColor->setChecked( Settings::instance()->velocityColor() );
         ui->editNoteFont->setText( Settings::instance()->notesFont().toString() );
         ui->cboNoteNames->setCurrentIndex(static_cast<int>(Settings::instance()->namesVisibility()));
+        setSingleColor( Settings::instance()->getSingleColor() );
 
         ui->tabWidget->setCurrentIndex(0);
-
-//        qDebug() << Q_FUNC_INFO;
-//        qDebug() << "lyrics:" << ui->editTextFont->text();
-//        qDebug() << "notes:" << ui->editNoteFont->text();
     }
 }
 
 void PrefsDialog::apply()
 {
-//    qDebug() << Q_FUNC_INFO;
-//    qDebug() << "lyrics:" << ui->editTextFont->text();
-//    qDebug() << "notes:" << ui->editNoteFont->text();
-
     Settings::instance()->setDrumsChannel(ui->spinPercChannel->value());
     Settings::instance()->setDarkMode(ui->chkDarkMode->isChecked());
 #if defined(Q_OS_WINDOWS)
@@ -149,13 +169,37 @@ void PrefsDialog::apply()
 
     Settings::instance()->setHighlightPaletteId(ui->cboHighlight->currentData().toInt());
     Settings::instance()->setVelocityColor(ui->chkVelocityColor->isChecked());
+    Settings::instance()->setSingleColor(ui->editSingle->text());
     QFont noteFont;
     if (noteFont.fromString(ui->editNoteFont->text())) {
         Settings::instance()->setNotesFont(noteFont);
     }
     Settings::instance()->setNamesVisibility(static_cast<LabelVisibility>(ui->cboNoteNames->currentIndex()));
+}
 
-//    qDebug() << Q_FUNC_INFO;
-//    qDebug() << "lyrics:" << Settings::instance()->lyricsFont();
-//    qDebug() << "notes:" << Settings::instance()->notesFont();
+void PrefsDialog::setFutureColor(QColor c)
+{
+    int x = ui->lblFuture->height();
+    QPixmap p(x, x);
+    p.fill(c);
+    ui->lblFuture->setPixmap(p);
+    ui->editFutureColor->setText(c.name(QColor::HexRgb));
+}
+
+void PrefsDialog::setPastColor(QColor c)
+{
+    int x = ui->lblPast->height();
+    QPixmap p(x, x);
+    p.fill(c);
+    ui->lblPast->setPixmap(p);
+    ui->editPastColor->setText(c.name(QColor::HexRgb));
+}
+
+void PrefsDialog::setSingleColor(QColor c)
+{
+    int x = ui->lblSingle->height();
+    QPixmap p(x, x);
+    p.fill(c);
+    ui->lblSingle->setPixmap(p);
+    ui->editSingle->setText(c.name(QColor::HexRgb));
 }

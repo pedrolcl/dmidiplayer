@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabGen">
       <attribute name="title">
@@ -83,11 +83,21 @@
       <attribute name="title">
        <string>Lyrics</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="editTextFont">
-         <property name="readOnly">
-          <bool>true</bool>
+      <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,1,0">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetNoConstraint</enum>
+       </property>
+       <item row="2" column="3">
+        <widget class="QToolButton" name="btnPastColor">
+         <property name="text">
+          <string>...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QToolButton" name="btnTextFont">
+         <property name="text">
+          <string>...</string>
          </property>
         </widget>
        </item>
@@ -101,34 +111,10 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="lblPastColor">
-         <property name="text">
-          <string>Past Text Color</string>
-         </property>
-         <property name="buddy">
-          <cstring>editPastColor</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="editFutureColor">
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2">
-        <widget class="QToolButton" name="btnPastColor">
-         <property name="text">
-          <string>...</string>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="2">
-        <widget class="QToolButton" name="btnFutureColor">
-         <property name="text">
-          <string>...</string>
+        <widget class="QLabel" name="editFutureColor">
+         <property name="autoFillBackground">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -142,15 +128,8 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="editPastColor">
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QToolButton" name="btnTextFont">
+       <item row="1" column="3">
+        <widget class="QToolButton" name="btnFutureColor">
          <property name="text">
           <string>...</string>
          </property>
@@ -169,17 +148,61 @@
          </property>
         </spacer>
        </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="editPastColor">
+         <property name="autoFillBackground">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="lblPastColor">
+         <property name="text">
+          <string>Past Text Color</string>
+         </property>
+         <property name="buddy">
+          <cstring>editPastColor</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="lblPast">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="lblFuture"/>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <widget class="QLineEdit" name="editTextFont">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tabPiano">
       <attribute name="title">
-       <string>Pianola</string>
+       <string>Player Piano</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="3" column="0">
-        <widget class="QLabel" name="lblNoteNames">
+      <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,0,1,0">
+       <item row="1" column="0">
+        <widget class="QLabel" name="lblSingleColor">
          <property name="text">
-          <string>Show Note Names</string>
+          <string>Single Highlight Color</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLabel" name="editSingle">
+         <property name="autoFillBackground">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -193,14 +216,24 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="editNoteFont">
-         <property name="readOnly">
-          <bool>true</bool>
+       <item row="4" column="0">
+        <widget class="QLabel" name="lblNoteNames">
+         <property name="text">
+          <string>Show Note Names</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="1" colspan="2">
+       <item row="3" column="0">
+        <widget class="QLabel" name="lblNoteFont">
+         <property name="text">
+          <string>Note Names Font</string>
+         </property>
+         <property name="buddy">
+          <cstring>editNoteFont</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2" colspan="2">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -213,14 +246,41 @@
          </property>
         </spacer>
        </item>
-       <item row="2" column="2">
+       <item row="3" column="3">
         <widget class="QToolButton" name="btnNoteFont">
          <property name="text">
           <string>...</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="1">
+       <item row="1" column="1">
+        <widget class="QLabel" name="lblSingle"/>
+       </item>
+       <item row="1" column="3">
+        <widget class="QToolButton" name="btnSingleColor">
+         <property name="text">
+          <string>...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <widget class="QComboBox" name="cboHighlight"/>
+       </item>
+       <item row="2" column="0" colspan="3">
+        <widget class="QCheckBox" name="chkVelocityColor">
+         <property name="text">
+          <string>Note Velocity to Color Tint</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" colspan="2">
+        <widget class="QLineEdit" name="editNoteFont">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1" colspan="2">
         <widget class="QComboBox" name="cboNoteNames">
          <item>
           <property name="text">
@@ -242,26 +302,6 @@
            <string>Always</string>
           </property>
          </item>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="lblNoteFont">
-         <property name="text">
-          <string>Note Names Font</string>
-         </property>
-         <property name="buddy">
-          <cstring>editNoteFont</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QComboBox" name="cboHighlight"/>
-       </item>
-       <item row="1" column="1">
-        <widget class="QCheckBox" name="chkVelocityColor">
-         <property name="text">
-          <string>Note Velocity to Color Tint</string>
-         </property>
         </widget>
        </item>
       </layout>
