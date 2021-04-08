@@ -32,6 +32,7 @@ public:
     QString currentItem();
     QStringList items();
     int itemCount();
+    bool isSupported(const QString& fileName);
 
 public slots:
     void clear();
@@ -40,6 +41,7 @@ public slots:
 
 private slots:
     void selectFile();
+    void saveFile();
     void addToList();
     void removeFromList();
     void moveUp();

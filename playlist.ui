@@ -11,21 +11,27 @@
    </rect>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="2">
-    <widget class="QLineEdit" name="fileEdit"/>
-   </item>
-   <item row="0" column="2">
-    <widget class="QToolButton" name="fileButton">
-     <property name="text">
-      <string>...</string>
+   <item row="0" column="0">
+    <widget class="QListWidget" name="fileList">
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="textElideMode">
+      <enum>Qt::ElideMiddle</enum>
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QListWidget" name="fileList"/>
-   </item>
-   <item row="1" column="1" colspan="2">
+   <item row="0" column="1" colspan="2">
     <widget class="QDialogButtonBox" name="listButtons">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
@@ -34,10 +40,10 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="3">
+   <item row="1" column="0" colspan="3">
     <widget class="QDialogButtonBox" name="dialogButtons">
      <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+      <set>QDialogButtonBox::Ok</set>
      </property>
     </widget>
    </item>
@@ -45,15 +51,11 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
-  <tabstop>fileEdit</tabstop>
-  <tabstop>fileButton</tabstop>
   <tabstop>fileList</tabstop>
   <tabstop>dialogButtons</tabstop>
   <tabstop>listButtons</tabstop>
  </tabstops>
- <resources>
-  <include location="guiplayer.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>dialogButtons</sender>

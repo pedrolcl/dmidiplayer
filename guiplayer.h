@@ -34,6 +34,7 @@
 #include "channels.h"
 #include "lyrics.h"
 #include "prefsdialog.h"
+#include "playlist.h"
 
 #if defined(Q_OS_WINDOWS)
 #include "winsnap.h"
@@ -122,6 +123,7 @@ public slots:
     void slotAboutTranslation();
     void slotSwitchLanguage(QAction *action);
     void slotFileInfo();
+    void slotPlayList();
 
 private:
     void createLanguageMenu();
@@ -139,6 +141,7 @@ private:
     QPointer<Channels> m_channels;
     QPointer<Lyrics> m_lyrics;
     QPointer<PrefsDialog> m_preferences;
+    QPointer<PlayList> m_playList;
     QTranslator *m_trq, *m_trp, *m_trl;
     QAction *m_currentLang;
     bool m_firstShown{true};

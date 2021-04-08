@@ -61,9 +61,9 @@ SET(SOURCES
     lyrics.h
     pianola.cpp
     pianola.h
-#    playlist.cpp
-#    playlist.h
-#    playlist.ui
+    playlist.cpp
+    playlist.h
+    playlist.ui
     playerabout.cpp
     playerabout.h
     playerabout.ui

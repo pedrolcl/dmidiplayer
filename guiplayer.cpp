@@ -74,6 +74,7 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     connect(m_ui->actionStop, &QAction::triggered, this, &GUIPlayer::stop);
     connect(m_ui->actionOpen, &QAction::triggered, this, &GUIPlayer::open);
     connect(m_ui->actionFileInfo, &QAction::triggered, this, &GUIPlayer::slotFileInfo);
+    connect(m_ui->actionPlayList, &QAction::triggered, this, &GUIPlayer::slotPlayList);
     connect(m_ui->actionMIDISetup, &QAction::triggered, this, &GUIPlayer::setup);
     connect(m_ui->actionPreferences, &QAction::triggered, this, &GUIPlayer::preferences);
     connect(m_ui->actionQuit, &QAction::triggered, this, &GUIPlayer::quit);
@@ -144,6 +145,7 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     connect(m_player, &SequencePlayer::midiText, m_lyrics, &Lyrics::slotMidiText);
 
     m_preferences = new PrefsDialog(this);
+    m_playList = new PlayList(this);
 
     try {
         BackendManager man;
@@ -360,11 +362,11 @@ void GUIPlayer::openFile(const QString& fileName)
 void GUIPlayer::open()
 {
     QString fileName = QFileDialog::getOpenFileName(this,
-          "Open MIDI File", Settings::instance()->lastDirectory(),
-          "All files (*.kar *.mid *.midi *.wrk);;"
+          tr("Open MIDI File"), Settings::instance()->lastDirectory(),
+          tr("All files (*.kar *.mid *.midi *.wrk);;"
           "Karaoke files (*.kar);;"
           "MIDI Files (*.mid *.midi);;"
-          "Cakewalk files (*.wrk)" );
+          "Cakewalk files (*.wrk)") );
     if (!fileName.isEmpty() && isSupported(fileName)) {
         stop();
         openFile(fileName);
@@ -716,4 +718,14 @@ void GUIPlayer::slotFileInfo()
     }
     infostr.replace(QChar::LineSeparator, tr("<br>"));
     QMessageBox::information(this, tr("SMF Information"), infostr );
+}
+
+void GUIPlayer::slotPlayList()
+{
+    if (m_playList->exec() == QDialog::Accepted) {
+        auto current = m_playList->currentItem();
+        if (!current.isEmpty()) {
+            openFile(current);
+        }
+    }
 }

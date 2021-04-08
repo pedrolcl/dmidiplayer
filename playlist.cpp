@@ -16,40 +16,53 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
+
+#include <QDebug>
 #include <QListView>
 #include <QPushButton>
 #include <QFileDialog>
+#include <QFile>
+#include <QTextStream>
 #include <QDir>
 
 #include "playlist.h"
+#include "settings.h"
 
 PlayList::PlayList(QWidget *parent) : QDialog(parent)
 {
     setWindowTitle( tr("Manage Playlist") );
     ui.setupUi(this);
 
-    QPushButton* btnAdd = ui.listButtons->addButton( tr("Add"), QDialogButtonBox::NoRole );
+    ui.fileList->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui.fileList->setTextElideMode(Qt::ElideMiddle);
+
+    QPushButton* btnAdd = ui.listButtons->addButton( tr("Add"), QDialogButtonBox::ActionRole );
     btnAdd->setIcon( QIcon(":/resources/list-add.png") );
     connect( btnAdd, &QAbstractButton::clicked, this, &PlayList::addToList );
 
-    QPushButton* btnDel = ui.listButtons->addButton( tr("Remove"), QDialogButtonBox::NoRole );
+    QPushButton* btnDel = ui.listButtons->addButton( tr("Remove"), QDialogButtonBox::ActionRole );
     btnDel->setIcon( QIcon(":/resources/list-remove.png") );
     connect( btnDel, &QAbstractButton::clicked, this, &PlayList::removeFromList );
 
-    QPushButton* btnUp  = ui.listButtons->addButton( tr("Move Up"), QDialogButtonBox::NoRole );
+    QPushButton* btnUp  = ui.listButtons->addButton( tr("Move Up"), QDialogButtonBox::ActionRole );
     btnUp->setIcon( QIcon(":/resources/go-up.png") );
     connect( btnUp, &QAbstractButton::clicked, this, &PlayList::moveUp );
 
-    QPushButton* btnDwn = ui.listButtons->addButton( tr("Move Down"), QDialogButtonBox::NoRole );
+    QPushButton* btnDwn = ui.listButtons->addButton( tr("Move Down"), QDialogButtonBox::ActionRole );
     btnDwn->setIcon( QIcon(":/resources/go-down.png") );
     connect( btnDwn, &QAbstractButton::clicked, this, &PlayList::moveDown );
 
-    QPushButton* btnClear = ui.listButtons->addButton( tr("Clear"), QDialogButtonBox::NoRole );
+    QPushButton* btnClear = ui.listButtons->addButton( tr("Clear"), QDialogButtonBox::ActionRole );
     btnClear->setIcon( QIcon(":/resources/edit-clear.png") );
     connect( btnClear, &QAbstractButton::clicked, this, &PlayList::clear );
 
-    ui.fileButton->setIcon( QIcon(":/resources/open.png") );
-    connect( ui.fileButton, &QAbstractButton::clicked, this, &PlayList::selectFile );
+    QPushButton* btnOpen = ui.dialogButtons->addButton( tr("Open"), QDialogButtonBox::ActionRole );
+    btnOpen->setIcon( QIcon(":/resources/document-open.png") );
+    connect( btnOpen, &QAbstractButton::clicked, this, &PlayList::selectFile );
+
+    QPushButton* btnSave = ui.dialogButtons->addButton( tr("Save As"), QDialogButtonBox::ActionRole );
+    btnSave->setIcon( QIcon(":/resources/document-save.png") );
+    connect( btnSave, &QAbstractButton::clicked, this, &PlayList::saveFile );
 
     connect( ui.fileList, &QListWidget::itemClicked, this, &PlayList::itemClicked );
 }
@@ -57,30 +70,82 @@ PlayList::PlayList(QWidget *parent) : QDialog(parent)
 PlayList::~PlayList()
 { }
 
+bool
+PlayList::isSupported(const QString& fileName)
+{
+    return  fileName.endsWith(".mid", Qt::CaseInsensitive) ||
+            fileName.endsWith(".midi", Qt::CaseInsensitive) ||
+            fileName.endsWith(".kar", Qt::CaseInsensitive) ||
+            fileName.endsWith(".wrk", Qt::CaseInsensitive);
+}
+
 void
 PlayList::selectFile()
 {
-     QString fName = QFileDialog::getOpenFileName( this,
-        tr("Add MIDI/Karaoke File"), QDir::homePath(),
-        tr("MIDI files (*.mid;*.midi;*.kar;*.wrk)") );
-     if (!fName.isEmpty()) {
-        ui.fileEdit->setText(fName);
-     }
+    QString fName = QFileDialog::getOpenFileName( this,
+       tr("Open Playlist file"), Settings::instance()->lastDirectory(),
+       tr("Playlist (*.lst)") );
+    if (!fName.isEmpty()) {
+        QFile file(fName);
+        if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            QTextStream in(&file);
+            QString line = in.readLine();
+            while (!line.isNull()) {
+                if (isSupported(line)) {
+                    ui.fileList->addItem(line);
+                }
+                line = in.readLine();
+            }
+            file.close();
+        }
+    }
+}
+
+void PlayList::saveFile()
+{
+    QFileDialog dlg(this);
+    dlg.setNameFilter(tr("Playlist (*.lst)"));
+    dlg.setDirectory(Settings::instance()->lastDirectory());
+    dlg.setWindowTitle(tr("Save Playlist file"));
+    dlg.setDefaultSuffix("lst");
+    dlg.setFileMode(QFileDialog::AnyFile);
+    dlg.setAcceptMode(QFileDialog::AcceptSave);
+    if (dlg.exec() == QDialog::Accepted) {
+        auto selected = dlg.selectedFiles();
+        if (!selected.isEmpty()) {
+            QFile file(selected.first());
+            if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+                return;
+            QTextStream out(&file);
+            foreach(const QString& line, items()) {
+                out << line << endl;
+            }
+            file.close();
+        }
+    }
 }
 
 void
 PlayList::itemClicked(QListWidgetItem* item)
 {
-    ui.fileEdit->setText(item->text());
+    Q_UNUSED(item)
 }
 
 void
 PlayList::addToList()
 {
-    QString fName = ui.fileEdit->text();
-    if (!fName.isEmpty()) {
-        ui.fileList->addItem(fName);
-        ui.fileEdit->clear();
+    QStringList fNames = QFileDialog::getOpenFileNames( this,
+       tr("Add MIDI File"), Settings::instance()->lastDirectory(),
+       tr("All files (*.kar *.mid *.midi *.wrk);;"
+       "Karaoke files (*.kar);;"
+       "MIDI Files (*.mid *.midi);;"
+       "Cakewalk files (*.wrk)") );
+    if (!fNames.isEmpty()) {
+        foreach(QString fName, fNames) {
+            if (isSupported(fName)) {
+                ui.fileList->addItem(fName);
+            }
+        }
     }
 }
 
