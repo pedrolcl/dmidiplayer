@@ -172,11 +172,11 @@ CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de
     </message>
     <message>
         <source>Open MIDI File</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir archivo MIDI</translation>
     </message>
     <message>
         <source>All files (*.kar *.mid *.midi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;Cakewalk files (*.wrk)</source>
-        <translation type="unfinished"></translation>
+        <translation>Todos los archivos (*.kar *.mid *.midi *.wrk);;Archivos de Karaoke (*.kar);;Archivos MIDI (*.mid *.midi);;Archivos de Cakewalk (*.wrk)</translation>
     </message>
 </context>
 <context>
@@ -203,7 +203,7 @@ CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de
     </message>
     <message>
         <source>Pitch:</source>
-        <translation>Transporte:</translation>
+        <translation>Tono:</translation>
     </message>
     <message>
         <source>Pitch Control</source>
@@ -415,15 +415,15 @@ CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de
     </message>
     <message>
         <source>Preferences ...</source>
-        <translation type="unfinished"></translation>
+        <translation>Preferencias ...</translation>
     </message>
     <message>
         <source>Play List ...</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista de reproducción ...</translation>
     </message>
     <message>
         <source>Show Play List Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar editor de lista de reproducción</translation>
     </message>
 </context>
 <context>
@@ -1051,142 +1051,142 @@ CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de
     <name>PlayList</name>
     <message>
         <source>Manage Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Gestionar lista de reproducción</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Añadir</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Quitar</translation>
     </message>
     <message>
         <source>Move Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover Arriba</translation>
     </message>
     <message>
         <source>Move Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover abajo</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Limpiar</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation type="unfinished">Abrir</translation>
+        <translation>Abrir</translation>
     </message>
     <message>
         <source>Save As</source>
-        <translation type="unfinished"></translation>
+        <translation>Guardar como</translation>
     </message>
     <message>
         <source>Open Playlist file</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir archivo de lista de reproducción</translation>
     </message>
     <message>
         <source>Playlist (*.lst)</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista de reproducción (*.lst)</translation>
     </message>
     <message>
         <source>Save Playlist file</source>
-        <translation type="unfinished"></translation>
+        <translation>Guardar lista de reproducción</translation>
     </message>
     <message>
         <source>Add MIDI File</source>
-        <translation type="unfinished"></translation>
+        <translation>Añadir archivo MIDI</translation>
     </message>
     <message>
         <source>All files (*.kar *.mid *.midi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;Cakewalk files (*.wrk)</source>
-        <translation type="unfinished"></translation>
+        <translation>Todos los archivos (*.kar *.mid *.midi *.wrk);;Archivos de Karaoke (*.kar);;Archivos MIDI (*.mid *.midi);;Archivos de Cakewalk (*.wrk)</translation>
     </message>
 </context>
 <context>
     <name>PrefsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Diálogo</translation>
     </message>
     <message>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>General</translation>
     </message>
     <message>
         <source>Percussion MIDI Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Canal MIDI de percusión</translation>
     </message>
     <message>
         <source>Sticky Window Snapping</source>
-        <translation type="unfinished"></translation>
+        <translation>Acoplamiento de ventanas pegajosas</translation>
     </message>
     <message>
         <source>Forced Dark Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Modo oscuro forzado</translation>
     </message>
     <message>
         <source>Start Playback Automatically After Loading</source>
-        <translation type="unfinished"></translation>
+        <translation>Iniciar reproducción automáticamente después de cargar</translation>
     </message>
     <message>
         <source>Lyrics</source>
-        <translation type="unfinished">Letras</translation>
+        <translation>Letras</translation>
     </message>
     <message>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <source>Future Text Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Color del texto futuro</translation>
     </message>
     <message>
         <source>Text Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Fuente del texto</translation>
     </message>
     <message>
         <source>Past Text Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Color de texto pasado</translation>
     </message>
     <message>
         <source>Player Piano</source>
-        <translation type="unfinished">Pianola</translation>
+        <translation>Pianola</translation>
     </message>
     <message>
         <source>Single Highlight Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Color de resaltado único</translation>
     </message>
     <message>
         <source>Note Highlighting</source>
-        <translation type="unfinished"></translation>
+        <translation>Resaltado de notas</translation>
     </message>
     <message>
         <source>Show Note Names</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar nombres de notas</translation>
     </message>
     <message>
         <source>Note Names Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Fuente de nombres de notas</translation>
     </message>
     <message>
         <source>Note Velocity to Color Tint</source>
-        <translation type="unfinished"></translation>
+        <translation>Velocidad MIDI a matiz de color</translation>
     </message>
     <message>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Ninca</translation>
     </message>
     <message>
         <source>Minimal</source>
-        <translation type="unfinished"></translation>
+        <translation>Mínima</translation>
     </message>
     <message>
         <source>When Activated</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuando se activen</translation>
     </message>
     <message>
         <source>Always</source>
-        <translation type="unfinished"></translation>
+        <translation>Siempre</translation>
     </message>
 </context>
 <context>
