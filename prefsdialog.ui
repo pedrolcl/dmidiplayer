@@ -80,7 +80,7 @@
        <item row="3" column="0">
         <widget class="QCheckBox" name="chkAutoPlay">
          <property name="text">
-          <string>Start Playback Automatically</string>
+          <string>Start Playback Automatically After Loading</string>
          </property>
         </widget>
        </item>

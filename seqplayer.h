@@ -31,6 +31,7 @@ class SequencePlayer : public QObject
 public:
     SequencePlayer();
     virtual ~SequencePlayer();
+
     void loadFile(QString fileName);
     void pause();
     void stop();

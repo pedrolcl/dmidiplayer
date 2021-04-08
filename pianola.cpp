@@ -28,6 +28,7 @@
 #include <drumstick/rtmidioutput.h>
 
 #include "settings.h"
+#include "sequence.h"
 #include "pianola.h"
 
 using namespace drumstick::rt;
@@ -120,6 +121,7 @@ void Pianola::retranslateUi()
     m_a3->setText(tr("Tighten the number of keys"));
     for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
         m_action[i]->setText(tr("Channel %1").arg(i+1));
+        m_piano[i]->retranslate();
     }
 }
 
@@ -137,6 +139,22 @@ void Pianola::applySettings()
         } else {
             m_piano[i]->setHighlightPalette(pal);
         }
+    }
+}
+
+void Pianola::initSong(Sequence *song)
+{
+    int loNote = song->lowestMidiNote();
+    int hiNote = song->highestMidiNote();
+    LabelAlteration alt = LabelAlteration::ShowSharps;
+    if (song->getNumAlterations() < 0) {
+        alt = LabelAlteration::ShowFlats;
+    }
+    setNoteRange(loNote, hiNote);
+    for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+        enableChannel(i, song->channelUsed(i));
+        slotLabel(i, song->channelLabel(i));
+        m_piano[i]->setLabelAlterations(alt);
     }
 }
 

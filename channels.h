@@ -32,6 +32,7 @@ class QToolButton;
 class QComboBox;
 class Vumeter;
 class QLineEdit;
+class Sequence;
 
 class Channels : public QMainWindow {
     Q_OBJECT
@@ -39,12 +40,14 @@ class Channels : public QMainWindow {
 public:
     Channels( QWidget* parent = 0 );
     virtual ~Channels();
+
     void enableChannel(int channel, bool enable);
     qreal volumeFactor();
     void setVolumeFactor(qreal factor);
     void readSettings();
     void writeSettings();
     void retranslateUi();
+    void initSong( Sequence *song );
 
     QString channelName(int channel) const;
     bool isChannelMuted(int channel) const;

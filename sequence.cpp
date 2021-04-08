@@ -40,6 +40,7 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
     m_beatCount(0),
     m_lowestMidiNote(127),
     m_highestMidiNote(0),
+    m_numAlterations(0),
     m_tempo(500000.0),
     m_tempoFactor(1.0),
     m_ticks2millis(0),
@@ -66,6 +67,7 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
     connect(m_smf, &QSmf::signalSMFendOfTrack, this, &Sequence::smfUpdateLoadProgress);
     connect(m_smf, &QSmf::signalSMFError, this, &Sequence::smfErrorHandler);
     connect(m_smf, &QSmf::signalSMFTimeSig, this, &Sequence::smfTimeSigEvent);
+    connect(m_smf, &QSmf::signalSMFKeySig, this, &Sequence::smfKeySig);
 
     m_wrk = new QWrk(this);
     connect(m_wrk, &QWrk::signalWRKError, this, &Sequence::wrkErrorHandler);
@@ -86,7 +88,7 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
     connect(m_wrk, &QWrk::signalWRKSysex, this, &Sequence::wrkSysexEventBank);
     connect(m_wrk, &QWrk::signalWRKText, this, &Sequence::wrkUpdateLoadProgress);
     connect(m_wrk, &QWrk::signalWRKTimeSig, this, &Sequence::wrkTimeSignatureEvent);
-    connect(m_wrk, &QWrk::signalWRKKeySig, this, &Sequence::wrkUpdateLoadProgress);
+    connect(m_wrk, &QWrk::signalWRKKeySig, this, &Sequence::wrkKeySig);
     connect(m_wrk, &QWrk::signalWRKTempo, this, &Sequence::wrkTempoEvent);
     connect(m_wrk, &QWrk::signalWRKTrackPatch, this, &Sequence::wrkTrackPatch);
     connect(m_wrk, &QWrk::signalWRKComments, this, &Sequence::wrkUpdateLoadProgress);
@@ -163,6 +165,7 @@ void Sequence::clear()
     m_lowestMidiNote = 127;
     m_highestMidiNote = 0;
     m_curTrack = 0;
+    m_numAlterations = 0;
     for(int i=0; i<MIDI_STD_CHANNELS; ++i) {
         m_channelUsed[i] = false;
         m_channelEvents[i] = 0;
@@ -261,11 +264,16 @@ void Sequence::appendStringToList(QStringList &list, QString &s, TextType type)
     list.append(s);
 }
 
+int Sequence::getNumAlterations() const
+{
+    return m_numAlterations;
+}
+
 QStringList Sequence::getText(const TextType type, const int mib)
 {
-     QStringList output;
-     QTextCodec *codec = QTextCodec::codecForMib(mib);
-     if ( (codec != nullptr) && (type >= FIRST_TYPE) && (type <= LAST_TYPE) ) {
+    QStringList output;
+    QTextCodec *codec = QTextCodec::codecForMib(mib);
+    if ( (codec != nullptr) && (type >= FIRST_TYPE) && (type <= LAST_TYPE) ) {
          foreach(const auto& e, m_textEvents) {
              if (e.m_type == type) {
                  QString s = codec->toUnicode(e.m_text);
@@ -442,6 +450,14 @@ void Sequence::smfUpdateLoadProgress()
 {
     insertBeats(m_smf->getCurrentTime());
     emit loadingProgress(m_smf->getFilePos());
+}
+
+void Sequence::smfKeySig(int alt, int mode)
+{
+    Q_UNUSED(mode)
+    //qDebug() << Q_FUNC_INFO << "alt:" << alt << "mode:" << mode;
+    m_numAlterations = alt;
+    smfUpdateLoadProgress();
 }
 
 void Sequence::appendSMFEvent(MIDIEvent *ev)
@@ -953,6 +969,13 @@ void Sequence::wrkTimeSignatureEvent(int bar, int num, int den)
         }
     }
     appendWRKEvent(newts.time, ev);
+}
+
+void Sequence::wrkKeySig(int bar, int alt)
+{
+    Q_UNUSED(bar)
+    m_numAlterations = alt;
+    wrkUpdateLoadProgress();
 }
 
 void Sequence::wrkEndOfFile()

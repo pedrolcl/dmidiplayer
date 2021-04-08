@@ -28,6 +28,7 @@
 
 class QFrame;
 class QLabel;
+class Sequence;
 
 namespace drumstick { namespace widgets {
     class PianoKeybd;
@@ -39,12 +40,14 @@ class Pianola : public QMainWindow {
 public:
     Pianola( QWidget* parent = 0 );
     virtual ~Pianola();
+
     void enableChannel(int channel, bool enable);
     void setNoteRange(int lowerNote, int upperNote);
     void readSettings();
     void writeSettings();
     void retranslateUi();
     void applySettings();
+    void initSong( Sequence *song );
 
 signals:
     void closed();

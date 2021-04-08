@@ -95,6 +95,8 @@ public:
     QByteArray getRawText(const int track, const TextType type);
     QStringList getText(const TextType type, const int mib);
 
+    int getNumAlterations() const;
+
 signals:
     void loadingStart(int size);
     void loadingProgress(int pos);
@@ -119,6 +121,7 @@ public slots:
     void smfTrackEnd();
     void smfErrorHandler(const QString& errorStr);
     void smfUpdateLoadProgress();
+    void smfKeySig(int, int);
 
     /* WRK slots */
     void appendWRKEvent(long ticks, MIDIEvent* ev);
@@ -149,6 +152,7 @@ public slots:
     void wrkTrackVol(int track, int vol);
     void wrkTrackBank(int track, int bank);
     void wrkTimeSignatureEvent(int bar, int num, int den);
+    void wrkKeySig(int bar, int alt);
 
 private: // methods
     void sort();
@@ -175,6 +179,7 @@ private: // members
     int m_beatCount;
     int m_lowestMidiNote;
     int m_highestMidiNote;
+    int m_numAlterations;
     qreal m_tempo;
     qreal m_tempoFactor;
     qreal m_ticks2millis;

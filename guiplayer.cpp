@@ -332,26 +332,35 @@ void GUIPlayer::openFile(const QString& fileName)
             m_ui->progressBar->setMaximum(m_player->song()->songLengthTicks());
             m_ui->progressBar->setValue(0);
 
+            for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+                m_player->setLocked(i, false);
+                m_player->setMuted(i, false);
+            }
+
             if (m_pianola != nullptr) {
-                int loNote = m_player->song()->lowestMidiNote();
-                int hiNote = m_player->song()->highestMidiNote();
-                m_pianola->setNoteRange(loNote, hiNote);
-                for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
-                    m_pianola->enableChannel(i, m_player->song()->channelUsed(i));
-                    m_pianola->slotLabel(i, m_player->song()->channelLabel(i));
-                }
+                m_pianola->initSong( m_player->song() );
+//                int loNote = m_player->song()->lowestMidiNote();
+//                int hiNote = m_player->song()->highestMidiNote();
+//                m_pianola->setNoteRange(loNote, hiNote);
+//                for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+//                    m_pianola->enableChannel(i, m_player->song()->channelUsed(i));
+//                    m_pianola->slotLabel(i, m_player->song()->channelLabel(i));
+//                }
             }
+
             if (m_channels != nullptr) {
-                for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
-                    m_player->setLocked(i, false);
-                    m_player->setMuted(i, false);
-                    m_channels->setLockChannel(i, false);
-                    m_channels->setSoloChannel(i, false);
-                    m_channels->setMuteChannel(i, false);
-                    m_channels->enableChannel(i, m_player->song()->channelUsed(i));
-                    m_channels->setChannelName(i, m_player->song()->channelLabel(i));
-                }
+                m_channels->initSong( m_player->song() );
+//                for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+//                    m_player->setLocked(i, false);
+//                    m_player->setMuted(i, false);
+//                    m_channels->setLockChannel(i, false);
+//                    m_channels->setSoloChannel(i, false);
+//                    m_channels->setMuteChannel(i, false);
+//                    m_channels->enableChannel(i, m_player->song()->channelUsed(i));
+//                    m_channels->setChannelName(i, m_player->song()->channelLabel(i));
+//                }
             }
+
             if (m_lyrics != nullptr) {
                 m_lyrics->initSong( m_player->song() );
             }
@@ -416,7 +425,7 @@ void GUIPlayer::playerFinished()
 
 void GUIPlayer::playerStopped()
 {
-    qDebug() << Q_FUNC_INFO;
+    //qDebug() << Q_FUNC_INFO;
     m_playerThread.wait();
     m_player->allNotesOff();
     if (m_pianola != nullptr) {

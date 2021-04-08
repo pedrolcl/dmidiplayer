@@ -16,7 +16,7 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QDebug>
+//#include <QDebug>
 #include <QPushButton>
 #include <QShowEvent>
 #include <QFontDialog>
@@ -139,7 +139,7 @@ void PrefsDialog::showEvent ( QShowEvent *event )
         for(int i=0; i<Settings::instance()->availablePalettes(); ++i) {
             PianoPalette p = Settings::instance()->getPalette(i);
             if (p.isHighLight()) {
-                qDebug() << "palette name:" << p.paletteName() << "id:" << p.paletteId();
+                //qDebug() << "palette name:" << p.paletteName() << "id:" << p.paletteId();
                 ui->cboHighlight->addItem(p.paletteName(), p.paletteId());
                 if (p.paletteId() == Settings::instance()->highlightPaletteId()) {
                     ui->cboHighlight->setCurrentText(p.paletteName());

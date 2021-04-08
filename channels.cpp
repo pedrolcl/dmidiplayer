@@ -24,6 +24,8 @@
 #include <QLineEdit>
 #include <QCloseEvent>
 #include <drumstick/settingsfactory.h>
+
+#include "sequence.h"
 #include "channels.h"
 #include "vumeter.h"
 
@@ -134,6 +136,17 @@ void Channels::retranslateUi()
         m_patch[i]->clear();
         m_patch[i]->addItems(m_instSet.names(i == MIDI_GM_STD_DRUM_CHANNEL));
         m_patch[i]->setCurrentIndex(curr);
+    }
+}
+
+void Channels::initSong(Sequence *song)
+{
+    for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+        setLockChannel(i, false);
+        setSoloChannel(i, false);
+        setMuteChannel(i, false);
+        enableChannel(i, song->channelUsed(i));
+        setChannelName(i, song->channelLabel(i));
     }
 }
 

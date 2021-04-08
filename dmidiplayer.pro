@@ -10,7 +10,8 @@ DEFINES += VERSION=$$VERSION
 FORMS += guiplayer.ui \
     playerabout.ui \
     connections.ui \
-    playlist.ui
+    playlist.ui \
+    prefsdialog.ui
 HEADERS += \
     channels.h \
     connections.h \
@@ -22,6 +23,7 @@ HEADERS += \
     pianola.h \
     playerabout.h \
     playlist.h \
+    prefsdialog.h \
     recentfileshelper.h \
     rhythmview.h \
     seqplayer.h \
@@ -40,6 +42,7 @@ SOURCES += \
     playerabout.cpp \
     playermain.cpp \
     playlist.cpp \
+    prefsdialog.cpp \
     recentfileshelper.cpp \
     rhythmview.cpp \
     seqplayer.cpp \
