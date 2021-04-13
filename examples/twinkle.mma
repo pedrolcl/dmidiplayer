@@ -1,0 +1,58 @@
+// Twinkle, Twinkle, Little Star
+// for MMA, http://www.mellowood.ca/mma/index.html
+
+MIDICopyright &copy; 2002-2010 Bob van der Poel &lt;bob@mellowood.ca&gt;
+MIDIText @LENGL
+MIDIText @IFree use of this file is granted under the terms of the GNU General Public License.
+MIDIText @TTwinkle, Twinkle, Little Star
+
+Lyric Karmode=On
+
+Tempo 250
+
+Groove Metronome2
+
+z * 2
+
+Groove HillCountryPlus
+
+Begin Solo
+    Voice Recorder
+    Octave 7
+    Volume f
+    Harmony OpenBelow
+End
+
+Repeat
+
+G   {2g-;2g-;}  [\Twin-kle,] [\When the] 
+G   {2d;2d;}    [Twin-kle]   [bla-zing] 
+C   {2e;2e;}    [lit-tle]    [sun is] 
+G   {1d;}       [star;]      [gone,] 
+Am  {2c;2c;}    [/How I]     [/When he] 
+G   {2b-;2b-;}  [won-der]    [no-thing] 
+D7  {2a-;2a-;}  [what you]   [shines u-] 
+G   {1g-;}      [are.]       [pon.] 
+G   {2d;2d;}    [/Up a-]     [/Then you] 
+C   {2c;2c;}    [bove the]   [show your] 
+G   {2b-;2b-;}  [world so]   [lit-tle] 
+D   {1a-;}      [high,]      [light,] 
+G   {2d;2d;}    [/Like a]    [/Twin-kle,] 
+C   {2c;2c;}    [dia-mond]   [twin-kle,] 
+G   {2b-;2b-;}  [in the]     [all the] 
+D7  {1a-;}      [sky!]       [night.] 
+G   {2g-;2g-;}  [/Twin-kle,] 
+G   {2d;2d;}    [twin-kle] 
+C   {2e;2e;}    [Lit-tle] 
+G   {1d;}       [star,] 
+Am  {2c;2c;}    [/How I] 
+G   {2b-;2b-;}  [won-der] 
+D7  {2a-;2a-;}  [what you] 
+G   {1g-;}      [are./] 
+
+Lyric Verse=Inc
+RepeatEnd
+
+Groove HillCountryEnd
+
+G * 2

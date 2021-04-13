@@ -197,7 +197,7 @@ void Settings::internalRead(QSettings &settings)
     settings.endGroup();
 
     settings.beginGroup("Preferences");
-    m_lastDirectory = settings.value("LastDirectory").toString();
+    m_lastDirectory = settings.value("LastDirectory", dataDirectory()).toString();
     m_showStatusBar = settings.value("ShowStatusBar", true).toBool();
     m_showToolBar = settings.value("ShowToolBar", true).toBool();
     m_drumsChannel = settings.value("DrumsChannel", MIDI_GM_STD_DRUM_CHANNEL+1).toInt();

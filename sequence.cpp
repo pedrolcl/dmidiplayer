@@ -454,8 +454,8 @@ void Sequence::smfUpdateLoadProgress()
 
 void Sequence::smfKeySig(int alt, int mode)
 {
-    Q_UNUSED(mode)
-    //qDebug() << Q_FUNC_INFO << "alt:" << alt << "mode:" << mode;
+    //Q_UNUSED(mode)
+    qDebug() << Q_FUNC_INFO << "alt:" << alt << "mode:" << mode;
     m_numAlterations = alt;
     smfUpdateLoadProgress();
 }
