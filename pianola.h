@@ -65,6 +65,7 @@ public slots:
     void allNotesOff();
     void slotLabel(int channel, const QString& text);
     void tightenKeys(bool enabled);
+    void slotKeySignature(int track, int alt, bool minor);
 
 protected:
     void closeEvent( QCloseEvent *event ) override;
@@ -72,6 +73,7 @@ protected:
     bool nativeEvent( const QByteArray &eventType, void *message, long *result ) override;
 
 private:
+    Sequence *m_song;
     drumstick::widgets::PianoKeybd* m_piano[drumstick::rt::MIDI_STD_CHANNELS];
     QMenu *m_chmenu;
     QAction *m_a1, *m_a2, *m_a3;

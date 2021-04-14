@@ -251,6 +251,14 @@ TimeSignatureEvent::TimeSignatureEvent(const int numerator, const int denominato
     : MIDIEvent(), m_numerator(numerator), m_denominator(denominator)
 { }
 
+KeySignatureEvent::KeySignatureEvent()
+    : MIDIEvent(), m_alterations(0), m_minorMode(false)
+{ }
+
+KeySignatureEvent::KeySignatureEvent(const int alterations, const bool minorMode)
+    : MIDIEvent(), m_alterations(alterations), m_minorMode(minorMode)
+{ }
+
 BeatEvent::BeatEvent()
     : MIDIEvent(), m_bar(0), m_beat(0), m_max(0)
 {

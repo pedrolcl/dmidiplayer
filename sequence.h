@@ -90,6 +90,7 @@ public:
     int trackMaxPoints();
     int typeMaxPoints();
     QByteArray trackName(int track) const;
+    int trackChannel(int track) const;
 
     QString currentFile() const;
     QByteArray getRawText(const int track, const TextType type);
@@ -179,7 +180,6 @@ private: // members
     int m_beatCount;
     int m_lowestMidiNote;
     int m_highestMidiNote;
-    int m_numAlterations;
     qreal m_tempo;
     qreal m_tempoFactor;
     qreal m_ticks2millis;
@@ -249,9 +249,18 @@ private: // members
      * https://www.iana.org/assignments/character-sets/character-sets.xhtml
      */
     QMap<QByteArray,int> m_umibs{
+        /* Linux */
         {"UHC", 38},
         {"ISO-8859-11", 2259},
-        {"VISCII", 2082}
+        {"VISCII", 2082},
+        /* Windows */
+        {"ISO-2022-CN", 104},
+        {"HZ-GB-2312", 2085},
+        {"IBM852", 2010},
+        {"ASCII", 3},
+        {"ISO-2022-KR", 37},
+        {"IBM855", 2046}
+        /* macOS */
     };
     QByteArray m_charset;
     uchardet_t m_handle;
@@ -296,6 +305,7 @@ private: // members
     QMap<int, QByteArray> m_trkName;
     QMap<int, int> m_trkScore;
     QMap<int, int> m_typScore;
+    QMap<int, int> m_trkChannel;
 };
 
 #endif // SEQUENCE_H

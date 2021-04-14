@@ -110,7 +110,8 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     connect(m_player, &SequencePlayer::songFinished, this, &GUIPlayer::playerFinished);
     connect(m_player, &SequencePlayer::songStopped, this, &GUIPlayer::playerStopped);
     connect(m_player, &SequencePlayer::songEchoTime, this, &GUIPlayer::playerEcho);
-    connect(m_player, &SequencePlayer::timeSignatureChanged, this, [=](const int num, const int){
+    connect(m_player, &SequencePlayer::timeSignature, this, [=](const int /*bar*/, const int num, const int /*den*/){
+        //qDebug() << "bar:" << bar << "time signature:" << num << "/" << den;
         m_ui->rhythm->setRhythm(num);
     });
     connect(m_player, &SequencePlayer::beat, this, [=](const int /*bar*/, const int beat, const int max){
@@ -126,6 +127,7 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     connect(m_pianola, &Pianola::closed, this, &GUIPlayer::slotPianolaClosed);
     connect(m_player, &SequencePlayer::midiNoteOn, m_pianola, &Pianola::slotNoteOn);
     connect(m_player, &SequencePlayer::midiNoteOff, m_pianola, &Pianola::slotNoteOff);
+    connect(m_player, &SequencePlayer::keySignature, m_pianola, &Pianola::slotKeySignature);
 
     m_channels = new Channels(this);
     connect(m_channels, &Channels::closed, this, &GUIPlayer::slotChannelsClosed);

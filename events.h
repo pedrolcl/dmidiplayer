@@ -57,9 +57,9 @@ public:
     int status() const { return m_status; }
 
     virtual bool isChannel() { return false; }
-    virtual bool isTempo() { return false; }
-    virtual bool isText() { return false; }
-    virtual bool isBeatEvent() { return false; }
+    //virtual bool isTempo() { return false; }
+    //virtual bool isText() { return false; }
+    //virtual bool isBeatEvent() { return false; }
 
 protected:
     long m_delta;
@@ -369,7 +369,7 @@ public:
     TextEvent();
     TextEvent(const unsigned int datalen, char* dataptr);
     explicit TextEvent(const QByteArray& text, const int textType = 1);
-    virtual bool isText() { return true; }
+    //virtual bool isText() { return true; }
     virtual TextEvent *clone() { return new TextEvent(*this); }
     int textType() const;
 protected:
@@ -398,7 +398,7 @@ public:
     TempoEvent();
     TempoEvent(const qreal tempo);
     virtual TempoEvent *clone() { return new TempoEvent(*this); }
-    virtual bool isTempo() { return true; }
+    //virtual bool isTempo() { return true; }
     qreal tempo() const { return m_tempo; }
     void setTempo(const qreal t) { m_tempo = t; }
 protected:
@@ -422,6 +422,22 @@ protected:
 };
 
 /**
+ * Event representing a key signature change
+ */
+class KeySignatureEvent : public MIDIEvent
+{
+public:
+    KeySignatureEvent();
+    KeySignatureEvent(const int alterations, const bool minorMode);
+    virtual KeySignatureEvent *clone() { return new KeySignatureEvent(*this); }
+    int alterations() const { return m_alterations; }
+    bool minorMode() const { return m_minorMode; }
+protected:
+    int m_alterations;
+    bool m_minorMode;
+};
+
+/**
  * Event representing a rhythm beat
  */
 class BeatEvent : public MIDIEvent
@@ -430,7 +446,7 @@ public:
     BeatEvent();
     BeatEvent(const int bar, const int beat, const int max);
     virtual BeatEvent *clone() { return new BeatEvent(*this); }
-    virtual bool isBeatEvent() { return true; }
+    //virtual bool isBeatEvent() { return true; }
     int bar() const { return m_bar; }
     int beat() const { return m_beat; }
     int max() const { return m_max; }

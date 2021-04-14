@@ -40,7 +40,6 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
     m_beatCount(0),
     m_lowestMidiNote(127),
     m_highestMidiNote(0),
-    m_numAlterations(0),
     m_tempo(500000.0),
     m_tempoFactor(1.0),
     m_ticks2millis(0),
@@ -165,7 +164,6 @@ void Sequence::clear()
     m_lowestMidiNote = 127;
     m_highestMidiNote = 0;
     m_curTrack = 0;
-    m_numAlterations = 0;
     for(int i=0; i<MIDI_STD_CHANNELS; ++i) {
         m_channelUsed[i] = false;
         m_channelEvents[i] = 0;
@@ -180,6 +178,7 @@ void Sequence::clear()
     m_trkScore.clear();
     m_typScore.clear();
     m_trkName.clear();
+    m_trkChannel.clear();
     while (!m_list.isEmpty()) {
         delete m_list.takeFirst();
     }
@@ -264,11 +263,6 @@ void Sequence::appendStringToList(QStringList &list, QString &s, TextType type)
     list.append(s);
 }
 
-int Sequence::getNumAlterations() const
-{
-    return m_numAlterations;
-}
-
 QStringList Sequence::getText(const TextType type, const int mib)
 {
     QStringList output;
@@ -324,6 +318,12 @@ int Sequence::typeMaxPoints()
 QByteArray Sequence::trackName(int track) const
 {
     return m_trkName.value(track);
+}
+
+int Sequence::trackChannel(int track) const
+{
+    //qDebug() << "track:" << track << "channel:" << m_trkChannel.value(track);
+    return m_trkChannel.value(track);
 }
 
 void Sequence::timeCalculations()
@@ -450,14 +450,6 @@ void Sequence::smfUpdateLoadProgress()
 {
     insertBeats(m_smf->getCurrentTime());
     emit loadingProgress(m_smf->getFilePos());
-}
-
-void Sequence::smfKeySig(int alt, int mode)
-{
-    //Q_UNUSED(mode)
-    qDebug() << Q_FUNC_INFO << "alt:" << alt << "mode:" << mode;
-    m_numAlterations = alt;
-    smfUpdateLoadProgress();
 }
 
 void Sequence::appendSMFEvent(MIDIEvent *ev)
@@ -652,10 +644,20 @@ void Sequence::smfTimeSigEvent(int b0, int b1, int b2, int b3)
     Q_UNUSED(b2)
     Q_UNUSED(b3)
     //qDebug() << Q_FUNC_INFO << b0 << b1 << b2 << b3;
-    MIDIEvent* ev = new TimeSignatureEvent(b0, b1);
+    int den = ::pow(2, b1);
+    MIDIEvent* ev = new TimeSignatureEvent(b0, den);
+    ev->setTag( m_barCount );
     appendSMFEvent(ev);
     m_beatMax = b0;
-    m_beatLength = m_division * 4 / ::pow(2, b1);
+    m_beatLength = m_division * 4 / den;
+}
+
+void Sequence::smfKeySig(int alt, int mode)
+{
+    //qDebug() << Q_FUNC_INFO << "track:" << m_curTrack << "alt:" << alt << "mode:" << mode;
+    MIDIEvent *ev = new KeySignatureEvent(alt, mode == minor_mode);
+    ev->setTag( m_curTrack );
+    appendSMFEvent(ev);
 }
 
 void Sequence::smfTrackStartEvent()
@@ -685,8 +687,10 @@ void Sequence::smfTrackEnd()
                 chan = i;
             }
         //qDebug() << Q_FUNC_INFO << m_trackLabel << chan;
-        if (chan >= 0 && chan < MIDI_STD_CHANNELS)
+        if (chan >= 0 && chan < MIDI_STD_CHANNELS) {
             m_channelLabel[chan] = m_trackLabel;
+            m_trkChannel[m_curTrack] = chan;
+        }
     }
     smfUpdateLoadProgress();
 }
@@ -905,6 +909,8 @@ void Sequence::wrkNewTrackHeader( const QString& /*name*/,
     rec.pitch = pitch;
     rec.velocity = velocity;
     m_trackMap[trackno] = rec;
+    m_trkChannel[trackno] = channel;
+    //m_trackLabel[trackno] = name.toLocal8Bit();
     wrkUpdateLoadProgress();
 }
 
@@ -968,14 +974,22 @@ void Sequence::wrkTimeSignatureEvent(int bar, int num, int den)
             m_bars.append(newts);
         }
     }
+    ev->setTag( bar );
     appendWRKEvent(newts.time, ev);
 }
 
 void Sequence::wrkKeySig(int bar, int alt)
 {
     Q_UNUSED(bar)
-    m_numAlterations = alt;
-    wrkUpdateLoadProgress();
+    MIDIEvent *ev = new KeySignatureEvent(alt, false);
+    long time = 0;
+    foreach(const TimeSigRec& ts, m_bars) {
+        if (ts.bar == bar) {
+            time = ts.time;
+            break;
+        }
+    }
+    appendWRKEvent(time, ev);
 }
 
 void Sequence::wrkEndOfFile()

@@ -22,6 +22,7 @@
 
 #include <thread>
 #include <chrono>
+#include <typeinfo>
 
 //#include <QDebug>
 #include <QAbstractEventDispatcher>
@@ -82,26 +83,45 @@ void SequencePlayer::shutupSound()
 
 void SequencePlayer::playEvent(MIDIEvent* ev)
 {
+    static const std::type_info& textId = typeid(TextEvent);
+    static const std::type_info& tempoId = typeid(TempoEvent);
+    static const std::type_info& timeSigId = typeid(TimeSignatureEvent);
+    static const std::type_info& keySigId = typeid(KeySignatureEvent);
+    static const std::type_info& beatId = typeid(BeatEvent);
+    static const std::type_info& sysexId = typeid (SysExEvent);
+
     if (m_port == nullptr)
         return;
-    if (ev->isText()) {
+    //if (ev->isText()) {
+    if (typeid(*ev) == textId) {
         TextEvent* event = static_cast<TextEvent*>(ev);
         //qDebug() << m_songPosition << event->tick() << " Text(" << event->textType() << "): " << event->data();
         emit midiText(event->tag(), event->textType(), event->data());
     } else
-    if (ev->isTempo()) {
+    //if (ev->isTempo()) {
+    if (typeid(*ev) == tempoId) {
         TempoEvent* event = static_cast<TempoEvent*>(ev);
         auto tempo = event->tempo();
         m_song.updateTempo(tempo);
         //qDebug() << m_songPosition << ev->tick() << " Tempo: " << tempo << "bpm:" << bpm(tempo); // << "ticks2millis:" << m_song.ticks2millis();
         emit tempoChanged(tempo);
     } else
-    if (ev->isBeatEvent()) {
+    //if (ev->isBeatEvent()) {
+    if (typeid(*ev) == beatId) {
         //qDebug() << m_songPosition << ev->tick() << " Meta-event";
         BeatEvent* event = static_cast<BeatEvent*>(ev);
         emit beat(event->bar(), event->beat(), event->max());
     } else
-    if (ev->status() == MIDI_STATUS_SYSEX) {
+    if (typeid(*ev) == timeSigId) {
+        TimeSignatureEvent* event = static_cast<TimeSignatureEvent*>(ev);
+        emit timeSignature(event->tag(), event->numerator(), event->denominator());
+    } else
+    if (typeid(*ev) == keySigId) {
+        KeySignatureEvent* event = static_cast<KeySignatureEvent*>(ev);
+        emit keySignature(event->tag(), event->alterations(), event->minorMode());
+    } else
+    //if (ev->status() == MIDI_STATUS_SYSEX) {
+    if (typeid (*ev) == sysexId) {
         SysExEvent* event = static_cast<SysExEvent*>(ev);
         m_port->sendSysex(event->data());
         //qDebug() << m_songPosition << event->tick() << " SysEx: "  << event->data().toHex();
@@ -192,9 +212,11 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
             }
             break;
         default:
-            //qDebug() << m_songPosition << ev->tick() << " unknown status: " << chan << ev->status();
+            //qDebug() << m_songPosition << ev->tick() << "unknown channel event status:" << ev->status();
             break;
         }
+    } else {
+        //qDebug() << m_songPosition << ev->tick() << "unknown event:" << typeid(*ev).name();
     }
 }
 

@@ -144,17 +144,14 @@ void Pianola::applySettings()
 
 void Pianola::initSong(Sequence *song)
 {
+    m_song = song;
     int loNote = song->lowestMidiNote();
     int hiNote = song->highestMidiNote();
-    LabelAlteration alt = LabelAlteration::ShowSharps;
-    if (song->getNumAlterations() < 0) {
-        alt = LabelAlteration::ShowFlats;
-    }
     setNoteRange(loNote, hiNote);
     for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
         enableChannel(i, song->channelUsed(i));
         slotLabel(i, song->channelLabel(i));
-        m_piano[i]->setLabelAlterations(alt);
+        m_piano[i]->setLabelAlterations(LabelAlteration::ShowSharps);
     }
 }
 
@@ -316,6 +313,22 @@ void Pianola::tightenKeys(bool enabled)
     if (m_tightenKeys != enabled) {
         m_tightenKeys = enabled;
         setNoteRange(m_lowerNote, m_upperNote);
+    }
+}
+
+void Pianola::slotKeySignature(int track, int alt, bool /*minor*/)
+{
+    //qDebug() << Q_FUNC_INFO << track << alt << minor;
+    LabelAlteration alterations = (alt < 0) ? LabelAlteration::ShowFlats : LabelAlteration::ShowSharps;
+    if (track < 0) { // all tracks
+        for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+            m_piano[i]->setLabelAlterations(alterations);
+        }
+    } else {
+        int channel = m_song->trackChannel(track);
+        if (channel >= 0 && channel < MIDI_STD_CHANNELS) {
+            m_piano[channel]->setLabelAlterations(alterations);
+        }
     }
 }
 

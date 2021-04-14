@@ -78,7 +78,7 @@ signals:
      * Sequenced SMF events (for feedback to the application)
      */
     void tempoChanged(const qreal tempo);
-    void timeSignatureChanged(const int numerator, const int denominator);
+    //void timeSignatureChanged(const int numerator, const int denominator);
     void midiText(const int track, const int type, const QByteArray &text);
     void midiNoteOn(const int chan, const int note, const int vel);
     void midiNoteOff(const int chan, const int note, const int vel);
@@ -89,6 +89,8 @@ signals:
     void midiPitchBend(const int chan, const int value);
     void midiSysex(const QByteArray &data);
     void beat(const int bar, const int beat, const int max);
+    void timeSignature(const int bar, const int n, const int d);
+    void keySignature(const int track, const int a, const bool m);
 
 private slots:
     void playEvent(MIDIEvent* ev);
