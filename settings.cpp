@@ -205,7 +205,7 @@ void Settings::internalRead(QSettings &settings)
     m_darkMode = settings.value("DarkMode", false).toBool();
     m_autoPlay = settings.value("AutoPlay", true).toBool();
     QDir defDir(dataDirectory());
-    m_defaultPlayList = settings.value("DefaultPlaylist", defDir.absoluteFilePath("examples.lst")).toString();
+    m_lastPlayList = settings.value("LastPlaylist", defDir.absoluteFilePath("examples.lst")).toString();
 #if defined(Q_OS_WINDOWS)
     m_winSnap = settings.value("WindowSnapping", true).toBool();
 #endif
@@ -265,7 +265,7 @@ void Settings::internalSave(QSettings &settings)
     settings.setValue("DrumsChannel", m_drumsChannel);
     settings.setValue("DarkMode", m_darkMode);
     settings.setValue("AutoPlay", m_autoPlay);
-    settings.setValue("DefaultPlaylist", m_defaultPlayList);
+    settings.setValue("LastPlaylist", m_lastPlayList);
 #if defined(Q_OS_WINDOWS)
     settings.setValue("WindowSnapping", m_winSnap);
 #endif
@@ -291,14 +291,14 @@ void Settings::internalSave(QSettings &settings)
     settings.sync();
 }
 
-QString Settings::getDefaultPlayList() const
+QString Settings::lastPlayList() const
 {
-    return m_defaultPlayList;
+    return m_lastPlayList;
 }
 
-void Settings::setDefaultPlayList(const QString &defaultPlayList)
+void Settings::setLastPlayList(const QString &defaultPlayList)
 {
-    m_defaultPlayList = defaultPlayList;
+    m_lastPlayList = defaultPlayList;
 }
 
 bool Settings::getAutoPlay() const

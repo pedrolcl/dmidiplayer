@@ -151,12 +151,7 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
 
     m_preferences = new PrefsDialog(this);
     m_playList = new PlayList(this);
-    auto fileItems = m_recentFiles->files();
-    if (fileItems.count() > 0) {
-        m_playList->setItems(fileItems);
-    } else {
-        m_playList->loadPlayList( Settings::instance()->getDefaultPlayList() );
-    }
+    m_playList->loadPlayList( Settings::instance()->lastPlayList() );
 
     try {
         BackendManager man;

@@ -83,6 +83,7 @@ void PlayList::loadPlayList(const QString &fileName)
             line = in.readLine();
         }
         file.close();
+        Settings::instance()->setLastPlayList(fileName);
     }
 }
 
