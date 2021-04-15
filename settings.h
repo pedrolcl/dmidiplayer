@@ -57,6 +57,9 @@ public:
     QString language() const;
     void setLanguage(const QString &language);
 
+    QString getDefaultPlayList() const;
+    void setDefaultPlayList(const QString &defaultPlayList);
+
     int drumsChannel() const;
     void setDrumsChannel(int drumsChannel);
 
@@ -158,6 +161,7 @@ private:
     QColor m_pastColor;
     QColor m_singleColor;
 
+    QString m_defaultPlayList;
     QString m_defaultOutputBackend;
     QString m_defaultOutputConnection;
     QString m_language;

@@ -107,6 +107,8 @@ public slots:
     void playerFinished();
     void playerStopped();
     void playerEcho(long time, long ticks);
+    void nextSong();
+    void prevSong();
 
     void progressDialogInit(const QString& type, int max);
     void progressDialogUpdate(int pos);

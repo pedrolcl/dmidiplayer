@@ -43,7 +43,7 @@
    <item row="1" column="0" colspan="3">
     <widget class="QDialogButtonBox" name="dialogButtons">
      <property name="standardButtons">
-      <set>QDialogButtonBox::Ok</set>
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
    </item>

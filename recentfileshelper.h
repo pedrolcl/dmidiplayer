@@ -33,6 +33,7 @@ public:
 	void setCurrentFile(const QString &fileName);
     void updateRecentFileActions();
     QString strippedName(const QString &fullFileName);
+    QStringList files();
 
 Q_SIGNALS:
 	void selectedFile(QString fileName);

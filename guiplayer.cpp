@@ -22,6 +22,7 @@
 #include <QMessageBox>
 #include <QFileInfo>
 #include <QTime>
+#include <QTimer>
 #include <QMimeData>
 #include <QtMath>
 #include <drumstick/settingsfactory.h>
@@ -89,12 +90,14 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     connect(m_ui->actionRhythm, &QAction::toggled, this, &GUIPlayer::slotShowRhythm);
     connect(m_ui->actionPianoPlayer, &QAction::toggled, this, &GUIPlayer::slotShowPianola);
     connect(m_ui->actionChannels, &QAction::toggled, this, &GUIPlayer::slotShowChannels);
+    connect(m_ui->actionNext,  &QAction::triggered, this, &GUIPlayer::nextSong);
+    connect(m_ui->actionPrev,  &QAction::triggered, this, &GUIPlayer::prevSong);
 
-    m_ui->actionPlay->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/play.png")));
+    //m_ui->actionPlay->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/play.png")));
     m_ui->actionPlay->setShortcut( Qt::Key_MediaPlay );
-    m_ui->actionStop->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/stop.png")));
+    //m_ui->actionStop->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/stop.png")));
     m_ui->actionStop->setShortcut( Qt::Key_MediaStop );
-    m_ui->actionPause->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/pause.png")));
+    //m_ui->actionPause->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/pause.png")));
     m_ui->actionMIDISetup->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/setup.png")));
 
     createLanguageMenu();
@@ -148,6 +151,12 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
 
     m_preferences = new PrefsDialog(this);
     m_playList = new PlayList(this);
+    auto fileItems = m_recentFiles->files();
+    if (fileItems.count() > 0) {
+        m_playList->setItems(fileItems);
+    } else {
+        m_playList->loadPlayList( Settings::instance()->getDefaultPlayList() );
+    }
 
     try {
         BackendManager man;
@@ -271,7 +280,7 @@ void GUIPlayer::pause()
         m_player->pause();
         updateState(PausedState);
     } else {
-        play();
+        QTimer::singleShot(0, this, &GUIPlayer::play);
     }
 }
 
@@ -341,26 +350,10 @@ void GUIPlayer::openFile(const QString& fileName)
 
             if (m_pianola != nullptr) {
                 m_pianola->initSong( m_player->song() );
-//                int loNote = m_player->song()->lowestMidiNote();
-//                int hiNote = m_player->song()->highestMidiNote();
-//                m_pianola->setNoteRange(loNote, hiNote);
-//                for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
-//                    m_pianola->enableChannel(i, m_player->song()->channelUsed(i));
-//                    m_pianola->slotLabel(i, m_player->song()->channelLabel(i));
-//                }
             }
 
             if (m_channels != nullptr) {
                 m_channels->initSong( m_player->song() );
-//                for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
-//                    m_player->setLocked(i, false);
-//                    m_player->setMuted(i, false);
-//                    m_channels->setLockChannel(i, false);
-//                    m_channels->setSoloChannel(i, false);
-//                    m_channels->setMuteChannel(i, false);
-//                    m_channels->enableChannel(i, m_player->song()->channelUsed(i));
-//                    m_channels->setChannelName(i, m_player->song()->channelLabel(i));
-//                }
             }
 
             if (m_lyrics != nullptr) {
@@ -368,7 +361,7 @@ void GUIPlayer::openFile(const QString& fileName)
             }
 
             if ( Settings::instance()->getAutoPlay() ) {
-                play();
+                QTimer::singleShot(0, this, &GUIPlayer::play);
             }
         }
     }
@@ -423,6 +416,7 @@ void GUIPlayer::playerFinished()
     m_player->resetPosition();
     updateTimeLabel(0);
     m_ui->progressBar->setValue(0);
+    nextSong();
 }
 
 void GUIPlayer::playerStopped()
@@ -452,6 +446,26 @@ void GUIPlayer::playerEcho(long millis, long ticks)
     updateTempoLabel(m_player->currentBPM());
     updateTimeLabel(millis);
     m_ui->progressBar->setValue(ticks);
+}
+
+void GUIPlayer::nextSong()
+{
+    if (m_state == PlayingState) {
+        stop();
+    }
+    if (m_playList->selectNextItem()) {
+        openFile(m_playList->currentItem());
+    }
+}
+
+void GUIPlayer::prevSong()
+{
+    if (m_state == PlayingState) {
+        stop();
+    }
+    if (m_playList->selectPrevItem()) {
+        openFile(m_playList->currentItem());
+    }
 }
 
 void GUIPlayer::pitchShift(int value)
@@ -740,6 +754,9 @@ void GUIPlayer::slotPlayList()
     if (m_playList->exec() == QDialog::Accepted) {
         auto current = m_playList->currentItem();
         if (!current.isEmpty()) {
+            if (m_state == PlayingState) {
+                stop();
+            }
             openFile(current);
         }
     }

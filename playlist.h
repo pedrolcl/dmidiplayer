@@ -29,10 +29,13 @@ public:
     PlayList(QWidget *parent = 0);
     virtual ~PlayList();
 
+    void loadPlayList(const QString& fileName);
     QString currentItem();
     QStringList items();
     int itemCount();
     bool isSupported(const QString& fileName);
+    bool selectNextItem();
+    bool selectPrevItem();
 
 public slots:
     void clear();

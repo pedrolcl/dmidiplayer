@@ -55,11 +55,8 @@ public:
     int tag() const { return m_tag; }
     void setTag(const int aTag);
     int status() const { return m_status; }
-
     virtual bool isChannel() { return false; }
-    //virtual bool isTempo() { return false; }
-    //virtual bool isText() { return false; }
-    //virtual bool isBeatEvent() { return false; }
+    virtual bool isMetaEvent() { return false; }
 
 protected:
     long m_delta;
@@ -76,7 +73,7 @@ class ChannelEvent : public MIDIEvent
 public:
     ChannelEvent() : MIDIEvent(), m_channel(0) {}
     ChannelEvent(int ch): MIDIEvent(), m_channel(ch) {}
-    virtual bool isChannel() { return true; }
+    virtual bool isChannel() override { return true; }
     /**
      * Sets the channel of the event
      * @param c A channel, between 0 and 15.
@@ -139,7 +136,7 @@ class NoteOnEvent : public KeyEvent
 public:
     NoteOnEvent() : KeyEvent() { }
     NoteOnEvent(const int ch, const int key, const int vel);
-    virtual NoteOnEvent *clone() { return new NoteOnEvent(*this); }
+    virtual NoteOnEvent *clone() override { return new NoteOnEvent(*this); }
 };
 
 /**
@@ -150,7 +147,7 @@ class NoteOffEvent : public KeyEvent
 public:
     NoteOffEvent() : KeyEvent() {}
     NoteOffEvent(const int ch, const int key, const int vel);
-    virtual NoteOffEvent *clone() { return new NoteOffEvent(*this); }
+    virtual NoteOffEvent *clone() override { return new NoteOffEvent(*this); }
 };
 
 /**
@@ -161,7 +158,7 @@ class KeyPressEvent : public KeyEvent
 public:
     KeyPressEvent() : KeyEvent() { }
     KeyPressEvent(const int ch, const int key, const int vel);
-    virtual KeyPressEvent *clone() { return new KeyPressEvent(*this); }
+    virtual KeyPressEvent *clone() override { return new KeyPressEvent(*this); }
 };
 
 /**
@@ -172,7 +169,7 @@ class ControllerEvent : public ChannelEvent
 public:
     ControllerEvent() : ChannelEvent(), m_param(0), m_value(0) {}
     ControllerEvent(const int ch, const int cc, const int val);
-    virtual ControllerEvent *clone() { return new ControllerEvent(*this); }
+    virtual ControllerEvent *clone() override { return new ControllerEvent(*this); }
 
     static const int MIDI_CTL_MSB_BANK               = 0x00;    /**< Bank selection */
     static const int MIDI_CTL_MSB_MODWHEEL           = 0x01;    /**< Modulation */
@@ -285,7 +282,7 @@ class ProgramChangeEvent : public ChannelEvent
 public:
     ProgramChangeEvent() : ChannelEvent(), m_program(0) { }
     ProgramChangeEvent(const int ch, const int val);
-    virtual ProgramChangeEvent *clone() { return new ProgramChangeEvent(*this); }
+    virtual ProgramChangeEvent *clone() override { return new ProgramChangeEvent(*this); }
     /** Gets the MIDI program number */
     int program() const { return m_program; }
     /** Sets the MIDI program number */
@@ -302,7 +299,7 @@ class PitchBendEvent : public ChannelEvent
 public:
     PitchBendEvent() : ChannelEvent(), m_value(0) { }
     PitchBendEvent(const int ch, const int val);
-    virtual PitchBendEvent *clone() { return new PitchBendEvent(*this); }
+    virtual PitchBendEvent *clone() override { return new PitchBendEvent(*this); }
     /** Gets the MIDI pitch bend value, zero centered from -8192 to 8191 */
     int value() const { return m_value; }
     /** Sets the MIDI pitch bend value, zero centered from -8192 to 8191  */
@@ -319,7 +316,7 @@ class ChanPressEvent : public ChannelEvent
 public:
     ChanPressEvent() : ChannelEvent(), m_value(0) { }
     ChanPressEvent( const int ch, const int val);
-    virtual ChanPressEvent *clone() { return new ChanPressEvent(*this); }
+    virtual ChanPressEvent *clone() override { return new ChanPressEvent(*this); }
     /** Gets the channel aftertouch value */
     int value() const { return m_value; }
     /** Sets the channel aftertouch value */
@@ -337,7 +334,8 @@ public:
     VariableEvent();
     VariableEvent(const QByteArray& data);
     VariableEvent(const unsigned int datalen, char* dataptr);
-    virtual VariableEvent *clone() { return new VariableEvent(*this); }
+    virtual VariableEvent *clone() override { return new VariableEvent(*this); }
+    virtual bool isMetaEvent() override { return true; }
     unsigned int length() const { return m_data.length(); }
     QByteArray data() const { return m_data; }
     void setData(const QByteArray& d) { m_data = d; }
@@ -354,7 +352,7 @@ public:
     SysExEvent();
     SysExEvent(const QByteArray& data);
     SysExEvent(const unsigned int datalen, char* dataptr);
-    virtual SysExEvent *clone() { return new SysExEvent(*this); }
+    virtual SysExEvent *clone() override { return new SysExEvent(*this); }
 };
 
 /**
@@ -369,8 +367,7 @@ public:
     TextEvent();
     TextEvent(const unsigned int datalen, char* dataptr);
     explicit TextEvent(const QByteArray& text, const int textType = 1);
-    //virtual bool isText() { return true; }
-    virtual TextEvent *clone() { return new TextEvent(*this); }
+    virtual TextEvent *clone() override { return new TextEvent(*this); }
     int textType() const;
 protected:
     int m_textType;
@@ -384,7 +381,7 @@ class SystemEvent : public MIDIEvent
 public:
     SystemEvent() : MIDIEvent() {}
     SystemEvent(const int message);
-    virtual SystemEvent *clone() { return new SystemEvent(*this); }
+    virtual SystemEvent *clone() override { return new SystemEvent(*this); }
     int message() const { return m_status; }
 };
 
@@ -397,8 +394,8 @@ class TempoEvent : public MIDIEvent
 public:
     TempoEvent();
     TempoEvent(const qreal tempo);
-    virtual TempoEvent *clone() { return new TempoEvent(*this); }
-    //virtual bool isTempo() { return true; }
+    virtual TempoEvent *clone() override { return new TempoEvent(*this); }
+    virtual bool isMetaEvent() override { return true; }
     qreal tempo() const { return m_tempo; }
     void setTempo(const qreal t) { m_tempo = t; }
 protected:
@@ -413,7 +410,8 @@ class TimeSignatureEvent : public MIDIEvent
 public:
     TimeSignatureEvent();
     TimeSignatureEvent(const int numerator, const int denominator);
-    virtual TimeSignatureEvent *clone() { return new TimeSignatureEvent(*this); }
+    virtual TimeSignatureEvent *clone() override { return new TimeSignatureEvent(*this); }
+    virtual bool isMetaEvent() override { return true; }
     int numerator() const { return m_numerator; }
     int denominator() const { return m_denominator; }
 protected:
@@ -429,7 +427,8 @@ class KeySignatureEvent : public MIDIEvent
 public:
     KeySignatureEvent();
     KeySignatureEvent(const int alterations, const bool minorMode);
-    virtual KeySignatureEvent *clone() { return new KeySignatureEvent(*this); }
+    virtual KeySignatureEvent *clone() override { return new KeySignatureEvent(*this); }
+    virtual bool isMetaEvent() override { return true; }
     int alterations() const { return m_alterations; }
     bool minorMode() const { return m_minorMode; }
 protected:
@@ -445,8 +444,8 @@ class BeatEvent : public MIDIEvent
 public:
     BeatEvent();
     BeatEvent(const int bar, const int beat, const int max);
-    virtual BeatEvent *clone() { return new BeatEvent(*this); }
-    //virtual bool isBeatEvent() { return true; }
+    virtual BeatEvent *clone() override { return new BeatEvent(*this); }
+    virtual bool isMetaEvent() override { return true; }
     int bar() const { return m_bar; }
     int beat() const { return m_beat; }
     int max() const { return m_max; }

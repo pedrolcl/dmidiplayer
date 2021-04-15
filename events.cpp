@@ -234,14 +234,10 @@ int TextEvent::textType() const
 }
 
 TempoEvent::TempoEvent() : MIDIEvent(), m_tempo(0)
-{
-    m_status = MIDI_REALTIME_RESET;
-}
+{ }
 
 TempoEvent::TempoEvent(const qreal tempo): MIDIEvent(), m_tempo(tempo)
-{
-    m_status = MIDI_REALTIME_RESET;
-}
+{ }
 
 TimeSignatureEvent::TimeSignatureEvent()
     : MIDIEvent(), m_numerator(0), m_denominator(0)
@@ -261,12 +257,9 @@ KeySignatureEvent::KeySignatureEvent(const int alterations, const bool minorMode
 
 BeatEvent::BeatEvent()
     : MIDIEvent(), m_bar(0), m_beat(0), m_max(0)
-{
-    m_status = MIDI_COMMON_QTRFRAME;
-}
+{ }
 
 BeatEvent::BeatEvent(const int bar, const int beat, const int max)
     : MIDIEvent(), m_bar(bar), m_beat(beat), m_max(max)
-{
-    m_status = MIDI_COMMON_QTRFRAME;
-}
+{ }
+

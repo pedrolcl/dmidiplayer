@@ -98,3 +98,13 @@ QString RecentFilesHelper::strippedName(const QString &fullFileName)
 {
     return QFileInfo(fullFileName).fileName();
 }
+
+QStringList RecentFilesHelper::files()
+{
+    using namespace drumstick::widgets;
+    SettingsFactory settings;
+    settings->beginGroup("RecentFiles");
+    QStringList files = settings->value("recentFileList").toStringList();
+    settings->endGroup();
+    return files;
+}

@@ -70,6 +70,22 @@ PlayList::PlayList(QWidget *parent) : QDialog(parent)
 PlayList::~PlayList()
 { }
 
+void PlayList::loadPlayList(const QString &fileName)
+{
+    QFile file(fileName);
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream in(&file);
+        QString line = in.readLine();
+        while (!line.isNull()) {
+            if (isSupported(line)) {
+                ui.fileList->addItem(line);
+            }
+            line = in.readLine();
+        }
+        file.close();
+    }
+}
+
 bool
 PlayList::isSupported(const QString& fileName)
 {
@@ -86,18 +102,7 @@ PlayList::selectFile()
        tr("Open Playlist file"), Settings::instance()->lastDirectory(),
        tr("Playlist (*.lst)") );
     if (!fName.isEmpty()) {
-        QFile file(fName);
-        if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-            QTextStream in(&file);
-            QString line = in.readLine();
-            while (!line.isNull()) {
-                if (isSupported(line)) {
-                    ui.fileList->addItem(line);
-                }
-                line = in.readLine();
-            }
-            file.close();
-        }
+        loadPlayList(fName);
     }
 }
 
@@ -207,7 +212,7 @@ PlayList::setItems(QStringList items)
 QString
 PlayList::currentItem()
 {
-    if (ui.fileList->currentItem() != 0)
+    if (ui.fileList->currentItem() != nullptr)
         return ui.fileList->currentItem()->text();
     return QString();
 }
@@ -218,6 +223,28 @@ PlayList::setCurrentItem(QString item)
     QList<QListWidgetItem *> matches = ui.fileList->findItems(item, Qt::MatchExactly);
     if (matches.count() > 0)
         ui.fileList->setCurrentItem(matches[0]);
+}
+
+bool
+PlayList::selectNextItem()
+{
+    int current = ui.fileList->currentRow();
+    if (current < ui.fileList->count()) {
+        ui.fileList->setCurrentRow( ++current );
+        return true;
+    }
+    return false;
+}
+
+bool
+PlayList::selectPrevItem()
+{
+    int current = ui.fileList->currentRow();
+    if (current > 0) {
+        ui.fileList->setCurrentRow( --current );
+        return true;
+    }
+    return false;
 }
 
 int
