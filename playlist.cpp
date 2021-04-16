@@ -127,6 +127,7 @@ void PlayList::saveFile()
                 out << line << endl;
             }
             file.close();
+            Settings::instance()->setLastPlayList(selected.first());
         }
     }
 }
