@@ -82,7 +82,8 @@ public:
     void connectOutput(const QString &driver, const QString &connection);
     void openFile(const QString &fileName);
     void updateState(PlayerState newState);
-
+    void applySettings();
+    
 protected:
     void dragEnterEvent( QDragEnterEvent* event ) override;
     void dropEvent( QDropEvent* event ) override;

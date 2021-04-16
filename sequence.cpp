@@ -16,7 +16,6 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <chrono>
 #include <QDebug>
 #include <QtMath>
 #include <QFileInfo>
@@ -116,15 +115,15 @@ void Sequence::initCodecs()
     foreach(const auto& k, m_ucharsets) {
         auto codec = QTextCodec::codecForName(k);
         if (codec == nullptr) {
-            if (!m_umibs.contains(k)) {
+            /*if (!m_umibs.contains(k)) {
                 qWarning() << "\tCHECK!!!" << k ;
-            }
+            }*/
         } else {
             if (!m_umibs.contains(k)) {
                 m_umibs.insert(k, codec->mibEnum());
-            } else if (codec->mibEnum() != m_umibs[k]) {
+            } /*else if (codec->mibEnum() != m_umibs[k]) {
                 qWarning() << "\tMismatch: charset=" << k << "codec->mib=" << codec->mibEnum() << "umibs=" << m_umibs[k];
-            }
+            }*/
         }
     }
 }
@@ -217,6 +216,7 @@ void Sequence::loadFile(const QString& fileName)
                 m_currentFile = finfo.fileName();
             }
             m_charset = QByteArray(uchardet_get_charset(m_handle));
+            //qDebug() << Q_FUNC_INFO << "Detected charset:" << m_charset;
         } catch (...) {
             qWarning() << "corrupted file";
             clear();
@@ -234,6 +234,7 @@ int Sequence::detectedUchardetMIB() const
     if (!m_charset.isNull() && m_umibs.contains(m_charset)) {
         return m_umibs[m_charset];
     }
+    qWarning() << "Charset not detected";
     return -1;
 }
 
@@ -267,10 +268,15 @@ QStringList Sequence::getText(const TextType type, const int mib)
 {
     QStringList output;
     QTextCodec *codec = QTextCodec::codecForMib(mib);
-    if ( (codec != nullptr) && (type >= FIRST_TYPE) && (type <= LAST_TYPE) ) {
+    if ( (type >= FIRST_TYPE) && (type <= LAST_TYPE) ) {
          foreach(const auto& e, m_textEvents) {
              if (e.m_type == type) {
-                 QString s = codec->toUnicode(e.m_text);
+                 QString s;
+                 if (codec == nullptr) {
+                    s = QString::fromLatin1(e.m_text);
+                 } else {
+                    s = codec->toUnicode(e.m_text);
+                 }
                  appendStringToList(output, s, type);
              }
          }
@@ -281,7 +287,7 @@ QStringList Sequence::getText(const TextType type, const int mib)
 QByteArray Sequence::getRawText(const int track, const TextType type)
 {
     QByteArray output;
-    if (type < TextType::KarFileType) {
+    if ((type < TextType::KarFileType) && !m_textEvents.isEmpty()) {
         foreach(const auto &e, m_textEvents) {
             if ((track == 0 || e.m_track == track) &&
                 (type == TextType::None || e.m_type == type))
@@ -1010,7 +1016,7 @@ QString Sequence::channelLabel(int channel)
         (!m_channelLabel[channel].isEmpty())) {
         QTextCodec *codec = QTextCodec::codecForMib(detectedUchardetMIB());
         if (codec == nullptr)
-            return QString(m_channelLabel[channel]);
+            return QString::fromLatin1(m_channelLabel[channel]);
         else
             return codec->toUnicode(m_channelLabel[channel]);
     }

@@ -448,7 +448,7 @@ public:
     virtual bool isMetaEvent() override { return true; }
     int bar() const { return m_bar; }
     int beat() const { return m_beat; }
-    int max() const { return m_max; }
+    int barLength() const { return m_max; }
 protected:
     int m_bar;
     int m_beat;

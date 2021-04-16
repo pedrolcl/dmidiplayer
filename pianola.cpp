@@ -42,19 +42,16 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent)
     setAttribute(Qt::WA_MacAlwaysShowToolWindow, true);
     menuBar()->setNativeMenuBar(false);
     m_chmenu = menuBar()->addMenu(tr("MIDI Channels"));
-    m_a1 = new QAction(this);
-    //m_a1->setText(tr("Show all channels"));
+    m_a1 = new QAction(this); // Show all channels
     connect(m_a1, &QAction::triggered, this, &Pianola::slotShowAllChannels);
     m_chmenu->addAction(m_a1);
-    m_a2 = new QAction(this);
-    //m_a2->setText(tr("Hide all channels"));
+    m_a2 = new QAction(this); // Hide all channels
     connect(m_a2, &QAction::triggered, this, &Pianola::slotHideAllChannels);
     m_chmenu->addAction(m_a2);
-    m_a3 = new QAction(this);
+    m_a3 = new QAction(this); // Tighten the number of keys
     m_a3->setCheckable(true);
     m_tightenKeys = true;
     m_a3->setChecked(true);
-    //m_a3->setText(tr("Tighten the number of keys"));
     connect(m_a3, &QAction::triggered, this, &Pianola::tightenKeys);
     m_chmenu->addAction(m_a3);
     m_chmenu->addSeparator();
@@ -105,6 +102,7 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent)
     }
     readSettings();
     retranslateUi();
+    applySettings();
 }
 
 Pianola::~Pianola()

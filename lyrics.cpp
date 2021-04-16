@@ -117,6 +117,8 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     m_comboCodec->setObjectName(QString::fromUtf8("comboCodec"));
     sizePolicy.setHeightForWidth(m_comboCodec->sizePolicy().hasHeightForWidth());
     m_comboCodec->setSizePolicy(sizePolicy);
+    m_comboCodec->setMaxVisibleItems(10);
+    m_comboCodec->setStyleSheet("combobox-popup: 0;");
 
     m_horizontalLayout->addWidget(m_comboCodec);
 
@@ -127,7 +129,6 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
 
     m_fontButton = new QToolButton(m_frame);
     m_fontButton->setObjectName(QString::fromUtf8("fontButton"));
-    m_fontButton->setIcon(IconUtils::GetPixmap(this,":/resources/wrench.png"));
 
     m_horizontalLayout->addWidget(m_fontButton);
 
@@ -160,6 +161,7 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
 
     readSettings();
     retranslateUi();
+    applySettings();
 }
 
 void Lyrics::readSettings()
@@ -224,6 +226,10 @@ void Lyrics::populateCodecsCombo()
     foreach(const auto m, QTextCodec::availableMibs()) {
         QTextCodec *codec = QTextCodec::codecForMib(m);
         m_comboCodec->addItem(codec->name(), m);
+        foreach(const auto n, codec->aliases()) {
+            m_comboCodec->addItem(n, m);
+        }
+        //qDebug() << "mib:" << m << "names:" << codec->name() << codec->aliases();
     }
 }
 
@@ -262,6 +268,7 @@ void Lyrics::initSong( Sequence *song )
     m_textViewer->clear();
     // selected Codec:
     int idx = m_comboCodec->findData(m_mib);
+    // qDebug() << "mib:" << m_mib << "combo index:" << idx;
     m_comboCodec->setCurrentIndex(idx);
     m_codec = QTextCodec::codecForMib(m_mib);
     populateTracksCombo();
@@ -273,24 +280,33 @@ void Lyrics::initSong( Sequence *song )
 
 void Lyrics::applySettings()
 {
+    m_fontButton->setIcon(IconUtils::GetPixmap(this,":/resources/wrench.png"));
     m_textViewer->setFont(Settings::instance()->lyricsFont());
     m_normalColor = Settings::instance()->getFutureColor();
     m_otherColor = Settings::instance()->getPastColor();
     if (!m_textViewer->document()->isEmpty()) {
         displayText();
     }
+    foreach(QComboBox *cb, findChildren<QComboBox*>()) {
+        cb->setPalette(qApp->palette());
+        foreach(QWidget *w, cb->findChildren<QWidget*>()) {
+            w->setPalette(qApp->palette());
+        }
+    }
 }
 
 QString Lyrics::sanitizeText(const QByteArray& data)
 {
     QString s;
-    if (m_codec != nullptr) {
+    if (m_codec == nullptr) {
+        s = QString::fromLatin1(data);
+    } else {
         s = m_codec->toUnicode(data);
-        s.replace(QRegExp("@[IKLTVW]"), "\n");
-        s.replace(QRegExp("[/\\\\]+"), "\n");
-        s.replace(QRegExp("[\r\n]+"), "\n");
-        s.replace('\0', QChar::Space);
     }
+    s.replace(QRegExp("@[IKLTVW]"), "\n");
+    s.replace(QRegExp("[/\\\\]+"), "\n");
+    s.replace(QRegExp("[\r\n]+"), "\n");
+    s.replace('\0', QChar::Space);
     return s;
 }
 
@@ -298,8 +314,7 @@ void Lyrics::slotMidiText(const int track, const int type, const QByteArray &dat
 {
     Q_UNUSED(type)
     //qDebug() << Q_FUNC_INFO << track << type << data;
-    if ((m_codec != nullptr) &&
-        (m_track == 0 || m_track == track) &&
+    if ((m_track == 0 || m_track == track) &&
         (m_type == 0 || m_type == type)) {
         QString s = sanitizeText(data);
         if ((m_textViewer->find(s.trimmed(), QTextDocument::FindCaseSensitively)) ) {

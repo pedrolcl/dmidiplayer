@@ -205,7 +205,7 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
         if (typeid(*ev) == beatId) {
             //qDebug() << m_songPosition << ev->tick() << " Meta-event";
             BeatEvent* event = static_cast<BeatEvent*>(ev);
-            emit beat(event->bar(), event->beat(), event->max());
+            emit beat(event->bar(), event->beat(), event->barLength());
         } else
         if (typeid(*ev) == timeSigId) {
             TimeSignatureEvent* event = static_cast<TimeSignatureEvent*>(ev);

@@ -17,6 +17,7 @@
 */
 
 //#include <QDebug>
+#include <QApplication>
 #include <QGridLayout>
 #include <QLabel>
 #include <QToolButton>
@@ -104,6 +105,7 @@ Channels::Channels( QWidget* parent ) :
         layout->addWidget(m_lock[i], row, 5);
         connect( m_lock[i], &QToolButton::clicked, this, [=]{ slotLockChannel(i); } );
         m_patch[i] = new QComboBox(this);
+        m_patch[i]->setStyleSheet("combobox-popup: 0;");
         m_patch[i]->addItems(m_instSet.names(i == MIDI_GM_STD_DRUM_CHANNEL));
         layout->addWidget(m_patch[i], row, 6);
         connect( m_patch[i], QOverload<int>::of(&QComboBox::activated), this, [=](int){ slotPatchChanged(i); });
@@ -114,6 +116,7 @@ Channels::Channels( QWidget* parent ) :
     }
     readSettings();
     retranslateUi();
+    applySettings();
 }
 
 Channels::~Channels()
@@ -147,6 +150,16 @@ void Channels::initSong(Sequence *song)
         setMuteChannel(i, false);
         enableChannel(i, song->channelUsed(i));
         setChannelName(i, song->channelLabel(i));
+    }
+}
+
+void Channels::applySettings()
+{
+    foreach(QComboBox *cb, findChildren<QComboBox*>()) {
+        cb->setPalette(qApp->palette());
+        foreach(QWidget *w, cb->findChildren<QWidget*>()) {
+            w->setPalette(qApp->palette());
+        }
     }
 }
 

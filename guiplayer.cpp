@@ -16,7 +16,7 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QDebug>
+//#include <QDebug>
 #include <QFileDialog>
 #include <QToolTip>
 #include <QMessageBox>
@@ -93,12 +93,8 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     connect(m_ui->actionNext,  &QAction::triggered, this, &GUIPlayer::nextSong);
     connect(m_ui->actionPrev,  &QAction::triggered, this, &GUIPlayer::prevSong);
 
-    //m_ui->actionPlay->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/play.png")));
     m_ui->actionPlay->setShortcut( Qt::Key_MediaPlay );
-    //m_ui->actionStop->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/stop.png")));
     m_ui->actionStop->setShortcut( Qt::Key_MediaStop );
-    //m_ui->actionPause->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/pause.png")));
-    m_ui->actionMIDISetup->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/setup.png")));
 
     createLanguageMenu();
     m_ui->actionShowStatusbar->setChecked(Settings::instance()->showStatusBar());
@@ -196,6 +192,7 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
         tempoReset();
         volumeReset();
         updateState(EmptyState);
+        applySettings();
     } catch (...) {
         qWarning() << "Error";
     }
@@ -391,17 +388,30 @@ void GUIPlayer::setup()
     }
 }
 
-void GUIPlayer::preferences()
+void GUIPlayer::applySettings()
 {
     static QPalette defaultPalette = qApp->palette();
     static QPalette darkPalette(QColor(0x30,0x30,0x30));
-    if (m_preferences->exec() == QDialog::Accepted) {
 #if defined(Q_OS_WINDOWS)
-        m_snapper.SetEnabled(Settings::instance()->winSnap());
+    m_snapper.SetEnabled(Settings::instance()->winSnap());
 #endif
-        qApp->setPalette( Settings::instance()->getDarkMode() ? darkPalette : defaultPalette );
-        m_lyrics->applySettings();
-        m_pianola->applySettings();
+    qApp->setPalette( Settings::instance()->getDarkMode() ? darkPalette : defaultPalette );
+
+    //m_ui->actionPlay->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/play.png")));
+    //m_ui->actionStop->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/stop.png")));
+    //m_ui->actionPause->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/pause.png")));
+    m_ui->actionMIDISetup->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/setup.png")));
+    m_ui->actionPreferences->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/wrench.png")));
+
+    m_lyrics->applySettings();
+    m_pianola->applySettings();
+    m_channels->applySettings();
+}
+
+void GUIPlayer::preferences()
+{
+    if (m_preferences->exec() == QDialog::Accepted) {
+        applySettings();
     }
 }
 

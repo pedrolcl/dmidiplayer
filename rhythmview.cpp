@@ -53,7 +53,7 @@ void RhythmView::setRhythm( int numerator )
         clearLamps();
         for (int i=0; i<numerator; ++i ) {
             QLabel *led = new QLabel( this );
-            led->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
+            //led->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
             led->setGeometry(x+2,0,w-4,h);
             led->setScaledContents(true);
             led->setPixmap(led_off);

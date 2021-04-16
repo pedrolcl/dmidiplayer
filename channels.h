@@ -48,6 +48,7 @@ public:
     void writeSettings();
     void retranslateUi();
     void initSong( Sequence *song );
+    void applySettings();
 
     QString channelName(int channel) const;
     bool isChannelMuted(int channel) const;

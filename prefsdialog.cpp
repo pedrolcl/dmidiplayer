@@ -42,6 +42,7 @@ PrefsDialog::PrefsDialog(QWidget *parent) :
     connect(ui->btnNoteFont, &QToolButton::clicked, this, &PrefsDialog::slotNotesFont);
     connect(ui->btnTextFont, &QToolButton::clicked, this, &PrefsDialog::slotLyricsFont);
     connect(ui->btnSingleColor, &QToolButton::clicked, this, &PrefsDialog::slotSingleColor);
+    connect(ui->chkDarkMode, &QCheckBox::toggled, this, &PrefsDialog::darkModeChanged);
 }
 
 PrefsDialog::~PrefsDialog()
@@ -53,8 +54,8 @@ void PrefsDialog::restoreDefaults()
 {
    using namespace drumstick::rt;
 
-    QColor futureColor = qApp->palette().color(QPalette::Text);
-    QColor pastColor = Qt::gray;
+    QColor futureColor = QColor(Qt::black);
+    QColor pastColor = QColor(Qt::gray);
 
     ui->chkSnapping->setChecked(true);
     ui->chkDarkMode->setChecked(false);
@@ -113,6 +114,12 @@ void PrefsDialog::slotSingleColor()
     if (color.isValid()) {
         setSingleColor(color);
     }
+}
+
+void PrefsDialog::darkModeChanged(bool state)
+{
+    QColor future = QColor( state ? Qt::white : Qt::black );
+    setFutureColor(future);
 }
 
 void PrefsDialog::accept()

@@ -261,7 +261,10 @@ private: // members
         {"ISO-2022-KR", 37},
         {"IBM855", 2046}
         /* macOS */
+        //{"x-mac-ce", 0},
+        //{"x-mac-cyrillic", 0}
     };
+
     QByteArray m_charset;
     uchardet_t m_handle;
 
