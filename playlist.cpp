@@ -21,6 +21,7 @@
 #include <QListView>
 #include <QPushButton>
 #include <QFileDialog>
+#include <QFileInfo>
 #include <QFile>
 #include <QTextStream>
 #include <QDir>
@@ -73,12 +74,14 @@ PlayList::~PlayList()
 void PlayList::loadPlayList(const QString &fileName)
 {
     QFile file(fileName);
+    QFileInfo listInfo(file);
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QTextStream in(&file);
         QString line = in.readLine();
         while (!line.isNull()) {
-            if (isSupported(line)) {
-                ui.fileList->addItem(line);
+            QFileInfo f(listInfo.absolutePath(), line);
+            if (isSupported(f.absoluteFilePath())) {
+                ui.fileList->addItem(f.absoluteFilePath());
             }
             line = in.readLine();
         }
