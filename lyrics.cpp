@@ -237,12 +237,14 @@ void Lyrics::populateTracksCombo()
 {
     m_comboTrack->clear();
     m_comboTrack->addItem(tr("All Tracks"));
-    for(int track = 1; track <= m_song->getNumTracks(); ++track) {
-        QString name = sanitizeText( m_song->trackName(track) );
-        if (name.isEmpty()) {
-            m_comboTrack->addItem(tr("Track %1").arg(track));
-        } else {
-            m_comboTrack->addItem(QString::number(track) + ": " + name);
+    if (m_song != nullptr) {
+        for(int track = 1; track <= m_song->getNumTracks(); ++track) {
+            QString name = sanitizeText( m_song->trackName(track) );
+            if (name.isEmpty()) {
+                m_comboTrack->addItem(tr("Track %1").arg(track));
+            } else {
+                m_comboTrack->addItem(QString::number(track) + ": " + name);
+            }
         }
     }
 }
@@ -251,20 +253,24 @@ void Lyrics::displayText()
 {
     m_textViewer->clear();
     m_textViewer->setTextColor(m_normalColor);
-    QByteArray text = m_song->getRawText(m_track, static_cast<Sequence::TextType>(m_type));
-    QString s = sanitizeText(text);
-    //qDebug() << Q_FUNC_INFO << s;
-    m_textViewer->setPlainText(s.trimmed());
+    if (m_song != nullptr) {
+        QByteArray text = m_song->getRawText(m_track, static_cast<Sequence::TextType>(m_type));
+        QString s = sanitizeText(text);
+        //qDebug() << Q_FUNC_INFO << s;
+        m_textViewer->setPlainText(s.trimmed());
+    }
 }
 
 void Lyrics::initSong( Sequence *song )
 {
     //qDebug() << Q_FUNC_INFO;
     m_song = song;
-    setWindowTitle(tr("Lyrics Viewer (%1)").arg(m_song->currentFile()));
-    m_mib = song->detectedUchardetMIB();
-    m_track = song->trackMaxPoints();
-    m_type = song->typeMaxPoints();
+    if (m_song != nullptr) {
+        setWindowTitle(tr("Lyrics Viewer (%1)").arg(m_song->currentFile()));
+        m_mib = m_song->detectedUchardetMIB();
+        m_track = m_song->trackMaxPoints();
+        m_type = m_song->typeMaxPoints();
+    }
     m_textViewer->clear();
     // selected Codec:
     int idx = m_comboCodec->findData(m_mib);

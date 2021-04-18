@@ -16,15 +16,16 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "iconutils.h"
 #include <QApplication>
 #include <QPainter>
+#include "iconutils.h"
 
 namespace IconUtils
 {
     void PaintPixmap(QPixmap &pixmap, const QColor& color)
     {
         QPainter painter(&pixmap);
+        painter.setRenderHints(QPainter::SmoothPixmapTransform | QPainter::Antialiasing);
         painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
         painter.fillRect(pixmap.rect(), color);
     }

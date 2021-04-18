@@ -138,12 +138,14 @@ void Channels::retranslateUi()
 
 void Channels::initSong(Sequence *song)
 {
-    for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
-        setLockChannel(i, false);
-        setSoloChannel(i, false);
-        setMuteChannel(i, false);
-        enableChannel(i, song->channelUsed(i));
-        setChannelName(i, song->channelLabel(i));
+    if (song != nullptr) {
+        for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+            setLockChannel(i, false);
+            setSoloChannel(i, false);
+            setMuteChannel(i, false);
+            enableChannel(i, song->channelUsed(i));
+            setChannelName(i, song->channelLabel(i));
+        }
     }
 }
 

@@ -54,7 +54,7 @@ void PrefsDialog::restoreDefaults()
 {
    using namespace drumstick::rt;
 
-    QColor futureColor = QColor(Qt::black);
+    QColor futureColor = qApp->palette().color(QPalette::WindowText);
     QColor pastColor = QColor(Qt::gray);
 
     ui->chkSnapping->setChecked(true);
@@ -118,7 +118,7 @@ void PrefsDialog::slotSingleColor()
 
 void PrefsDialog::darkModeChanged(bool state)
 {
-    QColor future = QColor( state ? Qt::white : Qt::black );
+    QColor future = QColor( state ? Qt::white : qApp->palette().color(QPalette::WindowText) );
     setFutureColor(future);
 }
 

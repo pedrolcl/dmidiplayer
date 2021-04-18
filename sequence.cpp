@@ -106,6 +106,7 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
 
 Sequence::~Sequence()
 {
+    //qDebug() << Q_FUNC_INFO;
     clear();
     uchardet_delete(m_handle);
 }

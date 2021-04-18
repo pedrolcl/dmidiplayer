@@ -34,7 +34,8 @@
 using namespace drumstick::rt;
 using namespace drumstick::widgets;
 
-Pianola::Pianola( QWidget* parent ) : QMainWindow(parent)
+Pianola::Pianola( QWidget* parent ) : QMainWindow(parent),
+    m_song(nullptr)
 {
     setObjectName("PlayerPianoWindow");
     setWindowFlag(Qt::Tool, true);
@@ -143,13 +144,15 @@ void Pianola::applySettings()
 void Pianola::initSong(Sequence *song)
 {
     m_song = song;
-    int loNote = song->lowestMidiNote();
-    int hiNote = song->highestMidiNote();
-    setNoteRange(loNote, hiNote);
-    for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
-        enableChannel(i, song->channelUsed(i));
-        slotLabel(i, song->channelLabel(i));
-        m_piano[i]->setLabelAlterations(LabelAlteration::ShowSharps);
+    if (m_song != nullptr) {
+        int loNote = m_song->lowestMidiNote();
+        int hiNote = m_song->highestMidiNote();
+        setNoteRange(loNote, hiNote);
+        for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+            enableChannel(i, m_song->channelUsed(i));
+            slotLabel(i, m_song->channelLabel(i));
+            m_piano[i]->setLabelAlterations(LabelAlteration::ShowSharps);
+        }
     }
 }
 
@@ -322,7 +325,7 @@ void Pianola::slotKeySignature(int track, int alt, bool /*minor*/)
         for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
             m_piano[i]->setLabelAlterations(alterations);
         }
-    } else {
+    } else if (m_song != nullptr) {
         int channel = m_song->trackChannel(track);
         if (channel >= 0 && channel < MIDI_STD_CHANNELS) {
             m_piano[channel]->setLabelAlterations(alterations);
