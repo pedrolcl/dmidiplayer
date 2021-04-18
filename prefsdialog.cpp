@@ -23,6 +23,7 @@
 #include <QColorDialog>
 #include <drumstick/rtmidioutput.h>
 #include "settings.h"
+#include "iconutils.h"
 #include "prefsdialog.h"
 #include "ui_prefsdialog.h"
 
@@ -31,6 +32,9 @@ PrefsDialog::PrefsDialog(QWidget *parent) :
     ui(new Ui::PrefsDialog)
 {
     ui->setupUi(this);
+    ui->tabWidget->setTabIcon(0, IconUtils::GetIcon(":/resources/settings.png"));
+    ui->tabWidget->setTabIcon(1, IconUtils::GetIcon(":/resources/view-media-lyrics.png"));
+    ui->tabWidget->setTabIcon(2, IconUtils::GetIcon(":/resources/audio-midi.png"));
 #if !defined(Q_OS_WINDOWS)
     ui->chkSnapping->setVisible(false);
 #endif

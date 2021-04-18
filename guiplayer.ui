@@ -319,9 +319,11 @@ selection-background-color: blue;</string>
       <property name="text">
        <string/>
       </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>:/resources/vol.png</normaloff>:/resources/vol.png</iconset>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
       </property>
      </widget>
     </item>
@@ -544,6 +546,12 @@ selection-background-color: blue;</string>
   <widget class="QToolBar" name="toolBar">
    <property name="windowTitle">
     <string>Tool Bar</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>32</width>
+     <height>32</height>
+    </size>
    </property>
    <property name="toolButtonStyle">
     <enum>Qt::ToolButtonTextUnderIcon</enum>

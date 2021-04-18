@@ -397,7 +397,9 @@ void GUIPlayer::applySettings()
 #endif
     qApp->setPalette( Settings::instance()->getDarkMode() ? darkPalette : defaultPalette );
 
+    //m_ui->actionPianoPlayer->setIcon(IconUtils::GetIcon(":/resources/audio-midi.png"));
     m_ui->actionFileInfo->setIcon(IconUtils::GetIcon(":/resources/help-about.png"));
+    m_ui->actionPlayList->setIcon(IconUtils::GetIcon(":/resources/view-media-playlist.png"));
     m_ui->actionAbout->setIcon(IconUtils::GetIcon(":/resources/help-about.png"));
     m_ui->actionAboutQt->setIcon(IconUtils::GetStandardIcon(QStyle::SP_TitleBarMenuButton));
     m_ui->actionOpen->setIcon(IconUtils::GetIcon(":/resources/document-open.png"));
@@ -408,8 +410,8 @@ void GUIPlayer::applySettings()
     m_ui->actionPrev->setIcon(IconUtils::GetIcon(":/resources/media-skip-backward.png"));
     m_ui->actionNext->setIcon(IconUtils::GetIcon(":/resources/media-skip-forward.png"));
     m_ui->actionMIDISetup->setIcon(IconUtils::GetIcon(":/resources/midi.png"));
-    m_ui->actionPreferences->setIcon(IconUtils::GetIcon(":/resources/configure.png"));
-    m_ui->btnVolume->setIcon(IconUtils::GetIcon(":/resources/audio-volume-high.png"));
+    m_ui->actionPreferences->setIcon(IconUtils::GetIcon(":/resources/settings.png"));
+    m_ui->btnVolume->setIcon(IconUtils::GetIcon(":/resources/player-volume.png"));
 
     m_lyrics->applySettings();
     m_pianola->applySettings();
