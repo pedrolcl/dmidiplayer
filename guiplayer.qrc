@@ -1,20 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>resources/qtlogo.png</file>
-        <file>resources/about.png</file>
-        <file>resources/open.png</file>
-        <file>resources/pause.png</file>
-        <file>resources/play.png</file>
-        <file>resources/quit.png</file>
-        <file>resources/setup.png</file>
-        <file>resources/stop.png</file>
-        <file>resources/vol.png</file>
-        <file>resources/led_on.png</file>
-        <file>resources/led_off.png</file>
         <file alias="dmidiplayer.png">icons/dmidiplayer_64x64.png</file>
-        <file>resources/locked.png</file>
-        <file>resources/unlocked.png</file>
-        <file>resources/wrench.png</file>
         <file>resources/application-exit.png</file>
         <file>resources/edit-clear.png</file>
         <file>resources/go-down.png</file>
@@ -29,6 +15,20 @@
         <file>resources/media-playback-stop.png</file>
         <file>resources/media-skip-backward.png</file>
         <file>resources/media-skip-forward.png</file>
-        <file>resources/player-time.png</file>
+        <file>icons/led_off.png</file>
+        <file>icons/led_on.png</file>
+        <file>resources/audio-midi.png</file>
+        <file>resources/audio-volume-high.png</file>
+        <file>resources/audio-volume-low.png</file>
+        <file>resources/audio-volume-muted.png</file>
+        <file>resources/configure-shortcuts.png</file>
+        <file>resources/configure.png</file>
+        <file>resources/help-about.png</file>
+        <file>resources/media-playlist-repeat.png</file>
+        <file>resources/media-playlist-shuffle.png</file>
+        <file>resources/midi.png</file>
+        <file>resources/object-locked.png</file>
+        <file>resources/object-unlocked.png</file>
+        <file>resources/system-shutdown.png</file>
     </qresource>
 </RCC>

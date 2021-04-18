@@ -48,6 +48,9 @@ private:
 
     int m_last;
     QList<QLabel*> m_lamps;
+
+    QPixmap led_off;
+    QPixmap led_on;
 };
 
 #endif /* RHYTHMVIEW_H */

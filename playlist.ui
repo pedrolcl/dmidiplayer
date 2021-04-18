@@ -10,6 +10,10 @@
     <height>262</height>
    </rect>
   </property>
+  <property name="windowIcon">
+   <iconset resource="guiplayer.qrc">
+    <normaloff>:/dmidiplayer.png</normaloff>:/dmidiplayer.png</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QListWidget" name="fileList">
@@ -55,7 +59,9 @@
   <tabstop>dialogButtons</tabstop>
   <tabstop>listButtons</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="guiplayer.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>dialogButtons</sender>

@@ -19,12 +19,16 @@
 #include <QColor>
 #include <QPalette>
 #include <QApplication>
+#include <QPixmap>
 #include "rhythmview.h"
+
 
 RhythmView::RhythmView (QWidget *parent)
     : QWidget(parent),
     m_last(0)
 {
+    led_off = QPixmap(":/icons/led_off.png");
+    led_on = QPixmap(":/icons/led_on.png");
     setRhythm( 4 );
 }
 
@@ -45,7 +49,6 @@ void RhythmView::clearLamps()
 
 void RhythmView::setRhythm( int numerator )
 {
-    static QPixmap led_off(":/resources/led_off.png");
     if (m_lamps.size() != numerator) {
         int w = qMin(width() / numerator, height());
         int h = qMin(w, height());
@@ -53,7 +56,6 @@ void RhythmView::setRhythm( int numerator )
         clearLamps();
         for (int i=0; i<numerator; ++i ) {
             QLabel *led = new QLabel( this );
-            //led->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
             led->setGeometry(x+2,0,w-4,h);
             led->setScaledContents(true);
             led->setPixmap(led_off);
@@ -121,14 +123,12 @@ QSizePolicy RhythmView::sizePolicy()
 
 void RhythmView::lampOn(QLabel *lamp)
 {
-    static QPixmap led_on(":/resources/led_on.png");
     lamp->setPixmap(led_on);
     lamp->update();
 }
 
 void RhythmView::lampOff(QLabel *lamp)
 {
-    static QPixmap led_off(":/resources/led_off.png");
     lamp->setPixmap(led_off);
     lamp->update();
 }

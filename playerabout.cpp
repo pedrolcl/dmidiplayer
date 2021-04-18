@@ -18,6 +18,7 @@
 
 #include <drumstick/backendmanager.h>
 #include "playerabout.h"
+#include "iconutils.h"
 
 About::About(QWidget *parent)
     : QDialog(parent)
@@ -35,5 +36,6 @@ About::About(QWidget *parent)
     aboutText.replace("%PROJECT_DESCRIPTION%", tr("Drumstick MIDI File Player Multiplatform"));
     aboutText.replace("%DRUMSTICK_VERSION%", drumstick::rt::BackendManager::QSTR_DRUMSTICK_VERSION);
     ui.AboutTextView->setHtml(aboutText);
+    ui.aboutQt->setIcon(IconUtils::GetStandardIcon(QStyle::SP_TitleBarMenuButton));
     connect(ui.aboutQt, &QPushButton::clicked, qApp, &QApplication::aboutQt);
 }

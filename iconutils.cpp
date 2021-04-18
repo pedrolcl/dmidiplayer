@@ -29,11 +29,21 @@ namespace IconUtils
         painter.fillRect(pixmap.rect(), color);
     }
 
-    QPixmap GetPixmap(QWidget* widget, const QString& fileName)
+    QPixmap GetPixmap(const QString& fileName)
     {
         QPixmap pixmap(fileName);
-        QColor color = widget->palette().color(QPalette::Active, QPalette::Foreground);
-        PaintPixmap(pixmap, color);
+        PaintPixmap(pixmap, qApp->palette().color(QPalette::Active, QPalette::WindowText));
         return pixmap;
     }
+
+    QIcon GetStandardIcon(QStyle::StandardPixmap sp)
+    {
+        return qApp->style()->standardIcon(sp);
+    }
+
+    QIcon GetIcon(const QString &fileName)
+    {
+        return QIcon(GetPixmap(fileName));
+    }
+
 } // namespace IconUtils

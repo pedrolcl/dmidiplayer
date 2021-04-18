@@ -320,7 +320,7 @@ selection-background-color: blue;</string>
        <string/>
       </property>
       <property name="icon">
-       <iconset resource="guiplayer.qrc">
+       <iconset>
         <normaloff>:/resources/vol.png</normaloff>:/resources/vol.png</iconset>
       </property>
      </widget>
@@ -568,10 +568,6 @@ selection-background-color: blue;</string>
   </widget>
   <widget class="QStatusBar" name="myStatusBar"/>
   <action name="actionOpen">
-   <property name="icon">
-    <iconset resource="guiplayer.qrc">
-     <normaloff>:/resources/document-open.png</normaloff>:/resources/document-open.png</iconset>
-   </property>
    <property name="text">
     <string>Open</string>
    </property>
@@ -580,10 +576,6 @@ selection-background-color: blue;</string>
    </property>
   </action>
   <action name="actionQuit">
-   <property name="icon">
-    <iconset resource="guiplayer.qrc">
-     <normaloff>:/resources/application-exit.png</normaloff>:/resources/application-exit.png</iconset>
-   </property>
    <property name="text">
     <string>Quit</string>
    </property>
@@ -592,10 +584,6 @@ selection-background-color: blue;</string>
    </property>
   </action>
   <action name="actionPlay">
-   <property name="icon">
-    <iconset resource="guiplayer.qrc">
-     <normaloff>:/resources/media-playback-start.png</normaloff>:/resources/media-playback-start.png</iconset>
-   </property>
    <property name="text">
     <string>Play</string>
    </property>
@@ -613,10 +601,6 @@ selection-background-color: blue;</string>
    <property name="enabled">
     <bool>true</bool>
    </property>
-   <property name="icon">
-    <iconset resource="guiplayer.qrc">
-     <normaloff>:/resources/media-playback-pause.png</normaloff>:/resources/media-playback-pause.png</iconset>
-   </property>
    <property name="text">
     <string>Pause</string>
    </property>
@@ -628,10 +612,6 @@ selection-background-color: blue;</string>
    </property>
   </action>
   <action name="actionStop">
-   <property name="icon">
-    <iconset resource="guiplayer.qrc">
-     <normaloff>:/resources/media-playback-stop.png</normaloff>:/resources/media-playback-stop.png</iconset>
-   </property>
    <property name="text">
     <string>Stop</string>
    </property>
@@ -643,10 +623,6 @@ selection-background-color: blue;</string>
    </property>
   </action>
   <action name="actionAbout">
-   <property name="icon">
-    <iconset resource="guiplayer.qrc">
-     <normaloff>:/resources/about.png</normaloff>:/resources/about.png</iconset>
-   </property>
    <property name="text">
     <string>About</string>
    </property>
@@ -655,10 +631,6 @@ selection-background-color: blue;</string>
    </property>
   </action>
   <action name="actionAboutQt">
-   <property name="icon">
-    <iconset resource="guiplayer.qrc">
-     <normaloff>:/resources/qtlogo.png</normaloff>:/resources/qtlogo.png</iconset>
-   </property>
    <property name="text">
     <string>About Qt</string>
    </property>
@@ -667,10 +639,6 @@ selection-background-color: blue;</string>
    </property>
   </action>
   <action name="actionMIDISetup">
-   <property name="icon">
-    <iconset resource="guiplayer.qrc">
-     <normaloff>:/resources/setup.png</normaloff>:/resources/setup.png</iconset>
-   </property>
    <property name="text">
     <string>MIDI Setup</string>
    </property>
@@ -778,19 +746,11 @@ selection-background-color: blue;</string>
    </property>
   </action>
   <action name="actionFileInfo">
-   <property name="icon">
-    <iconset resource="guiplayer.qrc">
-     <normaloff>:/resources/about.png</normaloff>:/resources/about.png</iconset>
-   </property>
    <property name="text">
     <string>File Info</string>
    </property>
   </action>
   <action name="actionPreferences">
-   <property name="icon">
-    <iconset resource="guiplayer.qrc">
-     <normaloff>:/resources/wrench.png</normaloff>:/resources/wrench.png</iconset>
-   </property>
    <property name="text">
     <string>Preferences ...</string>
    </property>
@@ -804,19 +764,11 @@ selection-background-color: blue;</string>
    </property>
   </action>
   <action name="actionNext">
-   <property name="icon">
-    <iconset resource="guiplayer.qrc">
-     <normaloff>:/resources/media-skip-forward.png</normaloff>:/resources/media-skip-forward.png</iconset>
-   </property>
    <property name="text">
     <string>Next</string>
    </property>
   </action>
   <action name="actionPrev">
-   <property name="icon">
-    <iconset resource="guiplayer.qrc">
-     <normaloff>:/resources/media-skip-backward.png</normaloff>:/resources/media-skip-backward.png</iconset>
-   </property>
    <property name="text">
     <string>Prev</string>
    </property>

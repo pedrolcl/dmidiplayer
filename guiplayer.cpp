@@ -390,18 +390,26 @@ void GUIPlayer::setup()
 
 void GUIPlayer::applySettings()
 {
-    static QPalette defaultPalette = qApp->palette();
+    static QPalette defaultPalette = qApp->palette(); //(QColor(0xa0,0xa0,0xa0));
     static QPalette darkPalette(QColor(0x30,0x30,0x30));
 #if defined(Q_OS_WINDOWS)
     m_snapper.SetEnabled(Settings::instance()->winSnap());
 #endif
     qApp->setPalette( Settings::instance()->getDarkMode() ? darkPalette : defaultPalette );
 
-    //m_ui->actionPlay->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/play.png")));
-    //m_ui->actionStop->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/stop.png")));
-    //m_ui->actionPause->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/pause.png")));
-    m_ui->actionMIDISetup->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/setup.png")));
-    m_ui->actionPreferences->setIcon(QIcon(IconUtils::GetPixmap(this, ":/resources/wrench.png")));
+    m_ui->actionFileInfo->setIcon(IconUtils::GetIcon(":/resources/help-about.png"));
+    m_ui->actionAbout->setIcon(IconUtils::GetIcon(":/resources/help-about.png"));
+    m_ui->actionAboutQt->setIcon(IconUtils::GetStandardIcon(QStyle::SP_TitleBarMenuButton));
+    m_ui->actionOpen->setIcon(IconUtils::GetIcon(":/resources/document-open.png"));
+    m_ui->actionQuit->setIcon(IconUtils::GetIcon(":/resources/system-shutdown.png"));
+    m_ui->actionPlay->setIcon(IconUtils::GetIcon(":/resources/media-playback-start.png"));
+    m_ui->actionStop->setIcon(IconUtils::GetIcon(":/resources/media-playback-stop.png"));
+    m_ui->actionPause->setIcon(IconUtils::GetIcon(":/resources/media-playback-pause.png"));
+    m_ui->actionPrev->setIcon(IconUtils::GetIcon(":/resources/media-skip-backward.png"));
+    m_ui->actionNext->setIcon(IconUtils::GetIcon(":/resources/media-skip-forward.png"));
+    m_ui->actionMIDISetup->setIcon(IconUtils::GetIcon(":/resources/midi.png"));
+    m_ui->actionPreferences->setIcon(IconUtils::GetIcon(":/resources/configure.png"));
+    m_ui->btnVolume->setIcon(IconUtils::GetIcon(":/resources/audio-volume-high.png"));
 
     m_lyrics->applySettings();
     m_pianola->applySettings();

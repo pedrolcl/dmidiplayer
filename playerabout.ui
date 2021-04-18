@@ -14,8 +14,8 @@
    <string>About</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/resources/drumstick.png</normaloff>:/resources/drumstick.png</iconset>
+   <iconset resource="guiplayer.qrc">
+    <normaloff>:/dmidiplayer.png</normaloff>:/dmidiplayer.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -55,10 +55,6 @@ p, li { white-space: pre-wrap; }
       <widget class="QPushButton" name="aboutQt">
        <property name="text">
         <string>About Qt</string>
-       </property>
-       <property name="icon">
-        <iconset resource="guiplayer.qrc">
-         <normaloff>:/resources/qtlogo.png</normaloff>:/resources/qtlogo.png</iconset>
        </property>
       </widget>
      </item>

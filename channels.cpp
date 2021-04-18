@@ -29,6 +29,7 @@
 #include "sequence.h"
 #include "channels.h"
 #include "vumeter.h"
+#include "iconutils.h"
 
 using namespace drumstick::rt;
 
@@ -73,12 +74,6 @@ Channels::Channels( QWidget* parent ) :
     QIcon soloIcon;
     soloIcon.addPixmap(pixSoloOn, QIcon::Normal, QIcon::On);
     soloIcon.addPixmap(pixSoloOff,QIcon::Normal, QIcon::Off);
-    QIcon locked(":/resources/locked.png");
-    QIcon unlocked(":/resources/unlocked.png");
-    QIcon lockIcon;
-    QSize lockSize(16,16);
-    lockIcon.addPixmap(locked.pixmap(lockSize), QIcon::Normal, QIcon::On);
-    lockIcon.addPixmap(unlocked.pixmap(lockSize), QIcon::Normal, QIcon::Off);
     for (int i = 0; i < MIDI_STD_CHANNELS; ++i) {
         int row = i + 1;
         QLabel *lbl = new QLabel(this);
@@ -101,7 +96,6 @@ Channels::Channels( QWidget* parent ) :
         layout->addWidget(m_vumeter[i], row, 4);
         m_lock[i] = new QToolButton(this);
         m_lock[i]->setCheckable(true);
-        m_lock[i]->setIcon(lockIcon);
         layout->addWidget(m_lock[i], row, 5);
         connect( m_lock[i], &QToolButton::clicked, this, [=]{ slotLockChannel(i); } );
         m_patch[i] = new QComboBox(this);
@@ -155,6 +149,16 @@ void Channels::initSong(Sequence *song)
 
 void Channels::applySettings()
 {
+    QIcon locked(IconUtils::GetIcon(":/resources/object-locked.png"));
+    QIcon unlocked(IconUtils::GetIcon(":/resources/object-unlocked.png"));
+    QIcon lockIcon;
+    QSize lockSize(16,16);
+    lockIcon.addPixmap(locked.pixmap(lockSize), QIcon::Normal, QIcon::On);
+    lockIcon.addPixmap(unlocked.pixmap(lockSize), QIcon::Normal, QIcon::Off);
+    for (int i = 0; i < MIDI_STD_CHANNELS; ++i) {
+        m_lock[i]->setIcon(lockIcon);
+    }
+
     foreach(QComboBox *cb, findChildren<QComboBox*>()) {
         cb->setPalette(qApp->palette());
         foreach(QWidget *w, cb->findChildren<QWidget*>()) {

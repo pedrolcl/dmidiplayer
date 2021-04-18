@@ -280,7 +280,7 @@ void Lyrics::initSong( Sequence *song )
 
 void Lyrics::applySettings()
 {
-    m_fontButton->setIcon(IconUtils::GetPixmap(this,":/resources/wrench.png"));
+    m_fontButton->setIcon(IconUtils::GetIcon(":/resources/configure.png"));
     m_textViewer->setFont(Settings::instance()->lyricsFont());
     m_normalColor = Settings::instance()->getFutureColor();
     m_otherColor = Settings::instance()->getPastColor();

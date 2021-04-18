@@ -216,7 +216,7 @@ void Settings::internalRead(QSettings &settings)
     if (lyricsFont.fromString(settings.value("LyricsFont", "Sans Serif,36").toString())) {
         m_lyricsFont = lyricsFont;
     }
-    m_futureColor = QColor(settings.value("FutureColor", QColor(m_darkMode?Qt::white : Qt::black).name(QColor::HexRgb)).toString());
+    m_futureColor = QColor(settings.value("FutureColor", qApp->palette().color(QPalette::WindowText).name(QColor::HexRgb)).toString());
     m_pastColor = QColor(settings.value("PastColor", QColor(Qt::gray).name(QColor::HexRgb)).toString());
     settings.endGroup();
 

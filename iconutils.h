@@ -18,15 +18,19 @@
 #ifndef ICONUTILS_H
 #define ICONUTILS_H
 
+#include <QStyle>
 #include <QPixmap>
+#include <QIcon>
 #include <QWidget>
-#include <QLabel>
-#include <QComboBox>
+#include <QString>
+#include <QColor>
 
 namespace  IconUtils
 {
     void PaintPixmap(QPixmap &pixmap, const QColor& color);
-    QPixmap GetPixmap(QWidget* widget, const QString& fileName);
+    QIcon GetStandardIcon(QStyle::StandardPixmap sp);
+    QPixmap GetPixmap(const QString& fileName);
+    QIcon GetIcon(const QString& fileName);
 }
 
 #endif // ICONUTILS_H
