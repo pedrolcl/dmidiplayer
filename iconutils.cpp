@@ -18,16 +18,20 @@
 
 #include <QApplication>
 #include <QPainter>
+#include <QDebug>
+#include <QFileInfo>
 #include "iconutils.h"
 
 namespace IconUtils
 {
-    void PaintPixmap(QPixmap &pixmap, const QColor& color)
+    void PaintPixmap(QPixmap& pixmap, const QColor& color)
     {
-        QPainter painter(&pixmap);
-        painter.setRenderHints(QPainter::SmoothPixmapTransform | QPainter::Antialiasing);
-        painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
-        painter.fillRect(pixmap.rect(), color);
+        if (!pixmap.isNull()) {
+            QPainter painter(&pixmap);
+            painter.setRenderHints(QPainter::SmoothPixmapTransform | QPainter::Antialiasing);
+            painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+            painter.fillRect(pixmap.rect(), color);
+        }
     }
 
     QPixmap GetPixmap(const QString& fileName)
@@ -44,7 +48,12 @@ namespace IconUtils
 
     QIcon GetIcon(const QString &fileName)
     {
-        return QIcon(GetPixmap(fileName));
+        if (QFileInfo::exists(fileName)) {
+            return QIcon(GetPixmap(fileName));
+        } else {
+            qWarning() << "BUG! missing file:" << fileName;
+            return QIcon();
+        }
     }
 
 } // namespace IconUtils

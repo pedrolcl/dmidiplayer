@@ -425,6 +425,14 @@ CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de
         <source>Show Play List Editor</source>
         <translation>Mostrar editor de lista de reproducción</translation>
     </message>
+    <message>
+        <source>Next</source>
+        <translation>Siguiente</translation>
+    </message>
+    <message>
+        <source>Prev</source>
+        <translation>Anterior</translation>
+    </message>
 </context>
 <context>
     <name>InstrumentSet</name>
