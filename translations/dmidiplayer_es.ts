@@ -1196,6 +1196,10 @@ CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de
         <source>Always</source>
         <translation>Siempre</translation>
     </message>
+    <message>
+        <source>Use Internal Icon Theme</source>
+        <translation>Usar tema de iconos interno</translation>
+    </message>
 </context>
 <context>
     <name>QCoreApplication</name>

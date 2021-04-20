@@ -251,6 +251,12 @@ void GUIPlayer::updateState(PlayerState newState)
         break;
     }
     m_state = newState;
+    m_ui->actionPrev->setEnabled(false);
+    m_ui->actionNext->setEnabled(false);
+    if (!m_playList->noItems()) {
+        m_ui->actionPrev->setEnabled(!m_playList->atFirstItem());
+        m_ui->actionNext->setEnabled(!m_playList->atLastItem());
+    }
 }
 
 void GUIPlayer::play()
@@ -397,21 +403,21 @@ void GUIPlayer::applySettings()
 #endif
     qApp->setPalette( Settings::instance()->getDarkMode() ? darkPalette : defaultPalette );
 
-    //m_ui->actionPianoPlayer->setIcon(IconUtils::GetIcon(":/resources/audio-midi.png"));
-    m_ui->actionFileInfo->setIcon(IconUtils::GetIcon(":/resources/help-about.png"));
-    m_ui->actionPlayList->setIcon(IconUtils::GetIcon(":/resources/view-media-playlist.png"));
-    m_ui->actionAbout->setIcon(IconUtils::GetIcon(":/resources/help-about.png"));
+    //m_ui->actionPianoPlayer->setIcon(IconUtils::GetIcon\("audio-midi"\));
+    m_ui->actionFileInfo->setIcon(IconUtils::GetIcon("help-about"));
+    m_ui->actionPlayList->setIcon(IconUtils::GetIcon("view-media-playlist"));
+    m_ui->actionAbout->setIcon(IconUtils::GetIcon("help-about"));
     m_ui->actionAboutQt->setIcon(IconUtils::GetStandardIcon(QStyle::SP_TitleBarMenuButton));
-    m_ui->actionOpen->setIcon(IconUtils::GetIcon(":/resources/document-open.png"));
-    m_ui->actionQuit->setIcon(IconUtils::GetIcon(":/resources/system-shutdown.png"));
-    m_ui->actionPlay->setIcon(IconUtils::GetIcon(":/resources/media-playback-start.png"));
-    m_ui->actionStop->setIcon(IconUtils::GetIcon(":/resources/media-playback-stop.png"));
-    m_ui->actionPause->setIcon(IconUtils::GetIcon(":/resources/media-playback-pause.png"));
-    m_ui->actionPrev->setIcon(IconUtils::GetIcon(":/resources/media-skip-backward.png"));
-    m_ui->actionNext->setIcon(IconUtils::GetIcon(":/resources/media-skip-forward.png"));
-    m_ui->actionMIDISetup->setIcon(IconUtils::GetIcon(":/resources/midi.png"));
-    m_ui->actionPreferences->setIcon(IconUtils::GetIcon(":/resources/settings.png"));
-    m_ui->btnVolume->setIcon(IconUtils::GetIcon(":/resources/player-volume.png"));
+    m_ui->actionOpen->setIcon(IconUtils::GetIcon("document-open"));
+    m_ui->actionQuit->setIcon(IconUtils::GetIcon("system-shutdown"));
+    m_ui->actionPlay->setIcon(IconUtils::GetIcon("media-playback-start"));
+    m_ui->actionStop->setIcon(IconUtils::GetIcon("media-playback-stop"));
+    m_ui->actionPause->setIcon(IconUtils::GetIcon("media-playback-pause"));
+    m_ui->actionPrev->setIcon(IconUtils::GetIcon("media-skip-backward"));
+    m_ui->actionNext->setIcon(IconUtils::GetIcon("media-skip-forward"));
+    m_ui->actionMIDISetup->setIcon(IconUtils::GetIcon("midi"));
+    m_ui->actionPreferences->setIcon(IconUtils::GetIcon("settings"));
+    m_ui->btnVolume->setIcon(IconUtils::GetIcon("player-volume"));
 
     m_lyrics->applySettings();
     m_pianola->applySettings();

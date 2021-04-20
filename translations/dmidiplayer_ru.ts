@@ -330,164 +330,164 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Справка</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="510"/>
+        <location filename="../guiplayer.ui" line="509"/>
         <source>&amp;Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="514"/>
+        <location filename="../guiplayer.ui" line="513"/>
         <source>&amp;Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="524"/>
+        <location filename="../guiplayer.ui" line="523"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="534"/>
+        <location filename="../guiplayer.ui" line="530"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="548"/>
+        <location filename="../guiplayer.ui" line="547"/>
         <source>Tool Bar</source>
         <translation>Панель инструментов</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="580"/>
+        <location filename="../guiplayer.ui" line="579"/>
         <source>Open</source>
         <translation>Открыть</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="583"/>
+        <location filename="../guiplayer.ui" line="582"/>
         <source>Open a MIDI file</source>
         <translation>Открыть файл MIDI</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="588"/>
+        <location filename="../guiplayer.ui" line="587"/>
         <source>Quit</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="591"/>
+        <location filename="../guiplayer.ui" line="590"/>
         <source>Quit the application</source>
         <translation>Выйти из приложения</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="596"/>
+        <location filename="../guiplayer.ui" line="598"/>
         <source>Play</source>
         <translation>Играть</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="599"/>
+        <location filename="../guiplayer.ui" line="601"/>
         <source>Start playing the current MIDI file</source>
         <translation>Начать воспроизведение текущего файла MIDI</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="613"/>
+        <location filename="../guiplayer.ui" line="615"/>
         <source>Pause</source>
         <translation>Пауза</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="616"/>
+        <location filename="../guiplayer.ui" line="618"/>
         <source>Pause the playback</source>
         <translation>Приостановить воспроизведение</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="624"/>
+        <location filename="../guiplayer.ui" line="626"/>
         <source>Stop</source>
         <translation>Стоп</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="627"/>
+        <location filename="../guiplayer.ui" line="629"/>
         <source>Stop the playback</source>
         <translation>Остановить воспроизведение</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="635"/>
+        <location filename="../guiplayer.ui" line="637"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="638"/>
+        <location filename="../guiplayer.ui" line="640"/>
         <source>Show the about box</source>
         <translation>Показать информацию о программе</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="643"/>
+        <location filename="../guiplayer.ui" line="648"/>
         <source>About Qt</source>
         <translation>О Qt</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="646"/>
+        <location filename="../guiplayer.ui" line="651"/>
         <source>Show the about Qt dialog box</source>
         <translation>Показать информацию о Qt</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="651"/>
+        <location filename="../guiplayer.ui" line="659"/>
         <source>MIDI Setup</source>
         <translation>Настройка MIDI</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="654"/>
+        <location filename="../guiplayer.ui" line="662"/>
         <source>Select a connection for the MIDI output port</source>
         <translation>Выберите соединение для порта выхода MIDI</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="665"/>
-        <location filename="../guiplayer.ui" line="668"/>
+        <location filename="../guiplayer.ui" line="676"/>
+        <location filename="../guiplayer.ui" line="679"/>
         <source>Show Tool Bar</source>
         <translation>Показать панель инструментов</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="671"/>
+        <location filename="../guiplayer.ui" line="682"/>
         <source>Show or hide the tool bar</source>
         <translation>Показать или скрыть панель инструментов</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="682"/>
+        <location filename="../guiplayer.ui" line="693"/>
         <source>Show Status Bar</source>
         <translation>Показать панель статуса</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="685"/>
+        <location filename="../guiplayer.ui" line="696"/>
         <source>Show or hide the status bar</source>
         <translation>Показать или скрыть панель статуса</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="693"/>
+        <location filename="../guiplayer.ui" line="704"/>
         <source>Lyrics and Texts</source>
         <translation>Лирика и тексты</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="696"/>
-        <location filename="../guiplayer.ui" line="699"/>
+        <location filename="../guiplayer.ui" line="707"/>
+        <location filename="../guiplayer.ui" line="710"/>
         <source>Show or Hide Lyrics and Texts</source>
         <translation>Показать или скрыть лирику и тексты</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="763"/>
+        <location filename="../guiplayer.ui" line="774"/>
         <source>Preferences ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="768"/>
+        <location filename="../guiplayer.ui" line="782"/>
         <source>Play List ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="771"/>
+        <location filename="../guiplayer.ui" line="785"/>
         <source>Show Play List Editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="776"/>
+        <location filename="../guiplayer.ui" line="790"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="781"/>
+        <location filename="../guiplayer.ui" line="795"/>
         <source>Prev</source>
         <translation type="unfinished"></translation>
     </message>
@@ -500,40 +500,40 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Показать или скрыть список воспроизведения</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="710"/>
+        <location filename="../guiplayer.ui" line="721"/>
         <source>Channels</source>
         <translation>Каналы</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="713"/>
-        <location filename="../guiplayer.ui" line="716"/>
+        <location filename="../guiplayer.ui" line="724"/>
+        <location filename="../guiplayer.ui" line="727"/>
         <source>Show or Hide Channels</source>
         <translation>Показать или скрыть каналы</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="727"/>
+        <location filename="../guiplayer.ui" line="738"/>
         <source>Piano Player</source>
         <translation>Проигрыватель пианино</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="730"/>
-        <location filename="../guiplayer.ui" line="733"/>
+        <location filename="../guiplayer.ui" line="741"/>
+        <location filename="../guiplayer.ui" line="744"/>
         <source>Show or Hide Piano Player</source>
         <translation>Показать или скрыть проигрыватель пианино</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="744"/>
+        <location filename="../guiplayer.ui" line="755"/>
         <source>Rhythm</source>
         <translation>Ритм</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="747"/>
-        <location filename="../guiplayer.ui" line="750"/>
+        <location filename="../guiplayer.ui" line="758"/>
+        <location filename="../guiplayer.ui" line="761"/>
         <source>Show or Hide Rhythm</source>
         <translation>Показать или скрыть ритм</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="758"/>
+        <location filename="../guiplayer.ui" line="769"/>
         <source>File Info</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1415,81 +1415,86 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="95"/>
+        <location filename="../prefsdialog.ui" line="94"/>
+        <source>Use Internal Icon Theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../prefsdialog.ui" line="102"/>
         <source>Lyrics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="104"/>
         <location filename="../prefsdialog.ui" line="111"/>
-        <location filename="../prefsdialog.ui" line="145"/>
-        <location filename="../prefsdialog.ui" line="263"/>
-        <location filename="../prefsdialog.ui" line="273"/>
+        <location filename="../prefsdialog.ui" line="118"/>
+        <location filename="../prefsdialog.ui" line="152"/>
+        <location filename="../prefsdialog.ui" line="270"/>
+        <location filename="../prefsdialog.ui" line="280"/>
         <source>...</source>
         <translation type="unfinished">...</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="118"/>
+        <location filename="../prefsdialog.ui" line="125"/>
         <source>Future Text Color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="135"/>
+        <location filename="../prefsdialog.ui" line="142"/>
         <source>Text Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="172"/>
+        <location filename="../prefsdialog.ui" line="179"/>
         <source>Past Text Color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="203"/>
+        <location filename="../prefsdialog.ui" line="210"/>
         <source>Player Piano</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="209"/>
+        <location filename="../prefsdialog.ui" line="216"/>
         <source>Single Highlight Color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="223"/>
+        <location filename="../prefsdialog.ui" line="230"/>
         <source>Note Highlighting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="233"/>
+        <location filename="../prefsdialog.ui" line="240"/>
         <source>Show Note Names</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="240"/>
+        <location filename="../prefsdialog.ui" line="247"/>
         <source>Note Names Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="283"/>
+        <location filename="../prefsdialog.ui" line="290"/>
         <source>Note Velocity to Color Tint</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="298"/>
+        <location filename="../prefsdialog.ui" line="305"/>
         <source>Never</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="303"/>
+        <location filename="../prefsdialog.ui" line="310"/>
         <source>Minimal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="308"/>
+        <location filename="../prefsdialog.ui" line="315"/>
         <source>When Activated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="313"/>
+        <location filename="../prefsdialog.ui" line="320"/>
         <source>Always</source>
         <translation type="unfinished"></translation>
     </message>

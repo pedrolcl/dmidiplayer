@@ -32,9 +32,9 @@ PrefsDialog::PrefsDialog(QWidget *parent) :
     ui(new Ui::PrefsDialog)
 {
     ui->setupUi(this);
-    ui->tabWidget->setTabIcon(0, IconUtils::GetIcon(":/resources/settings.png"));
-    ui->tabWidget->setTabIcon(1, IconUtils::GetIcon(":/resources/view-media-lyrics.png"));
-    ui->tabWidget->setTabIcon(2, IconUtils::GetIcon(":/resources/audio-midi.png"));
+    ui->tabWidget->setTabIcon(0, IconUtils::GetIcon("settings"));
+    ui->tabWidget->setTabIcon(1, IconUtils::GetIcon("view-media-lyrics"));
+    ui->tabWidget->setTabIcon(2, IconUtils::GetIcon("audio-midi"));
 #if !defined(Q_OS_WINDOWS)
     ui->chkSnapping->setVisible(false);
 #endif
@@ -47,6 +47,7 @@ PrefsDialog::PrefsDialog(QWidget *parent) :
     connect(ui->btnTextFont, &QToolButton::clicked, this, &PrefsDialog::slotLyricsFont);
     connect(ui->btnSingleColor, &QToolButton::clicked, this, &PrefsDialog::slotSingleColor);
     connect(ui->chkDarkMode, &QCheckBox::toggled, this, &PrefsDialog::darkModeChanged);
+    connect(ui->chkInternalIcons, &QCheckBox::toggled, this, &PrefsDialog::iconThemeChanged);
 }
 
 PrefsDialog::~PrefsDialog()
@@ -126,6 +127,14 @@ void PrefsDialog::darkModeChanged(bool state)
     setFutureColor(future);
 }
 
+void PrefsDialog::iconThemeChanged(bool state)
+{
+    Settings::instance()->setInternalIcons(state);
+    ui->tabWidget->setTabIcon(0, IconUtils::GetIcon("settings"));
+    ui->tabWidget->setTabIcon(1, IconUtils::GetIcon("view-media-lyrics"));
+    ui->tabWidget->setTabIcon(2, IconUtils::GetIcon("audio-midi"));
+}
+
 void PrefsDialog::accept()
 {
     apply();
@@ -137,6 +146,7 @@ void PrefsDialog::showEvent ( QShowEvent *event )
     if (event->type() == QEvent::Show) {
 
         ui->chkDarkMode->setChecked( Settings::instance()->getDarkMode() );
+        ui->chkInternalIcons->setChecked( Settings::instance()->useInternalIcons() );
         ui->spinPercChannel->setValue( Settings::instance()->drumsChannel() );
         ui->chkAutoPlay->setChecked( Settings::instance()->getAutoPlay() );
 #if defined(Q_OS_WINDOWS)
@@ -171,6 +181,7 @@ void PrefsDialog::apply()
     Settings::instance()->setDrumsChannel(ui->spinPercChannel->value());
     Settings::instance()->setDarkMode(ui->chkDarkMode->isChecked());
     Settings::instance()->setAutoPlay(ui->chkAutoPlay->isChecked());
+    Settings::instance()->setInternalIcons(ui->chkInternalIcons->isChecked());
 #if defined(Q_OS_WINDOWS)
     Settings::instance()->setWinSnap( ui->chkSnapping->isChecked() );
 #endif

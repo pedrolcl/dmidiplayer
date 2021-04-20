@@ -114,6 +114,9 @@ public:
     bool getAutoPlay() const;
     void setAutoPlay(bool autoPlay);
 
+    bool useInternalIcons() const;
+    void setInternalIcons(bool internalIcons);
+
     // static methods
     static Settings* instance();
     static void setPortableConfig(const QString fileName = QString());
@@ -153,6 +156,7 @@ private:
     bool m_darkMode;
     int m_drumsChannel;
     bool m_autoPlay;
+    bool m_internalIcons;
     LabelVisibility m_namesVisibility;
 //    LabelAlteration m_namesAlteration;
 //    LabelCentralOctave m_namesOctave;

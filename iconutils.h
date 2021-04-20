@@ -30,7 +30,7 @@ namespace  IconUtils
     void PaintPixmap(QPixmap &pixmap, const QColor& color);
     QIcon GetStandardIcon(QStyle::StandardPixmap sp);
     QPixmap GetPixmap(const QString& fileName);
-    QIcon GetIcon(const QString& fileName);
+    QIcon GetIcon(const QString& name);
 }
 
 #endif // ICONUTILS_H

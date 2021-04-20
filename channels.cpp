@@ -151,8 +151,8 @@ void Channels::initSong(Sequence *song)
 
 void Channels::applySettings()
 {
-    QIcon locked(IconUtils::GetIcon(":/resources/object-locked.png"));
-    QIcon unlocked(IconUtils::GetIcon(":/resources/object-unlocked.png"));
+    QIcon locked(IconUtils::GetIcon("object-locked"));
+    QIcon unlocked(IconUtils::GetIcon("object-unlocked"));
     QIcon lockIcon;
     QSize lockSize(16,16);
     lockIcon.addPixmap(locked.pixmap(lockSize), QIcon::Normal, QIcon::On);

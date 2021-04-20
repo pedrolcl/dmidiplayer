@@ -39,31 +39,31 @@ PlayList::PlayList(QWidget *parent) : QDialog(parent)
     ui.fileList->setTextElideMode(Qt::ElideMiddle);
 
     QPushButton* btnAdd = ui.listButtons->addButton( tr("Add"), QDialogButtonBox::ActionRole );
-    btnAdd->setIcon( IconUtils::GetIcon(":/resources/list-add.png") );
+    btnAdd->setIcon( IconUtils::GetIcon("list-add") );
     connect( btnAdd, &QAbstractButton::clicked, this, &PlayList::addToList );
 
     QPushButton* btnDel = ui.listButtons->addButton( tr("Remove"), QDialogButtonBox::ActionRole );
-    btnDel->setIcon( IconUtils::GetIcon(":/resources/list-remove.png") );
+    btnDel->setIcon( IconUtils::GetIcon("list-remove") );
     connect( btnDel, &QAbstractButton::clicked, this, &PlayList::removeFromList );
 
     QPushButton* btnUp  = ui.listButtons->addButton( tr("Move Up"), QDialogButtonBox::ActionRole );
-    btnUp->setIcon( IconUtils::GetIcon(":/resources/go-up.png") );
+    btnUp->setIcon( IconUtils::GetIcon("go-up") );
     connect( btnUp, &QAbstractButton::clicked, this, &PlayList::moveUp );
 
     QPushButton* btnDwn = ui.listButtons->addButton( tr("Move Down"), QDialogButtonBox::ActionRole );
-    btnDwn->setIcon( IconUtils::GetIcon(":/resources/go-down.png") );
+    btnDwn->setIcon( IconUtils::GetIcon("go-down") );
     connect( btnDwn, &QAbstractButton::clicked, this, &PlayList::moveDown );
 
     QPushButton* btnClear = ui.listButtons->addButton( tr("Clear"), QDialogButtonBox::ActionRole );
-    btnClear->setIcon( IconUtils::GetIcon(":/resources/edit-clear.png") );
+    btnClear->setIcon( IconUtils::GetIcon("edit-clear") );
     connect( btnClear, &QAbstractButton::clicked, this, &PlayList::clear );
 
     QPushButton* btnOpen = ui.dialogButtons->addButton( tr("Open"), QDialogButtonBox::ActionRole );
-    btnOpen->setIcon( IconUtils::GetIcon(":/resources/document-open.png") );
+    btnOpen->setIcon( IconUtils::GetIcon("document-open") );
     connect( btnOpen, &QAbstractButton::clicked, this, &PlayList::selectFile );
 
     QPushButton* btnSave = ui.dialogButtons->addButton( tr("Save As"), QDialogButtonBox::ActionRole );
-    btnSave->setIcon( IconUtils::GetIcon(":/resources/document-save.png") );
+    btnSave->setIcon( IconUtils::GetIcon("document-save") );
     connect( btnSave, &QAbstractButton::clicked, this, &PlayList::saveFile );
 
     connect( ui.fileList, &QListWidget::itemClicked, this, &PlayList::itemClicked );
@@ -257,4 +257,22 @@ int
 PlayList::itemCount()
 {
     return ui.fileList->count();
+}
+
+bool
+PlayList::atLastItem()
+{
+    return ui.fileList->currentRow() == (ui.fileList->count() - 1);
+}
+
+bool
+PlayList::atFirstItem()
+{
+    return ui.fileList->currentRow() < 1;
+}
+
+bool
+PlayList::noItems()
+{
+    return ui.fileList->count() == 0;
 }

@@ -36,6 +36,9 @@ public:
     bool isSupported(const QString& fileName);
     bool selectNextItem();
     bool selectPrevItem();
+    bool atLastItem();
+    bool atFirstItem();
+    bool noItems();
 
 public slots:
     void clear();

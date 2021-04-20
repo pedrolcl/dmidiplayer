@@ -500,7 +500,6 @@ selection-background-color: blue;</string>
     <addaction name="actionPlay"/>
     <addaction name="actionPause"/>
     <addaction name="actionStop"/>
-    <addaction name="separator"/>
     <addaction name="actionNext"/>
     <addaction name="actionPrev"/>
     <addaction name="actionQuit"/>
@@ -523,9 +522,6 @@ selection-background-color: blue;</string>
     <property name="title">
      <string>Settings</string>
     </property>
-    <addaction name="actionShowToolbar"/>
-    <addaction name="actionShowStatusbar"/>
-    <addaction name="separator"/>
     <addaction name="actionPreferences"/>
     <addaction name="actionMIDISetup"/>
    </widget>
@@ -533,8 +529,11 @@ selection-background-color: blue;</string>
     <property name="title">
      <string>View</string>
     </property>
-    <addaction name="actionLyrics"/>
+    <addaction name="actionShowToolbar"/>
+    <addaction name="actionShowStatusbar"/>
+    <addaction name="separator"/>
     <addaction name="actionRhythm"/>
+    <addaction name="actionLyrics"/>
     <addaction name="actionChannels"/>
     <addaction name="actionPianoPlayer"/>
    </widget>
@@ -590,6 +589,9 @@ selection-background-color: blue;</string>
    <property name="statusTip">
     <string>Quit the application</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::QuitRole</enum>
+   </property>
   </action>
   <action name="actionPlay">
    <property name="text">
@@ -637,6 +639,9 @@ selection-background-color: blue;</string>
    <property name="statusTip">
     <string>Show the about box</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::AboutRole</enum>
+   </property>
   </action>
   <action name="actionAboutQt">
    <property name="text">
@@ -645,6 +650,9 @@ selection-background-color: blue;</string>
    <property name="statusTip">
     <string>Show the about Qt dialog box</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::AboutQtRole</enum>
+   </property>
   </action>
   <action name="actionMIDISetup">
    <property name="text">
@@ -652,6 +660,9 @@ selection-background-color: blue;</string>
    </property>
    <property name="statusTip">
     <string>Select a connection for the MIDI output port</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::PreferencesRole</enum>
    </property>
   </action>
   <action name="actionShowToolbar">
@@ -761,6 +772,9 @@ selection-background-color: blue;</string>
   <action name="actionPreferences">
    <property name="text">
     <string>Preferences ...</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::PreferencesRole</enum>
    </property>
   </action>
   <action name="actionPlayList">

@@ -45,6 +45,7 @@ public slots:
     void slotNotesFont();
     void slotSingleColor();
     void darkModeChanged(bool state);
+    void iconThemeChanged(bool state);
     void accept() override;
 
 protected:

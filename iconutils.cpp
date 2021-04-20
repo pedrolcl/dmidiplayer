@@ -20,7 +20,9 @@
 #include <QPainter>
 #include <QDebug>
 #include <QFileInfo>
+
 #include "iconutils.h"
+#include "settings.h"
 
 namespace IconUtils
 {
@@ -36,8 +38,13 @@ namespace IconUtils
 
     QPixmap GetPixmap(const QString& fileName)
     {
-        QPixmap pixmap(fileName);
-        PaintPixmap(pixmap, qApp->palette().color(QPalette::Active, QPalette::WindowText));
+        QPixmap pixmap;
+        if (QFileInfo::exists(fileName)) {
+            pixmap = QPixmap(fileName);
+            PaintPixmap(pixmap, qApp->palette().color(QPalette::Active, QPalette::WindowText));
+        } else {
+            qWarning() << "BUG! missing file:" << fileName;
+        }
         return pixmap;
     }
 
@@ -46,14 +53,18 @@ namespace IconUtils
         return qApp->style()->standardIcon(sp);
     }
 
-    QIcon GetIcon(const QString &fileName)
+    QIcon GetIcon(const QString &name)
     {
-        if (QFileInfo::exists(fileName)) {
-            return QIcon(GetPixmap(fileName));
-        } else {
-            qWarning() << "BUG! missing file:" << fileName;
-            return QIcon();
+        QIcon icon;
+        bool forced = Settings::instance()->useInternalIcons();
+        if (!forced) {
+            icon = QIcon::fromTheme(name);
         }
+        if (icon.isNull() || forced) {
+            QString iconName = QString(":/icons/%1.png").arg(name);
+            icon = QIcon(GetPixmap(iconName));
+        }
+        return icon;
     }
 
 } // namespace IconUtils
