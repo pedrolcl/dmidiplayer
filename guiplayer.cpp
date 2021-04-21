@@ -437,7 +437,9 @@ void GUIPlayer::playerFinished()
     m_player->resetPosition();
     updateTimeLabel(0);
     m_ui->progressBar->setValue(0);
-    nextSong();
+    if ( Settings::instance()->getAutoPlay()) {
+        nextSong();
+    }
 }
 
 void GUIPlayer::playerStopped()
