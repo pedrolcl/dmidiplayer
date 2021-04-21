@@ -106,6 +106,7 @@ signals:
 public slots:
     /* SMF slots */
     void appendSMFEvent(MIDIEvent *ev);
+    void appendWRKmetadata(int track, long time, TextType typ, const QByteArray &data);
     void smfHeaderEvent(int format, int ntrks, int division);
     void smfNoteOnEvent(int chan, int pitch, int vol);
     void smfNoteOffEvent(int chan, int pitch, int vol);
@@ -131,11 +132,12 @@ public slots:
     void wrkFileHeader(int verh, int verl);
     void wrkEndOfFile();
     void wrkStreamEndEvent(long time);
-    void wrkTrackHeader(const QString& name1, const QString& name2,
+    void wrkTrackHeader(const QByteArray& name1, const QByteArray& name2,
              int trackno, int channel, int pitch,
              int velocity, int port,
              bool selected, bool muted, bool loop);
     void wrkTimeBase(int timebase);
+    void wrkGlobalVars();
     void wrkNoteEvent(int track, long time, int chan, int pitch, int vol, int dur);
     void wrkKeyPressEvent(int track, long time, int chan, int pitch, int press);
     void wrkCtlChangeEvent(int track, long time, int chan, int ctl, int value);
@@ -144,14 +146,21 @@ public slots:
     void wrkChanPressEvent(int track, long time, int chan, int press);
     void wrkSysexEvent(int track, long time, int bank);
     void wrkSysexEventBank(int bank, const QString& name, bool autosend, int port, const QByteArray& data);
+    void wrkTextEvent(int track, long time, int typ, const QByteArray& data);
+    void wrkComments(const QByteArray& cmt);
+    void wrkVariableRecord(const QString& name, const QByteArray& data);
     void wrkTempoEvent(long time, int tempo);
     void wrkTrackPatch(int track, int patch);
-    void wrkNewTrackHeader(const QString& name,
+    void wrkNewTrackHeader(const QByteArray& name,
             int trackno, int channel, int pitch,
             int velocity, int port,
             bool selected, bool muted, bool loop);
+    void wrkTrackName(int trackno, const QByteArray& name);
     void wrkTrackVol(int track, int vol);
     void wrkTrackBank(int track, int bank);
+    void wrkSegment(int track, long time, const QByteArray& name);
+    void wrkChord(int track, long time, const QString& name, const QByteArray& data);
+    void wrkExpression(int track, long time, int code, const QByteArray& text);
     void wrkTimeSignatureEvent(int bar, int num, int den);
     void wrkKeySig(int bar, int alt);
 
@@ -300,6 +309,7 @@ private: // members
     QList<TextRec> m_textEvents;
 
     QString m_currentFile;
+    QString m_fileFormat;
     QByteArray m_trackLabel;
     bool m_channelUsed[drumstick::rt::MIDI_STD_CHANNELS];
     int m_channelEvents[drumstick::rt::MIDI_STD_CHANNELS];

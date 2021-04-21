@@ -73,8 +73,8 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
     connect(m_wrk, &QWrk::signalWRKHeader, this, &Sequence::wrkFileHeader);
     connect(m_wrk, &QWrk::signalWRKEnd, this, &Sequence::wrkEndOfFile);
     connect(m_wrk, &QWrk::signalWRKStreamEnd, this, &Sequence::wrkStreamEndEvent);
-    connect(m_wrk, &QWrk::signalWRKGlobalVars, this, &Sequence::wrkUpdateLoadProgress);
-    connect(m_wrk, &QWrk::signalWRKTrack, this, &Sequence::wrkTrackHeader);
+    connect(m_wrk, &QWrk::signalWRKGlobalVars, this, &Sequence::wrkGlobalVars);
+    connect(m_wrk, &QWrk::signalWRKTrack2, this, &Sequence::wrkTrackHeader);
     connect(m_wrk, &QWrk::signalWRKTimeBase, this, &Sequence::wrkTimeBase);
     connect(m_wrk, &QWrk::signalWRKNote, this, &Sequence::wrkNoteEvent);
     connect(m_wrk, &QWrk::signalWRKKeyPress, this, &Sequence::wrkKeyPressEvent);
@@ -84,20 +84,21 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
     connect(m_wrk, &QWrk::signalWRKChanPress, this, &Sequence::wrkChanPressEvent);
     connect(m_wrk, &QWrk::signalWRKSysexEvent, this, &Sequence::wrkSysexEvent);
     connect(m_wrk, &QWrk::signalWRKSysex, this, &Sequence::wrkSysexEventBank);
-    connect(m_wrk, &QWrk::signalWRKText, this, &Sequence::wrkUpdateLoadProgress);
+    connect(m_wrk, &QWrk::signalWRKText2, this, &Sequence::wrkTextEvent);
     connect(m_wrk, &QWrk::signalWRKTimeSig, this, &Sequence::wrkTimeSignatureEvent);
     connect(m_wrk, &QWrk::signalWRKKeySig, this, &Sequence::wrkKeySig);
     connect(m_wrk, &QWrk::signalWRKTempo, this, &Sequence::wrkTempoEvent);
     connect(m_wrk, &QWrk::signalWRKTrackPatch, this, &Sequence::wrkTrackPatch);
-    connect(m_wrk, &QWrk::signalWRKComments, this, &Sequence::wrkUpdateLoadProgress);
-    connect(m_wrk, &QWrk::signalWRKVariableRecord, this, &Sequence::wrkUpdateLoadProgress);
-    connect(m_wrk, &QWrk::signalWRKNewTrack, this, &Sequence::wrkNewTrackHeader);
-    connect(m_wrk, &QWrk::signalWRKTrackName, this, &Sequence::wrkUpdateLoadProgress);
+    connect(m_wrk, &QWrk::signalWRKComments2, this, &Sequence::wrkComments);
+    connect(m_wrk, &QWrk::signalWRKVariableRecord, this, &Sequence::wrkVariableRecord);
+    connect(m_wrk, &QWrk::signalWRKNewTrack2, this, &Sequence::wrkNewTrackHeader);
+    connect(m_wrk, &QWrk::signalWRKTrackName2, this, &Sequence::wrkTrackName);
     connect(m_wrk, &QWrk::signalWRKTrackVol, this, &Sequence::wrkTrackVol);
     connect(m_wrk, &QWrk::signalWRKTrackBank, this, &Sequence::wrkTrackBank);
-    connect(m_wrk, &QWrk::signalWRKSegment, this, &Sequence::wrkUpdateLoadProgress);
-    connect(m_wrk, &QWrk::signalWRKChord, this, &Sequence::wrkUpdateLoadProgress);
-    connect(m_wrk, &QWrk::signalWRKExpression, this, &Sequence::wrkUpdateLoadProgress);
+    connect(m_wrk, &QWrk::signalWRKSegment2, this, &Sequence::wrkSegment);
+    connect(m_wrk, &QWrk::signalWRKChord, this, &Sequence::wrkChord);
+    connect(m_wrk, &QWrk::signalWRKExpression2, this, &Sequence::wrkExpression);
+    /* m_wrk->setTextCodec(nullptr); // important !!! */
 
     m_handle = uchardet_new();
     initCodecs();
@@ -274,7 +275,7 @@ QStringList Sequence::getText(const TextType type, const int mib)
              if (e.m_type == type) {
                  QString s;
                  if (codec == nullptr) {
-                    s = QString::fromLatin1(e.m_text);
+                    s = QString::fromLocal8Bit(e.m_text);
                  } else {
                     s = codec->toUnicode(e.m_text);
                  }
@@ -719,6 +720,9 @@ void Sequence::wrkUpdateLoadProgress()
 void Sequence::appendWRKEvent(long ticks, MIDIEvent* ev)
 {
     ev->setTick(ticks);
+    if (ev->tag() <= 0) {
+        ev->setTag(m_curTrack);
+    }
     m_list.append(ev);
     if (ticks > m_ticksDuration) {
         m_ticksDuration = ticks;
@@ -733,21 +737,30 @@ void Sequence::wrkErrorHandler(const QString& errorStr)
         .arg(errorStr).arg(m_wrk->getFilePos());
 }
 
-void Sequence::wrkFileHeader(int /*verh*/, int /*verl*/)
+void Sequence::wrkFileHeader(int verh, int verl)
 {
     m_curTrack = 0;
+    m_numTracks = 0;
     m_division = 120;
     m_beatLength = m_division;
     m_beatMax = 4;
     m_lastBeat = 0;
     m_beatCount = 1;
     m_barCount = 1;
+    m_fileFormat = QString("%1.%2").arg(verh).arg(verl);
     wrkUpdateLoadProgress();
 }
 
 void Sequence::wrkTimeBase(int timebase)
 {
     m_division = timebase;
+    wrkUpdateLoadProgress();
+}
+
+void Sequence::wrkGlobalVars()
+{
+    wrkKeySig(0, m_wrk->getKeySig());
+    //setLast( m_wrk->getEndAllTime() );
     wrkUpdateLoadProgress();
 }
 
@@ -759,8 +772,8 @@ void Sequence::wrkStreamEndEvent(long time)
     wrkUpdateLoadProgress();
 }
 
-void Sequence::wrkTrackHeader( const QString& /*name1*/,
-                           const QString& /*name2*/,
+void Sequence::wrkTrackHeader( const QByteArray& name1,
+                           const QByteArray& name2,
                            int trackno, int channel,
                            int pitch, int velocity, int /*port*/,
                            bool /*selected*/, bool /*muted*/, bool /*loop*/ )
@@ -769,14 +782,26 @@ void Sequence::wrkTrackHeader( const QString& /*name1*/,
     rec.channel = channel;
     rec.pitch = pitch;
     rec.velocity = velocity;
-    m_trackMap[trackno] = rec;
+    m_curTrack = trackno + 1;
+    if (m_curTrack > m_numTracks) {
+        m_numTracks = m_curTrack;
+    }
+    m_trackMap[m_curTrack] = rec;
+    QByteArray trkName = name1 + ' ' + name2;
+    trkName = trkName.trimmed();
+    if (!trkName.isEmpty()) {
+        appendWRKmetadata(m_curTrack, 0, TextType::TrackName, trkName);
+        if (channel > -1) {
+            m_channelLabel[channel] = m_trackLabel;
+        }
+    }
     wrkUpdateLoadProgress();
 }
 
 void Sequence::wrkNoteEvent(int track, long time, int chan, int pitch, int vol, int dur)
 {
     int channel = chan;
-    TrackMapRec rec = m_trackMap[track];
+    TrackMapRec rec = m_trackMap[track+1];
     int key = pitch + rec.pitch;
     int velocity = vol + rec.velocity;
     if (rec.channel > -1)
@@ -787,11 +812,11 @@ void Sequence::wrkNoteEvent(int track, long time, int chan, int pitch, int vol, 
         m_lowestMidiNote = pitch;
     m_channelUsed[channel] = true;
     MIDIEvent* ev = new NoteOnEvent(channel, key, velocity);
-    ev->setTag(track);
+    ev->setTag(track+1);
     appendWRKEvent(time, ev);
     m_channelEvents[channel]++;
     ev = new NoteOffEvent(channel, key, velocity);
-    ev->setTag(track);
+    ev->setTag(track+1);
     appendWRKEvent(time + dur, ev);
     m_channelEvents[channel]++;
 }
@@ -799,73 +824,73 @@ void Sequence::wrkNoteEvent(int track, long time, int chan, int pitch, int vol, 
 void Sequence::wrkKeyPressEvent(int track, long time, int chan, int pitch, int press)
 {
     int channel = chan;
-    TrackMapRec rec = m_trackMap[track];
+    TrackMapRec rec = m_trackMap[track+1];
     int key = pitch + rec.pitch;
     if (rec.channel > -1)
         channel = rec.channel;
     m_channelUsed[channel] = true;
     m_channelEvents[channel]++;
     MIDIEvent* ev = new KeyPressEvent(channel, key, press);
-    ev->setTag(track);
+    ev->setTag(track+1);
     appendWRKEvent(time, ev);
 }
 
 void Sequence::wrkCtlChangeEvent(int track, long time, int chan, int ctl, int value)
 {
     int channel = chan;
-    TrackMapRec rec = m_trackMap[track];
+    TrackMapRec rec = m_trackMap[track+1];
     if (rec.channel > -1)
         channel = rec.channel;
     m_channelUsed[channel] = true;
     m_channelEvents[channel]++;
     MIDIEvent* ev = new ControllerEvent(channel, ctl, value);
-    ev->setTag(track);
+    ev->setTag(track+1);
     appendWRKEvent(time, ev);
 }
 
 void Sequence::wrkPitchBendEvent(int track, long time, int chan, int value)
 {
     int channel = chan;
-    TrackMapRec rec = m_trackMap[track];
+    TrackMapRec rec = m_trackMap[track+1];
     if (rec.channel > -1)
         channel = rec.channel;
     m_channelUsed[channel] = true;
     m_channelEvents[channel]++;
     MIDIEvent* ev = new PitchBendEvent(channel, value);
-    ev->setTag(track);
+    ev->setTag(track+1);
     appendWRKEvent(time, ev);
 }
 
 void Sequence::wrkProgramEvent(int track, long time, int chan, int patch)
 {
     int channel = chan;
-    TrackMapRec rec = m_trackMap[track];
+    TrackMapRec rec = m_trackMap[track+1];
     if (rec.channel > -1)
         channel = rec.channel;
     m_channelUsed[channel] = true;
     m_channelEvents[channel]++;
     MIDIEvent* ev = new ProgramChangeEvent(channel, patch);
-    ev->setTag(track);
+    ev->setTag(track+1);
     appendWRKEvent(time, ev);
 }
 
 void Sequence::wrkChanPressEvent(int track, long time, int chan, int press)
 {
     int channel = chan;
-    TrackMapRec rec = m_trackMap[track];
+    TrackMapRec rec = m_trackMap[track+1];
     if (rec.channel > -1)
         channel = rec.channel;
     m_channelUsed[channel] = true;
     m_channelEvents[channel]++;
     MIDIEvent* ev = new ChanPressEvent(channel, press);
-    ev->setTag(track);
+    ev->setTag(track+1);
     appendWRKEvent(time, ev);
 }
 
 void Sequence::wrkSysexEvent(int track, long time, int bank)
 {
     SysexEventRec rec;
-    rec.track = track;
+    rec.track = track+1;
     rec.time = time;
     rec.bank = bank;
     m_savedSysexEvents.append(rec);
@@ -887,6 +912,76 @@ void Sequence::wrkSysexEventBank(int bank, const QString& /*name*/,
     wrkUpdateLoadProgress();
 }
 
+void Sequence::appendWRKmetadata(int track, long time, TextType type, const QByteArray& data)
+{
+    Q_ASSERT(track > 0);
+    int retval = uchardet_handle_data(m_handle, data.data(), data.length());
+    if (retval == 0)
+    {
+        if (m_trkScore.contains(track)) {
+            m_trkScore[track]++;
+        } else {
+            m_trkScore[track] = 1;
+        }
+        if (m_typScore.contains(type)) {
+            m_typScore[type]++;
+        } else {
+            m_typScore[type] = 1;
+        }
+        TextType t = static_cast<TextType>(type);
+        m_textEvents.append(TextRec(track, t, data));
+        switch ( t ) {
+        case Sequence::Lyric:
+        case Sequence::Text: {
+                TextEvent *ev = new TextEvent(data, t);
+                ev->setTag(track);
+                appendWRKEvent(time, ev);
+            }
+            break;
+        case Sequence::TrackName:
+        case Sequence::InstrumentName:
+            m_trackLabel = data;
+            m_trkName[track] = data;
+            break;
+        default:
+            break;
+        }
+    } else {
+        m_uchardetErrors++;
+        qWarning() << "uchardet - handle data error:" << retval;
+    }
+    wrkUpdateLoadProgress();
+}
+
+void Sequence::wrkTextEvent(int track, long time, int /*type*/, const QByteArray &data)
+{
+    //qDebug() << "track:" << track+1 << "time:" << time << "type:" << type << "data:" << data;
+    appendWRKmetadata(track+1, time, TextType::Lyric, data);
+}
+
+void Sequence::wrkComments(const QByteArray &cmt)
+{
+    appendWRKmetadata(1, 0, TextType::Text, cmt);
+}
+
+void Sequence::wrkVariableRecord(const QString &name, const QByteArray &data)
+{
+    bool isReadable = (name == "Title" || name == "Author" ||
+                       name == "Copyright" || name == "Subtitle" ||
+                       name == "Instructions" || name == "Keywords");
+    if (isReadable) {
+        TextType type = TextType::None;
+        if ( name == "Title" || name == "Subtitle" )
+            type = TextType::TrackName;
+        else if ( name == "Copyright" || name == "Author" )
+            type = TextType::Copyright;
+        else
+            type = TextType::Text;
+        appendWRKmetadata(1, 0, type, data);
+    }
+    wrkUpdateLoadProgress();
+}
+
 void Sequence::wrkTempoEvent(long time, int tempo)
 {
     double bpm = tempo / 100.0;
@@ -900,13 +995,13 @@ void Sequence::wrkTempoEvent(long time, int tempo)
 void Sequence::wrkTrackPatch(int track, int patch)
 {
     int channel = 0;
-    TrackMapRec rec = m_trackMap[track];
+    TrackMapRec rec = m_trackMap[track+1];
     if (rec.channel > -1)
         channel = rec.channel;
-    wrkProgramEvent(track, 0, channel, patch);
+    wrkProgramEvent(track+1, 0, channel, patch);
 }
 
-void Sequence::wrkNewTrackHeader( const QString& /*name*/,
+void Sequence::wrkNewTrackHeader( const QByteArray& data,
                               int trackno, int channel,
                               int pitch, int velocity, int /*port*/,
                               bool /*selected*/, bool /*muted*/, bool /*loop*/ )
@@ -915,26 +1010,43 @@ void Sequence::wrkNewTrackHeader( const QString& /*name*/,
     rec.channel = channel;
     rec.pitch = pitch;
     rec.velocity = velocity;
-    m_trackMap[trackno] = rec;
-    m_trkChannel[trackno] = channel;
-    //m_trackLabel[trackno] = name.toLocal8Bit();
+    m_curTrack = trackno + 1;
+    if (m_curTrack > m_numTracks) {
+        m_numTracks = m_curTrack;
+    }
+    m_trackMap[m_curTrack] = rec;
+    m_trkChannel[m_curTrack] = channel;
+    appendWRKmetadata(m_curTrack, 0, TextType::TrackName, data);
+    if (channel > -1) {
+        m_channelLabel[channel] = m_trackLabel;
+    }
     wrkUpdateLoadProgress();
+}
+
+void Sequence::wrkTrackName(int trackno, const QByteArray &data)
+{
+    appendWRKmetadata(trackno+1, 0, TextType::TrackName, data);
+    TrackMapRec rec = m_trackMap[trackno+1];
+    int channel = rec.channel;
+    if (channel > -1) {
+        m_channelLabel[channel] = m_trackLabel;
+    }
 }
 
 void Sequence::wrkTrackVol(int track, int vol)
 {
     int channel = 0;
     int lsb, msb;
-    TrackMapRec rec = m_trackMap[track];
+    TrackMapRec rec = m_trackMap[track+1];
     if (rec.channel > -1)
         channel = rec.channel;
     if (vol < 128)
-        wrkCtlChangeEvent(track, 0, channel, ControllerEvent::MIDI_CTL_MSB_MAIN_VOLUME, vol);
+        wrkCtlChangeEvent(track+1, 0, channel, ControllerEvent::MIDI_CTL_MSB_MAIN_VOLUME, vol);
     else {
         lsb = vol % 0x80;
         msb = vol / 0x80;
-        wrkCtlChangeEvent(track, 0, channel, ControllerEvent::MIDI_CTL_LSB_MAIN_VOLUME, lsb);
-        wrkCtlChangeEvent(track, 0, channel, ControllerEvent::MIDI_CTL_MSB_MAIN_VOLUME, msb);
+        wrkCtlChangeEvent(track+1, 0, channel, ControllerEvent::MIDI_CTL_LSB_MAIN_VOLUME, lsb);
+        wrkCtlChangeEvent(track+1, 0, channel, ControllerEvent::MIDI_CTL_MSB_MAIN_VOLUME, msb);
     }
 }
 
@@ -943,13 +1055,31 @@ void Sequence::wrkTrackBank(int track, int bank)
     // assume GM/GS bank method
     int channel = 0;
     int lsb, msb;
-    TrackMapRec rec = m_trackMap[track];
+    TrackMapRec rec = m_trackMap[track+1];
     if (rec.channel > -1)
         channel = rec.channel;
     lsb = bank % 0x80;
     msb = bank / 0x80;
-    wrkCtlChangeEvent(track, 0, channel, ControllerEvent::MIDI_CTL_MSB_BANK, msb);
-    wrkCtlChangeEvent(track, 0, channel, ControllerEvent::MIDI_CTL_LSB_BANK, lsb);
+    wrkCtlChangeEvent(track+1, 0, channel, ControllerEvent::MIDI_CTL_MSB_BANK, msb);
+    wrkCtlChangeEvent(track+1, 0, channel, ControllerEvent::MIDI_CTL_LSB_BANK, lsb);
+}
+
+void Sequence::wrkSegment(int track, long time, const QByteArray &name)
+{
+    if (!name.isEmpty()) {
+        appendWRKmetadata(track+1, time, TextType::Marker, name);
+    }
+}
+
+void Sequence::wrkChord(int track, long time, const QString &name, const QByteArray& /*data*/)
+{
+    QByteArray data = name.toUtf8();
+    appendWRKmetadata(track+1, time, TextType::Cue, data);
+}
+
+void Sequence::wrkExpression(int track, long time, int /*code*/, const QByteArray &text)
+{
+    appendWRKmetadata(track+1, time, TextType::Cue, text);
 }
 
 void Sequence::wrkTimeSignatureEvent(int bar, int num, int den)
@@ -987,7 +1117,6 @@ void Sequence::wrkTimeSignatureEvent(int bar, int num, int den)
 
 void Sequence::wrkKeySig(int bar, int alt)
 {
-    Q_UNUSED(bar)
     MIDIEvent *ev = new KeySignatureEvent(alt, false);
     long time = 0;
     foreach(const TimeSigRec& ts, m_bars) {
@@ -1017,7 +1146,7 @@ QString Sequence::channelLabel(int channel)
         (!m_channelLabel[channel].isEmpty())) {
         QTextCodec *codec = QTextCodec::codecForMib(detectedUchardetMIB());
         if (codec == nullptr)
-            return QString::fromLatin1(m_channelLabel[channel]);
+            return QString::fromLocal8Bit(m_channelLabel[channel]);
         else
             return codec->toUnicode(m_channelLabel[channel]);
     }
