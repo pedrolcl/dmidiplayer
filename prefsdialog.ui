@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>417</width>
-    <height>275</height>
+    <height>282</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,17 +27,7 @@
       <attribute name="title">
        <string>General</string>
       </attribute>
-      <layout class="QFormLayout" name="formLayout_2">
-       <item row="0" column="0">
-        <widget class="QLabel" name="lblPercChannel">
-         <property name="text">
-          <string>Percussion MIDI Channel</string>
-         </property>
-         <property name="buddy">
-          <cstring>spinPercChannel</cstring>
-         </property>
-        </widget>
-       </item>
+      <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="1">
         <widget class="QSpinBox" name="spinPercChannel">
          <property name="minimum">
@@ -51,7 +41,43 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0" colspan="2">
+       <item row="0" column="0">
+        <widget class="QLabel" name="lblPercChannel">
+         <property name="text">
+          <string>Percussion MIDI Channel:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>spinPercChannel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="lblQtStyle">
+         <property name="text">
+          <string>Qt Widgets Style:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>cboStyle</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QComboBox" name="cboStyle">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
         <widget class="QCheckBox" name="chkSnapping">
          <property name="text">
           <string>Sticky Window Snapping</string>
@@ -61,37 +87,43 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="0" colspan="2">
+       <item row="3" column="0">
         <widget class="QCheckBox" name="chkDarkMode">
          <property name="text">
           <string>Forced Dark Mode</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
-        <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
        <item row="4" column="0">
+        <widget class="QCheckBox" name="chkInternalIcons">
+         <property name="text">
+          <string>Use Internal Icon Theme</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
         <widget class="QCheckBox" name="chkAutoPlay">
          <property name="text">
           <string>Start Playback Automatically After Loading</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QCheckBox" name="chkInternalIcons">
+       <item row="1" column="1">
+        <widget class="QLabel" name="lblHidden">
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>25</height>
+          </size>
+         </property>
          <property name="text">
-          <string>Use Internal Icon Theme</string>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
@@ -338,6 +370,25 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>spinPercChannel</tabstop>
+  <tabstop>chkSnapping</tabstop>
+  <tabstop>chkAutoPlay</tabstop>
+  <tabstop>chkDarkMode</tabstop>
+  <tabstop>chkInternalIcons</tabstop>
+  <tabstop>cboStyle</tabstop>
+  <tabstop>editTextFont</tabstop>
+  <tabstop>btnTextFont</tabstop>
+  <tabstop>btnFutureColor</tabstop>
+  <tabstop>btnPastColor</tabstop>
+  <tabstop>cboHighlight</tabstop>
+  <tabstop>btnSingleColor</tabstop>
+  <tabstop>chkVelocityColor</tabstop>
+  <tabstop>editNoteFont</tabstop>
+  <tabstop>btnNoteFont</tabstop>
+  <tabstop>cboNoteNames</tabstop>
+ </tabstops>
  <resources>
   <include location="guiplayer.qrc"/>
  </resources>

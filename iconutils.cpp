@@ -40,8 +40,12 @@ namespace IconUtils
     {
         QPixmap pixmap;
         if (QFileInfo::exists(fileName)) {
-            pixmap = QPixmap(fileName);
-            PaintPixmap(pixmap, qApp->palette().color(QPalette::Active, QPalette::WindowText));
+            qDebug() << "loading:" << fileName;
+            QImage image(fileName);
+            pixmap = QPixmap::fromImage(image);
+            if (image.allGray()) {
+                PaintPixmap(pixmap, qApp->palette().color(QPalette::Active, QPalette::WindowText));
+            }
         } else {
             qWarning() << "BUG! missing file:" << fileName;
         }
@@ -56,11 +60,11 @@ namespace IconUtils
     QIcon GetIcon(const QString &name)
     {
         QIcon icon;
-        bool forced = Settings::instance()->useInternalIcons();
-        if (!forced) {
+        bool forcedIconTheme = Settings::instance()->useInternalIcons();
+        if (!forcedIconTheme && QIcon::hasThemeIcon(name)) {
             icon = QIcon::fromTheme(name);
         }
-        if (icon.isNull() || forced) {
+        if (icon.isNull() || forcedIconTheme) {
             QString iconName = QString(":/icons/%1.png").arg(name);
             icon = QIcon(GetPixmap(iconName));
         }

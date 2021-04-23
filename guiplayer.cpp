@@ -404,11 +404,12 @@ void GUIPlayer::applySettings()
     qApp->setPalette( Settings::instance()->getDarkMode() ? darkPalette : defaultPalette );
 
     //m_ui->actionPianoPlayer->setIcon(IconUtils::GetIcon\("audio-midi"\));
-    m_ui->actionFileInfo->setIcon(IconUtils::GetIcon("help-about"));
+    m_ui->actionFileInfo->setIcon(IconUtils::GetIcon("dialog-information"));
     m_ui->actionPlayList->setIcon(IconUtils::GetIcon("view-media-playlist"));
     m_ui->actionAbout->setIcon(IconUtils::GetIcon("help-about"));
     m_ui->actionAboutQt->setIcon(IconUtils::GetStandardIcon(QStyle::SP_TitleBarMenuButton));
     m_ui->actionOpen->setIcon(IconUtils::GetIcon("document-open"));
+    m_ui->menuRecentFiles->setIcon(IconUtils::GetIcon("document-open-recent"));
     m_ui->actionQuit->setIcon(IconUtils::GetIcon("system-shutdown"));
     m_ui->actionPlay->setIcon(IconUtils::GetIcon("media-playback-start"));
     m_ui->actionStop->setIcon(IconUtils::GetIcon("media-playback-stop"));
@@ -418,6 +419,7 @@ void GUIPlayer::applySettings()
     m_ui->actionMIDISetup->setIcon(IconUtils::GetIcon("midi"));
     m_ui->actionPreferences->setIcon(IconUtils::GetIcon("settings"));
     m_ui->btnVolume->setIcon(IconUtils::GetIcon("player-volume"));
+    m_ui->menuLanguage->setIcon(IconUtils::GetIcon("preferences-desktop-locale"));
 
     m_lyrics->applySettings();
     m_pianola->applySettings();

@@ -21,6 +21,7 @@
 #include <QFileInfo>
 #include <drumstick/settingsfactory.h>
 #include "recentfileshelper.h"
+#include "iconutils.h"
 
 RecentFilesHelper::RecentFilesHelper(QObject *parent)
 	: QObject(parent)
@@ -35,6 +36,7 @@ RecentFilesHelper::RecentFilesHelper(QObject *parent)
 		}
 		menu->addSeparator();
 		clearAct = new QAction(tr("Clear recent files"), this);
+        clearAct->setIcon(IconUtils::GetIcon("edit-delete"));
 		menu->addAction(clearAct);
         connect(clearAct, &QAction::triggered, this, &RecentFilesHelper::clear);
 	}

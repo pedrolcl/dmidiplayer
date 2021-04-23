@@ -117,6 +117,9 @@ public:
     bool useInternalIcons() const;
     void setInternalIcons(bool internalIcons);
 
+    QString getStyle() const;
+    void setStyle(const QString &style);
+
     // static methods
     static Settings* instance();
     static void setPortableConfig(const QString fileName = QString());
@@ -146,6 +149,7 @@ private:
     QString m_lastOutputBackend;
     QString m_lastOutputConnection;
     QString m_lastPlayList;
+    QString m_style;
 
     bool m_advanced;
     int m_highlightPaletteId;

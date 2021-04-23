@@ -21,6 +21,8 @@
 #include <QShowEvent>
 #include <QFontDialog>
 #include <QColorDialog>
+#include <QStyle>
+#include <QStyleFactory>
 #include <drumstick/rtmidioutput.h>
 #include "settings.h"
 #include "iconutils.h"
@@ -38,6 +40,15 @@ PrefsDialog::PrefsDialog(QWidget *parent) :
 #if !defined(Q_OS_WINDOWS)
     ui->chkSnapping->setVisible(false);
 #endif
+    QStringList styleNames = QStyleFactory::keys();
+    ui->cboStyle->addItems(styleNames);
+    QString currentStyle = qApp->style()->objectName();
+    foreach(const QString& s, styleNames) {
+        if (QString::compare(s, currentStyle, Qt::CaseInsensitive) == 0) {
+            ui->cboStyle->setCurrentText(s);
+            break;
+        }
+    }
     restoreDefaults();
     QPushButton *btnDefaults = ui->buttonBox->button(QDialogButtonBox::RestoreDefaults);
     connect(btnDefaults, &QPushButton::clicked, this, &PrefsDialog::restoreDefaults);
@@ -58,12 +69,22 @@ PrefsDialog::~PrefsDialog()
 void PrefsDialog::restoreDefaults()
 {
    using namespace drumstick::rt;
-
+    bool internalIcons = false;
+    QString style;
+#if defined(Q_OS_WINDOWS)
+    internalIcons = true;
+    style = "fusion";
+    ui->chkSnapping->setChecked(true);
+#endif
+#if defined (Q_OS_MACOS)
+    internalIcons = true;
+#endif
     QColor futureColor = qApp->palette().color(QPalette::WindowText);
     QColor pastColor = QColor(Qt::gray);
 
-    ui->chkSnapping->setChecked(true);
     ui->chkDarkMode->setChecked(false);
+    ui->chkInternalIcons->setChecked(internalIcons);
+    ui->cboStyle->setCurrentText(style);
     ui->spinPercChannel->setValue(MIDI_GM_STD_DRUM_CHANNEL+1);
     ui->editTextFont->setText("Sans Serif,36");
     setFutureColor(futureColor);
@@ -147,6 +168,7 @@ void PrefsDialog::showEvent ( QShowEvent *event )
 
         ui->chkDarkMode->setChecked( Settings::instance()->getDarkMode() );
         ui->chkInternalIcons->setChecked( Settings::instance()->useInternalIcons() );
+        ui->cboStyle->setCurrentText( Settings::instance()->getStyle() );
         ui->spinPercChannel->setValue( Settings::instance()->drumsChannel() );
         ui->chkAutoPlay->setChecked( Settings::instance()->getAutoPlay() );
 #if defined(Q_OS_WINDOWS)
@@ -182,6 +204,7 @@ void PrefsDialog::apply()
     Settings::instance()->setDarkMode(ui->chkDarkMode->isChecked());
     Settings::instance()->setAutoPlay(ui->chkAutoPlay->isChecked());
     Settings::instance()->setInternalIcons(ui->chkInternalIcons->isChecked());
+    Settings::instance()->setStyle(ui->cboStyle->currentText());
 #if defined(Q_OS_WINDOWS)
     Settings::instance()->setWinSnap( ui->chkSnapping->isChecked() );
 #endif

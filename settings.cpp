@@ -207,14 +207,17 @@ void Settings::internalRead(QSettings &settings)
     QDir defDir(dataDirectory());
     m_lastPlayList = settings.value("LastPlaylist", defDir.absoluteFilePath("examples.lst")).toString();
     bool internalIcons = false;
+    QString style;
 #if defined(Q_OS_WINDOWS)
     m_winSnap = settings.value("WindowSnapping", true).toBool();
     internalIcons = true;
+    style = "fusion";
 #endif
 #if defined (Q_OS_MACOS)
     internalIcons = true;
 #endif
     m_internalIcons =settings.value("InternalIcons", internalIcons).toBool();
+    m_style = settings.value("Style", style).toString();
     settings.endGroup();
 
     settings.beginGroup("TextSettings");
@@ -276,6 +279,7 @@ void Settings::internalSave(QSettings &settings)
     settings.setValue("WindowSnapping", m_winSnap);
 #endif
     settings.setValue("InternalIcons", m_internalIcons);
+    settings.setValue("Style", m_style);
     settings.endGroup();
 
     settings.beginGroup("TextSettings");
@@ -296,6 +300,16 @@ void Settings::internalSave(QSettings &settings)
     settings.endGroup();
 
     settings.sync();
+}
+
+QString Settings::getStyle() const
+{
+    return m_style;
+}
+
+void Settings::setStyle(const QString &style)
+{
+    m_style = style;
 }
 
 bool Settings::useInternalIcons() const
