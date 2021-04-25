@@ -76,9 +76,9 @@ Channels::Channels( QWidget* parent ) :
     soloIcon.addPixmap(pixSoloOff,QIcon::Normal, QIcon::Off);
     for (int i = 0; i < MIDI_STD_CHANNELS; ++i) {
         int row = i + 1;
-        QLabel *lbl = new QLabel(this);
-        lbl->setNum(row);
-        layout->addWidget(lbl, row, 0, Qt::AlignRight | Qt::AlignVCenter);
+        m_lbl[i] = new QLabel(this);
+        m_lbl[i]->setNum(row);
+        layout->addWidget(m_lbl[i], row, 0, Qt::AlignRight | Qt::AlignVCenter);
         m_name[i] = new QLineEdit(this);
         layout->addWidget(m_name[i], row, 1);
         connect( m_name[i], &QLineEdit::editingFinished, this, [=]{ slotNameChannel(i); });
@@ -103,7 +103,7 @@ Channels::Channels( QWidget* parent ) :
         m_patch[i]->addItems(m_instSet.names(i == MIDI_GM_STD_DRUM_CHANNEL));
         layout->addWidget(m_patch[i], row, 6);
         connect( m_patch[i], QOverload<int>::of(&QComboBox::activated), this, [=](int){ slotPatchChanged(i); });
-        lbl->setBuddy(m_patch[i]);
+        m_lbl[i]->setBuddy(m_patch[i]);
         m_voices[i] = 0;
         m_level[i] = 0.0;
         m_factor[i] = m_volumeFactor;
@@ -146,6 +146,8 @@ void Channels::initSong(Sequence *song)
             enableChannel(i, song->channelUsed(i));
             setChannelName(i, song->channelLabel(i));
         }
+        centralWidget()->adjustSize();
+        adjustSize();
     }
 }
 
@@ -210,18 +212,30 @@ void Channels::enableChannel(int channel, bool enable)
     m_name[channel]->clear();
     m_name[channel]->setEnabled(enable);
     m_lock[channel]->setEnabled(enable);
+
+    m_lbl[channel]->setVisible(enable);
+    m_mute[channel]->setVisible(enable);
+    m_solo[channel]->setVisible(enable);
+    m_vumeter[channel]->setVisible(enable);
+    m_patch[channel]->setVisible(enable);
+    m_name[channel]->setVisible(enable);
+    m_lock[channel]->setVisible(enable);
 }
 
 void Channels::slotDisableAllChannels()
 {
-    for ( int channel = 0; channel < MIDI_STD_CHANNELS; ++channel )
+    for ( int channel = 0; channel < MIDI_STD_CHANNELS; ++channel ) {
         enableChannel(channel, false);
+    }
+    adjustSize();
 }
 
 void Channels::slotEnableAllChannels()
 {
-    for ( int channel = 0; channel < MIDI_STD_CHANNELS; ++channel )
+    for ( int channel = 0; channel < MIDI_STD_CHANNELS; ++channel ) {
         enableChannel(channel, true);
+    }
+    adjustSize();
 }
 
 void Channels::slotPatch(int channel, int value)
