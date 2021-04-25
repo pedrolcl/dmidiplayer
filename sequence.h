@@ -97,6 +97,7 @@ public:
     QStringList getText(const TextType type, const int mib);
 
     int getNumAlterations() const;
+    QStringList getExtraCodecNames();
 
 signals:
     void loadingStart(int size);
@@ -263,10 +264,10 @@ private: // members
         {"ISO-8859-11", 2259},
         {"VISCII", 2082},
         /* Windows */
+        {"ASCII", 0},
         {"ISO-2022-CN", 104},
         {"HZ-GB-2312", 2085},
         {"IBM852", 2010},
-        {"ASCII", 3},
         {"ISO-2022-KR", 37},
         {"IBM855", 2046}
         /* macOS */

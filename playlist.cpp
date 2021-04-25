@@ -218,8 +218,10 @@ PlayList::setItems(QStringList items)
 QString
 PlayList::currentItem()
 {
-    if (ui.fileList->currentItem() != nullptr)
+    if (ui.fileList->currentItem() != nullptr) {
+        //qDebug() << Q_FUNC_INFO << ui.fileList->currentItem()->text();
         return ui.fileList->currentItem()->text();
+    }
     return QString();
 }
 
@@ -237,6 +239,7 @@ PlayList::selectNextItem()
     int current = ui.fileList->currentRow();
     if (current < ui.fileList->count()) {
         ui.fileList->setCurrentRow( ++current );
+        //qDebug() << Q_FUNC_INFO << ui.fileList->currentRow();
         return true;
     }
     return false;
@@ -248,6 +251,7 @@ PlayList::selectPrevItem()
     int current = ui.fileList->currentRow();
     if (current > 0) {
         ui.fileList->setCurrentRow( --current );
+        //qDebug() << Q_FUNC_INFO << ui.fileList->currentRow();
         return true;
     }
     return false;
@@ -262,17 +266,20 @@ PlayList::itemCount()
 bool
 PlayList::atLastItem()
 {
+    //qDebug() << Q_FUNC_INFO << ui.fileList->currentRow();
     return ui.fileList->currentRow() == (ui.fileList->count() - 1);
 }
 
 bool
 PlayList::atFirstItem()
 {
+    //qDebug() << Q_FUNC_INFO << ui.fileList->currentRow();
     return ui.fileList->currentRow() < 1;
 }
 
 bool
 PlayList::noItems()
 {
+    //qDebug() << Q_FUNC_INFO << ui.fileList->count();
     return ui.fileList->count() == 0;
 }

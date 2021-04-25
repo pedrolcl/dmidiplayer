@@ -83,6 +83,7 @@ public:
     void openFile(const QString &fileName);
     void updateState(PlayerState newState);
     void applySettings();
+    void updNavButtons();
     
 protected:
     void dragEnterEvent( QDragEnterEvent* event ) override;

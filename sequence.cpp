@@ -283,7 +283,17 @@ QStringList Sequence::getText(const TextType type, const int mib)
              }
          }
      }
-     return output;
+    return output;
+}
+
+QStringList Sequence::getExtraCodecNames()
+{
+    QStringList result;
+    QList<QByteArray> extra = m_umibs.keys();
+    foreach(const auto& e, extra) {
+        result.append(QString::fromLatin1(e));
+    }
+    return result;
 }
 
 QByteArray Sequence::getRawText(const int track, const TextType type)

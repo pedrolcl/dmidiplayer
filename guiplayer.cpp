@@ -148,6 +148,7 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
     m_preferences = new PrefsDialog(this);
     m_playList = new PlayList(this);
     m_playList->loadPlayList( Settings::instance()->lastPlayList() );
+    updNavButtons();
 
     try {
         BackendManager man;
@@ -215,6 +216,16 @@ void GUIPlayer::updateTimeLabel(long milliseconds)
     m_ui->lblTime->setText(t.toString("mm:ss.zzz").left(8));
 }
 
+void GUIPlayer::updNavButtons()
+{
+    m_ui->actionPrev->setEnabled(false);
+    m_ui->actionNext->setEnabled(false);
+    if (!m_playList->noItems()) {
+        m_ui->actionPrev->setEnabled(!m_playList->atFirstItem());
+        m_ui->actionNext->setEnabled(!m_playList->atLastItem());
+    }
+}
+
 void GUIPlayer::updateState(PlayerState newState)
 {
     if (m_state == newState)
@@ -251,12 +262,6 @@ void GUIPlayer::updateState(PlayerState newState)
         break;
     }
     m_state = newState;
-    m_ui->actionPrev->setEnabled(false);
-    m_ui->actionNext->setEnabled(false);
-    if (!m_playList->noItems()) {
-        m_ui->actionPrev->setEnabled(!m_playList->atFirstItem());
-        m_ui->actionNext->setEnabled(!m_playList->atLastItem());
-    }
 }
 
 void GUIPlayer::play()
@@ -329,11 +334,13 @@ void GUIPlayer::openFile(const QString& fileName)
         m_player->loadFile(fileName);
         if (m_player->song()->isEmpty()) {
             m_ui->lblName->clear();
+            updNavButtons();
             updateState(EmptyState);
         } else {
             Settings::instance()->setLastDirectory(finfo.absolutePath());
             m_ui->lblName->setText(finfo.fileName());
             m_recentFiles->setCurrentFile(finfo.absoluteFilePath());
+            updNavButtons();
             updateState(StoppedState);
             updateTimeLabel(0);
             m_player->resetPosition();
