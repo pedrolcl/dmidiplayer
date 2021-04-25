@@ -40,7 +40,6 @@ namespace IconUtils
     {
         QPixmap pixmap;
         if (QFileInfo::exists(fileName)) {
-            qDebug() << "loading:" << fileName;
             QImage image(fileName);
             pixmap = QPixmap::fromImage(image);
             if (image.allGray()) {

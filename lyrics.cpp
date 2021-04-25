@@ -223,13 +223,22 @@ bool Lyrics::nativeEvent(const QByteArray &eventType, void *message, long *resul
 
 void Lyrics::populateCodecsCombo()
 {
+    m_comboCodec->clear();
+    m_comboCodec->addItem(tr("Default ( Latin1 )"));
+    QStringList encodings;
     foreach(const auto m, QTextCodec::availableMibs()) {
         QTextCodec *codec = QTextCodec::codecForMib(m);
-        m_comboCodec->addItem(codec->name(), m);
-        foreach(const auto n, codec->aliases()) {
-            m_comboCodec->addItem(n, m);
+        encodings.append(codec->name());
+    }
+    encodings.sort();
+    encodings.removeDuplicates();
+    foreach(const auto& n, encodings) {
+        QTextCodec *codec = QTextCodec::codecForName(n.toLatin1());
+        if (codec == nullptr) {
+            m_comboCodec->addItem(n, 0);
+        } else {
+            m_comboCodec->addItem(n, codec->mibEnum());
         }
-        //qDebug() << "mib:" << m << "names:" << codec->name() << codec->aliases();
     }
 }
 
