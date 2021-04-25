@@ -551,8 +551,7 @@ void GUIPlayer::dragEnterEvent( QDragEnterEvent * event )
 void GUIPlayer::dropEvent( QDropEvent * event )
 {
     QString data = event->mimeData()->text();
-    QString fileName = QUrl(data).path().trimmed();
-    while (fileName.endsWith(QChar::Null)) fileName.chop(1);
+    QString fileName = QUrl(data).toLocalFile();
     if ( isSupported(fileName) ) {
         stop();
         openFile(fileName);
