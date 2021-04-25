@@ -120,6 +120,9 @@ public:
     QString getStyle() const;
     void setStyle(const QString &style);
 
+    int getSysexResetMessage() const;
+    void setSysexResetMessage(const int sysexResetMessage);
+
     // static methods
     static Settings* instance();
     static void setPortableConfig(const QString fileName = QString());
@@ -161,6 +164,7 @@ private:
     int m_drumsChannel;
     bool m_autoPlay;
     bool m_internalIcons;
+    int m_sysexResetMessage;
     LabelVisibility m_namesVisibility;
 //    LabelAlteration m_namesAlteration;
 //    LabelCentralOctave m_namesOctave;

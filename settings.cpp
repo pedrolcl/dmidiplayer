@@ -218,6 +218,7 @@ void Settings::internalRead(QSettings &settings)
 #endif
     m_internalIcons =settings.value("InternalIcons", internalIcons).toBool();
     m_style = settings.value("Style", style).toString();
+    m_sysexResetMessage = settings.value("SysexReset", 0).toInt();
     settings.endGroup();
 
     settings.beginGroup("TextSettings");
@@ -280,6 +281,7 @@ void Settings::internalSave(QSettings &settings)
 #endif
     settings.setValue("InternalIcons", m_internalIcons);
     settings.setValue("Style", m_style);
+    settings.setValue("SysexReset", m_sysexResetMessage);
     settings.endGroup();
 
     settings.beginGroup("TextSettings");
@@ -300,6 +302,16 @@ void Settings::internalSave(QSettings &settings)
     settings.endGroup();
 
     settings.sync();
+}
+
+int Settings::getSysexResetMessage() const
+{
+    return m_sysexResetMessage;
+}
+
+void Settings::setSysexResetMessage(const int sysexResetMessage)
+{
+    m_sysexResetMessage = sysexResetMessage;
 }
 
 QString Settings::getStyle() const

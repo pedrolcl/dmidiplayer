@@ -49,6 +49,10 @@ PrefsDialog::PrefsDialog(QWidget *parent) :
             break;
         }
     }
+    ui->cboReset->addItem(tr("None"));
+    ui->cboReset->addItem(tr("GM"));
+    ui->cboReset->addItem(tr("GS"));
+    ui->cboReset->addItem(tr("XG"));
     restoreDefaults();
     QPushButton *btnDefaults = ui->buttonBox->button(QDialogButtonBox::RestoreDefaults);
     connect(btnDefaults, &QPushButton::clicked, this, &PrefsDialog::restoreDefaults);
@@ -75,8 +79,7 @@ void PrefsDialog::restoreDefaults()
     internalIcons = true;
     style = "fusion";
     ui->chkSnapping->setChecked(true);
-#endif
-#if defined (Q_OS_MACOS)
+#elif defined (Q_OS_MACOS)
     internalIcons = true;
 #endif
     QColor futureColor = qApp->palette().color(QPalette::WindowText);
@@ -85,6 +88,7 @@ void PrefsDialog::restoreDefaults()
     ui->chkDarkMode->setChecked(false);
     ui->chkInternalIcons->setChecked(internalIcons);
     ui->cboStyle->setCurrentText(style);
+    ui->cboReset->setCurrentIndex(0); //none
     ui->spinPercChannel->setValue(MIDI_GM_STD_DRUM_CHANNEL+1);
     ui->editTextFont->setText("Sans Serif,36");
     setFutureColor(futureColor);
@@ -171,8 +175,12 @@ void PrefsDialog::showEvent ( QShowEvent *event )
         ui->cboStyle->setCurrentText( Settings::instance()->getStyle() );
         ui->spinPercChannel->setValue( Settings::instance()->drumsChannel() );
         ui->chkAutoPlay->setChecked( Settings::instance()->getAutoPlay() );
+        ui->cboReset->setCurrentIndex( Settings::instance()->getSysexResetMessage() );
 #if defined(Q_OS_WINDOWS)
         ui->chkSnapping->setChecked( Settings::instance()->winSnap() );
+#else
+        ui->chkSnapping->hide();
+        ui->lblHidden->hide();
 #endif
         ui->editTextFont->setText( Settings::instance()->lyricsFont().toString() );
         setFutureColor(Settings::instance()->getFutureColor());
@@ -205,6 +213,7 @@ void PrefsDialog::apply()
     Settings::instance()->setAutoPlay(ui->chkAutoPlay->isChecked());
     Settings::instance()->setInternalIcons(ui->chkInternalIcons->isChecked());
     Settings::instance()->setStyle(ui->cboStyle->currentText());
+    Settings::instance()->setSysexResetMessage(ui->cboReset->currentIndex());
 #if defined(Q_OS_WINDOWS)
     Settings::instance()->setWinSnap( ui->chkSnapping->isChecked() );
 #endif

@@ -30,6 +30,7 @@
 #include <QtMath>
 #include "events.h"
 #include "seqplayer.h"
+#include "settings.h"
 
 using namespace drumstick::rt;
 
@@ -381,6 +382,38 @@ void SequencePlayer::allNotesOff()
         for(int chan = 0; chan < MIDI_STD_CHANNELS; ++chan) {
             m_port->sendController(chan, ControllerEvent::MIDI_CTL_ALL_NOTES_OFF, 0);
             m_port->sendController(chan, ControllerEvent::MIDI_CTL_ALL_SOUNDS_OFF, 0);
+        }
+    }
+}
+
+void SequencePlayer::resetControllers()
+{
+    //qDebug() << Q_FUNC_INFO;
+    if (m_port != 0) {
+        for(int chan = 0; chan < MIDI_STD_CHANNELS; ++chan) {
+            m_port->sendController(chan, ControllerEvent::MIDI_CTL_RESET_CONTROLLERS, 0);
+            m_port->sendController(chan, ControllerEvent::MIDI_CTL_MSB_MAIN_VOLUME, 100);
+        }
+    }
+}
+
+void SequencePlayer::sendResetMessage()
+{
+    static const QByteArray gmreset = QByteArray::fromHex("f07e7f0901f7");
+    static const QByteArray gsreset = QByteArray::fromHex("f04110421240007f0041f7");
+    static const QByteArray xgreset = QByteArray::fromHex("f043104c00007e00f7");
+    int reset_msg = Settings::instance()->getSysexResetMessage();
+    if (m_port != nullptr && reset_msg > 0 ) {
+        switch (reset_msg) {
+        case 1:
+            m_port->sendSysex(gmreset);
+            break;
+        case 2:
+            m_port->sendSysex(gsreset);
+            break;
+        case 3:
+            m_port->sendSysex(xgreset);
+            break;
         }
     }
 }

@@ -269,6 +269,8 @@ void GUIPlayer::play()
     //qDebug() << Q_FUNC_INFO;
     if (!m_player->song()->isEmpty()) {
         if (m_player->getPosition() == 0) {
+            m_player->sendResetMessage();
+            m_player->resetControllers();
             m_player->sendVolumeEvents();
         }
         m_playerThread.start(QThread::HighPriority);

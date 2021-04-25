@@ -53,6 +53,8 @@ public:
     void setPitchShift(unsigned int pitch);
     void setVolumeFactor(unsigned int vol);
     void allNotesOff();
+    void resetControllers();
+    void sendResetMessage();
     void sendVolumeEvents();
     qreal volume(int channel);
     bool isMuted(int channel);
