@@ -223,26 +223,35 @@ bool Lyrics::nativeEvent(const QByteArray &eventType, void *message, long *resul
 
 void Lyrics::populateCodecsCombo()
 {
-    QStringList encodings;
-    m_comboCodec->clear();
-    m_comboCodec->addItem(tr("Default ( Latin1 )"));
-    foreach(const auto m, QTextCodec::availableMibs()) {
-        QTextCodec *codec = QTextCodec::codecForMib(m);
-        encodings.append(codec->name());
-    }
-    if (m_song != nullptr) {
-        encodings.append(m_song->getExtraCodecNames());
-    }
-    encodings.sort(Qt::CaseInsensitive);
-    encodings.removeDuplicates();
-    foreach(const auto& n, encodings) {
-        QTextCodec *codec = QTextCodec::codecForName(n.toLatin1());
-        if (codec == nullptr) {
-            m_comboCodec->addItem(n, 0);
-        } else {
-            m_comboCodec->addItem(n, codec->mibEnum());
+    QMap<QString,int> aux;
+    foreach(const auto mib, QTextCodec::availableMibs()) {
+        QTextCodec *c = QTextCodec::codecForMib(mib);
+        if (c != nullptr && mib != 0) {
+            aux.insert(c->name(), mib);
         }
     }
+    QByteArrayList umibkeys = Sequence::getExtraCodecNames();
+    foreach(const auto k, umibkeys) {
+        auto mib = Sequence::getMibForName(k);
+        if (!aux.contains(k) || aux.key(mib).isEmpty())
+        {
+            QTextCodec *c = QTextCodec::codecForMib(mib);
+            if (c != nullptr)
+            {
+                aux.insert(k, mib);
+                //qDebug() << "adding extra codec:" << k << mib;
+            }
+        }
+    }
+    QStringList keys = aux.keys();
+    keys.sort();
+    keys.removeDuplicates();
+    m_comboCodec->clear();
+    m_comboCodec->addItem(tr("Default (latin1)"), 0);
+    foreach(const auto k, keys) {
+        m_comboCodec->addItem(k, aux[k]);
+    }
+    //qDebug() << Q_FUNC_INFO << m_comboCodec->count();
 }
 
 void Lyrics::populateTracksCombo()
@@ -279,7 +288,6 @@ void Lyrics::initSong( Sequence *song )
     m_song = song;
     if (m_song != nullptr) {
         setWindowTitle(tr("Lyrics Viewer (%1)").arg(m_song->currentFile()));
-        populateCodecsCombo();
         populateTracksCombo();
         m_mib = m_song->detectedUchardetMIB();
         m_track = m_song->trackMaxPoints();
@@ -287,10 +295,14 @@ void Lyrics::initSong( Sequence *song )
     }
     m_textViewer->clear();
     // selected Codec:
-    int idx = m_comboCodec->findData(m_mib);
+    int idx = m_comboCodec->findData(m_mib, Qt::UserRole, Qt::MatchExactly|Qt::MatchWrap);
     m_comboCodec->setCurrentIndex(idx);
     m_codec = QTextCodec::codecForMib(m_mib);
-    // qDebug() << Q_FUNC_INFO << "mib:" << m_mib << "combo index:" << idx << "codec:" << (m_codec == nullptr ? "null" : m_codec->name());
+    if (idx < 0 && m_codec != nullptr) {
+        idx = m_comboCodec->findText(m_codec->name(), Qt::MatchFixedString|Qt::MatchWrap);
+        m_comboCodec->setCurrentIndex(idx);
+    }
+    //qDebug() << Q_FUNC_INFO << "mib:" << m_mib << "combo index:" << idx << "codec:" << (m_codec == nullptr ? "null" : m_codec->name());
     m_comboTrack->setCurrentIndex(m_track);
     m_comboType->setCurrentIndex(m_type);
     // populate text browser:

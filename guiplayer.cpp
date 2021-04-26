@@ -747,34 +747,33 @@ void GUIPlayer::slotFileInfo()
     if (m_player->song()->currentFile().isEmpty())
         infostr = tr("<b>No file loaded</b>");
     else {
-        int mib = m_player->song()->detectedUchardetMIB();
         infostr = tr("<b>File:</b><br>%1<br>").arg(m_player->song()->currentFile());
 
-        QString s = m_player->song()->getText(Sequence::Copyright, mib).join(tr("<br>"));
+        QString s = m_player->song()->getText(Sequence::Copyright).join(tr("<br>"));
         if (!s.isEmpty())
             infostr += tr("<b>Copyright:</b>%1<br>").arg(s);
 
-        s = m_player->song()->getText(Sequence::KarFileType, mib).join(tr("<br>"));
+        s = m_player->song()->getText(Sequence::KarFileType).join(tr("<br>"));
         if (!s.isEmpty())
             infostr += tr("<b>Karaoke type:</b>%1<br>").arg(s);
 
-        s = m_player->song()->getText(Sequence::KarVersion, mib).join(tr("<br>"));
+        s = m_player->song()->getText(Sequence::KarVersion).join(tr("<br>"));
         if (!s.isEmpty())
             infostr += tr("<b>Karaoke version:</b>%1<br>").arg(s);
 
-        s = m_player->song()->getText(Sequence::KarInformation, mib).join(tr("<br>"));
+        s = m_player->song()->getText(Sequence::KarInformation).join(tr("<br>"));
         if (!s.isEmpty())
             infostr += tr("<b>Karaoke info:</b>%1<br>").arg(s);
 
-        s = m_player->song()->getText(Sequence::KarLanguage, mib).join(tr("<br>"));
+        s = m_player->song()->getText(Sequence::KarLanguage).join(tr("<br>"));
         if (!s.isEmpty())
             infostr += tr("<b>Karaoke language:</b>%1<br>").arg(s);
 
-        s = m_player->song()->getText(Sequence::KarTitles, mib).join(tr("<br>"));
+        s = m_player->song()->getText(Sequence::KarTitles).join(tr("<br>"));
         if (!s.isEmpty())
             infostr += tr("<b>Karaoke title:</b>%1<br>").arg(s);
 
-        s = m_player->song()->getText(Sequence::KarWhatever, mib).join(tr("<br>"));
+        s = m_player->song()->getText(Sequence::KarWhatever).join(tr("<br>"));
         if (!s.isEmpty())
             infostr += tr("<b>Karaoke things:</b>%1<br>").arg(s);
     }

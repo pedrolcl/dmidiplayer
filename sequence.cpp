@@ -114,19 +114,43 @@ Sequence::~Sequence()
 
 void Sequence::initCodecs()
 {
-    foreach(const auto& k, m_ucharsets) {
-        auto codec = QTextCodec::codecForName(k);
-        if (codec == nullptr) {
-            /*if (!m_umibs.contains(k)) {
-                qWarning() << "\tCHECK!!!" << k ;
-            }*/
-        } else {
-            if (!m_umibs.contains(k)) {
-                m_umibs.insert(k, codec->mibEnum());
-            } /*else if (codec->mibEnum() != m_umibs[k]) {
-                qWarning() << "\tMismatch: charset=" << k << "codec->mib=" << codec->mibEnum() << "umibs=" << m_umibs[k];
-            }*/
+    QMap<QString,int> aux;
+    foreach(const auto mib, QTextCodec::availableMibs()) {
+        QTextCodec *c = QTextCodec::codecForMib(mib);
+        if (c != nullptr && mib != 0) {
+            aux.insert(c->name(), mib);
         }
+    }
+    QByteArrayList umibkeys = m_umibs.keys();
+    foreach(const auto k, umibkeys) {
+        auto mib = m_umibs[k];
+        if (!aux.contains(k) || aux.key(mib).isEmpty())
+        {
+            QTextCodec *c = QTextCodec::codecForMib(mib);
+            if (c != nullptr)
+            {
+                aux.insert(k, mib);
+                //qDebug() << "adding extra codec:" << k << mib;
+            }
+        }
+    }
+    QStringList keys = aux.keys();
+    keys.sort();
+    keys.removeDuplicates();
+    m_supportedCodecs.clear();
+    foreach(const auto k, keys) {
+        m_supportedCodecs.insert(k.toUpper().toLatin1(), aux[k]);
+    }
+    //qDebug() << Q_FUNC_INFO << m_supportedCodecs.count();
+}
+
+void Sequence::findCodec()
+{
+    m_mib = 0;
+    m_codec = nullptr;
+    if (m_supportedCodecs.contains(m_charset)) {
+        m_mib = m_supportedCodecs[m_charset];
+        m_codec = QTextCodec::codecForMib(m_mib);
     }
 }
 
@@ -138,7 +162,6 @@ static inline bool eventLessThan(const MIDIEvent* s1, const MIDIEvent *s2)
 void Sequence::sort()
 {
     //qDebug() << Q_FUNC_INFO;
-    //qStableSort(m_list.begin(), m_list.end(), eventLessThan);
     std::stable_sort(m_list.begin(), m_list.end(), eventLessThan);
     // Calculate deltas
     long lastEventTicks = 0;
@@ -219,6 +242,7 @@ void Sequence::loadFile(const QString& fileName)
             }
             m_charset = QByteArray(uchardet_get_charset(m_handle));
             //qDebug() << Q_FUNC_INFO << "Detected charset:" << m_charset;
+            findCodec();
         } catch (...) {
             qWarning() << "corrupted file";
             clear();
@@ -233,11 +257,7 @@ int Sequence::numUchardetErrors()
 
 int Sequence::detectedUchardetMIB() const
 {
-    if (!m_charset.isNull() && m_umibs.contains(m_charset)) {
-        return m_umibs[m_charset];
-    }
-    qWarning() << "Charset not detected";
-    return -1;
+    return m_mib;
 }
 
 QByteArray Sequence::detectedCharset() const
@@ -266,18 +286,17 @@ void Sequence::appendStringToList(QStringList &list, QString &s, TextType type)
     list.append(s);
 }
 
-QStringList Sequence::getText(const TextType type, const int mib)
+QStringList Sequence::getText(const TextType type)
 {
     QStringList output;
-    QTextCodec *codec = QTextCodec::codecForMib(mib);
     if ( (type >= FIRST_TYPE) && (type <= LAST_TYPE) ) {
          foreach(const auto& e, m_textEvents) {
              if (e.m_type == type) {
                  QString s;
-                 if (codec == nullptr) {
-                    s = QString::fromLocal8Bit(e.m_text);
+                 if (m_codec == nullptr) {
+                    s = QString::fromLatin1(e.m_text);
                  } else {
-                    s = codec->toUnicode(e.m_text);
+                    s = m_codec->toUnicode(e.m_text);
                  }
                  appendStringToList(output, s, type);
              }
@@ -286,14 +305,17 @@ QStringList Sequence::getText(const TextType type, const int mib)
     return output;
 }
 
-QStringList Sequence::getExtraCodecNames()
+QByteArrayList Sequence::getExtraCodecNames()
 {
-    QStringList result;
-    QList<QByteArray> extra = m_umibs.keys();
-    foreach(const auto& e, extra) {
-        result.append(QString::fromLatin1(e));
+    return m_umibs.keys();
+}
+
+int Sequence::getMibForName(const QByteArray name)
+{
+    if (m_umibs.contains(name)) {
+        return m_umibs[name];
     }
-    return result;
+    return -1;
 }
 
 QByteArray Sequence::getRawText(const int track, const TextType type)
@@ -1154,11 +1176,10 @@ QString Sequence::channelLabel(int channel)
 {
     if ((channel >= 0) && (channel < MIDI_STD_CHANNELS) &&
         (!m_channelLabel[channel].isEmpty())) {
-        QTextCodec *codec = QTextCodec::codecForMib(detectedUchardetMIB());
-        if (codec == nullptr)
+        if (m_codec == nullptr)
             return QString::fromLocal8Bit(m_channelLabel[channel]);
         else
-            return codec->toUnicode(m_channelLabel[channel]);
+            return m_codec->toUnicode(m_channelLabel[channel]);
     }
     return QString();
 }
@@ -1172,3 +1193,25 @@ int Sequence::highestMidiNote()
 {
     return m_highestMidiNote;
 }
+
+/* Most of the character sets in m_ucharsets are already recognized by
+ * QTextCodec, and checked in initCodecs(), except for a few ones that
+ * are explictly initialized here. See also:
+ * https://www.iana.org/assignments/character-sets/character-sets.xhtml
+ */
+const QMap<QByteArray,int> Sequence::m_umibs {
+    // Linux
+    {"UHC", 38},
+    {"ISO-8859-11", 2259},
+    {"VISCII", 2082},
+    // Windows
+    //{"ASCII", 0},
+    {"ISO-2022-CN", 104},
+    {"HZ-GB-2312", 2085},
+    {"IBM852", 2010},
+    {"ISO-2022-KR", 37},
+    {"IBM855", 2046}
+    // macOS
+    //{"x-mac-ce", 0},
+    //{"x-mac-cyrillic", 0}
+};

@@ -94,10 +94,12 @@ public:
 
     QString currentFile() const;
     QByteArray getRawText(const int track, const TextType type);
-    QStringList getText(const TextType type, const int mib);
+    QStringList getText(const TextType type);
 
+    void findCodec();
     int getNumAlterations() const;
-    QStringList getExtraCodecNames();
+    static QByteArrayList getExtraCodecNames();
+    static int getMibForName(const QByteArray name);
 
 signals:
     void loadingStart(int size);
@@ -199,82 +201,11 @@ private: // members
     qint64 m_tick;
     QString m_lblName;
 
-    /* This is the list of character sets
-     * detected by the uchardet library */
-    QList<QByteArray> m_ucharsets {
-        "ASCII",
-        "BIG5",
-        "EUC-JP",
-        "EUC-KR",
-        /* "EUC-TW", Not supported by QTextCodec! :-( */
-        "GB18030",
-        "HZ-GB-2312",
-        "IBM852",
-        "IBM855",
-        "IBM866",
-        "ISO-2022-CN",
-        "ISO-2022-JP",
-        "ISO-2022-KR",
-        "ISO-8859-1",
-        "ISO-8859-10",
-        "ISO-8859-11",
-        "ISO-8859-13",
-        "ISO-8859-15",
-        "ISO-8859-16",
-        "ISO-8859-2",
-        "ISO-8859-3",
-        "ISO-8859-4",
-        "ISO-8859-5",
-        "ISO-8859-6",
-        "ISO-8859-7",
-        "ISO-8859-8",
-        "ISO-8859-9",
-        "KOI8-R",
-        "MAC-CENTRALEUROPE",
-        "MAC-CYRILLIC",
-        "SHIFT_JIS",
-        "TIS-620",
-        "UHC",
-        "UTF-16BE",
-        "UTF-16LE",
-        "UTF-32BE",
-        "UTF-32LE",
-        "UTF-8",
-        "VISCII",
-        "WINDOWS-1250",
-        "WINDOWS-1250",
-        "WINDOWS-1251",
-        "WINDOWS-1252",
-        "WINDOWS-1252",
-        "WINDOWS-1253",
-        "WINDOWS-1255",
-        "WINDOWS-1256",
-        "WINDOWS-1257",
-        "WINDOWS-1258"
-    };
+    static const QMap<QByteArray,int> m_umibs;
 
-    /* Most of the character sets in m_ucharsets are already recognized by
-     * QTextCodec, and checked in initCodecs(), except for a few ones that
-     * are explictly initialized here. See also:
-     * https://www.iana.org/assignments/character-sets/character-sets.xhtml
-     */
-    QMap<QByteArray,int> m_umibs{
-        /* Linux */
-        {"UHC", 38},
-        {"ISO-8859-11", 2259},
-        {"VISCII", 2082},
-        /* Windows */
-        {"ASCII", 0},
-        {"ISO-2022-CN", 104},
-        {"HZ-GB-2312", 2085},
-        {"IBM852", 2010},
-        {"ISO-2022-KR", 37},
-        {"IBM855", 2046}
-        /* macOS */
-        //{"x-mac-ce", 0},
-        //{"x-mac-cyrillic", 0}
-    };
-
+    QMap<QByteArray,int> m_supportedCodecs;
+    QTextCodec *m_codec;
+    int m_mib;
     QByteArray m_charset;
     uchardet_t m_handle;
 
