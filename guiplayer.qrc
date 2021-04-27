@@ -34,5 +34,6 @@
         <file>icons/document-open-recent.png</file>
         <file>icons/edit-delete.png</file>
         <file>icons/preferences-desktop-locale.png</file>
+        <file>icons/application-menu.png</file>
     </qresource>
 </RCC>

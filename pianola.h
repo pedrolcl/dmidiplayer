@@ -28,6 +28,7 @@
 
 class QFrame;
 class QLabel;
+class QToolButton;
 class Sequence;
 
 namespace drumstick { namespace widgets {
@@ -66,6 +67,7 @@ public slots:
     void slotLabel(int channel, const QString& text);
     void tightenKeys(bool enabled);
     void slotKeySignature(int track, int alt, bool minor);
+    void toggleFullScreen(bool enabled);
 
 protected:
     void closeEvent( QCloseEvent *event ) override;
@@ -76,11 +78,13 @@ private:
     Sequence *m_song;
     drumstick::widgets::PianoKeybd* m_piano[drumstick::rt::MIDI_STD_CHANNELS];
     QMenu *m_chmenu;
-    QAction *m_a1, *m_a2, *m_a3;
+    QToolButton* m_toolBtn;
+    QAction *m_a1, *m_a2, *m_a3, *m_a4;
     QFrame* m_frame[drumstick::rt::MIDI_STD_CHANNELS];
     QAction* m_action[drumstick::rt::MIDI_STD_CHANNELS];
     QLabel* m_label[drumstick::rt::MIDI_STD_CHANNELS];
     bool m_tightenKeys;
+    bool m_fullScreen;
     int m_lowerNote;
     int m_upperNote;
 #if defined(Q_OS_WINDOWS)

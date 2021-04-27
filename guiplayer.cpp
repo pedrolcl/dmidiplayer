@@ -185,9 +185,9 @@ GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
             if (!conn.first.isEmpty())
                 m_midiOut->open(conn);
             m_player->setPort(m_midiOut);
-            connect(m_pianola.data(), &Pianola::noteOn, m_midiOut, &MIDIOutput::sendNoteOn);
-            connect(m_pianola.data(), &Pianola::noteOff, m_midiOut, &MIDIOutput::sendNoteOff);
-            connect(m_channels.data(), &Channels::patch, m_midiOut, &MIDIOutput::sendProgram);
+            connect(m_pianola, &Pianola::noteOn, m_midiOut, &MIDIOutput::sendNoteOn);
+            connect(m_pianola, &Pianola::noteOff, m_midiOut, &MIDIOutput::sendNoteOff);
+            connect(m_channels, &Channels::patch, m_midiOut, &MIDIOutput::sendProgram);
         }
 
         tempoReset();

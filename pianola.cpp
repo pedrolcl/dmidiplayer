@@ -23,6 +23,8 @@
 #include <QMenuBar>
 #include <QAction>
 #include <QCloseEvent>
+#include <QToolButton>
+#include <QToolBar>
 #include <drumstick/settingsfactory.h>
 #include <drumstick/pianokeybd.h>
 #include <drumstick/rtmidioutput.h>
@@ -30,6 +32,7 @@
 #include "settings.h"
 #include "sequence.h"
 #include "pianola.h"
+#include "iconutils.h"
 
 using namespace drumstick::rt;
 using namespace drumstick::widgets;
@@ -41,8 +44,25 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent),
     setWindowFlag(Qt::Tool, true);
     setAttribute(Qt::WA_DeleteOnClose, false);
     setAttribute(Qt::WA_MacAlwaysShowToolWindow, true);
-    menuBar()->setNativeMenuBar(false);
-    m_chmenu = menuBar()->addMenu(tr("MIDI Channels"));
+    //menuBar()->setNativeMenuBar(false);
+    m_chmenu = new QMenu(tr("MIDI Channels"), this);
+    QToolBar* tbar = new QToolBar(this);
+    tbar->setObjectName("toolbar");
+    addToolBar(tbar);
+    m_toolBtn = new QToolButton(this);
+    tbar->addWidget(m_toolBtn);
+    tbar->show();
+    setContextMenuPolicy(Qt::CustomContextMenu); // prevent default ctx
+    m_toolBtn->setMenu(m_chmenu);
+    m_toolBtn->setPopupMode(QToolButton::InstantPopup);
+    m_toolBtn->setIcon(IconUtils::GetIcon("application-menu"));
+    m_a4 = new QAction(this); // Full Screen
+    m_a4->setShortcut(QKeySequence::FullScreen);
+    m_a4->setCheckable(true);
+    m_fullScreen = false;
+    m_a4->setChecked(false);
+    connect(m_a4, &QAction::triggered, this, &Pianola::toggleFullScreen);
+    m_chmenu->addAction(m_a4);
     m_a1 = new QAction(this); // Show all channels
     connect(m_a1, &QAction::triggered, this, &Pianola::slotShowAllChannels);
     m_chmenu->addAction(m_a1);
@@ -59,6 +79,7 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent),
     QVBoxLayout *vlayout = new QVBoxLayout;
     vlayout->setSpacing(0);
     vlayout->setContentsMargins(0,0,0,0);
+    vlayout->setSizeConstraint(QLayout::SetNoConstraint);
     QWidget* centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
     centralWidget->setLayout(vlayout);
@@ -94,6 +115,7 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent),
         connect(m_piano[i], &PianoKeybd::noteOff, this, &Pianola::playNoteOff);
         glayout->addWidget(m_piano[i],1,1);
         vlayout->addWidget(m_frame[i]);
+        vlayout->setStretch(i, 1);
         lbl->setBuddy(m_piano[i]);
         m_frame[i]->setVisible(false);
         m_action[i] = new QAction(this);
@@ -118,6 +140,7 @@ void Pianola::retranslateUi()
     m_a1->setText(tr("Show all channels"));
     m_a2->setText(tr("Hide all channels"));
     m_a3->setText(tr("Tighten the number of keys"));
+    m_a4->setText(tr("View Full Screen"));
     for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
         m_action[i]->setText(tr("Channel %1").arg(i+1));
         m_piano[i]->retranslate();
@@ -126,6 +149,7 @@ void Pianola::retranslateUi()
 
 void Pianola::applySettings()
 {
+    m_toolBtn->setIcon(IconUtils::GetIcon("application-menu"));
     int palId = Settings::instance()->highlightPaletteId();
     PianoPalette pal = Settings::instance()->getPalette(palId);
     for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
@@ -153,6 +177,8 @@ void Pianola::initSong(Sequence *song)
             slotLabel(i, m_song->channelLabel(i));
             m_piano[i]->setLabelAlterations(LabelAlteration::ShowSharps);
         }
+        centralWidget()->adjustSize();
+        adjustSize();
     }
 }
 
@@ -198,10 +224,10 @@ void Pianola::allNotesOff()
 
 void Pianola::enableChannel(int channel, bool enable)
 {
-    if (!enable) {
-        m_action[channel]->setChecked(false);
-        m_frame[channel]->setVisible(false);
-    }
+    m_action[channel]->setChecked(enable);
+    m_label[channel]->setVisible(enable);
+    m_piano[channel]->setVisible(enable);
+    m_frame[channel]->setVisible(enable);
     m_action[channel]->setEnabled(enable);
     update();
 }
@@ -290,6 +316,8 @@ void Pianola::slotShowAllChannels()
             slotShowChannel(i);
         }
     }
+    centralWidget()->adjustSize();
+    adjustSize();
 }
 
 void Pianola::slotHideAllChannels()
@@ -300,6 +328,8 @@ void Pianola::slotHideAllChannels()
             slotShowChannel(i);
         }
     }
+    centralWidget()->adjustSize();
+    adjustSize();
 }
 
 void Pianola::slotLabel(int channel, const QString& text)
@@ -315,6 +345,8 @@ void Pianola::tightenKeys(bool enabled)
         m_tightenKeys = enabled;
         setNoteRange(m_lowerNote, m_upperNote);
     }
+    centralWidget()->adjustSize();
+    adjustSize();
 }
 
 void Pianola::slotKeySignature(int track, int alt, bool /*minor*/)
@@ -329,6 +361,18 @@ void Pianola::slotKeySignature(int track, int alt, bool /*minor*/)
         int channel = m_song->trackChannel(track);
         if (channel >= 0 && channel < MIDI_STD_CHANNELS) {
             m_piano[channel]->setLabelAlterations(alterations);
+        }
+    }
+}
+
+void Pianola::toggleFullScreen(bool enabled)
+{
+    if (m_fullScreen != enabled) {
+        m_fullScreen = enabled;
+        if (m_fullScreen) {
+            showFullScreen();
+        } else {
+            showNormal();
         }
     }
 }
