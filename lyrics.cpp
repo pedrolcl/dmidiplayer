@@ -22,6 +22,7 @@
 #include <QCloseEvent>
 #include <QAction>
 #include <QLabel>
+#include <QMenu>
 #include <QGridLayout>
 #include <QHBoxLayout>
 #include <QComboBox>
@@ -51,7 +52,7 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     setWindowFlag(Qt::Tool, true);
     setAttribute(Qt::WA_DeleteOnClose, false);
     setAttribute(Qt::WA_MacAlwaysShowToolWindow, true);
-
+    setContextMenuPolicy(Qt::CustomContextMenu); // prevent default ctx
     m_actionOpen = new QAction(this);
     m_actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
     m_actionQuit = new QAction(this);
@@ -74,25 +75,18 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     m_horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
     m_label1 = new QLabel(m_frame);
     m_label1->setObjectName(QString::fromUtf8("label1"));
-
     m_horizontalLayout->addWidget(m_label1);
-
     m_comboTrack = new QComboBox(m_frame);
     m_comboTrack->setObjectName(QString::fromUtf8("comboTrack"));
-
     QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
     sizePolicy.setHorizontalStretch(0);
     sizePolicy.setVerticalStretch(0);
     sizePolicy.setHeightForWidth(m_comboTrack->sizePolicy().hasHeightForWidth());
     m_comboTrack->setSizePolicy(sizePolicy);
-
     m_horizontalLayout->addWidget(m_comboTrack);
-
     m_label2 = new QLabel(m_frame);
     m_label2->setObjectName(QString::fromUtf8("label2"));
-
     m_horizontalLayout->addWidget(m_label2);
-
     m_comboType = new QComboBox(m_frame);
     m_comboType->addItem(QString());
     m_comboType->addItem(QString());
@@ -105,35 +99,33 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     m_comboType->setObjectName(QString::fromUtf8("comboType"));
     sizePolicy.setHeightForWidth(m_comboType->sizePolicy().hasHeightForWidth());
     m_comboType->setSizePolicy(sizePolicy);
-
     m_horizontalLayout->addWidget(m_comboType);
-
     m_label3 = new QLabel(m_frame);
     m_label3->setObjectName(QString::fromUtf8("label3"));
-
     m_horizontalLayout->addWidget(m_label3);
-
     m_comboCodec = new QComboBox(m_frame);
     m_comboCodec->setObjectName(QString::fromUtf8("comboCodec"));
     sizePolicy.setHeightForWidth(m_comboCodec->sizePolicy().hasHeightForWidth());
     m_comboCodec->setSizePolicy(sizePolicy);
     m_comboCodec->setMaxVisibleItems(10);
     m_comboCodec->setStyleSheet("combobox-popup: 0;");
-
     m_horizontalLayout->addWidget(m_comboCodec);
-
-    m_label4 = new QLabel(m_frame);
-    m_label4->setObjectName(QString::fromUtf8("label4"));
-
-    m_horizontalLayout->addWidget(m_label4);
-
-    m_fontButton = new QToolButton(m_frame);
-    m_fontButton->setObjectName(QString::fromUtf8("fontButton"));
-
-    m_horizontalLayout->addWidget(m_fontButton);
-
+    m_chmenu = new QMenu(this);
+    m_actionFullScreen = new QAction(this); // Full Screen
+    m_actionFullScreen->setShortcut(QKeySequence::FullScreen);
+    m_actionFullScreen->setCheckable(true);
+    m_fullScreen = false;
+    m_actionFullScreen->setChecked(false);
+    m_chmenu->addAction(m_actionFullScreen);
+    m_actionFont = new QAction(this); // Font dialog
+    m_chmenu->addAction(m_actionFont);
+    m_toolButton = new QToolButton(m_frame);
+    m_toolButton->setObjectName(QString::fromUtf8("toolButton"));
+    m_toolButton->setMenu(m_chmenu);
+    m_toolButton->setPopupMode(QToolButton::InstantPopup);
+    m_toolButton->setIcon(IconUtils::GetIcon("application-menu"));
+    m_horizontalLayout->addWidget(m_toolButton);
     m_gridLayout->addWidget(m_frame, 0, 0, 1, 1);
-
     m_textViewer = new QTextEdit(m_centralwidget);
     m_textViewer->setObjectName(QString::fromUtf8("textViewer"));
     m_textViewer->setFont(Settings::instance()->lyricsFont());
@@ -142,14 +134,12 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     m_normalColor = Settings::instance()->getFutureColor();
     m_otherColor = Settings::instance()->getPastColor();
     m_gridLayout->addWidget(m_textViewer, 1, 0, 1, 1);
-
     this->setCentralWidget(m_centralwidget);
 #ifndef QT_NO_SHORTCUT
     m_label1->setBuddy(m_comboTrack);
     m_label2->setBuddy(m_comboType);
     m_label3->setBuddy(m_comboCodec);
 #endif // QT_NO_SHORTCUT
-
     setWindowTitle(tr("Lyrics Viewer"));
     // Populate the codecs combobox
     populateCodecsCombo();
@@ -157,8 +147,8 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     connect(m_comboTrack, QOverload<int>::of(&QComboBox::activated), this, &Lyrics::trackChanged);
     connect(m_comboType, QOverload<int>::of(&QComboBox::activated), this, &Lyrics::typeChanged);
     connect(m_comboCodec, QOverload<int>::of(&QComboBox::activated), this, &Lyrics::codecChanged);
-    connect(m_fontButton, &QToolButton::pressed, this, &Lyrics::changeFont);
-
+    connect(m_actionFullScreen, &QAction::triggered, this, &Lyrics::toggleFullScreen);
+    connect(m_actionFont, &QAction::triggered, this, &Lyrics::changeFont);
     readSettings();
     retranslateUi();
     applySettings();
@@ -199,8 +189,8 @@ void Lyrics::retranslateUi()
     m_comboType->setItemText(7, QApplication::translate("Lyrics", "Cue Point", nullptr));
 
     m_label3->setText(QApplication::translate("Lyrics", "Encoding:", nullptr));
-    m_label4->setText(QApplication::translate("Lyrics", "Font:", nullptr));
-    m_fontButton->setText(QApplication::translate("Lyrics", "...", nullptr));
+    m_actionFont->setText(QApplication::translate("Lyrics", "Font", nullptr));
+    m_actionFullScreen->setText(QApplication::translate("Lyrics", "Full Screen", nullptr));
 }
 
 void Lyrics::closeEvent(QCloseEvent *event)
@@ -282,6 +272,18 @@ void Lyrics::displayText()
     }
 }
 
+void Lyrics::toggleFullScreen(bool enabled)
+{
+    if (m_fullScreen != enabled) {
+        m_fullScreen = enabled;
+        if (m_fullScreen) {
+            showFullScreen();
+        } else {
+            showNormal();
+        }
+    }
+}
+
 void Lyrics::initSong( Sequence *song )
 {
     //qDebug() << Q_FUNC_INFO;
@@ -311,7 +313,7 @@ void Lyrics::initSong( Sequence *song )
 
 void Lyrics::applySettings()
 {
-    m_fontButton->setIcon(IconUtils::GetIcon("settings"));
+    m_toolButton->setIcon(IconUtils::GetIcon("application-menu"));
     m_textViewer->setFont(Settings::instance()->lyricsFont());
     m_normalColor = Settings::instance()->getFutureColor();
     m_otherColor = Settings::instance()->getPastColor();

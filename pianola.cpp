@@ -111,6 +111,7 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent),
         }
         m_piano[i]->setShowLabels(Settings::instance()->namesVisibility());
         m_piano[i]->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        m_piano[i]->setMinimumSize(220,30);
         connect(m_piano[i], &PianoKeybd::noteOn, this, &Pianola::playNoteOn);
         connect(m_piano[i], &PianoKeybd::noteOff, this, &Pianola::playNoteOff);
         glayout->addWidget(m_piano[i],1,1);

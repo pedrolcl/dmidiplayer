@@ -53,6 +53,7 @@ public slots:
     void codecChanged(int index);
     void changeFont();
     void displayText();
+    void toggleFullScreen(bool enabled);
 
 signals:
     void closed();
@@ -70,6 +71,7 @@ private: // member vars
     int m_track;
     int m_mib;
     int m_type;
+    bool m_fullScreen;
     Sequence *m_song;
     QTextCodec *m_codec;
     QColor m_normalColor;
@@ -80,6 +82,8 @@ private: // member vars
     QAction *m_actionAbout;
     QAction *m_actionAbout_Qt;
     QAction *m_actionInfo;
+    QAction *m_actionFont;
+    QAction *m_actionFullScreen;
     QWidget *m_centralwidget;
     QGridLayout *m_gridLayout;
     QFrame *m_frame;
@@ -90,9 +94,9 @@ private: // member vars
     QComboBox *m_comboType;
     QLabel *m_label3;
     QComboBox *m_comboCodec;
-    QLabel *m_label4;
-    QToolButton *m_fontButton;
+    QToolButton *m_toolButton;
     QTextEdit *m_textViewer;
+    QMenu *m_chmenu;
 
 #if defined(Q_OS_WINDOWS)
     WinSnap m_snapper;
