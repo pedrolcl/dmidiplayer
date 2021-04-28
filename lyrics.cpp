@@ -34,8 +34,8 @@
 #include <QFileInfo>
 #include <QTextCodec>
 #include <QScrollBar>
+#include <QToolBar>
 #include <drumstick/settingsfactory.h>
-
 #include "settings.h"
 #include "iconutils.h"
 #include "lyrics.h"
@@ -50,14 +50,19 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
 {
     setObjectName(QString::fromUtf8("Lyrics"));
 #if defined(Q_OS_MACOS)
-    //setWindowFlag(Qt::Window, true);
+    setUnifiedTitleAndToolBarOnMac(true);
     setAttribute(Qt::WA_MacMiniSize, true);
 #else
-    setWindowFlag(Qt::Tool, true);    
-    setAttribute(Qt::WA_MacAlwaysShowToolWindow, true);
+    setWindowFlag(Qt::Tool, true);
 #endif
     setAttribute(Qt::WA_DeleteOnClose, false);
     setContextMenuPolicy(Qt::CustomContextMenu); // prevent default ctx
+    QToolBar* tbar = new QToolBar(this);
+    tbar->setObjectName("toolbar");
+    tbar->setMovable(false);
+    tbar->setFloatable(false);
+    tbar->setIconSize(QSize(22,22));
+    addToolBar(tbar);
     m_actionOpen = new QAction(this);
     m_actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
     m_actionQuit = new QAction(this);
@@ -68,31 +73,21 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     m_actionAbout_Qt->setObjectName(QString::fromUtf8("actionAbout_Qt"));
     m_actionInfo = new QAction(this);
     m_actionInfo->setObjectName(QString::fromUtf8("actionInfo"));
-    m_centralwidget = new QWidget(this);
-    m_centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-    m_gridLayout = new QGridLayout(m_centralwidget);
-    m_gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-    m_frame = new QFrame(m_centralwidget);
-    m_frame->setObjectName(QString::fromUtf8("frame"));
-    m_frame->setFrameShape(QFrame::StyledPanel);
-    m_frame->setFrameShadow(QFrame::Raised);
-    m_horizontalLayout = new QHBoxLayout(m_frame);
-    m_horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-    m_label1 = new QLabel(m_frame);
+    m_label1 = new QLabel(this);
     m_label1->setObjectName(QString::fromUtf8("label1"));
-    m_horizontalLayout->addWidget(m_label1);
-    m_comboTrack = new QComboBox(m_frame);
+    tbar->addWidget(m_label1);
+    m_comboTrack = new QComboBox(this);
     m_comboTrack->setObjectName(QString::fromUtf8("comboTrack"));
     QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
     sizePolicy.setHorizontalStretch(0);
     sizePolicy.setVerticalStretch(0);
     sizePolicy.setHeightForWidth(m_comboTrack->sizePolicy().hasHeightForWidth());
     m_comboTrack->setSizePolicy(sizePolicy);
-    m_horizontalLayout->addWidget(m_comboTrack);
-    m_label2 = new QLabel(m_frame);
+    tbar->addWidget(m_comboTrack);
+    m_label2 = new QLabel(this);
     m_label2->setObjectName(QString::fromUtf8("label2"));
-    m_horizontalLayout->addWidget(m_label2);
-    m_comboType = new QComboBox(m_frame);
+    tbar->addWidget(m_label2);
+    m_comboType = new QComboBox(this);
     m_comboType->addItem(QString());
     m_comboType->addItem(QString());
     m_comboType->addItem(QString());
@@ -104,39 +99,37 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     m_comboType->setObjectName(QString::fromUtf8("comboType"));
     sizePolicy.setHeightForWidth(m_comboType->sizePolicy().hasHeightForWidth());
     m_comboType->setSizePolicy(sizePolicy);
-    m_horizontalLayout->addWidget(m_comboType);
-    m_label3 = new QLabel(m_frame);
+    tbar->addWidget(m_comboType);
+    m_label3 = new QLabel(this);
     m_label3->setObjectName(QString::fromUtf8("label3"));
-    m_horizontalLayout->addWidget(m_label3);
-    m_comboCodec = new QComboBox(m_frame);
+    tbar->addWidget(m_label3);
+    m_comboCodec = new QComboBox(this);
     m_comboCodec->setObjectName(QString::fromUtf8("comboCodec"));
     sizePolicy.setHeightForWidth(m_comboCodec->sizePolicy().hasHeightForWidth());
     m_comboCodec->setSizePolicy(sizePolicy);
     m_comboCodec->setMaxVisibleItems(10);
     m_comboCodec->setStyleSheet("combobox-popup: 0;");
-    m_horizontalLayout->addWidget(m_comboCodec);
+    tbar->addWidget(m_comboCodec);
     m_chmenu = new QMenu(this);
     m_actionFullScreen = new QAction(this); // Full Screen
     m_actionFullScreen->setShortcut(QKeySequence::FullScreen);
     m_chmenu->addAction(m_actionFullScreen);
     m_actionFont = new QAction(this); // Font dialog
     m_chmenu->addAction(m_actionFont);
-    m_toolButton = new QToolButton(m_frame);
+    m_toolButton = new QToolButton(this);
     m_toolButton->setObjectName(QString::fromUtf8("toolButton"));
     m_toolButton->setMenu(m_chmenu);
     m_toolButton->setPopupMode(QToolButton::InstantPopup);
     m_toolButton->setIcon(IconUtils::GetIcon("application-menu"));
-    m_horizontalLayout->addWidget(m_toolButton);
-    m_gridLayout->addWidget(m_frame, 0, 0, 1, 1);
-    m_textViewer = new QTextEdit(m_centralwidget);
+    tbar->addWidget(m_toolButton);
+    m_textViewer = new QTextEdit(this);
     m_textViewer->setObjectName(QString::fromUtf8("textViewer"));
     m_textViewer->setFont(Settings::instance()->lyricsFont());
     m_textViewer->setReadOnly(true);
     m_textViewer->setTextInteractionFlags(Qt::NoTextInteraction);
     m_normalColor = Settings::instance()->getFutureColor();
     m_otherColor = Settings::instance()->getPastColor();
-    m_gridLayout->addWidget(m_textViewer, 1, 0, 1, 1);
-    this->setCentralWidget(m_centralwidget);
+    this->setCentralWidget(m_textViewer);
 #ifndef QT_NO_SHORTCUT
     m_label1->setBuddy(m_comboTrack);
     m_label2->setBuddy(m_comboType);

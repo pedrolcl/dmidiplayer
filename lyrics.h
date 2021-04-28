@@ -75,7 +75,6 @@ private: // member vars
     QTextCodec *m_codec;
     QColor m_normalColor;
     QColor m_otherColor;
-
     QAction *m_actionOpen;
     QAction *m_actionQuit;
     QAction *m_actionAbout;
@@ -83,10 +82,6 @@ private: // member vars
     QAction *m_actionInfo;
     QAction *m_actionFont;
     QAction *m_actionFullScreen;
-    QWidget *m_centralwidget;
-    QGridLayout *m_gridLayout;
-    QFrame *m_frame;
-    QHBoxLayout *m_horizontalLayout;
     QLabel *m_label1;
     QComboBox *m_comboTrack;
     QLabel *m_label2;

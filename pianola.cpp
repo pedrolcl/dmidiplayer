@@ -42,14 +42,13 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent),
 {
     setObjectName("PlayerPianoWindow");
 #if defined (Q_OS_MACOS)
-    //setWindowFlag(Qt::Window, true);
+    setUnifiedTitleAndToolBarOnMac(true);
     setAttribute(Qt::WA_MacMiniSize, true);
 #else
     setWindowFlag(Qt::Tool, true);
-    setAttribute(Qt::WA_MacAlwaysShowToolWindow, true);
 #endif
     setAttribute(Qt::WA_DeleteOnClose, false);
-    //menuBar()->setNativeMenuBar(false);
+    setContextMenuPolicy(Qt::CustomContextMenu); // prevent default ctx
     m_chmenu = new QMenu(tr("MIDI Channels"), this);
     QToolBar* tbar = new QToolBar(this);
     tbar->setObjectName("toolbar");
@@ -60,7 +59,6 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent),
     m_toolBtn = new QToolButton(this);
     tbar->addWidget(m_toolBtn);
     tbar->show();
-    setContextMenuPolicy(Qt::CustomContextMenu); // prevent default ctx
     m_toolBtn->setMenu(m_chmenu);
     m_toolBtn->setPopupMode(QToolButton::InstantPopup);
     m_toolBtn->setIcon(IconUtils::GetIcon("application-menu"));
