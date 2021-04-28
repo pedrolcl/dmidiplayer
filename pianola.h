@@ -84,7 +84,6 @@ private:
     QAction* m_action[drumstick::rt::MIDI_STD_CHANNELS];
     QLabel* m_label[drumstick::rt::MIDI_STD_CHANNELS];
     bool m_tightenKeys;
-    bool m_fullScreen;
     int m_lowerNote;
     int m_upperNote;
 #if defined(Q_OS_WINDOWS)

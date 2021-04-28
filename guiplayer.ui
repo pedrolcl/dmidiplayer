@@ -480,7 +480,7 @@ selection-background-color: blue;</string>
      <x>0</x>
      <y>0</y>
      <width>459</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -662,7 +662,7 @@ selection-background-color: blue;</string>
     <string>Select a connection for the MIDI output port</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::PreferencesRole</enum>
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="actionShowToolbar">

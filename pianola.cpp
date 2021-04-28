@@ -41,13 +41,21 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent),
     m_song(nullptr)
 {
     setObjectName("PlayerPianoWindow");
+#if defined (Q_OS_MACOS)
+    //setWindowFlag(Qt::Window, true);
+    setAttribute(Qt::WA_MacMiniSize, true);
+#else
     setWindowFlag(Qt::Tool, true);
-    setAttribute(Qt::WA_DeleteOnClose, false);
     setAttribute(Qt::WA_MacAlwaysShowToolWindow, true);
+#endif
+    setAttribute(Qt::WA_DeleteOnClose, false);
     //menuBar()->setNativeMenuBar(false);
     m_chmenu = new QMenu(tr("MIDI Channels"), this);
     QToolBar* tbar = new QToolBar(this);
     tbar->setObjectName("toolbar");
+    tbar->setMovable(false);
+    tbar->setFloatable(false);
+    tbar->setIconSize(QSize(22,22));
     addToolBar(tbar);
     m_toolBtn = new QToolButton(this);
     tbar->addWidget(m_toolBtn);
@@ -58,9 +66,6 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent),
     m_toolBtn->setIcon(IconUtils::GetIcon("application-menu"));
     m_a4 = new QAction(this); // Full Screen
     m_a4->setShortcut(QKeySequence::FullScreen);
-    m_a4->setCheckable(true);
-    m_fullScreen = false;
-    m_a4->setChecked(false);
     connect(m_a4, &QAction::triggered, this, &Pianola::toggleFullScreen);
     m_chmenu->addAction(m_a4);
     m_a1 = new QAction(this); // Show all channels
@@ -366,15 +371,12 @@ void Pianola::slotKeySignature(int track, int alt, bool /*minor*/)
     }
 }
 
-void Pianola::toggleFullScreen(bool enabled)
+void Pianola::toggleFullScreen(bool /*enabled*/)
 {
-    if (m_fullScreen != enabled) {
-        m_fullScreen = enabled;
-        if (m_fullScreen) {
-            showFullScreen();
-        } else {
-            showNormal();
-        }
+    if (isFullScreen()) {
+        showNormal();
+    } else {
+        showFullScreen();
     }
 }
 

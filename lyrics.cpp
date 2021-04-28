@@ -49,9 +49,14 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     m_codec(nullptr)
 {
     setObjectName(QString::fromUtf8("Lyrics"));
-    setWindowFlag(Qt::Tool, true);
-    setAttribute(Qt::WA_DeleteOnClose, false);
+#if defined(Q_OS_MACOS)
+    //setWindowFlag(Qt::Window, true);
+    setAttribute(Qt::WA_MacMiniSize, true);
+#else
+    setWindowFlag(Qt::Tool, true);    
     setAttribute(Qt::WA_MacAlwaysShowToolWindow, true);
+#endif
+    setAttribute(Qt::WA_DeleteOnClose, false);
     setContextMenuPolicy(Qt::CustomContextMenu); // prevent default ctx
     m_actionOpen = new QAction(this);
     m_actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
@@ -113,9 +118,6 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     m_chmenu = new QMenu(this);
     m_actionFullScreen = new QAction(this); // Full Screen
     m_actionFullScreen->setShortcut(QKeySequence::FullScreen);
-    m_actionFullScreen->setCheckable(true);
-    m_fullScreen = false;
-    m_actionFullScreen->setChecked(false);
     m_chmenu->addAction(m_actionFullScreen);
     m_actionFont = new QAction(this); // Font dialog
     m_chmenu->addAction(m_actionFont);
@@ -272,15 +274,12 @@ void Lyrics::displayText()
     }
 }
 
-void Lyrics::toggleFullScreen(bool enabled)
+void Lyrics::toggleFullScreen(bool /*enabled*/)
 {
-    if (m_fullScreen != enabled) {
-        m_fullScreen = enabled;
-        if (m_fullScreen) {
-            showFullScreen();
-        } else {
-            showNormal();
-        }
+    if (isFullScreen()) {
+        showNormal();
+    } else {
+        showFullScreen();
     }
 }
 

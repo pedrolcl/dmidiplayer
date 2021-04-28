@@ -71,7 +71,6 @@ private: // member vars
     int m_track;
     int m_mib;
     int m_type;
-    bool m_fullScreen;
     Sequence *m_song;
     QTextCodec *m_codec;
     QColor m_normalColor;
