@@ -39,8 +39,8 @@
 using namespace drumstick::rt;
 using namespace drumstick::widgets;
 
-GUIPlayer::GUIPlayer(QWidget *parent, Qt::WindowFlags flags)
-    : QMainWindow(parent, flags),
+GUIPlayer::GUIPlayer(QWidget *parent)
+    : QMainWindow(parent),
     m_state(InvalidState),
     m_midiOut(nullptr),
     m_player(nullptr),

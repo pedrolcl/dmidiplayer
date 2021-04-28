@@ -41,7 +41,7 @@ public:
 public slots:
     void configureOutputDriver();
     void clickedAdvanced(bool value);
-    void refreshOutputs(QString id);
+    void refreshOutputs(int idx);
     void refresh();
     void accept();
 

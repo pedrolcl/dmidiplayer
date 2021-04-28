@@ -32,7 +32,7 @@ Connections::Connections(QWidget *parent)
 {
     ui.setupUi(this);
     connect(ui.m_advanced, &QCheckBox::clicked, this, &Connections::clickedAdvanced);
-    connect(ui.m_outputBackends, QOverload<const QString&>::of(&QComboBox::currentIndexChanged), this, &Connections::refreshOutputs);
+    connect(ui.m_outputBackends, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Connections::refreshOutputs);
     connect(ui.btnOutputDriverCfg, &QToolButton::clicked, this, &Connections::configureOutputDriver);
     ui.m_advanced->setChecked(m_advanced);
 }
@@ -42,9 +42,9 @@ void Connections::setOutputs(QList<MIDIOutput *> outs)
     ui.m_outputBackends->disconnect();
     foreach(MIDIOutput *o, outs) {
         //qDebug() << Q_FUNC_INFO << o->backendName();
-        ui.m_outputBackends->addItem(o->backendName(), qVariantFromValue((void *) o));
+        ui.m_outputBackends->addItem(o->backendName(), QVariant::fromValue((void *) o));
     }
-    connect(ui.m_outputBackends, QOverload<const QString&>::of(&QComboBox::currentIndexChanged), this, &Connections::refreshOutputs);
+    connect(ui.m_outputBackends, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Connections::refreshOutputs);
 }
 
 void Connections::accept()
@@ -72,12 +72,13 @@ void Connections::refresh()
     if (m_midiOut != 0) {
         //qDebug() << Q_FUNC_INFO << m_midiOut->backendName();
         ui.m_outputBackends->setCurrentText(m_midiOut->backendName());
-        refreshOutputs(m_midiOut->backendName());
+        refreshOutputs(ui.m_outputBackends->currentIndex());
     }
 }
 
-void Connections::refreshOutputs(QString id)
+void Connections::refreshOutputs(int idx)
 {
+    QString id = ui.m_outputBackends->itemText(idx);
     ui.btnOutputDriverCfg->setEnabled(drumstick::widgets::outputDriverIsConfigurable(id));
     if (m_midiOut != 0 && m_midiOut->backendName() != id) {
         m_midiOut->close();
@@ -90,7 +91,7 @@ void Connections::refreshOutputs(QString id)
     }
     ui.m_outputPorts->clear();
     if (m_midiOut != 0) {
-        for(const auto& conn : m_midiOut->connections(m_advanced)) {
+        foreach(const auto& conn, m_midiOut->connections(m_advanced)) {
             ui.m_outputPorts->addItem(conn.first, QVariant::fromValue(conn));
         }
         ui.m_outputPorts->setCurrentText(m_midiOut->currentConnection().first);

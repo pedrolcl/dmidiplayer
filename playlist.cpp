@@ -30,6 +30,10 @@
 #include "settings.h"
 #include "iconutils.h"
 
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+#define endl Qt::endl
+#endif
+
 PlayList::PlayList(QWidget *parent) : QDialog(parent)
 {
     setWindowTitle( tr("Manage Playlist") );
@@ -77,6 +81,7 @@ void PlayList::loadPlayList(const QString &fileName)
     QFile file(fileName);
     QFileInfo listInfo(file);
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        ui.fileList->clear();
         QTextStream in(&file);
         QString line = in.readLine();
         while (!line.isNull()) {
@@ -130,6 +135,7 @@ void PlayList::saveFile()
             foreach(const QString& line, items()) {
                 out << line << endl;
             }
+            out.flush();
             file.close();
             Settings::instance()->setLastPlayList(selected.first());
         }

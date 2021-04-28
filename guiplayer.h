@@ -69,7 +69,7 @@ class GUIPlayer : public QMainWindow
     Q_OBJECT
 
 public:
-    GUIPlayer(QWidget *parent = 0, Qt::WindowFlags flags = 0);
+    GUIPlayer(QWidget *parent = 0);
     ~GUIPlayer();
 
     void appendSMFEvent(MIDIEvent* ev);
