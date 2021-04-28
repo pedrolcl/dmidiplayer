@@ -35,5 +35,6 @@
         <file>icons/edit-delete.png</file>
         <file>icons/preferences-desktop-locale.png</file>
         <file>icons/application-menu.png</file>
+        <file alias="dmidiplayer128.png">icons/dmidiplayer_128x128.png</file>
     </qresource>
 </RCC>
