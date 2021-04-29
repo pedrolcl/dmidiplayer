@@ -34,6 +34,7 @@ public:
     void updateRecentFileActions();
     QString strippedName(const QString &fullFileName);
     QStringList files();
+    void retranslateUi();
 
 Q_SIGNALS:
 	void selectedFile(QString fileName);

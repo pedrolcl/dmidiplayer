@@ -139,7 +139,7 @@ private:
     Ui::GUIPlayerClass* m_ui;
     QPointer<QProgressDialog> m_pd;
     QThread m_playerThread;
-    RecentFilesHelper* m_recentFiles;
+    QPointer<RecentFilesHelper> m_recentFiles;
     QPointer<Connections> m_connections;
     QPointer<Pianola> m_pianola;
     QPointer<Channels> m_channels;

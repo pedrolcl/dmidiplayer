@@ -42,33 +42,33 @@ PlayList::PlayList(QWidget *parent) : QDialog(parent)
     ui.fileList->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui.fileList->setTextElideMode(Qt::ElideMiddle);
 
-    QPushButton* btnAdd = ui.listButtons->addButton( tr("Add"), QDialogButtonBox::ActionRole );
-    btnAdd->setIcon( IconUtils::GetIcon("list-add") );
-    connect( btnAdd, &QAbstractButton::clicked, this, &PlayList::addToList );
+    m_btnAdd = ui.listButtons->addButton( tr("Add"), QDialogButtonBox::ActionRole );
+    m_btnAdd->setIcon( IconUtils::GetIcon("list-add") );
+    connect( m_btnAdd, &QAbstractButton::clicked, this, &PlayList::addToList );
 
-    QPushButton* btnDel = ui.listButtons->addButton( tr("Remove"), QDialogButtonBox::ActionRole );
-    btnDel->setIcon( IconUtils::GetIcon("list-remove") );
-    connect( btnDel, &QAbstractButton::clicked, this, &PlayList::removeFromList );
+    m_btnDel = ui.listButtons->addButton( tr("Remove"), QDialogButtonBox::ActionRole );
+    m_btnDel->setIcon( IconUtils::GetIcon("list-remove") );
+    connect( m_btnDel, &QAbstractButton::clicked, this, &PlayList::removeFromList );
 
-    QPushButton* btnUp  = ui.listButtons->addButton( tr("Move Up"), QDialogButtonBox::ActionRole );
-    btnUp->setIcon( IconUtils::GetIcon("go-up") );
-    connect( btnUp, &QAbstractButton::clicked, this, &PlayList::moveUp );
+    m_btnUp  = ui.listButtons->addButton( tr("Move Up"), QDialogButtonBox::ActionRole );
+    m_btnUp->setIcon( IconUtils::GetIcon("go-up") );
+    connect( m_btnUp, &QAbstractButton::clicked, this, &PlayList::moveUp );
 
-    QPushButton* btnDwn = ui.listButtons->addButton( tr("Move Down"), QDialogButtonBox::ActionRole );
-    btnDwn->setIcon( IconUtils::GetIcon("go-down") );
-    connect( btnDwn, &QAbstractButton::clicked, this, &PlayList::moveDown );
+    m_btnDwn = ui.listButtons->addButton( tr("Move Down"), QDialogButtonBox::ActionRole );
+    m_btnDwn->setIcon( IconUtils::GetIcon("go-down") );
+    connect( m_btnDwn, &QAbstractButton::clicked, this, &PlayList::moveDown );
 
-    QPushButton* btnClear = ui.listButtons->addButton( tr("Clear"), QDialogButtonBox::ActionRole );
-    btnClear->setIcon( IconUtils::GetIcon("edit-clear") );
-    connect( btnClear, &QAbstractButton::clicked, this, &PlayList::clear );
+    m_btnClear = ui.listButtons->addButton( tr("Clear"), QDialogButtonBox::ActionRole );
+    m_btnClear->setIcon( IconUtils::GetIcon("edit-clear") );
+    connect( m_btnClear, &QAbstractButton::clicked, this, &PlayList::clear );
 
-    QPushButton* btnOpen = ui.dialogButtons->addButton( tr("Open"), QDialogButtonBox::ActionRole );
-    btnOpen->setIcon( IconUtils::GetIcon("document-open") );
-    connect( btnOpen, &QAbstractButton::clicked, this, &PlayList::selectFile );
+    m_btnOpen = ui.dialogButtons->addButton( tr("Open"), QDialogButtonBox::ActionRole );
+    m_btnOpen->setIcon( IconUtils::GetIcon("document-open") );
+    connect( m_btnOpen, &QAbstractButton::clicked, this, &PlayList::selectFile );
 
-    QPushButton* btnSave = ui.dialogButtons->addButton( tr("Save As"), QDialogButtonBox::ActionRole );
-    btnSave->setIcon( IconUtils::GetIcon("document-save") );
-    connect( btnSave, &QAbstractButton::clicked, this, &PlayList::saveFile );
+    m_btnSave = ui.dialogButtons->addButton( tr("Save As"), QDialogButtonBox::ActionRole );
+    m_btnSave->setIcon( IconUtils::GetIcon("document-save") );
+    connect( m_btnSave, &QAbstractButton::clicked, this, &PlayList::saveFile );
 
     connect( ui.fileList, &QListWidget::itemClicked, this, &PlayList::itemClicked );
 }
@@ -288,4 +288,17 @@ PlayList::noItems()
 {
     //qDebug() << Q_FUNC_INFO << ui.fileList->count();
     return ui.fileList->count() == 0;
+}
+
+void PlayList::retranslateUi()
+{
+    ui.retranslateUi(this);
+    setWindowTitle(tr("Manage Playlist"));
+    m_btnAdd->setText(tr("Add"));
+    m_btnDel->setText(tr("Remove"));
+    m_btnUp->setText(tr("Move Up"));
+    m_btnDwn->setText(tr("Move Down"));
+    m_btnClear->setText(tr("Clear"));
+    m_btnOpen->setText(tr("Open"));
+    m_btnSave->setText(tr("Save As"));
 }

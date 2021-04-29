@@ -260,3 +260,14 @@ void PrefsDialog::setSingleColor(QColor c)
     ui->lblSingle->setPixmap(p);
     ui->editSingle->setText(c.name(QColor::HexRgb));
 }
+
+void PrefsDialog::retranslateUi()
+{
+    ui->retranslateUi(this);
+    ui->cboReset->clear();
+    ui->cboReset->addItem(tr("None"));
+    ui->cboReset->addItem(tr("GM"));
+    ui->cboReset->addItem(tr("GS"));
+    ui->cboReset->addItem(tr("XG"));
+    ui->cboReset->setCurrentIndex( Settings::instance()->getSysexResetMessage() );
+}

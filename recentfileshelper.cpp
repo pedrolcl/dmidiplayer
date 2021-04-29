@@ -110,3 +110,8 @@ QStringList RecentFilesHelper::files()
     settings->endGroup();
     return files;
 }
+
+void RecentFilesHelper::retranslateUi()
+{
+    clearAct->setText(tr("Clear recent files"));
+}

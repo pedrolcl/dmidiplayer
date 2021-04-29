@@ -39,6 +39,7 @@ public:
     bool atLastItem();
     bool atFirstItem();
     bool noItems();
+    void retranslateUi();
 
 public slots:
     void clear();
@@ -55,6 +56,13 @@ private slots:
     void itemClicked ( QListWidgetItem * item );
 
 private:
+    QPushButton* m_btnAdd;
+    QPushButton* m_btnDel;
+    QPushButton* m_btnUp;
+    QPushButton* m_btnDwn;
+    QPushButton* m_btnClear;
+    QPushButton* m_btnOpen;
+    QPushButton* m_btnSave;
     Ui::PlayList ui;
 };
 

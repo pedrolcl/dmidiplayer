@@ -36,6 +36,7 @@ public:
     void setFutureColor(QColor c);
     void setPastColor(QColor c);
     void setSingleColor(QColor c);
+    void retranslateUi();
 
 public slots:
     void restoreDefaults();
