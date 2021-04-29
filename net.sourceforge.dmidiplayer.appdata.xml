@@ -23,21 +23,27 @@
     <translation type="qt">dmidiplayer</translation>
    <!-- <content_rating type="oars-1.1" /> this is broken, validator fail -->
     <screenshots>
-    <!--TODO: pending better screenshots-->
         <screenshot type="default">
-            <image>https://a.fsdn.com/con/app/proj/dmidiplayer/screenshots/mainwindow.png</image>
-            <caption>Main window</caption>
-        </screenshot>
-        <screenshot>
-            <image>https://a.fsdn.com/con/app/proj/dmidiplayer/screenshots/pianola.png</image>
-            <caption>Piano Player window</caption>
-        </screenshot>
-        <screenshot>
-            <image>https://a.fsdn.com/con/app/proj/dmidiplayer/screenshots/dmidiplayer_1.2.png</image>
-            <caption>All Windows in v1.2</caption>
+            <image>https://dmidiplayer.sourceforge.io/screenshot.png</image>
+            <caption>All Windows in v1.3</caption>
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.3.0" date="2021-05-01">
+            <description>
+                <p>This release stabilizes the overall performance and implements some new features:</p>
+                <ul>
+                    <li>Playlist editor dialog, and previous/next song navigation</li>
+                    <li>Samples: several free MIDI/Karaoke classic pieces</li>
+                    <li>Preferences dialog with some general and Lyrics and Piano Player specific options</li>
+                    <li>Full screen option on Lyrics and Piano Player windows</li>
+                    <li>Better support for WRK files with lyrics and other metadata</li>
+                    <li>MIDI texts/lyrics encoding defaults to Latin1</li>
+                    <li>KeySignature MIDI meta-event processed</li>
+                </ul>
+            </description>
+            <url>https://sourceforge.net/p/dmidiplayer/blog/2021/05/drumstick-midi-file-player---multiplatform-130-released/</url>
+        </release>
         <release version="1.2.0" date="2021-03-31">
             <description>
                 <p>This release implements the following new features:</p>
