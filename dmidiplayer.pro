@@ -55,6 +55,7 @@ win32 {
 }
 RESOURCES += guiplayer.qrc
 TRANSLATIONS += \
+  translations/dmidiplayer_cs.ts \
   translations/dmidiplayer_en.ts \
   translations/dmidiplayer_es.ts \
   translations/dmidiplayer_ru.ts

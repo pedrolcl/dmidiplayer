@@ -1,3 +1,6 @@
+2021-05-07
+    * Czech translation. Thanks to Pavel Fric
+
 2021-04-28
     * Fixed warnings when building with Qt >= 5.15
     * Better mac integration

@@ -97,6 +97,7 @@ if (WIN32)
 endif()
 
 set ( TRANSLATIONS
+   translations/${PROJECT_NAME}_cs.ts
    translations/${PROJECT_NAME}_es.ts
    translations/${PROJECT_NAME}_ru.ts
 )
