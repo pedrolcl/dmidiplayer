@@ -9,11 +9,12 @@
     <description>
         <p>Multiplatform MIDI File Player for Linux, Windows and macOS with advanced features:</p>
         <ul>
-            <li>MIDI Output to hardware MIDI ports, or any other Drumstick backend</li>
+            <li>MIDI Output to hardware MIDI ports, or any other Drumstick backend like soft-synths</li>
             <li>Transpose song tonality between -12 and +12 semitones</li>
             <li>Change MIDI volume level (using MIDI CC7)</li>
             <li>Scale song speed between half and double tempo</li>
             <li>Piano Players, MIDI Channels, Rhythm, and Lyrics (Karaoke) views</li>
+            <li>Supports .MID (Standard MIDI files) .KAR (MIDI Karaoke) and .WRK (Cakewalk) file formats</li>
         </ul>
     </description>
     <launchable type="desktop-id">net.sourceforge.dmidiplayer.desktop</launchable>
@@ -21,7 +22,7 @@
     <developer_name>Pedro López-Cabanillas</developer_name>
     <update_contact>plcl_AT_users.sourceforge.net</update_contact>
     <translation type="qt">dmidiplayer</translation>
-   <!-- <content_rating type="oars-1.1" /> this is broken, validator fail -->
+    <content_rating type="oars-1.1" /> <!-- this is broken, validator fails -->
     <screenshots>
         <screenshot type="default">
             <image>https://dmidiplayer.sourceforge.io/screenshot.png</image>
@@ -35,7 +36,7 @@
                 <ul>
                     <li>Playlist editor dialog, and previous/next song navigation</li>
                     <li>Samples: several free MIDI/Karaoke classic pieces</li>
-                    <li>Preferences dialog with some general and Lyrics and Piano Player specific options</li>
+                    <li>Preferences dialog with some General, Lyrics and Piano Player specific options</li>
                     <li>Full screen option on Lyrics and Piano Player windows</li>
                     <li>Better support for WRK files with lyrics and other metadata</li>
                     <li>MIDI texts/lyrics encoding defaults to Latin1</li>

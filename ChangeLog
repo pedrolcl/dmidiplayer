@@ -1,3 +1,7 @@
+2021-04-28
+    * Fixed warnings when building with Qt >= 5.15
+    * Better mac integration
+
 2021-04-27
     * Full screen option for Lyrics and Piano Player windows
 
