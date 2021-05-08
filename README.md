@@ -12,6 +12,7 @@ Some key features:
 * Change MIDI volume level (using MIDI CC7)
 * Scale song speed between half and double tempo
 * Lyrics, Piano Player and MIDI Channels views
+* Supports MID/KAR (Standard MIDI Files) and WRK (Cakewalk) file formats
 
 New in v1.3.0:
 

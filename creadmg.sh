@@ -2,7 +2,7 @@
 # create-dmg is available from Homebrew and https://github.com/create-dmg/create-dmg
 
 NAME="dmidiplayer"
-FULLNAME="${NAME}-1.0.0-mac-x64"
+FULLNAME="${NAME}-1.3.0-mac-x64"
 CURDIR=$(pushd `dirname $0`>/dev/null; pwd; popd>/dev/null)
 BINDIR=`pwd`
 
