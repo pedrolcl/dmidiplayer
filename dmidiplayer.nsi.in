@@ -15,7 +15,7 @@ RequestExecutionLevel admin
 !define VERSION @PROJECT_VERSION@
 !define PROGNAME "@PROJECT_NAME@"
 !define COMPANY "Drumstick"
-!define URL https://drumstick.sourceforge.io
+!define URL https://dmidiplayer.sourceforge.io
 
 # Included files
 !include Sections.nsh
@@ -156,10 +156,13 @@ Section -Main SEC0000
     SetOverwrite on
     File ${BINARY_FILES}\${PROGNAME}.exe
     SetOutPath $INSTDIR\translations
+    File ${BINARY_FILES}\${PROGNAME}_cs.qm
     File ${BINARY_FILES}\${PROGNAME}_es.qm
     File ${BINARY_FILES}\${PROGNAME}_ru.qm
+    File ${BINARY_FILES}\translations\qt_cs.qm
     File ${BINARY_FILES}\translations\qt_es.qm
     File ${BINARY_FILES}\translations\qt_ru.qm
+    File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_cs.qm
     File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_es.qm
     File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_ru.qm
 
@@ -171,13 +174,23 @@ Section -Main SEC0000
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\libdrumstick-rt-net-out.dll $INSTDIR\drumstick2\libdrumstick-rt-net-out.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\libdrumstick-rt-win-in.dll $INSTDIR\drumstick2\libdrumstick-rt-win-in.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\libdrumstick-rt-win-out.dll $INSTDIR\drumstick2\libdrumstick-rt-win-out.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libfluidsynth-2.dll $INSTDIR\libfluidsynth-2.dll $INSTDIR
+	
+	!insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libfluidsynth-3.dll $INSTDIR\libfluidsynth-3.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libFLAC-8.dll $INSTDIR\libFLAC-8.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libglib-2.0-0.dll $INSTDIR\libglib-2.0-0.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libgobject-2.0-0.dll $INSTDIR\libgobject-2.0-0.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libgthread-2.0-0.dll $INSTDIR\libgthread-2.0-0.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libinstpatch-2.dll $INSTDIR\libinstpatch-2.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libintl-8.dll $INSTDIR\libintl-8.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libgomp-1.dll $INSTDIR\libgomp-1.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libiconv-2.dll $INSTDIR\libiconv-2.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libintl-8.dll	$INSTDIR\libintl-8.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libogg-0.dll $INSTDIR\libogg-0.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libopus-0.dll $INSTDIR\libopus-0.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libpcre-1.dll $INSTDIR\libpcre-1.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libreadline8.dll $INSTDIR\libreadline8.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libsndfile-1.dll $INSTDIR\libsndfile-1.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libssp-0.dll $INSTDIR\libssp-0.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libtermcap-0.dll $INSTDIR\libtermcap-0.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libvorbis-0.dll $INSTDIR\libvorbis-0.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libvorbisenc-2.dll $INSTDIR\libvorbisenc-2.dll $INSTDIR
+
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${UCHARDET_FILES}\bin\libuchardet.dll $INSTDIR\libuchardet.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Core.dll $INSTDIR\Qt5Core.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Gui.dll $INSTDIR\Qt5Gui.dll $INSTDIR
@@ -242,10 +255,13 @@ done${UNSECTION_ID}:
 
 # Uninstaller sections
 Section /o -un.Main UNSEC0000
+    Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_cs.qm
     Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_es.qm
     Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_ru.qm
+    Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_cs.qm
     Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_es.qm
     Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_ru.qm
+    Delete /REBOOTOK $INSTDIR\translations\qt_cs.qm
     Delete /REBOOTOK $INSTDIR\translations\qt_es.qm
     Delete /REBOOTOK $INSTDIR\translations\qt_ru.qm
     Delete /REBOOTOK $INSTDIR\${PROGNAME}.exe
@@ -258,13 +274,23 @@ Section /o -un.Main UNSEC0000
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick2\libdrumstick-rt-net-out.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick2\libdrumstick-rt-win-in.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick2\libdrumstick-rt-win-out.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libfluidsynth-2.dll
+
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libfluidsynth-3.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libFLAC-8.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libglib-2.0-0.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libgobject-2.0-0.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libgthread-2.0-0.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libinstpatch-2.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libgomp-1.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libiconv-2.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libintl-8.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libogg-0.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libopus-0.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libpcre-1.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libreadline8.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libsndfile-1.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libssp-0.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libtermcap-0.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libvorbis-0.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libvorbisenc-2.dll
+	
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libuchardet.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt5Core.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt5Gui.dll
