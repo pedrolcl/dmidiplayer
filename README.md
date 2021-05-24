@@ -1,5 +1,7 @@
-Drumstick MIDI File Player - multiplatform
-==========================================
+Drumstick Multiplatform MIDI File Player
+========================================
+
+This application is a multiplatform MIDI file player for Linux, Windows and macOS. It reads .MID (Standard MIDI Files), .KAR (Karaoke), and .WRK (Cakewalk) file formats, and outputs MIDI events to hardware MIDI ports and also software synths.
 
 [Drumstick](https://drumstick.sourceforge.io/docs/index.html) is a set of GPLv3 licensed C++/Qt libraries for MIDI applications. The project includes several tools as examples, and among them is the drumstick-guiplayer utility that leverages the Drumstick::ALSA library, so it is available only for Linux (because the ALSA sequencer is a linux only technology). Some people have requested a program with the same functionalities on Windows and macOS, and here it is. But this program is much more than that, and also works on Linux ...
 
@@ -57,8 +59,8 @@ Alright, these are the build requirements:
 
 * C++11 compiler
 * Qt5
-* Drumstick 2.2
-* Uchardet 0.0.7 : https://www.freedesktop.org/wiki/Software/uchardet/
+* [Drumstick 2.2](https://sourceforge.net/projects/drumstick/files/2.2.0/)
+* [Uchardet 0.0.7](https://www.freedesktop.org/wiki/Software/uchardet/)
 * CMake 3.14
 
 Build and deployment commands (for Linux)
@@ -73,5 +75,8 @@ $ make
 $ make install
 ```
 You need to replace the contents of the parameter CMAKE_PREFIX_PATH with the actual paths in your system. There are x86_64 precompiled packages for Linux, Windows and macOS at the releases area.
+
+In addition to the released AppImage for Linux, you may find a [Flatpak at FlatHub](https://flathub.org/apps/details/net.sourceforge.dmidiplayer) and binary packages for several Linux distributions:
+[![Packaging status](https://repology.org/badge/vertical-allrepos/dmidiplayer.svg)](https://repology.org/project/dmidiplayer/versions)
 
 Enjoy!
