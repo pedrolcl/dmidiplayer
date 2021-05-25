@@ -5,9 +5,9 @@ This application is a multiplatform MIDI file player for Linux, Windows and macO
 
 [Drumstick](https://drumstick.sourceforge.io/docs/index.html) is a set of GPLv3 licensed C++/Qt libraries for MIDI applications. The project includes several tools as examples, and among them is the drumstick-guiplayer utility that leverages the Drumstick::ALSA library, so it is available only for Linux (because the ALSA sequencer is a linux only technology). Some people have requested a program with the same functionalities on Windows and macOS, and here it is. But this program is much more than that, and also works on Linux ...
 
-![screenshot](https://dmidiplayer.sourceforge.io/screenshot.png "main window")
+![Screenshot](https://dmidiplayer.sourceforge.io/screenshot.png "main window")
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3xCBbMiPC3s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Screencast at YouTube](https://img.youtube.com/vi/3xCBbMiPC3s/0.jpg)](https://www.youtube.com/watch?v=3xCBbMiPC3s)
 
 Some key features:
 
