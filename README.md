@@ -7,6 +7,8 @@ This application is a multiplatform MIDI file player for Linux, Windows and macO
 
 ![screenshot](https://dmidiplayer.sourceforge.io/screenshot.png "main window")
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3xCBbMiPC3s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Some key features:
 
 * MIDI Output to hardware MIDI ports, or any other Drumstick backend like soft synths
@@ -66,8 +68,8 @@ Alright, these are the build requirements:
 Build and deployment commands (for Linux)
 
 ```
-$ tar -xvzf dmidiplayer-1.1.0.tar.gz
-$ cd dmidiplayer-1.1.0
+$ tar -xvzf dmidiplayer-x.y.z.tar.gz
+$ cd dmidiplayer-x.y.z
 $ mkdir build
 $ cd build
 $ cmake .. -DCMAKE_PREFIX_PATH="$HOME/Qt5;$HOME/drumstick2;$HOME/uchardet"
@@ -77,6 +79,7 @@ $ make install
 You need to replace the contents of the parameter CMAKE_PREFIX_PATH with the actual paths in your system. There are x86_64 precompiled packages for Linux, Windows and macOS at the releases area.
 
 In addition to the released AppImage for Linux, you may find a [Flatpak at FlatHub](https://flathub.org/apps/details/net.sourceforge.dmidiplayer) and binary packages for several Linux distributions:
+
 [![Packaging status](https://repology.org/badge/vertical-allrepos/dmidiplayer.svg)](https://repology.org/project/dmidiplayer/versions)
 
 Enjoy!
