@@ -1,3 +1,6 @@
+2021-05-26
+    * Fix for ticket #4: crash if user closes the main window while playing a MIDI file
+
 2021-05-11
     * Release v1.3.0
 

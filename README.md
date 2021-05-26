@@ -7,7 +7,7 @@ This application is a multiplatform MIDI file player for Linux, Windows and macO
 
 ![Screenshot](https://dmidiplayer.sourceforge.io/screenshot.png "main window")
 
-[![Screencast at YouTube](https://img.youtube.com/vi/3xCBbMiPC3s/0.jpg)](https://www.youtube.com/watch?v=3xCBbMiPC3s)
+[![Screencast at YouTube](https://img.youtube.com/vi/rQiWuQkMqsw/0.jpg)](https://www.youtube.com/watch?v=rQiWuQkMqsw)
 
 Some key features:
 
