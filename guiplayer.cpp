@@ -202,7 +202,7 @@ GUIPlayer::GUIPlayer(QWidget *parent)
 GUIPlayer::~GUIPlayer()
 {
     if (m_player != 0) {
-        m_player->stop();
+        stop();
         delete m_player;
     }
     delete m_ui;
