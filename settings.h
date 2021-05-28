@@ -114,6 +114,9 @@ public:
     bool getAutoPlay() const;
     void setAutoPlay(bool autoPlay);
 
+    bool autoAdvance() const;
+    void setAutoAdvance(bool autoAdvance);
+
     bool useInternalIcons() const;
     void setInternalIcons(bool internalIcons);
 
@@ -163,6 +166,7 @@ private:
     bool m_darkMode;
     int m_drumsChannel;
     bool m_autoPlay;
+    bool m_autoAdvance;
     bool m_internalIcons;
     int m_sysexResetMessage;
     LabelVisibility m_namesVisibility;

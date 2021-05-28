@@ -34,7 +34,8 @@
 #define endl Qt::endl
 #endif
 
-PlayList::PlayList(QWidget *parent) : QDialog(parent)
+PlayList::PlayList(QWidget *parent) : QDialog(parent),
+    m_isDirty(false)
 {
     setWindowTitle( tr("Manage Playlist") );
     ui.setupUi(this);
@@ -93,6 +94,7 @@ void PlayList::loadPlayList(const QString &fileName)
         }
         file.close();
         Settings::instance()->setLastPlayList(fileName);
+        m_isDirty=false;
     }
 }
 
@@ -138,6 +140,7 @@ void PlayList::saveFile()
             out.flush();
             file.close();
             Settings::instance()->setLastPlayList(selected.first());
+            m_isDirty=false;
         }
     }
 }
@@ -161,6 +164,7 @@ PlayList::addToList()
         foreach(QString fName, fNames) {
             if (isSupported(fName)) {
                 ui.fileList->addItem(fName);
+                m_isDirty=true;
             }
         }
     }
@@ -170,6 +174,7 @@ void
 PlayList::removeFromList()
 {
     ui.fileList->takeItem(ui.fileList->currentRow());
+    m_isDirty=true;
 }
 
 void
@@ -179,6 +184,7 @@ PlayList::moveUp()
     if (currentRow > 0) {
         QListWidgetItem* prev = ui.fileList->takeItem(currentRow - 1);
         ui.fileList->insertItem( currentRow, prev );
+        m_isDirty=true;
     }
 }
 
@@ -186,9 +192,10 @@ void
 PlayList::moveDown()
 {
     int currentRow = ui.fileList->currentRow();
-    if (currentRow < ui.fileList->count()) {
+    if ((currentRow > -1) && (currentRow < ui.fileList->count())) {
         QListWidgetItem* next = ui.fileList->takeItem(currentRow + 1);
         ui.fileList->insertItem( currentRow, next );
+        m_isDirty=true;
     }
 }
 
@@ -200,7 +207,10 @@ PlayList::moveDown()
 void
 PlayList::clear()
 {
-    ui.fileList->clear();
+    if(ui.fileList->count() > 0) {
+        ui.fileList->clear();
+        m_isDirty=true;
+    }
 }
 
 QStringList
@@ -219,6 +229,7 @@ PlayList::setItems(QStringList items)
 {
     ui.fileList->clear();
     ui.fileList->addItems(items);
+    m_isDirty = true;
 }
 
 QString
@@ -301,4 +312,9 @@ void PlayList::retranslateUi()
     m_btnClear->setText(tr("Clear"));
     m_btnOpen->setText(tr("Open"));
     m_btnSave->setText(tr("Save As"));
+}
+
+bool PlayList::isDirty()
+{
+    return m_isDirty;
 }

@@ -204,6 +204,7 @@ void Settings::internalRead(QSettings &settings)
     m_language = settings.value("Language", QLocale::system().name()).toString();
     m_darkMode = settings.value("DarkMode", false).toBool();
     m_autoPlay = settings.value("AutoPlay", true).toBool();
+    m_autoAdvance = settings.value("AutoAdvance", true).toBool();
     QDir defDir(dataDirectory());
     m_lastPlayList = settings.value("LastPlaylist", defDir.absoluteFilePath("examples.lst")).toString();
     bool internalIcons = false;
@@ -275,6 +276,7 @@ void Settings::internalSave(QSettings &settings)
     settings.setValue("DrumsChannel", m_drumsChannel);
     settings.setValue("DarkMode", m_darkMode);
     settings.setValue("AutoPlay", m_autoPlay);
+    settings.setValue("AutoAdvance", m_autoAdvance);
     settings.setValue("LastPlaylist", m_lastPlayList);
 #if defined(Q_OS_WINDOWS)
     settings.setValue("WindowSnapping", m_winSnap);
@@ -352,6 +354,16 @@ bool Settings::getAutoPlay() const
 void Settings::setAutoPlay(bool autoPlay)
 {
     m_autoPlay = autoPlay;
+}
+
+bool Settings::autoAdvance() const
+{
+    return m_autoAdvance;
+}
+
+void Settings::setAutoAdvance(bool autoAdvance)
+{
+    m_autoAdvance = autoAdvance;
 }
 
 QColor Settings::getSingleColor() const

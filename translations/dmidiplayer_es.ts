@@ -167,6 +167,14 @@ p, li { white-space: pre-wrap; }
         <source>All files (*.kar *.mid *.midi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;Cakewalk files (*.wrk)</source>
         <translation>Todos los archivos (*.kar *.mid *.midi *.wrk);;Archivos de Karaoke (*.kar);;Archivos MIDI (*.mid *.midi);;Archivos de Cakewalk (*.wrk)</translation>
     </message>
+    <message>
+        <source>Playlist not saved</source>
+        <translation>Lista de reproducción sin guardar</translation>
+    </message>
+    <message>
+        <source>The current playlist has changed, but it is not saved. The changes will be lost when closing the program.</source>
+        <translation>La lista de reproducción actual ha cambiado, pero no ha sido guardada. Los cambios se perderán al cerrar el programa.</translation>
+    </message>
 </context>
 <context>
     <name>GUIPlayerClass</name>
@@ -1232,6 +1240,10 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>XG</source>
         <translation>XG</translation>
+    </message>
+    <message>
+        <source>Advance Automatically to the Next Playlist item</source>
+        <translation>Avance automático en la lista de reproducción</translation>
     </message>
 </context>
 <context>

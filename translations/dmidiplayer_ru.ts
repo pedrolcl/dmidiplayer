@@ -231,6 +231,16 @@ p, li { white-space: pre-wrap; }
         <source>SMF Information</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="792"/>
+        <source>Playlist not saved</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="793"/>
+        <source>The current playlist has changed, but it is not saved. The changes will be lost when closing the program.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>GUIPlayerClass</name>
@@ -1344,76 +1354,76 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PlayList</name>
     <message>
-        <location filename="../playlist.cpp" line="39"/>
-        <location filename="../playlist.cpp" line="296"/>
+        <location filename="../playlist.cpp" line="40"/>
+        <location filename="../playlist.cpp" line="307"/>
         <source>Manage Playlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="45"/>
-        <location filename="../playlist.cpp" line="297"/>
+        <location filename="../playlist.cpp" line="46"/>
+        <location filename="../playlist.cpp" line="308"/>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="49"/>
-        <location filename="../playlist.cpp" line="298"/>
+        <location filename="../playlist.cpp" line="50"/>
+        <location filename="../playlist.cpp" line="309"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="53"/>
-        <location filename="../playlist.cpp" line="299"/>
+        <location filename="../playlist.cpp" line="54"/>
+        <location filename="../playlist.cpp" line="310"/>
         <source>Move Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="57"/>
-        <location filename="../playlist.cpp" line="300"/>
+        <location filename="../playlist.cpp" line="58"/>
+        <location filename="../playlist.cpp" line="311"/>
         <source>Move Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="61"/>
-        <location filename="../playlist.cpp" line="301"/>
+        <location filename="../playlist.cpp" line="62"/>
+        <location filename="../playlist.cpp" line="312"/>
         <source>Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="65"/>
-        <location filename="../playlist.cpp" line="302"/>
+        <location filename="../playlist.cpp" line="66"/>
+        <location filename="../playlist.cpp" line="313"/>
         <source>Open</source>
         <translation type="unfinished">Открыть</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="69"/>
-        <location filename="../playlist.cpp" line="303"/>
+        <location filename="../playlist.cpp" line="70"/>
+        <location filename="../playlist.cpp" line="314"/>
         <source>Save As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="112"/>
+        <location filename="../playlist.cpp" line="114"/>
         <source>Open Playlist file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="113"/>
-        <location filename="../playlist.cpp" line="122"/>
+        <location filename="../playlist.cpp" line="115"/>
+        <location filename="../playlist.cpp" line="124"/>
         <source>Playlist (*.lst)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="124"/>
+        <location filename="../playlist.cpp" line="126"/>
         <source>Save Playlist file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="155"/>
+        <location filename="../playlist.cpp" line="158"/>
         <source>Add MIDI File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="156"/>
+        <location filename="../playlist.cpp" line="159"/>
         <source>All files (*.kar *.mid *.midi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;Cakewalk files (*.wrk)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1431,12 +1441,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="71"/>
+        <location filename="../prefsdialog.ui" line="124"/>
         <source>Sticky Window Snapping</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="81"/>
+        <location filename="../prefsdialog.ui" line="117"/>
         <source>Forced Dark Mode</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1446,125 +1456,130 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="44"/>
+        <location filename="../prefsdialog.ui" line="34"/>
         <source>Qt Widgets Style:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="64"/>
+        <location filename="../prefsdialog.ui" line="110"/>
         <source>Use Internal Icon Theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="101"/>
+        <location filename="../prefsdialog.ui" line="97"/>
         <source>Percussion MIDI Channel:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="133"/>
+        <location filename="../prefsdialog.ui" line="47"/>
         <source>MIDI System Exclusive Reset:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="147"/>
+        <location filename="../prefsdialog.ui" line="77"/>
+        <source>Advance Automatically to the Next Playlist item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../prefsdialog.ui" line="154"/>
         <source>Lyrics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="156"/>
         <location filename="../prefsdialog.ui" line="163"/>
-        <location filename="../prefsdialog.ui" line="197"/>
-        <location filename="../prefsdialog.ui" line="315"/>
-        <location filename="../prefsdialog.ui" line="325"/>
+        <location filename="../prefsdialog.ui" line="170"/>
+        <location filename="../prefsdialog.ui" line="204"/>
+        <location filename="../prefsdialog.ui" line="322"/>
+        <location filename="../prefsdialog.ui" line="332"/>
         <source>...</source>
         <translation type="unfinished">...</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="170"/>
+        <location filename="../prefsdialog.ui" line="177"/>
         <source>Future Text Color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="187"/>
+        <location filename="../prefsdialog.ui" line="194"/>
         <source>Text Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="224"/>
+        <location filename="../prefsdialog.ui" line="231"/>
         <source>Past Text Color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="255"/>
+        <location filename="../prefsdialog.ui" line="262"/>
         <source>Player Piano</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="261"/>
+        <location filename="../prefsdialog.ui" line="268"/>
         <source>Single Highlight Color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="275"/>
+        <location filename="../prefsdialog.ui" line="282"/>
         <source>Note Highlighting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="285"/>
+        <location filename="../prefsdialog.ui" line="292"/>
         <source>Show Note Names</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="292"/>
+        <location filename="../prefsdialog.ui" line="299"/>
         <source>Note Names Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="335"/>
+        <location filename="../prefsdialog.ui" line="342"/>
         <source>Note Velocity to Color Tint</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="350"/>
+        <location filename="../prefsdialog.ui" line="357"/>
         <source>Never</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="355"/>
+        <location filename="../prefsdialog.ui" line="362"/>
         <source>Minimal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="360"/>
+        <location filename="../prefsdialog.ui" line="367"/>
         <source>When Activated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="365"/>
+        <location filename="../prefsdialog.ui" line="372"/>
         <source>Always</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="52"/>
-        <location filename="../prefsdialog.cpp" line="268"/>
+        <location filename="../prefsdialog.cpp" line="271"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="53"/>
-        <location filename="../prefsdialog.cpp" line="269"/>
+        <location filename="../prefsdialog.cpp" line="272"/>
         <source>GM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="54"/>
-        <location filename="../prefsdialog.cpp" line="270"/>
+        <location filename="../prefsdialog.cpp" line="273"/>
         <source>GS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="55"/>
-        <location filename="../prefsdialog.cpp" line="271"/>
+        <location filename="../prefsdialog.cpp" line="274"/>
         <source>XG</source>
         <translation type="unfinished"></translation>
     </message>

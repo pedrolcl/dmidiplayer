@@ -34,8 +34,10 @@
             <description>
                 <p>This release fixes the following tickets:</p>
                 <ul>
-                    <li>#4: crash if user tries to close the program's main window while playing a MIDI file</li>
+                    <li>#4: crash if user tries to close the program's main window while playing</li>
                     <li>#6: man page added</li>
+                    <li>Warn the user when the playlist has changed but not saved</li>
+                    <li>New setting for playlist auto advance</li>
                 </ul>
             </description>
             <url>https://sourceforge.net/p/dmidiplayer/blog/2021/05/drumstick-multiplatform-midi-file-player-131-released/</url>

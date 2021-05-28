@@ -207,6 +207,16 @@ p, li { white-space: pre-wrap; }
         <source>SMF Information</source>
         <translation>Informace SMF</translation>
     </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="792"/>
+        <source>Playlist not saved</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="793"/>
+        <source>The current playlist has changed, but it is not saved. The changes will be lost when closing the program.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>GUIPlayerClass</name>
@@ -1304,76 +1314,76 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PlayList</name>
     <message>
-        <location filename="../playlist.cpp" line="39"/>
-        <location filename="../playlist.cpp" line="296"/>
+        <location filename="../playlist.cpp" line="40"/>
+        <location filename="../playlist.cpp" line="307"/>
         <source>Manage Playlist</source>
         <translation>Spravovat seznam skladeb</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="45"/>
-        <location filename="../playlist.cpp" line="297"/>
+        <location filename="../playlist.cpp" line="46"/>
+        <location filename="../playlist.cpp" line="308"/>
         <source>Add</source>
         <translation>Přidat</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="49"/>
-        <location filename="../playlist.cpp" line="298"/>
+        <location filename="../playlist.cpp" line="50"/>
+        <location filename="../playlist.cpp" line="309"/>
         <source>Remove</source>
         <translation>Odstranit</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="53"/>
-        <location filename="../playlist.cpp" line="299"/>
+        <location filename="../playlist.cpp" line="54"/>
+        <location filename="../playlist.cpp" line="310"/>
         <source>Move Up</source>
         <translation>Posunout nahoru</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="57"/>
-        <location filename="../playlist.cpp" line="300"/>
+        <location filename="../playlist.cpp" line="58"/>
+        <location filename="../playlist.cpp" line="311"/>
         <source>Move Down</source>
         <translation>Posun dolů</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="61"/>
-        <location filename="../playlist.cpp" line="301"/>
+        <location filename="../playlist.cpp" line="62"/>
+        <location filename="../playlist.cpp" line="312"/>
         <source>Clear</source>
         <translation>Smazat</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="65"/>
-        <location filename="../playlist.cpp" line="302"/>
+        <location filename="../playlist.cpp" line="66"/>
+        <location filename="../playlist.cpp" line="313"/>
         <source>Open</source>
         <translation>Otevřít</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="69"/>
-        <location filename="../playlist.cpp" line="303"/>
+        <location filename="../playlist.cpp" line="70"/>
+        <location filename="../playlist.cpp" line="314"/>
         <source>Save As</source>
         <translation>Uložit jako</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="112"/>
+        <location filename="../playlist.cpp" line="114"/>
         <source>Open Playlist file</source>
         <translation>Otevřít soubor seznamu skladeb</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="113"/>
-        <location filename="../playlist.cpp" line="122"/>
+        <location filename="../playlist.cpp" line="115"/>
+        <location filename="../playlist.cpp" line="124"/>
         <source>Playlist (*.lst)</source>
         <translation>Seznam skladeb (*.lst)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="124"/>
+        <location filename="../playlist.cpp" line="126"/>
         <source>Save Playlist file</source>
         <translation>Uložit soubor seznamu skladeb</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="155"/>
+        <location filename="../playlist.cpp" line="158"/>
         <source>Add MIDI File</source>
         <translation>Přidat soubor MIDI</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="156"/>
+        <location filename="../playlist.cpp" line="159"/>
         <source>All files (*.kar *.mid *.midi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;Cakewalk files (*.wrk)</source>
         <translation>Všechny soubory (*.kar *.mid *.midi *.wrk);;Soubory Karaoke (*.kar);;Soubory MIDI (*.mid *.midi);;Soubory Cakewalk (*.wrk)</translation>
     </message>
@@ -1391,7 +1401,7 @@ p, li { white-space: pre-wrap; }
         <translation>Obecné</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="44"/>
+        <location filename="../prefsdialog.ui" line="34"/>
         <source>Qt Widgets Style:</source>
         <translation>Styl grafických prvků Qt:</translation>
     </message>
@@ -1401,130 +1411,135 @@ p, li { white-space: pre-wrap; }
         <translation>Zahájit přehrávání automaticky po nahrání</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="64"/>
+        <location filename="../prefsdialog.ui" line="110"/>
         <source>Use Internal Icon Theme</source>
         <translation>Použít vnitřní motiv ikon</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="71"/>
+        <location filename="../prefsdialog.ui" line="124"/>
         <source>Sticky Window Snapping</source>
         <translation>Lepivé přichytávání oken</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="81"/>
+        <location filename="../prefsdialog.ui" line="117"/>
         <source>Forced Dark Mode</source>
         <translation>Vynucený tmavý režim</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="101"/>
+        <location filename="../prefsdialog.ui" line="97"/>
         <source>Percussion MIDI Channel:</source>
         <translation>Kanál MIDI bicích:</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="133"/>
+        <location filename="../prefsdialog.ui" line="47"/>
         <source>MIDI System Exclusive Reset:</source>
         <translation>Obnovení výchozího nastavení MIDI System Exclusive:</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="147"/>
+        <location filename="../prefsdialog.ui" line="77"/>
+        <source>Advance Automatically to the Next Playlist item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../prefsdialog.ui" line="154"/>
         <source>Lyrics</source>
         <translation>Zpěvní text</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="156"/>
         <location filename="../prefsdialog.ui" line="163"/>
-        <location filename="../prefsdialog.ui" line="197"/>
-        <location filename="../prefsdialog.ui" line="315"/>
-        <location filename="../prefsdialog.ui" line="325"/>
+        <location filename="../prefsdialog.ui" line="170"/>
+        <location filename="../prefsdialog.ui" line="204"/>
+        <location filename="../prefsdialog.ui" line="322"/>
+        <location filename="../prefsdialog.ui" line="332"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="170"/>
+        <location filename="../prefsdialog.ui" line="177"/>
         <source>Future Text Color</source>
         <translation>Barva budoucího textu</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="187"/>
+        <location filename="../prefsdialog.ui" line="194"/>
         <source>Text Font</source>
         <translation>Písmo textu</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="224"/>
+        <location filename="../prefsdialog.ui" line="231"/>
         <source>Past Text Color</source>
         <translation>Barva minulého textu</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="255"/>
+        <location filename="../prefsdialog.ui" line="262"/>
         <source>Player Piano</source>
         <translation>Klaviatura přehrávače</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="261"/>
+        <location filename="../prefsdialog.ui" line="268"/>
         <source>Single Highlight Color</source>
         <translation>Barva zvýraznění</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="275"/>
+        <location filename="../prefsdialog.ui" line="282"/>
         <source>Note Highlighting</source>
         <translation>Zvýraznění not</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="285"/>
+        <location filename="../prefsdialog.ui" line="292"/>
         <source>Show Note Names</source>
         <translation>Ukázat názvy not</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="292"/>
+        <location filename="../prefsdialog.ui" line="299"/>
         <source>Note Names Font</source>
         <translation>Písmo názvů not</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="335"/>
+        <location filename="../prefsdialog.ui" line="342"/>
         <source>Note Velocity to Color Tint</source>
         <translation>Dynamika MIDI (velocity) noty na barevný odstín</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="350"/>
+        <location filename="../prefsdialog.ui" line="357"/>
         <source>Never</source>
         <translation>Nikdy</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="355"/>
+        <location filename="../prefsdialog.ui" line="362"/>
         <source>Minimal</source>
         <translation>Minimální</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="360"/>
+        <location filename="../prefsdialog.ui" line="367"/>
         <source>When Activated</source>
         <translation>Při zapnutí</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="365"/>
+        <location filename="../prefsdialog.ui" line="372"/>
         <source>Always</source>
         <translation>Vždy</translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="52"/>
-        <location filename="../prefsdialog.cpp" line="268"/>
+        <location filename="../prefsdialog.cpp" line="271"/>
         <source>None</source>
         <translation>Žádný</translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="53"/>
-        <location filename="../prefsdialog.cpp" line="269"/>
+        <location filename="../prefsdialog.cpp" line="272"/>
         <source>GM</source>
         <translation>GM</translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="54"/>
-        <location filename="../prefsdialog.cpp" line="270"/>
+        <location filename="../prefsdialog.cpp" line="273"/>
         <source>GS</source>
         <translation>GS</translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="55"/>
-        <location filename="../prefsdialog.cpp" line="271"/>
+        <location filename="../prefsdialog.cpp" line="274"/>
         <source>XG</source>
         <translation>XG</translation>
     </message>

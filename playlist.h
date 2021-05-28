@@ -40,6 +40,7 @@ public:
     bool atFirstItem();
     bool noItems();
     void retranslateUi();
+    bool isDirty();
 
 public slots:
     void clear();
@@ -64,6 +65,7 @@ private:
     QPushButton* m_btnOpen;
     QPushButton* m_btnSave;
     Ui::PlayList ui;
+    bool m_isDirty;
 };
 
 #endif /* PLAYLISTDIALOG_H */

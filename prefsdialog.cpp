@@ -94,6 +94,7 @@ void PrefsDialog::restoreDefaults()
     setFutureColor(futureColor);
     setPastColor(pastColor);
     ui->chkAutoPlay->setChecked(true);
+    ui->chkAutoAdvance->setChecked(true);
 
     ui->chkVelocityColor->setChecked(true);
     ui->cboHighlight->setCurrentIndex(0);
@@ -175,6 +176,7 @@ void PrefsDialog::showEvent ( QShowEvent *event )
         ui->cboStyle->setCurrentText( Settings::instance()->getStyle() );
         ui->spinPercChannel->setValue( Settings::instance()->drumsChannel() );
         ui->chkAutoPlay->setChecked( Settings::instance()->getAutoPlay() );
+        ui->chkAutoAdvance->setChecked( Settings::instance()->autoAdvance() );
         ui->cboReset->setCurrentIndex( Settings::instance()->getSysexResetMessage() );
 #if defined(Q_OS_WINDOWS)
         ui->chkSnapping->setChecked( Settings::instance()->winSnap() );
@@ -211,6 +213,7 @@ void PrefsDialog::apply()
     Settings::instance()->setDrumsChannel(ui->spinPercChannel->value());
     Settings::instance()->setDarkMode(ui->chkDarkMode->isChecked());
     Settings::instance()->setAutoPlay(ui->chkAutoPlay->isChecked());
+    Settings::instance()->setAutoAdvance(ui->chkAutoAdvance->isChecked());
     Settings::instance()->setInternalIcons(ui->chkInternalIcons->isChecked());
     Settings::instance()->setStyle(ui->cboStyle->currentText());
     Settings::instance()->setSysexResetMessage(ui->cboReset->currentIndex());

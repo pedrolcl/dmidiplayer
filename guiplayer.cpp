@@ -448,7 +448,7 @@ void GUIPlayer::playerFinished()
     m_player->resetPosition();
     updateTimeLabel(0);
     m_ui->progressBar->setValue(0);
-    if ( Settings::instance()->getAutoPlay()) {
+    if ( Settings::instance()->autoAdvance()) {
         nextSong();
     }
 }
@@ -788,6 +788,11 @@ void GUIPlayer::slotFileInfo()
 void GUIPlayer::slotPlayList()
 {
     if (m_playList->exec() == QDialog::Accepted) {
+        if (m_playList->isDirty()) {
+            QMessageBox::warning(this, tr("Playlist not saved"),
+                tr("The current playlist has changed, but it is not saved. "
+                   "The changes will be lost when closing the program."));
+        }
         auto current = m_playList->currentItem();
         if (!current.isEmpty()) {
             if (m_state == PlayingState) {
