@@ -30,6 +30,16 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.3.1" date="2021-05-31">
+            <description>
+                <p>This release fixes the following tickets:</p>
+                <ul>
+                    <li>#4: crash if user tries to close the program's main window while playing a MIDI file</li>
+                    <li>#6: man page added</li>
+                </ul>
+            </description>
+            <url>https://sourceforge.net/p/dmidiplayer/blog/2021/05/drumstick-multiplatform-midi-file-player-131-released/</url>
+        </release>
         <release version="1.3.0" date="2021-05-11">
             <description>
                 <p>This release stabilizes the overall performance and implements some new features:</p>

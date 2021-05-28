@@ -32,6 +32,9 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+
+option(BUILD_DOCS "Build man pages" ON)
+
 include(SCMRevision)
 
 find_package (QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
@@ -190,6 +193,7 @@ endif()
 
 if(UNIX AND NOT APPLE)
     include(GNUInstallDirs)
+    add_subdirectory(docs)
     add_subdirectory(icons)
     add_subdirectory(examples)
     install(TARGETS ${PROJECT_NAME}
