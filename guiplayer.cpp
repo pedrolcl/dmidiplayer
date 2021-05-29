@@ -39,6 +39,13 @@
 using namespace drumstick::rt;
 using namespace drumstick::widgets;
 
+void GUIPlayer::connectOutPort()
+{
+    connect(m_pianola, &Pianola::noteOn, m_midiOut, &MIDIOutput::sendNoteOn);
+    connect(m_pianola, &Pianola::noteOff, m_midiOut, &MIDIOutput::sendNoteOff);
+    connect(m_channels, &Channels::patch, m_midiOut, &MIDIOutput::sendProgram);
+}
+
 GUIPlayer::GUIPlayer(QWidget *parent)
     : QMainWindow(parent),
     m_state(InvalidState),
@@ -172,22 +179,32 @@ GUIPlayer::GUIPlayer(QWidget *parent)
         m_connections->setOutput(m_midiOut);
         m_connections->setAdvanced(Settings::instance()->advanced());
 
-        if (m_midiOut != 0 && !Settings::instance()->lastOutputConnection().isEmpty()) {
+        QString lastConn = Settings::instance()->lastOutputConnection();
+        if (m_midiOut != 0 && !lastConn.isEmpty()) {
             auto outConnections = m_midiOut->connections(Settings::instance()->advanced());
             MIDIConnection conn = outConnections.first();
             foreach(const auto& c, outConnections) {
-                if (c.first == Settings::instance()->lastOutputConnection()) {
+                if (c.first == lastConn) {
                     conn = c;
                     break;
                 }
             }
             m_midiOut->initialize(settings.getQSettings());
-            if (!conn.first.isEmpty())
+            if (!conn.first.isEmpty()) {
                 m_midiOut->open(conn);
+                auto status = m_midiOut->property("status");
+                if (status.isValid() && !status.toBool()) {
+                    auto diagnostics = m_midiOut->property("diagnostics");
+                    if (diagnostics.isValid()) {
+                        auto text = diagnostics.toStringList().join(QChar::LineFeed).trimmed();
+                        qWarning() << "MIDI Output" << text;
+                    }
+                }
+            }
             m_player->setPort(m_midiOut);
-            connect(m_pianola, &Pianola::noteOn, m_midiOut, &MIDIOutput::sendNoteOn);
-            connect(m_pianola, &Pianola::noteOff, m_midiOut, &MIDIOutput::sendNoteOff);
-            connect(m_channels, &Channels::patch, m_midiOut, &MIDIOutput::sendProgram);
+            connectOutPort();
+        } else {
+            qWarning() << "MIDI Output is not connected";
         }
 
         tempoReset();
@@ -390,16 +407,21 @@ void GUIPlayer::open()
 
 void GUIPlayer::setup()
 {
+    MIDIConnection conn;
     m_connections->refresh();
     if (m_connections->exec() == QDialog::Accepted) {
-        if (m_midiOut != 0) {
-            m_midiOut->disconnect();
+        if (m_midiOut != m_connections->getOutput()) {
+            if (m_midiOut != 0) {
+                m_midiOut->disconnect();
+            }
+            m_midiOut = m_connections->getOutput();
+            m_player->setPort(m_midiOut);
+            connectOutPort();
         }
-        m_midiOut = m_connections->getOutput();
-        m_player->setPort(m_midiOut);
+        conn = m_midiOut->currentConnection();
         Settings::instance()->setAdvanced(m_connections->advanced());
         Settings::instance()->setLastOutputBackend(m_midiOut->backendName());
-        Settings::instance()->setLastOutputConnection(m_midiOut->currentConnection().first);
+        Settings::instance()->setLastOutputConnection(conn.first);
     }
 }
 

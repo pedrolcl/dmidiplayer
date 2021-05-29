@@ -43,13 +43,15 @@ public slots:
     void clickedAdvanced(bool value);
     void refreshOutputs(int idx);
     void refresh();
-    void accept();
+    void accept() override;
+    void reject() override;
 
 private:
     bool m_advanced;
     bool m_settingsChanged;
     drumstick::rt::MIDIOutput* m_midiOut;
     Ui::ConnectionsClass ui;
+    void reopen();
 };
 
 #endif // CONNECTIONS_H

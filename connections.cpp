@@ -16,7 +16,7 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-//#include <QDebug>
+#include <QMessageBox>
 #include <drumstick/settingsfactory.h>
 #include <drumstick/configurationdialogs.h>
 #include "connections.h"
@@ -47,7 +47,7 @@ void Connections::setOutputs(QList<MIDIOutput *> outs)
     connect(ui.m_outputBackends, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Connections::refreshOutputs);
 }
 
-void Connections::accept()
+void Connections::reopen()
 {
     MIDIConnection conn;
     SettingsFactory settings;
@@ -59,11 +59,30 @@ void Connections::accept()
             if (!conn.first.isEmpty()) {
                 m_midiOut->initialize(settings.getQSettings());
                 m_midiOut->open(conn);
+                auto status = m_midiOut->property("status");
+                if (status.isValid() && !status.toBool()) {
+                    auto diagnostics = m_midiOut->property("diagnostics");
+                    if (diagnostics.isValid()) {
+                        auto text = diagnostics.toStringList().join(QChar::LineFeed).trimmed();
+                        QMessageBox::warning(this, tr("MIDI Output"), text);
+                    }
+                }
             }
         }
     }
     m_settingsChanged = false;
+}
+
+void Connections::accept()
+{
+    reopen();
     QDialog::accept();
+}
+
+void Connections::reject()
+{
+    reopen();
+    QDialog::reject();
 }
 
 void Connections::refresh()

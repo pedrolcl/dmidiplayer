@@ -152,6 +152,7 @@ private:
 #if defined(Q_OS_WINDOWS)
     WinSnap m_snapper;
 #endif
+    void connectOutPort();
 };
 
 #endif // INCLUDED_GUIPLAYER_H
