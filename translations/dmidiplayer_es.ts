@@ -79,6 +79,13 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>Connections</name>
+    <message>
+        <source>MIDI Output</source>
+        <translation>Salida MIDI</translation>
+    </message>
+</context>
+<context>
     <name>ConnectionsClass</name>
     <message>
         <source>Connections</source>
