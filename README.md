@@ -18,6 +18,13 @@ Some key features:
 * Lyrics, Piano Player and MIDI Channels views
 * Supports MID/KAR (Standard MIDI Files) and WRK (Cakewalk) file formats
 
+New in v1.3.1:
+
+* Fix for ticket#4: crash if user tries to close the program's main window while playing
+* Fix for ticket#6: man page added (pandoc markdown source)
+* Warn the user when the playlist has changed but not saved
+* New setting for playlist auto advance
+
 New in v1.3.0:
 
 * Playlist editor dialog
@@ -63,6 +70,7 @@ Alright, these are the build requirements:
 * Qt5
 * [Drumstick 2.2](https://sourceforge.net/projects/drumstick/files/2.2.0/)
 * [Uchardet 0.0.7](https://www.freedesktop.org/wiki/Software/uchardet/)
+* [pandoc](https://github.com/jgm/pandoc) (optional)
 * CMake 3.14
 
 Build and deployment commands (for Linux)
