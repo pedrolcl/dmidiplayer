@@ -155,6 +155,15 @@ Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
     File ${BINARY_FILES}\${PROGNAME}.exe
+    File ${BINARY_FILES}\examples\examples.lst
+    File ${SOURCE_FILES}\examples\twinkle.kar
+    File ${SOURCE_FILES}\examples\haendel_hallelujah.mid
+    File ${SOURCE_FILES}\examples\lindaamiga.mid
+    File ${SOURCE_FILES}\examples\mozart_aveverum.mid
+    File ${SOURCE_FILES}\examples\mozart_diesirae.mid
+    File ${SOURCE_FILES}\examples\mozart_konigdernacht.mid
+    File ${SOURCE_FILES}\examples\schubert_avemaria.mid
+    File ${SOURCE_FILES}\examples\test.mid
     SetOutPath $INSTDIR\translations
     File ${BINARY_FILES}\${PROGNAME}_cs.qm
     File ${BINARY_FILES}\${PROGNAME}_es.qm
@@ -175,7 +184,7 @@ Section -Main SEC0000
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\libdrumstick-rt-win-in.dll $INSTDIR\drumstick2\libdrumstick-rt-win-in.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\libdrumstick-rt-win-out.dll $INSTDIR\drumstick2\libdrumstick-rt-win-out.dll $INSTDIR
 	
-	!insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libfluidsynth-3.dll $INSTDIR\libfluidsynth-3.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libfluidsynth-3.dll $INSTDIR\libfluidsynth-3.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libFLAC-8.dll $INSTDIR\libFLAC-8.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libglib-2.0-0.dll $INSTDIR\libglib-2.0-0.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libgomp-1.dll $INSTDIR\libgomp-1.dll $INSTDIR
@@ -265,6 +274,15 @@ Section /o -un.Main UNSEC0000
     Delete /REBOOTOK $INSTDIR\translations\qt_es.qm
     Delete /REBOOTOK $INSTDIR\translations\qt_ru.qm
     Delete /REBOOTOK $INSTDIR\${PROGNAME}.exe
+    Delete /REBOOTOK $INSTDIR\examples.lst
+    Delete /REBOOTOK $INSTDIR\twinkle.kar
+    Delete /REBOOTOK $INSTDIR\haendel_hallelujah.mid
+    Delete /REBOOTOK $INSTDIR\lindaamiga.mid
+    Delete /REBOOTOK $INSTDIR\mozart_aveverum.mid
+    Delete /REBOOTOK $INSTDIR\mozart_diesirae.mid
+    Delete /REBOOTOK $INSTDIR\mozart_konigdernacht.mid
+    Delete /REBOOTOK $INSTDIR\schubert_avemaria.mid
+    Delete /REBOOTOK $INSTDIR\test.mid
 
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libdrumstick-file.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libdrumstick-rt.dll
