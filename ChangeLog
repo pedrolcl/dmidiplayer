@@ -1,3 +1,13 @@
+2021-06-01
+    * Release v1.3.1
+
+2021-05-29
+    * Display diagnostics after midi out driver initialization
+
+2021-05-28
+    * Fix for ticket #6: added man page
+    * Warn when modified playlist is not saved
+
 2021-05-26
     * Fix for ticket #4: crash if user closes the main window while playing a MIDI file
 
