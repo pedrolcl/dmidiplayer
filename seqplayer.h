@@ -59,6 +59,7 @@ public:
     qreal volume(int channel);
     bool isMuted(int channel);
     bool isLocked(int channel);
+    QString beatByTickPosition(int pos);
 
 public slots:
     void playerLoop();

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>459</width>
-    <height>313</height>
+    <width>449</width>
+    <height>269</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -308,78 +308,6 @@ selection-background-color: blue;</string>
       </layout>
      </widget>
     </item>
-    <item row="0" column="2">
-     <widget class="QPushButton" name="btnVolume">
-      <property name="toolTip">
-       <string>Reset Volume</string>
-      </property>
-      <property name="statusTip">
-       <string>Reset Volume to 100%</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>32</width>
-        <height>32</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2" rowspan="4">
-     <widget class="QSlider" name="volumeSlider">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="statusTip">
-       <string>Volume Slider</string>
-      </property>
-      <property name="maximum">
-       <number>200</number>
-      </property>
-      <property name="value">
-       <number>100</number>
-      </property>
-      <property name="tracking">
-       <bool>false</bool>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="tickPosition">
-       <enum>QSlider::TicksAbove</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0" colspan="2">
-     <widget class="QProgressBar" name="progressBar">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="statusTip">
-       <string>Playback progress</string>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="textVisible">
-       <bool>true</bool>
-      </property>
-      <property name="textDirection">
-       <enum>QProgressBar::TopToBottom</enum>
-      </property>
-     </widget>
-    </item>
     <item row="4" column="0">
      <widget class="QSlider" name="sliderTempo">
       <property name="sizePolicy">
@@ -417,22 +345,34 @@ selection-background-color: blue;</string>
       </property>
      </widget>
     </item>
-    <item row="4" column="1">
-     <widget class="QPushButton" name="btnTempo">
+    <item row="3" column="1">
+     <widget class="RhythmView" name="rhythm" native="true"/>
+    </item>
+    <item row="1" column="2" rowspan="4">
+     <widget class="QSlider" name="volumeSlider">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <property name="toolTip">
-       <string>Reset Tempo</string>
-      </property>
       <property name="statusTip">
-       <string>Reset Tempo to 100%</string>
+       <string>Volume Slider</string>
       </property>
-      <property name="text">
-       <string>tempo=100%</string>
+      <property name="maximum">
+       <number>200</number>
+      </property>
+      <property name="value">
+       <number>100</number>
+      </property>
+      <property name="tracking">
+       <bool>false</bool>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="tickPosition">
+       <enum>QSlider::TicksAbove</enum>
       </property>
      </widget>
     </item>
@@ -469,8 +409,69 @@ selection-background-color: blue;</string>
       </item>
      </layout>
     </item>
-    <item row="3" column="1">
-     <widget class="RhythmView" name="rhythm" native="true"/>
+    <item row="2" column="0">
+     <widget class="QSlider" name="positionSlider">
+      <property name="maximum">
+       <number>100</number>
+      </property>
+      <property name="tracking">
+       <bool>false</bool>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="tickPosition">
+       <enum>QSlider::TicksAbove</enum>
+      </property>
+      <property name="tickInterval">
+       <number>1</number>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLabel" name="lblPos">
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QPushButton" name="btnTempo">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="toolTip">
+       <string>Reset Tempo</string>
+      </property>
+      <property name="statusTip">
+       <string>Reset Tempo to 100%</string>
+      </property>
+      <property name="text">
+       <string>tempo=100%</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="btnVolume">
+      <property name="toolTip">
+       <string>Reset Volume</string>
+      </property>
+      <property name="statusTip">
+       <string>Reset Volume to 100%</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -479,8 +480,8 @@ selection-background-color: blue;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>459</width>
-     <height>22</height>
+     <width>449</width>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -812,6 +813,7 @@ selection-background-color: blue;</string>
   <tabstop>volumeSlider</tabstop>
  </tabstops>
  <resources>
+  <include location="guiplayer.qrc"/>
   <include location="guiplayer.qrc"/>
  </resources>
  <connections>

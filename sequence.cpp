@@ -154,6 +154,22 @@ void Sequence::findCodec()
     }
 }
 
+BeatEvent* Sequence::nearestBeatByTicks(int ticks)
+{
+    static const std::type_info& beatId = typeid(BeatEvent);
+    BeatEvent *nearest = nullptr;
+    foreach(MIDIEvent* ev, m_list) {
+        if (ev->isMetaEvent() && typeid(*ev) == beatId) {
+            if (ev->tick() <= ticks) {
+                nearest = static_cast<BeatEvent*>(ev);
+            } else {
+                break;
+            }
+        }
+    }
+    return nearest;
+}
+
 static inline bool eventLessThan(const MIDIEvent* s1, const MIDIEvent *s2)
 {
     return s1->tick() < s2->tick();

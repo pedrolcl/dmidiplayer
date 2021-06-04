@@ -111,6 +111,9 @@ public slots:
     void playerEcho(long time, long ticks);
     void nextSong();
     void prevSong();
+    void positionSliderPressed();
+    void positionSliderMoved(int value);
+    void positionSliderReleased();
 
     void progressDialogInit(const QString& type, int max);
     void progressDialogUpdate(int pos);
@@ -149,6 +152,7 @@ private:
     QTranslator *m_trq, *m_trp, *m_trl;
     QAction *m_currentLang;
     bool m_firstShown{true};
+    int m_newPosition{0};
 #if defined(Q_OS_WINDOWS)
     WinSnap m_snapper;
 #endif

@@ -99,6 +99,9 @@ GUIPlayer::GUIPlayer(QWidget *parent)
     connect(m_ui->actionChannels, &QAction::toggled, this, &GUIPlayer::slotShowChannels);
     connect(m_ui->actionNext,  &QAction::triggered, this, &GUIPlayer::nextSong);
     connect(m_ui->actionPrev,  &QAction::triggered, this, &GUIPlayer::prevSong);
+    connect(m_ui->positionSlider, &QSlider::sliderPressed, this, &GUIPlayer::positionSliderPressed);
+    connect(m_ui->positionSlider, &QSlider::sliderMoved, this, &GUIPlayer::positionSliderMoved);
+    connect(m_ui->positionSlider, &QSlider::sliderReleased, this, &GUIPlayer::positionSliderReleased);
 
     m_ui->actionPlay->setShortcut( Qt::Key_MediaPlay );
     m_ui->actionStop->setShortcut( Qt::Key_MediaStop );
@@ -120,12 +123,13 @@ GUIPlayer::GUIPlayer(QWidget *parent)
         //qDebug() << "bar:" << bar << "time signature:" << num << "/" << den;
         m_ui->rhythm->setRhythm(num);
     });
-    connect(m_player, &SequencePlayer::beat, this, [=](const int /*bar*/, const int beat, const int max){
+    connect(m_player, &SequencePlayer::beat, this, [=](const int bar, const int beat, const int max){
         //qDebug() << "beat(" << bar << beat << max << ")";
         if (m_ui->rhythm->currentRhythm() != max) {
             m_ui->rhythm->setRhythm(max);
         }
         m_ui->rhythm->beat(beat);
+        m_ui->lblPos->setText(QString("%1:%2").arg(bar).arg(beat));
     });
     connect(&m_playerThread, &QThread::started, m_player, &SequencePlayer::playerLoop);
 
@@ -271,7 +275,7 @@ void GUIPlayer::updateState(PlayerState newState)
         m_ui->actionStop->setEnabled(false);
         m_ui->actionPlay->setEnabled(true);
         updateTimeLabel(0);
-        m_ui->progressBar->setValue(0);
+        m_ui->positionSlider->setValue(0);
         statusBar()->showMessage("Stopped");
         break;
     default:
@@ -364,8 +368,10 @@ void GUIPlayer::openFile(const QString& fileName)
             updateTimeLabel(0);
             m_player->resetPosition();
             updateTempoLabel(m_player->currentBPM());
-            m_ui->progressBar->setMaximum(m_player->song()->songLengthTicks());
-            m_ui->progressBar->setValue(0);
+            auto max = m_player->song()->songLengthTicks();
+            m_ui->positionSlider->setMaximum(max);
+            m_ui->positionSlider->setTickInterval(max / 100);
+            m_ui->positionSlider->setValue(0);
 
             for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
                 m_player->setLocked(i, false);
@@ -469,7 +475,7 @@ void GUIPlayer::playerFinished()
     //qDebug() << Q_FUNC_INFO;
     m_player->resetPosition();
     updateTimeLabel(0);
-    m_ui->progressBar->setValue(0);
+    m_ui->positionSlider->setValue(0);
     if ( Settings::instance()->autoAdvance()) {
         nextSong();
     }
@@ -501,7 +507,7 @@ void GUIPlayer::playerEcho(long millis, long ticks)
 {
     updateTempoLabel(m_player->currentBPM());
     updateTimeLabel(millis);
-    m_ui->progressBar->setValue(ticks);
+    m_ui->positionSlider->setValue(ticks);
 }
 
 void GUIPlayer::nextSong()
@@ -521,6 +527,31 @@ void GUIPlayer::prevSong()
     }
     if (m_playList->selectPrevItem()) {
         openFile(m_playList->currentItem());
+    }
+}
+
+void GUIPlayer::positionSliderPressed()
+{
+    if (m_state == PlayingState || m_player->isRunning()) {
+        m_player->pause();
+        updateState(PausedState);
+    }
+}
+
+void GUIPlayer::positionSliderMoved(int value)
+{
+    if (m_ui->positionSlider->isSliderDown()) {
+        m_newPosition = value;
+        QString bb = m_player->beatByTickPosition(m_newPosition);
+        m_ui->lblPos->setText(bb);
+    }
+}
+
+void GUIPlayer::positionSliderReleased()
+{
+    m_player->setPosition(m_newPosition);
+    if (m_state == PausedState) {
+        QTimer::singleShot(0, this, &GUIPlayer::play);
     }
 }
 

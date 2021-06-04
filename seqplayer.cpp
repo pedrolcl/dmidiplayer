@@ -349,6 +349,7 @@ void SequencePlayer::resetPosition()
 
 void SequencePlayer::setPosition(long pos)
 {
+    //qDebug() << Q_FUNC_INFO << pos;
     m_song.setTickPosition(pos);
     m_songPosition = pos;
 }
@@ -453,6 +454,16 @@ bool SequencePlayer::isLocked(int channel)
         return m_locked[channel];
     }
     return false;
+}
+
+QString SequencePlayer::beatByTickPosition(int pos)
+{
+    QString tmp;
+    BeatEvent* ev = m_song.nearestBeatByTicks(pos);
+    if (ev != nullptr) {
+        tmp = QString("%1:%2").arg(ev->bar()).arg(ev->beat());
+    }
+    return tmp;
 }
 
 void SequencePlayer::setVolume(int channel, qreal value)

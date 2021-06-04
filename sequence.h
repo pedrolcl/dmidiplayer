@@ -98,6 +98,8 @@ public:
 
     void findCodec();
     int getNumAlterations() const;
+    BeatEvent* nearestBeatByTicks(int ticks);
+
     static QByteArrayList getExtraCodecNames();
     static int getMibForName(const QByteArray name);
 
