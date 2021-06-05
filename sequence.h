@@ -50,6 +50,7 @@ public:
         KarLanguage = 11, KarTitles = 12, KarWhatever = 13,
         FIRST_TYPE = Text, LAST_TYPE = KarWhatever
     };
+    Q_ENUM(TextType)
 
     Sequence(QObject* parent = 0);
     virtual ~Sequence();
@@ -99,6 +100,10 @@ public:
     void findCodec();
     int getNumAlterations() const;
     BeatEvent* nearestBeatByTicks(int ticks);
+    BeatEvent* nextBar(BeatEvent* latest);
+    BeatEvent* previousBar(BeatEvent* latest);
+    BeatEvent* jumpToBar(int bar);
+    int lastBar();
 
     static QByteArrayList getExtraCodecNames();
     static int getMibForName(const QByteArray name);

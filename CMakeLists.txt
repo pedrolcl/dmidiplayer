@@ -84,6 +84,9 @@ SET(SOURCES
     sequence.h
     settings.cpp
     settings.h
+    toolbareditdialog.cpp
+    toolbareditdialog.h
+    toolbareditdialog.ui
     vumeter.cpp
     vumeter.h
 )

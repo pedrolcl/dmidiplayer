@@ -170,6 +170,72 @@ BeatEvent* Sequence::nearestBeatByTicks(int ticks)
     return nearest;
 }
 
+BeatEvent *Sequence::nextBar(BeatEvent* latest)
+{
+    static const std::type_info& beatId = typeid(BeatEvent);
+    BeatEvent *nearest = latest;
+    if (nearest != nullptr) {
+        int nextBar = nearest->bar() + 1;
+        int from = m_list.indexOf(latest);
+        //qDebug() << Q_FUNC_INFO << "from:" << from << "bar:" << latest->bar();
+        for(int i = from; i < m_list.count(); ++i) {
+            MIDIEvent* ev = m_list.at(i);
+            if (ev->isMetaEvent() && typeid(*ev) == beatId) {
+                nearest = static_cast<BeatEvent*>(ev);
+                if (nearest->bar() >= nextBar) {
+                    //qDebug() << Q_FUNC_INFO << "found:" << i << "bar:" << nearest->bar();
+                    break;
+                }
+            }
+        }
+    }
+    return nearest;
+}
+
+BeatEvent *Sequence::previousBar(BeatEvent* latest)
+{
+    static const std::type_info& beatId = typeid(BeatEvent);
+    BeatEvent *nearest = latest;
+    if (nearest != nullptr) {
+        int prevBar = nearest->bar() - 1;
+        int from = m_list.indexOf(latest);
+        //qDebug() << Q_FUNC_INFO << "from:" << from << "bar:" << latest->bar();
+        for(int i = from; i >= 0; --i) {
+            MIDIEvent* ev = m_list.at(i);
+            if (ev->isMetaEvent() && typeid(*ev) == beatId) {
+                nearest = static_cast<BeatEvent*>(ev);
+                if (nearest->bar() <= prevBar) {
+                    //qDebug() << Q_FUNC_INFO << "found:" << i << "bar:" << nearest->bar();
+                    break;
+                }
+            }
+        }
+    }
+    return nearest;
+}
+
+BeatEvent *Sequence::jumpToBar(int bar)
+{
+    static const std::type_info& beatId = typeid(BeatEvent);
+    BeatEvent *nearest = nullptr;
+    for(int i = 0; i < m_list.count(); ++i) {
+        MIDIEvent* ev = m_list.at(i);
+        if (ev->isMetaEvent() && typeid(*ev) == beatId) {
+            nearest = static_cast<BeatEvent*>(ev);
+            if (nearest->bar() >= bar) {
+                //qDebug() << Q_FUNC_INFO << "found:" << i << "bar:" << nearest->bar();
+                break;
+            }
+        }
+    }
+    return nearest;
+}
+
+int Sequence::lastBar()
+{
+    return m_barCount;
+}
+
 static inline bool eventLessThan(const MIDIEvent* s1, const MIDIEvent *s2)
 {
     return s1->tick() < s2->tick();

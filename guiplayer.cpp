@@ -17,9 +17,11 @@
 */
 
 #include <QDebug>
+#include <QMetaEnum>
 #include <QFileDialog>
 #include <QToolTip>
 #include <QMessageBox>
+#include <QInputDialog>
 #include <QFileInfo>
 #include <QTime>
 #include <QTimer>
@@ -102,6 +104,10 @@ GUIPlayer::GUIPlayer(QWidget *parent)
     connect(m_ui->positionSlider, &QSlider::sliderPressed, this, &GUIPlayer::positionSliderPressed);
     connect(m_ui->positionSlider, &QSlider::sliderMoved, this, &GUIPlayer::positionSliderMoved);
     connect(m_ui->positionSlider, &QSlider::sliderReleased, this, &GUIPlayer::positionSliderReleased);
+    connect(m_ui->customizeToolBar, &QAction::triggered, this, &GUIPlayer::slotEditToolbar);
+    connect(m_ui->actionForward, &QAction::triggered, this, &GUIPlayer::forward);
+    connect(m_ui->actionBackward, &QAction::triggered, this, &GUIPlayer::backward);
+    connect(m_ui->actionJump, &QAction::triggered, this, &GUIPlayer::jump);
 
     m_ui->actionPlay->setShortcut( Qt::Key_MediaPlay );
     m_ui->actionStop->setShortcut( Qt::Key_MediaStop );
@@ -160,6 +166,8 @@ GUIPlayer::GUIPlayer(QWidget *parent)
     m_playList = new PlayList(this);
     m_playList->loadPlayList( Settings::instance()->lastPlayList() );
     updNavButtons();
+
+    m_toolbarEditor = new ToolBarEditDialog(m_ui->toolBar, this);
 
     try {
         BackendManager man;
@@ -251,22 +259,32 @@ void GUIPlayer::updateState(PlayerState newState)
 {
     if (m_state == newState)
         return;
+
     switch (newState) {
     case EmptyState:
         m_ui->actionPlay->setEnabled(false);
         m_ui->actionPause->setEnabled(false);
         m_ui->actionStop->setEnabled(false);
+        m_ui->actionForward->setEnabled(false);
+        m_ui->actionBackward->setEnabled(false);
+        m_ui->actionJump->setEnabled(false);
         statusBar()->showMessage("Please, load a song");
         break;
     case PlayingState:
         m_ui->actionPlay->setEnabled(false);
         m_ui->actionPause->setEnabled(true);
         m_ui->actionStop->setEnabled(true);
+        m_ui->actionForward->setEnabled(true);
+        m_ui->actionBackward->setEnabled(true);
+        m_ui->actionJump->setEnabled(true);
         statusBar()->showMessage("Playing");
         break;
     case PausedState:
         m_ui->actionPlay->setEnabled(false);
         m_ui->actionStop->setEnabled(true);
+        m_ui->actionForward->setEnabled(true);
+        m_ui->actionBackward->setEnabled(true);
+        m_ui->actionJump->setEnabled(true);
         statusBar()->showMessage("Paused");
         break;
     case StoppedState:
@@ -274,6 +292,9 @@ void GUIPlayer::updateState(PlayerState newState)
         m_ui->actionPause->setEnabled(false);
         m_ui->actionStop->setEnabled(false);
         m_ui->actionPlay->setEnabled(true);
+        m_ui->actionForward->setEnabled(false);
+        m_ui->actionBackward->setEnabled(false);
+        m_ui->actionJump->setEnabled(false);
         updateTimeLabel(0);
         m_ui->positionSlider->setValue(0);
         statusBar()->showMessage("Stopped");
@@ -283,6 +304,7 @@ void GUIPlayer::updateState(PlayerState newState)
         break;
     }
     m_state = newState;
+    //qDebug() << Q_FUNC_INFO << m_state;
 }
 
 void GUIPlayer::play()
@@ -457,6 +479,10 @@ void GUIPlayer::applySettings()
     m_ui->actionPreferences->setIcon(IconUtils::GetIcon("settings"));
     m_ui->btnVolume->setIcon(IconUtils::GetIcon("player-volume"));
     m_ui->menuLanguage->setIcon(IconUtils::GetIcon("preferences-desktop-locale"));
+    m_ui->actionForward->setIcon(IconUtils::GetIcon("media-seek-forward"));
+    m_ui->actionBackward->setIcon(IconUtils::GetIcon("media-seek-backward"));
+    m_ui->actionJump->setIcon(IconUtils::GetIcon("go-jump"));
+    m_ui->customizeToolBar->setIcon(IconUtils::GetIcon("settings"));
 
     m_lyrics->applySettings();
     m_pianola->applySettings();
@@ -555,6 +581,43 @@ void GUIPlayer::positionSliderReleased()
     }
 }
 
+void GUIPlayer::forward()
+{
+    if (m_state == PlayingState || m_player->isRunning()) {
+        m_player->pause();
+        updateState(PausedState);
+    }
+    QString bb = m_player->beatForward();
+    m_ui->lblPos->setText(bb);
+    QTimer::singleShot(0, this, &GUIPlayer::play);
+}
+
+void GUIPlayer::backward()
+{
+    if (m_state == PlayingState || m_player->isRunning()) {
+        m_player->pause();
+    }
+    QString bb = m_player->beatBackward();
+    m_ui->lblPos->setText(bb);
+    QTimer::singleShot(0, this, &GUIPlayer::play);
+}
+
+void GUIPlayer::jump()
+{
+    bool ok;
+    int bar = QInputDialog::getInt(this, tr("Jump to Bar"),
+                tr("Bar number:"), 1, 1, m_player->song()->lastBar(), 1, &ok);
+    if (ok) {
+        if (m_state == PlayingState || m_player->isRunning()) {
+            m_player->pause();
+        }
+        m_player->jumpToBar(bar);
+        QString bb = QString("%1:1").arg(bar);
+        m_ui->lblPos->setText(bb);
+        QTimer::singleShot(0, this, &GUIPlayer::play);
+    }
+}
+
 void GUIPlayer::pitchShift(int value)
 {
     m_player->setPitchShift(value);
@@ -637,6 +700,12 @@ void GUIPlayer::closeEvent( QCloseEvent *event )
     Settings::instance()->setShowToolBar(m_ui->actionShowToolbar->isChecked());
     Settings::instance()->setMainWindowGeometry(saveGeometry());
     Settings::instance()->setMainWindowState(saveState());
+    QStringList actionNames;
+    foreach(auto a, m_ui->toolBar->actions()) {
+        actionNames << a->objectName();
+    }
+    Settings::instance()->setToolbarActions(actionNames);
+    Settings::instance()->setToolbarButtonStyle(m_ui->toolBar->toolButtonStyle());
     Settings::instance()->SaveSettings();
     event->accept();
 }
@@ -711,6 +780,18 @@ void GUIPlayer::showEvent(QShowEvent *event)
     if (m_firstShown) {
         restoreGeometry(Settings::instance()->mainWindowGeometry());
         restoreState(Settings::instance()->mainWindowState());
+        QStringList actions = Settings::instance()->toolbarActions();
+        if (!actions.empty()) {
+            m_ui->toolBar->clear();
+            foreach(const auto a, actions) {
+                QAction *action = findChild<QAction*>(a, Qt::FindDirectChildrenOnly);
+                if (action != nullptr) {
+                    m_ui->toolBar->addAction(action);
+                }
+            }
+        }
+        int s = Settings::instance()->toolbarButtonStyle();
+        m_ui->toolBar->setToolButtonStyle(static_cast<Qt::ToolButtonStyle>(s));
         m_firstShown = false;
     }
 }
@@ -776,6 +857,7 @@ void GUIPlayer::retranslateUi()
     m_preferences->retranslateUi();
     m_recentFiles->retranslateUi();
     m_playList->retranslateUi();
+    m_toolbarEditor->retranslateUi();
 }
 
 void GUIPlayer::slotSwitchLanguage(QAction *action)
@@ -854,4 +936,10 @@ void GUIPlayer::slotPlayList()
             openFile(current);
         }
     }
+}
+
+void GUIPlayer::slotEditToolbar()
+{
+    m_toolbarEditor->initialize();
+    m_toolbarEditor->exec();
 }

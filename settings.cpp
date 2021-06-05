@@ -219,6 +219,8 @@ void Settings::internalRead(QSettings &settings)
     m_internalIcons =settings.value("InternalIcons", internalIcons).toBool();
     m_style = settings.value("Style", style).toString();
     m_sysexResetMessage = settings.value("SysexReset", 0).toInt();
+    m_toolbarActions = settings.value("ToolbarActions").toStringList();
+    m_toolbarButtonStyle = settings.value("ToolbarButtonStyle", Qt::ToolButtonTextUnderIcon).toInt();
     settings.endGroup();
 
     settings.beginGroup("TextSettings");
@@ -283,6 +285,8 @@ void Settings::internalSave(QSettings &settings)
     settings.setValue("InternalIcons", m_internalIcons);
     settings.setValue("Style", m_style);
     settings.setValue("SysexReset", m_sysexResetMessage);
+    settings.setValue("ToolbarActions", m_toolbarActions);
+    settings.setValue("ToolbarButtonStyle", m_toolbarButtonStyle);
     settings.endGroup();
 
     settings.beginGroup("TextSettings");
@@ -303,6 +307,26 @@ void Settings::internalSave(QSettings &settings)
     settings.endGroup();
 
     settings.sync();
+}
+
+int Settings::toolbarButtonStyle() const
+{
+    return m_toolbarButtonStyle;
+}
+
+void Settings::setToolbarButtonStyle(int newToolbarButtonStyle)
+{
+    m_toolbarButtonStyle = newToolbarButtonStyle;
+}
+
+const QStringList &Settings::toolbarActions() const
+{
+    return m_toolbarActions;
+}
+
+void Settings::setToolbarActions(const QStringList &newToolbarActions)
+{
+    m_toolbarActions = newToolbarActions;
 }
 
 int Settings::getSysexResetMessage() const

@@ -126,6 +126,12 @@ public:
     int getSysexResetMessage() const;
     void setSysexResetMessage(const int sysexResetMessage);
 
+    const QStringList &toolbarActions() const;
+    void setToolbarActions(const QStringList &newToolbarActions);
+
+    int toolbarButtonStyle() const;
+    void setToolbarButtonStyle(int newToolbarButtonStyle);
+
     // static methods
     static Settings* instance();
     static void setPortableConfig(const QString fileName = QString());
@@ -194,6 +200,9 @@ private:
         PianoPalette(PAL_FONT),
         PianoPalette(PAL_HISCALE)
     };
+
+    QStringList m_toolbarActions;
+    int m_toolbarButtonStyle;
 };
 
 #endif // PORTABLESETTINGS_H

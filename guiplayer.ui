@@ -501,6 +501,9 @@ selection-background-color: blue;</string>
     <addaction name="actionPlay"/>
     <addaction name="actionPause"/>
     <addaction name="actionStop"/>
+    <addaction name="actionJump"/>
+    <addaction name="actionForward"/>
+    <addaction name="actionBackward"/>
     <addaction name="actionNext"/>
     <addaction name="actionPrev"/>
     <addaction name="actionQuit"/>
@@ -525,6 +528,7 @@ selection-background-color: blue;</string>
     </property>
     <addaction name="actionPreferences"/>
     <addaction name="actionMIDISetup"/>
+    <addaction name="customizeToolBar"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
@@ -564,14 +568,14 @@ selection-background-color: blue;</string>
    </attribute>
    <addaction name="actionOpen"/>
    <addaction name="actionMIDISetup"/>
-   <addaction name="separator"/>
    <addaction name="actionPrev"/>
    <addaction name="actionNext"/>
    <addaction name="actionPlay"/>
    <addaction name="actionPause"/>
    <addaction name="actionStop"/>
-   <addaction name="separator"/>
-   <addaction name="separator"/>
+   <addaction name="actionForward"/>
+   <addaction name="actionBackward"/>
+   <addaction name="actionJump"/>
    <addaction name="actionQuit"/>
   </widget>
   <widget class="QStatusBar" name="myStatusBar"/>
@@ -790,10 +794,45 @@ selection-background-color: blue;</string>
    <property name="text">
     <string>Next</string>
    </property>
+   <property name="statusTip">
+    <string>Next File</string>
+   </property>
   </action>
   <action name="actionPrev">
    <property name="text">
     <string>Prev</string>
+   </property>
+   <property name="statusTip">
+    <string>Previous File</string>
+   </property>
+  </action>
+  <action name="actionForward">
+   <property name="text">
+    <string>Forward</string>
+   </property>
+   <property name="statusTip">
+    <string>Move forward</string>
+   </property>
+  </action>
+  <action name="actionBackward">
+   <property name="text">
+    <string>Backward</string>
+   </property>
+   <property name="statusTip">
+    <string>Move backward</string>
+   </property>
+  </action>
+  <action name="actionJump">
+   <property name="text">
+    <string>Jump...</string>
+   </property>
+   <property name="statusTip">
+    <string>Move play position</string>
+   </property>
+  </action>
+  <action name="customizeToolBar">
+   <property name="text">
+    <string>Customize Tool Bar...</string>
    </property>
   </action>
  </widget>

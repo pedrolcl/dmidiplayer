@@ -207,6 +207,8 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
             //qDebug() << m_songPosition << ev->tick() << " Meta-event";
             BeatEvent* event = static_cast<BeatEvent*>(ev);
             emit beat(event->bar(), event->beat(), event->barLength());
+            m_latestBeat = event;
+            //qDebug() << m_songPosition << "bar:beat ->" << event->bar() << ":" << event->beat();
         } else
         if (typeid(*ev) == timeSigId) {
             TimeSignatureEvent* event = static_cast<TimeSignatureEvent*>(ev);
@@ -336,6 +338,7 @@ void SequencePlayer::loadFile(QString fileName)
 void SequencePlayer::pause()
 {
     stop();
+    thread()->wait();
 }
 
 void SequencePlayer::resetPosition()
@@ -344,6 +347,7 @@ void SequencePlayer::resetPosition()
     if (!m_song.isEmpty()) {
         m_song.resetPosition();
         m_songPosition = 0;
+        m_latestBeat = nullptr;
     }
 }
 
@@ -464,6 +468,39 @@ QString SequencePlayer::beatByTickPosition(int pos)
         tmp = QString("%1:%2").arg(ev->bar()).arg(ev->beat());
     }
     return tmp;
+}
+
+QString SequencePlayer::beatForward()
+{
+    QString tmp;
+    BeatEvent* ev = m_song.nextBar(m_latestBeat);
+    if (ev != nullptr) {
+        setPosition(ev->tick());
+        m_latestBeat = ev;
+        tmp = QString("%1:%2").arg(ev->bar()).arg(ev->beat());
+    }
+    return tmp;
+}
+
+QString SequencePlayer::beatBackward()
+{
+    QString tmp;
+    BeatEvent* ev = m_song.previousBar(m_latestBeat);
+    if (ev != nullptr) {
+        setPosition(ev->tick());
+        m_latestBeat = ev;
+        tmp = QString("%1:%2").arg(ev->bar()).arg(ev->beat());
+    }
+    return tmp;
+}
+
+void SequencePlayer::jumpToBar(int bar)
+{
+    BeatEvent* ev = m_song.jumpToBar(bar);
+    if (ev != nullptr) {
+        setPosition(ev->tick());
+        m_latestBeat = ev;
+    }
 }
 
 void SequencePlayer::setVolume(int channel, qreal value)

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ToolBarEditDialog</class>
+ <widget class="QDialog" name="ToolBarEditDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>427</width>
+    <height>332</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="1">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="btnRemove">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>remove</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnAdd">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>add</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnMoveUp">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>up</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnMoveDown">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>down</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="2">
+    <widget class="QComboBox" name="cbBtnStyle">
+     <item>
+      <property name="text">
+       <string>Icon Only</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Text Only</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Text Beside Icon</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Text Under Icon</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Follow Style</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="3">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QLabel" name="lblButtonStyle">
+     <property name="text">
+      <string>Style of the Tool Buttons</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QListView" name="lstToolbar"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QListView" name="lstActions"/>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="lblActions">
+     <property name="text">
+      <string>Available Actions</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="lblSelected">
+     <property name="text">
+      <string>Selected Actions</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>ToolBarEditDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>ToolBarEditDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

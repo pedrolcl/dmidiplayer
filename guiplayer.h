@@ -35,6 +35,7 @@
 #include "lyrics.h"
 #include "prefsdialog.h"
 #include "playlist.h"
+#include "toolbareditdialog.h"
 
 #if defined(Q_OS_WINDOWS)
 #include "winsnap.h"
@@ -56,14 +57,6 @@ class About;
 const QString QSTR_DOMAIN("drumstick.sourceforge.net");
 const QString QSTR_APPNAME("Drumstick MIDI File Multiplatform Player");
 
-enum PlayerState {
-    InvalidState,
-    EmptyState,
-    PlayingState,
-    PausedState,
-    StoppedState
-};
-
 class GUIPlayer : public QMainWindow
 {
     Q_OBJECT
@@ -71,6 +64,15 @@ class GUIPlayer : public QMainWindow
 public:
     GUIPlayer(QWidget *parent = 0);
     ~GUIPlayer();
+
+    enum PlayerState {
+        InvalidState,
+        EmptyState,
+        PlayingState,
+        PausedState,
+        StoppedState
+    };
+    Q_ENUM(PlayerState)
 
     void appendSMFEvent(MIDIEvent* ev);
     void appendWRKEvent(unsigned long ticks, MIDIEvent* ev);
@@ -114,6 +116,9 @@ public slots:
     void positionSliderPressed();
     void positionSliderMoved(int value);
     void positionSliderReleased();
+    void forward();
+    void backward();
+    void jump();
 
     void progressDialogInit(const QString& type, int max);
     void progressDialogUpdate(int pos);
@@ -131,6 +136,7 @@ public slots:
     void slotSwitchLanguage(QAction *action);
     void slotFileInfo();
     void slotPlayList();
+    void slotEditToolbar();
 
 private:
     void createLanguageMenu();
@@ -149,6 +155,7 @@ private:
     QPointer<Lyrics> m_lyrics;
     QPointer<PrefsDialog> m_preferences;
     QPointer<PlayList> m_playList;
+    QPointer<ToolBarEditDialog> m_toolbarEditor;
     QTranslator *m_trq, *m_trp, *m_trl;
     QAction *m_currentLang;
     bool m_firstShown{true};
