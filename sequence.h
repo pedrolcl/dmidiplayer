@@ -103,6 +103,7 @@ public:
     BeatEvent* nextBar(BeatEvent* latest);
     BeatEvent* previousBar(BeatEvent* latest);
     BeatEvent* jumpToBar(int bar);
+    BeatEvent* firstBeat();
     int lastBar();
 
     static QByteArrayList getExtraCodecNames();

@@ -566,17 +566,14 @@ selection-background-color: blue;</string>
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionOpen"/>
-   <addaction name="actionMIDISetup"/>
    <addaction name="actionPrev"/>
    <addaction name="actionNext"/>
    <addaction name="actionPlay"/>
    <addaction name="actionPause"/>
    <addaction name="actionStop"/>
-   <addaction name="actionForward"/>
    <addaction name="actionBackward"/>
+   <addaction name="actionForward"/>
    <addaction name="actionJump"/>
-   <addaction name="actionQuit"/>
   </widget>
   <widget class="QStatusBar" name="myStatusBar"/>
   <action name="actionOpen">
@@ -620,7 +617,7 @@ selection-background-color: blue;</string>
     <string>Pause</string>
    </property>
    <property name="statusTip">
-    <string>Pause the playback</string>
+    <string>Pause  playback</string>
    </property>
    <property name="autoRepeat">
     <bool>false</bool>
@@ -631,7 +628,7 @@ selection-background-color: blue;</string>
     <string>Stop</string>
    </property>
    <property name="statusTip">
-    <string>Stop the playback</string>
+    <string>Stop playback</string>
    </property>
    <property name="autoRepeat">
     <bool>false</bool>
@@ -811,7 +808,7 @@ selection-background-color: blue;</string>
     <string>Forward</string>
    </property>
    <property name="statusTip">
-    <string>Move forward</string>
+    <string>Move play position to the next bar</string>
    </property>
   </action>
   <action name="actionBackward">
@@ -819,7 +816,7 @@ selection-background-color: blue;</string>
     <string>Backward</string>
    </property>
    <property name="statusTip">
-    <string>Move backward</string>
+    <string>Move play position to the previous bar</string>
    </property>
   </action>
   <action name="actionJump">
@@ -827,7 +824,7 @@ selection-background-color: blue;</string>
     <string>Jump...</string>
    </property>
    <property name="statusTip">
-    <string>Move play position</string>
+    <string>Move play position to any bar</string>
    </property>
   </action>
   <action name="customizeToolBar">

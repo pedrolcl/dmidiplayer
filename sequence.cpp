@@ -177,13 +177,11 @@ BeatEvent *Sequence::nextBar(BeatEvent* latest)
     if (nearest != nullptr) {
         int nextBar = nearest->bar() + 1;
         int from = m_list.indexOf(latest);
-        //qDebug() << Q_FUNC_INFO << "from:" << from << "bar:" << latest->bar();
         for(int i = from; i < m_list.count(); ++i) {
             MIDIEvent* ev = m_list.at(i);
             if (ev->isMetaEvent() && typeid(*ev) == beatId) {
                 nearest = static_cast<BeatEvent*>(ev);
-                if (nearest->bar() >= nextBar) {
-                    //qDebug() << Q_FUNC_INFO << "found:" << i << "bar:" << nearest->bar();
+                if ((nearest->bar() >= nextBar) && (nearest->beat() == 1)) {
                     break;
                 }
             }
@@ -199,13 +197,11 @@ BeatEvent *Sequence::previousBar(BeatEvent* latest)
     if (nearest != nullptr) {
         int prevBar = nearest->bar() - 1;
         int from = m_list.indexOf(latest);
-        //qDebug() << Q_FUNC_INFO << "from:" << from << "bar:" << latest->bar();
         for(int i = from; i >= 0; --i) {
             MIDIEvent* ev = m_list.at(i);
             if (ev->isMetaEvent() && typeid(*ev) == beatId) {
                 nearest = static_cast<BeatEvent*>(ev);
-                if (nearest->bar() <= prevBar) {
-                    //qDebug() << Q_FUNC_INFO << "found:" << i << "bar:" << nearest->bar();
+                if ((nearest->bar() <= prevBar) && (nearest->beat() == 1)) {
                     break;
                 }
             }
@@ -222,10 +218,23 @@ BeatEvent *Sequence::jumpToBar(int bar)
         MIDIEvent* ev = m_list.at(i);
         if (ev->isMetaEvent() && typeid(*ev) == beatId) {
             nearest = static_cast<BeatEvent*>(ev);
-            if (nearest->bar() >= bar) {
-                //qDebug() << Q_FUNC_INFO << "found:" << i << "bar:" << nearest->bar();
+            if ((nearest->bar() >= bar) && (nearest->beat() == 1)) {
                 break;
             }
+        }
+    }
+    return nearest;
+}
+
+BeatEvent *Sequence::firstBeat()
+{
+    static const std::type_info& beatId = typeid(BeatEvent);
+    BeatEvent *nearest = nullptr;
+    for(int i = 0; i < m_list.count(); ++i) {
+        MIDIEvent* ev = m_list.at(i);
+        if (ev->isMetaEvent() && typeid(*ev) == beatId) {
+            nearest = static_cast<BeatEvent*>(ev);
+            break;
         }
     }
     return nearest;
@@ -570,7 +579,6 @@ void Sequence::insertBeats(qint64 ticks)
 
 void Sequence::smfUpdateLoadProgress()
 {
-    insertBeats(m_smf->getCurrentTime());
     emit loadingProgress(m_smf->getFilePos());
 }
 
@@ -584,6 +592,7 @@ void Sequence::appendSMFEvent(MIDIEvent *ev)
         m_ticksDuration = ticks;
     }
     //qDebug() << "tics:" << ticks << "status:" << ev->status();
+    insertBeats(ticks);
     smfUpdateLoadProgress();
 }
 

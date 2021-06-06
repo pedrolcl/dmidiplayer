@@ -17,7 +17,6 @@
 */
 
 #include <QDebug>
-#include <QMetaEnum>
 #include <QFileDialog>
 #include <QToolTip>
 #include <QMessageBox>
@@ -255,6 +254,12 @@ void GUIPlayer::updNavButtons()
     }
 }
 
+void GUIPlayer::updatePositionWidgets()
+{
+    m_ui->lblPos->setText(m_player->currentBeatStr());
+    m_ui->positionSlider->setValue(m_player->getPosition());
+}
+
 void GUIPlayer::updateState(PlayerState newState)
 {
     if (m_state == newState)
@@ -290,11 +295,11 @@ void GUIPlayer::updateState(PlayerState newState)
     case StoppedState:
         m_ui->actionPause->setChecked(false);
         m_ui->actionPause->setEnabled(false);
-        m_ui->actionStop->setEnabled(false);
+        m_ui->actionStop->setEnabled(true);
         m_ui->actionPlay->setEnabled(true);
-        m_ui->actionForward->setEnabled(false);
-        m_ui->actionBackward->setEnabled(false);
-        m_ui->actionJump->setEnabled(false);
+        m_ui->actionForward->setEnabled(true);
+        m_ui->actionBackward->setEnabled(true);
+        m_ui->actionJump->setEnabled(true);
         updateTimeLabel(0);
         m_ui->positionSlider->setValue(0);
         statusBar()->showMessage("Stopped");
@@ -304,7 +309,7 @@ void GUIPlayer::updateState(PlayerState newState)
         break;
     }
     m_state = newState;
-    //qDebug() << Q_FUNC_INFO << m_state;
+    qDebug() << Q_FUNC_INFO << m_state;
 }
 
 void GUIPlayer::play()
@@ -338,9 +343,10 @@ void GUIPlayer::stop()
     if (m_state == PlayingState || m_state == PausedState || m_player->isRunning()) {
         m_player->stop();
         m_playerThread.wait();
-        m_player->resetPosition();
         updateState(StoppedState);
     }
+    m_player->resetPosition();
+    updatePositionWidgets();
 }
 
 void GUIPlayer::progressDialogInit(const QString& type, int max)
@@ -390,6 +396,7 @@ void GUIPlayer::openFile(const QString& fileName)
             updateTimeLabel(0);
             m_player->resetPosition();
             updateTempoLabel(m_player->currentBPM());
+            updatePositionWidgets();
             auto max = m_player->song()->songLengthTicks();
             m_ui->positionSlider->setMaximum(max);
             m_ui->positionSlider->setTickInterval(max / 100);
@@ -501,7 +508,7 @@ void GUIPlayer::playerFinished()
     //qDebug() << Q_FUNC_INFO;
     m_player->resetPosition();
     updateTimeLabel(0);
-    m_ui->positionSlider->setValue(0);
+    updatePositionWidgets();
     if ( Settings::instance()->autoAdvance()) {
         nextSong();
     }
@@ -521,6 +528,7 @@ void GUIPlayer::playerStopped()
     if (m_state == PlayingState) {
         updateState(StoppedState);
     }
+    updatePositionWidgets();
 }
 
 void GUIPlayer::updateTempoLabel(float ftempo)
@@ -567,15 +575,17 @@ void GUIPlayer::positionSliderPressed()
 void GUIPlayer::positionSliderMoved(int value)
 {
     if (m_ui->positionSlider->isSliderDown()) {
-        m_newPosition = value;
-        QString bb = m_player->beatByTickPosition(m_newPosition);
-        m_ui->lblPos->setText(bb);
+        m_newSliderPosition = value;
+        m_player->beatByTickPosition(m_newSliderPosition);
+        m_ui->lblPos->setText(m_player->currentBeatStr());
     }
 }
 
 void GUIPlayer::positionSliderReleased()
 {
-    m_player->setPosition(m_newPosition);
+    m_player->setPosition(m_newSliderPosition);
+    m_player->beatByTickPosition(m_newSliderPosition);
+    m_ui->lblPos->setText(m_player->currentBeatStr());
     if (m_state == PausedState) {
         QTimer::singleShot(0, this, &GUIPlayer::play);
     }
@@ -587,19 +597,24 @@ void GUIPlayer::forward()
         m_player->pause();
         updateState(PausedState);
     }
-    QString bb = m_player->beatForward();
-    m_ui->lblPos->setText(bb);
-    QTimer::singleShot(0, this, &GUIPlayer::play);
+    m_player->beatForward();
+    updatePositionWidgets();
+    if (m_state == PausedState) {
+        QTimer::singleShot(0, this, &GUIPlayer::play);
+    }
 }
 
 void GUIPlayer::backward()
 {
     if (m_state == PlayingState || m_player->isRunning()) {
         m_player->pause();
+        updateState(PausedState);
     }
-    QString bb = m_player->beatBackward();
-    m_ui->lblPos->setText(bb);
-    QTimer::singleShot(0, this, &GUIPlayer::play);
+    m_player->beatBackward();
+    updatePositionWidgets();
+    if (m_state == PausedState) {
+        QTimer::singleShot(0, this, &GUIPlayer::play);
+    }
 }
 
 void GUIPlayer::jump()
@@ -610,11 +625,13 @@ void GUIPlayer::jump()
     if (ok) {
         if (m_state == PlayingState || m_player->isRunning()) {
             m_player->pause();
+            updateState(PausedState);
         }
         m_player->jumpToBar(bar);
-        QString bb = QString("%1:1").arg(bar);
-        m_ui->lblPos->setText(bb);
-        QTimer::singleShot(0, this, &GUIPlayer::play);
+        updatePositionWidgets();
+        if (m_state == PausedState) {
+            QTimer::singleShot(0, this, &GUIPlayer::play);
+        }
     }
 }
 

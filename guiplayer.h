@@ -86,6 +86,7 @@ public:
     void updateState(PlayerState newState);
     void applySettings();
     void updNavButtons();
+    void updatePositionWidgets();
     
 protected:
     void dragEnterEvent( QDragEnterEvent* event ) override;
@@ -159,7 +160,7 @@ private:
     QTranslator *m_trq, *m_trp, *m_trl;
     QAction *m_currentLang;
     bool m_firstShown{true};
-    int m_newPosition{0};
+    int m_newSliderPosition{0};
 #if defined(Q_OS_WINDOWS)
     WinSnap m_snapper;
 #endif

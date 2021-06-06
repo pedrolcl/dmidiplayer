@@ -51,7 +51,9 @@ SequencePlayer::SequencePlayer() :
     m_songPosition(0),
     m_echoResolution(50),
     m_pitchShift(0),
-    m_volumeFactor(100)
+    m_volumeFactor(100),
+    m_latestBeat(nullptr),
+    m_firstBeat(nullptr)
 {
     initChannels();
 }
@@ -333,6 +335,8 @@ void SequencePlayer::loadFile(QString fileName)
     m_song.loadFile(fileName);
     m_echoResolution = 50; //m_song.getDivision() / 12;
     m_songPosition = 0;
+    m_firstBeat = m_song.firstBeat();
+    m_latestBeat = m_firstBeat;
 }
 
 void SequencePlayer::pause()
@@ -347,7 +351,7 @@ void SequencePlayer::resetPosition()
     if (!m_song.isEmpty()) {
         m_song.resetPosition();
         m_songPosition = 0;
-        m_latestBeat = nullptr;
+        m_latestBeat = m_firstBeat;
     }
 }
 
@@ -460,38 +464,28 @@ bool SequencePlayer::isLocked(int channel)
     return false;
 }
 
-QString SequencePlayer::beatByTickPosition(int pos)
+void SequencePlayer::beatByTickPosition(int pos)
 {
-    QString tmp;
     BeatEvent* ev = m_song.nearestBeatByTicks(pos);
-    if (ev != nullptr) {
-        tmp = QString("%1:%2").arg(ev->bar()).arg(ev->beat());
-    }
-    return tmp;
+    m_latestBeat = ev;
 }
 
-QString SequencePlayer::beatForward()
+void SequencePlayer::beatForward()
 {
-    QString tmp;
     BeatEvent* ev = m_song.nextBar(m_latestBeat);
     if (ev != nullptr) {
         setPosition(ev->tick());
         m_latestBeat = ev;
-        tmp = QString("%1:%2").arg(ev->bar()).arg(ev->beat());
     }
-    return tmp;
 }
 
-QString SequencePlayer::beatBackward()
+void SequencePlayer::beatBackward()
 {
-    QString tmp;
     BeatEvent* ev = m_song.previousBar(m_latestBeat);
     if (ev != nullptr) {
         setPosition(ev->tick());
         m_latestBeat = ev;
-        tmp = QString("%1:%2").arg(ev->bar()).arg(ev->beat());
     }
-    return tmp;
 }
 
 void SequencePlayer::jumpToBar(int bar)
@@ -501,6 +495,15 @@ void SequencePlayer::jumpToBar(int bar)
         setPosition(ev->tick());
         m_latestBeat = ev;
     }
+}
+
+QString SequencePlayer::currentBeatStr()
+{
+    QString tmp;
+    if (m_latestBeat != nullptr) {
+        tmp = QString("%1:%2").arg(m_latestBeat->bar()).arg(m_latestBeat->beat());
+    }
+    return tmp;
 }
 
 void SequencePlayer::setVolume(int channel, qreal value)

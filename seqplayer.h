@@ -59,10 +59,11 @@ public:
     qreal volume(int channel);
     bool isMuted(int channel);
     bool isLocked(int channel);
-    QString beatByTickPosition(int pos);
-    QString beatForward();
-    QString beatBackward();
+    void beatByTickPosition(int pos);
+    void beatForward();
+    void beatBackward();
     void jumpToBar(int bar);
+    QString currentBeatStr();
 
 public slots:
     void playerLoop();
@@ -117,6 +118,7 @@ private:
     bool m_muted[drumstick::rt::MIDI_STD_CHANNELS];
     bool m_locked[drumstick::rt::MIDI_STD_CHANNELS];
     BeatEvent *m_latestBeat;
+    BeatEvent *m_firstBeat;
 };
 
 #endif /*SEQPLAYER_H_*/
