@@ -409,15 +409,15 @@ int Sequence::getMibForName(const QByteArray name)
     return -1;
 }
 
-QByteArray Sequence::getRawText(const int track, const TextType type)
+QList<QPair<int,QByteArray>> Sequence::getRawText(const int track, const TextType type)
 {
-    QByteArray output;
+    QList<QPair<int,QByteArray>> output;
     if ((type < TextType::KarFileType) && !m_textEvents.isEmpty()) {
         foreach(const auto &e, m_textEvents) {
             if ((track == 0 || e.m_track == track) &&
                 (type == TextType::None || e.m_type == type))
             {
-                output.append(e.m_text);
+                output.append(QPair<int,QByteArray>(e.m_tick, e.m_text));
             }
         }
     }
@@ -681,7 +681,7 @@ void Sequence::smfSysexEvent(const QByteArray& data)
     appendSMFEvent(ev);
 }
 
-void Sequence::addMetaData(int type, const QByteArray& data)
+void Sequence::addMetaData(int time, int type, const QByteArray& data)
 {
     //if ((data.length() > 0) && (data[0] == '%'))
         //return; // ignored?
@@ -721,7 +721,7 @@ void Sequence::addMetaData(int type, const QByteArray& data)
                 break;
             }
         }
-        m_textEvents.append(TextRec(m_curTrack, t, data));
+        m_textEvents.append(TextRec(time, m_curTrack, t, data));
         switch ( t ) {
         case Sequence::Lyric:
         case Sequence::Text: {
@@ -756,7 +756,7 @@ void Sequence::smfMetaEvent(int type, const QByteArray& data)
     if ( (data.length() > 0) &&
          (type > Sequence::None) &&
          (type <= Sequence::Cue) ) {
-        addMetaData(type, data);
+        addMetaData(m_smf->getCurrentTime(), type, data);
     }
 }
 
@@ -1052,7 +1052,7 @@ void Sequence::appendWRKmetadata(int track, long time, TextType type, const QByt
             m_typScore[type] = 1;
         }
         TextType t = static_cast<TextType>(type);
-        m_textEvents.append(TextRec(track, t, data));
+        m_textEvents.append(TextRec(time, track, t, data));
         switch ( t ) {
         case Sequence::Lyric:
         case Sequence::Text: {

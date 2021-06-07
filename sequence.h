@@ -94,7 +94,7 @@ public:
     int trackChannel(int track) const;
 
     QString currentFile() const;
-    QByteArray getRawText(const int track, const TextType type);
+    QList<QPair<int,QByteArray>> getRawText(const int track, const TextType type);
     QStringList getText(const TextType type);
 
     void findCodec();
@@ -180,7 +180,7 @@ private: // methods
     void initCodecs();
     void insertBeats(qint64 ticks);
     void timeCalculations();
-    void addMetaData(int type, const QByteArray &data);
+    void addMetaData(int time, int type, const QByteArray &data);
     void appendStringToList(QStringList &list, QString &s, TextType type);
 
 private: // members
@@ -240,8 +240,9 @@ private: // members
     QList<TimeSigRec> m_bars;
 
     struct TextRec {
-        TextRec(QByteArray data): m_track(0), m_type(TextType::None), m_text(data) { };
-        TextRec(int t, TextType e, QByteArray data): m_track(t), m_type(e), m_text(data) { };
+        TextRec(QByteArray data): m_tick(0), m_track(0), m_type(TextType::None), m_text(data) { };
+        TextRec(int tick, int track, TextType e, QByteArray data): m_tick(tick), m_track(track), m_type(e), m_text(data) { };
+        int m_tick;
         int m_track;
         TextType m_type;
         QByteArray m_text;

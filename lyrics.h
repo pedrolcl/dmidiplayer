@@ -21,6 +21,7 @@
 
 #include <QMainWindow>
 #include <QObject>
+#include <QMap>
 
 #if defined(Q_OS_WINDOWS)
 #include "winsnap.h"
@@ -47,7 +48,7 @@ public:
     void applySettings();
 
 public slots:
-    void slotMidiText(const int track, const int type, const QByteArray &text);
+    void slotMidiText(const int track, const int type, int ticks, const QByteArray &text);
     void trackChanged(int index);
     void typeChanged(int index);
     void codecChanged(int index);
@@ -75,11 +76,11 @@ private: // member vars
     QTextCodec *m_codec;
     QColor m_normalColor;
     QColor m_otherColor;
-    QAction *m_actionOpen;
-    QAction *m_actionQuit;
-    QAction *m_actionAbout;
-    QAction *m_actionAbout_Qt;
-    QAction *m_actionInfo;
+//    QAction *m_actionOpen;
+//    QAction *m_actionQuit;
+//    QAction *m_actionAbout;
+//    QAction *m_actionAbout_Qt;
+//    QAction *m_actionInfo;
     QAction *m_actionFont;
     QAction *m_actionFullScreen;
     QLabel *m_label1;
@@ -91,6 +92,7 @@ private: // member vars
     QToolButton *m_toolButton;
     QTextEdit *m_textViewer;
     QMenu *m_chmenu;
+    QMap<int,int> m_textPos;
 
 #if defined(Q_OS_WINDOWS)
     WinSnap m_snapper;

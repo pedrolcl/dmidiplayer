@@ -196,7 +196,7 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
         if (typeid(*ev) == textId) {
             TextEvent* event = static_cast<TextEvent*>(ev);
             //qDebug() << m_songPosition << event->tick() << " Text(" << event->textType() << "): " << event->data();
-            emit midiText(event->tag(), event->textType(), event->data());
+            emit midiText(event->tag(), event->textType(), event->tick(), event->data());
         } else
         if (typeid(*ev) == tempoId) {
             TempoEvent* event = static_cast<TempoEvent*>(ev);

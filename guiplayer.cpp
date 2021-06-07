@@ -309,7 +309,7 @@ void GUIPlayer::updateState(PlayerState newState)
         break;
     }
     m_state = newState;
-    qDebug() << Q_FUNC_INFO << m_state;
+    //qDebug() << Q_FUNC_INFO << m_state;
 }
 
 void GUIPlayer::play()

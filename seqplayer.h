@@ -86,7 +86,7 @@ signals:
      */
     void tempoChanged(const qreal tempo);
     //void timeSignatureChanged(const int numerator, const int denominator);
-    void midiText(const int track, const int type, const QByteArray &text);
+    void midiText(const int track, const int type, const int ticks, const QByteArray &text);
     void midiNoteOn(const int chan, const int note, const int vel);
     void midiNoteOff(const int chan, const int note, const int vel);
     void midiController(const int chan, const int control, const int value);

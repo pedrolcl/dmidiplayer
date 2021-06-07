@@ -63,16 +63,16 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     tbar->setFloatable(false);
     tbar->setIconSize(QSize(22,22));
     addToolBar(tbar);
-    m_actionOpen = new QAction(this);
-    m_actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
-    m_actionQuit = new QAction(this);
-    m_actionQuit->setObjectName(QString::fromUtf8("actionQuit"));
-    m_actionAbout = new QAction(this);
-    m_actionAbout->setObjectName(QString::fromUtf8("actionAbout"));
-    m_actionAbout_Qt = new QAction(this);
-    m_actionAbout_Qt->setObjectName(QString::fromUtf8("actionAbout_Qt"));
-    m_actionInfo = new QAction(this);
-    m_actionInfo->setObjectName(QString::fromUtf8("actionInfo"));
+//    m_actionOpen = new QAction(this);
+//    m_actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
+//    m_actionQuit = new QAction(this);
+//    m_actionQuit->setObjectName(QString::fromUtf8("actionQuit"));
+//    m_actionAbout = new QAction(this);
+//    m_actionAbout->setObjectName(QString::fromUtf8("actionAbout"));
+//    m_actionAbout_Qt = new QAction(this);
+//    m_actionAbout_Qt->setObjectName(QString::fromUtf8("actionAbout_Qt"));
+//    m_actionInfo = new QAction(this);
+//    m_actionInfo->setObjectName(QString::fromUtf8("actionInfo"));
     m_label1 = new QLabel(this);
     m_label1->setObjectName(QString::fromUtf8("label1"));
     tbar->addWidget(m_label1);
@@ -259,11 +259,15 @@ void Lyrics::displayText()
 {
     m_textViewer->clear();
     m_textViewer->setTextColor(m_normalColor);
+    m_textPos.clear();
     if (m_song != nullptr) {
-        QByteArray text = m_song->getRawText(m_track, static_cast<Sequence::TextType>(m_type));
-        QString s = sanitizeText(text);
-        //qDebug() << Q_FUNC_INFO << s;
-        m_textViewer->setPlainText(s.trimmed());
+        QList<QPair<int,QByteArray>> textList = m_song->getRawText(m_track, static_cast<Sequence::TextType>(m_type));
+        foreach(const auto& p, textList) {
+            QString s = sanitizeText(p.second);
+            m_textPos.insert(p.first,  m_textViewer->textCursor().position());
+            m_textViewer->insertPlainText(s);
+        }
+        m_textViewer->moveCursor(QTextCursor::Start);
     }
 }
 
@@ -335,22 +339,29 @@ QString Lyrics::sanitizeText(const QByteArray& data)
     return s;
 }
 
-void Lyrics::slotMidiText(const int track, const int type, const QByteArray &data)
+void Lyrics::slotMidiText(const int track, const int type, int ticks, const QByteArray &data)
 {
-    Q_UNUSED(type)
     //qDebug() << Q_FUNC_INFO << track << type << data;
     if ((m_track == 0 || m_track == track) &&
         (m_type == 0 || m_type == type)) {
-        QString s = sanitizeText(data);
-        if ((m_textViewer->find(s.trimmed(), QTextDocument::FindCaseSensitively)) ) {
+        QString stext = sanitizeText(data);
+        //qDebug() << Q_FUNC_INFO << ticks << m_textPos[ticks] << stext;
+        QTextCursor cursor = m_textViewer->textCursor();
+        cursor.movePosition(QTextCursor::Start);
+        cursor.movePosition(QTextCursor::Right, QTextCursor::MoveAnchor, m_textPos[ticks]);
+        m_textViewer->setTextCursor(cursor);
+        if ((m_textViewer->find(stext.trimmed(), QTextDocument::FindCaseSensitively)) ) {
             m_textViewer->setTextColor(m_otherColor);
             QRect r = m_textViewer->cursorRect();
             QScrollBar *s = m_textViewer->verticalScrollBar();
             int half = m_textViewer->viewport()->height() / 2;
             int newpos = s->value() + r.top() - half;
-            if ((r.top() > half) && (newpos < s->maximum()))
+            if ((r.top() > half) && (newpos < s->maximum())) {
                 s->setValue(newpos);
-        }
+            }
+        } /*else {
+            qDebug() << Q_FUNC_INFO << "not found:" << stext;
+        }*/
     }
 }
 
