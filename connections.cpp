@@ -59,12 +59,16 @@ void Connections::reopen()
             if (!conn.first.isEmpty()) {
                 m_midiOut->initialize(settings.getQSettings());
                 m_midiOut->open(conn);
-                auto status = m_midiOut->property("status");
-                if (status.isValid() && !status.toBool()) {
-                    auto diagnostics = m_midiOut->property("diagnostics");
-                    if (diagnostics.isValid()) {
-                        auto text = diagnostics.toStringList().join(QChar::LineFeed).trimmed();
-                        QMessageBox::warning(this, tr("MIDI Output"), text);
+                auto metaObj = m_midiOut->metaObject();
+                if ((metaObj->indexOfProperty("status") != -1) &&
+                    (metaObj->indexOfProperty("diagnostics") != -1)) {
+                    auto status = m_midiOut->property("status");
+                    if (status.isValid() && !status.toBool()) {
+                        auto diagnostics = m_midiOut->property("diagnostics");
+                        if (diagnostics.isValid()) {
+                            auto text = diagnostics.toStringList().join(QChar::LineFeed).trimmed();
+                            QMessageBox::warning(this, tr("MIDI Output"), text);
+                        }
                     }
                 }
             }

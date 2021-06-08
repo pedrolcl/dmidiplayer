@@ -203,12 +203,16 @@ GUIPlayer::GUIPlayer(QWidget *parent)
             m_midiOut->initialize(settings.getQSettings());
             if (!conn.first.isEmpty()) {
                 m_midiOut->open(conn);
-                auto status = m_midiOut->property("status");
-                if (status.isValid() && !status.toBool()) {
-                    auto diagnostics = m_midiOut->property("diagnostics");
-                    if (diagnostics.isValid()) {
-                        auto text = diagnostics.toStringList().join(QChar::LineFeed).trimmed();
-                        qWarning() << "MIDI Output" << text;
+                auto metaObj = m_midiOut->metaObject();
+                if ((metaObj->indexOfProperty("status") != -1) &&
+                    (metaObj->indexOfProperty("diagnostics") != -1)) {
+                    auto status = m_midiOut->property("status");
+                    if (status.isValid() && !status.toBool()) {
+                        auto diagnostics = m_midiOut->property("diagnostics");
+                        if (diagnostics.isValid()) {
+                            auto text = diagnostics.toStringList().join(QChar::LineFeed).trimmed();
+                            qWarning() << "MIDI Output" << text;
+                        }
                     }
                 }
             }

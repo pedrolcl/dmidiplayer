@@ -16,7 +16,6 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-//#include <QDebug>
 #include <QApplication>
 #include <QWidget>
 #include <QCloseEvent>
@@ -263,8 +262,11 @@ void Lyrics::displayText()
     if (m_song != nullptr) {
         QList<QPair<int,QByteArray>> textList = m_song->getRawText(m_track, static_cast<Sequence::TextType>(m_type));
         foreach(const auto& p, textList) {
-            QString s = sanitizeText(p.second);
-            m_textPos.insert(p.first,  m_textViewer->textCursor().position());
+            auto cp = m_textViewer->textCursor().position();
+            auto s = sanitizeText(p.second);
+            if (!m_textPos.contains(p.first)) {
+                m_textPos.insert(p.first, cp);
+            }
             m_textViewer->insertPlainText(s);
         }
         m_textViewer->moveCursor(QTextCursor::Start);
@@ -341,16 +343,19 @@ QString Lyrics::sanitizeText(const QByteArray& data)
 
 void Lyrics::slotMidiText(const int track, const int type, int ticks, const QByteArray &data)
 {
-    //qDebug() << Q_FUNC_INFO << track << type << data;
     if ((m_track == 0 || m_track == track) &&
         (m_type == 0 || m_type == type)) {
-        QString stext = sanitizeText(data);
-        //qDebug() << Q_FUNC_INFO << ticks << m_textPos[ticks] << stext;
-        QTextCursor cursor = m_textViewer->textCursor();
-        cursor.movePosition(QTextCursor::Start);
-        cursor.movePosition(QTextCursor::Right, QTextCursor::MoveAnchor, m_textPos[ticks]);
-        m_textViewer->setTextCursor(cursor);
-        if ((m_textViewer->find(stext.trimmed(), QTextDocument::FindCaseSensitively)) ) {
+        QString stext = sanitizeText(data).trimmed();
+        if (stext.isEmpty()) {
+            return;
+        }
+        if (m_textPos.contains(ticks)) {
+            //qDebug() << ticks << m_textPos[ticks] << stext;
+            QTextCursor cursor = m_textViewer->textCursor();
+            cursor.setPosition(m_textPos[ticks]);
+            m_textViewer->setTextCursor(cursor);
+        }
+        if (m_textViewer->find(stext)) {
             m_textViewer->setTextColor(m_otherColor);
             QRect r = m_textViewer->cursorRect();
             QScrollBar *s = m_textViewer->verticalScrollBar();
