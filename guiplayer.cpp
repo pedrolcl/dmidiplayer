@@ -181,8 +181,6 @@ GUIPlayer::GUIPlayer(QWidget *parent)
         SettingsFactory settings;
         m_connections = new Connections(this);
         m_connections->setOutputs(outputs);
-        m_connections->setOutput(m_midiOut);
-        m_connections->setAdvanced(Settings::instance()->advanced());
 
         QString lastConn = Settings::instance()->lastOutputConnection();
         if (m_midiOut != 0 && !lastConn.isEmpty()) {
@@ -441,6 +439,8 @@ void GUIPlayer::open()
 void GUIPlayer::setup()
 {
     MIDIConnection conn;
+    m_connections->setOutput(m_midiOut);
+    m_connections->setAdvanced(Settings::instance()->advanced());
     m_connections->refresh();
     if (m_connections->exec() == QDialog::Accepted) {
         if (m_midiOut != m_connections->getOutput()) {
