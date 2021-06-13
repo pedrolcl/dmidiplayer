@@ -34,6 +34,11 @@
 #include <QTextCodec>
 #include <QScrollBar>
 #include <QToolBar>
+#include <QClipboard>
+#include <QSaveFile>
+#include <QPrintDialog>
+#include <QPrinter>
+
 #include <drumstick/settingsfactory.h>
 #include "settings.h"
 #include "iconutils.h"
@@ -62,16 +67,12 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     tbar->setFloatable(false);
     tbar->setIconSize(QSize(22,22));
     addToolBar(tbar);
-//    m_actionOpen = new QAction(this);
-//    m_actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
-//    m_actionQuit = new QAction(this);
-//    m_actionQuit->setObjectName(QString::fromUtf8("actionQuit"));
-//    m_actionAbout = new QAction(this);
-//    m_actionAbout->setObjectName(QString::fromUtf8("actionAbout"));
-//    m_actionAbout_Qt = new QAction(this);
-//    m_actionAbout_Qt->setObjectName(QString::fromUtf8("actionAbout_Qt"));
-//    m_actionInfo = new QAction(this);
-//    m_actionInfo->setObjectName(QString::fromUtf8("actionInfo"));
+    m_actionCopy = new QAction(this);
+    m_actionCopy->setObjectName(QString::fromUtf8("actionCopy"));
+    m_actionSave = new QAction(this);
+    m_actionSave->setObjectName(QString::fromUtf8("actionSave"));
+    m_actionPrint = new QAction(this);
+    m_actionPrint->setObjectName(QString::fromUtf8("actionPrint"));
     m_label1 = new QLabel(this);
     m_label1->setObjectName(QString::fromUtf8("label1"));
     tbar->addWidget(m_label1);
@@ -110,6 +111,9 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     m_comboCodec->setStyleSheet("combobox-popup: 0;");
     tbar->addWidget(m_comboCodec);
     m_chmenu = new QMenu(this);
+    m_chmenu->addAction(m_actionCopy);
+    m_chmenu->addAction(m_actionSave);
+    m_chmenu->addAction(m_actionPrint);
     m_actionFullScreen = new QAction(this); // Full Screen
     m_actionFullScreen->setShortcut(QKeySequence::FullScreen);
     m_chmenu->addAction(m_actionFullScreen);
@@ -143,6 +147,9 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     connect(m_comboCodec, QOverload<int>::of(&QComboBox::activated), this, &Lyrics::codecChanged);
     connect(m_actionFullScreen, &QAction::triggered, this, &Lyrics::toggleFullScreen);
     connect(m_actionFont, &QAction::triggered, this, &Lyrics::changeFont);
+    connect(m_actionCopy, &QAction::triggered, this, &Lyrics::slotCopy);
+    connect(m_actionSave, &QAction::triggered, this, &Lyrics::slotSave);
+    connect(m_actionPrint, &QAction::triggered, this, &Lyrics::slotPrint);
     readSettings();
     retranslateUi();
     applySettings();
@@ -183,8 +190,11 @@ void Lyrics::retranslateUi()
     m_comboType->setItemText(7, QApplication::translate("Lyrics", "Cue Point", nullptr));
 
     m_label3->setText(QApplication::translate("Lyrics", "Encoding:", nullptr));
-    m_actionFont->setText(QApplication::translate("Lyrics", "Font", nullptr));
+    m_actionFont->setText(QApplication::translate("Lyrics", "Font...", nullptr));
     m_actionFullScreen->setText(QApplication::translate("Lyrics", "Full Screen", nullptr));
+    m_actionCopy->setText(QApplication::translate("Lyrics", "Copy to clipboard", nullptr));
+    m_actionSave->setText(QApplication::translate("Lyrics", "Save to file...", nullptr));
+    m_actionPrint->setText(QApplication::translate("Lyrics", "Print...", nullptr));
 }
 
 void Lyrics::closeEvent(QCloseEvent *event)
@@ -279,6 +289,47 @@ void Lyrics::toggleFullScreen(bool /*enabled*/)
         showNormal();
     } else {
         showFullScreen();
+    }
+}
+
+void Lyrics::slotCopy()
+{
+    QClipboard *clipboard = QGuiApplication::clipboard();
+    clipboard->setText(m_textViewer->toPlainText());
+}
+
+void Lyrics::slotSave()
+{
+    QFileInfo info(m_song->currentFile());
+    QFileDialog dialog(this);
+    dialog.setWindowModality(Qt::WindowModal);
+    dialog.setAcceptMode(QFileDialog::AcceptSave);
+    dialog.setDefaultSuffix("txt");
+    dialog.setNameFilters({"Text files (*.txt)","Any files (*)"});
+    dialog.selectFile(info.baseName() + ".txt");
+    if (dialog.exec() == QDialog::Accepted) {
+        QStringList fileNames = dialog.selectedFiles();
+        QSaveFile file(fileNames.first());
+        if (file.open(QFile::WriteOnly | QFile::Text)) {
+            QTextStream out(&file);
+            out.setCodec(m_codec);
+            out << m_textViewer->toPlainText();
+        }
+        file.commit();
+    }
+}
+
+void Lyrics::slotPrint()
+{
+    QFileInfo info(m_song->currentFile());
+    QPrinter printer(QPrinter::HighResolution);
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setOutputFileName(info.baseName() + ".pdf");
+
+    QPrintDialog printDialog(&printer, this);
+    if (printDialog.exec() == QDialog::Accepted) {
+        QTextDocument doc(m_textViewer->toPlainText());
+        doc.print(&printer);
     }
 }
 

@@ -38,7 +38,7 @@ option(BUILD_DOCS "Build man pages" ON)
 include(SCMRevision)
 
 find_package (QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
-find_package (Qt${QT_VERSION_MAJOR} COMPONENTS Gui Widgets LinguistTools REQUIRED)
+find_package (Qt${QT_VERSION_MAJOR} COMPONENTS Gui Widgets PrintSupport LinguistTools REQUIRED)
 find_package (Drumstick 2.3 COMPONENTS File RT Widgets REQUIRED)
 
 find_package( PkgConfig )
@@ -162,6 +162,7 @@ add_executable ( ${PROJECT_NAME} ${SOURCES} )
 
 target_link_libraries ( ${PROJECT_NAME} PRIVATE
     Qt5::Widgets
+    Qt5::PrintSupport
     Drumstick::File
     Drumstick::RT
     Drumstick::Widgets

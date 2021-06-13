@@ -55,6 +55,9 @@ public slots:
     void changeFont();
     void displayText();
     void toggleFullScreen(bool enabled);
+    void slotCopy();
+    void slotSave();
+    void slotPrint();
 
 signals:
     void closed();
@@ -76,11 +79,9 @@ private: // member vars
     QTextCodec *m_codec;
     QColor m_normalColor;
     QColor m_otherColor;
-//    QAction *m_actionOpen;
-//    QAction *m_actionQuit;
-//    QAction *m_actionAbout;
-//    QAction *m_actionAbout_Qt;
-//    QAction *m_actionInfo;
+    QAction *m_actionCopy;
+    QAction *m_actionSave;
+    QAction *m_actionPrint;
     QAction *m_actionFont;
     QAction *m_actionFullScreen;
     QLabel *m_label1;
