@@ -173,15 +173,9 @@ GUIPlayer::GUIPlayer(QWidget *parent)
         man.refresh(Settings::instance()->settingsMap());
         QList<MIDIOutput*> outputs = man.availableOutputs();
 
-        m_midiOut = man.outputBackendByName(Settings::instance()->lastOutputBackend());
+        m_midiOut = man.findOutput(Settings::instance()->lastOutputBackend());
         if (m_midiOut == nullptr) {
-            if (Settings::instance()->lastOutputBackend() != Settings::instance()->nativeOutput()) {
-                qWarning() << "Last MIDI OUT driver" << Settings::instance()->lastOutputBackend() << "not found";
-            }
-            m_midiOut = man.outputBackendByName(Settings::instance()->nativeOutput());
-            if (m_midiOut == nullptr) {
-                qWarning() << "Default MIDI OUT driver" << Settings::instance()->nativeOutput() << "not found";
-            }
+            qWarning() << "MIDI OUT driver not found";
         }
 
         SettingsFactory settings;

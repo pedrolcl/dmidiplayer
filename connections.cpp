@@ -28,7 +28,8 @@ Connections::Connections(QWidget *parent)
     : QDialog(parent),
       m_advanced(false),
       m_settingsChanged(false),
-      m_midiOut(0)
+      m_midiOut(nullptr),
+      m_savedOut(nullptr)
 {
     ui.setupUi(this);
     connect(ui.m_advanced, &QCheckBox::clicked, this, &Connections::clickedAdvanced);
@@ -37,28 +38,36 @@ Connections::Connections(QWidget *parent)
     ui.m_advanced->setChecked(m_advanced);
 }
 
+void Connections::setOutput(drumstick::rt::MIDIOutput *out)
+{
+    m_savedOut = m_midiOut = out;
+    m_connOut = out->currentConnection();
+}
+
 void Connections::setOutputs(QList<MIDIOutput *> outs)
 {
     ui.m_outputBackends->disconnect();
     foreach(MIDIOutput *o, outs) {
-        //qDebug() << Q_FUNC_INFO << o->backendName();
         ui.m_outputBackends->addItem(o->backendName(), QVariant::fromValue((void *) o));
     }
     connect(ui.m_outputBackends, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Connections::refreshOutputs);
 }
 
+MIDIOutput *Connections::getOutput()
+{
+    return m_midiOut;
+}
+
 void Connections::reopen()
 {
-    MIDIConnection conn;
     SettingsFactory settings;
     m_advanced = ui.m_advanced->isChecked();
     if (m_midiOut != 0) {
-        conn = ui.m_outputPorts->currentData().value<MIDIConnection>();
-        if (conn != m_midiOut->currentConnection() || m_settingsChanged) {
+        if (m_connOut != m_midiOut->currentConnection() || m_settingsChanged) {
             m_midiOut->close();
-            if (!conn.first.isEmpty()) {
+            if (!m_connOut.first.isEmpty()) {
                 m_midiOut->initialize(settings.getQSettings());
-                m_midiOut->open(conn);
+                m_midiOut->open(m_connOut);
                 auto metaObj = m_midiOut->metaObject();
                 if ((metaObj->indexOfProperty("status") != -1) &&
                     (metaObj->indexOfProperty("diagnostics") != -1)) {
@@ -79,12 +88,14 @@ void Connections::reopen()
 
 void Connections::accept()
 {
+    m_connOut = ui.m_outputPorts->currentData().value<MIDIConnection>();
     reopen();
     QDialog::accept();
 }
 
 void Connections::reject()
 {
+    m_midiOut = m_savedOut;
     reopen();
     QDialog::reject();
 }
@@ -93,7 +104,6 @@ void Connections::refresh()
 {
     m_advanced = ui.m_advanced->isChecked();
     if (m_midiOut != 0) {
-        //qDebug() << Q_FUNC_INFO << m_midiOut->backendName();
         ui.m_outputBackends->setCurrentText(m_midiOut->backendName());
         refreshOutputs(ui.m_outputBackends->currentIndex());
     }
@@ -114,10 +124,15 @@ void Connections::refreshOutputs(int idx)
     }
     ui.m_outputPorts->clear();
     if (m_midiOut != 0) {
-        foreach(const auto& conn, m_midiOut->connections(m_advanced)) {
+        auto connections = m_midiOut->connections(m_advanced);
+        foreach(const auto& conn, connections) {
             ui.m_outputPorts->addItem(conn.first, QVariant::fromValue(conn));
         }
-        ui.m_outputPorts->setCurrentText(m_midiOut->currentConnection().first);
+        QString conn = m_midiOut->currentConnection().first;
+        if (conn.isEmpty()) {
+            conn = connections.first().first;
+        }
+        ui.m_outputPorts->setCurrentText(conn);
     }
 }
 

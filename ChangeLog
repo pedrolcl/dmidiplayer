@@ -1,3 +1,10 @@
+2021-06-13
+    * Implemented ticket #9: (drumstick ticket #31) fallback output drivers
+    * Bump version number to 1.4.0
+
+2021-06-04
+    * Implemented ticket #1: Positioning
+
 2021-06-01
     * Release v1.3.1
 

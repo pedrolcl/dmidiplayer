@@ -35,19 +35,6 @@ using namespace drumstick::widgets;
 
 Settings::Settings(QObject *parent) : QObject(parent)
 {
-#if defined(Q_OS_LINUX)
-    m_defaultOutputBackend = QLatin1String("SonivoxEAS");
-    m_defaultOutputConnection = QLatin1String("SonivoxEAS");
-#elif defined(Q_OS_MACOS)
-    m_defaultOutputBackend = QLatin1String("DLS Synth");
-    m_defaultOutputConnection = QLatin1String("DLS Synth");
-#elif defined(Q_OS_WIN)
-    m_defaultOutputBackend = QLatin1String("Windows MM");
-    m_defaultOutputConnection = QLatin1String("Microsoft GS Wavetable Synth");
-#else
-    m_defaultOutputBackend = m_defaultInputBackend;
-    m_defaultOutputConnection = m_defaultInputConnection;
-#endif
     ResetDefaults();
     ReadSettings();
 }
@@ -191,8 +178,8 @@ void Settings::internalRead(QSettings &settings)
 
     settings.beginGroup("Connections");
     m_advanced = settings.value("advanced", false).toBool();
-    m_lastOutputBackend = settings.value("outputBackend", m_defaultOutputBackend).toString();
-    m_lastOutputConnection = settings.value("outputConnection", m_defaultOutputConnection).toString();
+    m_lastOutputBackend = settings.value("outputBackend").toString();
+    m_lastOutputConnection = settings.value("outputConnection").toString();
     settings.endGroup();
 
     settings.beginGroup("Preferences");
@@ -241,9 +228,6 @@ void Settings::internalRead(QSettings &settings)
     m_velocityColor = settings.value("VelocityColor", true).toBool();
     setNamesVisibility(static_cast<LabelVisibility>(settings.value("NamesVisibility", ShowNever).toInt()));
     m_singleColor = QColor(settings.value("SingleColor", m_paletteList[0].getColor(0).name(QColor::HexRgb)).toString());
-//  setNamesOrientation(static_cast<LabelOrientation>(settings.value("namesOrientation", HorizontalOrientation).toInt()));
-//  setNamesAlterations(static_cast<LabelAlteration>(settings.value("namesAlteration", ShowSharps).toInt()));
-//  setNamesOctave(static_cast<LabelCentralOctave>(settings.value("namesOctave", OctaveC4).toInt()));
     settings.endGroup();
 
     emit ValuesChanged();
@@ -301,9 +285,6 @@ void Settings::internalSave(QSettings &settings)
     settings.setValue("PaletteId", m_highlightPaletteId);
     settings.setValue("NamesVisibility", m_namesVisibility);
     settings.setValue("SingleColor", m_singleColor.name(QColor::HexRgb));
-    // settings.setValue("namesOrientation", m_namesOrientation);
-    // settings.setValue("namesAlteration", m_namesAlteration);
-    // settings.setValue("namesOctave", m_namesOctave);
     settings.endGroup();
 
     settings.sync();
@@ -494,11 +475,6 @@ QVariantMap Settings::settingsMap() const
     return m_settingsMap;
 }
 
-QString Settings::nativeOutput() const
-{
-    return m_defaultOutputBackend;
-}
-
 bool Settings::advanced() const
 {
     return m_advanced;
@@ -630,33 +606,3 @@ void Settings::setNamesVisibility(const LabelVisibility namesVisibility)
 {
     m_namesVisibility = namesVisibility;
 }
-
-//LabelAlteration Settings::alterations() const
-//{
-//    return m_namesAlteration;
-//}
-
-//void Settings::setNamesAlterations(const LabelAlteration alterations)
-//{
-//    m_namesAlteration = alterations;
-//}
-
-//LabelOrientation Settings::namesOrientation() const
-//{
-//    return m_namesOrientation;
-//}
-
-//void Settings::setNamesOrientation(const LabelOrientation namesOrientation)
-//{
-//    m_namesOrientation = namesOrientation;
-//}
-
-//LabelCentralOctave Settings::namesOctave() const
-//{
-//    return m_namesOctave;
-//}
-
-//void Settings::setNamesOctave(const LabelCentralOctave namesOctave)
-//{
-//    m_namesOctave = namesOctave;
-//}

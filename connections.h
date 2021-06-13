@@ -31,9 +31,9 @@ class Connections : public QDialog
 
 public:
     Connections(QWidget *parent = 0);
-    void setOutput(drumstick::rt::MIDIOutput *out) { m_midiOut = out; }
+    void setOutput(drumstick::rt::MIDIOutput *out);
     void setOutputs(QList<drumstick::rt::MIDIOutput *> outs);
-    drumstick::rt::MIDIOutput *getOutput() { return m_midiOut; }
+    drumstick::rt::MIDIOutput *getOutput();
     void setAdvanced(bool value);
     bool advanced();
     void retranslateUi();
@@ -43,15 +43,16 @@ public slots:
     void clickedAdvanced(bool value);
     void refreshOutputs(int idx);
     void refresh();
+    void reopen();
     void accept() override;
     void reject() override;
 
 private:
     bool m_advanced;
     bool m_settingsChanged;
-    drumstick::rt::MIDIOutput* m_midiOut;
+    drumstick::rt::MIDIOutput *m_midiOut, *m_savedOut;
+    drumstick::rt::MIDIConnection m_connOut;
     Ui::ConnectionsClass ui;
-    void reopen();
 };
 
 #endif // CONNECTIONS_H

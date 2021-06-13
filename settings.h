@@ -51,7 +51,6 @@ public:
     bool advanced() const;
     void setAdvanced(bool advanced);
 
-    QString nativeOutput() const;
     QVariantMap settingsMap() const;
 
     QString language() const;
@@ -85,13 +84,6 @@ public:
 
     LabelVisibility namesVisibility() const;
     void setNamesVisibility(const LabelVisibility namesVisibility);
-
-//    LabelOrientation namesOrientation() const;
-//    void setNamesOrientation(const LabelOrientation namesOrientation);
-//    LabelAlteration alterations() const;
-//    void setNamesAlterations(const LabelAlteration alterations);
-//    LabelCentralOctave namesOctave() const;
-//    void setNamesOctave(const LabelCentralOctave namesOctave);
 
     QFont notesFont() const;
     void setNotesFont(const QFont &namesFont);
@@ -176,17 +168,11 @@ private:
     bool m_internalIcons;
     int m_sysexResetMessage;
     LabelVisibility m_namesVisibility;
-//    LabelAlteration m_namesAlteration;
-//    LabelCentralOctave m_namesOctave;
-//    LabelOrientation m_namesOrientation;
     QFont m_notesFont;
     QFont m_lyricsFont;
     QColor m_futureColor;
     QColor m_pastColor;
     QColor m_singleColor;
-
-    QString m_defaultOutputBackend;
-    QString m_defaultOutputConnection;
     QString m_language;
     QVariantMap m_settingsMap;
     QVariantMap m_defaultsMap;
