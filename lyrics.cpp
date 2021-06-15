@@ -38,6 +38,7 @@
 #include <QSaveFile>
 #include <QPrintDialog>
 #include <QPrinter>
+#include <QRegularExpression>
 
 #include <drumstick/settingsfactory.h>
 #include "settings.h"
@@ -204,7 +205,13 @@ void Lyrics::closeEvent(QCloseEvent *event)
     event->accept();
 }
 
-bool Lyrics::nativeEvent(const QByteArray &eventType, void *message, long *result)
+bool Lyrics::nativeEvent(const QByteArray &eventType, void *message,
+ #if QT_VERSION < QT_VERSION_CHECK(6,0,0)
+                          long *result
+ #else
+                          qintptr *result
+ #endif
+                         )
 {
 #if defined(Q_OS_WINDOWS)
     if (m_snapper.HandleMessage(message)) {
@@ -311,9 +318,14 @@ void Lyrics::slotSave()
         QStringList fileNames = dialog.selectedFiles();
         QSaveFile file(fileNames.first());
         if (file.open(QFile::WriteOnly | QFile::Text)) {
+#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
             QTextStream out(&file);
             out.setCodec(m_codec);
             out << m_textViewer->toPlainText();
+#else
+            QByteArray encoded = m_codec->fromUnicode(m_textViewer->toPlainText());
+            file.write(encoded);
+#endif
         }
         file.commit();
     }
@@ -321,11 +333,12 @@ void Lyrics::slotSave()
 
 void Lyrics::slotPrint()
 {
-    QFileInfo info(m_song->currentFile());
     QPrinter printer(QPrinter::HighResolution);
+#if  QT_VERSION < QT_VERSION_CHECK(6,0,0)
+    QFileInfo info(m_song->currentFile());
     printer.setOutputFormat(QPrinter::PdfFormat);
     printer.setOutputFileName(info.baseName() + ".pdf");
-
+#endif
     QPrintDialog printDialog(&printer, this);
     if (printDialog.exec() == QDialog::Accepted) {
         QTextDocument doc(m_textViewer->toPlainText());
@@ -385,9 +398,9 @@ QString Lyrics::sanitizeText(const QByteArray& data)
     } else {
         s = m_codec->toUnicode(data);
     }
-    s.replace(QRegExp("@[IKLTVW]"), "\n");
-    s.replace(QRegExp("[/\\\\]+"), "\n");
-    s.replace(QRegExp("[\r\n]+"), "\n");
+    s.replace(QRegularExpression("@[IKLTVW]"), "\n");
+    s.replace(QRegularExpression("[/\\\\]+"), "\n");
+    s.replace(QRegularExpression("[\r\n]+"), "\n");
     s.replace('\0', QChar::Space);
     return s;
 }

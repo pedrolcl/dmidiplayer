@@ -18,7 +18,6 @@
 
 #include <QFileInfo>
 #include <QDir>
-#include <QTouchDevice>
 #include <QLibraryInfo>
 
 #if defined(Q_OS_MACOS)

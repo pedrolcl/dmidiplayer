@@ -92,7 +92,13 @@ protected:
     void dragEnterEvent( QDragEnterEvent* event ) override;
     void dropEvent( QDropEvent* event ) override;
     void closeEvent( QCloseEvent* event ) override;
-    bool nativeEvent( const QByteArray &eventType, void *message, long *result ) override;
+    bool nativeEvent( const QByteArray &eventType, void *message,
+#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
+                    long *result
+#else
+                    qintptr *result
+#endif
+    ) override;
     void showEvent(QShowEvent *event) override;
 
 public slots:

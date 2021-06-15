@@ -26,6 +26,8 @@
 #include <QTimer>
 #include <QMimeData>
 #include <QtMath>
+#include <QActionGroup>
+
 #include <drumstick/settingsfactory.h>
 #include "guiplayer.h"
 #include "ui_guiplayer.h"
@@ -776,7 +778,13 @@ void GUIPlayer::slotShowRhythm(bool checked)
     m_ui->rhythm->setVisible(checked);
 }
 
-bool GUIPlayer::nativeEvent(const QByteArray &eventType, void *message, long *result)
+bool GUIPlayer::nativeEvent(const QByteArray &eventType, void *message,
+#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
+                            long *result
+#else
+                            qintptr *result
+#endif
+                           )
 {
 #if defined(Q_OS_WINDOWS)
     if (Settings::instance()->winSnap() && m_snapper.HandleMessage(message)) {

@@ -86,7 +86,13 @@ public slots:
 protected:
     void closeEvent( QCloseEvent *event)  override;
     void timerEvent( QTimerEvent *event ) override;
-    bool nativeEvent( const QByteArray &eventType, void *message, long *result ) override;
+    bool nativeEvent( const QByteArray &eventType, void *message,
+#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
+                      long *result
+#else
+                      qintptr *result
+#endif
+    ) override;
 
 private:
     int m_timerId;

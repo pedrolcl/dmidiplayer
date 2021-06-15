@@ -22,6 +22,7 @@
 #include <QMainWindow>
 #include <QObject>
 #include <QMap>
+#include <QTextCodec>
 
 #if defined(Q_OS_WINDOWS)
 #include "winsnap.h"
@@ -64,7 +65,13 @@ signals:
 
 protected:
     void closeEvent( QCloseEvent *event)  override;
-    bool nativeEvent( const QByteArray &eventType, void *message, long *result ) override;
+    bool nativeEvent( const QByteArray &eventType, void *message,
+#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
+                  long *result
+#else
+                  qintptr *result
+#endif
+    ) override;
 
 private: // methods
     void populateCodecsCombo();

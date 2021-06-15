@@ -19,6 +19,7 @@
 //#include <QDebug>
 #include <QtMath>
 #include <QFileInfo>
+#include <QRegularExpression>
 #include "sequence.h"
 
 using namespace drumstick::File;
@@ -369,10 +370,10 @@ int Sequence::getNumTracks() const
 void Sequence::appendStringToList(QStringList &list, QString &s, TextType type)
 {
     if (type == Text || type >= KarFileType)
-        s.replace(QRegExp("@[IKLTVW]"), "\n");
+        s.replace(QRegularExpression("@[IKLTVW]"), "\n");
     if (type == Text || type == Lyric)
-        s.replace(QRegExp("[/\\\\]+"), "\n");
-    s.replace(QRegExp("[\r\n]+"), "\n");
+        s.replace(QRegularExpression("[/\\\\]+"), "\n");
+    s.replace(QRegularExpression("[\r\n]+"), "\n");
     s.replace('\0', QChar::Space);
     list.append(s);
 }

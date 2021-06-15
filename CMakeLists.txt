@@ -44,6 +44,10 @@ find_package (Drumstick 2.3 COMPONENTS File RT Widgets REQUIRED)
 find_package( PkgConfig )
 pkg_check_modules( UCHARDET REQUIRED IMPORTED_TARGET uchardet )
 
+if(QT_VERSION VERSION_GREATER_EQUAL 6.0.0)
+    find_package(Qt6 COMPONENTS Core5Compat REQUIRED)
+endif()
+
 SET(SOURCES
     channels.cpp
     channels.h
@@ -161,13 +165,19 @@ message (STATUS "Drumstick MIDI File Player v${PROJECT_VERSION}
 add_executable ( ${PROJECT_NAME} ${SOURCES} )
 
 target_link_libraries ( ${PROJECT_NAME} PRIVATE
-    Qt5::Widgets
-    Qt5::PrintSupport
+    Qt${QT_VERSION_MAJOR}::Widgets
+    Qt${QT_VERSION_MAJOR}::PrintSupport
     Drumstick::File
     Drumstick::RT
     Drumstick::Widgets
     PkgConfig::UCHARDET
 )
+
+if (QT_VERSION VERSION_GREATER_EQUAL 6.0.0)
+    target_link_libraries( ${PROJECT_NAME} PRIVATE
+        Qt6::Core5Compat
+    )
+endif()
 
 if (WIN32)
     set_target_properties ( ${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE true )
