@@ -16,6 +16,9 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <algorithm>
+#include <random>
+
 //#include <QDebug>
 #include <QListView>
 #include <QPushButton>
@@ -58,6 +61,10 @@ PlayList::PlayList(QWidget *parent) : QDialog(parent),
     m_btnDwn->setIcon( IconUtils::GetIcon("go-down") );
     connect( m_btnDwn, &QAbstractButton::clicked, this, &PlayList::moveDown );
 
+    m_btnShuffle = ui.listButtons->addButton( tr("Shuffle"), QDialogButtonBox::ActionRole );
+    m_btnShuffle->setIcon( IconUtils::GetIcon("media-playlist-shuffle") );
+    connect( m_btnShuffle, &QAbstractButton::clicked, this, &PlayList::shuffle );
+
     m_btnClear = ui.listButtons->addButton( tr("Clear"), QDialogButtonBox::ActionRole );
     m_btnClear->setIcon( IconUtils::GetIcon("edit-clear") );
     connect( m_btnClear, &QAbstractButton::clicked, this, &PlayList::clear );
@@ -94,6 +101,7 @@ void PlayList::loadPlayList(const QString &fileName)
         file.close();
         Settings::instance()->setLastPlayList(fileName);
         m_isDirty=false;
+        updateCaption();
     }
 }
 
@@ -140,6 +148,7 @@ void PlayList::saveFile()
             file.close();
             Settings::instance()->setLastPlayList(selected.first());
             m_isDirty=false;
+            updateCaption();
         }
     }
 }
@@ -148,6 +157,14 @@ void
 PlayList::itemClicked(QListWidgetItem* item)
 {
     Q_UNUSED(item)
+}
+
+void PlayList::updateCaption()
+{
+    QFileInfo info(Settings::instance()->lastPlayList());
+    QString caption = tr("Manage Playlist: %1 %2").arg(info.fileName(), m_isDirty?"(*)":QString());
+    //qDebug() << Q_FUNC_INFO << caption;
+    setWindowTitle(caption);
 }
 
 void
@@ -166,6 +183,7 @@ PlayList::addToList()
                 m_isDirty=true;
             }
         }
+        updateCaption();
     }
 }
 
@@ -174,6 +192,7 @@ PlayList::removeFromList()
 {
     ui.fileList->takeItem(ui.fileList->currentRow());
     m_isDirty=true;
+    updateCaption();
 }
 
 void
@@ -184,6 +203,7 @@ PlayList::moveUp()
         QListWidgetItem* prev = ui.fileList->takeItem(currentRow - 1);
         ui.fileList->insertItem( currentRow, prev );
         m_isDirty=true;
+        updateCaption();
     }
 }
 
@@ -195,6 +215,7 @@ PlayList::moveDown()
         QListWidgetItem* next = ui.fileList->takeItem(currentRow + 1);
         ui.fileList->insertItem( currentRow, next );
         m_isDirty=true;
+        updateCaption();
     }
 }
 
@@ -209,7 +230,17 @@ PlayList::clear()
     if(ui.fileList->count() > 0) {
         ui.fileList->clear();
         m_isDirty=true;
+        updateCaption();
     }
+}
+
+void PlayList::shuffle()
+{
+    static std::random_device rnd;
+    static auto rng = std::default_random_engine{rnd()};
+    QStringList names = items();
+    std::shuffle(names.begin(), names.end(), rng);
+    setItems(names);
 }
 
 QStringList
@@ -229,6 +260,7 @@ PlayList::setItems(QStringList items)
     ui.fileList->clear();
     ui.fileList->addItems(items);
     m_isDirty = true;
+    updateCaption();
 }
 
 QString
@@ -303,7 +335,7 @@ PlayList::noItems()
 void PlayList::retranslateUi()
 {
     ui.retranslateUi(this);
-    setWindowTitle(tr("Manage Playlist"));
+    //setWindowTitle(tr("Manage Playlist"));
     m_btnAdd->setText(tr("Add"));
     m_btnDel->setText(tr("Remove"));
     m_btnUp->setText(tr("Move Up"));
@@ -311,6 +343,7 @@ void PlayList::retranslateUi()
     m_btnClear->setText(tr("Clear"));
     m_btnOpen->setText(tr("Open"));
     m_btnSave->setText(tr("Save As"));
+    updateCaption();
 }
 
 bool PlayList::isDirty()

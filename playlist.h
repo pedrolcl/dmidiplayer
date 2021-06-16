@@ -1,4 +1,4 @@
-/*
+﻿/*
     Drumstick MIDI/Karaoke Player
     Copyright (C) 2009-2021 Pedro Lopez-Cabanillas <plcl@users.sf.net>
 
@@ -43,6 +43,7 @@ public:
 
 public slots:
     void clear();
+    void shuffle();
     void setItems(QStringList);
     void setCurrentItem(QString);
 
@@ -54,6 +55,7 @@ private slots:
     void moveUp();
     void moveDown();
     void itemClicked ( QListWidgetItem * item );
+    void updateCaption();
 
 private:
     QPushButton* m_btnAdd;
@@ -61,6 +63,7 @@ private:
     QPushButton* m_btnUp;
     QPushButton* m_btnDwn;
     QPushButton* m_btnClear;
+    QPushButton* m_btnShuffle;
     QPushButton* m_btnOpen;
     QPushButton* m_btnSave;
     Ui::PlayList ui;
