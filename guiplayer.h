@@ -74,6 +74,13 @@ public:
     };
     Q_ENUM(PlayerState)
 
+    enum PlaylistRepetition {
+        Nothing,
+        CurrentSong,
+        WholePlaylist
+    };
+    Q_ENUM(PlaylistRepetition)
+
     void appendSMFEvent(MIDIEvent* ev);
     void appendWRKEvent(unsigned long ticks, MIDIEvent* ev);
     void appendOVEEvent(unsigned long ticks, MIDIEvent* ev);
@@ -144,12 +151,15 @@ public slots:
     void slotFileInfo();
     void slotPlayList();
     void slotEditToolbar();
+    void slotPlaylistRepeat(QAction *action);
 
 private:
     void createLanguageMenu();
     void retranslateUi();
+    void connectOutPort();
 
     PlayerState m_state;
+    PlaylistRepetition m_repeat;
     drumstick::rt::MIDIOutput* m_midiOut;
     SequencePlayer* m_player;
     Ui::GUIPlayerClass* m_ui;
@@ -170,7 +180,6 @@ private:
 #if defined(Q_OS_WINDOWS)
     WinSnap m_snapper;
 #endif
-    void connectOutPort();
 };
 
 #endif // INCLUDED_GUIPLAYER_H

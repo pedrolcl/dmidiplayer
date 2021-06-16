@@ -52,6 +52,7 @@ void GUIPlayer::connectOutPort()
 GUIPlayer::GUIPlayer(QWidget *parent)
     : QMainWindow(parent),
     m_state(InvalidState),
+    m_repeat(Nothing),
     m_midiOut(nullptr),
     m_player(nullptr),
     m_ui(new Ui::GUIPlayerClass),
@@ -120,6 +121,12 @@ GUIPlayer::GUIPlayer(QWidget *parent)
     m_recentFiles = new RecentFilesHelper(m_ui->menuRecentFiles);
     connect(m_recentFiles, &RecentFilesHelper::selectedFile, this, &GUIPlayer::openFile);
     m_recentFiles->updateRecentFileActions();
+
+    auto repeatGroup = new QActionGroup(this);
+    repeatGroup->addAction(m_ui->actionNothing);
+    repeatGroup->addAction(m_ui->actionCurrentSong);
+    repeatGroup->addAction(m_ui->actionWholePlaylist);
+    connect(repeatGroup, &QActionGroup::triggered, this, &GUIPlayer::slotPlaylistRepeat);
 
     m_player = new SequencePlayer();
     m_player->moveToThread(&m_playerThread);
@@ -488,6 +495,7 @@ void GUIPlayer::applySettings()
     m_ui->actionBackward->setIcon(IconUtils::GetIcon("media-seek-backward"));
     m_ui->actionJump->setIcon(IconUtils::GetIcon("go-jump"));
     m_ui->customizeToolBar->setIcon(IconUtils::GetIcon("settings"));
+    m_ui->menuPlaylistRepeat->setIcon(IconUtils::GetIcon("media-playlist-repeat"));
 
     m_lyrics->applySettings();
     m_pianola->applySettings();
@@ -507,8 +515,18 @@ void GUIPlayer::playerFinished()
     m_player->resetPosition();
     updateTimeLabel(0);
     updatePositionWidgets();
-    if ( Settings::instance()->autoAdvance()) {
-        nextSong();
+    if (m_repeat == CurrentSong) {
+        QTimer::singleShot(0, this, &GUIPlayer::play);
+    } else if ( Settings::instance()->autoAdvance()) {
+        if (m_playList->atLastItem()) {
+            if (m_repeat == WholePlaylist) {
+                if (m_playList->selectFirstItem()) {
+                    openFile(m_playList->currentItem());
+                }
+            }
+        } else {
+            nextSong();
+        }
     }
 }
 
@@ -963,4 +981,17 @@ void GUIPlayer::slotEditToolbar()
 {
     m_toolbarEditor->initialize();
     m_toolbarEditor->exec();
+}
+
+void GUIPlayer::slotPlaylistRepeat(QAction *action)
+{
+    if (action == m_ui->actionNothing) {
+        m_repeat = Nothing;
+    } else if (action == m_ui->actionCurrentSong) {
+        m_repeat = CurrentSong;
+    } else if (action == m_ui->actionWholePlaylist) {
+        m_repeat = WholePlaylist;
+    } else {
+        m_repeat = Nothing;
+    }
 }

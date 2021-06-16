@@ -33,6 +33,7 @@ public:
     QStringList items();
     int itemCount();
     bool isSupported(const QString& fileName);
+    bool selectFirstItem();
     bool selectNextItem();
     bool selectPrevItem();
     bool atLastItem();

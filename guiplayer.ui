@@ -493,9 +493,18 @@ selection-background-color: blue;</string>
       <string>Open Recent Files</string>
      </property>
     </widget>
+    <widget class="QMenu" name="menuPlaylistRepeat">
+     <property name="title">
+      <string>Playlist Repeat</string>
+     </property>
+     <addaction name="actionNothing"/>
+     <addaction name="actionCurrentSong"/>
+     <addaction name="actionWholePlaylist"/>
+    </widget>
     <addaction name="actionOpen"/>
     <addaction name="actionFileInfo"/>
     <addaction name="menuRecentFiles"/>
+    <addaction name="menuPlaylistRepeat"/>
     <addaction name="actionPlayList"/>
     <addaction name="separator"/>
     <addaction name="actionPlay"/>
@@ -830,6 +839,33 @@ selection-background-color: blue;</string>
   <action name="customizeToolBar">
    <property name="text">
     <string>Customize Tool Bar...</string>
+   </property>
+  </action>
+  <action name="actionNothing">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Nothing</string>
+   </property>
+  </action>
+  <action name="actionCurrentSong">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Current Song</string>
+   </property>
+  </action>
+  <action name="actionWholePlaylist">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Whole Playlist</string>
    </property>
   </action>
  </widget>

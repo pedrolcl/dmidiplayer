@@ -1,6 +1,7 @@
 2021-06-16
     * missing internal icons added
     * implemented playlist function shuffle
+    * implemented ticket #2: Playlist repetition
 
 2021-06-13
     * Implemented ticket #9: (drumstick ticket #31) fallback output drivers

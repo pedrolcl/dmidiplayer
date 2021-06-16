@@ -305,6 +305,16 @@ PlayList::selectPrevItem()
     return false;
 }
 
+bool
+PlayList::selectFirstItem()
+{
+    if (ui.fileList->count() > 0) {
+        ui.fileList->setCurrentRow(0);
+        return true;
+    }
+    return false;
+}
+
 int
 PlayList::itemCount()
 {
