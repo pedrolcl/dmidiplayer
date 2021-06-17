@@ -334,7 +334,7 @@ void Lyrics::slotSave()
 void Lyrics::slotPrint()
 {
     QPrinter printer(QPrinter::HighResolution);
-#if  QT_VERSION < QT_VERSION_CHECK(6,0,0)
+#if defined(Q_OS_LINUX)
     QFileInfo info(m_song->currentFile());
     printer.setOutputFormat(QPrinter::PdfFormat);
     printer.setOutputFileName(info.baseName() + ".pdf");

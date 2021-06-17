@@ -149,6 +149,7 @@ Section -Main SEC0000
     CreateDirectory $INSTDIR\iconengines
     CreateDirectory $INSTDIR\imageformats
     CreateDirectory $INSTDIR\platforms
+    CreateDirectory $INSTDIR\printsupport
     CreateDirectory $INSTDIR\styles
     CreateDirectory $INSTDIR\translations
     CreateDirectory $INSTDIR\drumstick2
@@ -204,6 +205,7 @@ Section -Main SEC0000
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Core.dll $INSTDIR\Qt5Core.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Gui.dll $INSTDIR\Qt5Gui.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Network.dll $INSTDIR\Qt5Network.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5PrintSupport.dll $INSTDIR\Qt5PrintSupport.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Svg.dll $INSTDIR\Qt5Svg.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Widgets.dll $INSTDIR\Qt5Widgets.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\libGLESv2.dll $INSTDIR\libGLESv2.dll $INSTDIR
@@ -225,6 +227,7 @@ Section -Main SEC0000
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\imageformats\qwbmp.dll $INSTDIR\imageformats\qwbmp.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\imageformats\qwebp.dll $INSTDIR\imageformats\qwebp.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\platforms\qwindows.dll $INSTDIR\platforms\qwindows.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\printsupport\windowsprintersupport.dll $INSTDIR\printsupport\windowsprintersupport.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\styles\qwindowsvistastyle.dll $INSTDIR\styles\qwindowsvistastyle.dll $INSTDIR
 
     WriteRegStr HKLM "${REGKEY}\Components" Main 1
@@ -313,6 +316,7 @@ Section /o -un.Main UNSEC0000
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt5Core.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt5Gui.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt5Network.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt5PrintSupport.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt5Svg.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt5Widgets.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libGLESv2.dll
@@ -334,10 +338,12 @@ Section /o -un.Main UNSEC0000
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qwbmp.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qwebp.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\platforms\qwindows.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\printsupport\windowsprintersupport.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\styles\qwindowsvistastyle.dll
     RMDir /REBOOTOK $INSTDIR\translations
     RMDir /REBOOTOK $INSTDIR\styles
     RMDir /REBOOTOK $INSTDIR\platforms
+    RMDir /REBOOTOK $INSTDIR\printsupport
     RMDir /REBOOTOK $INSTDIR\iconengines
     RMDir /REBOOTOK $INSTDIR\imageformats
     RMDir /REBOOTOK $INSTDIR\bearer
