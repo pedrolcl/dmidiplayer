@@ -184,11 +184,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Jump to Bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Saltar al compás</translation>
     </message>
     <message>
         <source>Bar number:</source>
-        <translation type="unfinished"></translation>
+        <translation>Número de compás:</translation>
     </message>
 </context>
 <context>
@@ -447,63 +447,63 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Playlist Repeat</source>
-        <translation type="unfinished"></translation>
+        <translation>Repetición de la lista de reproducción</translation>
     </message>
     <message>
         <source>Pause  playback</source>
-        <translation type="unfinished"></translation>
+        <translation>Pausar reproducción</translation>
     </message>
     <message>
         <source>Stop playback</source>
-        <translation type="unfinished"></translation>
+        <translation>Parar reproducción</translation>
     </message>
     <message>
         <source>Next File</source>
-        <translation type="unfinished"></translation>
+        <translation>Siguiente archivo</translation>
     </message>
     <message>
         <source>Previous File</source>
-        <translation type="unfinished"></translation>
+        <translation>Archivo anterior</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Avanzar</translation>
     </message>
     <message>
         <source>Move play position to the next bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover la posición de reproducción al siguiente compás</translation>
     </message>
     <message>
         <source>Backward</source>
-        <translation type="unfinished"></translation>
+        <translation>Retroceder</translation>
     </message>
     <message>
         <source>Move play position to the previous bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover la posición de reproducción al compás anterior</translation>
     </message>
     <message>
         <source>Jump...</source>
-        <translation type="unfinished"></translation>
+        <translation>Saltar...</translation>
     </message>
     <message>
         <source>Move play position to any bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover la posición de reproducción a cualquier compás</translation>
     </message>
     <message>
         <source>Customize Tool Bar...</source>
-        <translation type="unfinished"></translation>
+        <translation>Personalizar la barra de herramientas...</translation>
     </message>
     <message>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>Nada</translation>
     </message>
     <message>
         <source>Current Song</source>
-        <translation type="unfinished"></translation>
+        <translation>Canción actual</translation>
     </message>
     <message>
         <source>Whole Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Toda la lista de reproducción</translation>
     </message>
 </context>
 <context>
@@ -1113,19 +1113,19 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Font...</source>
-        <translation type="unfinished"></translation>
+        <translation>Fuente...</translation>
     </message>
     <message>
         <source>Copy to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Copiar al portapapeles</translation>
     </message>
     <message>
         <source>Save to file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Guardar en un archivo...</translation>
     </message>
     <message>
         <source>Print...</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimir...</translation>
     </message>
 </context>
 <context>
@@ -1215,11 +1215,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Shuffle</source>
-        <translation type="unfinished"></translation>
+        <translation>Aleatorizar</translation>
     </message>
     <message>
         <source>Manage Playlist: %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Gestionar listas de reproducción: %1 %2</translation>
     </message>
 </context>
 <context>
