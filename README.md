@@ -18,6 +18,19 @@ Some key features:
 * Lyrics, Piano Player and MIDI Channels views
 * Supports MID/KAR (Standard MIDI Files) and WRK (Cakewalk) file formats
 
+New in v1.4.0:
+
+* ticket #1: Playback positioning
+    * Replaced the progress bar by a slider, so the user can change the play position
+    * Added forward/backward actions to advance or go back one bar
+    * Added a Jump action to move the play position to some arbitrary bar
+* ticket #2: Playlist repetition options: Nothing, Last Song, Whole Playlist
+* ticket #8: (Lyrics text) Copy to clipboard, Save to File, Print
+* ticket #9: (after Drumstick ticket #31) Fallback output drivers
+* Playlist function shuffle
+* Toolbar buttons customizing dialog
+* preliminary support for building with Qt6 (experimental)
+
 New in v1.3.1:
 
 * Fix for ticket#4: crash if user tries to close the program's main window while playing

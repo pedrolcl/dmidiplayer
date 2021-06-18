@@ -182,6 +182,14 @@ p, li { white-space: pre-wrap; }
         <source>The current playlist has changed, but it is not saved. The changes will be lost when closing the program.</source>
         <translation>La lista de reproducción actual ha cambiado, pero no ha sido guardada. Los cambios se perderán al cerrar el programa.</translation>
     </message>
+    <message>
+        <source>Jump to Bar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bar number:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>GUIPlayerClass</name>
@@ -231,7 +239,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Playback progress</source>
-        <translation>Progreso de reproducción</translation>
+        <translation type="vanished">Progreso de reproducción</translation>
     </message>
     <message>
         <source>File Name:</source>
@@ -303,7 +311,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Pause the playback</source>
-        <translation>Pausar la reproducción</translation>
+        <translation type="vanished">Pausar la reproducción</translation>
     </message>
     <message>
         <source>Stop</source>
@@ -311,7 +319,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Stop the playback</source>
-        <translation>Parar la reproducción</translation>
+        <translation type="vanished">Parar la reproducción</translation>
     </message>
     <message>
         <source>About</source>
@@ -436,6 +444,66 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Prev</source>
         <translation>Anterior</translation>
+    </message>
+    <message>
+        <source>Playlist Repeat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pause  playback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop playback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Next File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Previous File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move play position to the next bar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backward</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move play position to the previous bar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jump...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move play position to any bar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Customize Tool Bar...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nothing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current Song</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Whole Playlist</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1033,7 +1101,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Font</source>
-        <translation>Fuente</translation>
+        <translation type="vanished">Fuente</translation>
     </message>
     <message>
         <source>Full Screen</source>
@@ -1042,6 +1110,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Default (latin1)</source>
         <translation>Por omisión (latin1)</translation>
+    </message>
+    <message>
+        <source>Font...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save to file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Print...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1128,6 +1212,14 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>All files (*.kar *.mid *.midi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;Cakewalk files (*.wrk)</source>
         <translation>Todos los archivos (*.kar *.mid *.midi *.wrk);;Archivos de Karaoke (*.kar);;Archivos MIDI (*.mid *.midi);;Archivos de Cakewalk (*.wrk)</translation>
+    </message>
+    <message>
+        <source>Shuffle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage Playlist: %1 %2</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

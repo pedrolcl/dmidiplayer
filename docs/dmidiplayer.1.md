@@ -1,4 +1,4 @@
-% DMIDIPLAYER(1) dmidiplayer 1.3.1 | Drumstick MIDI File Player
+% DMIDIPLAYER(1) dmidiplayer 0.0.0 | Drumstick MIDI File Player
 % Pedro López-Cabanillas <plcl@users.sf.net>
 
 # NAME
@@ -111,7 +111,7 @@ _midi_file_
 
     Playlists are simple text files, with a file name on each text line. The file names can be relative to the location of the playlist file itself (so they do not have an absolute path prepended) or each file can have an absolute path on its own.
 
-    Users may have several playlists that can be created easily outside of the program, for instance in the command line this command creates a playlist file named "my_playlist.lst" with all the MIDI files located at the working directory:
+    Users may have several playlists that can be created easily outside of the program, for instance in the Linux command line this command creates a playlist file named "my_playlist.lst" with all the MIDI files located at the working directory:
 
 ~~~
 $ ls -1 *.mid > my_playlist.lst

@@ -30,6 +30,26 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.4.0" date="2021-06-29">
+            <description>
+                <p>This release implements the following new features:</p>
+                <ul>
+                    <li>ticket #1: Playback Positioning
+                        <ul>
+                            <li>Replaced the progress bar by a slider, so the user can change the play position</li>
+                            <li>Added forward/backward actions to advance or go back one bar</li>
+                            <li>Added a Jump action to move the play position to some arbitrary bar</li>
+                        </ul>
+                    </li>
+                    <li>ticket #2: Playlist Repetition Options: Nothing, Last Song, Whole Playlist</li>
+                    <li>ticket #8: (Lyrics text) Copy to clipboard, Save to File, Print</li>
+                    <li>ticket #9: (after Drumstick ticket #31) Fallback Output Drivers</li>
+                    <li>Playlist Function Shuffle</li>
+                    <li>Toolbar Buttons Customizing Dialog</li>
+                </ul>
+            </description>
+            <url>https://sourceforge.net/p/dmidiplayer/blog/2021/06/drumstick-multiplatform-midi-file-player-140-released/</url>
+        </release>
         <release version="1.3.1" date="2021-05-31">
             <description>
                 <p>This release fixes the following tickets:</p>
