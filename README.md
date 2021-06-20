@@ -80,11 +80,11 @@ This multiplatform version offers equivalent functionality replacing Drumstick::
 Alright, these are the build requirements:
 
 * C++11 compiler
-* Qt5
-* [Drumstick 2.2](https://sourceforge.net/projects/drumstick/files/2.2.0/)
+* [Qt 5](https://www.qt.io/download)
+* [Drumstick 2.3](https://sourceforge.net/projects/drumstick/)
 * [Uchardet 0.0.7](https://www.freedesktop.org/wiki/Software/uchardet/)
-* [pandoc](https://github.com/jgm/pandoc) (optional)
-* CMake 3.14
+* [pandoc](https://pandoc.org/) (optional)
+* [CMake 3.14](https://cmake.org/)
 
 Build and deployment commands (for Linux)
 
@@ -99,8 +99,10 @@ $ make install
 ```
 You need to replace the contents of the parameter CMAKE_PREFIX_PATH with the actual paths in your system. There are x86_64 precompiled packages for Linux, Windows and macOS at the releases area.
 
-In addition to the released AppImage for Linux, you may find a [Flatpak at FlatHub](https://flathub.org/apps/details/net.sourceforge.dmidiplayer) and binary packages for several Linux distributions:
+In addition to the released AppImage for Linux, you may find a [Flatpak at FlatHub](https://flathub.org/apps/details/net.sourceforge.dmidiplayer)
+[![Download on FlatHub](https://flathub.org/assets/badges/flathub-badge-en.png)](https://flathub.org/apps/details/net.sourceforge.dmidiplayer)
 
+And binary packages for several Linux distributions:
 [![Packaging status](https://repology.org/badge/vertical-allrepos/dmidiplayer.svg)](https://repology.org/project/dmidiplayer/versions)
 
 Enjoy!
