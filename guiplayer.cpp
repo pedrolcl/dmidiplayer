@@ -77,6 +77,7 @@ GUIPlayer::GUIPlayer(QWidget *parent)
     QCoreApplication::installTranslator(m_trq);
     QCoreApplication::installTranslator(m_trp);
     QCoreApplication::installTranslator(m_trl);
+    Settings::instance()->retranslatePalettes();
 	m_ui->setupUi(this);
 	setAcceptDrops(true);
     connect(m_ui->actionAbout, &QAction::triggered, this, &GUIPlayer::about);
