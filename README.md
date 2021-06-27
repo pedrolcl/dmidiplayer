@@ -30,6 +30,7 @@ New in v1.4.0:
 * Playlist function shuffle
 * Toolbar buttons customizing dialog
 * preliminary support for building with Qt6 (experimental)
+* Czech translation updated, thanks to Pavel Fric
 
 New in v1.3.1:
 
