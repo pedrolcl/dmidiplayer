@@ -95,7 +95,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../connections.cpp" line="79"/>
         <source>MIDI Output</source>
-        <translation type="unfinished"></translation>
+        <translation>MIDI výstup</translation>
     </message>
 </context>
 <context>
@@ -136,12 +136,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.cpp" line="639"/>
         <source>Jump to Bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Skočit na takt</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="640"/>
         <source>Bar number:</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo taktu:</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="876"/>
@@ -228,12 +228,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.cpp" line="966"/>
         <source>Playlist not saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Seznam skladeb není uložen</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="967"/>
         <source>The current playlist has changed, but it is not saved. The changes will be lost when closing the program.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nynější seznam skladeb byl změněn, není však uložen. Změny budou při zavření programu ztraceny.</translation>
     </message>
 </context>
 <context>
@@ -345,7 +345,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="498"/>
         <source>Playlist Repeat</source>
-        <translation type="unfinished"></translation>
+        <translation>Opakování seznamu skladeb</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="522"/>
@@ -423,12 +423,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="629"/>
         <source>Pause  playback</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozastavit přehrávání</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="640"/>
         <source>Stop playback</source>
-        <translation type="unfinished"></translation>
+        <translation>Zastavit přehrávání</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="648"/>
@@ -553,7 +553,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="804"/>
         <source>Next File</source>
-        <translation type="unfinished"></translation>
+        <translation>Další soubor</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="809"/>
@@ -563,57 +563,57 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="812"/>
         <source>Previous File</source>
-        <translation type="unfinished"></translation>
+        <translation>Předchozí soubor</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="817"/>
         <source>Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Dopředu</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="820"/>
         <source>Move play position to the next bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Přesunout polohu přehrávání na další takt</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="825"/>
         <source>Backward</source>
-        <translation type="unfinished"></translation>
+        <translation>Dozadu</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="828"/>
         <source>Move play position to the previous bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Přesunout polohu přehrávání na předchozí takt</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="833"/>
         <source>Jump...</source>
-        <translation type="unfinished"></translation>
+        <translation>Skočit...</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="836"/>
         <source>Move play position to any bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Přesunout polohu přehrávání na jakýkoli takt</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="841"/>
         <source>Customize Tool Bar...</source>
-        <translation type="unfinished"></translation>
+        <translation>Přizpůsobit nástrojový pruh...</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="852"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>Nic</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="860"/>
         <source>Current Song</source>
-        <translation type="unfinished"></translation>
+        <translation>Nynější píseň</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="868"/>
         <source>Whole Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Celý seznam skladeb</translation>
     </message>
 </context>
 <context>
@@ -1334,7 +1334,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../lyrics.cpp" line="194"/>
         <source>Font...</source>
-        <translation type="unfinished"></translation>
+        <translation>Písmo...</translation>
     </message>
     <message>
         <source>Font</source>
@@ -1348,17 +1348,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../lyrics.cpp" line="196"/>
         <source>Copy to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopírovat do schránky</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="197"/>
         <source>Save to file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit do souboru...</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="198"/>
         <source>Print...</source>
-        <translation type="unfinished"></translation>
+        <translation>Tisk...</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="251"/>
@@ -1454,7 +1454,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../playlist.cpp" line="64"/>
         <source>Shuffle</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamíchat</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="68"/>
@@ -1493,7 +1493,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../playlist.cpp" line="165"/>
         <source>Manage Playlist: %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Spravovat seznam skladeb: %1 %2</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="174"/>
@@ -1556,7 +1556,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="77"/>
         <source>Advance Automatically to the Next Playlist item</source>
-        <translation type="unfinished"></translation>
+        <translation>Automaticky přejít na další položku seznamu skladeb</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="154"/>
