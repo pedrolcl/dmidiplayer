@@ -31,6 +31,7 @@ New in v1.4.0:
 * Toolbar buttons customizing dialog
 * preliminary support for building with Qt6 (experimental)
 * Czech translation updated, thanks to Pavel Fric
+* New CMake option EMBED_TRANSLATIONS
 
 New in v1.3.1:
 
