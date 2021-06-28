@@ -34,6 +34,7 @@ set(CMAKE_AUTOUIC ON)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 option(BUILD_DOCS "Build man pages" ON)
+option(EMBED_TRANSLATIONS "Embed translations instead of installing" OFF)
 
 include(SCMRevision)
 
@@ -118,6 +119,17 @@ else()
     qt_add_translation (QM_FILES ${TRANSLATIONS})
 endif()
 add_custom_target (translations ALL DEPENDS ${QM_FILES})
+include(TranslationUtils)
+
+if (EMBED_TRANSLATIONS)
+    get_target_property(DRUMSTICK_LOCATION Drumstick::Widgets INTERFACE_INCLUDE_DIRECTORIES)
+    get_filename_component(DRUMSTICK_PREFIX ${DRUMSTICK_LOCATION} DIRECTORY)
+    file(GLOB WIDGETS_TRANS "${DRUMSTICK_PREFIX}/share/drumstick/drumstick-widgets_*.qm")
+    file(COPY ${WIDGETS_TRANS} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+    add_app_translations_resource(APP_RES ${QM_FILES} ${WIDGETS_TRANS})
+    add_qt_translations_resource(QT_RES cs es ru)
+    list(APPEND SOURCES ${APP_RES} ${QT_RES})
+endif()
 
 if (WIN32)
     set(FLUIDSYNTH_PREFIX $ENV{FLUIDSYNTH})
@@ -143,13 +155,14 @@ if (APPLE)
     set (MACOSX_BUNDLE_ICON_FILE ${PROJECT_NAME}.icns)
     set_source_files_properties (${ICON_FILE} PROPERTIES
         MACOSX_PACKAGE_LOCATION Resources)
-    set_source_files_properties (${QM_FILES} PROPERTIES
-        MACOSX_PACKAGE_LOCATION Resources)
-    include(TranslationUtils)
-    add_qt_translations(QT_TRANSLATIONS es ru)
-    set_source_files_properties (${QT_TRANSLATIONS} PROPERTIES
-        MACOSX_PACKAGE_LOCATION translations)
-    list (APPEND SOURCES ${QT_TRANSLATIONS})
+    if (NOT EMBED_TRANSLATIONS)
+        set_source_files_properties (${QM_FILES} PROPERTIES
+            MACOSX_PACKAGE_LOCATION Resources)
+        add_qt_translations(QT_TRANSLATIONS cs es ru)
+        set_source_files_properties (${QT_TRANSLATIONS} PROPERTIES
+            MACOSX_PACKAGE_LOCATION translations)
+        list (APPEND SOURCES ${QT_TRANSLATIONS})
+    endif ()
 endif ()
 
 message (STATUS "Drumstick MIDI File Player v${PROJECT_VERSION}
@@ -199,7 +212,9 @@ if (APPLE)
 endif ()
 
 target_compile_definitions( ${PROJECT_NAME} PRIVATE
-    VERSION=${PROJECT_VERSION} )
+    VERSION=${PROJECT_VERSION}
+    $<$<BOOL:${EMBED_TRANSLATIONS}>:TRANSLATIONS_EMBEDDED>
+)
 if (DEFINED PROJECT_WC_REVISION)
     target_compile_definitions( ${PROJECT_NAME} PRIVATE
         REVISION=${PROJECT_WC_REVISION} )

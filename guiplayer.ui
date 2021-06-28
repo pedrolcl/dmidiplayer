@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>449</width>
+    <width>452</width>
     <height>269</height>
    </rect>
   </property>
@@ -480,8 +480,8 @@ selection-background-color: blue;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>449</width>
-     <height>23</height>
+     <width>452</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -592,6 +592,9 @@ selection-background-color: blue;</string>
    <property name="statusTip">
     <string>Open a MIDI file</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
   </action>
   <action name="actionQuit">
    <property name="text">
@@ -614,6 +617,9 @@ selection-background-color: blue;</string>
    <property name="autoRepeat">
     <bool>false</bool>
    </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
   </action>
   <action name="actionPause">
    <property name="checkable">
@@ -631,6 +637,9 @@ selection-background-color: blue;</string>
    <property name="autoRepeat">
     <bool>false</bool>
    </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
   </action>
   <action name="actionStop">
    <property name="text">
@@ -641,6 +650,9 @@ selection-background-color: blue;</string>
    </property>
    <property name="autoRepeat">
     <bool>false</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="actionAbout">
@@ -692,6 +704,9 @@ selection-background-color: blue;</string>
    <property name="statusTip">
     <string>Show or hide the tool bar</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
   </action>
   <action name="actionShowStatusbar">
    <property name="checkable">
@@ -705,6 +720,9 @@ selection-background-color: blue;</string>
    </property>
    <property name="statusTip">
     <string>Show or hide the status bar</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="actionLyrics">
@@ -723,6 +741,9 @@ selection-background-color: blue;</string>
    <property name="visible">
     <bool>true</bool>
    </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
   </action>
   <action name="actionChannels">
    <property name="checkable">
@@ -740,6 +761,9 @@ selection-background-color: blue;</string>
    <property name="visible">
     <bool>true</bool>
    </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
   </action>
   <action name="actionPianoPlayer">
    <property name="checkable">
@@ -753,6 +777,9 @@ selection-background-color: blue;</string>
    </property>
    <property name="statusTip">
     <string>Show or Hide Piano Player</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="actionRhythm">
@@ -774,10 +801,16 @@ selection-background-color: blue;</string>
    <property name="visible">
     <bool>true</bool>
    </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
   </action>
   <action name="actionFileInfo">
    <property name="text">
     <string>File Info</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="actionPreferences">
@@ -795,6 +828,9 @@ selection-background-color: blue;</string>
    <property name="toolTip">
     <string>Show Play List Editor</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
   </action>
   <action name="actionNext">
    <property name="text">
@@ -802,6 +838,9 @@ selection-background-color: blue;</string>
    </property>
    <property name="statusTip">
     <string>Next File</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="actionPrev">
@@ -811,6 +850,9 @@ selection-background-color: blue;</string>
    <property name="statusTip">
     <string>Previous File</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
   </action>
   <action name="actionForward">
    <property name="text">
@@ -818,6 +860,9 @@ selection-background-color: blue;</string>
    </property>
    <property name="statusTip">
     <string>Move play position to the next bar</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="actionBackward">
@@ -827,6 +872,9 @@ selection-background-color: blue;</string>
    <property name="statusTip">
     <string>Move play position to the previous bar</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
   </action>
   <action name="actionJump">
    <property name="text">
@@ -835,10 +883,16 @@ selection-background-color: blue;</string>
    <property name="statusTip">
     <string>Move play position to any bar</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
   </action>
   <action name="customizeToolBar">
    <property name="text">
     <string>Customize Tool Bar...</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="actionNothing">
@@ -851,6 +905,9 @@ selection-background-color: blue;</string>
    <property name="text">
     <string>Nothing</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
   </action>
   <action name="actionCurrentSong">
    <property name="checkable">
@@ -859,6 +916,9 @@ selection-background-color: blue;</string>
    <property name="text">
     <string>Current Song</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
   </action>
   <action name="actionWholePlaylist">
    <property name="checkable">
@@ -866,6 +926,9 @@ selection-background-color: blue;</string>
    </property>
    <property name="text">
     <string>Whole Playlist</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
  </widget>
