@@ -20,6 +20,7 @@
 #include <QMessageBox>
 #include <QCommandLineParser>
 #include <QFileInfo>
+#include <QSplashScreen>
 #include <QDebug>
 #include "guiplayer.h"
 #include "settings.h"
@@ -38,10 +39,12 @@ int main(int argc, char *argv[])
         "or the MIDI support is not enabled. "
         "Please check your OS/MIDI configuration.");
 
+    const QString strVersion = QT_STRINGIFY(VERSION);
+
     QCoreApplication::setOrganizationName(QSTR_DOMAIN);
     QCoreApplication::setOrganizationDomain(QSTR_DOMAIN);
     QCoreApplication::setApplicationName(QSTR_APPNAME);
-    QCoreApplication::setApplicationVersion(QT_STRINGIFY(VERSION));
+    QCoreApplication::setApplicationVersion(strVersion);
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #if defined(Q_OS_WINDOWS)
@@ -71,6 +74,17 @@ int main(int argc, char *argv[])
     if (parser.isSet(versionOption) || parser.isSet(helpOption)) {
         return 0;
     }
+
+    QPixmap px(":/splash.png");
+    QSplashScreen splash(px);
+    QFont sf("Arial", 20, QFont::ExtraBold);
+    splash.setFont(sf);
+    splash.show();
+    app.processEvents();
+    splash.showMessage("Drumstick Multiplatform MIDI File Player v" + strVersion,
+                       Qt::AlignBottom | Qt::AlignHCenter, Qt::white);
+    app.processEvents();
+
     if (parser.isSet(portableOption) || parser.isSet(portableFileName)) {
         QString portableFile;
         if (parser.isSet(portableFileName)) {
@@ -92,6 +106,7 @@ int main(int argc, char *argv[])
 
     try {
         GUIPlayer w;
+        splash.finish(&w);
         w.setAttribute(Qt::WA_QuitOnClose);
         if(parser.isSet(portOption) && parser.isSet(driverOption)) {
             w.connectOutput(parser.value(driverOption), parser.value(portOption));
