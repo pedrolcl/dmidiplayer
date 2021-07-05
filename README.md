@@ -105,7 +105,7 @@ You need to replace the contents of the parameter CMAKE_PREFIX_PATH with the act
 
 In addition to the released AppImage for Linux, you may find a [Flatpak at FlatHub](https://flathub.org/apps/details/net.sourceforge.dmidiplayer)
 
-[![Download on FlatHub](https://flathub.org/assets/badges/flathub-badge-en.png)](https://flathub.org/apps/details/net.sourceforge.dmidiplayer)
+[<img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/>](https://flathub.org/apps/details/net.sourceforge.dmidiplayer)
 
 And binary packages for several Linux distributions:
 

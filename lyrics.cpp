@@ -39,6 +39,7 @@
 #include <QPrintDialog>
 #include <QPrinter>
 #include <QRegularExpression>
+#include <QTextStream>
 
 #include <drumstick/settingsfactory.h>
 #include "settings.h"

@@ -712,7 +712,12 @@ void GUIPlayer::dragEnterEvent( QDragEnterEvent * event )
 void GUIPlayer::dropEvent( QDropEvent * event )
 {
     if (event->mimeData()->hasText()) {
-        QStringList list, data = event->mimeData()->text().split(QChar::LineFeed, Qt::SkipEmptyParts);
+        QStringList list, data;
+#if (QT_VERSION < QT_VERSION_CHECK(5,15,0))
+        data = event->mimeData()->text().split(QChar::LineFeed, QString::SkipEmptyParts);
+#else
+        data = event->mimeData()->text().split(QChar::LineFeed, Qt::SkipEmptyParts);
+#endif
         foreach(const QString& fileName, data) {
             QString localFileName = QUrl(fileName).toLocalFile();
             if ( isSupported(localFileName) ) {
