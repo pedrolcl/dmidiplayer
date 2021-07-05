@@ -112,7 +112,7 @@ int main(int argc, char *argv[])
             w.connectOutput(parser.value(driverOption), parser.value(portOption));
         }
         if (!fileNames.isEmpty()) {
-            w.openFile(fileNames.first());
+            w.openFileList(fileNames);
         }
         w.show();
         return app.exec();

@@ -29,6 +29,7 @@ public:
     virtual ~PlayList();
 
     void loadPlayList(const QString& fileName);
+    void clearPlayList();
     QString currentItem();
     QStringList items();
     int itemCount();

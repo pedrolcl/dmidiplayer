@@ -430,6 +430,15 @@ void GUIPlayer::openFile(const QString& fileName)
     }
 }
 
+void GUIPlayer::openFileList(const QStringList &fileNames)
+{
+    m_playList->clearPlayList();
+    m_playList->setItems(fileNames);
+    if (m_playList->selectFirstItem()) {
+        openFile(m_playList->currentItem());
+    }
+}
+
 void GUIPlayer::open()
 {
     QString fileName = QFileDialog::getOpenFileName(this,
@@ -702,15 +711,22 @@ void GUIPlayer::dragEnterEvent( QDragEnterEvent * event )
 
 void GUIPlayer::dropEvent( QDropEvent * event )
 {
-    QString data = event->mimeData()->text();
-    QString fileName = QUrl(data).toLocalFile();
-    if ( isSupported(fileName) ) {
-        stop();
-        openFile(fileName);
-        event->accept();
-    } else {
-        QMessageBox::warning(this, QSTR_APPNAME,
-            QString("Dropped file %1 is not supported").arg(fileName));
+    if (event->mimeData()->hasText()) {
+        QStringList list, data = event->mimeData()->text().split(QChar::LineFeed, Qt::SkipEmptyParts);
+        foreach(const QString& fileName, data) {
+            QString localFileName = QUrl(fileName).toLocalFile();
+            if ( isSupported(localFileName) ) {
+                list.append(localFileName);
+            } else {
+                QMessageBox::warning(this, QSTR_APPNAME,
+                    QString(tr("Dropped file %1 is not supported").arg(fileName)));
+            }
+        }
+        if (!list.isEmpty()) {
+            stop();
+            openFileList(list);
+            event->accept();
+        }
     }
 }
 

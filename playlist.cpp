@@ -105,6 +105,12 @@ void PlayList::loadPlayList(const QString &fileName)
     }
 }
 
+void PlayList::clearPlayList()
+{
+    clear();
+    m_isDirty=false;
+}
+
 bool
 PlayList::isSupported(const QString& fileName)
 {

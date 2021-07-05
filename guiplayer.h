@@ -90,6 +90,7 @@ public:
     bool isSupported(QString fileName);
     void connectOutput(const QString &driver, const QString &connection);
     void openFile(const QString &fileName);
+    void openFileList(const QStringList &fileNames);
     void updateState(PlayerState newState);
     void applySettings();
     void updNavButtons();
