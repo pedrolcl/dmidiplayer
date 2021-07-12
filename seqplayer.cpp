@@ -202,15 +202,14 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
             TempoEvent* event = static_cast<TempoEvent*>(ev);
             auto tempo = event->tempo();
             m_song.updateTempo(tempo);
-            //qDebug() << m_songPosition << ev->tick() << " Tempo: " << tempo << "bpm:" << bpm(tempo); // << "ticks2millis:" << m_song.ticks2millis();
+            //qDebug() << m_songPosition << ev->tick() << " Tempo: " << tempo << "bpm:" << event->bpm();
             emit tempoChanged(tempo);
         } else
         if (typeid(*ev) == beatId) {
-            //qDebug() << m_songPosition << ev->tick() << " Meta-event";
             BeatEvent* event = static_cast<BeatEvent*>(ev);
             emit beat(event->bar(), event->beat(), event->barLength());
             m_latestBeat = event;
-            //qDebug() << m_songPosition << "bar:beat ->" << event->bar() << ":" << event->beat();
+            //qDebug() << m_songPosition << ev->tick() << "bar:beat ->" << event->bar() << ":" << event->beat();
         } else
         if (typeid(*ev) == timeSigId) {
             TimeSignatureEvent* event = static_cast<TimeSignatureEvent*>(ev);
@@ -267,6 +266,7 @@ void SequencePlayer::playerLoop()
             m_songPosition += deltaTime.count();
             currentTime = Clock::now();
             emit songEchoTime(m_songPosition, ev->tick());
+            //qDebug() << "echo:" << m_songPosition << ev->tick() << deltaTime.count();
         }
         playEvent(ev);
     }

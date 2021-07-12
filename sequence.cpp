@@ -260,6 +260,7 @@ void Sequence::sort()
     foreach(MIDIEvent* ev, m_list) {
         ev->setDelta(ev->tick() - lastEventTicks);
         lastEventTicks = ev->tick();
+        //qDebug() << typeid (*ev).name() << ev->tick() << ev->delta();
     }
 }
 
@@ -556,10 +557,12 @@ void Sequence::updateTempo(qreal newTempo)
 void Sequence::insertBeats(qint64 ticks)
 {
     if ((ticks > m_tick) && (m_beatLength > 0)) {
+        //qDebug() << Q_FUNC_INFO << ticks << m_tick << m_beatLength;
         qint64 diff = ticks - m_lastBeat;
         while (diff >= m_beatLength) {
             MIDIEvent* ev = new BeatEvent(m_barCount, m_beatCount, m_beatMax);
             ev->setTick(m_lastBeat);
+            //qDebug() << "Beat:" << m_lastBeat << m_barCount << m_beatCount;
             m_list.append(ev);
 
             m_lastBeat += m_beatLength;
@@ -847,10 +850,9 @@ void Sequence::appendWRKEvent(long ticks, MIDIEvent* ev)
     if (ev->tag() <= 0) {
         ev->setTag(m_curTrack);
     }
+    //qDebug() << Q_FUNC_INFO << ticks << ev->tag() << typeid(*ev).name();
     m_list.append(ev);
-    if (ticks > m_ticksDuration) {
-        m_ticksDuration = ticks;
-    }
+    m_ticksDuration = qMax((int)ticks, m_ticksDuration);
     insertBeats(ticks);
     wrkUpdateLoadProgress();
 }
@@ -872,6 +874,7 @@ void Sequence::wrkFileHeader(int verh, int verl)
     m_beatCount = 1;
     m_barCount = 1;
     m_fileFormat = QString("%1.%2").arg(verh).arg(verl);
+    timeCalculations();
     wrkUpdateLoadProgress();
 }
 
@@ -925,13 +928,12 @@ void Sequence::wrkTrackHeader( const QByteArray& name1,
 void Sequence::wrkNoteEvent(int track, long time, int chan, int pitch, int vol, int dur)
 {
     TrackMapRec rec = m_trackMap[track+1];
-    int key = pitch + rec.pitch;
-    int velocity = vol + rec.velocity;
+    int key = qBound(0, pitch + rec.pitch, 127);
+    int velocity = qBound(0, vol + rec.velocity, 127);
     int channel = (rec.channel > -1) ? rec.channel : chan;
-    if (pitch > m_highestMidiNote)
-        m_highestMidiNote = pitch;
-    if (pitch < m_lowestMidiNote)
-        m_lowestMidiNote = pitch;
+    //qDebug() << Q_FUNC_INFO << "time:" << time << "chan:" << channel << key << velocity << dur;
+    m_highestMidiNote = qMax(pitch, m_highestMidiNote);
+    m_lowestMidiNote = qMin(pitch, m_lowestMidiNote);
     m_channelUsed[channel] = true;
     MIDIEvent* ev = new NoteOnEvent(channel, key, velocity);
     ev->setTag(track+1);
@@ -1098,6 +1100,7 @@ void Sequence::wrkTempoEvent(long time, int tempo)
     double bpm = tempo / 100.0;
     TempoEvent* ev = new TempoEvent(6e7 / bpm);
     appendWRKEvent(time, ev);
+    //qDebug() << Q_FUNC_INFO << time << bpm;
     if (time == 0) {
         updateTempo(ev->tempo());
     }
