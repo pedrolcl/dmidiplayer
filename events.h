@@ -72,7 +72,7 @@ class ChannelEvent : public MIDIEvent
 {
 public:
     ChannelEvent() : MIDIEvent(), m_channel(0) {}
-    ChannelEvent(int ch): MIDIEvent(), m_channel(ch) {}
+    explicit ChannelEvent(int ch): MIDIEvent(), m_channel(ch) {}
     virtual bool isChannel() override { return true; }
     /**
      * Sets the channel of the event
@@ -332,7 +332,7 @@ class VariableEvent : public MIDIEvent
 {
 public:
     VariableEvent();
-    VariableEvent(const QByteArray& data);
+    explicit VariableEvent(const QByteArray& data);
     VariableEvent(const unsigned int datalen, char* dataptr);
     virtual VariableEvent *clone() override { return new VariableEvent(*this); }
     virtual bool isMetaEvent() override { return true; }
@@ -350,7 +350,7 @@ class SysExEvent : public VariableEvent
 {
 public:
     SysExEvent();
-    SysExEvent(const QByteArray& data);
+    explicit SysExEvent(const QByteArray& data);
     SysExEvent(const unsigned int datalen, char* dataptr);
     virtual SysExEvent *clone() override { return new SysExEvent(*this); }
 };
@@ -380,7 +380,7 @@ class SystemEvent : public MIDIEvent
 {
 public:
     SystemEvent() : MIDIEvent() {}
-    SystemEvent(const int message);
+    explicit SystemEvent(const int message);
     virtual SystemEvent *clone() override { return new SystemEvent(*this); }
     int message() const { return m_status; }
 };
@@ -393,9 +393,10 @@ class TempoEvent : public MIDIEvent
 {
 public:
     TempoEvent();
-    TempoEvent(const qreal tempo);
+    explicit TempoEvent(const qreal tempo);
     virtual TempoEvent *clone() override { return new TempoEvent(*this); }
     virtual bool isMetaEvent() override { return true; }
+    qreal bpm() const { return 6e7 / m_tempo; }
     qreal tempo() const { return m_tempo; }
     void setTempo(const qreal t) { m_tempo = t; }
 protected:

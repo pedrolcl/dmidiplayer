@@ -924,12 +924,10 @@ void Sequence::wrkTrackHeader( const QByteArray& name1,
 
 void Sequence::wrkNoteEvent(int track, long time, int chan, int pitch, int vol, int dur)
 {
-    int channel = chan;
     TrackMapRec rec = m_trackMap[track+1];
     int key = pitch + rec.pitch;
     int velocity = vol + rec.velocity;
-    if (rec.channel > -1)
-        channel = rec.channel;
+    int channel = (rec.channel > -1) ? rec.channel : chan;
     if (pitch > m_highestMidiNote)
         m_highestMidiNote = pitch;
     if (pitch < m_lowestMidiNote)
@@ -938,20 +936,17 @@ void Sequence::wrkNoteEvent(int track, long time, int chan, int pitch, int vol, 
     MIDIEvent* ev = new NoteOnEvent(channel, key, velocity);
     ev->setTag(track+1);
     appendWRKEvent(time, ev);
-    m_channelEvents[channel]++;
     ev = new NoteOffEvent(channel, key, velocity);
     ev->setTag(track+1);
     appendWRKEvent(time + dur, ev);
-    m_channelEvents[channel]++;
+    m_channelEvents[channel]+=2;
 }
 
 void Sequence::wrkKeyPressEvent(int track, long time, int chan, int pitch, int press)
 {
-    int channel = chan;
     TrackMapRec rec = m_trackMap[track+1];
     int key = pitch + rec.pitch;
-    if (rec.channel > -1)
-        channel = rec.channel;
+    int channel = (rec.channel > -1) ? rec.channel : chan;
     m_channelUsed[channel] = true;
     m_channelEvents[channel]++;
     MIDIEvent* ev = new KeyPressEvent(channel, key, press);
@@ -961,10 +956,8 @@ void Sequence::wrkKeyPressEvent(int track, long time, int chan, int pitch, int p
 
 void Sequence::wrkCtlChangeEvent(int track, long time, int chan, int ctl, int value)
 {
-    int channel = chan;
     TrackMapRec rec = m_trackMap[track+1];
-    if (rec.channel > -1)
-        channel = rec.channel;
+    int channel = (rec.channel > -1) ? rec.channel : chan;
     m_channelUsed[channel] = true;
     m_channelEvents[channel]++;
     MIDIEvent* ev = new ControllerEvent(channel, ctl, value);
@@ -974,10 +967,8 @@ void Sequence::wrkCtlChangeEvent(int track, long time, int chan, int ctl, int va
 
 void Sequence::wrkPitchBendEvent(int track, long time, int chan, int value)
 {
-    int channel = chan;
     TrackMapRec rec = m_trackMap[track+1];
-    if (rec.channel > -1)
-        channel = rec.channel;
+    int channel = (rec.channel > -1) ? rec.channel : chan;
     m_channelUsed[channel] = true;
     m_channelEvents[channel]++;
     MIDIEvent* ev = new PitchBendEvent(channel, value);
@@ -987,10 +978,8 @@ void Sequence::wrkPitchBendEvent(int track, long time, int chan, int value)
 
 void Sequence::wrkProgramEvent(int track, long time, int chan, int patch)
 {
-    int channel = chan;
     TrackMapRec rec = m_trackMap[track+1];
-    if (rec.channel > -1)
-        channel = rec.channel;
+    int channel = (rec.channel > -1) ? rec.channel : chan;
     m_channelUsed[channel] = true;
     m_channelEvents[channel]++;
     MIDIEvent* ev = new ProgramChangeEvent(channel, patch);
@@ -1000,10 +989,8 @@ void Sequence::wrkProgramEvent(int track, long time, int chan, int patch)
 
 void Sequence::wrkChanPressEvent(int track, long time, int chan, int press)
 {
-    int channel = chan;
     TrackMapRec rec = m_trackMap[track+1];
-    if (rec.channel > -1)
-        channel = rec.channel;
+    int channel = (rec.channel > -1) ? rec.channel : chan;
     m_channelUsed[channel] = true;
     m_channelEvents[channel]++;
     MIDIEvent* ev = new ChanPressEvent(channel, press);
@@ -1109,19 +1096,17 @@ void Sequence::wrkVariableRecord(const QString &name, const QByteArray &data)
 void Sequence::wrkTempoEvent(long time, int tempo)
 {
     double bpm = tempo / 100.0;
-    MIDIEvent* ev = new TempoEvent(qRound ( 6e7 / bpm ) );
+    TempoEvent* ev = new TempoEvent(6e7 / bpm);
     appendWRKEvent(time, ev);
     if (time == 0) {
-        updateTempo(tempo);
+        updateTempo(ev->tempo());
     }
 }
 
 void Sequence::wrkTrackPatch(int track, int patch)
 {
-    int channel = 0;
     TrackMapRec rec = m_trackMap[track+1];
-    if (rec.channel > -1)
-        channel = rec.channel;
+    int channel = (rec.channel > -1) ? rec.channel : 0;
     wrkProgramEvent(track+1, 0, channel, patch);
 }
 
@@ -1159,29 +1144,25 @@ void Sequence::wrkTrackName(int trackno, const QByteArray &data)
 
 void Sequence::wrkTrackVol(int track, int vol)
 {
-    int channel = 0;
     int lsb, msb;
     TrackMapRec rec = m_trackMap[track+1];
-    if (rec.channel > -1)
-        channel = rec.channel;
+    int channel = (rec.channel > -1) ? rec.channel : 0;
     if (vol < 128)
-        wrkCtlChangeEvent(track+1, 0, channel, ControllerEvent::MIDI_CTL_MSB_MAIN_VOLUME, vol);
+        wrkCtlChangeEvent(track, 0, channel, ControllerEvent::MIDI_CTL_MSB_MAIN_VOLUME, vol);
     else {
         lsb = vol % 0x80;
         msb = vol / 0x80;
-        wrkCtlChangeEvent(track+1, 0, channel, ControllerEvent::MIDI_CTL_LSB_MAIN_VOLUME, lsb);
-        wrkCtlChangeEvent(track+1, 0, channel, ControllerEvent::MIDI_CTL_MSB_MAIN_VOLUME, msb);
+        wrkCtlChangeEvent(track, 0, channel, ControllerEvent::MIDI_CTL_LSB_MAIN_VOLUME, lsb);
+        wrkCtlChangeEvent(track, 0, channel, ControllerEvent::MIDI_CTL_MSB_MAIN_VOLUME, msb);
     }
 }
 
 void Sequence::wrkTrackBank(int track, int bank)
 {
     // assume GM/GS bank method
-    int channel = 0;
     int lsb, msb;
     TrackMapRec rec = m_trackMap[track+1];
-    if (rec.channel > -1)
-        channel = rec.channel;
+    int channel = (rec.channel > -1) ? rec.channel : 0;
     lsb = bank % 0x80;
     msb = bank / 0x80;
     wrkCtlChangeEvent(track+1, 0, channel, ControllerEvent::MIDI_CTL_MSB_BANK, msb);
