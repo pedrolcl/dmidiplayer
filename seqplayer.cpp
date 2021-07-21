@@ -214,6 +214,7 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
         if (typeid(*ev) == timeSigId) {
             TimeSignatureEvent* event = static_cast<TimeSignatureEvent*>(ev);
             emit timeSignature(event->tag(), event->numerator(), event->denominator());
+            //qDebug() << m_songPosition << ev->tick() << "TimeSignature:" << event->tag() << event->numerator() << event->denominator();
         } else
         if (typeid(*ev) == keySigId) {
             KeySignatureEvent* event = static_cast<KeySignatureEvent*>(ev);

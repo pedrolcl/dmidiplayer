@@ -16,7 +16,7 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QDebug>
+//#include <QDebug>
 #include <QtMath>
 #include <QFileInfo>
 #include <QRegularExpression>
@@ -1192,10 +1192,7 @@ void Sequence::wrkExpression(int track, long time, int /*code*/, const QByteArra
 
 void Sequence::wrkTimeSignatureEvent(int bar, int num, int den)
 {
-    MIDIEvent* ev = new TimeSignatureEvent(num, den);
-    m_beatMax = num;
-    m_beatLength = m_division * 4 / den;
-
+    TimeSignatureEvent* ev = new TimeSignatureEvent(num, den);
     TimeSigRec newts;
     newts.bar = bar;
     newts.num = num;
@@ -1215,12 +1212,15 @@ void Sequence::wrkTimeSignatureEvent(int bar, int num, int den)
         if (!found) {
             TimeSigRec& lasts = m_bars.last();
             newts.time = lasts.time +
-                    (lasts.num * 4 / lasts.den * m_division * (bar - lasts.bar));
+                    (lasts.num * 4 * m_division / lasts.den * (bar - lasts.bar));
             m_bars.append(newts);
         }
     }
     ev->setTag( bar );
+    //qDebug() << Q_FUNC_INFO << ev->tag() << ev->numerator() << ev->denominator();
     appendWRKEvent(newts.time, ev);
+    m_beatMax = num;
+    m_beatLength = m_division * 4 / den;
 }
 
 void Sequence::wrkKeySig(int bar, int alt)
