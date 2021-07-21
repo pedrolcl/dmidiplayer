@@ -24,7 +24,6 @@
 #include <chrono>
 #include <typeinfo>
 
-//#include <QDebug>
 #include <QAbstractEventDispatcher>
 #include <QThread>
 #include <QtMath>

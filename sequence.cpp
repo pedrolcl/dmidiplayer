@@ -16,7 +16,6 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-//#include <QDebug>
 #include <QtMath>
 #include <QFileInfo>
 #include <QRegularExpression>
@@ -669,6 +668,7 @@ void Sequence::smfProgramEvent(int chan, int patch)
     m_channelEvents[chan]++;
     MIDIEvent* ev = new ProgramChangeEvent (chan, patch);
     appendSMFEvent(ev);
+    //qDebug() << Q_FUNC_INFO << chan << patch;
 }
 
 void Sequence::smfChanPressEvent(int chan, int press)
@@ -980,13 +980,16 @@ void Sequence::wrkPitchBendEvent(int track, long time, int chan, int value)
 
 void Sequence::wrkProgramEvent(int track, long time, int chan, int patch)
 {
-    TrackMapRec rec = m_trackMap[track+1];
-    int channel = (rec.channel > -1) ? rec.channel : chan;
-    m_channelUsed[channel] = true;
-    m_channelEvents[channel]++;
-    MIDIEvent* ev = new ProgramChangeEvent(channel, patch);
-    ev->setTag(track+1);
-    appendWRKEvent(time, ev);
+    if (patch >= 0 && patch < 128) {
+        TrackMapRec rec = m_trackMap[track+1];
+        int channel = (rec.channel > -1) ? rec.channel : chan;
+        m_channelUsed[channel] = true;
+        m_channelEvents[channel]++;
+        MIDIEvent* ev = new ProgramChangeEvent(channel, patch);
+        ev->setTag(track+1);
+        appendWRKEvent(time, ev);
+        //qDebug() << Q_FUNC_INFO << track << time << chan << patch;
+    }
 }
 
 void Sequence::wrkChanPressEvent(int track, long time, int chan, int press)
@@ -1111,6 +1114,7 @@ void Sequence::wrkTrackPatch(int track, int patch)
     TrackMapRec rec = m_trackMap[track+1];
     int channel = (rec.channel > -1) ? rec.channel : 0;
     wrkProgramEvent(track+1, 0, channel, patch);
+    //qDebug() << Q_FUNC_INFO << track+1 << patch;
 }
 
 void Sequence::wrkNewTrackHeader( const QByteArray& data,
