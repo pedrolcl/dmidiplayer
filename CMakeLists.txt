@@ -23,7 +23,7 @@ project ( dmidiplayer
     DESCRIPTION "Drumstick MIDI File Player Multiplatform Program"
     HOMEPAGE_URL "https://sourceforge.net/p/dmidiplayer/"
 )
-
+#set(PROJECT_RELEASE_DATE "July 30, 2021")
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -244,6 +244,25 @@ if(UNIX AND NOT APPLE)
       add_custom_target ( uninstall
         COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
     endif()
+
+    find_package(Git)
+    if (Git_FOUND)
+        find_program(GZIP gzip)
+        find_program(BZIP2 bzip2)
+        if ((EXISTS ${GZIP}) AND (EXISTS ${BZIP2}))
+            set(ARCHNAME ${PROJECT_NAME}-${PROJECT_VERSION})
+            add_custom_target ( tarballs
+                COMMAND ${GIT_EXECUTABLE} archive --format=zip --prefix=${ARCHNAME}/ --output ${CMAKE_BINARY_DIR}/${ARCHNAME}.zip master
+                COMMAND ${GIT_EXECUTABLE} archive --format=tar --prefix=${ARCHNAME}/ master | ${GZIP} > ${CMAKE_BINARY_DIR}/${ARCHNAME}.tar.gz
+                COMMAND ${GIT_EXECUTABLE} archive --format=tar --prefix=${ARCHNAME}/ master | ${BZIP2} > ${CMAKE_BINARY_DIR}/${ARCHNAME}.tar.bz2
+                WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+                COMMENT "Creating tarballs..."
+                VERBATIM )
+        else()
+            message(WARNING "Missing utilities for tarball creation")
+        endif()
+    endif()
+
 else()
     include(DeploymentUtils)
 endif()
