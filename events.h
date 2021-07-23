@@ -45,7 +45,6 @@ class MIDIEvent : public QEvent
 {
 public:
     MIDIEvent();
-    virtual ~MIDIEvent() = default;
     virtual MIDIEvent *clone() { return new MIDIEvent(*this); }
 
     long delta() const { return m_delta; }

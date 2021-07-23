@@ -217,12 +217,7 @@ private: // members
     QByteArray m_charset;
     uchardet_t m_handle;
 
-    struct SysexEventRec {
-        int track;
-        long time;
-        int bank;
-    };
-    QList<SysexEventRec> m_savedSysexEvents;
+    QMap<int, SysExEvent> m_savedSysexEvents;
 
     struct TrackMapRec {
         int channel;

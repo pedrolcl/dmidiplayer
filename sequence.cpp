@@ -1005,26 +1005,26 @@ void Sequence::wrkChanPressEvent(int track, long time, int chan, int press)
 
 void Sequence::wrkSysexEvent(int track, long time, int bank)
 {
-    SysexEventRec rec;
-    rec.track = track+1;
-    rec.time = time;
-    rec.bank = bank;
-    m_savedSysexEvents.append(rec);
+    if (m_savedSysexEvents.contains(bank)) {
+        SysExEvent *ev = m_savedSysexEvents[bank].clone();
+        ev->setTag(track+1);
+        appendWRKEvent(time, ev);
+    }
     wrkUpdateLoadProgress();
 }
 
 void Sequence::wrkSysexEventBank(int bank, const QString& /*name*/,
         bool autosend, int /*port*/, const QByteArray& data)
 {
-    SysExEvent* ev = new SysExEvent(data);
-    if (autosend)
-        appendWRKEvent(0, ev->clone());
-    foreach(const SysexEventRec& rec, m_savedSysexEvents) {
-        if (rec.bank == bank) {
-            appendWRKEvent(rec.time, ev->clone());
-        }
+    SysExEvent ev(data);
+    if (autosend) {
+        auto savedTrack = m_curTrack;
+        m_curTrack = 0;
+        appendWRKEvent(0, ev.clone());
+        m_curTrack = savedTrack;
+    } else {
+        m_savedSysexEvents[bank] = ev;
     }
-    delete ev;
     wrkUpdateLoadProgress();
 }
 
