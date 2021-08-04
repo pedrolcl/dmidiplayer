@@ -65,6 +65,9 @@ SET(SOURCES
     iconutils.h
     instrumentset.cpp
     instrumentset.h
+    loopdialog.cpp
+    loopdialog.h
+    loopdialog.ui
     lyrics.cpp
     lyrics.h
     pianola.cpp

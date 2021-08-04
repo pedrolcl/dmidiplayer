@@ -42,5 +42,6 @@
         <file>icons/go-next.png</file>
         <file>icons/go-previous.png</file>
         <file alias="splash.png">icons/splash.png</file>
+        <file>icons/looping.png</file>
     </qresource>
 </RCC>

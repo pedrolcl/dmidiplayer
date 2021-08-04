@@ -134,6 +134,7 @@ public slots:
     void forward();
     void backward();
     void jump();
+    void loop();
 
     void progressDialogInit(const QString& type, int max);
     void progressDialogUpdate(int pos);

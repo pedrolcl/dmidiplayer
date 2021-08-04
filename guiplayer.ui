@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>452</width>
+    <width>485</width>
     <height>269</height>
    </rect>
   </property>
@@ -480,8 +480,8 @@ selection-background-color: blue;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>452</width>
-     <height>22</height>
+     <width>485</width>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -583,6 +583,7 @@ selection-background-color: blue;</string>
    <addaction name="actionBackward"/>
    <addaction name="actionForward"/>
    <addaction name="actionJump"/>
+   <addaction name="actionLoop"/>
   </widget>
   <widget class="QStatusBar" name="myStatusBar"/>
   <action name="actionOpen">
@@ -931,6 +932,17 @@ selection-background-color: blue;</string>
     <enum>QAction::NoRole</enum>
    </property>
   </action>
+  <action name="actionLoop">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Loop</string>
+   </property>
+   <property name="toolTip">
+    <string>Loop</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -948,7 +960,6 @@ selection-background-color: blue;</string>
   <tabstop>volumeSlider</tabstop>
  </tabstops>
  <resources>
-  <include location="guiplayer.qrc"/>
   <include location="guiplayer.qrc"/>
  </resources>
  <connections>

@@ -38,6 +38,7 @@
 #include "pianola.h"
 #include "settings.h"
 #include "prefsdialog.h"
+#include "loopdialog.h"
 
 using namespace drumstick::rt;
 using namespace drumstick::widgets;
@@ -111,6 +112,7 @@ GUIPlayer::GUIPlayer(QWidget *parent)
     connect(m_ui->actionForward, &QAction::triggered, this, &GUIPlayer::forward);
     connect(m_ui->actionBackward, &QAction::triggered, this, &GUIPlayer::backward);
     connect(m_ui->actionJump, &QAction::triggered, this, &GUIPlayer::jump);
+    connect(m_ui->actionLoop, &QAction::triggered, this, &GUIPlayer::loop);
 
     m_ui->actionPlay->setShortcut( Qt::Key_MediaPlay );
     m_ui->actionStop->setShortcut( Qt::Key_MediaStop );
@@ -277,7 +279,8 @@ void GUIPlayer::updateState(PlayerState newState)
         m_ui->actionForward->setEnabled(false);
         m_ui->actionBackward->setEnabled(false);
         m_ui->actionJump->setEnabled(false);
-        statusBar()->showMessage("Please, load a song");
+        m_ui->actionLoop->setEnabled(false);
+        statusBar()->showMessage(tr("Please, load a song"));
         break;
     case PlayingState:
         m_ui->actionPlay->setEnabled(false);
@@ -286,7 +289,8 @@ void GUIPlayer::updateState(PlayerState newState)
         m_ui->actionForward->setEnabled(true);
         m_ui->actionBackward->setEnabled(true);
         m_ui->actionJump->setEnabled(true);
-        statusBar()->showMessage("Playing");
+        m_ui->actionLoop->setEnabled(true);
+        statusBar()->showMessage(tr("Playing"));
         break;
     case PausedState:
         m_ui->actionPlay->setEnabled(false);
@@ -294,7 +298,8 @@ void GUIPlayer::updateState(PlayerState newState)
         m_ui->actionForward->setEnabled(true);
         m_ui->actionBackward->setEnabled(true);
         m_ui->actionJump->setEnabled(true);
-        statusBar()->showMessage("Paused");
+        m_ui->actionLoop->setEnabled(true);
+        statusBar()->showMessage(tr("Paused"));
         break;
     case StoppedState:
         m_ui->actionPause->setChecked(false);
@@ -304,12 +309,13 @@ void GUIPlayer::updateState(PlayerState newState)
         m_ui->actionForward->setEnabled(true);
         m_ui->actionBackward->setEnabled(true);
         m_ui->actionJump->setEnabled(true);
+        m_ui->actionLoop->setEnabled(true);
         updateTimeLabel(0);
         m_ui->positionSlider->setValue(0);
-        statusBar()->showMessage("Stopped");
+        statusBar()->showMessage(tr("Stopped"));
         break;
     default:
-        statusBar()->showMessage("Not initialized");
+        statusBar()->showMessage(tr("Not initialized"));
         break;
     }
     m_state = newState;
@@ -356,7 +362,7 @@ void GUIPlayer::stop()
 void GUIPlayer::progressDialogInit(const QString& type, int max)
 {
     m_pd = new QProgressDialog(0, 0, 0, max, this);
-    m_pd->setWindowTitle(QString("Loading %1 file...").arg(type));
+    m_pd->setWindowTitle(tr("Loading %1 file...").arg(type));
     m_pd->setMinimumDuration(0); // 1000
     m_pd->setMaximum(max);
     m_pd->setValue(0);
@@ -506,6 +512,7 @@ void GUIPlayer::applySettings()
     m_ui->actionJump->setIcon(IconUtils::GetIcon("go-jump"));
     m_ui->customizeToolBar->setIcon(IconUtils::GetIcon("settings"));
     m_ui->menuPlaylistRepeat->setIcon(IconUtils::GetIcon("media-playlist-repeat"));
+    m_ui->actionLoop->setIcon(IconUtils::GetIcon("looping"));
 
     m_lyrics->applySettings();
     m_pianola->applySettings();
@@ -658,6 +665,24 @@ void GUIPlayer::jump()
         if (m_state == PausedState) {
             QTimer::singleShot(0, this, &GUIPlayer::play);
         }
+    }
+}
+
+void GUIPlayer::loop()
+{
+    auto active = m_ui->actionLoop->isChecked();
+    qDebug() << Q_FUNC_INFO << active;
+    if (active) {
+        LoopDialog dlg;
+        dlg.setLastBar(m_player->song()->lastBar());
+        //dlg.initValues(m_player->loopFrom(), m_player->loopTo())
+        if (dlg.exec() == QDialog::Accepted) {
+            //m_player->setLoop(dlg.getFromBar(), dlg.getToBar());
+        } else {
+            m_ui->actionLoop->setChecked(false);
+        }
+    } else {
+        //m_player->setLoop(false);
     }
 }
 
