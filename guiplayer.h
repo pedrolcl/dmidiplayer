@@ -154,6 +154,8 @@ public slots:
     void slotPlayList();
     void slotEditToolbar();
     void slotPlaylistRepeat(QAction *action);
+    void slotHelp();
+    void slotOpenWebSite();
 
 private:
     void createLanguageMenu();

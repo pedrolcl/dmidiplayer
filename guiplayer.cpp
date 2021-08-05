@@ -27,6 +27,7 @@
 #include <QMimeData>
 #include <QtMath>
 #include <QActionGroup>
+#include <QDesktopServices>
 
 #include <drumstick/settingsfactory.h>
 #include "guiplayer.h"
@@ -39,6 +40,7 @@
 #include "settings.h"
 #include "prefsdialog.h"
 #include "loopdialog.h"
+#include "helpwindow.h"
 
 using namespace drumstick::rt;
 using namespace drumstick::widgets;
@@ -113,6 +115,8 @@ GUIPlayer::GUIPlayer(QWidget *parent)
     connect(m_ui->actionBackward, &QAction::triggered, this, &GUIPlayer::backward);
     connect(m_ui->actionJump, &QAction::triggered, this, &GUIPlayer::jump);
     connect(m_ui->actionLoop, &QAction::triggered, this, &GUIPlayer::loop);
+    connect(m_ui->actionContents, &QAction::triggered, this, &GUIPlayer::slotHelp);
+    connect(m_ui->actionWebSite, &QAction::triggered, this, &GUIPlayer::slotOpenWebSite);
 
     m_ui->actionPlay->setShortcut( Qt::Key_MediaPlay );
     m_ui->actionStop->setShortcut( Qt::Key_MediaStop );
@@ -513,6 +517,8 @@ void GUIPlayer::applySettings()
     m_ui->customizeToolBar->setIcon(IconUtils::GetIcon("settings"));
     m_ui->menuPlaylistRepeat->setIcon(IconUtils::GetIcon("media-playlist-repeat"));
     m_ui->actionLoop->setIcon(IconUtils::GetIcon("looping"));
+    m_ui->actionContents->setIcon(IconUtils::GetIcon("help-contents"));
+    m_ui->actionWebSite->setIcon(IconUtils::GetIcon("viewhtml"));
 
     m_lyrics->applySettings();
     m_pianola->applySettings();
@@ -1042,4 +1048,21 @@ void GUIPlayer::slotPlaylistRepeat(QAction *action)
     } else {
         m_repeat = Nothing;
     }
+}
+
+void GUIPlayer::slotHelp()
+{
+    QDir hdir(":/help");
+    QString hname = QStringLiteral("%1/index.html").arg(Settings::instance()->language());
+    QFileInfo finfo(hdir, hname);
+    if (!finfo.exists()) {
+        hname = "en/index.html";
+    }
+    HelpWindow::showPage(this, hname);
+}
+
+void GUIPlayer::slotOpenWebSite()
+{
+    QUrl url(QStringLiteral("https://dmidiplayer.sourceforge.io"));
+    QDesktopServices::openUrl(url);
 }

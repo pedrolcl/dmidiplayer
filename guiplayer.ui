@@ -527,6 +527,8 @@ selection-background-color: blue;</string>
       <string>&amp;Language</string>
      </property>
     </widget>
+    <addaction name="actionContents"/>
+    <addaction name="actionWebSite"/>
     <addaction name="menuLanguage"/>
     <addaction name="separator"/>
     <addaction name="actionAbout"/>
@@ -942,6 +944,16 @@ selection-background-color: blue;</string>
    </property>
    <property name="toolTip">
     <string>Loop</string>
+   </property>
+  </action>
+  <action name="actionContents">
+   <property name="text">
+    <string>Contents</string>
+   </property>
+  </action>
+  <action name="actionWebSite">
+   <property name="text">
+    <string>Web Site</string>
    </property>
   </action>
  </widget>

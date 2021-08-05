@@ -61,6 +61,9 @@ SET(SOURCES
     guiplayer.h
     guiplayer.qrc
     guiplayer.ui
+    helpwindow.cpp
+    helpwindow.h
+    docs/help.qrc
     iconutils.cpp
     iconutils.h
     instrumentset.cpp
