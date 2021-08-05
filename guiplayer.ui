@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>485</width>
+    <width>476</width>
     <height>269</height>
    </rect>
   </property>
@@ -480,7 +480,7 @@ selection-background-color: blue;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>485</width>
+     <width>476</width>
      <height>23</height>
     </rect>
    </property>
@@ -511,6 +511,7 @@ selection-background-color: blue;</string>
     <addaction name="actionPause"/>
     <addaction name="actionStop"/>
     <addaction name="actionJump"/>
+    <addaction name="actionLoop"/>
     <addaction name="actionForward"/>
     <addaction name="actionBackward"/>
     <addaction name="actionNext"/>

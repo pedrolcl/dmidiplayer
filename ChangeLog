@@ -1,5 +1,5 @@
-2021-08-04
-    * implementation started for ticket #3: song loop between bars
+2021-08-05
+    * implementation for ticket #3: song loop between bars
 
 2021-07-05
     * allow more than one file from the command line, or dragged from a file manager.

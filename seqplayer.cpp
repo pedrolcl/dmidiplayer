@@ -45,9 +45,39 @@ void SequencePlayer::initChannels()
     }
 }
 
+bool SequencePlayer::isLoopEnabled() const
+{
+    return m_loopEnabled;
+}
+
+void SequencePlayer::setLoop(bool enabled)
+{
+    m_loopEnabled = enabled;
+}
+
+void SequencePlayer::setLoop(int loopStart, int loopEnd)
+{
+    m_loopEnabled = true;
+    m_loopStart = loopStart;
+    m_loopEnd = loopEnd;
+}
+
+int SequencePlayer::loopEnd() const
+{
+    return m_loopEnd;
+}
+
+int SequencePlayer::loopStart() const
+{
+    return m_loopStart;
+}
+
 SequencePlayer::SequencePlayer() :
     m_port(nullptr),
     m_songPosition(0),
+    m_loopEnabled(false),
+    m_loopStart(0),
+    m_loopEnd(0),
     m_echoResolution(50),
     m_pitchShift(0),
     m_volumeFactor(100),
@@ -230,6 +260,8 @@ void SequencePlayer::playerLoop()
 {
     using namespace std::chrono;
     typedef system_clock Clock;
+    static const std::type_info& beatId = typeid(BeatEvent);
+    int currentBar{ 0 };
     long echoPosition{ 0 }, echoTicks{ 0 };
     milliseconds deltaTime{0}, echoDelta{ m_echoResolution };
     Clock::time_point currentTime{ Clock::now() },
@@ -243,32 +275,43 @@ void SequencePlayer::playerLoop()
     timeBeginPeriod(1);
 #endif
 
-    while (m_song.hasMoreEvents() && !thread()->isInterruptionRequested()) {
-        MIDIEvent* ev = m_song.nextEvent();
-        if (ev->delta() > 0) {
-            deltaTime = m_song.deltaTimeOfEvent(ev);
-            echoDelta = m_song.timeOfTicks(m_echoResolution);
-            nextTime = currentTime + deltaTime;
-            nextEcho = currentTime + echoDelta;
-            echoPosition = m_songPosition;
-            while (nextEcho < nextTime) {
-                dispatcher->processEvents(eventFilter);
-                std::this_thread::sleep_until(nextEcho);
-                echoPosition += echoDelta.count();
-                echoTicks += m_echoResolution;
-                emit songEchoTime(echoPosition, echoTicks);
-                currentTime = Clock::now();
-                nextEcho = currentTime + echoDelta;
+    while (!thread()->isInterruptionRequested()) {
+        while (m_song.hasMoreEvents() && !thread()->isInterruptionRequested()) {
+            MIDIEvent* ev = m_song.nextEvent();
+            if (typeid(*ev) == beatId) {
+                currentBar = static_cast<BeatEvent*>(ev)->bar();
+                if (isLoopEnabled() && (currentBar > loopEnd())) {
+                    break;
+                }
             }
-            dispatcher->processEvents(eventFilter);
-            std::this_thread::sleep_until(nextTime);
-            echoTicks = ev->tick();
-            m_songPosition += deltaTime.count();
-            currentTime = Clock::now();
-            emit songEchoTime(m_songPosition, ev->tick());
-            //qDebug() << "echo:" << m_songPosition << ev->tick() << deltaTime.count();
+            if (ev->delta() > 0) {
+                deltaTime = m_song.deltaTimeOfEvent(ev);
+                echoDelta = m_song.timeOfTicks(m_echoResolution);
+                nextTime = currentTime + deltaTime;
+                nextEcho = currentTime + echoDelta;
+                echoPosition = m_songPosition;
+                while (nextEcho < nextTime) {
+                    dispatcher->processEvents(eventFilter);
+                    std::this_thread::sleep_until(nextEcho);
+                    echoPosition += echoDelta.count();
+                    echoTicks += m_echoResolution;
+                    emit songEchoTime(echoPosition, echoTicks);
+                    currentTime = Clock::now();
+                    nextEcho = currentTime + echoDelta;
+                }
+                dispatcher->processEvents(eventFilter);
+                std::this_thread::sleep_until(nextTime);
+                echoTicks = ev->tick();
+                m_songPosition += deltaTime.count();
+                currentTime = Clock::now();
+                emit songEchoTime(m_songPosition, ev->tick());
+                //qDebug() << "echo:" << m_songPosition << ev->tick() << deltaTime.count();
+            }
+            playEvent(ev);
         }
-        playEvent(ev);
+        if (isLoopEnabled()) {
+            jumpToBar(loopStart());
+        }
     }
 
 #ifdef WIN32
@@ -337,6 +380,9 @@ void SequencePlayer::loadFile(QString fileName)
     m_songPosition = 0;
     m_firstBeat = m_song.firstBeat();
     m_latestBeat = m_firstBeat;
+    m_loopStart = 1;
+    m_loopEnd = m_song.lastBar();
+    m_loopEnabled = false;
 }
 
 void SequencePlayer::pause()
@@ -358,6 +404,7 @@ void SequencePlayer::resetPosition()
 void SequencePlayer::setPosition(long pos)
 {
     //qDebug() << Q_FUNC_INFO << pos;
+    allNotesOff();
     m_song.setTickPosition(pos);
     m_songPosition = pos;
 }
@@ -474,8 +521,7 @@ void SequencePlayer::beatForward()
 {
     BeatEvent* ev = m_song.nextBar(m_latestBeat);
     if (ev != nullptr) {
-        setPosition(ev->tick());
-        m_latestBeat = ev;
+        setBeatPosition(ev);
     }
 }
 
@@ -483,17 +529,22 @@ void SequencePlayer::beatBackward()
 {
     BeatEvent* ev = m_song.previousBar(m_latestBeat);
     if (ev != nullptr) {
-        setPosition(ev->tick());
-        m_latestBeat = ev;
+        setBeatPosition(ev);
     }
+}
+
+void SequencePlayer::setBeatPosition(BeatEvent* ev)
+{
+    setPosition(ev->tick());
+    emit beat(ev->bar(), ev->beat(), ev->barLength());
+    m_latestBeat = ev;
 }
 
 void SequencePlayer::jumpToBar(int bar)
 {
     BeatEvent* ev = m_song.jumpToBar(bar);
     if (ev != nullptr) {
-        setPosition(ev->tick());
-        m_latestBeat = ev;
+        setBeatPosition(ev);
     }
 }
 

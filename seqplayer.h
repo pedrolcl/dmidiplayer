@@ -65,6 +65,12 @@ public:
     void jumpToBar(int bar);
     QString currentBeatStr();
 
+    int loopStart() const;
+    int loopEnd() const;
+    bool isLoopEnabled() const;
+    void setLoop(bool enabled);
+    void setLoop(int loopStart, int loopEnd);
+
 public slots:
     void playerLoop();
     void setVolume(int channel, qreal);
@@ -101,6 +107,7 @@ signals:
 
 private slots:
     void playEvent(MIDIEvent* ev);
+    void setBeatPosition(BeatEvent *ev);
 
 private:
     void initChannels();
@@ -108,6 +115,9 @@ private:
     Sequence m_song;
     drumstick::rt::MIDIOutput* m_port;
     long m_songPosition;
+    bool m_loopEnabled;
+    int m_loopStart;
+    int m_loopEnd;
     int m_echoResolution;
     int m_pitchShift;
     int m_volumeFactor;

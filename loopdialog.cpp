@@ -52,8 +52,8 @@ void LoopDialog::setLastBar(int bar)
 
 void LoopDialog::initValues(int from, int to)
 {
-    m_ui->spinFrom->setValue(from);
-    m_ui->spinTo->setValue(to);
+    m_ui->spinFrom->setValue(from > m_ui->spinFrom->minimum() ? from : m_ui->spinFrom->minimum());
+    m_ui->spinTo->setValue(to < m_ui->spinTo->maximum() ? to : m_ui->spinTo->maximum());
 }
 
 void LoopDialog::accept()

@@ -671,18 +671,19 @@ void GUIPlayer::jump()
 void GUIPlayer::loop()
 {
     auto active = m_ui->actionLoop->isChecked();
-    qDebug() << Q_FUNC_INFO << active;
+    //qDebug() << Q_FUNC_INFO << active;
     if (active) {
         LoopDialog dlg;
         dlg.setLastBar(m_player->song()->lastBar());
-        //dlg.initValues(m_player->loopFrom(), m_player->loopTo())
+        dlg.initValues(m_player->loopStart(), m_player->loopEnd());
         if (dlg.exec() == QDialog::Accepted) {
-            //m_player->setLoop(dlg.getFromBar(), dlg.getToBar());
+            m_player->setLoop(dlg.getFromBar(), dlg.getToBar());
         } else {
             m_ui->actionLoop->setChecked(false);
+            m_player->setLoop(false);
         }
     } else {
-        //m_player->setLoop(false);
+        m_player->setLoop(false);
     }
 }
 
