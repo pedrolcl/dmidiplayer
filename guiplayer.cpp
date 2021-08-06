@@ -493,6 +493,7 @@ void GUIPlayer::applySettings()
     m_snapper.SetEnabled(Settings::instance()->winSnap());
 #endif
     qApp->setPalette( Settings::instance()->getDarkMode() ? darkPalette : defaultPalette );
+    qApp->setStyle( Settings::instance()->getStyle() );
 
     //m_ui->actionPianoPlayer->setIcon(IconUtils::GetIcon\("audio-midi"\));
     m_ui->actionFileInfo->setIcon(IconUtils::GetIcon("dialog-information"));
@@ -1058,7 +1059,7 @@ void GUIPlayer::slotHelp()
     if (!finfo.exists()) {
         hname = "en/index.html";
     }
-    HelpWindow::showPage(this, hname);
+    HelpWindow::showPage(hname);
 }
 
 void GUIPlayer::slotOpenWebSite()

@@ -21,14 +21,16 @@
 #include <QScreen>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
-#include "helpwindow.h"
+
+#include <drumstick/settingsfactory.h>
+#include "settings.h"
 #include "iconutils.h"
+#include "helpwindow.h"
 
 HelpWindow::HelpWindow(const QString &path, const QString &page, QWidget *parent):
     QWidget(parent)
 {
     setAttribute(Qt::WA_DeleteOnClose);
-    setAttribute(Qt::WA_GroupLeader);
     setWindowIcon(QIcon(":/dmidiplayer.png"));
 
     textBrowser = new QTextBrowser(this);
@@ -64,6 +66,52 @@ HelpWindow::HelpWindow(const QString &path, const QString &page, QWidget *parent
     textBrowser->setSearchPaths(QStringList({path,":/help",":/help/en"}));
     textBrowser->setSource(page);
     textBrowser->setOpenExternalLinks(true);
+
+    resize(640,480);
+    readSettings();
+    retranslateUi();
+}
+
+void HelpWindow::readSettings()
+{
+    using namespace drumstick::widgets;
+    SettingsFactory settings;
+    settings->beginGroup("HelpWindow");
+    restoreGeometry(settings->value("Geometry").toByteArray());
+    settings->endGroup();
+}
+
+void HelpWindow::writeSettings()
+{
+    using namespace drumstick::widgets;
+    SettingsFactory settings;
+    settings->beginGroup("HelpWindow");
+    settings->setValue("Geometry", saveGeometry());
+    settings->endGroup();
+}
+
+
+void HelpWindow::closeEvent(QCloseEvent *event)
+{
+    writeSettings();
+    event->accept();
+}
+
+bool HelpWindow::nativeEvent(const QByteArray &eventType, void *message,
+ #if QT_VERSION < QT_VERSION_CHECK(6,0,0)
+                          long *result
+ #else
+                          qintptr *result
+ #endif
+                         )
+{
+#if defined(Q_OS_WINDOWS)
+    if (m_snapper.HandleMessage(message)) {
+        result = 0;
+        return true;
+    }
+#endif
+    return QWidget::nativeEvent(eventType, message, result);
 }
 
 void HelpWindow::updateWindowTitle()
@@ -71,13 +119,17 @@ void HelpWindow::updateWindowTitle()
     setWindowTitle(tr("Help: %1").arg(textBrowser->documentTitle()));
 }
 
-void HelpWindow::showPage(QWidget *parent, const QString &page)
+void HelpWindow::showPage(const QString &page)
 {
     HelpWindow *browser = new HelpWindow(QLatin1String(":/"), page);
-    browser->resize(640, 480);
-    QScreen *screen = parent->window()->windowHandle()->screen();
-    browser->setGeometry(QStyle::alignedRect(
-        Qt::LeftToRight, Qt::AlignCenter, browser->size(),
-        screen->availableGeometry()));
     browser->show();
+}
+
+void HelpWindow::retranslateUi()
+{
+    updateWindowTitle();
+    homeButton->setText(tr("&Home"));
+    backButton->setText(tr("&Back"));
+    closeButton->setText(tr("Close"));
+    closeButton->setShortcut(tr("Esc"));
 }

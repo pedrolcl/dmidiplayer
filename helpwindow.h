@@ -22,6 +22,13 @@
 #include <QWidget>
 #include <QTextBrowser>
 #include <QPushButton>
+#include <QCloseEvent>
+#include <QByteArray>
+#include <QString>
+
+#if defined(Q_OS_WINDOWS)
+#include "winsnap.h"
+#endif
 
 class HelpWindow : public QWidget
 {
@@ -30,7 +37,21 @@ public:
     explicit HelpWindow(const QString &path,
                         const QString &page,
                         QWidget *parent = nullptr);
-    static void showPage(QWidget *parent, const QString &page);
+    void readSettings();
+    void writeSettings();
+    void retranslateUi();
+
+    static void showPage(const QString &page);
+
+protected:
+    void closeEvent( QCloseEvent *event)  override;
+    bool nativeEvent( const QByteArray &eventType, void *message,
+#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
+                  long *result
+#else
+                  qintptr *result
+#endif
+    ) override;
 
 private slots:
     void updateWindowTitle();
@@ -40,6 +61,10 @@ private:
     QPushButton *homeButton;
     QPushButton *backButton;
     QPushButton *closeButton;
+#if defined(Q_OS_WINDOWS)
+    WinSnap m_snapper;
+#endif
+
 };
 
 #endif // HELPWINDOW_H
