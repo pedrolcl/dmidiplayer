@@ -45,5 +45,7 @@
         <file>icons/looping.png</file>
         <file>icons/help-contents.png</file>
         <file>icons/viewhtml.png</file>
+        <file>icons/window-close.png</file>
+        <file>icons/go-home.png</file>
     </qresource>
 </RCC>
