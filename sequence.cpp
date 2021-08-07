@@ -17,6 +17,7 @@
 */
 
 #include <QtMath>
+#include <QDebug>
 #include <QFileInfo>
 #include <QRegularExpression>
 #include "sequence.h"

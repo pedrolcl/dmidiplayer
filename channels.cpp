@@ -26,6 +26,7 @@
 #include <QCloseEvent>
 #include <drumstick/settingsfactory.h>
 
+#include "settings.h"
 #include "sequence.h"
 #include "channels.h"
 #include "vumeter.h"
@@ -153,6 +154,7 @@ void Channels::initSong(Sequence *song)
 
 void Channels::applySettings()
 {
+
     QIcon locked(IconUtils::GetIcon("object-locked"));
     QIcon unlocked(IconUtils::GetIcon("object-unlocked"));
     QIcon lockIcon;
@@ -162,13 +164,15 @@ void Channels::applySettings()
     for (int i = 0; i < MIDI_STD_CHANNELS; ++i) {
         m_lock[i]->setIcon(lockIcon);
     }
-
     foreach(QComboBox *cb, findChildren<QComboBox*>()) {
         cb->setPalette(qApp->palette());
         foreach(QWidget *w, cb->findChildren<QWidget*>()) {
             w->setPalette(qApp->palette());
         }
     }
+#if defined(Q_OS_WINDOWS)
+    m_snapper.SetEnabled(Settings::instance()->winSnap());
+#endif
 }
 
 void Channels::readSettings()

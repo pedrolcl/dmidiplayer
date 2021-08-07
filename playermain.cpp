@@ -45,8 +45,10 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain(QSTR_DOMAIN);
     QCoreApplication::setApplicationName(QSTR_APPNAME);
     QCoreApplication::setApplicationVersion(strVersion);
+#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#endif
 #if defined(Q_OS_WINDOWS)
     QApplication::setStyle("fusion");
 #endif

@@ -70,6 +70,9 @@ HelpWindow::HelpWindow(const QString &path, const QString &page, QWidget *parent
     resize(640,480);
     readSettings();
     retranslateUi();
+#if defined(Q_OS_WINDOWS)
+    m_snapper.SetEnabled(Settings::instance()->winSnap());
+#endif
 }
 
 void HelpWindow::readSettings()

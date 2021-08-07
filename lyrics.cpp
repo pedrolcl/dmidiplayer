@@ -389,6 +389,9 @@ void Lyrics::applySettings()
             w->setPalette(qApp->palette());
         }
     }
+#if defined(Q_OS_WINDOWS)
+    m_snapper.SetEnabled(Settings::instance()->winSnap());
+#endif
 }
 
 QString Lyrics::sanitizeText(const QByteArray& data)

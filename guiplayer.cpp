@@ -938,9 +938,23 @@ void GUIPlayer::slotAboutTranslation()
 
 void GUIPlayer::retranslateUi()
 {
-    m_trq->load("qt_" + Settings::instance()->language(), Settings::systemLocales());
-    m_trp->load("dmidiplayer_" + Settings::instance()->language(), Settings::localeDirectory());
-    m_trl->load("drumstick-widgets_" + Settings::instance()->language(), Settings::drumstickLocales());
+    bool loadOk;
+    QString lang = Settings::instance()->language();
+    loadOk = m_trq->load("qt_" + lang, Settings::systemLocales());
+    if (!loadOk && !lang.startsWith("en")) {
+        qWarning() << "Failure loading Qt5 system translations for" << lang
+                   << "from" << Settings::systemLocales();
+    }
+    loadOk = m_trp->load("dmidiplayer_" + lang, Settings::localeDirectory());
+    if (!loadOk && !lang.startsWith("en")) {
+        qWarning() << "Failure loading application translations for" << lang
+                   << "from" << Settings::localeDirectory();
+    }
+    loadOk = m_trl->load("drumstick-widgets_" + lang, Settings::drumstickLocales());
+    if (!loadOk && !lang.startsWith("en")) {
+        qWarning() << "Failure loading widgets library translations for" << lang
+                   << "from" << Settings::drumstickLocales();
+    }
     Settings::instance()->retranslatePalettes();
     m_ui->retranslateUi(this);
     m_connections->retranslateUi();

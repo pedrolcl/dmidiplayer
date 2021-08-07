@@ -167,6 +167,9 @@ void Pianola::applySettings()
             m_piano[i]->setHighlightPalette(pal);
         }
     }
+#if defined(Q_OS_WINDOWS)
+    m_snapper.SetEnabled(Settings::instance()->winSnap());
+#endif
 }
 
 void Pianola::initSong(Sequence *song)

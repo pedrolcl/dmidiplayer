@@ -1,3 +1,6 @@
+2021-08-07
+    * fix for ticket #11: winsnap enable/disable
+
 2021-08-05
     * implementation for ticket #3: song loop between bars
     * started implementation of ticket #7: Help window and user documentation
