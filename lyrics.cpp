@@ -376,6 +376,9 @@ void Lyrics::initSong( Sequence *song )
 
 void Lyrics::applySettings()
 {
+#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+    m_chmenu->setPalette(qApp->palette());
+#endif
     m_toolButton->setIcon(IconUtils::GetIcon("application-menu"));
     m_textViewer->setFont(Settings::instance()->lyricsFont());
     m_normalColor = Settings::instance()->getFutureColor();

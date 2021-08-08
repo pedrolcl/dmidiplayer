@@ -28,6 +28,10 @@
 #include <QtMath>
 #include <QActionGroup>
 #include <QDesktopServices>
+#include <QScreen>
+#if QT_VERSION < QT_VERSION_CHECK(5,14,0)
+#include <QDesktopWidget>
+#endif
 
 #include <drumstick/settingsfactory.h>
 #include "guiplayer.h"
@@ -487,7 +491,7 @@ void GUIPlayer::setup()
 
 void GUIPlayer::applySettings()
 {
-    static QPalette defaultPalette = qApp->palette(); //(QColor(0xa0,0xa0,0xa0));
+    static QPalette defaultPalette = qApp->style()->standardPalette();
     static QPalette darkPalette(QColor(0x30,0x30,0x30));
 #if defined(Q_OS_WINDOWS)
     m_snapper.SetEnabled(Settings::instance()->winSnap());
@@ -495,7 +499,6 @@ void GUIPlayer::applySettings()
     qApp->setPalette( Settings::instance()->getDarkMode() ? darkPalette : defaultPalette );
     qApp->setStyle( Settings::instance()->getStyle() );
 
-    //m_ui->actionPianoPlayer->setIcon(IconUtils::GetIcon\("audio-midi"\));
     m_ui->actionFileInfo->setIcon(IconUtils::GetIcon("dialog-information"));
     m_ui->actionPlayList->setIcon(IconUtils::GetIcon("view-media-playlist"));
     m_ui->actionAbout->setIcon(IconUtils::GetIcon("help-about"));
@@ -521,6 +524,11 @@ void GUIPlayer::applySettings()
     m_ui->actionContents->setIcon(IconUtils::GetIcon("help-contents"));
     m_ui->actionWebSite->setIcon(IconUtils::GetIcon("viewhtml"));
 
+#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+    foreach(QMenu *mnu, m_ui->menuBar->findChildren<QMenu*>()) {
+        mnu->setPalette(qApp->palette());
+    }
+#endif
     m_lyrics->applySettings();
     m_pianola->applySettings();
     m_channels->applySettings();
@@ -872,8 +880,23 @@ void GUIPlayer::showEvent(QShowEvent *event)
 {
     QMainWindow::showEvent(event);
     if (m_firstShown) {
-        restoreGeometry(Settings::instance()->mainWindowGeometry());
-        restoreState(Settings::instance()->mainWindowState());
+        const QByteArray geometry = Settings::instance()->mainWindowGeometry();
+        const QByteArray state = Settings::instance()->mainWindowState();
+        if (geometry.isEmpty()) {
+            const QRect availableGeometry =
+#if QT_VERSION < QT_VERSION_CHECK(5,14,0)
+                    QApplication::desktop()->availableGeometry(this);
+#else
+                    screen()->availableGeometry();
+#endif
+            move((availableGeometry.width() - width()) / 2,
+                 (availableGeometry.height() - height()) / 2);
+        } else {
+            restoreGeometry(geometry);
+        }
+        if (!state.isEmpty()) {
+            restoreState(state);
+        }
         QStringList actions = Settings::instance()->toolbarActions();
         if (!actions.empty()) {
             m_ui->toolBar->clear();

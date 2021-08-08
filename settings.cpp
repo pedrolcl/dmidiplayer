@@ -158,8 +158,8 @@ void Settings::SaveToFile(const QString &filepath)
 void Settings::internalRead(QSettings &settings)
 {
     settings.beginGroup("MainWindow");
-    m_mainWindowGeometry = settings.value("Geometry").toByteArray();
-    m_mainWindowState = settings.value("State").toByteArray();
+    m_mainWindowGeometry = settings.value("Geometry", QByteArray()).toByteArray();
+    m_mainWindowState = settings.value("State", QByteArray()).toByteArray();
     settings.endGroup();
 
     settings.beginGroup(BackendManager::QSTR_DRUMSTICKRT_GROUP);
