@@ -16,6 +16,8 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <QDebug>
+#include <QApplication>
 #include <QVBoxLayout>
 #include <QGridLayout>
 #include <QLabel>
@@ -24,6 +26,12 @@
 #include <QCloseEvent>
 #include <QToolButton>
 #include <QToolBar>
+#if QT_VERSION < QT_VERSION_CHECK(5,14,0)
+#include <QDesktopWidget>
+#else
+#include <QScreen>
+#endif
+
 #include <drumstick/settingsfactory.h>
 #include <drumstick/pianokeybd.h>
 #include <drumstick/rtmidioutput.h>
@@ -126,7 +134,8 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent),
     m_toolBtn->setIcon(IconUtils::GetIcon("application-menu"));
     tbar->addWidget(m_toolBtn);
     tbar->show();
-
+    setMinimumSize(640,200);
+    adjustSize();
     readSettings();
     retranslateUi();
     applySettings();
@@ -196,9 +205,26 @@ void Pianola::readSettings()
     using namespace drumstick::widgets;
     SettingsFactory settings;
     settings->beginGroup("PlayerPianoWindow");
-    restoreGeometry(settings->value("Geometry").toByteArray());
-    restoreState(settings->value("State").toByteArray());
+    const QByteArray geometry = settings->value("Geometry", QByteArray()).toByteArray();
+    const QByteArray state = settings->value("State", QByteArray()).toByteArray();
     settings->endGroup();
+
+    if (geometry.isEmpty()) {
+        const QRect availableGeometry =
+#if QT_VERSION < QT_VERSION_CHECK(5,14,0)
+                QApplication::desktop()->availableGeometry(parentWidget());
+#else
+                parentWidget()->screen()->availableGeometry();
+#endif
+        //qDebug() << Q_FUNC_INFO << availableGeometry;
+        setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter,
+                                        size(), availableGeometry));
+    } else {
+        restoreGeometry(geometry);
+    }
+    if (!state.isEmpty()) {
+        restoreState(state);
+    }
 }
 
 void Pianola::writeSettings()

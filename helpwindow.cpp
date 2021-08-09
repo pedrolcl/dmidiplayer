@@ -16,11 +16,16 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <QDebug>
 #include <QApplication>
 #include <QWindow>
-#include <QScreen>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#if QT_VERSION < QT_VERSION_CHECK(5,14,0)
+#include <QDesktopWidget>
+#else
+#include <QScreen>
+#endif
 
 #include <drumstick/settingsfactory.h>
 #include "settings.h"
@@ -58,11 +63,6 @@ HelpWindow::HelpWindow(const QString &path, const QString &page, QWidget *parent
     connect(closeButton, &QAbstractButton::clicked, this, &QWidget::close);
     connect(textBrowser, &QTextBrowser::sourceChanged, this, &HelpWindow::updateWindowTitle);
 
-    QPalette p = textBrowser->palette();
-    p.setColor(QPalette::Base, Qt::white);
-    p.setColor(QPalette::Text, Qt::black);
-    textBrowser->setPalette(p);
-
     textBrowser->setSearchPaths(QStringList({path,":/help",":/help/en"}));
     textBrowser->setSource(page);
     textBrowser->setOpenExternalLinks(true);
@@ -80,8 +80,22 @@ void HelpWindow::readSettings()
     using namespace drumstick::widgets;
     SettingsFactory settings;
     settings->beginGroup("HelpWindow");
-    restoreGeometry(settings->value("Geometry").toByteArray());
+    const QByteArray geometry = settings->value("Geometry", QByteArray()).toByteArray();
     settings->endGroup();
+
+    if (geometry.isEmpty()) {
+        const QRect availableGeometry =
+#if QT_VERSION < QT_VERSION_CHECK(5,14,0)
+                QApplication::desktop()->availableGeometry(this);
+#else
+                screen()->availableGeometry();
+#endif
+        //qDebug() << Q_FUNC_INFO << availableGeometry;
+        setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter,
+                                        size(), availableGeometry));
+    } else {
+        restoreGeometry(geometry);
+    }
 }
 
 void HelpWindow::writeSettings()

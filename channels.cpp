@@ -16,7 +16,7 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-//#include <QDebug>
+#include <QDebug>
 #include <QApplication>
 #include <QGridLayout>
 #include <QLabel>
@@ -24,6 +24,12 @@
 #include <QComboBox>
 #include <QLineEdit>
 #include <QCloseEvent>
+#if QT_VERSION < QT_VERSION_CHECK(5,14,0)
+#include <QDesktopWidget>
+#else
+#include <QScreen>
+#endif
+
 #include <drumstick/settingsfactory.h>
 
 #include "settings.h"
@@ -109,6 +115,7 @@ Channels::Channels( QWidget* parent ) :
         m_level[i] = 0.0;
         m_factor[i] = m_volumeFactor;
     }
+    adjustSize();
     readSettings();
     retranslateUi();
     applySettings();
@@ -180,9 +187,26 @@ void Channels::readSettings()
     using namespace drumstick::widgets;
     SettingsFactory settings;
     settings->beginGroup("ChannelsWindow");
-    restoreGeometry(settings->value("Geometry").toByteArray());
-    restoreState(settings->value("State").toByteArray());
+    const QByteArray geometry = settings->value("Geometry", QByteArray()).toByteArray();
+    const QByteArray state = settings->value("State", QByteArray()).toByteArray();
     settings->endGroup();
+
+    if (geometry.isEmpty()) {
+        const QRect availableGeometry =
+#if QT_VERSION < QT_VERSION_CHECK(5,14,0)
+                QApplication::desktop()->availableGeometry(parentWidget());
+#else
+                parentWidget()->screen()->availableGeometry();
+#endif
+        //qDebug() << Q_FUNC_INFO << availableGeometry;
+        setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter,
+                                        size(), availableGeometry));
+    } else {
+        restoreGeometry(geometry);
+    }
+    if (!state.isEmpty()) {
+        restoreState(state);
+    }
 }
 
 void Channels::writeSettings()

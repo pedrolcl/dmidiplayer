@@ -28,9 +28,10 @@
 #include <QtMath>
 #include <QActionGroup>
 #include <QDesktopServices>
-#include <QScreen>
 #if QT_VERSION < QT_VERSION_CHECK(5,14,0)
 #include <QDesktopWidget>
+#else
+#include <QScreen>
 #endif
 
 #include <drumstick/settingsfactory.h>
@@ -187,6 +188,8 @@ GUIPlayer::GUIPlayer(QWidget *parent)
     updNavButtons();
 
     m_toolbarEditor = new ToolBarEditDialog(m_ui->toolBar, this);
+
+    m_ui->frame->setPalette(QPalette(QColor(0x0f,0x0f,0x0f)));
 
     try {
         BackendManager man;
@@ -491,7 +494,7 @@ void GUIPlayer::setup()
 
 void GUIPlayer::applySettings()
 {
-    static QPalette defaultPalette = qApp->style()->standardPalette();
+    static QPalette defaultPalette = qApp->palette(); //style()->standardPalette();
     static QPalette darkPalette(QColor(0x30,0x30,0x30));
 #if defined(Q_OS_WINDOWS)
     m_snapper.SetEnabled(Settings::instance()->winSnap());
@@ -889,8 +892,9 @@ void GUIPlayer::showEvent(QShowEvent *event)
 #else
                     screen()->availableGeometry();
 #endif
-            move((availableGeometry.width() - width()) / 2,
-                 (availableGeometry.height() - height()) / 2);
+            //qDebug() << Q_FUNC_INFO << availableGeometry;
+            setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter,
+                                            size(), availableGeometry));
         } else {
             restoreGeometry(geometry);
         }
