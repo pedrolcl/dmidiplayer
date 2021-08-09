@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
     splash.setFont(sf);
     splash.show();
     app.processEvents();
-    splash.showMessage("Drumstick Multiplatform MIDI File Player v" + strVersion,
+    splash.showMessage(QSTR_APPNAME + " v" + strVersion,
                        Qt::AlignBottom | Qt::AlignHCenter, Qt::white);
     app.processEvents();
 
