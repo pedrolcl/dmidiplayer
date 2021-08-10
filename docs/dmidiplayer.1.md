@@ -101,7 +101,7 @@ The following options apply to all Qt5 applications:
 
 _midi_file_
 
-:   Input SMF/KAR/WRK file name.
+:   Input SMF/KAR/WRK file name(s). The set of provided files becomes a temporary playlist.
 
 # FILES
 

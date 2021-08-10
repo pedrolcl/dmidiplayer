@@ -5,11 +5,18 @@ if (EXISTS ${PANDOC_EXECUTABLE})
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${MANPAGE}
             DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
 
-    add_custom_command(OUTPUT en/index.html
-        COMMAND ${PANDOC_EXECUTABLE} -s -t html5 -Mtitle="Help Index" -Vtitle="" -o en/index.html en/index.md
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-        DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/en/index.md
-        VERBATIM)
+#    set(help_file "en/index")
+#    set(_src ${CMAKE_CURRENT_SOURCE_DIR}/${help_file}.md)
+#    set(_out ${CMAKE_CURRENT_SOURCE_DIR}/${help_file}.html)
+#    add_custom_command(
+#        OUTPUT ${_out}
+#        COMMAND ${PANDOC_EXECUTABLE} -s --toc -t html5 -o ${_out} ${_src}
+#        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+#        DEPENDS ${_src}
+#        VERBATIM)
+#    add_custom_target(helpfile ALL DEPENDS ${_out})
+    add_helpfile("en/index")
+    add_helpfile("es/index")
 
 else()
     install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${MANPAGE}
