@@ -45,37 +45,37 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>Channels</name>
     <message>
-        <location filename="../channels.cpp" line="123"/>
+        <location filename="../channels.cpp" line="131"/>
         <source>MIDI Channels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="124"/>
+        <location filename="../channels.cpp" line="132"/>
         <source>Channel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="125"/>
+        <location filename="../channels.cpp" line="133"/>
         <source>Mute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="126"/>
+        <location filename="../channels.cpp" line="134"/>
         <source>Solo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="127"/>
+        <location filename="../channels.cpp" line="135"/>
         <source>Level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="128"/>
+        <location filename="../channels.cpp" line="136"/>
         <source>Lock</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="129"/>
+        <location filename="../channels.cpp" line="137"/>
         <source>Patch (sound setting)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -114,114 +114,154 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>GUIPlayer</name>
     <message>
-        <location filename="../guiplayer.cpp" line="435"/>
+        <location filename="../guiplayer.cpp" line="295"/>
+        <source>Please, load a song</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="305"/>
+        <source>Playing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="314"/>
+        <source>Paused</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="327"/>
+        <source>Stopped</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="330"/>
+        <source>Not initialized</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="377"/>
+        <source>Loading %1 file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="449"/>
+        <source>file %1 couldn&apos;t be opened</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="465"/>
         <source>Open MIDI File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="436"/>
+        <location filename="../guiplayer.cpp" line="466"/>
         <source>All files (*.kar *.mid *.midi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;Cakewalk files (*.wrk)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="639"/>
+        <location filename="../guiplayer.cpp" line="677"/>
         <source>Jump to Bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="640"/>
+        <location filename="../guiplayer.cpp" line="678"/>
         <source>Bar number:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="876"/>
+        <location filename="../guiplayer.cpp" line="774"/>
+        <source>Dropped file %1 is not supported</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="961"/>
         <source>&lt;p&gt;This program is developed and translated thanks to the volunteer work of many people from around the world. If you want to join the team or have any question, please visit the web site at &lt;a href=&apos;http://sourceforge.net/projects/dmidiplayer/&apos;&gt;SourceForge&lt;/a&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="881"/>
+        <location filename="../guiplayer.cpp" line="966"/>
         <source>Translation Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="907"/>
+        <location filename="../guiplayer.cpp" line="1007"/>
         <source>Language Changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="908"/>
+        <location filename="../guiplayer.cpp" line="1008"/>
         <source>The language for this application is going to change to %1. Do you want to continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="926"/>
+        <location filename="../guiplayer.cpp" line="1026"/>
         <source>&lt;b&gt;No file loaded&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="928"/>
+        <location filename="../guiplayer.cpp" line="1028"/>
         <source>&lt;b&gt;File:&lt;/b&gt;&lt;br&gt;%1&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="930"/>
-        <location filename="../guiplayer.cpp" line="934"/>
-        <location filename="../guiplayer.cpp" line="938"/>
-        <location filename="../guiplayer.cpp" line="942"/>
-        <location filename="../guiplayer.cpp" line="946"/>
-        <location filename="../guiplayer.cpp" line="950"/>
-        <location filename="../guiplayer.cpp" line="954"/>
-        <location filename="../guiplayer.cpp" line="958"/>
+        <location filename="../guiplayer.cpp" line="1030"/>
+        <location filename="../guiplayer.cpp" line="1034"/>
+        <location filename="../guiplayer.cpp" line="1038"/>
+        <location filename="../guiplayer.cpp" line="1042"/>
+        <location filename="../guiplayer.cpp" line="1046"/>
+        <location filename="../guiplayer.cpp" line="1050"/>
+        <location filename="../guiplayer.cpp" line="1054"/>
+        <location filename="../guiplayer.cpp" line="1058"/>
         <source>&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="932"/>
+        <location filename="../guiplayer.cpp" line="1032"/>
         <source>&lt;b&gt;Copyright:&lt;/b&gt;%1&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="936"/>
+        <location filename="../guiplayer.cpp" line="1036"/>
         <source>&lt;b&gt;Karaoke type:&lt;/b&gt;%1&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="940"/>
+        <location filename="../guiplayer.cpp" line="1040"/>
         <source>&lt;b&gt;Karaoke version:&lt;/b&gt;%1&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="944"/>
+        <location filename="../guiplayer.cpp" line="1044"/>
         <source>&lt;b&gt;Karaoke info:&lt;/b&gt;%1&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="948"/>
+        <location filename="../guiplayer.cpp" line="1048"/>
         <source>&lt;b&gt;Karaoke language:&lt;/b&gt;%1&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="952"/>
+        <location filename="../guiplayer.cpp" line="1052"/>
         <source>&lt;b&gt;Karaoke title:&lt;/b&gt;%1&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="956"/>
+        <location filename="../guiplayer.cpp" line="1056"/>
         <source>&lt;b&gt;Karaoke things:&lt;/b&gt;%1&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="959"/>
+        <location filename="../guiplayer.cpp" line="1059"/>
         <source>SMF Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="966"/>
+        <location filename="../guiplayer.cpp" line="1066"/>
         <source>Playlist not saved</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="967"/>
+        <location filename="../guiplayer.cpp" line="1067"/>
         <source>The current playlist has changed, but it is not saved. The changes will be lost when closing the program.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -239,358 +279,379 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="186"/>
+        <location filename="../guiplayer.ui" line="41"/>
         <source>Playback time and current levels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="229"/>
+        <location filename="../guiplayer.ui" line="84"/>
         <source>00:00:00</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="236"/>
+        <location filename="../guiplayer.ui" line="91"/>
         <source>Tempo:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="259"/>
+        <location filename="../guiplayer.ui" line="114"/>
         <source>Volume:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="273"/>
+        <location filename="../guiplayer.ui" line="128"/>
         <source>Pitch:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="289"/>
+        <location filename="../guiplayer.ui" line="144"/>
         <source>Pitch Control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="292"/>
+        <location filename="../guiplayer.ui" line="147"/>
         <source>Pitch transpose between -12 and +12 semitones</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="460"/>
+        <location filename="../guiplayer.ui" line="315"/>
         <source>Reset Volume</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="463"/>
+        <location filename="../guiplayer.ui" line="318"/>
         <source>Reset Volume to 100%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="360"/>
+        <location filename="../guiplayer.ui" line="215"/>
         <source>Volume Slider</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="320"/>
+        <location filename="../guiplayer.ui" line="175"/>
         <source>Tempo Slider</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="447"/>
+        <location filename="../guiplayer.ui" line="302"/>
         <source>Reset Tempo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="450"/>
+        <location filename="../guiplayer.ui" line="305"/>
         <source>Reset Tempo to 100%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="453"/>
+        <location filename="../guiplayer.ui" line="308"/>
         <source>tempo=100%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="387"/>
+        <location filename="../guiplayer.ui" line="242"/>
         <source>File Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="400"/>
+        <location filename="../guiplayer.ui" line="255"/>
         <source>Currently loaded MIDI file name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="489"/>
+        <location filename="../guiplayer.ui" line="344"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="493"/>
+        <location filename="../guiplayer.ui" line="348"/>
         <source>Open Recent Files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="498"/>
+        <location filename="../guiplayer.ui" line="353"/>
         <source>Playlist Repeat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="522"/>
+        <location filename="../guiplayer.ui" line="378"/>
         <source>&amp;Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="526"/>
+        <location filename="../guiplayer.ui" line="382"/>
         <source>&amp;Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="536"/>
+        <location filename="../guiplayer.ui" line="394"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="544"/>
+        <location filename="../guiplayer.ui" line="402"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="561"/>
+        <location filename="../guiplayer.ui" line="419"/>
         <source>Tool Bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="590"/>
+        <location filename="../guiplayer.ui" line="449"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="593"/>
+        <location filename="../guiplayer.ui" line="452"/>
         <source>Open a MIDI file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="598"/>
+        <location filename="../guiplayer.ui" line="460"/>
         <source>Quit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="601"/>
+        <location filename="../guiplayer.ui" line="463"/>
         <source>Quit the application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="609"/>
+        <location filename="../guiplayer.ui" line="471"/>
         <source>Play</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="612"/>
+        <location filename="../guiplayer.ui" line="474"/>
         <source>Start playing the current MIDI file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="626"/>
+        <location filename="../guiplayer.ui" line="491"/>
         <source>Pause</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="637"/>
+        <location filename="../guiplayer.ui" line="505"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="629"/>
+        <location filename="../guiplayer.ui" line="494"/>
         <source>Pause  playback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="640"/>
+        <location filename="../guiplayer.ui" line="508"/>
         <source>Stop playback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="648"/>
+        <location filename="../guiplayer.ui" line="519"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="651"/>
+        <location filename="../guiplayer.ui" line="522"/>
         <source>Show the about box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="659"/>
+        <location filename="../guiplayer.ui" line="530"/>
         <source>About Qt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="662"/>
+        <location filename="../guiplayer.ui" line="533"/>
         <source>Show the about Qt dialog box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="670"/>
+        <location filename="../guiplayer.ui" line="541"/>
         <source>MIDI Setup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="673"/>
+        <location filename="../guiplayer.ui" line="544"/>
         <source>Select a connection for the MIDI output port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="687"/>
-        <location filename="../guiplayer.ui" line="690"/>
+        <location filename="../guiplayer.ui" line="558"/>
+        <location filename="../guiplayer.ui" line="561"/>
         <source>Show Tool Bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="693"/>
+        <location filename="../guiplayer.ui" line="564"/>
         <source>Show or hide the tool bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="704"/>
+        <location filename="../guiplayer.ui" line="578"/>
         <source>Show Status Bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="707"/>
+        <location filename="../guiplayer.ui" line="581"/>
         <source>Show or hide the status bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="715"/>
+        <location filename="../guiplayer.ui" line="592"/>
         <source>Lyrics and Texts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="718"/>
-        <location filename="../guiplayer.ui" line="721"/>
+        <location filename="../guiplayer.ui" line="595"/>
+        <location filename="../guiplayer.ui" line="598"/>
         <source>Show or Hide Lyrics and Texts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="732"/>
+        <location filename="../guiplayer.ui" line="612"/>
         <source>Channels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="735"/>
-        <location filename="../guiplayer.ui" line="738"/>
+        <location filename="../guiplayer.ui" line="615"/>
+        <location filename="../guiplayer.ui" line="618"/>
         <source>Show or Hide Channels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="749"/>
+        <location filename="../guiplayer.ui" line="632"/>
         <source>Piano Player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="752"/>
-        <location filename="../guiplayer.ui" line="755"/>
+        <location filename="../guiplayer.ui" line="635"/>
+        <location filename="../guiplayer.ui" line="638"/>
         <source>Show or Hide Piano Player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="766"/>
+        <location filename="../guiplayer.ui" line="652"/>
         <source>Rhythm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="769"/>
-        <location filename="../guiplayer.ui" line="772"/>
+        <location filename="../guiplayer.ui" line="655"/>
+        <location filename="../guiplayer.ui" line="658"/>
         <source>Show or Hide Rhythm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="780"/>
+        <location filename="../guiplayer.ui" line="669"/>
         <source>File Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="785"/>
+        <location filename="../guiplayer.ui" line="677"/>
         <source>Preferences ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="793"/>
+        <location filename="../guiplayer.ui" line="685"/>
         <source>Play List ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="796"/>
+        <location filename="../guiplayer.ui" line="688"/>
         <source>Show Play List Editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="801"/>
+        <location filename="../guiplayer.ui" line="696"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="804"/>
+        <location filename="../guiplayer.ui" line="699"/>
         <source>Next File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="809"/>
+        <location filename="../guiplayer.ui" line="707"/>
         <source>Prev</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="812"/>
+        <location filename="../guiplayer.ui" line="710"/>
         <source>Previous File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="817"/>
+        <location filename="../guiplayer.ui" line="718"/>
         <source>Forward</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="820"/>
+        <location filename="../guiplayer.ui" line="721"/>
         <source>Move play position to the next bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="825"/>
+        <location filename="../guiplayer.ui" line="729"/>
         <source>Backward</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="828"/>
+        <location filename="../guiplayer.ui" line="732"/>
         <source>Move play position to the previous bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="833"/>
+        <location filename="../guiplayer.ui" line="740"/>
         <source>Jump...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="836"/>
+        <location filename="../guiplayer.ui" line="743"/>
         <source>Move play position to any bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="841"/>
+        <location filename="../guiplayer.ui" line="751"/>
         <source>Customize Tool Bar...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="852"/>
+        <location filename="../guiplayer.ui" line="765"/>
         <source>Nothing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="860"/>
+        <location filename="../guiplayer.ui" line="776"/>
         <source>Current Song</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="868"/>
+        <location filename="../guiplayer.ui" line="787"/>
         <source>Whole Playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.ui" line="798"/>
+        <location filename="../guiplayer.ui" line="801"/>
+        <source>Loop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.ui" line="804"/>
+        <source>Loop between two bars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.ui" line="809"/>
+        <source>Contents</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.ui" line="814"/>
+        <source>Web Site</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1245,112 +1306,112 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>Lyrics</name>
     <message>
-        <location filename="../lyrics.cpp" line="142"/>
+        <location filename="../lyrics.cpp" line="149"/>
         <source>Lyrics Viewer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="181"/>
+        <location filename="../lyrics.cpp" line="207"/>
         <source>Lyrics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="182"/>
+        <location filename="../lyrics.cpp" line="208"/>
         <source>Track:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="183"/>
+        <location filename="../lyrics.cpp" line="209"/>
         <source>Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="184"/>
+        <location filename="../lyrics.cpp" line="210"/>
         <source>All Types</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="185"/>
+        <location filename="../lyrics.cpp" line="211"/>
         <source>Texts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="186"/>
+        <location filename="../lyrics.cpp" line="212"/>
         <source>Copyright Notice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="187"/>
+        <location filename="../lyrics.cpp" line="213"/>
         <source>Sequence Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="188"/>
+        <location filename="../lyrics.cpp" line="214"/>
         <source>Instrument Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="189"/>
+        <location filename="../lyrics.cpp" line="215"/>
         <source>Lyric Events</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="190"/>
+        <location filename="../lyrics.cpp" line="216"/>
         <source>Marker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="191"/>
+        <location filename="../lyrics.cpp" line="217"/>
         <source>Cue Point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="193"/>
+        <location filename="../lyrics.cpp" line="219"/>
         <source>Encoding:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="194"/>
+        <location filename="../lyrics.cpp" line="220"/>
         <source>Font...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="195"/>
+        <location filename="../lyrics.cpp" line="221"/>
         <source>Full Screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="196"/>
+        <location filename="../lyrics.cpp" line="222"/>
         <source>Copy to clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="197"/>
+        <location filename="../lyrics.cpp" line="223"/>
         <source>Save to file...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="198"/>
+        <location filename="../lyrics.cpp" line="224"/>
         <source>Print...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="251"/>
+        <location filename="../lyrics.cpp" line="277"/>
         <source>Default (latin1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="261"/>
+        <location filename="../lyrics.cpp" line="287"/>
         <source>All Tracks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="266"/>
+        <location filename="../lyrics.cpp" line="292"/>
         <source>Track %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="354"/>
+        <location filename="../lyrics.cpp" line="380"/>
         <source>Lyrics Viewer (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1358,38 +1419,32 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>Pianola</name>
     <message>
-        <location filename="../pianola.cpp" line="52"/>
-        <location filename="../pianola.cpp" line="143"/>
-        <source>MIDI Channels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../pianola.cpp" line="142"/>
+        <location filename="../pianola.cpp" line="151"/>
         <source>Player Piano</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="144"/>
+        <location filename="../pianola.cpp" line="152"/>
         <source>Show all channels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="145"/>
+        <location filename="../pianola.cpp" line="153"/>
         <source>Hide all channels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="146"/>
+        <location filename="../pianola.cpp" line="154"/>
         <source>Tighten the number of keys</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="147"/>
+        <location filename="../pianola.cpp" line="155"/>
         <source>View Full Screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="149"/>
+        <location filename="../pianola.cpp" line="157"/>
         <source>Channel %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1403,25 +1458,25 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../playlist.cpp" line="48"/>
-        <location filename="../playlist.cpp" line="349"/>
+        <location filename="../playlist.cpp" line="355"/>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="52"/>
-        <location filename="../playlist.cpp" line="350"/>
+        <location filename="../playlist.cpp" line="356"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="56"/>
-        <location filename="../playlist.cpp" line="351"/>
+        <location filename="../playlist.cpp" line="357"/>
         <source>Move Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="60"/>
-        <location filename="../playlist.cpp" line="352"/>
+        <location filename="../playlist.cpp" line="358"/>
         <source>Move Down</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1432,50 +1487,50 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../playlist.cpp" line="68"/>
-        <location filename="../playlist.cpp" line="353"/>
+        <location filename="../playlist.cpp" line="359"/>
         <source>Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="72"/>
-        <location filename="../playlist.cpp" line="354"/>
+        <location filename="../playlist.cpp" line="360"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="76"/>
-        <location filename="../playlist.cpp" line="355"/>
+        <location filename="../playlist.cpp" line="361"/>
         <source>Save As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="121"/>
+        <location filename="../playlist.cpp" line="127"/>
         <source>Open Playlist file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="122"/>
-        <location filename="../playlist.cpp" line="131"/>
+        <location filename="../playlist.cpp" line="128"/>
+        <location filename="../playlist.cpp" line="137"/>
         <source>Playlist (*.lst)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="133"/>
+        <location filename="../playlist.cpp" line="139"/>
         <source>Save Playlist file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="165"/>
+        <location filename="../playlist.cpp" line="171"/>
         <source>Manage Playlist: %1 %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="174"/>
+        <location filename="../playlist.cpp" line="180"/>
         <source>Add MIDI File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="175"/>
+        <location filename="../playlist.cpp" line="181"/>
         <source>All files (*.kar *.mid *.midi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;Cakewalk files (*.wrk)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1639,7 +1694,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>QCoreApplication</name>
     <message>
-        <location filename="../playermain.cpp" line="29"/>
+        <location filename="../playermain.cpp" line="30"/>
         <source>Copyright (C) 2006-2021 Pedro Lopez-Cabanillas
 This program comes with ABSOLUTELY NO WARRANTY;
 This is free software, and you are welcome to redistribute it
@@ -1647,27 +1702,27 @@ under certain conditions; see the LICENSE for details.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="35"/>
+        <location filename="../playermain.cpp" line="36"/>
         <source>Fatal error from the Operating System. This usually happens when the OS doesn&apos;t have MIDI support, or the MIDI support is not enabled. Please check your OS/MIDI configuration.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="60"/>
+        <location filename="../playermain.cpp" line="65"/>
         <source>Portable settings mode.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="61"/>
+        <location filename="../playermain.cpp" line="66"/>
         <source>Portable settings file name.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="64"/>
+        <location filename="../playermain.cpp" line="69"/>
         <source>MIDI Out Driver.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="66"/>
+        <location filename="../playermain.cpp" line="71"/>
         <source>MIDI Out Connection.</source>
         <translation type="unfinished"></translation>
     </message>

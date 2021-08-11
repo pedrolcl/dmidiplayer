@@ -190,6 +190,38 @@ p, li { white-space: pre-wrap; }
         <source>Bar number:</source>
         <translation>Número de compás:</translation>
     </message>
+    <message>
+        <source>Please, load a song</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Playing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Paused</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stopped</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not initialized</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Loading %1 file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>file %1 couldn&apos;t be opened</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dropped file %1 is not supported</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>GUIPlayerClass</name>
@@ -504,6 +536,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Whole Playlist</source>
         <translation>Toda la lista de reproducción</translation>
+    </message>
+    <message>
+        <source>Loop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Loop between two bars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contents</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Web Site</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1136,7 +1184,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>MIDI Channels</source>
-        <translation>Canales MIDI</translation>
+        <translation type="vanished">Canales MIDI</translation>
     </message>
     <message>
         <source>Show all channels</source>
