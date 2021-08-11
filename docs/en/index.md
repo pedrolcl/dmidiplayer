@@ -75,13 +75,48 @@ The following standard actions are available in the `File` menu and also the
 tool bar, with the conventional functionalities: `Play`, `Pause` (and continue), 
 `Stop`, `Fast Forward` (by 1 bar), `Rewind` (by 1 bar).
 
+By default, `Play` is activated automatically upon loading a MIDI file except 
+when this feature is disabled in the configuration dialog.
+
 ### Transpose
 
-### Volume Level
+The `Pitch control` is located in the main window. It is a spin box initialized
+to zero, with a valid range from -12 to +12 semitones. The limits are equivalent 
+to one octave up or down the original tone. This should be enough for singers
+or instrumentists needing to adjust the tonality for their comfort.
 
+All MIDI channels are chromatically transposed, except the percussion channel 
+(GM channel 10 by default).
+
+### Volume Level
+ 
+The `Volume control` is located in the main window. It is a slider, initialized
+to 100%, with a valid range from 0% to 200%. The upper limit effect may be lower 
+because the MIDI CC 7 has a valid range from 0 to 127. There is also a button to
+`Reset Volume`.
+ 
 ### Tempo
 
+The `Tempo control` is located in the main window. It is a slider initialized
+to 100% with a valid range from 50% to 200%. There is a button to `Reset Tempo`
+and also a tempo display, showing the effective tempo in beats per minute with
+an initial value of 120 bpm. This is the default tempo for a MIDI file if it 
+does not contain a tempo change. This value is updated when changing the
+tempo control, and also while a MIDI file containing tempo changes is playing.
+
 ### Jump, Loop and Positioning
+
+`Jump` action (located in the `File` menu and the default tool bar), asks for
+a bar number, between 1 and the last bar of the loaded song, to change the 
+current position of the song to the given bar.
+
+`Loop` action (located in the `File` menu and the default tool bar), asks for
+two bar numbers. The song will be played between the two given bars when it is
+activated. You can switch off the loop any moment selecting the action again.
+
+The `Positioning control` is located in the main window. It is a slider that
+moves while the current played position changes, and can be moved by hand to
+change the position to any arbitrary point within the song.
 
 ## Views
 

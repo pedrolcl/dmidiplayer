@@ -445,6 +445,8 @@ void GUIPlayer::openFile(const QString& fileName)
                 QTimer::singleShot(0, this, &GUIPlayer::play);
             }
         }
+    } else {
+        QMessageBox::warning(this, QSTR_APPNAME, tr("file %1 couldn't be opened").arg(finfo.fileName()));
     }
 }
 
@@ -769,7 +771,7 @@ void GUIPlayer::dropEvent( QDropEvent * event )
                 list.append(localFileName);
             } else {
                 QMessageBox::warning(this, QSTR_APPNAME,
-                    QString(tr("Dropped file %1 is not supported").arg(fileName)));
+                    tr("Dropped file %1 is not supported").arg(fileName));
             }
         }
         if (!list.isEmpty()) {
