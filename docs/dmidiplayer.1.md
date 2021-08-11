@@ -101,7 +101,7 @@ The following options apply to all Qt5 applications:
 
 _midi_file_
 
-:   Input SMF/KAR/WRK file name(s). The set of provided files becomes a temporary playlist.
+:   Input SMF/KAR/WRK file name(s). The set of provided file names becomes a temporary playlist.
 
 # FILES
 
@@ -121,7 +121,7 @@ $ ls -1 *.mid > my_playlist.lst
 
 **DRUMSTICKRT**
 
-:   Location of Drumstick::RT plugins if they are not
+:   Location of Drumstick::RT plugins. Useful if the plugins are not
     installed at a standard place.
 
 # BUGS

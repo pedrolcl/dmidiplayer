@@ -188,6 +188,7 @@ GUIPlayer::GUIPlayer(QWidget *parent)
     updNavButtons();
 
     m_toolbarEditor = new ToolBarEditDialog(m_ui->toolBar, this);
+    m_helpWindow = new HelpWindow(this);
 
     m_ui->frame->setPalette(QPalette(QColor(0x0f,0x0f,0x0f)));
 
@@ -993,6 +994,7 @@ void GUIPlayer::retranslateUi()
     m_recentFiles->retranslateUi();
     m_playList->retranslateUi();
     m_toolbarEditor->retranslateUi();
+    m_helpWindow->retranslateUi();
 }
 
 void GUIPlayer::slotSwitchLanguage(QAction *action)
@@ -1100,7 +1102,7 @@ void GUIPlayer::slotHelp()
     if (!finfo.exists()) {
         hname = "en/index.html";
     }
-    HelpWindow::showPage(hname);
+    m_helpWindow->showPage(hdir.path(), hname);
 }
 
 void GUIPlayer::slotOpenWebSite()

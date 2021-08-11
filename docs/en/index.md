@@ -20,20 +20,22 @@ Some key features:
 
 * MIDI Output to hardware MIDI ports, or any other Drumstick backend like soft
   synths
-* Transpose song tonality between -12 and +12 semitones
+* [Transpose](https://en.wikipedia.org/wiki/Transposition_(music)) song tonality 
+  between -12 and +12 semitones
 * Change MIDI volume level (using MIDI CC7)
-* Scale song speed between half and double tempo
+* Scale song speed between half and double [tempo](https://en.wikipedia.org/wiki/Tempo)
 * Lyrics, Piano Player and MIDI Channels views
 * Supports MID/KAR (Standard MIDI Files) and WRK (Cakewalk) file formats
 
 ## MIDI Output
 
 Any MIDI Player outputs MIDI events only, but no sound. To produce sound, a MIDI 
-Synthesizer is needed, rendering the events into digital audio that can be 
-reproduced by the computer's audio interface. The events can also be rendered by
-a musical MIDI instrument connected to the computer, for instance a MIDI organ
-or piano with an USB interface. If that option is not available, another usual
-alternative is to use a software synthesizer.
+Synthesizer is needed to render the events into digital audio that can be 
+reproduced by the computer's (or external) audio speakers. The events can also 
+be rendered by an external musical MIDI instrument connected to the computer, 
+for instance a MIDI organ, piano, or synthesizer with an USB interface. If that 
+option is not available, another usual alternative is a software synthesizer 
+(a program).
 
 There are software synthesizers included in the computer's operating systems, 
 for instance Microsoft Windows includes the "Microsoft GS Wavetable Synth", and
@@ -52,23 +54,26 @@ the "MIDI Setup" dialog and then:
   you want. To use another connected MIDI device or software synth, 
   you need to select "CoreMIDI" in the first list box, and the name of your
   synth in the second one.
-* In **Linux** and other **Unix** Operating Systems, you have two available soft
-  synths ready to be used. One is "SonivoxEAS", a very basic synth which doesn't
-  use external files and depends on the PulseAudio sound system. For external
-  devices attached to the computer or arbitrary soft synths, you need to select
-  "ALSA" (or "OSS") in the first list box.
-* **FluidSynth** is another included open software synth that is available on 
-  all operating systems. It is very configurable, accepting soundfont files and
-  many digital audio sound systems.
-* **Network** is an UDP Multicast output, that may be used to send MIDI events 
-  as network packets that can be received by other computers in the same local 
-  area.
+* In **Linux** and other **Unix** Operating Systems, "SonivoxEAS" is a soft 
+  synth ready to be used. It is a very basic GM synth which doesn't use files 
+  and depends only on the PulseAudio sound system. For external devices attached 
+  to the computer or arbitrary soft synths, you need to select "ALSA" (or "OSS") 
+  in the first list box.
+* **FluidSynth** is another included open software synth that is multiplatform 
+  and available on all operating systems. It is very configurable, accepting 
+  soundfont files and many digital audio sound systems. Select [FluidSynth](https://github.com/FluidSynth/fluidsynth) 
+  on both list boxes to use it.
+* **Network** is a multiplatform UDP Multicast output, that may be used to send 
+  MIDI events as network packets to other computers and devices in the same 
+  local area network. It is compatible with [ipMIDI](https://www.nerds.de/en/ipmidi.html),
+  [QmidiNet](https://qmidinet.sourceforge.io/), and [multimidicast](https://llg.cubic.org/tools/multimidicast/) 
+  among other software.
 
 ## Playback Controls
 
 The following standard actions are available in the `File` menu and also the
-tool bar, with the conventional functionalities: `Play`, `Pause`, `Stop`, 
-`Fast Forward` (by 1 bar), `Rewind` (by 1 bar).
+tool bar, with the conventional functionalities: `Play`, `Pause` (and continue), 
+`Stop`, `Fast Forward` (by 1 bar), `Rewind` (by 1 bar).
 
 ### Transpose
 

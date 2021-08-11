@@ -68,7 +68,7 @@ if (EXISTS ${PANDOC_EXECUTABLE})
         set(_out ${CMAKE_CURRENT_SOURCE_DIR}/${help_file}.html)
         add_custom_command(
             OUTPUT ${_out}
-            COMMAND ${PANDOC_EXECUTABLE} -s --toc -t html5 -o ${_out} ${_src}
+            COMMAND ${PANDOC_EXECUTABLE} -s --toc -t html4 -o ${_out} ${_src}
             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
             DEPENDS ${_src}
             VERBATIM)

@@ -28,6 +28,7 @@
 #include <QPointer>
 #include <QTranslator>
 #include <QThread>
+
 #include "connections.h"
 #include "recentfileshelper.h"
 #include "pianola.h"
@@ -36,6 +37,7 @@
 #include "prefsdialog.h"
 #include "playlist.h"
 #include "toolbareditdialog.h"
+#include "helpwindow.h"
 
 #if defined(Q_OS_WINDOWS)
 #include "winsnap.h"
@@ -177,6 +179,7 @@ private:
     QPointer<PrefsDialog> m_preferences;
     QPointer<PlayList> m_playList;
     QPointer<ToolBarEditDialog> m_toolbarEditor;
+    QPointer<HelpWindow> m_helpWindow;
     QTranslator *m_trq, *m_trp, *m_trl;
     QAction *m_currentLang;
     bool m_firstShown{true};

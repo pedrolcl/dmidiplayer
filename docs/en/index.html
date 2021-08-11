@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
   <title>Help Index</title>
   <style type="text/css">code{white-space: pre;}</style>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
-<header>
+<div id="header">
 <h1 class="title">Help Index</h1>
-</header>
-<nav id="TOC">
+</div>
+<div id="TOC">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#midi-output">MIDI Output</a></li>
@@ -36,31 +33,31 @@
 <li><a href="#toolbar-customization">Toolbar Customization</a></li>
 </ul></li>
 </ul>
-</nav>
+</div>
 <h2 id="introduction">Introduction</h2>
 <p>This application is a multiplatform MIDI file player for Linux, Windows and macOS. It reads .MID (Standard MIDI Files), .KAR (Karaoke), and .WRK (Cakewalk) file formats, and outputs MIDI events to hardware MIDI ports and also software synths.</p>
 <p><a href="https://drumstick.sourceforge.io">Drumstick</a> is a set of GPLv3 licensed C++/Qt libraries for MIDI applications. The project includes several tools as examples, and among them is the drumstick-guiplayer utility that leverages the Drumstick::ALSA library, so it is available only for Linux (because the ALSA sequencer is a linux only technology). Some people have requested a program with the same functionalities on Windows and macOS, and here it is. But this program is much more than that, and it also works on Linux...</p>
 <p>Some key features:</p>
 <ul>
 <li>MIDI Output to hardware MIDI ports, or any other Drumstick backend like soft synths</li>
-<li>Transpose song tonality between -12 and +12 semitones</li>
+<li><a href="https://en.wikipedia.org/wiki/Transposition_(music)">Transpose</a> song tonality between -12 and +12 semitones</li>
 <li>Change MIDI volume level (using MIDI CC7)</li>
-<li>Scale song speed between half and double tempo</li>
+<li>Scale song speed between half and double <a href="https://en.wikipedia.org/wiki/Tempo">tempo</a></li>
 <li>Lyrics, Piano Player and MIDI Channels views</li>
 <li>Supports MID/KAR (Standard MIDI Files) and WRK (Cakewalk) file formats</li>
 </ul>
 <h2 id="midi-output">MIDI Output</h2>
-<p>Any MIDI Player outputs MIDI events only, but no sound. To produce sound, a MIDI Synthesizer is needed, rendering the events into digital audio that can be reproduced by the computer's audio interface. The events can also be rendered by a musical MIDI instrument connected to the computer, for instance a MIDI organ or piano with an USB interface. If that option is not available, another usual alternative is to use a software synthesizer.</p>
+<p>Any MIDI Player outputs MIDI events only, but no sound. To produce sound, a MIDI Synthesizer is needed to render the events into digital audio that can be reproduced by the computer's (or external) audio speakers. The events can also be rendered by an external musical MIDI instrument connected to the computer, for instance a MIDI organ, piano, or synthesizer with an USB interface. If that option is not available, another usual alternative is a software synthesizer (a program).</p>
 <p>There are software synthesizers included in the computer's operating systems, for instance Microsoft Windows includes the &quot;Microsoft GS Wavetable Synth&quot;, and Apple macOS includes the &quot;Apple DLS Synthesizer&quot;. To use them, you need to open the &quot;MIDI Setup&quot; dialog and then:</p>
 <ul>
 <li>In <strong>Windows</strong>, select the &quot;Windows MM&quot; option in the first list box, and &quot;Microsoft GS Wavetable Synth&quot; in the second list box. Instead of this synth, which is very basic and limited, you may prefer a better/free alternative like <a href="https://coolsoft.altervista.org/en/virtualmidisynth">Virtual MIDI Synth</a> that will show as &quot;VirtualMIDISynth #n&quot; in the second list box when running. If you have an external MIDI instrument attached to the computer, its name should appear in the second list box as well.</li>
 <li>In <strong>macOS</strong>, select &quot;DLS Synth&quot; in both the first and second list boxes. This synth has a configuration option for using DLS or SF2 soundfont files if you want. To use another connected MIDI device or software synth, you need to select &quot;CoreMIDI&quot; in the first list box, and the name of your synth in the second one.</li>
-<li>In <strong>Linux</strong> and other <strong>Unix</strong> Operating Systems, you have two available soft synths ready to be used. One is &quot;SonivoxEAS&quot;, a very basic synth which doesn't use external files and depends on the PulseAudio sound system. For external devices attached to the computer or arbitrary soft synths, you need to select &quot;ALSA&quot; (or &quot;OSS&quot;) in the first list box.</li>
-<li><strong>FluidSynth</strong> is another included open software synth that is available on all operating systems. It is very configurable, accepting soundfont files and many digital audio sound systems.</li>
-<li><strong>Network</strong> is an UDP Multicast output, that may be used to send MIDI events as network packets that can be received by other computers in the same local area.</li>
+<li>In <strong>Linux</strong> and other <strong>Unix</strong> Operating Systems, &quot;SonivoxEAS&quot; is a soft synth ready to be used. It is a very basic GM synth which doesn't use files and depends only on the PulseAudio sound system. For external devices attached to the computer or arbitrary soft synths, you need to select &quot;ALSA&quot; (or &quot;OSS&quot;) in the first list box.</li>
+<li><strong>FluidSynth</strong> is another included open software synth that is multiplatform and available on all operating systems. It is very configurable, accepting soundfont files and many digital audio sound systems. Select <a href="https://github.com/FluidSynth/fluidsynth">FluidSynth</a> on both list boxes to use it.</li>
+<li><strong>Network</strong> is a multiplatform UDP Multicast output, that may be used to send MIDI events as network packets to other computers and devices in the same local area network. It is compatible with <a href="https://www.nerds.de/en/ipmidi.html">ipMIDI</a>, <a href="https://qmidinet.sourceforge.io/">QmidiNet</a>, and <a href="https://llg.cubic.org/tools/multimidicast/">multimidicast</a> among other software.</li>
 </ul>
 <h2 id="playback-controls">Playback Controls</h2>
-<p>The following standard actions are available in the <code>File</code> menu and also the tool bar, with the conventional functionalities: <code>Play</code>, <code>Pause</code>, <code>Stop</code>, <code>Fast Forward</code> (by 1 bar), <code>Rewind</code> (by 1 bar).</p>
+<p>The following standard actions are available in the <code>File</code> menu and also the tool bar, with the conventional functionalities: <code>Play</code>, <code>Pause</code> (and continue), <code>Stop</code>, <code>Fast Forward</code> (by 1 bar), <code>Rewind</code> (by 1 bar).</p>
 <h3 id="transpose">Transpose</h3>
 <h3 id="volume-level">Volume Level</h3>
 <h3 id="tempo">Tempo</h3>
@@ -70,8 +67,9 @@
 <h3 id="piano-player">Piano Player</h3>
 <h3 id="lyrics">Lyrics</h3>
 <h2 id="playlists">Playlists</h2>
-<p>Playlists are collections of file names, that can be used to play back a series of MIDI pieces, like a musical &quot;repertoire&quot;.</p>
+<p>Playlists are collections of file names, that can be used to play a series of MIDI pieces, like a musical &quot;repertoire&quot;.</p>
 <p>The <code>File</code>-&gt;<code>Play List...</code> action manages the creation, modification, ordering, opening, and saving Play list files. This window shows the current playlist file name in the window title.</p>
+<p>The <code>File</code>-&gt;<code>Next</code> and <code>File</code>-&gt;<code>Prev</code> actions are used to navigate the playlist manually forward and backward. There are configuration options to start playback automatically after loading MIDI files, and advance automatically to the next playlist item. The two configuration options are enabled by default.</p>
 <p>The initial default playlist contains a collection of example MIDI files. If you prefer to start with an empty list, you should use the <code>Clear</code> button and then saving the empty playlist with a meaningful name. This will be the new initial playlist in the future.</p>
 <p>The last opened or saved playlist file shall be remembered the next time the program is started, but playlists are not saved automatically.</p>
 <p>Playlists are simple text files, with a file name on each text line. The file names can be relative to the location of the playlist file itself (so they do not have an absolute path prepended) or each file can have an absolute path on its own.</p>

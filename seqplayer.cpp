@@ -275,7 +275,7 @@ void SequencePlayer::playerLoop()
     timeBeginPeriod(1);
 #endif
 
-    while (!thread()->isInterruptionRequested()) {
+    do {
         while (m_song.hasMoreEvents() && !thread()->isInterruptionRequested()) {
             MIDIEvent* ev = m_song.nextEvent();
             if (typeid(*ev) == beatId) {
@@ -312,7 +312,7 @@ void SequencePlayer::playerLoop()
         if (isLoopEnabled()) {
             jumpToBar(loopStart());
         }
-    }
+    } while (m_song.hasMoreEvents() && !thread()->isInterruptionRequested());
 
 #ifdef WIN32
     timeEndPeriod(1);

@@ -18,9 +18,7 @@
 
 #include <QDebug>
 #include <QApplication>
-#include <QWindow>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
+#include <QToolBar>
 #if QT_VERSION < QT_VERSION_CHECK(5,14,0)
 #include <QDesktopWidget>
 #else
@@ -32,40 +30,50 @@
 #include "iconutils.h"
 #include "helpwindow.h"
 
-HelpWindow::HelpWindow(const QString &path, const QString &page, QWidget *parent):
-    QWidget(parent)
+HelpWindow::HelpWindow(QWidget *parent):
+    QMainWindow(parent)
 {
-    setAttribute(Qt::WA_DeleteOnClose);
+    setObjectName(QString::fromUtf8("HelpWindow"));
     setWindowIcon(QIcon(":/dmidiplayer.png"));
+#if defined(Q_OS_MACOS)
+    setUnifiedTitleAndToolBarOnMac(true);
+    setAttribute(Qt::WA_MacMiniSize, true);
+#else
+    setWindowFlag(Qt::Tool, true);
+#endif
+    setAttribute(Qt::WA_DeleteOnClose, false);
 
-    textBrowser = new QTextBrowser(this);
-    homeButton = new QPushButton(tr("&Home"), this);
-    homeButton->setIcon(IconUtils::GetIcon("go-home"));
-    backButton = new QPushButton(tr("&Back"), this);
-    backButton->setIcon(IconUtils::GetIcon("go-previous"));
-    closeButton = new QPushButton(tr("Close"), this);
-    closeButton->setShortcut(tr("Esc"));
-    closeButton->setIcon(IconUtils::GetIcon("window-close"));
+    QToolBar* tbar = new QToolBar(this);
+    tbar->setObjectName("toolbar");
+    tbar->setMovable(false);
+    tbar->setFloatable(false);
+    tbar->setIconSize(QSize(22,22));
+    addToolBar(tbar);
 
-    QHBoxLayout *buttonLayout = new QHBoxLayout;
-    buttonLayout->addWidget(homeButton);
-    buttonLayout->addWidget(backButton);
-    buttonLayout->addStretch();
-    buttonLayout->addWidget(closeButton);
+    m_textBrowser = new QTextBrowser(this);
+    m_homeButton = new QPushButton(tr("&Home"), this);
+    m_homeButton->setIcon(IconUtils::GetIcon("go-home"));
+    m_backButton = new QPushButton(tr("&Back"), this);
+    m_backButton->setIcon(IconUtils::GetIcon("go-previous"));
+    m_closeButton = new QPushButton(tr("Close"), this);
+    m_closeButton->setShortcut(tr("Esc"));
+    m_closeButton->setIcon(IconUtils::GetIcon("window-close"));
+    QWidget* spacer = new QWidget(this);
+    spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-    QVBoxLayout *mainLayout = new QVBoxLayout(this);
-    mainLayout->addLayout(buttonLayout);
-    mainLayout->addWidget(textBrowser);
-    setLayout(mainLayout);
+    tbar->addWidget(m_homeButton);
+    tbar->addWidget(m_backButton);
+    tbar->addWidget(spacer);
+    tbar->addWidget(m_closeButton);
 
-    connect(homeButton, &QAbstractButton::clicked, textBrowser, &QTextBrowser::home);
-    connect(backButton, &QAbstractButton::clicked, textBrowser, &QTextBrowser::backward);
-    connect(closeButton, &QAbstractButton::clicked, this, &QWidget::close);
-    connect(textBrowser, &QTextBrowser::sourceChanged, this, &HelpWindow::updateWindowTitle);
+    setCentralWidget(m_textBrowser);
 
-    textBrowser->setSearchPaths(QStringList({path,":/help",":/help/en"}));
-    textBrowser->setSource(page);
-    textBrowser->setOpenExternalLinks(true);
+    connect(m_homeButton, &QAbstractButton::clicked, m_textBrowser, &QTextBrowser::home);
+    connect(m_backButton, &QAbstractButton::clicked, m_textBrowser, &QTextBrowser::backward);
+    connect(m_closeButton, &QAbstractButton::clicked, this, &QWidget::close);
+    connect(m_textBrowser, &QTextBrowser::sourceChanged, this, &HelpWindow::updateWindowTitle);
+
+    m_textBrowser->setOpenExternalLinks(true);
 
     resize(640,480);
     readSettings();
@@ -133,20 +141,28 @@ bool HelpWindow::nativeEvent(const QByteArray &eventType, void *message,
 
 void HelpWindow::updateWindowTitle()
 {
-    setWindowTitle(tr("Help: %1").arg(textBrowser->documentTitle()));
+    setWindowTitle(tr("Help: %1").arg(m_textBrowser->documentTitle()));
 }
 
-void HelpWindow::showPage(const QString &page)
+void HelpWindow::showPage(const QString &path, const QString &page)
 {
-    HelpWindow *browser = new HelpWindow(QLatin1String(":/"), page);
-    browser->show();
+    //qDebug() << Q_FUNC_INFO << path << page;
+    m_textBrowser->clear();
+    m_textBrowser->clearHistory();
+    m_textBrowser->setSearchPaths({m_path = path,":/help/en",":/"});
+    m_textBrowser->setSource(m_page = page);
+    show();
 }
 
 void HelpWindow::retranslateUi()
 {
+    m_path = QStringLiteral(":/help");
+    m_page = QStringLiteral("%1/index.html").arg(Settings::instance()->language());
+    m_textBrowser->setSearchPaths({m_path,":/help/en",":/"});
+    m_textBrowser->setSource(m_page);
     updateWindowTitle();
-    homeButton->setText(tr("&Home"));
-    backButton->setText(tr("&Back"));
-    closeButton->setText(tr("Close"));
-    closeButton->setShortcut(tr("Esc"));
+    m_homeButton->setText(tr("&Home"));
+    m_backButton->setText(tr("&Back"));
+    m_closeButton->setText(tr("Close"));
+    m_closeButton->setShortcut(tr("Esc"));
 }

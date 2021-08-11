@@ -19,7 +19,7 @@
 #ifndef HELPWINDOW_H
 #define HELPWINDOW_H
 
-#include <QWidget>
+#include <QMainWindow>
 #include <QTextBrowser>
 #include <QPushButton>
 #include <QCloseEvent>
@@ -30,18 +30,15 @@
 #include "winsnap.h"
 #endif
 
-class HelpWindow : public QWidget
+class HelpWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit HelpWindow(const QString &path,
-                        const QString &page,
-                        QWidget *parent = nullptr);
+    explicit HelpWindow(QWidget *parent = nullptr);
     void readSettings();
     void writeSettings();
     void retranslateUi();
-
-    static void showPage(const QString &page);
+    void showPage(const QString &path, const QString &page);
 
 protected:
     void closeEvent( QCloseEvent *event)  override;
@@ -57,14 +54,14 @@ private slots:
     void updateWindowTitle();
 
 private:
-    QTextBrowser *textBrowser;
-    QPushButton *homeButton;
-    QPushButton *backButton;
-    QPushButton *closeButton;
+    QTextBrowser *m_textBrowser;
+    QPushButton *m_homeButton;
+    QPushButton *m_backButton;
+    QPushButton *m_closeButton;
+    QString m_path, m_page;
 #if defined(Q_OS_WINDOWS)
     WinSnap m_snapper;
 #endif
-
 };
 
 #endif // HELPWINDOW_H
