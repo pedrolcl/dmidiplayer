@@ -192,35 +192,35 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Please, load a song</source>
-        <translation type="unfinished"></translation>
+        <translation>Por favor, cargue una canción</translation>
     </message>
     <message>
         <source>Playing</source>
-        <translation type="unfinished"></translation>
+        <translation>Reproduciendo</translation>
     </message>
     <message>
         <source>Paused</source>
-        <translation type="unfinished"></translation>
+        <translation>En pausa</translation>
     </message>
     <message>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>Parado</translation>
     </message>
     <message>
         <source>Not initialized</source>
-        <translation type="unfinished"></translation>
+        <translation>Sin inicializar</translation>
     </message>
     <message>
         <source>Loading %1 file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Cargando archivo %1...</translation>
     </message>
     <message>
         <source>file %1 couldn&apos;t be opened</source>
-        <translation type="unfinished"></translation>
+        <translation>archivo %1 no ha podido abrirse</translation>
     </message>
     <message>
         <source>Dropped file %1 is not supported</source>
-        <translation type="unfinished"></translation>
+        <translation>Archivo %1 soltado no está soportado</translation>
     </message>
 </context>
 <context>
@@ -539,46 +539,46 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Loop</source>
-        <translation type="unfinished"></translation>
+        <translation>Bucle</translation>
     </message>
     <message>
         <source>Loop between two bars</source>
-        <translation type="unfinished"></translation>
+        <translation>Bucle entre dos compases</translation>
     </message>
     <message>
         <source>Contents</source>
-        <translation type="unfinished"></translation>
+        <translation>Contenido</translation>
     </message>
     <message>
         <source>Web Site</source>
-        <translation type="unfinished"></translation>
+        <translation>Sitio web</translation>
     </message>
 </context>
 <context>
     <name>HelpWindow</name>
     <message>
         <source>&amp;Home</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Inicio</translation>
     </message>
     <message>
         <source>&amp;Back</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Atrás</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerrar</translation>
     </message>
     <message>
         <source>Zoom In</source>
-        <translation type="unfinished"></translation>
+        <translation>Ampliar</translation>
     </message>
     <message>
         <source>Zoom Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Reducir</translation>
     </message>
     <message>
         <source>Help: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ayuda: %1</translation>
     </message>
 </context>
 <context>
@@ -1104,23 +1104,23 @@ p, li { white-space: pre-wrap; }
     <name>LoopDialog</name>
     <message>
         <source>Loop Start and End bars</source>
-        <translation type="unfinished"></translation>
+        <translation>Compases de inicio y fin</translation>
     </message>
     <message>
         <source>Loop Start:</source>
-        <translation type="unfinished"></translation>
+        <translation>Compás inicial:</translation>
     </message>
     <message>
         <source>Loop End:</source>
-        <translation type="unfinished"></translation>
+        <translation>Compás final:</translation>
     </message>
     <message>
         <source>Input Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Error de entrada</translation>
     </message>
     <message>
         <source>%1 is not greater than %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 no es mayor que %2</translation>
     </message>
 </context>
 <context>
@@ -1491,59 +1491,59 @@ bajo ciertas condiciones; vea la LICENCIA para detalles.</translation>
     <name>ToolBarEditDialog</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished">Diálogo</translation>
+        <translation>Diálogo</translation>
     </message>
     <message>
         <source>remove</source>
-        <translation type="unfinished"></translation>
+        <translation>eliminar</translation>
     </message>
     <message>
         <source>add</source>
-        <translation type="unfinished"></translation>
+        <translation>añadir</translation>
     </message>
     <message>
         <source>up</source>
-        <translation type="unfinished"></translation>
+        <translation>arriba</translation>
     </message>
     <message>
         <source>down</source>
-        <translation type="unfinished"></translation>
+        <translation>abajo</translation>
     </message>
     <message>
         <source>Icon Only</source>
-        <translation type="unfinished"></translation>
+        <translation>Solo icono</translation>
     </message>
     <message>
         <source>Text Only</source>
-        <translation type="unfinished"></translation>
+        <translation>Solo texto</translation>
     </message>
     <message>
         <source>Text Beside Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto junto a icono</translation>
     </message>
     <message>
         <source>Text Under Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto bajo icono</translation>
     </message>
     <message>
         <source>Follow Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Seguir estilo</translation>
     </message>
     <message>
         <source>Style of the Tool Buttons</source>
-        <translation type="unfinished"></translation>
+        <translation>Estilo de los botones</translation>
     </message>
     <message>
         <source>Available Actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Acciones disponibles</translation>
     </message>
     <message>
         <source>Selected Actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Acciones seleccionadas</translation>
     </message>
     <message>
         <source>Customize %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Personalizar %1</translation>
     </message>
 </context>
 </TS>
