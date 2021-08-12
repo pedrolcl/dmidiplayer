@@ -36,7 +36,7 @@
 </div>
 <h2 id="introduction">Introduction</h2>
 <p>This application is a multiplatform MIDI file player for Linux, Windows and macOS. It reads .MID (Standard MIDI Files), .KAR (Karaoke), and .WRK (Cakewalk) file formats, and outputs MIDI events to hardware MIDI ports and also software synths.</p>
-<p><a href="https://drumstick.sourceforge.io">Drumstick</a> is a set of GPLv3 licensed C++/Qt libraries for MIDI applications. The project includes several tools as examples, and among them is the drumstick-guiplayer utility that leverages the Drumstick::ALSA library, so it is available only for Linux (because the ALSA sequencer is a linux only technology). Some people have requested a program with the same functionalities on Windows and macOS, and here it is. But this program is much more than that, and it also works on Linux...</p>
+<p><a href="https://drumstick.sourceforge.io">Drumstick</a> is a set of GPLv3 licensed C++/Qt libraries for MIDI applications. The project includes several tools as examples, and among them is the drumstick-guiplayer utility that leverages the Drumstick::ALSA library, so it is available only for Linux (because the ALSA sequencer is a Linux only technology). Some people have requested a program with the same functionalities on Windows and macOS, and here it is. But this program is much more than that, and it also works on Linux...</p>
 <p>Some key features:</p>
 <ul>
 <li>MIDI Output to hardware MIDI ports, or any other Drumstick backend like soft synths</li>
@@ -68,7 +68,7 @@
 <p>By default, <code>Play</code> is activated automatically upon loading a MIDI file except when this feature is disabled in the configuration dialog.</p>
 <p>The <code>status bar</code>, optionally located at the bottom of the main window, shows the current playback status as &quot;Playing&quot;, &quot;Stopped&quot;, &quot;Paused&quot;, etc.</p>
 <h3 id="transpose">Transpose</h3>
-<p>The <code>Pitch control</code> is located in the main window. It is a spin box initialized to zero, with a valid range from -12 to +12 semitones. The limits are equivalent to one octave up or down the original tone. This should be enough for singers or instrumentists needing to adjust the tonality for their comfort.</p>
+<p>The <code>Pitch control</code> is located in the main window. It is a spin box initialized to zero, with a valid range from -12 to +12 semitones. The limits are equivalent to one octave up or down the original tone. This should be enough for singers or instrumentalists needing to adjust the tonality for their comfort.</p>
 <p>All MIDI channels are chromatically transposed, except the percussion channel (GM channel 10 by default).</p>
 <h3 id="volume-level">Volume Level</h3>
 <p>The <code>Volume control</code> is located in the main window. It is a slider, initialized to 100%, with a valid range from 0% to 200%. The upper limit effect may be lower because the MIDI CC 7 has a valid range from 0 to 127. There is also a button to <code>Reset Volume</code>.</p>
@@ -79,13 +79,52 @@
 <p><code>Loop</code> action (located in the <code>File</code> menu and the default tool bar), asks for two bar numbers. The song will be played between the two given bars when it is activated. You can switch off the loop any moment selecting the action again.</p>
 <p>The <code>Positioning control</code> is located in the main window. It is a slider that moves while the current played position changes, and can be moved by hand to change the position to any arbitrary point within the song.</p>
 <h2 id="views">Views</h2>
+<p>The following options are enable in the <code>View</code> menu:</p>
+<p>Three views are independent windows that you may open and close at your convenience: Channels, Lyrics and Piano Player.</p>
+<p>On the other hand, you also can hide or show three more views that are embedded on the main window: Tool bar, Status bar, and Rhythm.</p>
 <h3 id="channels">Channels</h3>
+<p>This window shows up to 16 rows, one for each MIDI channel used by the current MIDI file. The columns are:</p>
+<ul>
+<li>MIDI channel number and text (editable). Usually the instrument name, or a brief description taken from the file metadata.</li>
+<li>Mute button. With this option the current channel may be muted.</li>
+<li>Solo button. Raises the volume of the current channel, while lowering the other channels.</li>
+<li>Level. Indicator of the activity on the current channel.</li>
+<li>Lock. This button fixes the Patch on the current channel, preventing changes stored on the file.</li>
+<li>Patch. Corresponds to the MIDI Program Change events according to the General MIDI list of instrument names.</li>
+</ul>
 <h3 id="piano-player">Piano Player</h3>
+<p>This window shows up to 16 rows, one for each MIDI channel used by the current MIDI file. Each row contains:</p>
+<ul>
+<li>A channel number and text (the same data as the Channels window)</li>
+<li>A piano keyboard. The keys will be highlighted with a color, that can be fully customized, by the MIDI note events played by the current MIDI file. It may also optionally show the note names as well. The keys may be activated manually using the computer keyboard and the mouse</li>
+</ul>
+<p>There is a window menu, with the following options:</p>
+<ul>
+<li>View Full Screen. Enlarges the window filling the current monitor</li>
+<li>Show all channels</li>
+<li>Hide all channels</li>
+<li>Tighten the number of keys. By default, each keyboard shows 88 keys, from A0 to C8. Using this option, the keyboards use only the number of octaves really used by the MIDI file, which is usually a smaller number</li>
+<li>Up to 16 Channel options, to hide or show each channel individually. By default all MIDI channels used in the current MIDI file are selected</li>
+</ul>
 <h3 id="lyrics">Lyrics</h3>
+<p>This window shows the text metadata from the loaded MIDI file, filtering the data with a series of controls located on the window tool bar:</p>
+<ul>
+<li>Track: a list box to choose among &quot;All tracks&quot;, or one item Corresponding to each used track in the loaded MIDI file. This track number replaces the concept of MIDI channel in this window, because the text metadata doesn't have a channel attribute, but it always belongs to some track. By default, the track containing more data is automatically selected</li>
+<li>Type: a list box to choose one of the metadata text types or all of them. The <code>Lyric Events</code> type is the most probable choice</li>
+<li>Encoding: the text encoding is automatically detected, but in some cases the detection may be incorrect, so the correct one can be selected manually</li>
+</ul>
+<p>There is a window menu, with the following options:</p>
+<ul>
+<li>Copy to clipboard: copies the metadata currently shown by the window</li>
+<li>Save to file... After opening a Save File dialog, this option creates a text file on disk, with the text shown by the window and the selected encoding</li>
+<li>Print... After opening a Print Dialog, this option prints the text shown by the window on the selected printer</li>
+<li>Full Screen: Enlarges the window filling the current monitor</li>
+<li>Font... Opens a Font Selection window to choose the typography and size for the window texts</li>
+</ul>
 <h2 id="playlists">Playlists</h2>
 <p>Playlists are collections of file names, that can be used to play a series of MIDI pieces, like a musical &quot;repertoire&quot;.</p>
 <p>The <code>File</code>-&gt;<code>Play List...</code> action manages the creation, modification, ordering, opening, and saving Play list files. This window shows the current playlist file name in the window title.</p>
-<p>The <code>File</code>-&gt;<code>Next</code> and <code>File</code>-&gt;<code>Prev</code> actions are used to navigate the playlist manually forward and backward. There are configuration options to start playback automatically after loading MIDI files, and advance automatically to the next playlist item. The two configuration options are enabled by default.</p>
+<p>The <code>File</code>-&gt;<code>Next</code> and <code>File</code>-&gt;<code>Prev</code> actions are used to navigate the playlist manually forward and backward. There are configuration options to start playback automatically after loading MIDI files, and advance automatically to the next playlist item when finished playing the current item. Both configuration options are enabled by default.</p>
 <p>The initial default playlist contains a collection of example MIDI files. If you prefer to start with an empty list, you should use the <code>Clear</code> button and then saving the empty playlist with a meaningful name. This will be the new initial playlist in the future.</p>
 <p>The last opened or saved playlist file shall be remembered the next time the program is started, but playlists are not saved automatically.</p>
 <p>Playlists are simple text files, with a file name on each text line. The file names can be relative to the location of the playlist file itself (so they do not have an absolute path prepended) or each file can have an absolute path on its own.</p>
@@ -101,6 +140,48 @@
 </ul>
 <h2 id="customization">Customization</h2>
 <h3 id="preferences">Preferences</h3>
+<p>There is a <code>Restore Defaults</code> button to initialize all options in this dialog to their default values.</p>
+<p>There are three tabs, grouping the configuration settings</p>
+<h4 id="general">General</h4>
+<ul>
+<li>Percussion MIDI Channel: Number from 1 to 16. Default 10, corresponding to the General MIDI standard percussion channel</li>
+<li>Start Playback Automatically After Loading. Enabled by default</li>
+<li>Advance Automatically to the Next PlayList Item. Enabled by default</li>
+<li>Force Dark Mode. May be useful on Windows. On Linux and macOS the dark mode is automatically applied when configured in the Operating System</li>
+<li>Use Internal Icon Theme. This setting is needed on Windows and macOS.</li>
+<li>Qt Widgets Style. Depending on the operating system, affects the visual integration with other programs</li>
+<li>MIDI System Exclusive Reset. The player sends this message just before start playing each MIDI file</li>
+</ul>
+<h4 id="lyrics-1">Lyrics</h4>
+<ul>
+<li>Text Font. Opens a Font Selection window to choose the typography and size for the window texts. This setting is also available on the Lyrics window menu</li>
+<li>Future Text Color. This setting applies to the text that has not been played</li>
+<li>Past Text Color. This setting applies to the text that has been already played</li>
+</ul>
+<h4 id="player-piano">Player Piano</h4>
+<ul>
+<li>Note highlighting. There are a few highlighting palettes available</li>
+<li>Single highlight color. When the single color highlight palette is selected, this setting is the note highlighting color</li>
+<li>Note velocity to color tint. With this option, MIDI note events velocity attribute is used to give the highlighting color a lighter or darker tone</li>
+<li>Note names font. Opens a Font Selection window to choose the typography and size of the note names</li>
+<li>Show note names: available choices are Never, Minimal, When activated, always. The Minimal option shows only the names of the C keys.</li>
+</ul>
 <h3 id="toolbar-customization">Toolbar Customization</h3>
+<p>The tool bar is located on the main window, which has typically very small available space, and can be moved to the top or the bottom of the window, and also outside of it. The actions available as tool buttons can be configured in this dialog window. All actions are also main menu items.</p>
+<ul>
+<li>Available actions: shows the list of actions not currently being displayed as tool buttons</li>
+<li>Selected actions: is the list of currently selected tool buttons</li>
+</ul>
+<p>To select one action from the Available list, first select it with the mouse and then press the &quot;add&quot; button. The action is removed from the Available list and placed at the end of the selected list.</p>
+<p>To remove one button from the tool bar, select it with the mouse in the Selected list and then press the &quot;remove&quot; button.</p>
+<p>To reorganize the order of buttons in the tool bar, use the &quot;up&quot; and &quot;down&quot; buttons after selecting an item in the Selected list.</p>
+<p>Style of the Tool Buttons: contains the following options that apply to all the buttons in the tool bar</p>
+<ul>
+<li>Icon Only</li>
+<li>Text Only</li>
+<li>Text Beside Icon</li>
+<li>Text Under Icon</li>
+<li>Follow Style: The setting is determined by the &quot;Qt Widgets Style&quot; setting in the Preferences dialog.</li>
+</ul>
 </body>
 </html>

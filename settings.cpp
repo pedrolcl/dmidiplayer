@@ -157,6 +157,7 @@ void Settings::SaveToFile(const QString &filepath)
 
 void Settings::internalRead(QSettings &settings)
 {
+    //QFont defaultFont = QGuiApplication::font();
     settings.beginGroup("MainWindow");
     m_mainWindowGeometry = settings.value("Geometry", QByteArray()).toByteArray();
     m_mainWindowState = settings.value("State", QByteArray()).toByteArray();

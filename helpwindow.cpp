@@ -95,10 +95,11 @@ void HelpWindow::readSettings()
 {
     using namespace drumstick::widgets;
     SettingsFactory settings;
+    QFont defaultFont = QGuiApplication::font();
     settings->beginGroup("HelpWindow");
     const QByteArray geometry = settings->value("Geometry", QByteArray()).toByteArray();
     const QByteArray state = settings->value("State", QByteArray()).toByteArray();
-    const qreal fontSize = settings->value("Font", qreal(14.0)).toReal();
+    const int fontSize = settings->value("FontSize", defaultFont.pointSize()).toInt();
     settings->endGroup();
 
     if (geometry.isEmpty()) {
@@ -134,7 +135,7 @@ void HelpWindow::writeSettings()
     settings->beginGroup("HelpWindow");
     settings->setValue("Geometry", saveGeometry());
     settings->setValue("State", saveState());
-    settings->setValue("Font", fontSize);
+    settings->setValue("FontSize", fontSize);
     settings->endGroup();
 }
 
