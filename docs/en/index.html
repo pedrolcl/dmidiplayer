@@ -57,8 +57,16 @@
 <li><strong>Network</strong> is a multiplatform UDP Multicast output, that may be used to send MIDI events as network packets to other computers and devices in the same local area network. It is compatible with <a href="https://www.nerds.de/en/ipmidi.html">ipMIDI</a>, <a href="https://qmidinet.sourceforge.io/">QmidiNet</a>, and <a href="https://llg.cubic.org/tools/multimidicast/">multimidicast</a> among other software.</li>
 </ul>
 <h2 id="playback-controls">Playback Controls</h2>
-<p>The following standard actions are available in the <code>File</code> menu and also the tool bar, with the conventional functionalities: <code>Play</code>, <code>Pause</code> (and continue), <code>Stop</code>, <code>Fast Forward</code> (by 1 bar), <code>Rewind</code> (by 1 bar).</p>
+<p>The following standard actions are available in the <code>File</code> menu and also the tool bar, with the conventional functionalities on any media player:</p>
+<ul>
+<li><code>Play</code></li>
+<li><code>Pause</code> (and continue)</li>
+<li><code>Stop</code>,</li>
+<li><code>Fast Forward</code> (by 1 bar)</li>
+<li><code>Rewind</code> (by 1 bar)</li>
+</ul>
 <p>By default, <code>Play</code> is activated automatically upon loading a MIDI file except when this feature is disabled in the configuration dialog.</p>
+<p>The <code>status bar</code>, optionally located at the bottom of the main window, shows the current playback status as &quot;Playing&quot;, &quot;Stopped&quot;, &quot;Paused&quot;, etc.</p>
 <h3 id="transpose">Transpose</h3>
 <p>The <code>Pitch control</code> is located in the main window. It is a spin box initialized to zero, with a valid range from -12 to +12 semitones. The limits are equivalent to one octave up or down the original tone. This should be enough for singers or instrumentists needing to adjust the tonality for their comfort.</p>
 <p>All MIDI channels are chromatically transposed, except the percussion channel (GM channel 10 by default).</p>
@@ -69,7 +77,7 @@
 <h3 id="jump-loop-and-positioning">Jump, Loop and Positioning</h3>
 <p><code>Jump</code> action (located in the <code>File</code> menu and the default tool bar), asks for a bar number, between 1 and the last bar of the loaded song, to change the current position of the song to the given bar.</p>
 <p><code>Loop</code> action (located in the <code>File</code> menu and the default tool bar), asks for two bar numbers. The song will be played between the two given bars when it is activated. You can switch off the loop any moment selecting the action again.</p>
-<p>The <code>Positioning control</code> is located in the main window. It is a slider that moves while the current played position changes, and can be moved by hand to + change the position to any arbitrary point within the song.</p>
+<p>The <code>Positioning control</code> is located in the main window. It is a slider that moves while the current played position changes, and can be moved by hand to change the position to any arbitrary point within the song.</p>
 <h2 id="views">Views</h2>
 <h3 id="channels">Channels</h3>
 <h3 id="piano-player">Piano Player</h3>

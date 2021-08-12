@@ -48,29 +48,37 @@ HelpWindow::HelpWindow(QWidget *parent):
     tbar->setMovable(false);
     tbar->setFloatable(false);
     tbar->setIconSize(QSize(22,22));
+    tbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     addToolBar(tbar);
 
     m_textBrowser = new QTextBrowser(this);
-    m_homeButton = new QPushButton(tr("&Home"), this);
-    m_homeButton->setIcon(IconUtils::GetIcon("go-home"));
-    m_backButton = new QPushButton(tr("&Back"), this);
-    m_backButton->setIcon(IconUtils::GetIcon("go-previous"));
-    m_closeButton = new QPushButton(tr("Close"), this);
-    m_closeButton->setShortcut(tr("Esc"));
-    m_closeButton->setIcon(IconUtils::GetIcon("window-close"));
+    m_home = new QAction(tr("&Home"), this);
+    m_home->setIcon(IconUtils::GetIcon("go-home"));
+    m_back = new QAction(tr("&Back"), this);
+    m_back->setIcon(IconUtils::GetIcon("go-previous"));
+    m_close = new QAction(tr("Close"), this);
+    m_close->setIcon(IconUtils::GetIcon("window-close"));
+    m_zoomIn = new QAction(tr("Zoom In"), this);
+    m_zoomIn->setIcon(IconUtils::GetIcon("format-font-size-more"));
+    m_zoomOut = new QAction(tr("Zoom Out"), this);
+    m_zoomOut->setIcon(IconUtils::GetIcon("format-font-size-less"));
     QWidget* spacer = new QWidget(this);
     spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-    tbar->addWidget(m_homeButton);
-    tbar->addWidget(m_backButton);
+    tbar->addAction(m_home);
+    tbar->addAction(m_back);
+    tbar->addAction(m_zoomIn);
+    tbar->addAction(m_zoomOut);
     tbar->addWidget(spacer);
-    tbar->addWidget(m_closeButton);
+    tbar->addAction(m_close);
 
     setCentralWidget(m_textBrowser);
 
-    connect(m_homeButton, &QAbstractButton::clicked, m_textBrowser, &QTextBrowser::home);
-    connect(m_backButton, &QAbstractButton::clicked, m_textBrowser, &QTextBrowser::backward);
-    connect(m_closeButton, &QAbstractButton::clicked, this, &QWidget::close);
+    connect(m_home, &QAction::triggered, m_textBrowser, &QTextBrowser::home);
+    connect(m_back, &QAction::triggered, m_textBrowser, &QTextBrowser::backward);
+    connect(m_zoomIn, &QAction::triggered, this, [=]{ m_textBrowser->zoomIn(); });
+    connect(m_zoomOut, &QAction::triggered, this, [=]{ m_textBrowser->zoomOut(); });
+    connect(m_close, &QAction::triggered, this, &QWidget::close);
     connect(m_textBrowser, &QTextBrowser::sourceChanged, this, &HelpWindow::updateWindowTitle);
 
     m_textBrowser->setOpenExternalLinks(true);
@@ -89,6 +97,8 @@ void HelpWindow::readSettings()
     SettingsFactory settings;
     settings->beginGroup("HelpWindow");
     const QByteArray geometry = settings->value("Geometry", QByteArray()).toByteArray();
+    const QByteArray state = settings->value("State", QByteArray()).toByteArray();
+    const qreal fontSize = settings->value("Font", qreal(14.0)).toReal();
     settings->endGroup();
 
     if (geometry.isEmpty()) {
@@ -104,17 +114,29 @@ void HelpWindow::readSettings()
     } else {
         restoreGeometry(geometry);
     }
+    if (!state.isEmpty()) {
+        restoreState(state);
+    }
+    if (fontSize > 0) {
+        //qDebug() << Q_FUNC_INFO << fontSize;
+        auto font = m_textBrowser->font();
+        font.setPointSize(fontSize);
+        m_textBrowser->setFont(font);
+    }
 }
 
 void HelpWindow::writeSettings()
 {
     using namespace drumstick::widgets;
     SettingsFactory settings;
+    auto fontSize = m_textBrowser->font().pointSize();
+    //qDebug() << Q_FUNC_INFO << fontSize;
     settings->beginGroup("HelpWindow");
     settings->setValue("Geometry", saveGeometry());
+    settings->setValue("State", saveState());
+    settings->setValue("Font", fontSize);
     settings->endGroup();
 }
-
 
 void HelpWindow::closeEvent(QCloseEvent *event)
 {
@@ -161,8 +183,9 @@ void HelpWindow::retranslateUi()
     m_textBrowser->setSearchPaths({m_path,":/help/en",":/"});
     m_textBrowser->setSource(m_page);
     updateWindowTitle();
-    m_homeButton->setText(tr("&Home"));
-    m_backButton->setText(tr("&Back"));
-    m_closeButton->setText(tr("Close"));
-    m_closeButton->setShortcut(tr("Esc"));
+    m_home->setText(tr("&Home"));
+    m_back->setText(tr("&Back"));
+    m_close->setText(tr("Close"));
+    m_zoomIn->setText(tr("Zoom In"));
+    m_zoomOut->setText(tr("Zoom Out"));
 }

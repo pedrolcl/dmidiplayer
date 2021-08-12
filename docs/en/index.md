@@ -23,7 +23,8 @@ Some key features:
 * [Transpose](https://en.wikipedia.org/wiki/Transposition_(music)) song tonality 
   between -12 and +12 semitones
 * Change MIDI volume level (using MIDI CC7)
-* Scale song speed between half and double [tempo](https://en.wikipedia.org/wiki/Tempo)
+* Scale song speed between half and double 
+  [tempo](https://en.wikipedia.org/wiki/Tempo)
 * Lyrics, Piano Player and MIDI Channels views
 * Supports MID/KAR (Standard MIDI Files) and WRK (Cakewalk) file formats
 
@@ -61,22 +62,33 @@ the "MIDI Setup" dialog and then:
   in the first list box.
 * **FluidSynth** is another included open software synth that is multiplatform 
   and available on all operating systems. It is very configurable, accepting 
-  soundfont files and many digital audio sound systems. Select [FluidSynth](https://github.com/FluidSynth/fluidsynth) 
-  on both list boxes to use it.
+  soundfont files and many digital audio sound systems. Select 
+  [FluidSynth](https://github.com/FluidSynth/fluidsynth) on both list boxes 
+  to use it.
 * **Network** is a multiplatform UDP Multicast output, that may be used to send 
   MIDI events as network packets to other computers and devices in the same 
-  local area network. It is compatible with [ipMIDI](https://www.nerds.de/en/ipmidi.html),
-  [QmidiNet](https://qmidinet.sourceforge.io/), and [multimidicast](https://llg.cubic.org/tools/multimidicast/) 
+  local area network. It is compatible with 
+  [ipMIDI](https://www.nerds.de/en/ipmidi.html),
+  [QmidiNet](https://qmidinet.sourceforge.io/), and 
+  [multimidicast](https://llg.cubic.org/tools/multimidicast/) 
   among other software.
 
 ## Playback Controls
 
 The following standard actions are available in the `File` menu and also the
-tool bar, with the conventional functionalities: `Play`, `Pause` (and continue), 
-`Stop`, `Fast Forward` (by 1 bar), `Rewind` (by 1 bar).
+tool bar, with the conventional functionalities on any media player: 
+
+* `Play` 
+* `Pause` (and continue)
+* `Stop`, 
+* `Fast Forward` (by 1 bar)
+* `Rewind` (by 1 bar)
 
 By default, `Play` is activated automatically upon loading a MIDI file except 
 when this feature is disabled in the configuration dialog.
+
+The `status bar`, optionally located at the bottom of the main window, shows 
+the current playback status as "Playing", "Stopped", "Paused", etc.
 
 ### Transpose
 

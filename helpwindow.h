@@ -55,9 +55,11 @@ private slots:
 
 private:
     QTextBrowser *m_textBrowser;
-    QPushButton *m_homeButton;
-    QPushButton *m_backButton;
-    QPushButton *m_closeButton;
+    QAction *m_home;
+    QAction *m_back;
+    QAction *m_close;
+    QAction *m_zoomIn;
+    QAction *m_zoomOut;
     QString m_path, m_page;
 #if defined(Q_OS_WINDOWS)
     WinSnap m_snapper;

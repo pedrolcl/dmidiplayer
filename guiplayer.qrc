@@ -47,5 +47,7 @@
         <file>icons/viewhtml.png</file>
         <file>icons/window-close.png</file>
         <file>icons/go-home.png</file>
+        <file>icons/format-font-size-less.png</file>
+        <file>icons/format-font-size-more.png</file>
     </qresource>
 </RCC>
