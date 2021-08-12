@@ -1,24 +1,28 @@
 TEMPLATE = app
 TARGET = dmidiplayer
 VERSION = 1.5.0
-QT += gui widgets
+QT += gui widgets printsupport
 CONFIG += qt thread exceptions c++11 link_pkgconfig
 INCLUDEPATH += $$(DRUMSTICKINCLUDES)
 LIBS += -L $$(DRUMSTICKLIBS) -ldrumstick-rt -ldrumstick-file -ldrumstick-widgets
 PKGCONFIG += uchardet
 DEFINES += VERSION=$$VERSION
 FORMS += guiplayer.ui \
+    loopdialog.ui \
     playerabout.ui \
     connections.ui \
     playlist.ui \
-    prefsdialog.ui
+    prefsdialog.ui \
+    toolbareditdialog.ui
 HEADERS += \
     channels.h \
     connections.h \
     events.h \
     guiplayer.h \
+    helpwindow.h \
     iconutils.h \
     instrumentset.h \
+    loopdialog.h \
     lyrics.h \
     pianola.h \
     playerabout.h \
@@ -29,14 +33,17 @@ HEADERS += \
     seqplayer.h \
     sequence.h \
     settings.h \
+    toolbareditdialog.h \
     vumeter.h
 SOURCES += \
     channels.cpp \
     connections.cpp \
     events.cpp \
     guiplayer.cpp \
+    helpwindow.cpp \
     iconutils.cpp \
     instrumentset.cpp \
+    loopdialog.cpp \
     lyrics.cpp \
     pianola.cpp \
     playerabout.cpp \
@@ -48,12 +55,14 @@ SOURCES += \
     seqplayer.cpp \
     sequence.cpp \
     settings.cpp \
+    toolbareditdialog.cpp \
     vumeter.cpp
 win32 {
     HEADERS += winsnap.h
     SOURCES += winsnap.cpp
 }
-RESOURCES += guiplayer.qrc
+RESOURCES += guiplayer.qrc \
+  docs/help.qrc
 TRANSLATIONS += \
   translations/dmidiplayer_cs.ts \
   translations/dmidiplayer_en.ts \

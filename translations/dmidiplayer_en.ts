@@ -656,6 +656,44 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>HelpWindow</name>
+    <message>
+        <location filename="../helpwindow.cpp" line="55"/>
+        <location filename="../helpwindow.cpp" line="187"/>
+        <source>&amp;Home</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../helpwindow.cpp" line="57"/>
+        <location filename="../helpwindow.cpp" line="188"/>
+        <source>&amp;Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../helpwindow.cpp" line="59"/>
+        <location filename="../helpwindow.cpp" line="189"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../helpwindow.cpp" line="61"/>
+        <location filename="../helpwindow.cpp" line="190"/>
+        <source>Zoom In</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../helpwindow.cpp" line="63"/>
+        <location filename="../helpwindow.cpp" line="191"/>
+        <source>Zoom Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../helpwindow.cpp" line="167"/>
+        <source>Help: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>InstrumentSet</name>
     <message>
         <location filename="../instrumentset.cpp" line="33"/>
@@ -1304,6 +1342,34 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>LoopDialog</name>
+    <message>
+        <location filename="../loopdialog.ui" line="14"/>
+        <source>Loop Start and End bars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../loopdialog.ui" line="34"/>
+        <source>Loop Start:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../loopdialog.ui" line="57"/>
+        <source>Loop End:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../loopdialog.cpp" line="66"/>
+        <source>Input Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../loopdialog.cpp" line="66"/>
+        <source>%1 is not greater than %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Lyrics</name>
     <message>
         <location filename="../lyrics.cpp" line="149"/>
@@ -1738,6 +1804,79 @@ under certain conditions; see the LICENSE for details.</source>
     <message>
         <location filename="../recentfileshelper.cpp" line="88"/>
         <source>&amp;%1 %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ToolBarEditDialog</name>
+    <message>
+        <location filename="../toolbareditdialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../toolbareditdialog.ui" line="25"/>
+        <source>remove</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../toolbareditdialog.ui" line="39"/>
+        <source>add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../toolbareditdialog.ui" line="53"/>
+        <source>up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../toolbareditdialog.ui" line="67"/>
+        <source>down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../toolbareditdialog.ui" line="81"/>
+        <source>Icon Only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../toolbareditdialog.ui" line="86"/>
+        <source>Text Only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../toolbareditdialog.ui" line="91"/>
+        <source>Text Beside Icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../toolbareditdialog.ui" line="96"/>
+        <source>Text Under Icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../toolbareditdialog.ui" line="101"/>
+        <source>Follow Style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../toolbareditdialog.ui" line="119"/>
+        <source>Style of the Tool Buttons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../toolbareditdialog.ui" line="132"/>
+        <source>Available Actions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../toolbareditdialog.ui" line="139"/>
+        <source>Selected Actions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../toolbareditdialog.cpp" line="48"/>
+        <source>Customize %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

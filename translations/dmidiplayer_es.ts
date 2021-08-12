@@ -555,6 +555,33 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>HelpWindow</name>
+    <message>
+        <source>&amp;Home</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Zoom In</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Zoom Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>InstrumentSet</name>
     <message>
         <source>Acoustic Grand Piano</source>
@@ -1074,6 +1101,29 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>LoopDialog</name>
+    <message>
+        <source>Loop Start and End bars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Loop Start:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Loop End:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Input Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 is not greater than %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Lyrics</name>
     <message>
         <source>Lyrics Viewer</source>
@@ -1435,6 +1485,65 @@ bajo ciertas condiciones; vea la LICENCIA para detalles.</translation>
     <message>
         <source>&amp;%1 %2</source>
         <translation>&amp;%1 %2</translation>
+    </message>
+</context>
+<context>
+    <name>ToolBarEditDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished">Diálogo</translation>
+    </message>
+    <message>
+        <source>remove</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon Only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text Only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text Beside Icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text Under Icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Follow Style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Style of the Tool Buttons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Available Actions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected Actions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Customize %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
