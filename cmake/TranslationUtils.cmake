@@ -107,8 +107,10 @@ function(ADD_QT_TRANSLATIONS out_files)
     set(${out_files} ${_outfiles} PARENT_SCOPE)
 endfunction()
 
+file(GLOB TRANSLATION_FILES ${PROJECT_SOURCE_DIR}/translations/*.ts)
 add_custom_target(lupdate
-    COMMAND ${Qt5_LUPDATE_EXECUTABLE} -recursive . -ts *.ts
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMAND ${Qt5_LUPDATE_EXECUTABLE} -recursive . -ts ${TRANSLATION_FILES}
+    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
     COMMENT "Updating translations"
+    VERBATIM
 )

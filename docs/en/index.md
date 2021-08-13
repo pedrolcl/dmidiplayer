@@ -80,7 +80,7 @@ tool bar, with the conventional functionalities on any media player:
 
 * `Play` 
 * `Pause` (and continue)
-* `Stop`, 
+* `Stop`
 * `Fast Forward` (by 1 bar)
 * `Rewind` (by 1 bar)
 

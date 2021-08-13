@@ -18,16 +18,19 @@
     <name>AboutClass</name>
     <message>
         <location filename="../playerabout.ui" line="14"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_playerabout.h" line="79"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playerabout.ui" line="26"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_playerabout.h" line="80"/>
         <source>About Qt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playerabout.ui" line="48"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_playerabout.h" line="81"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -92,21 +95,25 @@ p, li { white-space: pre-wrap; }
     <name>ConnectionsClass</name>
     <message>
         <location filename="../connections.ui" line="14"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_connections.h" line="87"/>
         <source>Connections</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../connections.ui" line="20"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_connections.h" line="88"/>
         <source>Show advanced connections</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../connections.ui" line="27"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_connections.h" line="89"/>
         <source>MIDI OUT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../connections.ui" line="40"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_connections.h" line="90"/>
         <source>...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -270,387 +277,469 @@ p, li { white-space: pre-wrap; }
     <name>GUIPlayerClass</name>
     <message>
         <location filename="../guiplayer.ui" line="14"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="473"/>
         <source>Drumstick MIDI File Player Multiplatform</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="25"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="584"/>
         <source>Drumstick MIDI Player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="41"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="586"/>
         <source>Playback time and current levels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="84"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="588"/>
         <source>00:00:00</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="91"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="589"/>
         <source>Tempo:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="114"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="590"/>
         <source>Volume:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="128"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="592"/>
         <source>Pitch:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="144"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="594"/>
         <source>Pitch Control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="147"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="597"/>
         <source>Pitch transpose between -12 and +12 semitones</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="315"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="617"/>
         <source>Reset Volume</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="318"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="620"/>
         <source>Reset Volume to 100%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="215"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="603"/>
         <source>Volume Slider</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="175"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="600"/>
         <source>Tempo Slider</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="302"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="610"/>
         <source>Reset Tempo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="305"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="613"/>
         <source>Reset Tempo to 100%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="308"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="615"/>
         <source>tempo=100%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="242"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="605"/>
         <source>File Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="255"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="607"/>
         <source>Currently loaded MIDI file name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="344"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="623"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="348"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="624"/>
         <source>Open Recent Files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="353"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="625"/>
         <source>Playlist Repeat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="378"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="626"/>
         <source>&amp;Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="382"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="627"/>
         <source>&amp;Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="394"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="628"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="402"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="629"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="419"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="630"/>
         <source>Tool Bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="449"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="474"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="452"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="476"/>
         <source>Open a MIDI file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="460"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="478"/>
         <source>Quit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="463"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="480"/>
         <source>Quit the application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="471"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="482"/>
         <source>Play</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="474"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="484"/>
         <source>Start playing the current MIDI file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="491"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="486"/>
         <source>Pause</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="505"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="490"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="494"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="488"/>
         <source>Pause  playback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="508"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="492"/>
         <source>Stop playback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="519"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="494"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="522"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="496"/>
         <source>Show the about box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="530"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="498"/>
         <source>About Qt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="533"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="500"/>
         <source>Show the about Qt dialog box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="541"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="502"/>
         <source>MIDI Setup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="544"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="504"/>
         <source>Select a connection for the MIDI output port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="558"/>
         <location filename="../guiplayer.ui" line="561"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="506"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="508"/>
         <source>Show Tool Bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="564"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="511"/>
         <source>Show or hide the tool bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="578"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="513"/>
         <source>Show Status Bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="581"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="515"/>
         <source>Show or hide the status bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="592"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="517"/>
         <source>Lyrics and Texts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="595"/>
         <location filename="../guiplayer.ui" line="598"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="519"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="522"/>
         <source>Show or Hide Lyrics and Texts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="612"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="524"/>
         <source>Channels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="615"/>
         <location filename="../guiplayer.ui" line="618"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="526"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="529"/>
         <source>Show or Hide Channels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="632"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="531"/>
         <source>Piano Player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="635"/>
         <location filename="../guiplayer.ui" line="638"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="533"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="536"/>
         <source>Show or Hide Piano Player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="652"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="538"/>
         <source>Rhythm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="655"/>
         <location filename="../guiplayer.ui" line="658"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="540"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="543"/>
         <source>Show or Hide Rhythm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="669"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="545"/>
         <source>File Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="677"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="546"/>
         <source>Preferences ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="685"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="547"/>
         <source>Play List ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="688"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="549"/>
         <source>Show Play List Editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="696"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="551"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="699"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="553"/>
         <source>Next File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="707"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="555"/>
         <source>Prev</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="710"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="557"/>
         <source>Previous File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="718"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="559"/>
         <source>Forward</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="721"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="561"/>
         <source>Move play position to the next bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="729"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="563"/>
         <source>Backward</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="732"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="565"/>
         <source>Move play position to the previous bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="740"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="567"/>
         <source>Jump...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="743"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="569"/>
         <source>Move play position to any bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="751"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="571"/>
         <source>Customize Tool Bar...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="765"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="572"/>
         <source>Nothing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="776"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="573"/>
         <source>Current Song</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="787"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="574"/>
         <source>Whole Playlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="798"/>
         <location filename="../guiplayer.ui" line="801"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="575"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="577"/>
         <source>Loop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="804"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="580"/>
         <source>Loop between two bars</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="809"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="582"/>
         <source>Contents</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="814"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="583"/>
         <source>Web Site</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1345,16 +1434,19 @@ p, li { white-space: pre-wrap; }
     <name>LoopDialog</name>
     <message>
         <location filename="../loopdialog.ui" line="14"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_loopdialog.h" line="99"/>
         <source>Loop Start and End bars</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../loopdialog.ui" line="34"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_loopdialog.h" line="100"/>
         <source>Loop Start:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../loopdialog.ui" line="57"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_loopdialog.h" line="101"/>
         <source>Loop End:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1605,56 +1697,67 @@ p, li { white-space: pre-wrap; }
     <name>PrefsDialog</name>
     <message>
         <location filename="../prefsdialog.ui" line="14"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="369"/>
         <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="28"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="378"/>
         <source>General</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="34"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="370"/>
         <source>Qt Widgets Style:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="57"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="372"/>
         <source>Start Playback Automatically After Loading</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="110"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="375"/>
         <source>Use Internal Icon Theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="124"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="377"/>
         <source>Sticky Window Snapping</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="117"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="376"/>
         <source>Forced Dark Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="97"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="374"/>
         <source>Percussion MIDI Channel:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="47"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="371"/>
         <source>MIDI System Exclusive Reset:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="77"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="373"/>
         <source>Advance Automatically to the Next Playlist item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="154"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="385"/>
         <source>Lyrics</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1664,71 +1767,89 @@ p, li { white-space: pre-wrap; }
         <location filename="../prefsdialog.ui" line="204"/>
         <location filename="../prefsdialog.ui" line="322"/>
         <location filename="../prefsdialog.ui" line="332"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="379"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="380"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="383"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="390"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="391"/>
         <source>...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="177"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="381"/>
         <source>Future Text Color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="194"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="382"/>
         <source>Text Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="231"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="384"/>
         <source>Past Text Color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="262"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="398"/>
         <source>Player Piano</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="268"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="386"/>
         <source>Single Highlight Color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="282"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="387"/>
         <source>Note Highlighting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="292"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="388"/>
         <source>Show Note Names</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="299"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="389"/>
         <source>Note Names Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="342"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="392"/>
         <source>Note Velocity to Color Tint</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="357"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="393"/>
         <source>Never</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="362"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="394"/>
         <source>Minimal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="367"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="395"/>
         <source>When Activated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="372"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="396"/>
         <source>Always</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1811,66 +1932,79 @@ under certain conditions; see the LICENSE for details.</source>
     <name>ToolBarEditDialog</name>
     <message>
         <location filename="../toolbareditdialog.ui" line="14"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="137"/>
         <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="25"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="138"/>
         <source>remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="39"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="139"/>
         <source>add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="53"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="140"/>
         <source>up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="67"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="141"/>
         <source>down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="81"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="142"/>
         <source>Icon Only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="86"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="143"/>
         <source>Text Only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="91"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="144"/>
         <source>Text Beside Icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="96"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="145"/>
         <source>Text Under Icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="101"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="146"/>
         <source>Follow Style</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="119"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="148"/>
         <source>Style of the Tool Buttons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="132"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="149"/>
         <source>Available Actions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="139"/>
+        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="150"/>
         <source>Selected Actions</source>
         <translation type="unfinished"></translation>
     </message>
