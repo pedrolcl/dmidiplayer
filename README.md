@@ -18,6 +18,14 @@ Some key features:
 * Lyrics, Piano Player and MIDI Channels views
 * Supports MID/KAR (Standard MIDI Files) and WRK (Cakewalk) file formats
 
+New in v1.5.0:
+
+* Ticket #3: Song loop between bars
+* Ticket #7: Help window and user documentation
+* Ticket #10: Splash screen
+* Ticket #11: Fixed Winsnap enable/disable
+* Allow more than one file from the command line, or dragged from a file manager
+
 New in v1.4.0:
 
 * ticket #1: Playback positioning

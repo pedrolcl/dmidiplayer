@@ -62,16 +62,21 @@ if (EXISTS ${PANDOC_EXECUTABLE})
         add_custom_target(${_target_name} ALL DEPENDS ${out_file})
     endmacro()
 
-    macro(add_helpfile help_file)
-        string(REPLACE "/" "_" _target_name ${help_file})
-        set(_src ${CMAKE_CURRENT_SOURCE_DIR}/${help_file}.md)
-        set(_out ${CMAKE_CURRENT_SOURCE_DIR}/${help_file}.html)
-        add_custom_command(
-            OUTPUT ${_out}
-            COMMAND ${PANDOC_EXECUTABLE} -s --toc -t html4 -o ${_out} ${_src}
-            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-            DEPENDS ${_src}
-            VERBATIM)
-        add_custom_target(${_target_name} ALL DEPENDS ${_out})
+    macro(update_helpfiles)
+        set (_languages ${ARGN})
+        set (_outfiles)
+        foreach(_lang ${_languages})
+            set(_help_file ${_lang}/index)
+            set(_src ${CMAKE_CURRENT_SOURCE_DIR}/${_help_file}.md)
+            set(_out ${CMAKE_CURRENT_SOURCE_DIR}/${_help_file}.html)
+            add_custom_command(
+                OUTPUT ${_out}
+                COMMAND ${PANDOC_EXECUTABLE} -s --toc -t html4 -o ${_out} ${_src}
+                WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+                DEPENDS ${_src}
+                VERBATIM)
+            list(APPEND _outfiles ${_out})
+        endforeach()
+        add_custom_target(update_helpfiles DEPENDS ${_outfiles})
     endmacro()
 endif()

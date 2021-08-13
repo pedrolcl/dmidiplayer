@@ -227,10 +227,10 @@ if (DEFINED PROJECT_WC_REVISION)
 endif()
 
 include(GNUInstallDirs)
+add_subdirectory(docs)
 add_subdirectory(examples)
 
 if(UNIX AND NOT APPLE)
-    add_subdirectory(docs)
     add_subdirectory(icons)
     install(TARGETS ${PROJECT_NAME}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
