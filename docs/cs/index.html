@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Index nápovědy</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Index nápovědy</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#úvod">Úvod</a></li>
+<li><a href="#midi-výstup">MIDI výstup</a></li>
+<li><a href="#ovládání-přehrávání">Ovládání přehrávání</a><ul>
+<li><a href="#transponovat">Transponovat</a></li>
+<li><a href="#úroveň-hlasitosti">Úroveň hlasitosti</a></li>
+<li><a href="#tempo">Tempo</a></li>
+<li><a href="#skok-smyčka-a-polohování">Skok, smyčka a polohování</a></li>
+</ul></li>
+<li><a href="#zobrazení">Zobrazení</a><ul>
+<li><a href="#kanály">Kanály</a></li>
+<li><a href="#pianola">Pianola</a></li>
+<li><a href="#texty">Texty</a></li>
+</ul></li>
+<li><a href="#seznamy-skladeb">Seznamy skladeb</a></li>
+<li><a href="#otevírání-souborů-midi">Otevírání souborů MIDI</a></li>
+<li><a href="#přizpůsobení">Přizpůsobení</a><ul>
+<li><a href="#předvolby">Předvolby</a></li>
+<li><a href="#přizpůsobení-lišty-nástrojů">Přizpůsobení lišty nástrojů</a></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="úvod">Úvod</h2>
+<p>Tato aplikace je multiplatformní MIDI přehrávač souborů pro Linux, Windows a Operační Systém Mac. Čte .MID (standardní MIDI soubory), .KAR (Karaoke) a .WRK (Cakewalk) formáty souborů a výstupy MIDI událostí do hardwarových MIDI portů a také softwaru syntezátory.</p>
+<p><a href="https://drumstick.sourceforge.io">Drumstick</a> je sada GPLv3 licencované C ++/Qt knihovny pro MIDI aplikace. Projekt zahrnuje několik nástroje jako příklady, a mezi nimi je i nástroj palička-guiplayer, který využívá knihovnu Drumstick :: ALSA, takže je k dispozici pouze pro Linux (protože sekvencer ALSA je technologie pouze pro Linux). Někteří lidé mají požadoval program se stejnými funkcemi ve Windows a macOS a tady to je. Ale tento program je mnohem víc než to a také funguje Linux ...</p>
+<p>Některé klíčové vlastnosti:</p>
+<ul>
+<li>MIDI výstup na hardwarové MIDI porty nebo jakýkoli jiný Drumstick backend jako soft syntezátory</li>
+<li><a href="https://cs.wikipedia.org/wiki/Transpozice_(hudba)">Transpozice</a> tonalita písně mezi -12 a +12 půltónů</li>
+<li>Změňte úroveň hlasitosti MIDI (pomocí MIDI CC7)</li>
+<li>Měřítko rychlosti skladby mezi polovinou a dvojnásobkem <a href="https://cs.wikipedia.org/wiki/Tempo">tempo</a></li>
+<li>Zobrazení textů, klavírního přehrávače a MIDI kanálů</li>
+<li>Podporuje formáty souborů MID/KAR (Standard MIDI Files) a WRK (Cakewalk)</li>
+</ul>
+<h2 id="midi-výstup">MIDI výstup</h2>
+<p>Jakýkoli přehrávač MIDI vydává pouze události MIDI, ale žádný zvuk. Chcete -li vytvářet zvuk, MIDI K vykreslení událostí do digitálního zvuku, který může být, je zapotřebí syntetizátor reprodukovány zvukovými reproduktory počítače (nebo externími). Události také mohou vykreslení externím hudebním MIDI nástrojem připojeným k počítači, například MIDI varhany, piano nebo syntezátor s rozhraním USB. Pokud to možnost není k dispozici, další obvyklou alternativou je softwarový syntetizátor (program).</p>
+<p>V operačních systémech počítače jsou softwarové syntetizéry, například Microsoft Windows obsahuje „Microsoft GS Wavetable Synth“ a Apple macOS obsahuje „Apple DLS Synthesizer“. Chcete -li je použít, musíte otevřít dialog „Nastavení MIDI“ a poté:</p>
+<ul>
+<li>V <strong>Windows</strong> vyberte v prvním seznamu možnost „Windows MM“ a „Microsoft GS Wavetable Synth“ ve druhém seznamu. Místo tohoto syntetizátoru což je velmi základní a omezené, můžete upřednostnit lepší/bezplatnou alternativu jako <a href="https://coolsoft.altervista.org/en/virtualmidisynth">Virtual MIDI Synth</a> které se při spuštění zobrazí jako „VirtualMIDISynth #n“ ve druhém seznamu. Pokud máte k počítači připojen externí MIDI nástroj, jeho název by se měl objevit i ve druhém seznamu.</li>
+<li>V <strong>macOS</strong> vyberte „DLS Synth“ v prvním i druhém seznamu. Tento syntetizátor má možnost konfigurace pro použití souborů zvukových písem DLS nebo SF2, pokud ty chceš. Chcete -li použít jiné připojené MIDI zařízení nebo softwarový syntetizátor, v prvním seznamu musíte vybrat „CoreMIDI“ a název vašeho syntetizátor ve druhém.</li>
+<li>V <strong>Linux</strong> a dalších <strong>Unix</strong> operačních systémech je „SonivoxEAS“ měkký synth připraven k použití. Je to velmi základní GM syntetizátor, který nepoužívá soubory a závisí pouze na zvukovém systému PulseAudio. Pro externí zařízení připojeno k počítači nebo libovolným softwarovým syntezátorům musíte vybrat „ALSA“ (nebo „OSS“) v prvním seznamu.</li>
+<li><strong>FluidSynth</strong> je další otevřený syntetizátor softwaru, který je multiplatformní a je k dispozici ve všech operačních systémech. Je to velmi konfigurovatelné, přijímající zvukové soubory a mnoho digitálních zvukových zvukových systémů. Vybrat <a href="https://github.com/FluidSynth/fluidsynth">FluidSynth</a> v obou seznamech použít to.</li>
+<li><strong>Network</strong> je multiplatformní výstup UDP Multicast, který lze použít k odeslání Události MIDI jako síťové pakety k jiným počítačům a zařízením ve stejném místní síť. Je kompatibilní s <a href="https://www.nerds.de/en/ipmidi.html">ipMIDI</a>, <a href="https://qmidinet.sourceforge.io/">QmidiNet</a> a <a href="https://llg.cubic.org/tools/multimidicast/">multimidicast</a> mimo jiné software.</li>
+</ul>
+<h2 id="ovládání-přehrávání">Ovládání přehrávání</h2>
+<p>Následující standardní akce jsou k dispozici v nabídce `Soubor 'a také panel nástrojů s konvenčními funkcemi v libovolném přehrávači médií:</p>
+<ul>
+<li><code>Hrát</code></li>
+<li><code>Pozastavit</code> (a pokračovat)</li>
+<li>&quot;Zastavit&quot;,</li>
+<li>„Rychle vpřed“ (o 1 bar)</li>
+<li>&quot;Převinout zpět&quot; (o 1 bar)</li>
+</ul>
+<p>Ve výchozím nastavení se „Play“ aktivuje automaticky po načtení souboru MIDI kromě když je tato funkce v konfiguračním dialogu zakázána.</p>
+<p>Zobrazí se <code>stavový řádek</code>, který je volitelně umístěn ve spodní části hlavního okna aktuální stav přehrávání jako „Přehrávání“, „Zastaveno“, „Pozastaveno“ atd.</p>
+<h3 id="transponovat">Transponovat</h3>
+<p>V hlavním okně se nachází <code>Pitch control</code>. Je to inicializovaný spin box na nulu, s platným rozsahem od -12 do +12 půltónů. Limity jsou ekvivalentní o jednu oktávu nahoru nebo dolů původní tón. To by zpěvákům mělo stačit nebo instrumentalisté, kteří potřebují upravit tonalitu pro své pohodlí.</p>
+<p>Všechny MIDI kanály jsou chromaticky transponovány, kromě perkusního kanálu (GM kanál 10 ve výchozím nastavení).</p>
+<h3 id="úroveň-hlasitosti">Úroveň hlasitosti</h3>
+<p>&quot;Ovládání hlasitosti&quot; se nachází v hlavním okně. Je to posuvník, inicializovaný až 100%, s platným rozsahem od 0%do 200%. Účinek horní hranice může být nižší protože MIDI CC 7 má platný rozsah od 0 do 127. K dispozici je také tlačítko <code>Obnovit hlasitost</code>.</p>
+<h3 id="tempo">Tempo</h3>
+<p><code>Tempo control</code> se nachází v hlavním okně. Je to posuvník inicializovaný do 100% s platným rozsahem od 50% do 200%. K dispozici je tlačítko „Obnovit tempo“ a také zobrazení tempa, ukazující efektivní tempo v taktech za minutu s počáteční hodnota 120 tepů za minutu. Toto je výchozí tempo pro MIDI soubor neobsahuje změnu tempa. Tato hodnota se aktualizuje při změně ovládání tempa a také při přehrávání souboru MIDI obsahující změny tempa.</p>
+<h3 id="skok-smyčka-a-polohování">Skok, smyčka a polohování</h3>
+<p>Akce „Přejít“ (umístěná v nabídce „Soubor“ a na výchozí liště nástrojů), vyžaduje číslo taktu, mezi 1 a posledním pruhem načtené skladby, pro změnu aktuální poloha skladby na daném pruhu.</p>
+<p>Akce „Smyčka“ (umístěná v nabídce „Soubor“ a na výchozí liště nástrojů), vyžaduje dvě čárková čísla. Píseň se bude hrát mezi dvěma danými takty, pokud je aktivováno. Smyčku můžete kdykoli vypnout výběrem akce znovu.</p>
+<p>`Ovládací prvek polohování 'se nachází v hlavním okně. Je to posuvník, který se pohybuje, zatímco se mění aktuální hraná pozice, a lze jej ručně přesunout do změňte polohu na libovolný bod v rámci skladby.</p>
+<h2 id="zobrazení">Zobrazení</h2>
+<p>V nabídce `Zobrazit 'jsou povoleny následující možnosti:</p>
+<p>Tři zobrazení jsou nezávislá okna, která můžete otevřít a zavřít ve svém pohodlí: Kanály, texty a klavírní přehrávač.</p>
+<p>Na druhou stranu můžete také skrýt nebo zobrazit další tři zobrazení, která jsou vložená v hlavním okně: Panel nástrojů, Stavový řádek a Rytmus.</p>
+<h3 id="kanály">Kanály</h3>
+<p>Toto okno zobrazuje až 16 řádků, jeden pro každý MIDI kanál používaný proudem MIDI soubor. Sloupce jsou:</p>
+<ul>
+<li>Číslo a text MIDI kanálu (upravitelné). Obvykle název nástroje, nebo a stručný popis převzat z metadat souboru.</li>
+<li>Tlačítko ztlumení. Pomocí této možnosti lze aktuální kanál ztlumit.</li>
+<li>Tlačítko Solo. Zvyšuje hlasitost aktuálního kanálu a zároveň snižuje hlasitost jiné kanály.</li>
+<li>Úroveň. Indikátor aktivity na aktuálním kanálu.</li>
+<li>Zamknout. Toto tlačítko opraví Patch na aktuálním kanálu a zabrání změnám uloženy v souboru.</li>
+<li>Náplast. Odpovídá událostem MIDI Program Change podle General MIDI seznam názvů nástrojů.</li>
+</ul>
+<h3 id="pianola">Pianola</h3>
+<p>Toto okno zobrazuje až 16 řádků, jeden pro každý MIDI kanál používaný proudem MIDI soubor. Každý řádek obsahuje:</p>
+<ul>
+<li>Číslo kanálu a text (stejná data jako v okně Kanály)</li>
+<li>Klavírní klávesnice. Klávesy budou zvýrazněny barvou, která může být plně přizpůsobené událostmi MIDI noty hranými aktuálním souborem MIDI. Může volitelně také zobrazit názvy poznámek. Klíče mohou být aktivovány ručně pomocí počítačové klávesnice a myši</li>
+</ul>
+<p>K dispozici je nabídka okna s následujícími možnostmi:</p>
+<ul>
+<li>Zobrazit na celou obrazovku. Zvětší okno vyplňující aktuální monitor</li>
+<li>Zobrazit všechny kanály</li>
+<li>Skrýt všechny kanály</li>
+<li>Utáhněte počet klíčů. Ve výchozím nastavení každá klávesnice zobrazuje 88 kláves od A0 do C8. Pomocí této možnosti klávesnice skutečně používají pouze počet oktáv používá soubor MIDI, což je obvykle menší číslo</li>
+<li>Až 16 možností kanálu, pro skrytí nebo zobrazení každého kanálu jednotlivě. Podle výchozí jsou vybrány všechny MIDI kanály použité v aktuálním MIDI souboru</li>
+</ul>
+<h3 id="texty">Texty</h3>
+<p>Toto okno zobrazuje textová metadata z načteného souboru MIDI a filtruje data s řadou ovládacích prvků umístěných na panelu nástrojů okna:</p>
+<ul>
+<li>Stopa: pole se seznamem na výběr mezi „Všechny skladby“ nebo jednou položkou, které odpovídá každá použitá stopa v načteném souboru MIDI. Toto číslo stopy nahrazuje v tomto okně koncept MIDI kanálu, protože textová metadata nemají atribut kanálu, ale vždy patří k nějaké stopě. Standardně je automaticky se vybere stopa obsahující více dat</li>
+<li>Typ: pole seznamu pro výběr jednoho z typů textu metadat nebo všech. The Typ „Lyric Events“ je nejpravděpodobnější volbou</li>
+<li>Kódování: kódování textu je detekováno automaticky, ale v některých případech detekce může být nesprávná, takže správnou lze vybrat ručně</li>
+</ul>
+<p>K dispozici je nabídka okna s následujícími možnostmi:</p>
+<ul>
+<li>Kopírovat do schránky: zkopíruje metadata aktuálně zobrazená v okně</li>
+<li>Uložit do souboru ... Po otevření dialogového okna Uložit soubor vytvoří tato možnost text soubor na disku s textem zobrazeným oknem a zvoleným kódováním</li>
+<li>Tisk ... Po otevření dialogového okna Tisk vytiskne tato možnost text zobrazený pomocí okno na vybrané tiskárně</li>
+<li>Celá obrazovka: Zvětší okno vyplňující aktuální monitor</li>
+<li>Písmo ... Otevírá okno Výběr písma, kde můžete vybrat typografii a velikost texty oken</li>
+</ul>
+<h2 id="seznamy-skladeb">Seznamy skladeb</h2>
+<p>Seznamy skladeb jsou kolekce názvů souborů, které lze použít k přehrání série MIDI skladeb, jako hudební „repertoár“.</p>
+<p>Akce „Soubor“-&gt; „Seznam přehrání ...“ spravuje vytváření, úpravy, objednávání, otevírání a ukládání souborů seznamu Play. Toto okno zobrazuje aktuální seznam skladeb název souboru v názvu okna.</p>
+<p>K procházení seznamu skladeb slouží akce „Soubor“-&gt; „Další“ a „Soubor“-&gt; „Předchozí“ ručně dopředu a dozadu. Existují možnosti konfigurace pro spuštění přehrávání automaticky po načtení MIDI souborů a automaticky přejít na další položka seznamu skladeb po dokončení přehrávání aktuální položky. Obě možnosti konfigurace jsou ve výchozím nastavení povoleny.</p>
+<p>Počáteční výchozí seznam skladeb obsahuje sbírku příkladů souborů MIDI. Li dáváte přednost prázdnému seznamu, měli byste použít tlačítko „Vymazat“ a poté uložte prázdný seznam skladeb se smysluplným názvem. To bude novinka počáteční seznam skladeb v budoucnosti.</p>
+<p>Poslední otevřený nebo uložený soubor seznamu skladeb si bude pamatovat při příštím program se spustí, ale seznamy skladeb se automaticky neukládají.</p>
+<p>Seznamy skladeb jsou jednoduché textové soubory s názvem souboru na každém textovém řádku. Soubor názvy mohou být relativní k umístění samotného souboru seznamu skladeb (takže ano nemá předpřipravenou absolutní cestu) nebo každý soubor může mít zapnutou absolutní cestu jeho vlastní.</p>
+<p>Můžete mít několik seznamů skladeb, které lze snadno vytvořit mimo program, například v příkazovém řádku Linux tento příkaz vytvoří seznam skladeb soubor s názvem &quot;my_playlist.lst&quot; se všemi MIDI soubory umístěnými na pracovní ploše adresář:</p>
+<pre><code>$ ls -1 *.mid&gt; my_playlist.lst</code></pre>
+<h2 id="otevírání-souborů-midi">Otevírání souborů MIDI</h2>
+<p>Jednotlivé soubory můžete otevřít ...</p>
+<ul>
+<li>Pomocí standardní akce „Soubor“-&gt; „Otevřít“</li>
+<li>Pomocí nabídky „Soubor“-&gt; „Otevřít poslední soubory“, která si pamatuje až deset souborů nedávno otevřeno.</li>
+<li>Zadání názvů souborů na příkazovém řádku. Sada souborů se stává a dočasný seznam skladeb. To umožňuje snadnou integraci programu se souborem manažeři pomocí akcí „Otevřít s ...“.</li>
+<li>Přetahování souborů ze správce souborů do hlavního okna. The sada souborů se stane dočasným seznamem skladeb.</li>
+</ul>
+<h2 id="přizpůsobení">Přizpůsobení</h2>
+<h3 id="předvolby">Předvolby</h3>
+<p>V tomto dialogu je tlačítko „Obnovit výchozí“ pro inicializaci všech možností na jejich výchozí hodnoty.</p>
+<p>K dispozici jsou tři karty, které seskupují nastavení konfigurace</p>
+<h4 id="všeobecné">Všeobecné</h4>
+<ul>
+<li>Perkusní MIDI kanál: Číslo od 1 do 16. Výchozí 10, odpovídající Obecný MIDI standardní bicí kanál</li>
+<li>Spustit přehrávání automaticky po načtení. Ve výchozím nastavení povoleno</li>
+<li>Automaticky postoupit na další položku seznamu stop. Ve výchozím nastavení povoleno</li>
+<li>Vynutit tmavý režim. Může být užitečné v systému Windows. V Linuxu a macOS je tmavý režim automaticky se použije při konfiguraci v operačním systému</li>
+<li>Použijte vnitřní motiv ikon. Toto nastavení je potřeba ve Windows a macOS.</li>
+<li>Styl widgetů Qt. V závislosti na operačním systému ovlivňuje vizuální integrace s jinými programy</li>
+<li>Reset systému exkluzivní pro MIDI. Tuto zprávu hráč odešle těsně před startem přehrávání každého MIDI souboru</li>
+</ul>
+<h4 id="texty-1">Texty</h4>
+<ul>
+<li>Písmo textu. Otevře okno Výběr písma, kde můžete vybrat typografii a velikost texty oken. Toto nastavení je k dispozici také v nabídce okna Texty</li>
+<li>Budoucí barva textu. Toto nastavení platí pro text, který nebyl přehrán</li>
+<li>Předchozí barva textu. Toto nastavení platí pro již přehrávaný text</li>
+</ul>
+<h4 id="hráčský-klavír">Hráčský klavír</h4>
+<ul>
+<li>Zvýraznění poznámky. K dispozici je několik palet zvýraznění</li>
+<li>Barva jednoho zvýraznění. Když je vybrána paleta zvýraznění jedné barvy, toto nastavení je barva zvýrazňující notu</li>
+<li>Všimněte si rychlosti barevného odstínu. S touto možností MIDI zaznamenává rychlost událostí Atribut se používá k zesvětlení nebo ztmavení zvýrazňující barvy</li>
+<li>Písmo názvů poznámek. Otevře okno Výběr písma, kde vyberete typografii a velikost názvů not</li>
+<li>Zobrazit názvy poznámek: dostupné možnosti jsou Nikdy, Minimální, Při aktivaci vždy. Možnost Minimální zobrazuje pouze názvy kláves C.</li>
+</ul>
+<h3 id="přizpůsobení-lišty-nástrojů">Přizpůsobení lišty nástrojů</h3>
+<p>Panel nástrojů se nachází v hlavním okně, které je obvykle velmi malé volného místa a lze jej přesunout do horní nebo dolní části okna a také mimo něj. Akce dostupné jako tlačítka nástrojů lze konfigurovat v toto dialogové okno. Všechny akce jsou také položkami hlavní nabídky.</p>
+<ul>
+<li>Dostupné akce: zobrazuje seznam akcí, které se aktuálně nezobrazují jako tlačítka nástrojů</li>
+<li>Vybrané akce: je seznam aktuálně vybraných tlačítek nástrojů</li>
+</ul>
+<p>Chcete -li vybrat jednu akci ze seznamu Dostupné, nejprve ji vyberte myší a poté stiskněte tlačítko „přidat“. Akce je odebrána ze seznamu Available a umístěné na konci vybraného seznamu.</p>
+<p>Chcete -li odebrat jedno tlačítko z panelu nástrojů, vyberte jej myší v poli Vybráno seznamu a poté stiskněte tlačítko „odebrat“.</p>
+<p>Chcete -li uspořádat pořadí tlačítek na panelu nástrojů, použijte tlačítka „nahoru“ a „dolů“ po výběru položky v seznamu Vybrané.</p>
+<p>Styl tlačítek nástrojů: obsahuje následující možnosti, které platí pro všechny tlačítka na panelu nástrojů</p>
+<ul>
+<li>Pouze ikona</li>
+<li>Pouze text</li>
+<li>Text vedle ikony</li>
+<li>Text pod ikonou</li>
+<li>Sledujte styl: Nastavení je určeno nastavením „Styl widgetů Qt“ v dialogu Předvolby.</li>
+</ul>
+</body>
+</html>
