@@ -21,7 +21,7 @@
 <li><a href="#tempo">Tempo</a></li>
 <li><a href="#salto-bucle-y-posicionamiento">Salto, bucle y posicionamiento</a></li>
 </ul></li>
-<li><a href="#puntos-de-vista">Puntos de vista</a><ul>
+<li><a href="#vistas">Vistas</a><ul>
 <li><a href="#canales">Canales</a></li>
 <li><a href="#pianola">Pianola</a></li>
 <li><a href="#letra">Letra</a></li>
@@ -57,85 +57,85 @@
 <li><strong>Red</strong> es una salida de multidifusión UDP multiplataforma, que se puede utilizar para enviar Eventos MIDI como paquetes de red a otras computadoras y dispositivos en la misma red de área local. Es compatible con <a href="https://www.nerds.de/en/ipmidi.html">ipMIDI</a>, <a href="https://qmidinet.sourceforge.io/">QmidiNet</a> y <a href="https://llg.cubic.org/tools/multimidicast/">multidifusión</a> entre otro software.</li>
 </ul>
 <h2 id="controles-de-reproducción">Controles de reproducción</h2>
-<p>Las siguientes acciones estándar están disponibles en el menú <code>Archivo</code> y también en el barra de herramientas, con las funcionalidades convencionales en cualquier reproductor multimedia:</p>
+<p>Las siguientes acciones estándar están disponibles en el menú <code>Archivo</code> y también en la barra de herramientas, con las funcionalidades convencionales en cualquier reproductor multimedia:</p>
 <ul>
-<li><code>Jugar</code></li>
-<li><code>Pause</code> (y continuar)</li>
-<li><code>Detener</code>,</li>
-<li><code>Fast Forward</code> (por 1 barra)</li>
-<li><code>Rebobinar</code> (en 1 barra)</li>
+<li><code>Reproducir</code></li>
+<li><code>Pausa</code> (y continuar)</li>
+<li><code>Parar</code>,</li>
+<li><code>Avanzar</code> (1 compás)</li>
+<li><code>Retroceder</code> (1 compás)</li>
 </ul>
-<p>Por defecto, <code>Play</code> se activa automáticamente al cargar un archivo MIDI, excepto cuando esta función está desactivada en el cuadro de diálogo de configuración.</p>
-<p>La <code>barra de estado</code>, ubicada opcionalmente en la parte inferior de la ventana principal, muestra el estado de reproducción actual como &quot;Reproducción&quot;, &quot;Detenido&quot;, &quot;Pausado&quot;, etc.</p>
+<p>Por defecto, <code>Reprooducir</code> se activa automáticamente al cargar un archivo MIDI, excepto cuando esta función está desactivada en el cuadro de diálogo de configuración.</p>
+<p>La <code>barra de estado</code>, ubicada opcionalmente en la parte inferior de la ventana principal, muestra el estado de reproducción actual como &quot;Reproduciendo&quot;, &quot;Detenido&quot;, &quot;En pausa&quot;, etc.</p>
 <h3 id="transporte">Transporte</h3>
-<p>El &quot;Control de tono&quot; se encuentra en la ventana principal. Es un cuadro de giro inicializado a cero, con un rango válido de -12 a +12 semitonos. Los límites son equivalentes a una octava hacia arriba o hacia abajo del tono original. Esto debería ser suficiente para los cantantes. o instrumentistas que necesitan ajustar la tonalidad para su comodidad.</p>
-<p>Todos los canales MIDI se transponen cromáticamente, excepto el canal de percusión. (Canal GM 10 por defecto).</p>
+<p>El &quot;Control de tono&quot; se encuentra en la ventana principal. Es un cuadro de giro inicializado a cero, con un rango válido de -12 a +12 semitonos. Los límites son equivalentes a una octava hacia arriba o hacia abajo del tono original. Esto debería ser suficiente para los cantantes o instrumentistas que necesitan ajustar la tonalidad para su comodidad.</p>
+<p>Todos los canales MIDI se transponen cromáticamente, excepto el canal de percusión (Canal GM 10 por omisión).</p>
 <h3 id="nivel-de-volumen">Nivel de volumen</h3>
-<p>El &quot;Control de volumen&quot; se encuentra en la ventana principal. Es un control deslizante, inicializado al 100%, con un rango válido de 0% a 200%. El efecto de límite superior puede ser menor porque el MIDI CC 7 tiene un rango válido de 0 a 127. También hay un botón para <code>Restablecer volumen</code>.</p>
+<p>El &quot;Control de volumen&quot; se encuentra en la ventana principal. Es un control deslizante, inicializado al 100%, con un rango válido de 0% a 200%. El límite superior efectivo puede ser menor porque el MIDI CC 7 tiene un rango válido desde 0 a 127. También hay un botón para <code>Restablecer volumen</code>.</p>
 <h3 id="tempo">Tempo</h3>
-<p>El <code>Control de tempo</code> se encuentra en la ventana principal. Es un control deslizante inicializado al 100% con un rango válido del 50% al 200%. Hay un botón para <code>Reset Tempo</code> y también una pantalla de tempo, que muestra el tempo efectivo en tiempos por minuto con un valor inicial de 120 bpm. Este es el tempo predeterminado para un archivo MIDI si no contiene un cambio de tempo. Este valor se actualiza al cambiar el control de tempo, y también mientras se reproduce un archivo MIDI que contiene cambios de tempo.</p>
+<p>El <code>Control de tempo</code> se encuentra en la ventana principal. Es un control deslizante inicializado al 100% con un rango válido del 50% al 200%. Hay un botón para <code>Restablecer Tempo</code> y también una etiqueta de tempo, que muestra el tempo efectivo en pulsos por minuto con un valor inicial de 120 bpm. Este es el tempo predeterminado para un archivo MIDI si no contiene un cambio de tempo. Este valor se actualiza al cambiar el control de tempo, y también mientras se reproduce un archivo MIDI que contiene cambios de tempo.</p>
 <h3 id="salto-bucle-y-posicionamiento">Salto, bucle y posicionamiento</h3>
-<p>La acción <code>Jump</code> (ubicada en el menú<code>Archivo</code> y la barra de herramientas predeterminada), solicita un número de compás, entre 1 y el último compás de la canción cargada, para cambiar el posición actual de la canción en la barra dada.</p>
-<p>La acción <code>Loop</code> (ubicada en el menú<code>Archivo</code> y la barra de herramientas predeterminada), solicita dos números de barra. La canción se reproducirá entre los dos compases dados cuando esté activado. Puede apagar el bucle en cualquier momento seleccionando la acción nuevamente.</p>
-<p>El &quot;Control de posicionamiento&quot; se encuentra en la ventana principal. Es un control deslizante que se mueve mientras cambia la posición actual reproducida, y se puede mover con la mano para cambie la posición a cualquier punto arbitrario dentro de la canción.</p>
-<h2 id="puntos-de-vista">Puntos de vista</h2>
+<p>La acción <code>Salto</code> (ubicada en el menú <code>Archivo</code> y en la barra de herramientas predeterminada), solicita un número de compás, entre 1 y el último compás de la canción cargada, para cambiar la posición actual de reproducción en la canción.</p>
+<p>La acción <code>Bucle</code> (ubicada en el menú <code>Archivo</code> y la barra de herramientas predeterminada), solicita dos números de compás. La canción se reproducirá entre los dos compases dados cuando esté activado. Puede apagar el bucle en cualquier momento seleccionando la acción nuevamente.</p>
+<p>El &quot;Control de posicionamiento&quot; se encuentra en la ventana principal. Es un control deslizante que se mueve mientras cambia la posición actual de reproducción, y se puede mover manualmente para cambiar la posición a cualquier punto arbitrario dentro de la canción.</p>
+<h2 id="vistas">Vistas</h2>
 <p>Las siguientes opciones están habilitadas en el menú <code>Ver</code>:</p>
-<p>Tres vistas son ventanas independientes que puede abrir y cerrar en su conveniencia: Canales, Letras y Pianola.</p>
+<p>Tres vistas son ventanas independientes que puede abrir y cerrar a su conveniencia: Canales, Letra y Pianola.</p>
 <p>Por otro lado, también puede ocultar o mostrar tres vistas más que están incrustadas en la ventana principal: barra de herramientas, barra de estado y ritmo.</p>
 <h3 id="canales">Canales</h3>
 <p>Esta ventana muestra hasta 16 filas, una para cada canal MIDI utilizado por el Archivo MIDI. Las columnas son:</p>
 <ul>
-<li>Número de canal MIDI y texto (editable). Por lo general, el nombre del instrumento o una breve descripción extraída de los metadatos del archivo.</li>
+<li>Número de canal MIDI y texto (editable). Por lo general, contiene el nombre del instrumento o una breve descripción extraída de los metadatos del archivo.</li>
 <li>Botón de silencio. Con esta opción, el canal actual puede silenciarse.</li>
-<li>Botón Solo. Sube el volumen del canal actual, mientras que baja el otros canales.</li>
+<li>Botón &quot;Solo&quot;. Sube el volumen del canal actual, mientras baja el de los otros canales.</li>
 <li>Nivel. Indicador de la actividad en el canal actual.</li>
-<li>Cerrar con llave. Este botón fija el Patch en el canal actual, evitando cambios almacenado en el archivo.</li>
+<li>Bloquear. Este botón fija el Patch en el canal actual, evitando los cambios almacenados en el archivo.</li>
 <li>Parche. Corresponde a los eventos de cambio de programa MIDI de acuerdo con las Lista MIDI de nombres de instrumentos.</li>
 </ul>
 <h3 id="pianola">Pianola</h3>
 <p>Esta ventana muestra hasta 16 filas, una para cada canal MIDI utilizado por el Archivo MIDI. Cada fila contiene:</p>
 <ul>
-<li>Un número de canal y texto (los mismos datos que la ventana Canales)</li>
-<li>Un teclado de piano. Las teclas se resaltarán con un color, que puede ser completamente personalizado, por los eventos de nota MIDI reproducidos por el archivo MIDI actual. Puede también muestra opcionalmente los nombres de las notas. Las llaves pueden estar activadas manualmente usando el teclado de la computadora y el mouse</li>
+<li>Un número de canal y un texto (los mismos datos que la ventana Canales)</li>
+<li>Un teclado de piano. Las teclas se resaltarán con un color, que puede ser completamente personalizado, por los eventos de nota MIDI reproducidos por el archivo MIDI actual. Puede mostrar también opcionalmente los nombres de las notas. Las teclas pueden ser activadas manualmente usando el teclado de la computadora y el ratón</li>
 </ul>
-<p>Hay un menú de ventana, con las siguientes opciones:</p>
+<p>Hay un menú de ventana con las siguientes opciones:</p>
 <ul>
 <li>Ver en pantalla completa. Agranda la ventana llenando el monitor actual</li>
 <li>Mostrar todos los canales</li>
 <li>Ocultar todos los canales</li>
-<li>Apriete el número de llaves. De forma predeterminada, cada teclado muestra 88 teclas, desde A0 a C8. Usando esta opción, los teclados usan solo el número de octavas realmente utilizado por el archivo MIDI, que suele ser un número menor</li>
-<li>Hasta 16 opciones de canal, para ocultar o mostrar cada canal individualmente. Por por defecto, todos los canales MIDI utilizados en el archivo MIDI actual están seleccionados</li>
+<li>Reducir el número de teclas. De forma predeterminada cada teclado muestra 88 teclas, desde La-0 a Do-8. Usando esta opción los teclados muestran solo el número de octavas realmente utilizadas por el archivo MIDI, que suele ser un número menor</li>
+<li>Hasta 16 opciones de canal, para ocultar o mostrar cada canal individualmente. Por omisión, todos los canales MIDI utilizados en el archivo MIDI actual están seleccionados</li>
 </ul>
 <h3 id="letra">Letra</h3>
-<p>Esta ventana muestra los metadatos de texto del archivo MIDI cargado, filtrando el datos con una serie de controles ubicados en la barra de herramientas de la ventana:</p>
+<p>Esta ventana muestra los metadatos de texto del archivo MIDI cargado, filtrando los datos con una serie de controles ubicados en la barra de herramientas de la ventana:</p>
 <ul>
-<li>Pista: un cuadro de lista para elegir entre &quot;Todas las pistas&quot;, o un elemento correspondiente a cada pista utilizada en el archivo MIDI cargado. Este número de pista reemplaza al concepto de canal MIDI en esta ventana, porque los metadatos de texto no tienen un atributo de canal, pero siempre pertenece a alguna pista. Por defecto, el la pista que contiene más datos se selecciona automáticamente</li>
-<li>Tipo: un cuadro de lista para elegir uno de los tipos de texto de metadatos o todos ellos. El El tipo &quot;Lyric Events&quot; es la opción más probable</li>
-<li>Codificación: la codificación del texto se detecta automáticamente, pero en algunos casos la la detección puede ser incorrecta, por lo que la correcta se puede seleccionar manualmente</li>
+<li>Pista: un cuadro de lista para elegir entre &quot;Todas las pistas&quot;, o un elemento correspondiente a cada pista utilizada en el archivo MIDI cargado. Este número de pista reemplaza al concepto de canal MIDI en esta ventana, porque los metadatos de texto no tienen un atributo de canal, pero siempre pertenecen a alguna pista. Por defecto, la pista que contiene más datos se selecciona automáticamente</li>
+<li>Tipo: un cuadro de lista para elegir uno de los tipos de texto de metadatos o todos ellos. El tipo &quot;Eventos de letra&quot; es la opción más probable</li>
+<li>Codificación: la codificación del texto se detecta automáticamente, pero en algunos casos la detección puede ser incorrecta por lo que es posible seleccionar manualmente la correcta</li>
 </ul>
-<p>Hay un menú de ventana, con las siguientes opciones:</p>
+<p>Hay un menú de ventana con las siguientes opciones:</p>
 <ul>
 <li>Copiar al portapapeles: copia los metadatos que se muestran actualmente en la ventana.</li>
-<li>Guardar en archivo ... Después de abrir un cuadro de diálogo Guardar archivo, esta opción crea un texto archivo en el disco, con el texto mostrado por la ventana y la codificación seleccionada</li>
-<li>Imprimir ... Después de abrir un cuadro de diálogo Imprimir, esta opción imprime el texto mostrado por la ventana de la impresora seleccionada</li>
-<li>Pantalla completa: agranda la ventana que llena el monitor actual</li>
-<li>Fuente ... Abre una ventana de Selección de fuente para elegir la tipografía y el tamaño para los textos de la ventana</li>
+<li>Guardar en archivo... Después de abrir un cuadro de diálogo Guardar archivo, esta opción crea un archivo de texto en el disco, con el texto mostrado por la ventana y la codificación seleccionada</li>
+<li>Imprimir... Después de abrir un cuadro de diálogo Imprimir, esta opción imprime el texto mostrado por la ventana de la impresora seleccionada</li>
+<li>Pantalla completa: agranda la ventana para llenar el monitor actual</li>
+<li>Fuente... Abre una ventana de Selección de fuente para elegir tipografía y tamaño para los textos de la ventana</li>
 </ul>
 <h2 id="listas-de-reproducción">Listas de reproducción</h2>
-<p>Las listas de reproducción son colecciones de nombres de archivos que se pueden usar para reproducir una serie. de piezas MIDI, como un &quot;repertorio&quot; musical.</p>
-<p>La acción <code>Archivo</code>-&gt;<code>Lista de reproducción ...</code>gestiona la creación, modificación, ordenación, abrir y guardar archivos de listas de reproducción. Esta ventana muestra la lista de reproducción actual nombre de archivo en el título de la ventana.</p>
-<p>Las acciones <code>Archivo</code>-&gt;<code>Siguiente</code> y <code>Archivo</code>-&gt;<code>Anterior</code> se utilizan para navegar por la lista de reproducción. manualmente hacia adelante y hacia atrás. Hay opciones de configuración para iniciar la reproducción. automáticamente después de cargar archivos MIDI, y avanzar automáticamente al siguiente elemento de la lista de reproducción cuando termine de reproducir el elemento actual. Ambas opciones de configuración están habilitados de forma predeterminada.</p>
-<p>La lista de reproducción predeterminada inicial contiene una colección de archivos MIDI de ejemplo. Si prefieres comenzar con una lista vacía, debes usar el botón <code>Borrar</code> y luego guardando la lista de reproducción vacía con un nombre significativo. Esta sera la nueva lista de reproducción inicial en el futuro.</p>
-<p>El último archivo de lista de reproducción abierto o guardado se recordará la próxima vez se inicia el programa, pero las listas de reproducción no se guardan automáticamente.</p>
-<p>Las listas de reproducción son archivos de texto simples, con un nombre de archivo en cada línea de texto. El archivo Los nombres pueden ser relativos a la ubicación del archivo de la lista de reproducción en sí (por lo que lo hacen no tener una ruta absoluta antepuesta) o cada archivo puede tener una ruta absoluta en su propio.</p>
-<p>Puede tener varias listas de reproducción que se pueden crear fácilmente fuera del programa, por ejemplo, en la línea de comandos de Linux, este comando crea una lista de reproducción archivo llamado &quot;my_playlist.lst&quot; con todos los archivos MIDI ubicados en el trabajo directorio:</p>
-<pre><code>$ ls -1 * .mid&gt; my_playlist.lst</code></pre>
+<p>Las listas de reproducción son colecciones de nombres de archivos que se pueden usar para reproducir una serie de piezas MIDI, como un repertorio musical.</p>
+<p>La acción <code>Archivo</code>-&gt;<code>Lista de reproducción...</code> gestiona la creación, modificación, ordenación, apertura y almacenamiento de los archivos de listas de reproducción. Esta ventana muestra el nombre de archivo de la lista de reproducción actual en el título de la ventana.</p>
+<p>Las acciones <code>Archivo</code>-&gt;<code>Siguiente</code> y <code>Archivo</code>-&gt;<code>Anterior</code> se utilizan para navegar por la lista de reproducción manualmente hacia adelante y hacia atrás. Hay opciones de configuración para iniciar la reproducción automáticamente después de cargar archivos MIDI, y avanzar automáticamente al siguiente elemento de la lista de reproducción cuando termine de reproducir el elemento actual. Ambas opciones de configuración están habilitadas de forma predeterminada.</p>
+<p>La lista de reproducción predeterminada inicial contiene una colección de archivos MIDI de ejemplo. Si prefiere comenzar con una lista vacía, debe usar el botón <code>Borrar</code> y luego guardar la lista de reproducción vacía con un nombre significativo. Esta sera la nueva lista de reproducción inicial en el futuro.</p>
+<p>El último archivo de lista de reproducción abierto o guardado se recordará la próxima vez que se inicie el programa, pero las listas de reproducción no se guardan automáticamente.</p>
+<p>Las listas de reproducción son archivos de texto simples, con un nombre de archivo en cada línea de texto. Los nombres de archivo pueden ser relativos a la ubicación del archivo de la lista de reproducción en sí (por lo que no llevan una ruta absoluta antepuesta) o cada archivo puede tener su propia ruta absoluta.</p>
+<p>Puede tener varias listas de reproducción que se pueden crear fácilmente fuera del programa, por ejemplo: en la línea de comandos de Linux, este comando crea una lista de reproducción en un archivo llamado &quot;my_playlist.lst&quot; con todos los archivos MIDI ubicados en el directorio de trabajo:</p>
+<pre><code>$ ls -1 *.mid &gt; my_playlist.lst</code></pre>
 <h2 id="abrir-archivos-midi">Abrir archivos MIDI</h2>
 <p>Puede abrir archivos individuales ...</p>
 <ul>
 <li>Usando la acción estándar <code>Archivo</code>-&gt;<code>Abrir</code></li>
-<li>Usando el menú <code>Archivo</code>-&gt;<code>Abrir archivos recientes</code>, que recuerda hasta diez archivos recientemente inaugurado.</li>
-<li>Proporcionar el (los) nombre (s) de archivo en la línea de comando. El conjunto de archivos se convierte en un lista de reproducción temporal. Esto permite una fácil integración del programa con el archivo. administradores que utilizan acciones &quot;Abrir con ...&quot;.</li>
+<li>Usando el menú <code>Archivo</code>-&gt;<code>Abrir archivos recientes</code>, que recuerda hasta diez archivos abiertos recientemente</li>
+<li>Proporcionar nombre(s) de archivo en la línea de comando. El conjunto de archivos se convierte en una lista de reproducción temporal. Esto permite una fácil integración del programa con los administradores de archivos que utilizan acciones de tipo &quot;Abrir con...&quot;</li>
 <li>Arrastrar y soltar archivos desde un administrador de archivos a la ventana principal. El conjunto de archivos se convierte en una lista de reproducción temporal.</li>
 </ul>
 <h2 id="personalización">Personalización</h2>
@@ -144,44 +144,44 @@
 <p>Hay tres pestañas que agrupan los ajustes de configuración</p>
 <h4 id="general">General</h4>
 <ul>
-<li>Canal MIDI de percusión: número del 1 al 16. Por defecto 10, correspondiente al Canal de percusión estándar de MIDI general</li>
-<li>Iniciar la reproducción automáticamente después de la carga. Habilitado por defecto</li>
-<li>Avanzar automáticamente al siguiente elemento de la lista de reproducción. Habilitado por defecto</li>
-<li>Forzar el modo oscuro. Puede resultar útil en Windows. En Linux y macOS, el modo oscuro es se aplica automáticamente cuando se configura en el sistema operativo</li>
-<li>Utilice el tema del icono interno. Esta configuración es necesaria en Windows y macOS.</li>
-<li>Estilo de widgets Qt. Dependiendo del sistema operativo, afecta la visual integración con otros programas</li>
-<li>Restablecimiento exclusivo del sistema MIDI. El jugador envía este mensaje justo antes de comenzar. reproducir cada archivo MIDI</li>
+<li>Canal MIDI de percusión: número del 1 al 16. Por defecto 10, correspondiente al canal de percusión estándar General MIDI</li>
+<li>Iniciar la reproducción automáticamente después de la carga. Habilitado por omisión</li>
+<li>Avanzar automáticamente al siguiente elemento de la lista de reproducción. Habilitado por omisión</li>
+<li>Forzar el modo oscuro. Puede resultar útil en Windows. En Linux y macOS, el modo oscuro se aplica automáticamente cuando está configurado en el sistema operativo</li>
+<li>Utilizar el tema de iconos interno. Esta configuración es necesaria en Windows y macOS.</li>
+<li>Estilo de widgets de Qt. Dependiendo del sistema operativo, afecta a la integración visual con otros programas</li>
+<li>Restablecimiento por sistema exclusivo MIDI. El reproductor envía este mensaje justo antes de comenzar a reproducir cada archivo MIDI</li>
 </ul>
 <h4 id="letra-1">Letra</h4>
 <ul>
-<li>Tipografía del texto. Abre una ventana de selección de fuente para elegir la tipografía y el tamaño para los textos de la ventana. Esta configuración también está disponible en el menú de la ventana Letras</li>
+<li>Tipografía del texto. Abre una ventana de selección de fuente para elegir la tipografía y el tamaño de los textos de la ventana. Esta configuración también está disponible en el menú de la ventana Letras</li>
 <li>Color de texto futuro. Esta configuración se aplica al texto que no se ha reproducido</li>
-<li>Color de texto anterior. Esta configuración se aplica al texto que ya se ha reproducido.</li>
+<li>Color de texto anterior. Esta configuración se aplica al texto que ya se ha reproducido</li>
 </ul>
 <h4 id="pianola-1">Pianola</h4>
 <ul>
-<li>Destacado de nota. Hay algunas paletas de resaltado disponibles.</li>
-<li>Color de resaltado único. Cuando se selecciona la paleta de resaltado de un solo color, esta configuración es el color de resaltado de la nota</li>
-<li>Tenga en cuenta la velocidad del tinte de color. Con esta opción, la velocidad de los eventos de nota MIDI El atributo se utiliza para dar al color de resaltado un tono más claro o más oscuro.</li>
-<li>Nota fuente de nombres. Abre una ventana de selección de fuente para elegir la tipografía y tamaño de los nombres de las notas</li>
-<li>Mostrar nombres de notas: las opciones disponibles son Nunca, Mínimo, Cuando se activa, siempre. La opción Mínimo muestra solo los nombres de las teclas C.</li>
+<li>Resaltado de nota. Hay varias paletas de resaltado disponibles.</li>
+<li>Color de resaltado único. Cuando se selecciona la paleta de resaltado de un solo color, esta configuración indica el color de resaltado de la nota</li>
+<li>Trasladar la velocidad MIDI a tono de color. Con esta opción, la velocidad de los eventos de nota MIDI se utiliza para dar al color de resaltado un tono más claro o más oscuro</li>
+<li>Fuente de nombres de notas. Abre una ventana de selección de fuente para elegir la tipografía y tamaño de los nombres de las notas</li>
+<li>Mostrar nombres de notas: las opciones disponibles son: Nunca, Mínimo, Cuando se activa, y Siempre. La opción Mínimo muestra solo los nombres de las teclas Do</li>
 </ul>
 <h3 id="personalización-de-la-barra-de-herramientas">Personalización de la barra de herramientas</h3>
-<p>La barra de herramientas se encuentra en la ventana principal, que normalmente tiene un tamaño muy pequeño. espacio disponible, y se puede mover a la parte superior o inferior de la ventana, y también fuera de ella. Las acciones disponibles como botones de herramientas se pueden configurar en esta ventana de diálogo. Todas las acciones también son elementos del menú principal.</p>
+<p>La barra de herramientas se encuentra en la ventana principal, que normalmente tiene un espacio disponible muy reducido, y se puede mover a la parte superior o inferior de la ventana, y también fuera de ella. Las acciones disponibles como botones de herramientas se pueden configurar en esta ventana de diálogo. Todas las acciones también son elementos del menú principal.</p>
 <ul>
 <li>Acciones disponibles: muestra la lista de acciones que no se muestran actualmente como botones de herramientas</li>
 <li>Acciones seleccionadas: es la lista de botones de herramientas seleccionados actualmente</li>
 </ul>
-<p>Para seleccionar una acción de la lista Disponible, primero selecciónela con el mouse y luego presione el botón &quot;agregar&quot;. La acción se elimina de la lista Disponible y colocado al final de la lista seleccionada.</p>
-<p>Para eliminar un botón de la barra de herramientas, selecciónelo con el mouse en el campo Seleccionado. lista y luego presione el botón &quot;eliminar&quot;.</p>
-<p>Para reorganizar el orden de los botones en la barra de herramientas, use las teclas &quot;arriba&quot; y &quot;abajo&quot; botones después de seleccionar un elemento en la lista Seleccionado.</p>
+<p>Para seleccionar una acción de la lista Disponible, primero selecciónela con el ratón y luego presione el botón &quot;agregar&quot;. La acción se elimina de la lista Disponible y se coloca al final de la lista seleccionada.</p>
+<p>Para eliminar un botón de la barra de herramientas, selecciónelo con el ratón en la lista Seleccionada y luego presione el botón &quot;eliminar&quot;.</p>
+<p>Para reorganizar el orden de los botones en la barra de herramientas, use los botones &quot;arriba&quot; y &quot;abajo&quot; después de seleccionar un elemento en la lista Seleccionada.</p>
 <p>Estilo de los botones de herramientas: contiene las siguientes opciones que se aplican a todos los botones de la barra de herramientas</p>
 <ul>
 <li>Solo icono</li>
 <li>Solo texto</li>
-<li>Texto al lado del icono</li>
-<li>Texto debajo del icono</li>
-<li>Seguir estilo: la configuración está determinada por la configuración de &quot;Estilo de widgets de Qt&quot; en el cuadro de diálogo Preferencias.</li>
+<li>Texto junto al icono</li>
+<li>Texto bajo el icono</li>
+<li>Seguir estilo: la configuración está determinada por la configuración del &quot;Estilo de widgets de Qt&quot; en el cuadro de diálogo Preferencias</li>
 </ul>
 </body>
 </html>
