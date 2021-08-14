@@ -420,7 +420,7 @@ void SequencePlayer::setVolumeFactor(unsigned int vol)
 {
     //qDebug() << Q_FUNC_INFO;
     m_volumeFactor = vol;
-    if (m_port != 0) {
+    if (m_port != nullptr) {
         for(int chan = 0; chan < MIDI_STD_CHANNELS; ++chan) {
             int value = m_volume[chan];
             value = qFloor(value * m_volumeFactor / 100.0);
@@ -434,7 +434,7 @@ void SequencePlayer::setVolumeFactor(unsigned int vol)
 void SequencePlayer::allNotesOff()
 {
     //qDebug() << Q_FUNC_INFO;
-    if (m_port != 0) {
+    if (m_port != nullptr) {
         for(int chan = 0; chan < MIDI_STD_CHANNELS; ++chan) {
             m_port->sendController(chan, ControllerEvent::MIDI_CTL_ALL_NOTES_OFF, 0);
             m_port->sendController(chan, ControllerEvent::MIDI_CTL_ALL_SOUNDS_OFF, 0);
@@ -445,10 +445,21 @@ void SequencePlayer::allNotesOff()
 void SequencePlayer::resetControllers()
 {
     //qDebug() << Q_FUNC_INFO;
-    if (m_port != 0) {
+    if (m_port != nullptr) {
         for(int chan = 0; chan < MIDI_STD_CHANNELS; ++chan) {
             m_port->sendController(chan, ControllerEvent::MIDI_CTL_RESET_CONTROLLERS, 0);
             m_port->sendController(chan, ControllerEvent::MIDI_CTL_MSB_MAIN_VOLUME, 100);
+        }
+    }
+}
+
+void SequencePlayer::resetPrograms()
+{
+    if (m_port != nullptr) {
+        for(int chan = 0; chan < MIDI_STD_CHANNELS; ++chan) {
+            int pgm = m_locked[chan] ? m_lockedpgm[chan] : 0;
+            m_port->sendProgram(chan, pgm);
+            //qDebug() << Q_FUNC_INFO << chan << m_locked[chan] << pgm;
         }
     }
 }
@@ -471,13 +482,14 @@ void SequencePlayer::sendResetMessage()
             m_port->sendSysex(xgreset);
             break;
         }
+        //qDebug() << Q_FUNC_INFO << reset_msg;
     }
 }
 
 void SequencePlayer::sendVolumeEvents()
 {
     //qDebug() << Q_FUNC_INFO;
-    if (m_port != 0) {
+    if (m_port != nullptr) {
         for(int chan = 0; chan < MIDI_STD_CHANNELS; ++chan) {
             int value = m_volume[chan] = 100;
             value = floor(value * m_volumeFactor / 100.0);

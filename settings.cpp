@@ -452,6 +452,10 @@ void Settings::setVelocityColor(bool velocityColor)
 
 QString Settings::language() const
 {
+    //qDebug() << Q_FUNC_INFO << m_language;
+    if (m_language.length() > 2) {
+        return m_language.left(2);
+    }
     return m_language;
 }
 

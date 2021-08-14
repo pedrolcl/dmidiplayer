@@ -172,10 +172,10 @@ GUIPlayer::GUIPlayer(QWidget *parent)
     connect(m_player, &SequencePlayer::midiProgram, m_channels, &Channels::slotPatch);
     connect(m_channels, &Channels::name, m_pianola, &Pianola::slotLabel);
 
-    connect(m_channels, &Channels::mute, m_player, &SequencePlayer::setMuted);
-    connect(m_channels, &Channels::volume, m_player, &SequencePlayer::setVolume);
-    connect(m_channels, &Channels::lock, m_player, &SequencePlayer::setLocked);
-    connect(m_channels, &Channels::patch, m_player, &SequencePlayer::setPatch);
+    connect(m_channels, &Channels::mute, this, &GUIPlayer::slotMuted);
+    connect(m_channels, &Channels::volume, this, &GUIPlayer::slotVolume);
+    connect(m_channels, &Channels::lock, this, &GUIPlayer::slotLocked);
+    connect(m_channels, &Channels::patch, this, &GUIPlayer::slotPatch);
 
     m_lyrics = new Lyrics(this);
     connect(m_lyrics, &Lyrics::closed, this, &GUIPlayer::slotLyricsClosed);
@@ -341,6 +341,7 @@ void GUIPlayer::play()
         if (m_player->getPosition() == 0) {
             m_player->sendResetMessage();
             m_player->resetControllers();
+            m_player->resetPrograms();
             m_player->sendVolumeEvents();
         }
         m_playerThread.start(QThread::HighPriority);
@@ -1111,4 +1112,24 @@ void GUIPlayer::slotOpenWebSite()
 {
     QUrl url(QStringLiteral("https://dmidiplayer.sourceforge.io"));
     QDesktopServices::openUrl(url);
+}
+
+void GUIPlayer::slotVolume(int channel, qreal vol)
+{
+    m_player->setVolume(channel, vol);
+}
+
+void GUIPlayer::slotMuted(int channel, bool mute)
+{
+    m_player->setMuted(channel, mute);
+}
+
+void GUIPlayer::slotLocked(int channel, bool lock)
+{
+    m_player->setLocked(channel, lock);
+}
+
+void GUIPlayer::slotPatch(int channel, int patch)
+{
+    m_player->setPatch(channel, patch);
 }

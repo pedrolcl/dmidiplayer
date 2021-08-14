@@ -54,6 +54,7 @@ public:
     void setVolumeFactor(unsigned int vol);
     void allNotesOff();
     void resetControllers();
+    void resetPrograms();
     void sendResetMessage();
     void sendVolumeEvents();
     qreal volume(int channel);

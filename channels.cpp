@@ -294,10 +294,10 @@ void Channels::slotNoteOff(int channel, int /*note*/, int /*vel*/)
 
 void Channels::slotPatchChanged(int channel)
 {
-    //qDebug() << Q_FUNC_INFO << channel;
     int p = m_patch[channel]->currentIndex();
     if (p > -1) {
         emit patch(channel, p);
+        //qDebug() << Q_FUNC_INFO << channel << p;
     }
 }
 

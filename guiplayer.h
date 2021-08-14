@@ -159,6 +159,11 @@ public slots:
     void slotHelp();
     void slotOpenWebSite();
 
+    void slotVolume(int channel, qreal vol);
+    void slotMuted(int channel, bool mute);
+    void slotLocked(int channel, bool lock);
+    void slotPatch(int channel, int patch);
+
 private:
     void createLanguageMenu();
     void retranslateUi();
