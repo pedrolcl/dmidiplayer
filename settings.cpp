@@ -157,7 +157,6 @@ void Settings::SaveToFile(const QString &filepath)
 
 void Settings::internalRead(QSettings &settings)
 {
-    //QFont defaultFont = QGuiApplication::font();
     settings.beginGroup("MainWindow");
     m_mainWindowGeometry = settings.value("Geometry", QByteArray()).toByteArray();
     m_mainWindowState = settings.value("State", QByteArray()).toByteArray();
@@ -211,18 +210,24 @@ void Settings::internalRead(QSettings &settings)
     settings.endGroup();
 
     settings.beginGroup("TextSettings");
-    QFont lyricsFont;
-    if (lyricsFont.fromString(settings.value("LyricsFont", "Sans Serif,36").toString())) {
-        m_lyricsFont = lyricsFont;
+    QFont tempFont, defTextFont = QGuiApplication::font();
+    defTextFont.setPointSize(36);
+    if (tempFont.fromString(settings.value("LyricsFont", defTextFont.toString()).toString())) {
+        m_lyricsFont = tempFont;
+    } else {
+        m_lyricsFont = defTextFont;
     }
     m_futureColor = QColor(settings.value("FutureColor", qApp->palette().color(QPalette::WindowText).name(QColor::HexRgb)).toString());
     m_pastColor = QColor(settings.value("PastColor", QColor(Qt::gray).name(QColor::HexRgb)).toString());
     settings.endGroup();
 
     settings.beginGroup("PlayerPianoSettings");
-    QFont notesFont;
-    if (notesFont.fromString(settings.value("NotesFont", "Sans Serif,50").toString())) {
-        m_notesFont = notesFont;
+    QFont defNoteFont = QGuiApplication::font();
+    defNoteFont.setPointSize(50);
+    if (tempFont.fromString(settings.value("NotesFont", defNoteFont.toString()).toString())) {
+        m_notesFont = tempFont;
+    } else {
+        m_notesFont = defNoteFont;
     }
     m_highlightPaletteId = settings.value("PaletteId", PAL_SINGLE).toInt();
     m_velocityColor = settings.value("VelocityColor", true).toBool();
