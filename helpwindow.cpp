@@ -53,15 +53,10 @@ HelpWindow::HelpWindow(QWidget *parent):
 
     m_textBrowser = new QTextBrowser(this);
     m_home = new QAction(tr("&Home"), this);
-    m_home->setIcon(IconUtils::GetIcon("go-home"));
     m_back = new QAction(tr("&Back"), this);
-    m_back->setIcon(IconUtils::GetIcon("go-previous"));
     m_close = new QAction(tr("Close"), this);
-    m_close->setIcon(IconUtils::GetIcon("window-close"));
     m_zoomIn = new QAction(tr("Zoom In"), this);
-    m_zoomIn->setIcon(IconUtils::GetIcon("format-font-size-more"));
     m_zoomOut = new QAction(tr("Zoom Out"), this);
-    m_zoomOut->setIcon(IconUtils::GetIcon("format-font-size-less"));
     QWidget* spacer = new QWidget(this);
     spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
@@ -86,6 +81,7 @@ HelpWindow::HelpWindow(QWidget *parent):
     resize(640,480);
     readSettings();
     retranslateUi();
+    applySettings();
 #if defined(Q_OS_WINDOWS)
     m_snapper.SetEnabled(Settings::instance()->winSnap());
 #endif
@@ -189,4 +185,13 @@ void HelpWindow::retranslateUi()
     m_close->setText(tr("Close"));
     m_zoomIn->setText(tr("Zoom In"));
     m_zoomOut->setText(tr("Zoom Out"));
+}
+
+void HelpWindow::applySettings()
+{
+    m_home->setIcon(IconUtils::GetIcon("go-home"));
+    m_back->setIcon(IconUtils::GetIcon("go-previous"));
+    m_close->setIcon(IconUtils::GetIcon("window-close"));
+    m_zoomIn->setIcon(IconUtils::GetIcon("format-font-size-more"));
+    m_zoomOut->setIcon(IconUtils::GetIcon("format-font-size-less"));
 }

@@ -38,6 +38,7 @@ public:
     void readSettings();
     void writeSettings();
     void retranslateUi();
+    void applySettings();
     void showPage(const QString &path, const QString &page);
 
 protected:

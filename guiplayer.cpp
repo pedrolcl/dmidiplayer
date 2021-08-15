@@ -542,6 +542,7 @@ void GUIPlayer::applySettings()
     m_lyrics->applySettings();
     m_pianola->applySettings();
     m_channels->applySettings();
+    m_helpWindow->applySettings();
 }
 
 void GUIPlayer::preferences()
