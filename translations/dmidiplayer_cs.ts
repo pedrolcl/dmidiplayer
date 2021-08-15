@@ -133,37 +133,37 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.cpp" line="295"/>
         <source>Please, load a song</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahrajte, prosím, píseň</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="305"/>
         <source>Playing</source>
-        <translation type="unfinished"></translation>
+        <translation>Přehrává se</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="314"/>
         <source>Paused</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozastaveno</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="327"/>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>Zastaveno</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="330"/>
         <source>Not initialized</source>
-        <translation type="unfinished"></translation>
+        <translation>Neinicializováno</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="377"/>
         <source>Loading %1 file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahrává se soubor %1...</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="449"/>
         <source>file %1 couldn&apos;t be opened</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodařilo se otevřít soubor %1</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="465"/>
@@ -188,7 +188,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.cpp" line="774"/>
         <source>Dropped file %1 is not supported</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahozený soubor %1 není podporován</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="961"/>
@@ -745,25 +745,25 @@ p, li { white-space: pre-wrap; }
         <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="575"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="577"/>
         <source>Loop</source>
-        <translation type="unfinished"></translation>
+        <translation>Smyčka</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="804"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="580"/>
         <source>Loop between two bars</source>
-        <translation type="unfinished"></translation>
+        <translation>Smyčkovat mezi dvěma takty</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="809"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="582"/>
         <source>Contents</source>
-        <translation type="unfinished"></translation>
+        <translation>Obsah</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="814"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="583"/>
         <source>Web Site</source>
-        <translation type="unfinished"></translation>
+        <translation>Stránky</translation>
     </message>
 </context>
 <context>
@@ -772,36 +772,36 @@ p, li { white-space: pre-wrap; }
         <location filename="../helpwindow.cpp" line="55"/>
         <location filename="../helpwindow.cpp" line="187"/>
         <source>&amp;Home</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Domů</translation>
     </message>
     <message>
         <location filename="../helpwindow.cpp" line="57"/>
         <location filename="../helpwindow.cpp" line="188"/>
         <source>&amp;Back</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zpět</translation>
     </message>
     <message>
         <location filename="../helpwindow.cpp" line="59"/>
         <location filename="../helpwindow.cpp" line="189"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Zavřít</translation>
     </message>
     <message>
         <location filename="../helpwindow.cpp" line="61"/>
         <location filename="../helpwindow.cpp" line="190"/>
         <source>Zoom In</source>
-        <translation type="unfinished"></translation>
+        <translation>Přiblížit</translation>
     </message>
     <message>
         <location filename="../helpwindow.cpp" line="63"/>
         <location filename="../helpwindow.cpp" line="191"/>
         <source>Zoom Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Oddálit</translation>
     </message>
     <message>
         <location filename="../helpwindow.cpp" line="167"/>
         <source>Help: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nápověda: %1</translation>
     </message>
 </context>
 <context>
@@ -1458,29 +1458,29 @@ p, li { white-space: pre-wrap; }
         <location filename="../loopdialog.ui" line="14"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_loopdialog.h" line="99"/>
         <source>Loop Start and End bars</source>
-        <translation type="unfinished"></translation>
+        <translation>Takty začátku a konce smyčky</translation>
     </message>
     <message>
         <location filename="../loopdialog.ui" line="34"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_loopdialog.h" line="100"/>
         <source>Loop Start:</source>
-        <translation type="unfinished"></translation>
+        <translation>Začátek smyčky:</translation>
     </message>
     <message>
         <location filename="../loopdialog.ui" line="57"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_loopdialog.h" line="101"/>
         <source>Loop End:</source>
-        <translation type="unfinished"></translation>
+        <translation>Konec smyčky:</translation>
     </message>
     <message>
         <location filename="../loopdialog.cpp" line="66"/>
         <source>Input Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba vstupu</translation>
     </message>
     <message>
         <location filename="../loopdialog.cpp" line="66"/>
         <source>%1 is not greater than %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 není větší než %2</translation>
     </message>
 </context>
 <context>
@@ -1968,84 +1968,84 @@ za určitých podmínek; podrobnosti viz LICENCE.</translation>
         <location filename="../toolbareditdialog.ui" line="14"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="137"/>
         <source>Dialog</source>
-        <translation type="unfinished">Dialog</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="25"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="138"/>
         <source>remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstranit</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="39"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="139"/>
         <source>add</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="53"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="140"/>
         <source>up</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahoru</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="67"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="141"/>
         <source>down</source>
-        <translation type="unfinished"></translation>
+        <translation>Dolů</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="81"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="142"/>
         <source>Icon Only</source>
-        <translation type="unfinished"></translation>
+        <translation>Pouze ikona</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="86"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="143"/>
         <source>Text Only</source>
-        <translation type="unfinished"></translation>
+        <translation>Pouze text</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="91"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="144"/>
         <source>Text Beside Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Text vedle ikony</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="96"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="145"/>
         <source>Text Under Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Text pod ikonou</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="101"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="146"/>
         <source>Follow Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Sledovat styl</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="119"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="148"/>
         <source>Style of the Tool Buttons</source>
-        <translation type="unfinished"></translation>
+        <translation>Styl tlačítek nástrojů</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="132"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="149"/>
         <source>Available Actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostupné činnosti</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="139"/>
         <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="150"/>
         <source>Selected Actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrané činnosti</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.cpp" line="48"/>
         <source>Customize %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Přizpůsobit %1</translation>
     </message>
 </context>
 </TS>

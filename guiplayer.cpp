@@ -191,6 +191,9 @@ GUIPlayer::GUIPlayer(QWidget *parent)
     m_helpWindow = new HelpWindow(this);
 
     m_ui->frame->setPalette(QPalette(QColor(0x0f,0x0f,0x0f)));
+    QFont lblTimeFont = QApplication::font();
+    lblTimeFont.setPointSize(36);
+    m_ui->lblTime->setFont(lblTimeFont);
 
     try {
         BackendManager man;

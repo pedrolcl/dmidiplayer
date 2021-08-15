@@ -23,7 +23,7 @@ project ( dmidiplayer
     DESCRIPTION "Drumstick MIDI File Player Multiplatform Program"
     HOMEPAGE_URL "https://sourceforge.net/p/dmidiplayer/"
 )
-#set(PROJECT_RELEASE_DATE "July 30, 2021")
+set(PROJECT_RELEASE_DATE "August 22, 2021")
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)

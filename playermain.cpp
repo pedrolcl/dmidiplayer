@@ -79,7 +79,9 @@ int main(int argc, char *argv[])
 
     QPixmap px(":/splash.png");
     QSplashScreen splash(px);
-    QFont sf("Arial", 20, QFont::ExtraBold);
+    QFont sf = QApplication::font();
+    sf.setPointSize(18);
+    sf.setBold(true);
     splash.setFont(sf);
     splash.show();
     app.processEvents();

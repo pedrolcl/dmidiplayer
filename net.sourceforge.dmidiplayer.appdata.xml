@@ -30,7 +30,7 @@
         </screenshot>
     </screenshots>
     <releases>
-        <release version="1.5.0" date="2021-08-2x">
+        <release version="1.5.0" date="2021-08-22">
             <description>
                 <p>This release implements the following new features:</p>
                 <ul>
@@ -39,6 +39,7 @@
                     <li>ticket #10: Splash window</li>
                     <li>ticket #11: Winsnap enable/​disable</li>
                     <li>More than one file in the command line, or dragged from a file manager</li>
+                    <li>Czech translation updated, thanks to Pavel Fric</li>
                 </ul>
             </description>
             <url>https://sourceforge.net/p/dmidiplayer/blog/2021/08/drumstick-multiplatform-midi-file-player-150-released/</url>
