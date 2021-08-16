@@ -63,7 +63,7 @@ el cuadro de diálogo "Configuración MIDI" y luego:
   archivos de fuente de sonido y muchos sistemas de sonido de audio digital. Seleccione
   [FluidSynth](https://github.com/FluidSynth/fluidsynth) en ambos cuadros de lista 
   para usarlo.
-* **Red** es una salida de multidifusión UDP multiplataforma, que se puede utilizar para enviar 
+* **Network** es una salida de multidifusión UDP multiplataforma, que se puede utilizar para enviar 
   Eventos MIDI como paquetes de red a otras computadoras y dispositivos en la misma 
   red de área local. Es compatible con 
   [ipMIDI](https://www.nerds.de/en/ipmidi.html), 

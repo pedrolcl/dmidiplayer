@@ -20,11 +20,11 @@ Einige wichtige Funktionen:
 
 * MIDI-Ausgabe an Hardware-MIDI-Ports oder jedes andere Drumstick-Backend wie Soft
   Synthesizer
-* [Transpose](https://en.wikipedia.org/wiki/Transposition_(music)) Song-Tonalität 
+* [Transpose](https://de.wikipedia.org/wiki/Transposition_(Musik)) Song-Tonalität 
   zwischen -12 und +12 Halbtönen
 * MIDI-Lautstärke ändern (mit MIDI CC7)
 * Skaliere die Songgeschwindigkeit zwischen halb und doppelt 
-  [Tempo](https://en.wikipedia.org/wiki/Tempo)
+  [Tempo](https://de.wikipedia.org/wiki/Tempo_(Musik))
 * Ansichten von Songtexten, Piano-Player und MIDI-Kanälen
 * Unterstützt die Dateiformate MID/KAR (Standard MIDI Files) und WRK (Cakewalk)
 
@@ -65,7 +65,7 @@ den Dialog "MIDI Setup" und dann:
   Soundfont-Dateien und viele digitale Audio-Soundsysteme. Auswählen
   [FluidSynth](https://github.com/FluidSynth/fluidsynth) in beiden Listenfeldern 
   um es zu benutzen.
-* **Netzwerk** ist eine Multiplattform-UDP-Multicast-Ausgabe, die zum Senden verwendet werden kann 
+* **Network** ist eine Multiplattform-UDP-Multicast-Ausgabe, die zum Senden verwendet werden kann 
   MIDI-Events als Netzwerkpakete an andere Computer und Geräte im selben 
   lokales Netzwerk. Es ist kompatibel mit
   [ipMIDI](https://www.nerds.de/de/ipmidi.html),

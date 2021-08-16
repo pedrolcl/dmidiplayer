@@ -7,7 +7,7 @@ Mac OS. Legge i formati di file .MID (file MIDI standard), .KAR (Karaoke) e .WRK
 e invia gli eventi MIDI alle porte MIDI hardware e anche a sintetizzatori software.
 sintetizzatori.
 
-Drumstick (https://drumstick.sourceforge.io) è un set di librerie C++/Qt con licenza GPLv3 per applicazioni MIDI.
+[Drumstick](https://drumstick.sourceforge.io) è un set di librerie C++/Qt con licenza GPLv3 per applicazioni MIDI.
 Il progetto include diversi strumenti come esempi, e tra questi c'è l'utility drumstick-guiplayer che
 sfrutta la libreria Drumstick::ALSA; l'utility è quindi disponibile solo per Linux (perché il sequencer ALSA è una
 tecnologia presente solo su Linux).
@@ -18,13 +18,12 @@ Alcune caratteristiche chiave:
 
 * Uscita MIDI su porte MIDI hardware, o su qualsiasi altro backend Drumstick, come ad esempio un
   sintetizzatore software.
-* Trasposizione (https://en.wikipedia.org/wiki/Transposition_(music)) della tonalità della musica
+* [Trasposizione](https://it.wikipedia.org/wiki/Trasposizione_(musica)) della tonalità della musica
   tra -12 e +12 semitoni.
 * Cambio del livello del volume MIDI (usando il comando MIDI CC7).
-* Variazione della velocità della musica tra la metà e il doppio del tempo (https://en.wikipedia.org/wiki/tempo).
+* Variazione della velocità della musica tra la metà e il doppio del [tempo](https://it.wikipedia.org/wiki/Tempo_(musica)).
 * Visualizzazione dei testi, della tastiera e dei canali MIDI.
 * Supporto dei formati di file MID/KAR (file MIDI standard) e WRK (Cakewalk).
-
 
 ## Selezionare l'uscita MIDI
 
@@ -41,7 +40,7 @@ Per usare uno di questi, bisogna aprire la finestra di dialogo "Impostazione MID
 
 * In **Windows**, selezionare l'opzione "Windows MM" nella prima casella di riepilogo e "Microsoft GS Wavetable Synth" nella seconda.
   A questo programma, che è molto semplice e con limitate capacità, è preferibile un'alternativa migliore e gratuita come
-  Virtual MIDI Synth (https://coolsoft.altervista.org/en/virtualmidisynth); se installato, esso verrà visualizzato come "VirtualMIDISynth #n" nella seconda casella di riepilogo.
+  [Virtual MIDI Synth](https://coolsoft.altervista.org/en/virtualmidisynth); se installato, esso verrà visualizzato come "VirtualMIDISynth #n" nella seconda casella di riepilogo.
   Se invece si ha disposizione uno strumento MIDI esterno collegato al computer, anche il suo nome dovrebbe apparire stessas casella.
 
 * In **macOS**, selezionare "DLS Synth" sia nella prima che nella seconda casella di riepilogo.
@@ -53,13 +52,13 @@ Per usare uno di questi, bisogna aprire la finestra di dialogo "Impostazione MID
   Tra i tanti disponibili si possono segnalare: "SonivoxEAS": un sinbtetizzatore GM pronto per essere utilizzato, subito dopo l'installazione; è molto semplice, non usa file e dipende solo
   dal server audio di sistema PulseAudio. Per utilizzarlo (come pure per usare dispositivi esterni collegati al computer o sintetizzatori software arbitrari) è necessario selezionare "ALSA" (o "OSS") nella prima casella di riepilogo.
 
-* "FluidSynth" (https://github.com/FluidSynth/fluidsynth) è un altro sinbtetizzatore open software, multipiattaforma e disponibile su tutti
+* [**FluidSynth**](https://github.com/FluidSynth/fluidsynth) è un altro sinbtetizzatore open software, multipiattaforma e disponibile su tutti
   i sistemi operativi. È molto configurabile, accetta file soundfont e può dialogare con molti sistemi audio digitali.
   Per utilizzarlo bisogna selezionare "FluidSynth" in entrambe le caselle di riepilogo.
 
 * **Network**: qmidiplayer dispone anche di un'uscita UDP Multicast multipiattaforma, che può essere utilizzata per inviare eventi MIDI come
-  pacchetti di rete verso altri computer e dispositivi nella stessa rete locale. È compatibile con "ipMIDI" (https://www.nerds.de/en/ipmidi.html),
-  "QmidiNet" (https://qmidinet.sourceforge.io/) e "multimidicast" (https://llg.cubic.org/tools/multimidicast/).
+  pacchetti di rete verso altri computer e dispositivi nella stessa rete locale. È compatibile con ["ipMIDI"](https://www.nerds.de/en/ipmidi.html),
+  ["QmidiNet"](https://qmidinet.sourceforge.io/) e ["multimidicast"](https://llg.cubic.org/tools/multimidicast/).
 
 
 ## Controlli di riproduzione
