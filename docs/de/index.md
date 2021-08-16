@@ -68,7 +68,7 @@ den Dialog "MIDI Setup" und dann:
 * **Network** ist eine Multiplattform-UDP-Multicast-Ausgabe, die zum Senden verwendet werden kann 
   MIDI-Events als Netzwerkpakete an andere Computer und Geräte im selben 
   lokales Netzwerk. Es ist kompatibel mit
-  [ipMIDI](https://www.nerds.de/de/ipmidi.html),
+  [ipMIDI](https://www.nerds.de/en/ipmidi.html),
   [QmidiNet](https://qmidinet.sourceforge.io/), und 
   [multimidicast](https://llg.cubic.org/tools/multimidicast/) 
   unter anderem Software.

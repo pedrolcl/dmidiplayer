@@ -68,7 +68,7 @@ el cuadro de diálogo "Configuración MIDI" y luego:
   red de área local. Es compatible con 
   [ipMIDI](https://www.nerds.de/en/ipmidi.html), 
   [QmidiNet](https://qmidinet.sourceforge.io/) y 
-  [multidifusión](https://llg.cubic.org/tools/multimidicast/) 
+  [multimidicast](https://llg.cubic.org/tools/multimidicast/) 
   entre otro software.
 
 ## Controles de reproducción

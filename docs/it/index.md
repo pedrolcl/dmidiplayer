@@ -40,7 +40,7 @@ Per usare uno di questi, bisogna aprire la finestra di dialogo "Impostazione MID
 
 * In **Windows**, selezionare l'opzione "Windows MM" nella prima casella di riepilogo e "Microsoft GS Wavetable Synth" nella seconda.
   A questo programma, che è molto semplice e con limitate capacità, è preferibile un'alternativa migliore e gratuita come
-  [Virtual MIDI Synth](https://coolsoft.altervista.org/en/virtualmidisynth); se installato, esso verrà visualizzato come "VirtualMIDISynth #n" nella seconda casella di riepilogo.
+  [Virtual MIDI Synth](https://coolsoft.altervista.org/it/virtualmidisynth); se installato, esso verrà visualizzato come "VirtualMIDISynth #n" nella seconda casella di riepilogo.
   Se invece si ha disposizione uno strumento MIDI esterno collegato al computer, anche il suo nome dovrebbe apparire stessas casella.
 
 * In **macOS**, selezionare "DLS Synth" sia nella prima che nella seconda casella di riepilogo.
