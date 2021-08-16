@@ -6,7 +6,7 @@ if (EXISTS ${PANDOC_EXECUTABLE})
         install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${MANPAGE}
                 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
     endif()
-    update_helpfiles(en es cs ru)
+    update_helpfiles(cs de en es fr it ru)
 else()
     if (UNIX AND NOT APPLE)
         install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${MANPAGE}

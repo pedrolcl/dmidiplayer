@@ -115,7 +115,10 @@ endif()
 
 set ( TRANSLATIONS
    translations/${PROJECT_NAME}_cs.ts
+   translations/${PROJECT_NAME}_de.ts
    translations/${PROJECT_NAME}_es.ts
+   translations/${PROJECT_NAME}_fr.ts
+   translations/${PROJECT_NAME}_it.ts
    translations/${PROJECT_NAME}_ru.ts
 )
 
@@ -133,7 +136,7 @@ if (EMBED_TRANSLATIONS)
     file(GLOB WIDGETS_TRANS "${DRUMSTICK_PREFIX}/share/drumstick/drumstick-widgets_*.qm")
     file(COPY ${WIDGETS_TRANS} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
     add_app_translations_resource(APP_RES ${QM_FILES} ${WIDGETS_TRANS})
-    add_qt_translations_resource(QT_RES cs es ru)
+    add_qt_translations_resource(QT_RES cs de es fr it ru)
     list(APPEND SOURCES ${APP_RES} ${QT_RES})
 endif()
 

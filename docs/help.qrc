@@ -1,8 +1,11 @@
 <RCC>
     <qresource prefix="/help">
         <file>cs/index.html</file>
+        <file>de/index.html</file>
         <file>en/index.html</file>
         <file>es/index.html</file>
+        <file>fr/index.html</file>
+        <file>it/index.html</file>
         <file>ru/index.html</file>
     </qresource>
 </RCC>

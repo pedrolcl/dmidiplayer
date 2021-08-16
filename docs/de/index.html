@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Hilfeindex</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Hilfeindex</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#einführung">Einführung</a></li>
+<li><a href="#midi-ausgang">MIDI-Ausgang</a></li>
+<li><a href="#wiedergabesteuerung">Wiedergabesteuerung</a><ul>
+<li><a href="#transponieren">Transponieren</a></li>
+<li><a href="#lautstärkepegel">Lautstärkepegel</a></li>
+<li><a href="#tempo">Tempo</a></li>
+<li><a href="#jump-loop-und-positionierung">Jump, Loop und Positionierung</a></li>
+</ul></li>
+<li><a href="#aufrufe">Aufrufe</a><ul>
+<li><a href="#kanäle">Kanäle</a></li>
+<li><a href="#piano-spieler">Piano Spieler</a></li>
+<li><a href="#songtexte">Songtexte</a></li>
+</ul></li>
+<li><a href="#wiedergabelisten">Wiedergabelisten</a></li>
+<li><a href="#midi-dateien-öffnen">MIDI-Dateien öffnen</a></li>
+<li><a href="#anpassung">Anpassung</a><ul>
+<li><a href="#einstellungen">Einstellungen</a></li>
+<li><a href="#anpassung-der-symbolleiste">Anpassung der Symbolleiste</a></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="einführung">Einführung</h2>
+<p>Diese Anwendung ist ein Multiplattform-MIDI-Dateiplayer für Linux, Windows und Mac OS. Es liest .MID (Standard MIDI Files), .KAR (Karaoke) und .WRK (Cakewalk) Dateiformate und gibt MIDI-Events an Hardware-MIDI-Ports und auch Software aus Synthesizer.</p>
+<p><a href="https://drumstick.sourceforge.io">Drumstick</a> ist ein Satz von GPLv3 lizenzierte C++/Qt-Bibliotheken für MIDI-Anwendungen. Das Projekt umfasst mehrere Tools als Beispiele, darunter das Dienstprogramm drumstick-guiplayer, das nutzt die Drumstick::ALSA-Bibliothek, ist also nur für Linux verfügbar (weil der ALSA-Sequenzer eine reine Linux-Technologie ist). Manche Leute haben ein Programm mit den gleichen Funktionalitäten unter Windows und macOS angefordert, und hier ist es. Aber dieses Programm ist viel mehr als das und es funktioniert auch weiter Linux...</p>
+<p>Einige wichtige Funktionen:</p>
+<ul>
+<li>MIDI-Ausgabe an Hardware-MIDI-Ports oder jedes andere Drumstick-Backend wie Soft Synthesizer</li>
+<li><a href="https://en.wikipedia.org/wiki/Transposition_(music)">Transpose</a> Song-Tonalität zwischen -12 und +12 Halbtönen</li>
+<li>MIDI-Lautstärke ändern (mit MIDI CC7)</li>
+<li>Skaliere die Songgeschwindigkeit zwischen halb und doppelt <a href="https://en.wikipedia.org/wiki/Tempo">Tempo</a></li>
+<li>Ansichten von Songtexten, Piano-Player und MIDI-Kanälen</li>
+<li>Unterstützt die Dateiformate MID/KAR (Standard MIDI Files) und WRK (Cakewalk)</li>
+</ul>
+<h2 id="midi-ausgang">MIDI-Ausgang</h2>
+<p>Jeder MIDI-Player gibt nur MIDI-Events aus, aber keinen Ton. Zur Klangerzeugung wird ein MIDI Synthesizer wird benötigt, um die Events in digitales Audio zu rendern, das von den (oder externen) Lautsprechern des Computers wiedergegeben werden. Die Veranstaltungen können auch von einem an den Computer angeschlossenen externen Musik-MIDI-Instrument wiedergegeben werden, B. eine MIDI-Orgel, ein Klavier oder ein Synthesizer mit USB-Schnittstelle. Wenn das Option ist nicht verfügbar, eine andere übliche Alternative ist ein Software-Synthesizer (ein Programm).</p>
+<p>In den Betriebssystemen des Computers sind Software-Synthesizer enthalten, Microsoft Windows enthält beispielsweise den &quot;Microsoft GS Wavetable Synth&quot;, und Apple macOS enthält den &quot;Apple DLS Synthesizer&quot;. Um sie zu verwenden, müssen Sie öffnen den Dialog &quot;MIDI Setup&quot; und dann:</p>
+<ul>
+<li>Wählen Sie in <strong>Windows</strong> im ersten Listenfeld die Option &quot;Windows MM&quot; und &quot;Microsoft GS Wavetable Synth&quot; im zweiten Listenfeld. Anstelle dieses Synthesizers was sehr einfach und begrenzt ist, bevorzugen Sie vielleicht eine bessere/kostenlose Alternative wie <a href="https://coolsoft.altervista.org/en/virtualmidisynth">Virtueller MIDI-Synth</a> das wird beim Ausführen im zweiten Listenfeld als &quot;VirtualMIDISynth #n&quot; angezeigt. Wenn Sie ein externes MIDI-Instrument an den Computer angeschlossen haben, wird dessen Name sollte auch im zweiten Listenfeld erscheinen.</li>
+<li>Wählen Sie in <strong>macOS</strong> sowohl im ersten als auch im zweiten Listenfeld &quot;DLS Synth&quot;. Dieser Synth hat eine Konfigurationsoption für die Verwendung von DLS- oder SF2-Soundfont-Dateien, wenn Sie wollen. Um ein anderes angeschlossenes MIDI-Gerät oder einen Software-Synth zu verwenden, Sie müssen im ersten Listenfeld &quot;CoreMIDI&quot; auswählen und den Namen Ihres Synthesizer im zweiten.</li>
+<li>In <strong>Linux</strong> und anderen <strong>Unix</strong>-Betriebssystemen ist &quot;SonivoxEAS&quot; ein Soft Synthesizer einsatzbereit. Es ist ein sehr einfacher GM-Synth, der keine Dateien verwendet und hängt nur vom PulseAudio-Soundsystem ab. Für angeschlossene externe Geräte an den Computer oder beliebige Softsynths, müssen Sie &quot;ALSA&quot; (oder &quot;OSS&quot;) auswählen im ersten Listenfeld.</li>
+<li><strong>FluidSynth</strong> ist ein weiterer enthaltener Open-Software-Synth, der plattformübergreifend ist und auf allen Betriebssystemen verfügbar. Es ist sehr konfigurierbar und akzeptiert Soundfont-Dateien und viele digitale Audio-Soundsysteme. Auswählen <a href="https://github.com/FluidSynth/fluidsynth">FluidSynth</a> in beiden Listenfeldern um es zu benutzen.</li>
+<li><strong>Netzwerk</strong> ist eine Multiplattform-UDP-Multicast-Ausgabe, die zum Senden verwendet werden kann MIDI-Events als Netzwerkpakete an andere Computer und Geräte im selben lokales Netzwerk. Es ist kompatibel mit <a href="https://www.nerds.de/de/ipmidi.html">ipMIDI</a>, <a href="https://qmidinet.sourceforge.io/">QmidiNet</a>, und <a href="https://llg.cubic.org/tools/multimidicast/">multimidicast</a> unter anderem Software.</li>
+</ul>
+<h2 id="wiedergabesteuerung">Wiedergabesteuerung</h2>
+<p>Die folgenden Standardaktionen stehen im Menü <code>Datei</code> zur Verfügung und auch die Symbolleiste, mit den üblichen Funktionalitäten auf jedem Mediaplayer:</p>
+<ul>
+<li><code>Spielen</code></li>
+<li><code>Pause</code> (und weiter)</li>
+<li><code>Stopp</code></li>
+<li><code>Schneller Vorlauf</code> (um 1 bar)</li>
+<li><code>Zurückspulen</code> (um 1 bar)</li>
+</ul>
+<p>Standardmäßig wird <code>Play</code> beim Laden einer MIDI-Datei automatisch aktiviert, außer wenn diese Funktion im Konfigurationsdialog deaktiviert ist.</p>
+<p>Die <code>Statusleiste</code>, die sich optional am unteren Rand des Hauptfensters befindet, zeigt den aktuellen Wiedergabestatus als &quot;Wiedergabe&quot;, &quot;Gestoppt&quot;, &quot;Pausiert&quot; usw.</p>
+<h3 id="transponieren">Transponieren</h3>
+<p>Die <code>Pitch Control</code> befindet sich im Hauptfenster. Es ist eine Spinbox, die initialisiert wurde auf Null, mit einem gültigen Bereich von -12 bis +12 Halbtönen. Die Grenzen sind gleichwertig um eine Oktave höher oder tiefer als der Originalton. Das sollte für Sänger reichen oder Instrumentalisten, die die Tonalität für ihren Komfort anpassen müssen.</p>
+<p>Alle MIDI-Kanäle sind chromatisch transponiert, mit Ausnahme des Percussion-Kanals (GM-Kanal 10 standardmäßig).</p>
+<h3 id="lautstärkepegel">Lautstärkepegel</h3>
+<p>Die <code>Lautstärkeregelung</code> befindet sich im Hauptfenster. Es ist ein Schieberegler, initialisiert bis 100 %, mit einem gültigen Bereich von 0 % bis 200 %. Der Effekt der oberen Grenze kann niedriger sein da MIDI CC 7 einen gültigen Bereich von 0 bis 127 hat. Es gibt auch eine Taste zum <code>Lautstärke zurücksetzen</code>.</p>
+<h3 id="tempo">Tempo</h3>
+<p>Die <code>Temposteuerung</code> befindet sich im Hauptfenster. Es ist ein Slider initialisiert bis 100 % mit einem gültigen Bereich von 50 % bis 200 %. Es gibt eine Taste zum <code>Reset Tempo</code> und auch eine Tempoanzeige, die das effektive Tempo in Schlägen pro Minute mit . anzeigt ein Anfangswert von 120 bpm. Dies ist das Standardtempo für eine MIDI-Datei, wenn sie enthält keine Tempoänderung. Dieser Wert wird aktualisiert, wenn die Temposteuerung, und auch während eine MIDI-Datei mit Tempoänderungen abgespielt wird.</p>
+<h3 id="jump-loop-und-positionierung">Jump, Loop und Positionierung</h3>
+<p>Aktion <code>Sprung</code> (im Menü <code>Datei</code> und in der Standard-Symbolleiste) fragt nach eine Taktnummer zwischen 1 und dem letzten Takt des geladenen Songs, um die aktuelle Position des Songs zum angegebenen Takt.</p>
+<p>Aktion <code>Loop</code> (befindet sich im Menü <code>Datei</code> und in der Standardsymbolleiste), fragt nach zwei Taktzahlen. Das Lied wird zwischen den beiden angegebenen Takten abgespielt, wenn es ist aktiviert. Sie können die Schleife jederzeit ausschalten, indem Sie die Aktion erneut auswählen.</p>
+<p>Die <code>Positionierungskontrolle</code> befindet sich im Hauptfenster. Es ist ein Schieberegler, der bewegt sich, während sich die aktuell gespielte Position ändert, und kann von Hand auf verschoben werden Ändern Sie die Position an einen beliebigen Punkt innerhalb des Songs.</p>
+<h2 id="aufrufe">Aufrufe</h2>
+<p>Die folgenden Optionen sind im Menü &quot;Ansicht&quot; aktiviert:</p>
+<p>Drei Ansichten sind unabhängige Fenster, die Sie nach Belieben öffnen und schließen können Bequemlichkeit: Kanäle, Liedtexte und Klavierspieler.</p>
+<p>Auf der anderen Seite können Sie auch drei weitere Ansichten ein- oder ausblenden, die eingebettet sind im Hauptfenster: Symbolleiste, Statusleiste und Rhythmus.</p>
+<h3 id="kanäle">Kanäle</h3>
+<p>Dieses Fenster zeigt bis zu 16 Zeilen an, eine für jeden MIDI-Kanal, der vom aktuellen . verwendet wird MIDI-Datei. Die Spalten sind:</p>
+<ul>
+<li>MIDI-Kanalnummer und Text (bearbeitbar). Normalerweise der Instrumentenname oder a kurze Beschreibung aus den Dateimetadaten.</li>
+<li>Stummschalttaste. Mit dieser Option kann der aktuelle Kanal stummgeschaltet werden.</li>
+<li>Solo-Taste. Erhöht die Lautstärke des aktuellen Kanals, während die Lautstärke verringert wird andere Kanäle.</li>
+<li>Niveau. Anzeige der Aktivität auf dem aktuellen Kanal.</li>
+<li>Sperren. Diese Schaltfläche fixiert das Patch auf dem aktuellen Kanal und verhindert Änderungen in der Datei gespeichert.</li>
+<li>Patch. Entspricht den MIDI-Programmwechsel-Events gemäß dem General MIDI-Liste der Instrumentennamen.</li>
+</ul>
+<h3 id="piano-spieler">Piano Spieler</h3>
+<p>Dieses Fenster zeigt bis zu 16 Zeilen an, eine für jeden MIDI-Kanal, der vom aktuellen . verwendet wird MIDI-Datei. Jede Zeile enthält:</p>
+<ul>
+<li>Eine Kanalnummer und ein Text (die gleichen Daten wie im Kanalfenster)</li>
+<li>Eine Klaviertastatur. Die Tasten werden mit einer Farbe hervorgehoben, die vollständig sein kann angepasst, durch die MIDI-Noten-Events, die von der aktuellen MIDI-Datei gespielt werden. Es kann optional auch die Notennamen anzeigen. Die Tasten können aktiviert werden manuell über die Computertastatur und die Maus</li>
+</ul>
+<p>Es gibt ein Fenstermenü mit den folgenden Optionen:</p>
+<ul>
+<li>Vollbild anzeigen. Vergrößert das Fenster, das den aktuellen Monitor ausfüllt</li>
+<li>Alle Kanäle anzeigen</li>
+<li>Alle Kanäle ausblenden</li>
+<li>Ziehen Sie die Anzahl der Schlüssel fest. Standardmäßig zeigt jede Tastatur 88 Tasten an, von A0 bis C8. Mit dieser Option verwenden die Keyboards nur die Anzahl der Oktaven wirklich wird von der MIDI-Datei verwendet, die normalerweise eine kleinere Zahl ist</li>
+<li>Bis zu 16 Kanaloptionen, um jeden Kanal einzeln auszublenden oder anzuzeigen. Von Standardmäßig sind alle in der aktuellen MIDI-Datei verwendeten MIDI-Kanäle ausgewählt</li>
+</ul>
+<h3 id="songtexte">Songtexte</h3>
+<p>Dieses Fenster zeigt die Text-Metadaten der geladenen MIDI-Datei an und filtert die Daten mit einer Reihe von Steuerelementen in der Symbolleiste des Fensters:</p>
+<ul>
+<li>Track: ein Listenfeld zur Auswahl zwischen &quot;Alle Tracks&quot; oder einem entsprechenden Eintrag jede verwendete Spur in der geladenen MIDI-Datei. Diese Titelnummer ersetzt die Konzept des MIDI-Kanals in diesem Fenster, da die Text-Metadaten kein ein Kanalattribut, aber es gehört immer zu einer Spur. Standardmäßig ist die Track mit mehr Daten wird automatisch ausgewählt</li>
+<li>Typ: ein Listenfeld, um einen der Metadaten-Texttypen oder alle auszuwählen. Das Der Typ &quot;Lyric Events&quot; ist die wahrscheinlichste Wahl</li>
+<li>Kodierung: Die Textkodierung wird automatisch erkannt, in einigen Fällen jedoch die Erkennung kann falsch sein, daher kann die richtige manuell ausgewählt werden</li>
+</ul>
+<p>Es gibt ein Fenstermenü mit den folgenden Optionen:</p>
+<ul>
+<li>In Zwischenablage kopieren: kopiert die aktuell im Fenster angezeigten Metadaten</li>
+<li>In Datei speichern... Nach dem Öffnen des Dialogs Datei speichern erstellt diese Option einen Text Datei auf der Festplatte, mit dem im Fenster angezeigten Text und der ausgewählten Kodierung</li>
+<li>Drucken... Nach dem Öffnen eines Druckdialogs druckt diese Option den angezeigten Text aus das Fenster auf dem ausgewählten Drucker</li>
+<li>Vollbild: Vergrößert das Fenster, das den aktuellen Monitor ausfüllt</li>
+<li>Schriftart... Öffnet ein Fenster zur Auswahl von Schriftarten, um die Typografie und Größe für auszuwählen die Fenstertexte</li>
+</ul>
+<h2 id="wiedergabelisten">Wiedergabelisten</h2>
+<p>Playlists sind Sammlungen von Dateinamen, die zum Abspielen einer Serie verwendet werden können von MIDI-Stücken, wie ein musikalisches &quot;Repertoire&quot;.</p>
+<p>Die Aktion <code>File</code>-&gt;<code>Play List...</code> verwaltet das Erstellen, Ändern, Ordnen, Öffnen und Speichern von Playlist-Dateien. Dieses Fenster zeigt die aktuelle Playlist Dateiname im Fenstertitel.</p>
+<p>Die Aktionen <code>File</code>-&gt;<code>Next</code> und <code>File</code>-&gt;<code>Prev</code> werden verwendet, um in der Playlist zu navigieren manuell vorwärts und rückwärts. Es gibt Konfigurationsoptionen, um die Wiedergabe zu starten automatisch nach dem Laden von MIDI-Dateien und automatisch zum nächsten Playlist-Element, wenn die Wiedergabe des aktuellen Elements beendet ist. Beide Konfigurationsmöglichkeiten sind standardmäßig aktiviert.</p>
+<p>Die anfängliche Standard-Playlist enthält eine Sammlung von Beispiel-MIDI-Dateien. Ob Wenn Sie lieber mit einer leeren Liste beginnen möchten, verwenden Sie die Schaltfläche <code>Löschen</code> und Speichern Sie dann die leere Playlist unter einem aussagekräftigen Namen. Das wird das Neue erste Playlist in der Zukunft.</p>
+<p>Die zuletzt geöffnete oder gespeicherte Playlist-Datei soll beim nächsten Mal gespeichert werden Programm gestartet, aber Playlists werden nicht automatisch gespeichert.</p>
+<p>Playlists sind einfache Textdateien mit einem Dateinamen in jeder Textzeile. Die Datei Namen können relativ zum Speicherort der Playlist-Datei selbst sein (also kein absoluter Pfad vorangestellt) oder jede Datei kann einen absoluten Pfad haben seine eigene.</p>
+<p>Möglicherweise haben Sie mehrere Playlists, die Sie ganz einfach außerhalb des Programm, zum Beispiel in der Linux-Befehlszeile erstellt dieser Befehl eine Wiedergabeliste Datei namens &quot;my_playlist.lst&quot; mit allen MIDI-Dateien, die sich auf der Arbeitsumgebung befinden Verzeichnis:</p>
+<pre><code>$ ls -1 *.mid &gt; my_playlist.lst</code></pre>
+<h2 id="midi-dateien-öffnen">MIDI-Dateien öffnen</h2>
+<p>Sie können einzelne Dateien öffnen...</p>
+<ul>
+<li>Verwenden der Standardaktion <code>Datei</code>-&gt;<code>Öffnen</code></li>
+<li>Verwenden des Menüs <code>Datei</code>-&gt;<code>Zuletzt geöffnete Dateien</code>, das bis zu zehn Dateien speichert vor kurzem eröffnet.</li>
+<li>Geben Sie den/die Dateinamen in der Befehlszeile an. Der Satz von Dateien wird a temporäre Playlist. Dies ermöglicht eine einfache Integration des Programms mit Datei Manager, die &quot;Öffnen mit...&quot;-Aktionen verwenden.</li>
+<li>Ziehen und Ablegen von Dateien aus einem Dateimanager in das Hauptfenster. Das Satz von Dateien wird zu einer temporären Wiedergabeliste.</li>
+</ul>
+<h2 id="anpassung">Anpassung</h2>
+<h3 id="einstellungen">Einstellungen</h3>
+<p>Es gibt eine Schaltfläche &quot;Standardeinstellungen wiederherstellen&quot;, um alle Optionen in diesem Dialogfeld zu initialisieren auf ihre Standardwerte.</p>
+<p>Es gibt drei Registerkarten, die die Konfigurationseinstellungen gruppieren</p>
+<h4 id="allgemein">Allgemein</h4>
+<ul>
+<li>MIDI-Kanal für Percussion: Nummer von 1 bis 16. Standard 10, entsprechend dem General-MIDI-Standard-Percussion-Kanal</li>
+<li>Starten Sie die Wiedergabe automatisch nach dem Laden. Standardmäßig aktiviert</li>
+<li>Automatisch zum nächsten Playlist-Element vorrücken. Standardmäßig aktiviert</li>
+<li>Dunklen Modus erzwingen. Kann unter Windows nützlich sein. Unter Linux und macOS ist der Dunkelmodus wird automatisch angewendet, wenn im Betriebssystem konfiguriert</li>
+<li>Verwenden Sie das interne Symboldesign. Diese Einstellung wird unter Windows und macOS benötigt.</li>
+<li>Qt-Widgets-Stil. Beeinflusst je nach Betriebssystem die visuelle Integration mit anderen Programmen</li>
+<li>MIDI System Exclusive Reset. Der Spieler sendet diese Nachricht kurz vor dem Start Abspielen jeder MIDI-Datei</li>
+</ul>
+<h4 id="songtexte-1">Songtexte</h4>
+<ul>
+<li>Schriftart. Öffnet ein Fenster zur Schriftartenauswahl, um die Typografie und Größe für auszuwählen die Fenstertexte. Diese Einstellung ist auch im Menü des Songtext-Fensters verfügbar</li>
+<li>Zukünftige Textfarbe. Diese Einstellung gilt für den nicht abgespielten Text</li>
+<li>Frühere Textfarbe. Diese Einstellung gilt für den bereits abgespielten Text</li>
+</ul>
+<h4 id="spieler-klavier">Spieler Klavier</h4>
+<ul>
+<li>Hervorhebung beachten. Es stehen einige Hervorhebungspaletten zur Verfügung</li>
+<li>Einzelne Hervorhebungsfarbe. Wenn die einfarbige Hervorhebungspalette ausgewählt ist, Diese Einstellung ist die Farbe zur Hervorhebung von Notizen</li>
+<li>Beachten Sie die Velocity zum Farbton. Mit dieser Option werden MIDI-Noten-Events Velocity Attribut wird verwendet, um der Hervorhebungsfarbe einen helleren oder dunkleren Ton zu geben</li>
+<li>Beachten Sie die Schriftart der Namen. Öffnet ein Fenster zur Schriftartenauswahl, um die Typografie auszuwählen und Größe der Notennamen</li>
+<li>Notennamen anzeigen: Verfügbare Optionen sind Nie, Minimal, Wenn aktiviert, immer. Die Option Minimal zeigt nur die Namen der C-Schlüssel an.</li>
+</ul>
+<h3 id="anpassung-der-symbolleiste">Anpassung der Symbolleiste</h3>
+<p>Die Symbolleiste befindet sich im Hauptfenster, das typischerweise sehr kleine verfügbaren Platz und kann an den oberen oder unteren Rand des Fensters verschoben werden, und auch außerhalb davon. Die als Werkzeugschaltflächen verfügbaren Aktionen können in . konfiguriert werden dieses Dialogfenster. Alle Aktionen sind auch Hauptmenüpunkte.</p>
+<ul>
+<li>Verfügbare Aktionen: Zeigt die Liste der Aktionen an, die derzeit nicht angezeigt werden als Werkzeugschaltflächen</li>
+<li>Ausgewählte Aktionen: ist die Liste der aktuell ausgewählten Werkzeugschaltflächen</li>
+</ul>
+<p>Um eine Aktion aus der Liste Verfügbar auszuwählen, wählen Sie sie zuerst mit der Maus aus und drücken Sie dann die Schaltfläche &quot;Hinzufügen&quot;. Die Aktion wird aus der Liste Verfügbar entfernt und am Ende der ausgewählten Liste platziert.</p>
+<p>Um eine Schaltfläche aus der Symbolleiste zu entfernen, wählen Sie sie mit der Maus im Ausgewählten Liste und klicken Sie dann auf die Schaltfläche &quot;Entfernen&quot;.</p>
+<p>Um die Reihenfolge der Schaltflächen in der Symbolleiste neu zu organisieren, verwenden Sie die Tasten &quot;Auf&quot; und &quot;Ab&quot; Schaltflächen, nachdem Sie ein Element in der Liste Ausgewählt ausgewählt haben.</p>
+<p>Stil der Werkzeugschaltflächen: enthält die folgenden Optionen, die für alle gelten die Schaltflächen in der Werkzeugleiste</p>
+<ul>
+<li>Nur Symbol</li>
+<li>Nur Text</li>
+<li>Text neben dem Symbol</li>
+<li>Text unter Symbol</li>
+<li>Style folgen: Die Einstellung wird durch die Einstellung &quot;Qt Widgets Style&quot; bestimmt im Dialog Einstellungen.</li>
+</ul>
+</body>
+</html>

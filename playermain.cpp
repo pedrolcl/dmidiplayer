@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
     QPixmap px(":/splash.png");
     QSplashScreen splash(px);
     QFont sf = QApplication::font();
-    sf.setPointSize(18);
+    sf.setPointSize(16);
     sf.setBold(true);
     splash.setFont(sf);
     splash.show();
