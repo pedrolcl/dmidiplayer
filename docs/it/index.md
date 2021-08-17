@@ -5,14 +5,13 @@
 Questa applicazione è un riproduttore di file MIDI multipiattaforma per Linux, Windows e
 Mac OS. Legge i formati di file .MID (file MIDI standard), .KAR (Karaoke) e .WRK (Cakewalk)
 e invia gli eventi MIDI alle porte MIDI hardware e anche a sintetizzatori software.
-sintetizzatori.
 
 [Drumstick](https://drumstick.sourceforge.io) è un set di librerie C++/Qt con licenza GPLv3 per applicazioni MIDI.
 Il progetto include diversi strumenti come esempi, e tra questi c'è l'utility drumstick-guiplayer che
 sfrutta la libreria Drumstick::ALSA; l'utility è quindi disponibile solo per Linux (perché il sequencer ALSA è una
 tecnologia presente solo su Linux).
-Alcune persone hanno richiesto un programma per Windows e macOS con le stesse funzionalità di drumstick-player,
-ed eccolo qui. Tuttavia qmidiplayer è molto di più dell'utility compresa in Drumstick e funziona anche su Linux...
+Alcune persone hanno richiesto un programma per Windows e macOS con le stesse funzionalità di drumstick-guiplayer,
+ed eccolo qui. Tuttavia dmidiplayer è molto di più dell'utility compresa in Drumstick e funziona anche su Linux...
 
 Alcune caratteristiche chiave:
 
@@ -52,7 +51,7 @@ Per usare uno di questi, bisogna aprire la finestra di dialogo "Impostazione MID
   Tra i tanti disponibili si possono segnalare: "SonivoxEAS": un sinbtetizzatore GM pronto per essere utilizzato, subito dopo l'installazione; è molto semplice, non usa file e dipende solo
   dal server audio di sistema PulseAudio. Per utilizzarlo (come pure per usare dispositivi esterni collegati al computer o sintetizzatori software arbitrari) è necessario selezionare "ALSA" (o "OSS") nella prima casella di riepilogo.
 
-* [**FluidSynth**](https://github.com/FluidSynth/fluidsynth) è un altro sinbtetizzatore open software, multipiattaforma e disponibile su tutti
+* [**FluidSynth**](https://github.com/FluidSynth/fluidsynth) è un altro sintetizzatore open software, multipiattaforma e disponibile su tutti
   i sistemi operativi. È molto configurabile, accetta file soundfont e può dialogare con molti sistemi audio digitali.
   Per utilizzarlo bisogna selezionare "FluidSynth" in entrambe le caselle di riepilogo.
 

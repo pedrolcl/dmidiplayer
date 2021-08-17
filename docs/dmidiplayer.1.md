@@ -7,7 +7,7 @@
 
 # SYNOPSIS
 
-| **dmidiplayer** \[**-p**|**--portable**] [**-f**|**--file** _file_] [**-d**|**--driver** _driver_] [**-c**|**--connection** _connection_] \[_midi_file_]
+| **dmidiplayer** \[**-p**|**--portable**] [**-f**|**--file** _file_] [**-d**|**--driver** _driver_] [**-c**|**--connection** _connection_] \[_midi_files_]
 | **dmidiplayer** \[**-h**|**--help**|**-v**|**--version**]
 
 # DESCRIPTION
@@ -99,7 +99,7 @@ The following options apply to all Qt5 applications:
 
 ## Arguments
 
-_midi_file_
+_midi_files_
 
 :   Input SMF/KAR/WRK file name(s). The set of provided file names becomes a temporary playlist.
 
@@ -121,8 +121,7 @@ $ ls -1 *.mid > my_playlist.lst
 
 **DRUMSTICKRT**
 
-:   Location of Drumstick::RT plugins. Useful if the plugins are not
-    installed at a standard place.
+:   Location of Drumstick::RT plugins. Useful if the plugins are not installed at a standard place.
 
 # BUGS
 
@@ -131,4 +130,3 @@ See Tickets at Sourceforge <https://sourceforge.net/p/dmidiplayer/tickets/> and 
 # SEE ALSO
 
 **qt5options (7)**
- 

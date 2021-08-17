@@ -39,7 +39,6 @@ endif()
 
 if (EXISTS ${PANDOC_EXECUTABLE})
     macro(add_manpage out_file)
-        string(REPLACE "/" "_" _target_name ${out_file})
         set(_src ${CMAKE_CURRENT_SOURCE_DIR}/${out_file}.md)
         if (NOT PROJECT_RELEASE_DATE)
             unset(_date)
@@ -59,7 +58,7 @@ if (EXISTS ${PANDOC_EXECUTABLE})
             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
             VERBATIM
         )
-        add_custom_target(${_target_name} ALL DEPENDS ${out_file})
+        add_custom_target(manpage ALL DEPENDS ${out_file})
     endmacro()
 
     macro(update_helpfiles)
