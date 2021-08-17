@@ -167,13 +167,22 @@ Section -Main SEC0000
     File ${SOURCE_FILES}\examples\test.mid
     SetOutPath $INSTDIR\translations
     File ${BINARY_FILES}\${PROGNAME}_cs.qm
+    File ${BINARY_FILES}\${PROGNAME}_de.qm
     File ${BINARY_FILES}\${PROGNAME}_es.qm
+    File ${BINARY_FILES}\${PROGNAME}_fr.qm
+    File ${BINARY_FILES}\${PROGNAME}_it.qm
     File ${BINARY_FILES}\${PROGNAME}_ru.qm
     File ${BINARY_FILES}\translations\qt_cs.qm
+    File ${BINARY_FILES}\translations\qt_de.qm
     File ${BINARY_FILES}\translations\qt_es.qm
+    File ${BINARY_FILES}\translations\qt_fr.qm
+    File ${BINARY_FILES}\translations\qt_it.qm
     File ${BINARY_FILES}\translations\qt_ru.qm
     File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_cs.qm
+    File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_de.qm
     File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_es.qm
+    File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_fr.qm
+    File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_it.qm
     File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_ru.qm
 
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\libdrumstick-file.dll $INSTDIR\libdrumstick-file.dll $INSTDIR
@@ -268,13 +277,22 @@ done${UNSECTION_ID}:
 # Uninstaller sections
 Section /o -un.Main UNSEC0000
     Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_cs.qm
+    Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_de.qm
     Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_es.qm
+    Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_fr.qm
+    Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_it.qm
     Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_ru.qm
     Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_cs.qm
+    Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_de.qm
     Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_es.qm
+    Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_fr.qm
+    Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_it.qm
     Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_ru.qm
     Delete /REBOOTOK $INSTDIR\translations\qt_cs.qm
+    Delete /REBOOTOK $INSTDIR\translations\qt_de.qm
     Delete /REBOOTOK $INSTDIR\translations\qt_es.qm
+    Delete /REBOOTOK $INSTDIR\translations\qt_fr.qm
+    Delete /REBOOTOK $INSTDIR\translations\qt_it.qm
     Delete /REBOOTOK $INSTDIR\translations\qt_ru.qm
     Delete /REBOOTOK $INSTDIR\${PROGNAME}.exe
     Delete /REBOOTOK $INSTDIR\examples.lst
@@ -389,4 +407,3 @@ Function un.onInit
     !insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuGroup
     !insertmacro SELECT_UNSECTION Main ${UNSEC0000}
 FunctionEnd
-
