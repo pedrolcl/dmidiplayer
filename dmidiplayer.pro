@@ -61,10 +61,14 @@ win32 {
     HEADERS += winsnap.h
     SOURCES += winsnap.cpp
 }
-RESOURCES += guiplayer.qrc \
+RESOURCES += \
+  guiplayer.qrc \
   docs/help.qrc
 TRANSLATIONS += \
   translations/dmidiplayer_cs.ts \
+  translations/dmidiplayer_de.ts \
   translations/dmidiplayer_en.ts \
   translations/dmidiplayer_es.ts \
+  translations/dmidiplayer_fr.ts \
+  translations/dmidiplayer_it.ts \
   translations/dmidiplayer_ru.ts

@@ -35,7 +35,7 @@ da un sintetizzatore software (cioè da un programma).
 
 Vi sono sintetizzatori software già inclusi nel sistema operativo del computer:
 ad esempio Microsoft Windows include "Microsoft GS Wavetable Synth" e Apple macOS include "Apple DLS Synthesizer".
-Per usare uno di questi, bisogna aprire la finestra di dialogo "Impostazione MIDI" di qmidiplayer e quindi:
+Per usare uno di questi, bisogna aprire la finestra di dialogo "Impostazione MIDI" di dmidiplayer e quindi:
 
 * In **Windows**, selezionare l'opzione "Windows MM" nella prima casella di riepilogo e "Microsoft GS Wavetable Synth" nella seconda.
   A questo programma, che è molto semplice e con limitate capacità, è preferibile un'alternativa migliore e gratuita come
@@ -55,7 +55,7 @@ Per usare uno di questi, bisogna aprire la finestra di dialogo "Impostazione MID
   i sistemi operativi. È molto configurabile, accetta file soundfont e può dialogare con molti sistemi audio digitali.
   Per utilizzarlo bisogna selezionare "FluidSynth" in entrambe le caselle di riepilogo.
 
-* **Network**: qmidiplayer dispone anche di un'uscita UDP Multicast multipiattaforma, che può essere utilizzata per inviare eventi MIDI come
+* **Network**: dmidiplayer dispone anche di un'uscita UDP Multicast multipiattaforma, che può essere utilizzata per inviare eventi MIDI come
   pacchetti di rete verso altri computer e dispositivi nella stessa rete locale. È compatibile con ["ipMIDI"](https://www.nerds.de/en/ipmidi.html),
   ["QmidiNet"](https://qmidinet.sourceforge.io/) e ["multimidicast"](https://llg.cubic.org/tools/multimidicast/).
 
