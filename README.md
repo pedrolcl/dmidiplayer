@@ -25,6 +25,8 @@ New in v1.5.0:
 * Ticket #10: Splash screen
 * Ticket #11: Fixed Winsnap enable/disable
 * Allow more than one file from the command line, or dragged from a file manager
+* Czech translation updated, thanks to Pavel Fric
+* Italian help page translated, thanks to Giovanni Mariani
 
 New in v1.4.0:
 
@@ -93,7 +95,7 @@ Alright, these are the build requirements:
 * [Qt 5](https://www.qt.io/download)
 * [Drumstick 2.3](https://sourceforge.net/projects/drumstick/)
 * [Uchardet 0.0.7](https://www.freedesktop.org/wiki/Software/uchardet/)
-* [pandoc](https://pandoc.org/) (optional)
+* [pandoc](https://pandoc.org/)
 * [CMake 3.14](https://cmake.org/)
 
 Build and deployment commands (for Linux)
