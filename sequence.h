@@ -109,6 +109,9 @@ public:
     static QByteArrayList getExtraCodecNames();
     static int getMibForName(const QByteArray name);
 
+    QTextCodec *codec() const;
+    void setCodec(QTextCodec *newCodec);
+
 signals:
     void loadingStart(int size);
     void loadingProgress(int pos);

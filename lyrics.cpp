@@ -485,6 +485,7 @@ void Lyrics::codecChanged(int index)
     m_mib = m_comboCodec->itemData(index).toInt();
     //qDebug() << "mib:" << m_mib;
     m_codec = QTextCodec::codecForMib(m_mib);
+    m_song->setCodec(m_codec);
     displayText();
 }
 

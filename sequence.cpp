@@ -379,6 +379,16 @@ void Sequence::appendStringToList(QStringList &list, QString &s, TextType type)
     list.append(s);
 }
 
+QTextCodec *Sequence::codec() const
+{
+    return m_codec;
+}
+
+void Sequence::setCodec(QTextCodec *newCodec)
+{
+    m_codec = newCodec;
+}
+
 QStringList Sequence::getText(const TextType type)
 {
     QStringList output;
