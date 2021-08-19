@@ -167,7 +167,7 @@ if (APPLE)
     if (NOT EMBED_TRANSLATIONS)
         set_source_files_properties (${QM_FILES} PROPERTIES
             MACOSX_PACKAGE_LOCATION Resources)
-        add_qt_translations(QT_TRANSLATIONS cs es ru)
+        add_qt_translations(QT_TRANSLATIONS cs de es fr it ru)
         set_source_files_properties (${QT_TRANSLATIONS} PROPERTIES
             MACOSX_PACKAGE_LOCATION translations)
         list (APPEND SOURCES ${QT_TRANSLATIONS})
