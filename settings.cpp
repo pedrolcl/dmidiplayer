@@ -135,6 +135,9 @@ void Settings::ReadSettings()
 {
     SettingsFactory settings;
     internalRead(*settings.getQSettings());
+#if defined (Q_OS_MACOS)
+    forceSettings(*settings.getQSettings());
+#endif
 }
 
 void Settings::SaveSettings()
@@ -293,6 +296,15 @@ void Settings::internalSave(QSettings &settings)
     settings.endGroup();
 
     settings.sync();
+}
+
+void Settings::forceSettings(QSettings &settings)
+{
+#if defined(Q_OS_MACOS)
+    settings.beginGroup("DLS Synth");
+    settings.setValue("reverb_dls", true);
+    settings.endGroup();
+#endif
 }
 
 int Settings::toolbarButtonStyle() const

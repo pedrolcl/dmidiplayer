@@ -39,7 +39,9 @@
                     <li>ticket #10: Splash window</li>
                     <li>ticket #11: Winsnap enable/​disable</li>
                     <li>More than one file in the command line, or dragged from a file manager</li>
+                    <li>Many rough edges softened</li>
                     <li>Czech translation updated, thanks to Pavel Fric</li>
+                    <li>Italian help document translation, thanks to Giovanni Mariani</li>
                 </ul>
             </description>
             <url>https://sourceforge.net/p/dmidiplayer/blog/2021/08/drumstick-multiplatform-midi-file-player-150-released/</url>

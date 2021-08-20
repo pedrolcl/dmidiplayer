@@ -146,6 +146,7 @@ private:
     explicit Settings(QObject *parent = nullptr);
     void internalRead(QSettings &settings);
     void internalSave(QSettings &settings);
+    void forceSettings(QSettings &settings);
 
     QByteArray m_mainWindowGeometry;
     QByteArray m_mainWindowState;
