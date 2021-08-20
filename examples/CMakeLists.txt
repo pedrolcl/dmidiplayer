@@ -1,7 +1,5 @@
 file(GLOB MIDI_FILES *.mid)
 file(GLOB KAR_FILES *.kar)
-install( FILES ${MIDI_FILES} ${KAR_FILES}
-         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME} )
 
 set(contents "")
 foreach(fullfile ${MIDI_FILES};${KAR_FILES})
@@ -11,5 +9,10 @@ endforeach()
 
 set(LST_FILE ${CMAKE_CURRENT_BINARY_DIR}/examples.lst)
 file(WRITE ${LST_FILE} ${contents})
-install( FILES ${LST_FILE}
-         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME} )
+
+if (APPLE)
+    set (EXAMPLES ${LST_FILE};${MIDI_FILES};${KAR_FILES} PARENT_SCOPE)
+else()
+    install( FILES ${MIDI_FILES} ${KAR_FILES}  ${LST_FILE}
+             DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME} )
+endif()

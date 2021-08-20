@@ -130,14 +130,27 @@ endif()
 add_custom_target (translations ALL DEPENDS ${QM_FILES})
 include(TranslationUtils)
 
-if (EMBED_TRANSLATIONS)
-    get_target_property(DRUMSTICK_LOCATION Drumstick::Widgets INTERFACE_INCLUDE_DIRECTORIES)
-    get_filename_component(DRUMSTICK_PREFIX ${DRUMSTICK_LOCATION} DIRECTORY)
+get_target_property(DRUMSTICK_LOCATION Drumstick::Widgets LOCATION)
+get_filename_component(DRUMSTICK_PREFIX ${DRUMSTICK_LOCATION} DIRECTORY)
+get_filename_component(DRUMSTICK_PREFIX ${DRUMSTICK_PREFIX} DIRECTORY)
+
+if (EXISTS ${DRUMSTICK_PREFIX}/share/drumstick/)
     file(GLOB WIDGETS_TRANS "${DRUMSTICK_PREFIX}/share/drumstick/drumstick-widgets_*.qm")
+elseif (EXISTS ${DRUMSTICK_PREFIX}/library/widgets/)
+    file(GLOB WIDGETS_TRANS "${DRUMSTICK_PREFIX}/library/widgets/drumstick-widgets_*.qm")
+endif()
+
+if (EMBED_TRANSLATIONS)
     file(COPY ${WIDGETS_TRANS} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
     add_app_translations_resource(APP_RES ${QM_FILES} ${WIDGETS_TRANS})
     add_qt_translations_resource(QT_RES cs de es fr it ru)
     list(APPEND SOURCES ${APP_RES} ${QT_RES})
+else()
+    if (APPLE)
+        set_source_files_properties (${WIDGETS_TRANS} PROPERTIES
+            MACOSX_PACKAGE_LOCATION Resources )
+        list (APPEND SOURCES ${WIDGETS_TRANS})
+    endif()
 endif()
 
 if (WIN32)
@@ -158,7 +171,14 @@ if (WIN32)
     endif ()
 endif ()
 
+include(GNUInstallDirs)
+add_subdirectory(docs)
+add_subdirectory(examples)
+
 if (APPLE)
+    set_source_files_properties (${EXAMPLES} PROPERTIES
+        MACOSX_PACKAGE_LOCATION Resources )
+    list (APPEND SOURCES ${EXAMPLES})
     set (ICON_FILE ${CMAKE_CURRENT_SOURCE_DIR}/icons/${PROJECT_NAME}.icns)
     list (APPEND SOURCES ${ICON_FILE} ${QM_FILES})
     set (MACOSX_BUNDLE_ICON_FILE ${PROJECT_NAME}.icns)
@@ -229,10 +249,6 @@ if (DEFINED PROJECT_WC_REVISION)
     target_compile_definitions( ${PROJECT_NAME} PRIVATE
         REVISION=${PROJECT_WC_REVISION} )
 endif()
-
-include(GNUInstallDirs)
-add_subdirectory(docs)
-add_subdirectory(examples)
 
 if(UNIX AND NOT APPLE)
     add_subdirectory(icons)
