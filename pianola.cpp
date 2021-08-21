@@ -211,10 +211,11 @@ void Pianola::readSettings()
 #else
                 parentWidget()->screen()->availableGeometry();
 #endif
-        //qDebug() << Q_FUNC_INFO << availableGeometry;
+        qDebug() << Q_FUNC_INFO << availableGeometry;
         setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter,
                                         size(), availableGeometry));
     } else {
+        qDebug() << Q_FUNC_INFO << "stored" << geometry;
         restoreGeometry(geometry);
     }
     if (!state.isEmpty()) {
