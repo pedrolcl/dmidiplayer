@@ -98,12 +98,10 @@ void HelpWindow::readSettings()
 #else
                 screen()->availableGeometry();
 #endif
-        qDebug() << Q_FUNC_INFO << "available" << availableGeometry;
         QSize size(640,480);
         setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter,
                                         size, availableGeometry));
     } else {
-        qDebug() << Q_FUNC_INFO << "stored" << geometry;
         restoreGeometry(geometry);
     }
     if (!state.isEmpty()) {

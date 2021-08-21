@@ -25,11 +25,6 @@
 #include "guiplayer.h"
 #include "settings.h"
 
-void MessageOutput( QtMsgType type, const QMessageLogContext &context, const QString &msg)
-{
-    qDebug() << msg;
-}
-
 int main(int argc, char *argv[])
 {
     const QString PGM_DESCRIPTION = QCoreApplication::tr(
@@ -58,7 +53,6 @@ int main(int argc, char *argv[])
     QApplication::setStyle("fusion");
 #endif
     QApplication app(argc, argv);
-    qInstallMessageHandler(MessageOutput);
     app.setWindowIcon(QIcon(":/dmidiplayer.png"));
 
     QCommandLineParser parser;
