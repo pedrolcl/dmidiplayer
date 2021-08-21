@@ -84,6 +84,7 @@ public slots:
     void allNotesOff();
 
 protected:
+    void showEvent(QShowEvent *event) override;
     void closeEvent( QCloseEvent *event)  override;
     void timerEvent( QTimerEvent *event ) override;
     bool nativeEvent( const QByteArray &eventType, void *message,

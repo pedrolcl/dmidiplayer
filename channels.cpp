@@ -116,7 +116,6 @@ Channels::Channels( QWidget* parent ) :
         m_factor[i] = m_volumeFactor;
     }
     adjustSize();
-    readSettings();
     retranslateUi();
     applySettings();
 }
@@ -184,13 +183,8 @@ void Channels::applySettings()
 
 void Channels::readSettings()
 {
-    using namespace drumstick::widgets;
-    SettingsFactory settings;
-    settings->beginGroup("ChannelsWindow");
-    const QByteArray geometry = settings->value("Geometry", QByteArray()).toByteArray();
-    const QByteArray state = settings->value("State", QByteArray()).toByteArray();
-    settings->endGroup();
-
+    const QByteArray geometry = Settings::instance()->channelsWindowGeometry();
+    const QByteArray state = Settings::instance()->channelsWindowState();
     if (geometry.isEmpty()) {
         const QRect availableGeometry =
 #if QT_VERSION < QT_VERSION_CHECK(5,14,0)
@@ -211,12 +205,8 @@ void Channels::readSettings()
 
 void Channels::writeSettings()
 {
-    using namespace drumstick::widgets;
-    SettingsFactory settings;
-    settings->beginGroup("ChannelsWindow");
-    settings->setValue("Geometry", saveGeometry());
-    settings->setValue("State", saveState());
-    settings->endGroup();
+    Settings::instance()->setChannelsWindowGeometry(saveGeometry());
+    Settings::instance()->setChannelsWindowState(saveState());
 }
 
 void Channels::closeEvent(QCloseEvent *event)
@@ -363,6 +353,16 @@ void Channels::allNotesOff()
 {
     for ( int ch = 0; ch < MIDI_STD_CHANNELS; ++ch ) {
         m_voices[ch] = 0;
+    }
+}
+
+void Channels::showEvent(QShowEvent *event)
+{
+    static bool firstTime = true;
+    QMainWindow::showEvent(event);
+    if (firstTime) {
+        readSettings();
+        firstTime = false;
     }
 }
 

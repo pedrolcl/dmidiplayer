@@ -79,7 +79,6 @@ HelpWindow::HelpWindow(QWidget *parent):
     m_textBrowser->setOpenExternalLinks(true);
 
     resize(640,480);
-    readSettings();
     retranslateUi();
     applySettings();
 #if defined(Q_OS_WINDOWS)
@@ -89,14 +88,9 @@ HelpWindow::HelpWindow(QWidget *parent):
 
 void HelpWindow::readSettings()
 {
-    using namespace drumstick::widgets;
-    SettingsFactory settings;
-    QFont defaultFont = QGuiApplication::font();
-    settings->beginGroup("HelpWindow");
-    const QByteArray geometry = settings->value("Geometry", QByteArray()).toByteArray();
-    const QByteArray state = settings->value("State", QByteArray()).toByteArray();
-    const int fontSize = settings->value("FontSize", defaultFont.pointSize()).toInt();
-    settings->endGroup();
+    const QByteArray geometry = Settings::instance()->helpWindowGeometry();
+    const QByteArray state = Settings::instance()->helpWindowState();
+    const int fontSize = Settings::instance()->helpWindowFontSize();
 
     if (geometry.isEmpty()) {
         const QRect availableGeometry =
@@ -124,15 +118,11 @@ void HelpWindow::readSettings()
 
 void HelpWindow::writeSettings()
 {
-    using namespace drumstick::widgets;
-    SettingsFactory settings;
     auto fontSize = m_textBrowser->font().pointSize();
+    Settings::instance()->setHelpWindowGeometry(saveGeometry());
+    Settings::instance()->setHelpWindowState(saveState());
+    Settings::instance()->setHelpWindowFontSize(fontSize);
     //qDebug() << Q_FUNC_INFO << fontSize;
-    settings->beginGroup("HelpWindow");
-    settings->setValue("Geometry", saveGeometry());
-    settings->setValue("State", saveState());
-    settings->setValue("FontSize", fontSize);
-    settings->endGroup();
 }
 
 void HelpWindow::closeEvent(QCloseEvent *event)
@@ -171,6 +161,16 @@ void HelpWindow::showPage(const QString &path, const QString &page)
     m_textBrowser->setSearchPaths({m_path = path,":/help/en",":/"});
     m_textBrowser->setSource(m_page = page);
     show();
+}
+
+void HelpWindow::showEvent(QShowEvent *event)
+{
+    static bool firstTime = true;
+    QMainWindow::showEvent(event);
+    if (firstTime) {
+        readSettings();
+        firstTime = false;
+    }
 }
 
 void HelpWindow::retranslateUi()

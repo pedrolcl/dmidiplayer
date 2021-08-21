@@ -132,6 +132,33 @@ public:
     static QString drumstickLocales();
     static QString systemLocales();
 
+    const QByteArray &channelsWindowGeometry() const;
+    void setChannelsWindowGeometry(const QByteArray &newChannelsWindowGeometry);
+
+    const QByteArray &channelsWindowState() const;
+    void setChannelsWindowState(const QByteArray &newChannelsWindowState);
+
+    const QByteArray &helpWindowGeometry() const;
+    void setHelpWindowGeometry(const QByteArray &newHelpWindowGeometry);
+
+    const QByteArray &helpWindowState() const;
+    void setHelpWindowState(const QByteArray &newHelpWindowState);
+
+    const QByteArray &lyricsWindowGeometry() const;
+    void setLyricsWindowGeometry(const QByteArray &newLyricsWindowGeometry);
+
+    const QByteArray &lyricsWindowState() const;
+    void setLyricsWindowState(const QByteArray &newLyricsWindowState);
+
+    const QByteArray &pianoWindowGeometry() const;
+    void setPianoWindowGeometry(const QByteArray &newPianoWindowGeometry);
+
+    const QByteArray &pianoWindowState() const;
+    void setPianoWindowState(const QByteArray &newPianoWindowState);
+
+    int helpWindowFontSize() const;
+    void setHelpWindowFontSize(int newHelpWindowFontSize);
+
 signals:
     void ValuesChanged();
 
@@ -150,6 +177,14 @@ private:
 
     QByteArray m_mainWindowGeometry;
     QByteArray m_mainWindowState;
+    QByteArray m_channelsWindowGeometry;
+    QByteArray m_channelsWindowState;
+    QByteArray m_helpWindowGeometry;
+    QByteArray m_helpWindowState;
+    QByteArray m_lyricsWindowGeometry;
+    QByteArray m_lyricsWindowState;
+    QByteArray m_pianoWindowGeometry;
+    QByteArray m_pianoWindowState;
     QString m_lastDirectory;
     QString m_lastOutputBackend;
     QString m_lastOutputConnection;
@@ -168,6 +203,7 @@ private:
     bool m_autoAdvance;
     bool m_internalIcons;
     int m_sysexResetMessage;
+    int m_helpWindowFontSize;
     LabelVisibility m_namesVisibility;
     QFont m_notesFont;
     QFont m_lyricsFont;

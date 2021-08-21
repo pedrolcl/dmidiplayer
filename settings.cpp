@@ -160,9 +160,22 @@ void Settings::SaveToFile(const QString &filepath)
 
 void Settings::internalRead(QSettings &settings)
 {
+    QFont defaultFont = QGuiApplication::font();
+
     settings.beginGroup("MainWindow");
     m_mainWindowGeometry = settings.value("Geometry", QByteArray()).toByteArray();
     m_mainWindowState = settings.value("State", QByteArray()).toByteArray();
+    settings.endGroup();
+
+    settings.beginGroup("ChannelsWindow");
+    m_channelsWindowGeometry = settings.value("Geometry", QByteArray()).toByteArray();
+    m_channelsWindowState = settings.value("State", QByteArray()).toByteArray();
+    settings.endGroup();
+
+    settings.beginGroup("HelpWindow");
+    m_helpWindowGeometry = settings.value("Geometry", QByteArray()).toByteArray();
+    m_helpWindowState = settings.value("State", QByteArray()).toByteArray();
+    m_helpWindowFontSize = settings.value("FontSize",  defaultFont.pointSize()).toInt();
     settings.endGroup();
 
     settings.beginGroup(BackendManager::QSTR_DRUMSTICKRT_GROUP);
@@ -222,6 +235,8 @@ void Settings::internalRead(QSettings &settings)
     }
     m_futureColor = QColor(settings.value("FutureColor", qApp->palette().color(QPalette::WindowText).name(QColor::HexRgb)).toString());
     m_pastColor = QColor(settings.value("PastColor", QColor(Qt::gray).name(QColor::HexRgb)).toString());
+    m_lyricsWindowGeometry = settings.value("Geometry", QByteArray()).toByteArray();
+    m_lyricsWindowState = settings.value("State", QByteArray()).toByteArray();
     settings.endGroup();
 
     settings.beginGroup("PlayerPianoSettings");
@@ -236,6 +251,8 @@ void Settings::internalRead(QSettings &settings)
     m_velocityColor = settings.value("VelocityColor", true).toBool();
     setNamesVisibility(static_cast<LabelVisibility>(settings.value("NamesVisibility", ShowNever).toInt()));
     m_singleColor = QColor(settings.value("SingleColor", m_paletteList[0].getColor(0).name(QColor::HexRgb)).toString());
+    m_pianoWindowGeometry = settings.value("Geometry", QByteArray()).toByteArray();
+    m_pianoWindowState = settings.value("State", QByteArray()).toByteArray();
     settings.endGroup();
 
     emit ValuesChanged();
@@ -285,6 +302,8 @@ void Settings::internalSave(QSettings &settings)
     settings.setValue("LyricsFont", m_lyricsFont.toString());
     settings.setValue("FutureColor", m_futureColor.name(QColor::HexRgb));
     settings.setValue("PastColor", m_pastColor.name(QColor::HexRgb));
+    settings.setValue("Geometry", m_lyricsWindowGeometry);
+    settings.setValue("State", m_lyricsWindowState);
     settings.endGroup();
 
     settings.beginGroup("PlayerPianoSettings");
@@ -293,6 +312,19 @@ void Settings::internalSave(QSettings &settings)
     settings.setValue("PaletteId", m_highlightPaletteId);
     settings.setValue("NamesVisibility", m_namesVisibility);
     settings.setValue("SingleColor", m_singleColor.name(QColor::HexRgb));
+    settings.setValue("Geometry", m_pianoWindowGeometry);
+    settings.setValue("State", m_pianoWindowState);
+    settings.endGroup();
+
+    settings.beginGroup("HelpWindow");
+    settings.setValue("Geometry", m_helpWindowGeometry);
+    settings.setValue("State", m_helpWindowState);
+    settings.setValue("FontSize", m_helpWindowFontSize);
+    settings.endGroup();
+
+    settings.beginGroup("ChannelsWindow");
+    settings.setValue("Geometry", m_channelsWindowGeometry);
+    settings.setValue("State", m_channelsWindowState);
     settings.endGroup();
 
     settings.sync();
@@ -305,6 +337,96 @@ void Settings::forceSettings(QSettings &settings)
     settings.setValue("reverb_dls", true);
     settings.endGroup();
 #endif
+}
+
+int Settings::helpWindowFontSize() const
+{
+    return m_helpWindowFontSize;
+}
+
+void Settings::setHelpWindowFontSize(int newHelpWindowFontSize)
+{
+    m_helpWindowFontSize = newHelpWindowFontSize;
+}
+
+const QByteArray &Settings::pianoWindowState() const
+{
+    return m_pianoWindowState;
+}
+
+void Settings::setPianoWindowState(const QByteArray &newPianoWindowState)
+{
+    m_pianoWindowState = newPianoWindowState;
+}
+
+const QByteArray &Settings::pianoWindowGeometry() const
+{
+    return m_pianoWindowGeometry;
+}
+
+void Settings::setPianoWindowGeometry(const QByteArray &newPianoWindowGeometry)
+{
+    m_pianoWindowGeometry = newPianoWindowGeometry;
+}
+
+const QByteArray &Settings::lyricsWindowState() const
+{
+    return m_lyricsWindowState;
+}
+
+void Settings::setLyricsWindowState(const QByteArray &newLyricsWindowState)
+{
+    m_lyricsWindowState = newLyricsWindowState;
+}
+
+const QByteArray &Settings::lyricsWindowGeometry() const
+{
+    return m_lyricsWindowGeometry;
+}
+
+void Settings::setLyricsWindowGeometry(const QByteArray &newLyricsWindowGeometry)
+{
+    m_lyricsWindowGeometry = newLyricsWindowGeometry;
+}
+
+const QByteArray &Settings::helpWindowState() const
+{
+    return m_helpWindowState;
+}
+
+void Settings::setHelpWindowState(const QByteArray &newHelpWindowState)
+{
+    m_helpWindowState = newHelpWindowState;
+}
+
+const QByteArray &Settings::helpWindowGeometry() const
+{
+    return m_helpWindowGeometry;
+}
+
+void Settings::setHelpWindowGeometry(const QByteArray &newHelpWindowGeometry)
+{
+    m_helpWindowGeometry = newHelpWindowGeometry;
+}
+
+const QByteArray &Settings::channelsWindowState() const
+{
+    return m_channelsWindowState;
+}
+
+void Settings::setChannelsWindowState(const QByteArray &newChannelsWindowState)
+{
+    m_channelsWindowState = newChannelsWindowState;
+}
+
+const QByteArray &Settings::channelsWindowGeometry() const
+{
+    return m_channelsWindowGeometry;
+}
+
+void Settings::setChannelsWindowGeometry(const QByteArray &newChannelsWindowGeometry)
+{
+    m_channelsWindowGeometry = newChannelsWindowGeometry;
 }
 
 int Settings::toolbarButtonStyle() const

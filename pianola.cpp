@@ -136,7 +136,6 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent),
     tbar->show();
     setMinimumSize(640,200);
     adjustSize();
-    readSettings();
     retranslateUi();
     applySettings();
 }
@@ -202,12 +201,8 @@ void Pianola::initSong(Sequence *song)
 
 void Pianola::readSettings()
 {
-    using namespace drumstick::widgets;
-    SettingsFactory settings;
-    settings->beginGroup("PlayerPianoWindow");
-    const QByteArray geometry = settings->value("Geometry", QByteArray()).toByteArray();
-    const QByteArray state = settings->value("State", QByteArray()).toByteArray();
-    settings->endGroup();
+    const QByteArray geometry = Settings::instance()->pianoWindowGeometry();
+    const QByteArray state = Settings::instance()->pianoWindowState();
 
     if (geometry.isEmpty()) {
         const QRect availableGeometry =
@@ -229,12 +224,8 @@ void Pianola::readSettings()
 
 void Pianola::writeSettings()
 {
-    using namespace drumstick::widgets;
-    SettingsFactory settings;
-    settings->beginGroup("PlayerPianoWindow");
-    settings->setValue("Geometry", saveGeometry());
-    settings->setValue("State", saveState());
-    settings->endGroup();
+    Settings::instance()->setPianoWindowGeometry(saveGeometry());
+    Settings::instance()->setPianoWindowState(saveState());
 }
 
 void Pianola::closeEvent(QCloseEvent *event)
@@ -328,17 +319,23 @@ void Pianola::playNoteOff(int note, int vel)
     }
 }
 
-void Pianola::showEvent( QShowEvent* /*event*/ )
+void Pianola::showEvent( QShowEvent *event )
 {
-    for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
-        if (m_action[i]->isChecked())
-            return;
-    }
-    for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
-        if (m_action[i]->isEnabled()) {
-            m_action[i]->setChecked(true);
-            slotShowChannel(i);
-            return;
+    static bool firstTime = true;
+    QMainWindow::showEvent(event);
+    if (firstTime) {
+        readSettings();
+        firstTime = false;
+        for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+            if (m_action[i]->isChecked())
+                return;
+        }
+        for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+            if (m_action[i]->isEnabled()) {
+                m_action[i]->setChecked(true);
+                slotShowChannel(i);
+                return;
+            }
         }
     }
 }

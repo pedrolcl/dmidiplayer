@@ -64,6 +64,7 @@ signals:
     void closed();
 
 protected:
+    void showEvent(QShowEvent *event) override;
     void closeEvent( QCloseEvent *event)  override;
     bool nativeEvent( const QByteArray &eventType, void *message,
 #if QT_VERSION < QT_VERSION_CHECK(6,0,0)

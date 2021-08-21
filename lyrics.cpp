@@ -160,19 +160,14 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     connect(m_actionPrint, &QAction::triggered, this, &Lyrics::slotPrint);
     setMinimumSize(640,200);
     adjustSize();
-    readSettings();
     retranslateUi();
     applySettings();
 }
 
 void Lyrics::readSettings()
 {
-    using namespace drumstick::widgets;
-    SettingsFactory settings;
-    settings->beginGroup("LyricsWindow");
-    const QByteArray geometry = settings->value("Geometry", QByteArray()).toByteArray();
-    const QByteArray state = settings->value("State", QByteArray()).toByteArray();
-    settings->endGroup();
+    const QByteArray geometry = Settings::instance()->lyricsWindowGeometry();
+    const QByteArray state = Settings::instance()->lyricsWindowState();
 
     if (geometry.isEmpty()) {
         const QRect availableGeometry =
@@ -194,12 +189,8 @@ void Lyrics::readSettings()
 
 void Lyrics::writeSettings()
 {
-    using namespace drumstick::widgets;
-    SettingsFactory settings;
-    settings->beginGroup("LyricsWindow");
-    settings->setValue("Geometry", saveGeometry());
-    settings->setValue("State", saveState());
-    settings->endGroup();
+    Settings::instance()->setLyricsWindowGeometry(saveGeometry());
+    Settings::instance()->setLyricsWindowState(saveState());
 }
 
 void Lyrics::retranslateUi()
@@ -222,6 +213,16 @@ void Lyrics::retranslateUi()
     m_actionCopy->setText(QApplication::translate("Lyrics", "Copy to clipboard", nullptr));
     m_actionSave->setText(QApplication::translate("Lyrics", "Save to file...", nullptr));
     m_actionPrint->setText(QApplication::translate("Lyrics", "Print...", nullptr));
+}
+
+void Lyrics::showEvent(QShowEvent *event)
+{
+    static bool firstTime = true;
+    QMainWindow::showEvent(event);
+    if (firstTime) {
+        readSettings();
+        firstTime = false;
+    }
 }
 
 void Lyrics::closeEvent(QCloseEvent *event)
