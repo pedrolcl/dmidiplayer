@@ -78,7 +78,6 @@ HelpWindow::HelpWindow(QWidget *parent):
 
     m_textBrowser->setOpenExternalLinks(true);
 
-    resize(640,480);
     retranslateUi();
     applySettings();
 #if defined(Q_OS_WINDOWS)
@@ -100,8 +99,9 @@ void HelpWindow::readSettings()
                 screen()->availableGeometry();
 #endif
         qDebug() << Q_FUNC_INFO << "available" << availableGeometry;
+        QSize size(640,480);
         setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter,
-                                        size(), availableGeometry));
+                                        size, availableGeometry));
     } else {
         qDebug() << Q_FUNC_INFO << "stored" << geometry;
         restoreGeometry(geometry);
