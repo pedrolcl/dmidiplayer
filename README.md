@@ -25,6 +25,7 @@ New in v1.5.0:
 * Ticket #10: Splash screen
 * Ticket #11: Fixed Winsnap enable/disable
 * Allow more than one file from the command line, or dragged from a file manager
+* Some rough edges softened
 * Czech translation updated, thanks to Pavel Fric
 * Italian help page translated, thanks to Giovanni Mariani
 
