@@ -205,7 +205,9 @@ message (STATUS "Drumstick MIDI File Player v${PROJECT_VERSION}
 )
 
 add_executable ( ${PROJECT_NAME} ${SOURCES} )
-add_dependencies ( ${PROJECT_NAME} update_helpfiles)
+if (EXISTS ${PANDOC_EXECUTABLE})
+    add_dependencies ( ${PROJECT_NAME} update_helpfiles)
+endif()
 
 target_link_libraries ( ${PROJECT_NAME} PRIVATE
     Qt${QT_VERSION_MAJOR}::Widgets
