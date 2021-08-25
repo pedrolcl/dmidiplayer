@@ -18,12 +18,12 @@ cmake_minimum_required(VERSION 3.14)
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.12" CACHE STRING "Minimum OS X deployment version")
 
 project ( dmidiplayer
-    VERSION 1.5.0
+    VERSION 1.5.1
     LANGUAGES CXX
     DESCRIPTION "Drumstick MIDI File Player Multiplatform Program"
     HOMEPAGE_URL "https://sourceforge.net/p/dmidiplayer/"
 )
-set(PROJECT_RELEASE_DATE "August 22, 2021")
+#set(PROJECT_RELEASE_DATE "August 22, 2021")
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -33,7 +33,7 @@ set(CMAKE_AUTOUIC ON)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
-option(BUILD_DOCS "Build man pages" ON)
+option(BUILD_DOCS "Process Markdown sources of man pages and help files" ON)
 option(EMBED_TRANSLATIONS "Embed translations instead of installing" OFF)
 
 include(SCMRevision)
@@ -205,8 +205,8 @@ message (STATUS "Drumstick MIDI File Player v${PROJECT_VERSION}
 )
 
 add_executable ( ${PROJECT_NAME} ${SOURCES} )
-if (EXISTS ${PANDOC_EXECUTABLE})
-    add_dependencies ( ${PROJECT_NAME} update_helpfiles)
+if (BUILD_DOCS)
+    add_dependencies ( ${PROJECT_NAME} update_helpfiles )
 endif()
 
 target_link_libraries ( ${PROJECT_NAME} PRIVATE

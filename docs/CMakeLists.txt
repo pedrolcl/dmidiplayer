@@ -1,6 +1,6 @@
 set(MANPAGE ${PROJECT_NAME}.1)
 include(PandocMacros)
-if (EXISTS ${PANDOC_EXECUTABLE})
+if (BUILD_DOCS)
     if (UNIX AND NOT APPLE)
         add_manpage(${MANPAGE})
         install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${MANPAGE}
