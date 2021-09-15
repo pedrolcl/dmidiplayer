@@ -1,3 +1,6 @@
+2021-09-15
+    * Support for RIFF MIDI files, provided by Drumstick 2.4.0
+
 2021-09-01
     * Fixed error checking of DwmGetWindowAttribute() call. This caused a problem in Windows 7 running the "Windows Classic" theme.
 

@@ -24,6 +24,7 @@
 #include <QMap>
 #include <QTextCodec>
 #include <drumstick/qsmf.h>
+#include <drumstick/rmid.h>
 #include <drumstick/qwrk.h>
 #include <drumstick/rtmidioutput.h>
 #include <uchardet.h>
@@ -118,6 +119,9 @@ signals:
     void loadingFinished();
 
 public slots:
+    /* Rmidi slots */
+    void dataHandler(const QString& dataType, const QByteArray& data);
+
     /* SMF slots */
     void appendSMFEvent(MIDIEvent *ev);
     void appendWRKmetadata(int track, long time, TextType typ, const QByteArray &data);
@@ -188,6 +192,7 @@ private: // methods
 
 private: // members
     QList<MIDIEvent*> m_list;
+    drumstick::File::Rmidi* m_rmid;
     drumstick::File::QSmf* m_smf;
     drumstick::File::QWrk* m_wrk;
 

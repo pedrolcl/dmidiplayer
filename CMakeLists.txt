@@ -40,7 +40,7 @@ include(SCMRevision)
 
 find_package (QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
 find_package (Qt${QT_VERSION_MAJOR} COMPONENTS Gui Widgets PrintSupport LinguistTools REQUIRED)
-find_package (Drumstick 2.3 COMPONENTS File RT Widgets REQUIRED)
+find_package (Drumstick 2.4 COMPONENTS File RT Widgets REQUIRED)
 
 find_package( PkgConfig )
 pkg_check_modules( UCHARDET REQUIRED IMPORTED_TARGET uchardet )

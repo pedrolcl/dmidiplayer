@@ -48,6 +48,9 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
     m_beatLength(0),
     m_tick(0)
 {
+    m_rmid = new Rmidi(this);
+    connect(m_rmid, &Rmidi::signalRiffData, this, &Sequence::dataHandler);
+
     m_smf = new QSmf(this);
     connect(m_smf, &QSmf::signalSMFHeader, this, &Sequence::smfHeaderEvent);
     connect(m_smf, &QSmf::signalSMFNoteOn, this, &Sequence::smfNoteOnEvent);
@@ -323,6 +326,8 @@ void Sequence::loadFile(const QString& fileName)
             QString ext = finfo.suffix().toLower();
             if (ext == "wrk") {
                 m_wrk->readFromFile(fileName);
+            } else if (ext == "rmi") {
+                m_rmid->readFromFile(fileName);
             } else if (ext == "mid" || ext == "midi" || ext == "kar") {
                 m_smf->readFromFile(fileName);
             }
@@ -590,6 +595,14 @@ void Sequence::insertBeats(qint64 ticks)
 /* **************************************** *
  * SMF (Standard MIDI file) format handling
  * **************************************** */
+
+void Sequence::dataHandler(const QString& dataType, const QByteArray& data)
+{
+    if (dataType == "RMID") {
+        QDataStream ds(data);
+        m_smf->readFromStream(&ds);
+    }
+}
 
 void Sequence::smfUpdateLoadProgress()
 {

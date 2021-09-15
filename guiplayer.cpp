@@ -405,6 +405,8 @@ void GUIPlayer::openFile(const QString& fileName)
         QString ext = finfo.suffix().toLower();
         if (ext == "wrk") {
             progressDialogInit("Cakewalk", finfo.size());
+        } else if (ext == "rmi") {
+            progressDialogInit("RIFF MIDI", finfo.size());
         } else if (ext == "mid" || ext == "midi" || ext == "kar") {
             progressDialogInit("MIDI", finfo.size());
         }
@@ -467,9 +469,10 @@ void GUIPlayer::open()
 {
     QString fileName = QFileDialog::getOpenFileName(this,
           tr("Open MIDI File"), Settings::instance()->lastDirectory(),
-          tr("All files (*.kar *.mid *.midi *.wrk);;"
+          tr("All files (*.kar *.mid *.midi *.rmi *.wrk);;"
           "Karaoke files (*.kar);;"
           "MIDI Files (*.mid *.midi);;"
+          "RIFF MIDI Files (*.rmi);;"
           "Cakewalk files (*.wrk)") );
     if (!fileName.isEmpty() && isSupported(fileName)) {
         stop();
@@ -792,6 +795,7 @@ bool GUIPlayer::isSupported(QString fileName)
     return  fileName.endsWith(".mid", Qt::CaseInsensitive) ||
             fileName.endsWith(".midi", Qt::CaseInsensitive) ||
             fileName.endsWith(".kar", Qt::CaseInsensitive) ||
+            fileName.endsWith(".rmi", Qt::CaseInsensitive) ||
             fileName.endsWith(".wrk", Qt::CaseInsensitive);
 }
 
