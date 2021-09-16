@@ -26,6 +26,7 @@ using namespace drumstick::File;
 using namespace drumstick::rt;
 
 Sequence::Sequence(QObject *parent) : QObject(parent),
+    m_rmid(nullptr),
     m_smf(nullptr),
     m_wrk(nullptr),
     m_uchardetErrors(0),
@@ -50,6 +51,7 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
 {
     m_rmid = new Rmidi(this);
     connect(m_rmid, &Rmidi::signalRiffData, this, &Sequence::dataHandler);
+    connect(m_rmid, &Rmidi::signalRiffInfo, this, &Sequence::infoHandler);
 
     m_smf = new QSmf(this);
     connect(m_smf, &QSmf::signalSMFHeader, this, &Sequence::smfHeaderEvent);
@@ -284,6 +286,7 @@ void Sequence::clear()
     m_lowestMidiNote = 127;
     m_highestMidiNote = 0;
     m_curTrack = 0;
+    m_infoMap.clear();
     for(int i=0; i<MIDI_STD_CHANNELS; ++i) {
         m_channelUsed[i] = false;
         m_channelEvents[i] = 0;
@@ -392,6 +395,24 @@ QTextCodec *Sequence::codec() const
 void Sequence::setCodec(QTextCodec *newCodec)
 {
     m_codec = newCodec;
+}
+
+QString Sequence::getFileFormat() const
+{
+    return m_fileFormat;
+}
+
+QString Sequence::getMetadataInfo() const
+{
+    if (!m_infoMap.empty()) {
+        QString metadata;
+        QMap<QString,QString>::const_iterator i;
+        for(i = m_infoMap.constBegin(); i != m_infoMap.constEnd(); ++i) {
+            metadata += i.key() + ": <b>" + i.value() + "</b><br/>";
+        }
+        return metadata;
+    }
+    return QString();
 }
 
 QStringList Sequence::getText(const TextType type)
@@ -601,7 +622,38 @@ void Sequence::dataHandler(const QString& dataType, const QByteArray& data)
     if (dataType == "RMID") {
         QDataStream ds(data);
         m_smf->readFromStream(&ds);
+        m_fileFormat += tr(" in RIFF container of type %1").arg(dataType);
     }
+}
+
+void Sequence::infoHandler(const QString &infoType, const QByteArray &data)
+{
+    const QMap<QString,QString> keyMap{
+        {"IALB", "Album"},
+        {"IARL", "Archival Location"},
+        {"IART", "Artist"},
+        {"ICMS", "Commissioned"},
+        {"ICMT", "Comments"},
+        {"ICOP", "Copyright"},
+        {"ICRD", "Creation date"},
+        {"IENG", "Engineer"},
+        {"IGNR", "Genre"},
+        {"IKEY", "Keywords"},
+        {"IMED", "Medium"},
+        {"INAM", "Name"},
+        {"IPRD", "Product"},
+        {"ISBJ", "Subject"},
+        {"ISFT", "Software"},
+        {"ISRC", "Source"},
+        {"ISR", "Source Form"},
+        {"ITCH", "Technician"}};
+    QString key;
+    if (keyMap.contains(infoType)) {
+        key = keyMap[infoType];
+    } else {
+        key = infoType;
+    }
+    m_infoMap[key] = QString::fromLatin1(data);
 }
 
 void Sequence::smfUpdateLoadProgress()
@@ -625,10 +677,10 @@ void Sequence::appendSMFEvent(MIDIEvent *ev)
 
 void Sequence::smfHeaderEvent(int format, int ntrks, int division)
 {
-    //qDebug() << "SMF Header:" << QString("Format=%1, Tracks=%2, Division=%3").arg(format).arg(ntrks).arg(division);
     m_format = format;
     m_numTracks = ntrks;
     m_division = division;
+    m_fileFormat = tr("SMF type %1").arg(format);
     m_beatLength = m_division;
     m_beatMax = 4;
     m_lastBeat = 0;
@@ -897,7 +949,7 @@ void Sequence::wrkFileHeader(int verh, int verl)
     m_lastBeat = 0;
     m_beatCount = 1;
     m_barCount = 1;
-    m_fileFormat = QString("%1.%2").arg(verh).arg(verl);
+    m_fileFormat = tr("WRK file version v%1.%2").arg(verh).arg(verl);
     timeCalculations();
     wrkUpdateLoadProgress();
 }

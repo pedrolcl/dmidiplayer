@@ -1034,35 +1034,42 @@ void GUIPlayer::slotFileInfo()
     if (m_player->song()->currentFile().isEmpty())
         infostr = tr("<b>No file loaded</b>");
     else {
-        infostr = tr("<b>File:</b><br>%1<br>").arg(m_player->song()->currentFile());
-
-        QString s = m_player->song()->getText(Sequence::Copyright).join(tr("<br>"));
+        infostr = tr("File: <b>%1</b><br>").arg(m_player->song()->currentFile());
+        QString s = m_player->song()->getFileFormat();
         if (!s.isEmpty())
-            infostr += tr("<b>Copyright:</b>%1<br>").arg(s);
+            infostr += tr("Format: <b>%1</b><br>").arg(s);
+
+        s = m_player->song()->getText(Sequence::Copyright).join(tr("<br>"));
+        if (!s.isEmpty())
+            infostr += tr("Copyright: <b>%1</b><br>").arg(s);
 
         s = m_player->song()->getText(Sequence::KarFileType).join(tr("<br>"));
         if (!s.isEmpty())
-            infostr += tr("<b>Karaoke type:</b>%1<br>").arg(s);
+            infostr += tr("Karaoke type: <b>%1</b><br>").arg(s);
 
         s = m_player->song()->getText(Sequence::KarVersion).join(tr("<br>"));
         if (!s.isEmpty())
-            infostr += tr("<b>Karaoke version:</b>%1<br>").arg(s);
+            infostr += tr("Karaoke version: <b>%1</b><br>").arg(s);
 
         s = m_player->song()->getText(Sequence::KarInformation).join(tr("<br>"));
         if (!s.isEmpty())
-            infostr += tr("<b>Karaoke info:</b>%1<br>").arg(s);
+            infostr += tr("Karaoke info: <b>%1</b><br>").arg(s);
 
         s = m_player->song()->getText(Sequence::KarLanguage).join(tr("<br>"));
         if (!s.isEmpty())
-            infostr += tr("<b>Karaoke language:</b>%1<br>").arg(s);
+            infostr += tr("Karaoke language: <b>%1</b><br>").arg(s);
 
         s = m_player->song()->getText(Sequence::KarTitles).join(tr("<br>"));
         if (!s.isEmpty())
-            infostr += tr("<b>Karaoke title:</b>%1<br>").arg(s);
+            infostr += tr("Karaoke title: <b>%1</b><br>").arg(s);
 
         s = m_player->song()->getText(Sequence::KarWhatever).join(tr("<br>"));
         if (!s.isEmpty())
-            infostr += tr("<b>Karaoke things:</b>%1<br>").arg(s);
+            infostr += tr("Karaoke things: <b>%1</b><br>").arg(s);
+
+        s = m_player->song()->getMetadataInfo();
+        if (!s.isEmpty())
+            infostr += s;
     }
     infostr.replace(QChar::LineSeparator, tr("<br>"));
     QMessageBox::information(this, tr("SMF Information"), infostr );

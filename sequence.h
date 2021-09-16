@@ -113,6 +113,9 @@ public:
     QTextCodec *codec() const;
     void setCodec(QTextCodec *newCodec);
 
+    QString getFileFormat() const;
+    QString getMetadataInfo() const;
+
 signals:
     void loadingStart(int size);
     void loadingProgress(int pos);
@@ -121,6 +124,7 @@ signals:
 public slots:
     /* Rmidi slots */
     void dataHandler(const QString& dataType, const QByteArray& data);
+    void infoHandler(const QString& infoType, const QByteArray& data);
 
     /* SMF slots */
     void appendSMFEvent(MIDIEvent *ev);
@@ -263,6 +267,7 @@ private: // members
     QMap<int, int> m_trkScore;
     QMap<int, int> m_typScore;
     QMap<int, int> m_trkChannel;
+    QMap<QString, QString> m_infoMap;
 };
 
 #endif // SEQUENCE_H
