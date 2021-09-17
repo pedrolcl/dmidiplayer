@@ -14,7 +14,7 @@
             <li>Change MIDI volume level (using MIDI CC7)</li>
             <li>Scale song speed between half and double tempo</li>
             <li>Piano Players, MIDI Channels, Rhythm, and Lyrics (Karaoke) views</li>
-            <li>Supports .MID (Standard MIDI files) .KAR (MIDI Karaoke) and .WRK (Cakewalk) file formats</li>
+            <li>Supports .MID (Standard MIDI files), .RMI (RIFF RMID), .KAR (MIDI Karaoke), and .WRK (Cakewalk) file formats</li>
         </ul>
     </description>
     <launchable type="desktop-id">net.sourceforge.dmidiplayer.desktop</launchable>
@@ -30,6 +30,16 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.5.1" date="2021-09-19">
+            <description>
+                <p>This release fixes the following issues:</p>
+                <ul>
+                    <li>GH ticket #6: The dependency target "update_helpfiles" of target "dmidiplayer" does not exist</li>
+                    <li>Error checking for DwmGetWindowAttribute() call. This caused a problem in Windows 7 running the "Windows Classic" theme</li>
+                    <li>Support for RIFF MIDI files, provided by Drumstick 2.4.0</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.5.0" date="2021-08-22">
             <description>
                 <p>This release implements the following new features:</p>
