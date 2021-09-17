@@ -647,13 +647,18 @@ void Sequence::infoHandler(const QString &infoType, const QByteArray &data)
         {"ISRC", "Source"},
         {"ISR", "Source Form"},
         {"ITCH", "Technician"}};
-    QString key;
+    QString key, value;
     if (keyMap.contains(infoType)) {
         key = keyMap[infoType];
     } else {
         key = infoType;
     }
-    m_infoMap[key] = QString::fromLatin1(data);
+    if (m_codec == nullptr) {
+        value = QString::fromLatin1(data);
+    } else {
+        value = m_codec->toUnicode(data);
+    }
+    m_infoMap[key] = value;
 }
 
 void Sequence::smfUpdateLoadProgress()
@@ -1333,7 +1338,7 @@ QString Sequence::channelLabel(int channel)
     if ((channel >= 0) && (channel < MIDI_STD_CHANNELS) &&
         (!m_channelLabel[channel].isEmpty())) {
         if (m_codec == nullptr)
-            return QString::fromLocal8Bit(m_channelLabel[channel]);
+            return QString::fromLatin1(m_channelLabel[channel]);
         else
             return m_codec->toUnicode(m_channelLabel[channel]);
     }
