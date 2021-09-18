@@ -13,7 +13,7 @@
 # DESCRIPTION
 
 This program is a multiplatform MIDI file player for Linux, Windows and macOS. 
-It reads .MID (Standard MIDI Files), .KAR (Karaoke), and .WRK (Cakewalk) file formats, 
+It reads .MID (Standard MIDI Files), .KAR (Karaoke), .RMI (RIFF RMID), and .WRK (Cakewalk) file formats, 
 and outputs MIDI events to hardware MIDI ports and also software synths.
 
 ## Options
@@ -101,7 +101,7 @@ The following options apply to all Qt5 applications:
 
 _midi_files_
 
-:   Input SMF/KAR/WRK file name(s). The set of provided file names becomes a temporary playlist.
+:   Input MID/KAR/RMI/WRK file name(s). The set of provided file names becomes a temporary playlist.
 
 # FILES
 

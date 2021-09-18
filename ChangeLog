@@ -1,3 +1,6 @@
+2021-09-19
+    * Release 1.5.1
+
 2021-09-15
     * Support for RIFF MIDI files, provided by Drumstick 2.4.0
 
@@ -5,7 +8,6 @@
     * Fixed error checking of DwmGetWindowAttribute() call. This caused a problem in Windows 7 running the "Windows Classic" theme.
 
 2021-08-25
-    * bumped version number to 1.5.1 for the next devel. cycle
     * fix for GH ticket #6: The dependency target "update_helpfiles" of target "dmidiplayer" does not exist
 
 2021-08-22
