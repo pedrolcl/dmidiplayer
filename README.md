@@ -16,7 +16,13 @@ Some key features:
 * Change MIDI volume level (using MIDI CC7)
 * Scale song speed between half and double tempo
 * Lyrics, Piano Player and MIDI Channels views
-* Supports MID/KAR (Standard MIDI Files) and WRK (Cakewalk) file formats
+* Supports MID/KAR/RMI (Standard MIDI Files) and WRK (Cakewalk) file formats
+
+New in v1.5.1:
+
+* GH ticket #6: The dependency target "update_helpfiles" of target "dmidiplayer" does not exist
+* Error checking for DwmGetWindowAttribute() call. This caused a problem in Windows 7 running the "Windows Classic" theme
+* Support for RIFF MIDI files, provided by Drumstick 2.4.0
 
 New in v1.5.0:
 

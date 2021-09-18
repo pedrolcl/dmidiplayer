@@ -47,7 +47,8 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
     m_duration(0),
     m_lastBeat(0),
     m_beatLength(0),
-    m_tick(0)
+    m_tick(0),
+    m_codec(nullptr)
 {
     m_rmid = new Rmidi(this);
     connect(m_rmid, &Rmidi::signalRiffData, this, &Sequence::dataHandler);
@@ -286,6 +287,7 @@ void Sequence::clear()
     m_lowestMidiNote = 127;
     m_highestMidiNote = 0;
     m_curTrack = 0;
+    m_codec = nullptr;
     m_infoMap.clear();
     for(int i=0; i<MIDI_STD_CHANNELS; ++i) {
         m_channelUsed[i] = false;
