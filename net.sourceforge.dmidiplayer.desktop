@@ -2,7 +2,7 @@
 Name=Drumstick MIDI File Player
 Name[es]=Reproductor Drumstick de archivos MIDI
 Name[ru]=Проигрыватель файлов Drumstick MIDI
-Exec=dmidiplayer %f
+Exec=dmidiplayer %F
 Icon=dmidiplayer
 Terminal=false
 Type=Application
