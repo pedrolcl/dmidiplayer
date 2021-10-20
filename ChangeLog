@@ -1,3 +1,6 @@
+2021-10-20
+    * fix for crash in Linux when changing MIDI output connection, and there are not suitable MIDI ports available.
+
 2021-09-19
     * Release 1.5.1
 

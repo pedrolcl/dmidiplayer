@@ -215,7 +215,9 @@ GUIPlayer::GUIPlayer(QWidget *parent)
             auto outConnections = m_midiOut->connections(Settings::instance()->advanced());
             auto itr = std::find_if(outConnections.constBegin(), outConnections.constEnd(), [lastConn](const MIDIConnection& c){return c.first == lastConn;});
             if (itr == outConnections.constEnd()) {
-                conn = outConnections.first();
+                if (!outConnections.isEmpty()) {
+                    conn = outConnections.first();
+                }
             } else {
                 conn = (*itr);
             }

@@ -129,7 +129,7 @@ void Connections::refreshOutputs(int idx)
             ui.m_outputPorts->addItem(conn.first, QVariant::fromValue(conn));
         }
         QString conn = m_midiOut->currentConnection().first;
-        if (conn.isEmpty()) {
+        if (conn.isEmpty() && !connections.isEmpty()) {
             conn = connections.first().first;
         }
         ui.m_outputPorts->setCurrentText(conn);
