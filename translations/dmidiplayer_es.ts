@@ -128,7 +128,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&lt;b&gt;File:&lt;/b&gt;&lt;br&gt;%1&lt;br&gt;</source>
-        <translation>&lt;b&gt;Archivo:&lt;/b&gt;&lt;br&gt;%1&lt;br&gt;</translation>
+        <translation type="vanished">&lt;b&gt;Archivo:&lt;/b&gt;&lt;br&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;br&gt;</source>
@@ -136,31 +136,31 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&lt;b&gt;Copyright:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation>&lt;b&gt;Copyright:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation type="vanished">&lt;b&gt;Copyright:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke type:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation>&lt;b&gt;Tipo de Karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation type="vanished">&lt;b&gt;Tipo de Karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke version:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation>&lt;b&gt;Versión de Karaoke :&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation type="vanished">&lt;b&gt;Versión de Karaoke :&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke info:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation>&lt;b&gt;Información de Karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation type="vanished">&lt;b&gt;Información de Karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke language:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation>&lt;b&gt;Idioma del Karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation type="vanished">&lt;b&gt;Idioma del Karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke title:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation>&lt;b&gt;Título del Karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation type="vanished">&lt;b&gt;Título del Karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke things:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation>&lt;b&gt;Cosas del Karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation type="vanished">&lt;b&gt;Cosas del Karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>SMF Information</source>
@@ -172,7 +172,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>All files (*.kar *.mid *.midi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;Cakewalk files (*.wrk)</source>
-        <translation>Todos los archivos (*.kar *.mid *.midi *.wrk);;Archivos de Karaoke (*.kar);;Archivos MIDI (*.mid *.midi);;Archivos de Cakewalk (*.wrk)</translation>
+        <translation type="vanished">Todos los archivos (*.kar *.mid *.midi *.wrk);;Archivos de Karaoke (*.kar);;Archivos MIDI (*.mid *.midi);;Archivos de Cakewalk (*.wrk)</translation>
     </message>
     <message>
         <source>Playlist not saved</source>
@@ -221,6 +221,47 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Dropped file %1 is not supported</source>
         <translation>Archivo %1 soltado no está soportado</translation>
+    </message>
+    <message>
+        <source>All files (*.kar *.mid *.midi *.rmi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;RIFF MIDI Files (*.rmi);;Cakewalk files (*.wrk)</source>
+        <translation>Todos los archivos (*.kar *.mid *.midi *.rmi *.wrk);;Archivos de Karaoke (*.kar);;Archivos MIDI (*.mid *.midi);;Archivos MIDI RIFF (*.rmi);;Archivos de Cakewalk (*.wrk)</translation>
+    </message>
+    <message>
+        <source>File: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation>Archivo: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>Format: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation>Formato: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>Copyright: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation>Copyright: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>Karaoke type: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation>Tipo de karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>Karaoke version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation>Versi
+Versión de karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>Karaoke info: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation>Información de karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>Karaoke language: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation>Idiooma de karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>Karaoke title: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation>Título de karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>Karaoke things: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation>Varios: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -1485,6 +1526,21 @@ bajo ciertas condiciones; vea la LICENCIA para detalles.</translation>
     <message>
         <source>&amp;%1 %2</source>
         <translation>&amp;%1 %2</translation>
+    </message>
+</context>
+<context>
+    <name>Sequence</name>
+    <message>
+        <source> in RIFF container of type %1</source>
+        <translation> en contenedor RIFF de tipo %1</translation>
+    </message>
+    <message>
+        <source>SMF type %1</source>
+        <translation>SMF tipo %1</translation>
+    </message>
+    <message>
+        <source>WRK file version v%1.%2</source>
+        <translation>versión de archivo WRK v%1.%2</translation>
     </message>
 </context>
 <context>

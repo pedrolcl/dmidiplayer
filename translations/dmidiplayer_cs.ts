@@ -18,19 +18,16 @@
     <name>AboutClass</name>
     <message>
         <location filename="../playerabout.ui" line="14"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_playerabout.h" line="79"/>
         <source>About</source>
         <translation>O programu</translation>
     </message>
     <message>
         <location filename="../playerabout.ui" line="26"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_playerabout.h" line="80"/>
         <source>About Qt</source>
         <translation>O Qt</translation>
     </message>
     <message>
         <location filename="../playerabout.ui" line="48"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_playerabout.h" line="81"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -58,37 +55,37 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>Channels</name>
     <message>
-        <location filename="../channels.cpp" line="131"/>
+        <location filename="../channels.cpp" line="130"/>
         <source>MIDI Channels</source>
         <translation>Kanály MIDI</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="132"/>
+        <location filename="../channels.cpp" line="131"/>
         <source>Channel</source>
         <translation>Kanál</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="133"/>
+        <location filename="../channels.cpp" line="132"/>
         <source>Mute</source>
         <translation>Ztlumit</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="134"/>
+        <location filename="../channels.cpp" line="133"/>
         <source>Solo</source>
         <translation>Sólo</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="135"/>
+        <location filename="../channels.cpp" line="134"/>
         <source>Level</source>
         <translation>Úroveň</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="136"/>
+        <location filename="../channels.cpp" line="135"/>
         <source>Lock</source>
         <translation>Zámek</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="137"/>
+        <location filename="../channels.cpp" line="136"/>
         <source>Patch (sound setting)</source>
         <translation>Zapojení (nastavení zvuku)</translation>
     </message>
@@ -105,25 +102,21 @@ p, li { white-space: pre-wrap; }
     <name>ConnectionsClass</name>
     <message>
         <location filename="../connections.ui" line="14"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_connections.h" line="87"/>
         <source>Connections</source>
         <translation>Spojení</translation>
     </message>
     <message>
         <location filename="../connections.ui" line="20"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_connections.h" line="88"/>
         <source>Show advanced connections</source>
         <translation>Ukázat pokročilá spojení</translation>
     </message>
     <message>
         <location filename="../connections.ui" line="27"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_connections.h" line="89"/>
         <source>MIDI OUT</source>
         <translation>Výstup MIDI</translation>
     </message>
     <message>
         <location filename="../connections.ui" line="40"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_connections.h" line="90"/>
         <source>...</source>
         <translation>...</translation>
     </message>
@@ -131,154 +124,195 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>GUIPlayer</name>
     <message>
-        <location filename="../guiplayer.cpp" line="295"/>
+        <location filename="../guiplayer.cpp" line="300"/>
         <source>Please, load a song</source>
         <translation>Nahrajte, prosím, píseň</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="305"/>
+        <location filename="../guiplayer.cpp" line="310"/>
         <source>Playing</source>
         <translation>Přehrává se</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="314"/>
+        <location filename="../guiplayer.cpp" line="319"/>
         <source>Paused</source>
         <translation>Pozastaveno</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="327"/>
+        <location filename="../guiplayer.cpp" line="332"/>
         <source>Stopped</source>
         <translation>Zastaveno</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="330"/>
+        <location filename="../guiplayer.cpp" line="335"/>
         <source>Not initialized</source>
         <translation>Neinicializováno</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="377"/>
+        <location filename="../guiplayer.cpp" line="383"/>
         <source>Loading %1 file...</source>
         <translation>Nahrává se soubor %1...</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="449"/>
+        <location filename="../guiplayer.cpp" line="457"/>
         <source>file %1 couldn&apos;t be opened</source>
         <translation>Nepodařilo se otevřít soubor %1</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="465"/>
+        <location filename="../guiplayer.cpp" line="473"/>
         <source>Open MIDI File</source>
         <translation>Otevřít soubor MIDI</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="466"/>
-        <source>All files (*.kar *.mid *.midi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;Cakewalk files (*.wrk)</source>
-        <translation>Všechny soubory (*.kar *.mid *.midi *.wrk);;Soubory Karaoke (*.kar);;Soubory MIDI (*.mid *.midi);;Soubory Cakewalk (*.wrk)</translation>
+        <location filename="../guiplayer.cpp" line="474"/>
+        <source>All files (*.kar *.mid *.midi *.rmi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;RIFF MIDI Files (*.rmi);;Cakewalk files (*.wrk)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="677"/>
+        <location filename="../guiplayer.cpp" line="1039"/>
+        <source>File: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="1042"/>
+        <source>Format: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="1046"/>
+        <source>Copyright: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="1050"/>
+        <source>Karaoke type: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="1054"/>
+        <source>Karaoke version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="1058"/>
+        <source>Karaoke info: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="1062"/>
+        <source>Karaoke language: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="1066"/>
+        <source>Karaoke title: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="1070"/>
+        <source>Karaoke things: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All files (*.kar *.mid *.midi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;Cakewalk files (*.wrk)</source>
+        <translation type="vanished">Všechny soubory (*.kar *.mid *.midi *.wrk);;Soubory Karaoke (*.kar);;Soubory MIDI (*.mid *.midi);;Soubory Cakewalk (*.wrk)</translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="687"/>
         <source>Jump to Bar</source>
         <translation>Skočit na takt</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="678"/>
+        <location filename="../guiplayer.cpp" line="688"/>
         <source>Bar number:</source>
         <translation>Číslo taktu:</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="774"/>
+        <location filename="../guiplayer.cpp" line="784"/>
         <source>Dropped file %1 is not supported</source>
         <translation>Zahozený soubor %1 není podporován</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="961"/>
+        <location filename="../guiplayer.cpp" line="972"/>
         <source>&lt;p&gt;This program is developed and translated thanks to the volunteer work of many people from around the world. If you want to join the team or have any question, please visit the web site at &lt;a href=&apos;http://sourceforge.net/projects/dmidiplayer/&apos;&gt;SourceForge&lt;/a&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;Tento program byl vyvinut a přeložen díky dobrovolnické práci mnoha lidí z celého světa. Pokud se chcete připojit k týmu nebo máte jakékoli dotazy, navštivte internetové stránky na adrese &lt;a href=&apos;http://sourceforge.net/projects/dmidiplayer/&apos;&gt;SourceForge&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="966"/>
+        <location filename="../guiplayer.cpp" line="977"/>
         <source>Translation Information</source>
         <translation>Informace o překladu</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1007"/>
+        <location filename="../guiplayer.cpp" line="1018"/>
         <source>Language Changed</source>
         <translation>Jazyk byl změněn</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1008"/>
+        <location filename="../guiplayer.cpp" line="1019"/>
         <source>The language for this application is going to change to %1. Do you want to continue?</source>
         <translation>Jazyk pro tento program bude změněn na %1. Chcete pokračovat?</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1026"/>
+        <location filename="../guiplayer.cpp" line="1037"/>
         <source>&lt;b&gt;No file loaded&lt;/b&gt;</source>
         <translation>&lt;b&gt;Nenahrán žádný soubor&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1028"/>
         <source>&lt;b&gt;File:&lt;/b&gt;&lt;br&gt;%1&lt;br&gt;</source>
-        <translation>&lt;b&gt;Soubor:&lt;/b&gt;&lt;br&gt;%1&lt;br&gt;</translation>
+        <translation type="vanished">&lt;b&gt;Soubor:&lt;/b&gt;&lt;br&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1030"/>
-        <location filename="../guiplayer.cpp" line="1034"/>
-        <location filename="../guiplayer.cpp" line="1038"/>
-        <location filename="../guiplayer.cpp" line="1042"/>
-        <location filename="../guiplayer.cpp" line="1046"/>
-        <location filename="../guiplayer.cpp" line="1050"/>
-        <location filename="../guiplayer.cpp" line="1054"/>
-        <location filename="../guiplayer.cpp" line="1058"/>
+        <location filename="../guiplayer.cpp" line="1044"/>
+        <location filename="../guiplayer.cpp" line="1048"/>
+        <location filename="../guiplayer.cpp" line="1052"/>
+        <location filename="../guiplayer.cpp" line="1056"/>
+        <location filename="../guiplayer.cpp" line="1060"/>
+        <location filename="../guiplayer.cpp" line="1064"/>
+        <location filename="../guiplayer.cpp" line="1068"/>
+        <location filename="../guiplayer.cpp" line="1076"/>
         <source>&lt;br&gt;</source>
         <translation>&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1032"/>
         <source>&lt;b&gt;Copyright:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation>&lt;b&gt;Kopírovací právo:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation type="vanished">&lt;b&gt;Kopírovací právo:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1036"/>
         <source>&lt;b&gt;Karaoke type:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation>&lt;b&gt;Typ karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation type="vanished">&lt;b&gt;Typ karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1040"/>
         <source>&lt;b&gt;Karaoke version:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation>&lt;b&gt;Verze karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation type="vanished">&lt;b&gt;Verze karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1044"/>
         <source>&lt;b&gt;Karaoke info:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation>&lt;b&gt;Informace o karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation type="vanished">&lt;b&gt;Informace o karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1048"/>
         <source>&lt;b&gt;Karaoke language:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation>&lt;b&gt;Jazyk karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation type="vanished">&lt;b&gt;Jazyk karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1052"/>
         <source>&lt;b&gt;Karaoke title:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation>&lt;b&gt;Název karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation type="vanished">&lt;b&gt;Název karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1056"/>
         <source>&lt;b&gt;Karaoke things:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation>&lt;b&gt;Věci karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation type="vanished">&lt;b&gt;Věci karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1059"/>
+        <location filename="../guiplayer.cpp" line="1077"/>
         <source>SMF Information</source>
         <translation>Informace SMF</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1066"/>
+        <location filename="../guiplayer.cpp" line="1084"/>
         <source>Playlist not saved</source>
         <translation>Seznam skladeb není uložen</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1067"/>
+        <location filename="../guiplayer.cpp" line="1085"/>
         <source>The current playlist has changed, but it is not saved. The changes will be lost when closing the program.</source>
         <translation>Nynější seznam skladeb byl změněn, není však uložen. Změny budou při zavření programu ztraceny.</translation>
     </message>
@@ -287,73 +321,61 @@ p, li { white-space: pre-wrap; }
     <name>GUIPlayerClass</name>
     <message>
         <location filename="../guiplayer.ui" line="14"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="473"/>
         <source>Drumstick MIDI File Player Multiplatform</source>
         <translation>Přehrávač souborů MIDI Palička</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="25"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="584"/>
         <source>Drumstick MIDI Player</source>
         <translation>Přehrávač MIDI Palička</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="41"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="586"/>
         <source>Playback time and current levels</source>
         <translation>Čas přehrávání a nynější úrovně</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="84"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="588"/>
+        <location filename="../guiplayer.ui" line="77"/>
         <source>00:00:00</source>
         <translation>00:00:00</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="91"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="589"/>
+        <location filename="../guiplayer.ui" line="84"/>
         <source>Tempo:</source>
         <translation>Tempo:</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="114"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="590"/>
+        <location filename="../guiplayer.ui" line="107"/>
         <source>Volume:</source>
         <translation>Hlasitost:</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="128"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="592"/>
+        <location filename="../guiplayer.ui" line="121"/>
         <source>Pitch:</source>
         <translation>Výška tónu:</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="144"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="594"/>
+        <location filename="../guiplayer.ui" line="137"/>
         <source>Pitch Control</source>
         <translation>Ovládání výšky tónu</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="147"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="597"/>
+        <location filename="../guiplayer.ui" line="140"/>
         <source>Pitch transpose between -12 and +12 semitones</source>
         <translation>Transpozice výšky tónu mezi -12 a +12 půltóny</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="315"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="617"/>
+        <location filename="../guiplayer.ui" line="308"/>
         <source>Reset Volume</source>
         <translation>Obnovit výchozí hlasitost</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="318"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="620"/>
+        <location filename="../guiplayer.ui" line="311"/>
         <source>Reset Volume to 100%</source>
         <translation>Obnovit výchozí hlasitost na 100 %</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="215"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="603"/>
+        <location filename="../guiplayer.ui" line="208"/>
         <source>Volume Slider</source>
         <translation>Posuvník hlasitosti</translation>
     </message>
@@ -362,128 +384,107 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Postup přehrávání</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="175"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="600"/>
+        <location filename="../guiplayer.ui" line="168"/>
         <source>Tempo Slider</source>
         <translation>Posuvník tempa</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="302"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="610"/>
+        <location filename="../guiplayer.ui" line="295"/>
         <source>Reset Tempo</source>
         <translation>Obnovit výchozí tempo</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="305"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="613"/>
+        <location filename="../guiplayer.ui" line="298"/>
         <source>Reset Tempo to 100%</source>
         <translation>Obnovit výchozí tempo na 100 %</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="308"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="615"/>
+        <location filename="../guiplayer.ui" line="301"/>
         <source>tempo=100%</source>
         <translation>Tempo = 100 %</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="242"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="605"/>
+        <location filename="../guiplayer.ui" line="235"/>
         <source>File Name:</source>
         <translation>Název souboru:</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="255"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="607"/>
+        <location filename="../guiplayer.ui" line="248"/>
         <source>Currently loaded MIDI file name</source>
         <translation>Nyní nahraný název souboru MIDI</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="344"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="623"/>
+        <location filename="../guiplayer.ui" line="337"/>
         <source>File</source>
         <translation>Soubor</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="348"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="624"/>
+        <location filename="../guiplayer.ui" line="341"/>
         <source>Open Recent Files</source>
         <translation>Otevřít nedávné soubory</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="353"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="625"/>
+        <location filename="../guiplayer.ui" line="346"/>
         <source>Playlist Repeat</source>
         <translation>Opakování seznamu skladeb</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="378"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="626"/>
+        <location filename="../guiplayer.ui" line="371"/>
         <source>&amp;Help</source>
         <translation>&amp;Nápověda</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="382"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="627"/>
+        <location filename="../guiplayer.ui" line="375"/>
         <source>&amp;Language</source>
         <translation>&amp;Jazyk</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="394"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="628"/>
+        <location filename="../guiplayer.ui" line="387"/>
         <source>Settings</source>
         <translation>Nastavení</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="402"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="629"/>
+        <location filename="../guiplayer.ui" line="395"/>
         <source>View</source>
         <translation>Pohled</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="419"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="630"/>
+        <location filename="../guiplayer.ui" line="412"/>
         <source>Tool Bar</source>
         <translation>Nástrojový pruh</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="449"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="474"/>
+        <location filename="../guiplayer.ui" line="442"/>
         <source>Open</source>
         <translation>Otevřít</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="452"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="476"/>
+        <location filename="../guiplayer.ui" line="445"/>
         <source>Open a MIDI file</source>
         <translation>Otevřít soubor MIDI</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="460"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="478"/>
+        <location filename="../guiplayer.ui" line="453"/>
         <source>Quit</source>
         <translation>Ukončit</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="463"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="480"/>
+        <location filename="../guiplayer.ui" line="456"/>
         <source>Quit the application</source>
         <translation>Ukončit program</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="471"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="482"/>
+        <location filename="../guiplayer.ui" line="464"/>
         <source>Play</source>
         <translation>Přehrát</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="474"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="484"/>
+        <location filename="../guiplayer.ui" line="467"/>
         <source>Start playing the current MIDI file</source>
         <translation>Spustit přehrávání nynějšího souboru MIDI</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="491"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="486"/>
+        <location filename="../guiplayer.ui" line="484"/>
         <source>Pause</source>
         <translation>Pozastavit</translation>
     </message>
@@ -492,8 +493,7 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Pozastavit přehrávání</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="505"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="490"/>
+        <location filename="../guiplayer.ui" line="498"/>
         <source>Stop</source>
         <translation>Zastavit</translation>
     </message>
@@ -502,266 +502,218 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Zastavit přehrávání</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="494"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="488"/>
+        <location filename="../guiplayer.ui" line="487"/>
         <source>Pause  playback</source>
         <translation>Pozastavit přehrávání</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="508"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="492"/>
+        <location filename="../guiplayer.ui" line="501"/>
         <source>Stop playback</source>
         <translation>Zastavit přehrávání</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="519"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="494"/>
+        <location filename="../guiplayer.ui" line="512"/>
         <source>About</source>
         <translation>O programu</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="522"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="496"/>
+        <location filename="../guiplayer.ui" line="515"/>
         <source>Show the about box</source>
         <translation>Ukázat okno O programu</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="530"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="498"/>
+        <location filename="../guiplayer.ui" line="523"/>
         <source>About Qt</source>
         <translation>O Qt</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="533"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="500"/>
+        <location filename="../guiplayer.ui" line="526"/>
         <source>Show the about Qt dialog box</source>
         <translation>Ukázat okno O Qt</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="541"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="502"/>
+        <location filename="../guiplayer.ui" line="534"/>
         <source>MIDI Setup</source>
         <translation>Nastavení MIDI</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="544"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="504"/>
+        <location filename="../guiplayer.ui" line="537"/>
         <source>Select a connection for the MIDI output port</source>
         <translation>Vybrat spojení pro výstupní přípojku MIDI</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="558"/>
-        <location filename="../guiplayer.ui" line="561"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="506"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="508"/>
+        <location filename="../guiplayer.ui" line="551"/>
+        <location filename="../guiplayer.ui" line="554"/>
         <source>Show Tool Bar</source>
         <translation>Ukázat nástrojový pruh</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="564"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="511"/>
+        <location filename="../guiplayer.ui" line="557"/>
         <source>Show or hide the tool bar</source>
         <translation>Ukázat nebo skrýt nástrojový pruh</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="578"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="513"/>
+        <location filename="../guiplayer.ui" line="571"/>
         <source>Show Status Bar</source>
         <translation>Ukázat stavový řádek</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="581"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="515"/>
+        <location filename="../guiplayer.ui" line="574"/>
         <source>Show or hide the status bar</source>
         <translation>Ukázat nebo skrýt stavový řádek</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="592"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="517"/>
+        <location filename="../guiplayer.ui" line="585"/>
         <source>Lyrics and Texts</source>
         <translation>Zpěvní text a texty</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="595"/>
-        <location filename="../guiplayer.ui" line="598"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="519"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="522"/>
+        <location filename="../guiplayer.ui" line="588"/>
+        <location filename="../guiplayer.ui" line="591"/>
         <source>Show or Hide Lyrics and Texts</source>
         <translation>Ukázat nebo skrýt zpěvní text a texty</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="612"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="524"/>
+        <location filename="../guiplayer.ui" line="605"/>
         <source>Channels</source>
         <translation>Kanály</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="615"/>
-        <location filename="../guiplayer.ui" line="618"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="526"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="529"/>
+        <location filename="../guiplayer.ui" line="608"/>
+        <location filename="../guiplayer.ui" line="611"/>
         <source>Show or Hide Channels</source>
         <translation>Ukázat nebo skrýt kanály</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="632"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="531"/>
+        <location filename="../guiplayer.ui" line="625"/>
         <source>Piano Player</source>
         <translation>Klaviatura přehrávače</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="635"/>
-        <location filename="../guiplayer.ui" line="638"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="533"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="536"/>
+        <location filename="../guiplayer.ui" line="628"/>
+        <location filename="../guiplayer.ui" line="631"/>
         <source>Show or Hide Piano Player</source>
         <translation>Ukázat nebo skrýt mechanické piano</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="652"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="538"/>
+        <location filename="../guiplayer.ui" line="645"/>
         <source>Rhythm</source>
         <translation>Rytmus</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="655"/>
-        <location filename="../guiplayer.ui" line="658"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="540"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="543"/>
+        <location filename="../guiplayer.ui" line="648"/>
+        <location filename="../guiplayer.ui" line="651"/>
         <source>Show or Hide Rhythm</source>
         <translation>Ukázat nebo skrýt rytmus</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="669"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="545"/>
+        <location filename="../guiplayer.ui" line="662"/>
         <source>File Info</source>
         <translation>Informace o souboru</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="677"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="546"/>
+        <location filename="../guiplayer.ui" line="670"/>
         <source>Preferences ...</source>
         <translation>Nastavení...</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="685"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="547"/>
+        <location filename="../guiplayer.ui" line="678"/>
         <source>Play List ...</source>
         <translation>Seznam skladeb...</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="688"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="549"/>
+        <location filename="../guiplayer.ui" line="681"/>
         <source>Show Play List Editor</source>
         <translation>Ukázat nebo skrýt editor seznamu skladeb</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="696"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="551"/>
+        <location filename="../guiplayer.ui" line="689"/>
         <source>Next</source>
         <translation>Další</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="699"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="553"/>
+        <location filename="../guiplayer.ui" line="692"/>
         <source>Next File</source>
         <translation>Další soubor</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="707"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="555"/>
+        <location filename="../guiplayer.ui" line="700"/>
         <source>Prev</source>
         <translation>Předchozí</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="710"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="557"/>
+        <location filename="../guiplayer.ui" line="703"/>
         <source>Previous File</source>
         <translation>Předchozí soubor</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="718"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="559"/>
+        <location filename="../guiplayer.ui" line="711"/>
         <source>Forward</source>
         <translation>Dopředu</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="721"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="561"/>
+        <location filename="../guiplayer.ui" line="714"/>
         <source>Move play position to the next bar</source>
         <translation>Přesunout polohu přehrávání na další takt</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="729"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="563"/>
+        <location filename="../guiplayer.ui" line="722"/>
         <source>Backward</source>
         <translation>Dozadu</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="732"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="565"/>
+        <location filename="../guiplayer.ui" line="725"/>
         <source>Move play position to the previous bar</source>
         <translation>Přesunout polohu přehrávání na předchozí takt</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="740"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="567"/>
+        <location filename="../guiplayer.ui" line="733"/>
         <source>Jump...</source>
         <translation>Skočit...</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="743"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="569"/>
+        <location filename="../guiplayer.ui" line="736"/>
         <source>Move play position to any bar</source>
         <translation>Přesunout polohu přehrávání na jakýkoli takt</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="751"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="571"/>
+        <location filename="../guiplayer.ui" line="744"/>
         <source>Customize Tool Bar...</source>
         <translation>Přizpůsobit nástrojový pruh...</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="765"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="572"/>
+        <location filename="../guiplayer.ui" line="758"/>
         <source>Nothing</source>
         <translation>Nic</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="776"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="573"/>
+        <location filename="../guiplayer.ui" line="769"/>
         <source>Current Song</source>
         <translation>Nynější píseň</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="787"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="574"/>
+        <location filename="../guiplayer.ui" line="780"/>
         <source>Whole Playlist</source>
         <translation>Celý seznam skladeb</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="798"/>
-        <location filename="../guiplayer.ui" line="801"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="575"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="577"/>
+        <location filename="../guiplayer.ui" line="791"/>
+        <location filename="../guiplayer.ui" line="794"/>
         <source>Loop</source>
         <translation>Smyčka</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="804"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="580"/>
+        <location filename="../guiplayer.ui" line="797"/>
         <source>Loop between two bars</source>
         <translation>Smyčkovat mezi dvěma takty</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="809"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="582"/>
+        <location filename="../guiplayer.ui" line="802"/>
         <source>Contents</source>
         <translation>Obsah</translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="814"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_guiplayer.h" line="583"/>
+        <location filename="../guiplayer.ui" line="807"/>
         <source>Web Site</source>
         <translation>Stránky</translation>
     </message>
@@ -770,36 +722,36 @@ p, li { white-space: pre-wrap; }
     <name>HelpWindow</name>
     <message>
         <location filename="../helpwindow.cpp" line="55"/>
-        <location filename="../helpwindow.cpp" line="187"/>
+        <location filename="../helpwindow.cpp" line="182"/>
         <source>&amp;Home</source>
         <translation>&amp;Domů</translation>
     </message>
     <message>
-        <location filename="../helpwindow.cpp" line="57"/>
-        <location filename="../helpwindow.cpp" line="188"/>
+        <location filename="../helpwindow.cpp" line="56"/>
+        <location filename="../helpwindow.cpp" line="183"/>
         <source>&amp;Back</source>
         <translation>&amp;Zpět</translation>
     </message>
     <message>
-        <location filename="../helpwindow.cpp" line="59"/>
-        <location filename="../helpwindow.cpp" line="189"/>
+        <location filename="../helpwindow.cpp" line="57"/>
+        <location filename="../helpwindow.cpp" line="184"/>
         <source>Close</source>
         <translation>Zavřít</translation>
     </message>
     <message>
-        <location filename="../helpwindow.cpp" line="61"/>
-        <location filename="../helpwindow.cpp" line="190"/>
+        <location filename="../helpwindow.cpp" line="58"/>
+        <location filename="../helpwindow.cpp" line="185"/>
         <source>Zoom In</source>
         <translation>Přiblížit</translation>
     </message>
     <message>
-        <location filename="../helpwindow.cpp" line="63"/>
-        <location filename="../helpwindow.cpp" line="191"/>
+        <location filename="../helpwindow.cpp" line="59"/>
+        <location filename="../helpwindow.cpp" line="186"/>
         <source>Zoom Out</source>
         <translation>Oddálit</translation>
     </message>
     <message>
-        <location filename="../helpwindow.cpp" line="167"/>
+        <location filename="../helpwindow.cpp" line="152"/>
         <source>Help: %1</source>
         <translation>Nápověda: %1</translation>
     </message>
@@ -1456,19 +1408,16 @@ p, li { white-space: pre-wrap; }
     <name>LoopDialog</name>
     <message>
         <location filename="../loopdialog.ui" line="14"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_loopdialog.h" line="99"/>
         <source>Loop Start and End bars</source>
         <translation>Takty začátku a konce smyčky</translation>
     </message>
     <message>
         <location filename="../loopdialog.ui" line="34"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_loopdialog.h" line="100"/>
         <source>Loop Start:</source>
         <translation>Začátek smyčky:</translation>
     </message>
     <message>
         <location filename="../loopdialog.ui" line="57"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_loopdialog.h" line="101"/>
         <source>Loop End:</source>
         <translation>Konec smyčky:</translation>
     </message>
@@ -1491,67 +1440,67 @@ p, li { white-space: pre-wrap; }
         <translation>Prohlížeč zpěvního textu</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="207"/>
+        <location filename="../lyrics.cpp" line="197"/>
         <source>Lyrics</source>
         <translation>Zpěvní text</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="208"/>
+        <location filename="../lyrics.cpp" line="198"/>
         <source>Track:</source>
         <translation>Skladba:</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="209"/>
+        <location filename="../lyrics.cpp" line="199"/>
         <source>Type:</source>
         <translation>Typ:</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="210"/>
+        <location filename="../lyrics.cpp" line="200"/>
         <source>All Types</source>
         <translation>Všechny typy</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="211"/>
+        <location filename="../lyrics.cpp" line="201"/>
         <source>Texts</source>
         <translation>Texty</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="212"/>
+        <location filename="../lyrics.cpp" line="202"/>
         <source>Copyright Notice</source>
         <translation>Oznámení o autorských právech</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="213"/>
+        <location filename="../lyrics.cpp" line="203"/>
         <source>Sequence Name</source>
         <translation>Název sekvence</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="214"/>
+        <location filename="../lyrics.cpp" line="204"/>
         <source>Instrument Name</source>
         <translation>Název nástroje</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="215"/>
+        <location filename="../lyrics.cpp" line="205"/>
         <source>Lyric Events</source>
         <translation>Události zpěvního textu</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="216"/>
+        <location filename="../lyrics.cpp" line="206"/>
         <source>Marker</source>
         <translation>Značka</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="217"/>
+        <location filename="../lyrics.cpp" line="207"/>
         <source>Cue Point</source>
         <translation>Bod značky</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="219"/>
+        <location filename="../lyrics.cpp" line="209"/>
         <source>Encoding:</source>
         <translation>Kódování:</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="220"/>
+        <location filename="../lyrics.cpp" line="210"/>
         <source>Font...</source>
         <translation>Písmo...</translation>
     </message>
@@ -1560,22 +1509,22 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Písmo</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="221"/>
+        <location filename="../lyrics.cpp" line="211"/>
         <source>Full Screen</source>
         <translation>Celá obrazovka</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="222"/>
+        <location filename="../lyrics.cpp" line="212"/>
         <source>Copy to clipboard</source>
         <translation>Kopírovat do schránky</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="223"/>
+        <location filename="../lyrics.cpp" line="213"/>
         <source>Save to file...</source>
         <translation>Uložit do souboru...</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="224"/>
+        <location filename="../lyrics.cpp" line="214"/>
         <source>Print...</source>
         <translation>Tisk...</translation>
     </message>
@@ -1607,32 +1556,32 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Kanály MIDI</translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="151"/>
+        <location filename="../pianola.cpp" line="150"/>
         <source>Player Piano</source>
         <translation>Klaviatura přehrávače</translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="152"/>
+        <location filename="../pianola.cpp" line="151"/>
         <source>Show all channels</source>
         <translation>Ukázat všechny kanály</translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="153"/>
+        <location filename="../pianola.cpp" line="152"/>
         <source>Hide all channels</source>
         <translation>Skrýt všechny kanály</translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="154"/>
+        <location filename="../pianola.cpp" line="153"/>
         <source>Tighten the number of keys</source>
         <translation>Zmenšit počet kláves</translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="155"/>
+        <location filename="../pianola.cpp" line="154"/>
         <source>View Full Screen</source>
         <translation>Zobrazit na celou obrazovku</translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="157"/>
+        <location filename="../pianola.cpp" line="156"/>
         <source>Channel %1</source>
         <translation>Kanál %1</translation>
     </message>
@@ -1727,67 +1676,56 @@ p, li { white-space: pre-wrap; }
     <name>PrefsDialog</name>
     <message>
         <location filename="../prefsdialog.ui" line="14"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="369"/>
         <source>Dialog</source>
         <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="28"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="378"/>
         <source>General</source>
         <translation>Obecné</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="34"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="370"/>
         <source>Qt Widgets Style:</source>
         <translation>Styl grafických prvků Qt:</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="57"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="372"/>
         <source>Start Playback Automatically After Loading</source>
         <translation>Zahájit přehrávání automaticky po nahrání</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="110"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="375"/>
         <source>Use Internal Icon Theme</source>
         <translation>Použít vnitřní motiv ikon</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="124"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="377"/>
         <source>Sticky Window Snapping</source>
         <translation>Lepivé přichytávání oken</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="117"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="376"/>
         <source>Forced Dark Mode</source>
         <translation>Vynucený tmavý režim</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="97"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="374"/>
         <source>Percussion MIDI Channel:</source>
         <translation>Kanál MIDI bicích:</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="47"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="371"/>
         <source>MIDI System Exclusive Reset:</source>
         <translation>Obnovení výchozího nastavení MIDI System Exclusive:</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="77"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="373"/>
         <source>Advance Automatically to the Next Playlist item</source>
         <translation>Automaticky přejít na další položku seznamu skladeb</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="154"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="385"/>
         <source>Lyrics</source>
         <translation>Zpěvní text</translation>
     </message>
@@ -1797,89 +1735,71 @@ p, li { white-space: pre-wrap; }
         <location filename="../prefsdialog.ui" line="204"/>
         <location filename="../prefsdialog.ui" line="322"/>
         <location filename="../prefsdialog.ui" line="332"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="379"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="380"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="383"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="390"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="391"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="177"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="381"/>
         <source>Future Text Color</source>
         <translation>Barva budoucího textu</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="194"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="382"/>
         <source>Text Font</source>
         <translation>Písmo textu</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="231"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="384"/>
         <source>Past Text Color</source>
         <translation>Barva minulého textu</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="262"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="398"/>
         <source>Player Piano</source>
         <translation>Klaviatura přehrávače</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="268"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="386"/>
         <source>Single Highlight Color</source>
         <translation>Barva zvýraznění</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="282"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="387"/>
         <source>Note Highlighting</source>
         <translation>Zvýraznění not</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="292"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="388"/>
         <source>Show Note Names</source>
         <translation>Ukázat názvy not</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="299"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="389"/>
         <source>Note Names Font</source>
         <translation>Písmo názvů not</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="342"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="392"/>
         <source>Note Velocity to Color Tint</source>
         <translation>Dynamika MIDI (velocity) noty na barevný odstín</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="357"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="393"/>
         <source>Never</source>
         <translation>Nikdy</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="362"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="394"/>
         <source>Minimal</source>
         <translation>Minimální</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="367"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="395"/>
         <source>When Activated</source>
         <translation>Při zapnutí</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="372"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_prefsdialog.h" line="396"/>
         <source>Always</source>
         <translation>Vždy</translation>
     </message>
@@ -1963,82 +1883,87 @@ za určitých podmínek; podrobnosti viz LICENCE.</translation>
     </message>
 </context>
 <context>
+    <name>Sequence</name>
+    <message>
+        <location filename="../sequence.cpp" line="627"/>
+        <source> in RIFF container of type %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sequence.cpp" line="690"/>
+        <source>SMF type %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sequence.cpp" line="959"/>
+        <source>WRK file version v%1.%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ToolBarEditDialog</name>
     <message>
         <location filename="../toolbareditdialog.ui" line="14"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="137"/>
         <source>Dialog</source>
         <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="25"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="138"/>
         <source>remove</source>
         <translation>Odstranit</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="39"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="139"/>
         <source>add</source>
         <translation>Přidat</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="53"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="140"/>
         <source>up</source>
         <translation>Nahoru</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="67"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="141"/>
         <source>down</source>
         <translation>Dolů</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="81"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="142"/>
         <source>Icon Only</source>
         <translation>Pouze ikona</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="86"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="143"/>
         <source>Text Only</source>
         <translation>Pouze text</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="91"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="144"/>
         <source>Text Beside Icon</source>
         <translation>Text vedle ikony</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="96"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="145"/>
         <source>Text Under Icon</source>
         <translation>Text pod ikonou</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="101"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="146"/>
         <source>Follow Style</source>
         <translation>Sledovat styl</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="119"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="148"/>
         <source>Style of the Tool Buttons</source>
         <translation>Styl tlačítek nástrojů</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="132"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="149"/>
         <source>Available Actions</source>
         <translation>Dostupné činnosti</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="139"/>
-        <location filename="../build/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="150"/>
         <source>Selected Actions</source>
         <translation>Vybrané činnosti</translation>
     </message>
