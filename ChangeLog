@@ -1,3 +1,6 @@
+2021-10-23
+    * New build option USE_QT to choose which Qt major version (5 or 6) to prefer. By default (if not set) it uses whatever is found.
+
 2021-10-20
     * fix for crash in Linux when changing MIDI output connection, and there are not suitable MIDI ports available.
 

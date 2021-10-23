@@ -36,19 +36,29 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 option(BUILD_DOCS "Process Markdown sources of man pages and help files" ON)
 option(EMBED_TRANSLATIONS "Embed translations instead of installing" OFF)
+option(USE_QT "Choose which Qt major version (5 or 6) to prefer. By default uses whatever is found")
 
 include(SCMRevision)
 
-find_package (QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
-find_package (Qt${QT_VERSION_MAJOR} COMPONENTS Gui Widgets PrintSupport LinguistTools REQUIRED)
+if (USE_QT)
+    if (NOT (USE_QT EQUAL 5 OR USE_QT EQUAL 6))
+        message(FATAL_ERROR "Wrong Qt major version. Only 5 and 6 are valid options")
+    endif()
+    find_package(QT NAMES Qt${USE_QT})
+else()
+    find_package(QT NAMES Qt5 Qt6)
+endif()
+
+if(QT_VERSION VERSION_LESS 6.0.0)
+    find_package (Qt5 COMPONENTS Gui Widgets PrintSupport LinguistTools REQUIRED)
+else()
+    find_package (Qt6 COMPONENTS Gui Widgets PrintSupport LinguistTools Core5Compat REQUIRED)
+endif()
+
 find_package (Drumstick 2.4 COMPONENTS File RT Widgets REQUIRED)
 
 find_package( PkgConfig )
 pkg_check_modules( UCHARDET REQUIRED IMPORTED_TARGET uchardet )
-
-if(QT_VERSION VERSION_GREATER_EQUAL 6.0.0)
-    find_package(Qt6 COMPONENTS Core5Compat REQUIRED)
-endif()
 
 SET(SOURCES
     channels.cpp
