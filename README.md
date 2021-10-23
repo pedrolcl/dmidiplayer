@@ -18,6 +18,10 @@ Some key features:
 * Lyrics, Piano Player and MIDI Channels views
 * Supports MID/KAR/RMI (Standard MIDI Files) and WRK (Cakewalk) file formats
 
+New in v1.5.2:
+* New build option USE_QT to choose among Qt major versions (5 or 6). By default (if not set) it uses whatever is found.
+* Fix for crash in Linux when using the MIDI connections dialog, and there are not suitable MIDI ports available.
+
 New in v1.5.1:
 
 * GH ticket #6: The dependency target "update_helpfiles" of target "dmidiplayer" does not exist
@@ -99,8 +103,8 @@ This multiplatform version offers equivalent functionality replacing Drumstick::
 Alright, these are the build requirements:
 
 * C++11 compiler
-* [Qt 5](https://www.qt.io/download)
-* [Drumstick 2.3](https://sourceforge.net/projects/drumstick/)
+* [Qt 5](https://www.qt.io/download) >= 5.9 or Qt6 >= 6.2 (experimental)
+* [Drumstick 2.4](https://sourceforge.net/projects/drumstick/)
 * [Uchardet 0.0.7](https://www.freedesktop.org/wiki/Software/uchardet/)
 * [pandoc](https://pandoc.org/)
 * [CMake 3.14](https://cmake.org/)
