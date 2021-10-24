@@ -30,6 +30,15 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.5.2" date="2021-10-24">
+            <description>
+                <p>This release includes the following fixes and features</p>
+                <ul>
+                    <li>New build option USE_QT to choose among Qt major versions (5 or 6). By default (if not set) it uses whatever is found.</li>
+                    <li>Fix for crash in Linux when using the MIDI connections dialog, and there are not suitable MIDI ports available.</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.5.1" date="2021-09-19">
             <description>
                 <p>This release fixes the following issues:</p>
