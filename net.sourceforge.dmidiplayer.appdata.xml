@@ -36,6 +36,7 @@
                 <ul>
                     <li>New build option USE_QT to choose among Qt major versions (5 or 6). By default (if not set) it uses whatever is found.</li>
                     <li>Fix for crash in Linux when using the MIDI connections dialog, and there are not suitable MIDI ports available.</li>
+                    <li>Czech translation updated. Thanks to Pavel Fric.</li>
                 </ul>
             </description>
         </release>

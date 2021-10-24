@@ -166,52 +166,52 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.cpp" line="474"/>
         <source>All files (*.kar *.mid *.midi *.rmi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;RIFF MIDI Files (*.rmi);;Cakewalk files (*.wrk)</source>
-        <translation type="unfinished"></translation>
+        <translation>Všechny soubory (*.kar *.mid *.midi *.wrk);;Soubory Karaoke (*.kar);;Soubory MIDI (*.mid *.midi);;Soubory MIDI RIFF (*.rmi);;Soubory Cakewalk (*.wrk)</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1039"/>
         <source>File: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubor: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1042"/>
         <source>Format: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1046"/>
         <source>Copyright: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopírovací právo: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1050"/>
         <source>Karaoke type: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1054"/>
         <source>Karaoke version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Verze karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1058"/>
         <source>Karaoke info: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Informace o karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1062"/>
         <source>Karaoke language: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Jazyk karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1066"/>
         <source>Karaoke title: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Název karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1070"/>
         <source>Karaoke things: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Věci karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <source>All files (*.kar *.mid *.midi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;Cakewalk files (*.wrk)</source>
@@ -1887,17 +1887,17 @@ za určitých podmínek; podrobnosti viz LICENCE.</translation>
     <message>
         <location filename="../sequence.cpp" line="627"/>
         <source> in RIFF container of type %1</source>
-        <translation type="unfinished"></translation>
+        <translation> v RIFF kontejneru typu %1</translation>
     </message>
     <message>
         <location filename="../sequence.cpp" line="690"/>
         <source>SMF type %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ SMF %1</translation>
     </message>
     <message>
         <location filename="../sequence.cpp" line="959"/>
         <source>WRK file version v%1.%2</source>
-        <translation type="unfinished"></translation>
+        <translation>Verze souboru WRK v%1.%2</translation>
     </message>
 </context>
 <context>
