@@ -18,13 +18,13 @@ cmake_minimum_required(VERSION 3.14)
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.12" CACHE STRING "Minimum OS X deployment version")
 
 project ( dmidiplayer
-    VERSION 1.5.2
+    VERSION 1.5.3
     LANGUAGES CXX
     DESCRIPTION "Drumstick MIDI File Player Multiplatform Program"
     HOMEPAGE_URL "https://sourceforge.net/p/dmidiplayer/"
 )
 
-set(PROJECT_RELEASE_DATE "October 24, 2021")
+#set(PROJECT_RELEASE_DATE "December 30, 2021")
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -55,9 +55,9 @@ else()
     find_package (Qt6 COMPONENTS Gui Widgets PrintSupport LinguistTools Core5Compat REQUIRED)
 endif()
 
-find_package (Drumstick 2.4 COMPONENTS File RT Widgets REQUIRED)
+find_package (Drumstick 2.5 COMPONENTS File RT Widgets REQUIRED)
 
-find_package( PkgConfig )
+find_package ( PkgConfig )
 pkg_check_modules( UCHARDET REQUIRED IMPORTED_TARGET uchardet )
 
 SET(SOURCES
