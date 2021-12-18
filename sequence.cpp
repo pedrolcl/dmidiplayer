@@ -65,7 +65,7 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
     connect(m_smf, &QSmf::signalSMFChanPress, this, &Sequence::smfChanPressEvent);
     connect(m_smf, &QSmf::signalSMFMetaMisc, this, &Sequence::smfMetaEvent);
     connect(m_smf, &QSmf::signalSMFSysex, this, &Sequence::smfSysexEvent);
-    connect(m_smf, &QSmf::signalSMFText, this, &Sequence::smfUpdateLoadProgress);
+    connect(m_smf, &QSmf::signalSMFText2, this, &Sequence::smfUpdateLoadProgress);
     connect(m_smf, &QSmf::signalSMFTempo, this, &Sequence::smfTempoEvent);
     connect(m_smf, &QSmf::signalSMFTrackStart, this, &Sequence::smfTrackStartEvent);
     connect(m_smf, &QSmf::signalSMFTrackEnd, this, &Sequence::smfTrackEnd);
@@ -105,6 +105,7 @@ Sequence::Sequence(QObject *parent) : QObject(parent),
     connect(m_wrk, &QWrk::signalWRKSegment2, this, &Sequence::wrkSegment);
     connect(m_wrk, &QWrk::signalWRKChord, this, &Sequence::wrkChord);
     connect(m_wrk, &QWrk::signalWRKExpression2, this, &Sequence::wrkExpression);
+    connect(m_wrk, &QWrk::signalWRKMarker2, this, &Sequence::wrkMarker);
     /* m_wrk->setTextCodec(nullptr); // important !!! */
 
     m_handle = uchardet_new();
@@ -1321,6 +1322,15 @@ void Sequence::wrkKeySig(int bar, int alt)
         }
     }
     appendWRKEvent(time, ev);
+}
+
+void Sequence::wrkMarker(long time, int smpte, const QByteArray &data)
+{
+    Q_UNUSED(smpte)
+    //qDebug() << Q_FUNC_INFO << time << smpte << data;
+    if (!data.isEmpty()) {
+        appendWRKmetadata(1, time, TextType::Marker, data);
+    }
 }
 
 void Sequence::wrkEndOfFile()

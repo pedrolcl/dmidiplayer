@@ -185,6 +185,7 @@ public slots:
     void wrkExpression(int track, long time, int code, const QByteArray& text);
     void wrkTimeSignatureEvent(int bar, int num, int den);
     void wrkKeySig(int bar, int alt);
+    void wrkMarker(long time, int smpte, const QByteArray &data);
 
 private: // methods
     void sort();
