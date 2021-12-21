@@ -30,6 +30,16 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.5.3" date="2021-12-24">
+            <description>
+                <p>This release includes the following changes</p>
+                <ul>
+                    <li>After drumstick ticket #37: WRK format markers are supported.</li>
+                    <li>Replaced deprecated signals from drumstick-file when building with Qt6.</li>
+                    <li>Requires: drumstick-2.5.</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.5.2" date="2021-10-24">
             <description>
                 <p>This release includes the following fixes and features</p>
