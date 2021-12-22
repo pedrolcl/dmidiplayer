@@ -18,6 +18,10 @@ Some key features:
 * Lyrics, Piano Player and MIDI Channels views
 * Supports MID/KAR/RMI (Standard MIDI Files) and WRK (Cakewalk) file formats
 
+New in v1.5.3:
+* After drumstick ticket #37: WRK format markers are supported.
+* Replaced deprecated signals from drumstick-file when building with Qt6.
+
 New in v1.5.2:
 * New build option USE_QT to choose among Qt major versions (5 or 6). By default (if not set) it uses whatever is found.
 * Fix for crash in Linux when using the MIDI connections dialog, and there are not suitable MIDI ports available.

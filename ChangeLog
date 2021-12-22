@@ -1,3 +1,6 @@
+2021-12-22
+    * Release 1.5.3
+
 2021-12-18
     * replaced deprecated signalSMFText() by signalSMFText2()
     * added support for Cakewalk (WRK) format markers
