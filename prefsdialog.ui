@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Preferences</string>
   </property>
   <property name="windowIcon">
    <iconset resource="guiplayer.qrc">
@@ -408,7 +408,6 @@
   <tabstop>cboNoteNames</tabstop>
  </tabstops>
  <resources>
-  <include location="guiplayer.qrc"/>
   <include location="guiplayer.qrc"/>
  </resources>
  <connections>
