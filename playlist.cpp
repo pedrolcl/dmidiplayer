@@ -1,6 +1,6 @@
 /*
     Drumstick MIDI/Karaoke Player
-    Copyright (C) 2009-2021 Pedro Lopez-Cabanillas <plcl@users.sf.net>
+    Copyright (C) 2009-2022 Pedro Lopez-Cabanillas <plcl@users.sf.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
