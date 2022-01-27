@@ -67,7 +67,8 @@ GUIPlayer::GUIPlayer(QWidget *parent)
     m_pd(nullptr),
     m_trq(nullptr),
     m_trp(nullptr),
-    m_trl(nullptr)
+    m_trl(nullptr),
+    m_currentLang(nullptr)
 {
     QLocale loc;
     QString lang = Settings::instance()->language();
@@ -949,6 +950,13 @@ void GUIPlayer::showEvent(QShowEvent *event)
 void GUIPlayer::createLanguageMenu()
 {
     QString currentLang = Settings::instance()->language();
+    if (currentLang.isEmpty()) {
+        QLocale locale;
+        if (locale.language() == QLocale::C || locale.language() == QLocale::English)
+            currentLang = "C";
+        else
+            currentLang = locale.name().left(2);
+    }
     QActionGroup *languageGroup = new QActionGroup(this);
     languageGroup->setExclusive(true);
     connect(languageGroup, &QActionGroup::triggered, this, &GUIPlayer::slotSwitchLanguage);
@@ -1055,10 +1063,10 @@ void GUIPlayer::slotSwitchLanguage(QAction *action)
 {
     QString lang = action->data().toString();
     QLocale qlocale(lang);
-    QString localeName = qlocale.nativeLanguageName();
+    QString langName = lang == "C" ? QLocale::languageToString(QLocale::English) : qlocale.nativeLanguageName();
     if ( QMessageBox::question (this, tr("Language Changed"),
             tr("The language for this application is going to change to %1. "
-               "Do you want to continue?").arg(localeName),
+               "Do you want to continue?").arg(langName),
             QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes )
     {
         Settings::instance()->setLanguage(lang);

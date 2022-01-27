@@ -202,7 +202,7 @@ void Settings::internalRead(QSettings &settings)
     m_showStatusBar = settings.value("ShowStatusBar", true).toBool();
     m_showToolBar = settings.value("ShowToolBar", true).toBool();
     m_drumsChannel = settings.value("DrumsChannel", MIDI_GM_STD_DRUM_CHANNEL+1).toInt();
-    m_language = settings.value("Language", QLocale::system().name()).toString();
+    m_language = settings.value("Language").toString();
     m_darkMode = settings.value("DarkMode", false).toBool();
     m_autoPlay = settings.value("AutoPlay", true).toBool();
     m_autoAdvance = settings.value("AutoAdvance", true).toBool();
