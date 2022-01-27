@@ -185,7 +185,7 @@ private:
     QPointer<PlayList> m_playList;
     QPointer<ToolBarEditDialog> m_toolbarEditor;
     QPointer<HelpWindow> m_helpWindow;
-    QTranslator *m_trq, *m_trp, *m_trl;
+    QPointer<QTranslator> m_trq, m_trp, m_trl;
     QAction *m_currentLang;
     bool m_firstShown{true};
     int m_newSliderPosition{0};
