@@ -1,3 +1,6 @@
+2022-02-05
+    * Load translations earlier, for command line options
+
 2022-01-27
     * Avoid loading translations for English
 

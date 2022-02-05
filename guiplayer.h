@@ -26,7 +26,6 @@
 #include <QList>
 #include <QHash>
 #include <QPointer>
-#include <QTranslator>
 #include <QThread>
 
 #include "connections.h"
@@ -185,7 +184,6 @@ private:
     QPointer<PlayList> m_playList;
     QPointer<ToolBarEditDialog> m_toolbarEditor;
     QPointer<HelpWindow> m_helpWindow;
-    QPointer<QTranslator> m_trq, m_trp, m_trl;
     QAction *m_currentLang;
     bool m_firstShown{true};
     int m_newSliderPosition{0};

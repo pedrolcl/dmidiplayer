@@ -1365,7 +1365,7 @@ Versión de karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     <name>PrefsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Diálogo</translation>
+        <translation type="vanished">Diálogo</translation>
     </message>
     <message>
         <source>General</source>
@@ -1483,6 +1483,10 @@ Versión de karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
         <source>Advance Automatically to the Next Playlist item</source>
         <translation>Avance automático en la lista de reproducción</translation>
     </message>
+    <message>
+        <source>Preferences</source>
+        <translation>Preferencias</translation>
+    </message>
 </context>
 <context>
     <name>QCoreApplication</name>
@@ -1494,7 +1498,7 @@ under certain conditions; see the LICENSE for details.</source>
         <translation>Copyright (C) 2006-2022 Pedro Lopez-Cabanillas
 Este programa no tiene ABSOLUTAMENTE NINGUNA GARANTÍA;
 Esto es software libre; y usted puede redistribuirlo
-bajo ciertas condiciones; vea la LICENCIA para detalles.</translation>
+bajo ciertas condiciones; vea LICENSE para detalles.</translation>
     </message>
     <message>
         <source>Fatal error from the Operating System. This usually happens when the OS doesn&apos;t have MIDI support, or the MIDI support is not enabled. Please check your OS/MIDI configuration.</source>
@@ -1515,6 +1519,14 @@ bajo ciertas condiciones; vea la LICENCIA para detalles.</translation>
     <message>
         <source>MIDI Out Connection.</source>
         <translation>Conexión de salida MIDI.</translation>
+    </message>
+    <message>
+        <source>Input SMF/KAR/WRK file name.</source>
+        <translation>Nombre de archivo SMF/KAR/WRK de entrada.</translation>
+    </message>
+    <message>
+        <source>File not found:</source>
+        <translation>Archivo no encontrado:</translation>
     </message>
 </context>
 <context>

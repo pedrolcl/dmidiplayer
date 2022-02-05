@@ -27,39 +27,41 @@
 
 int main(int argc, char *argv[])
 {
-    const QString PGM_DESCRIPTION = QCoreApplication::tr(
+    const char* PGM_DESCRIPTION = QT_TRANSLATE_NOOP("QCoreApplication",
         "Copyright (C) 2006-2022 Pedro Lopez-Cabanillas\n"
         "This program comes with ABSOLUTELY NO WARRANTY;\n"
         "This is free software, and you are welcome to redistribute it\n"
         "under certain conditions; see the LICENSE for details.");
 
-    const QString errorstr = QCoreApplication::tr(
+    const char* errorstr = QT_TRANSLATE_NOOP("QCoreApplication",
         "Fatal error from the Operating System. "
         "This usually happens when the OS doesn't have MIDI support, "
         "or the MIDI support is not enabled. "
         "Please check your OS/MIDI configuration.");
 
-    const QString strVersion = QT_STRINGIFY(VERSION);
+    const char* strVersion = QT_STRINGIFY(VERSION);
 
-    QCoreApplication::setOrganizationName(QSTR_DOMAIN);
-    QCoreApplication::setOrganizationDomain(QSTR_DOMAIN);
-    QCoreApplication::setApplicationName(QSTR_APPNAME);
-    QCoreApplication::setApplicationVersion(strVersion);
 #if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
+    QApplication app(argc, argv);
+    QCoreApplication::setOrganizationName(QSTR_DOMAIN);
+    QCoreApplication::setOrganizationDomain(QSTR_DOMAIN);
+    QCoreApplication::setApplicationName(QSTR_APPNAME);
+    QCoreApplication::setApplicationVersion(strVersion);
 #if defined(Q_OS_WINDOWS)
     QApplication::setStyle("fusion");
 #endif
-    QApplication app(argc, argv);
-    app.setWindowIcon(QIcon(":/dmidiplayer.png"));
+    QApplication::setWindowIcon(QIcon(":/dmidiplayer.png"));
+
+    Settings::instance()->loadTranslations();
 
     QCommandLineParser parser;
-    parser.setApplicationDescription(QString("%1 v.%2\n\n%3").arg(
+    parser.setApplicationDescription(QString("%1 v%2\n\n%3").arg(
         QCoreApplication::applicationName(),
         QCoreApplication::applicationVersion(),
-        PGM_DESCRIPTION));
+        QCoreApplication::tr(PGM_DESCRIPTION)));
     auto helpOption = parser.addHelpOption();
     auto versionOption = parser.addVersionOption();
     QCommandLineOption portableOption({"p", "portable"}, QCoreApplication::tr("Portable settings mode."));
@@ -70,12 +72,8 @@ int main(int argc, char *argv[])
     parser.addOption(driverOption);
     QCommandLineOption portOption({"c", "connection"}, QCoreApplication::tr("MIDI Out Connection."), "connection");
     parser.addOption(portOption);
-    parser.addPositionalArgument("file", "Input SMF/KAR/WRK file name.", "file");
+    parser.addPositionalArgument("file", QCoreApplication::tr("Input SMF/KAR/WRK file name."), "[file]");
     parser.process(app);
-
-    if (parser.isSet(versionOption) || parser.isSet(helpOption)) {
-        return 0;
-    }
 
     QPixmap px(":/splash.png");
     QSplashScreen splash(px);
@@ -108,7 +106,7 @@ int main(int argc, char *argv[])
         if (f.exists())
             fileNames += f.canonicalFilePath();
         else
-            qWarning() << "File not found: " << a;
+            qWarning() << QCoreApplication::tr("File not found:") << a;
     }
 
     try {
@@ -124,8 +122,8 @@ int main(int argc, char *argv[])
         w.show();
         return app.exec();
     } catch (...) {
-        QMessageBox::critical(0, "Error", errorstr );
-        qWarning() << errorstr;
+        QMessageBox::critical(0, "Error", QCoreApplication::tr(errorstr) );
+        qWarning() << QCoreApplication::tr(errorstr);
     }
     return 0;
 }

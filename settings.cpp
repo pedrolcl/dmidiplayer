@@ -32,7 +32,10 @@
 using namespace drumstick::rt;
 using namespace drumstick::widgets;
 
-Settings::Settings(QObject *parent) : QObject(parent)
+Settings::Settings(QObject *parent) : QObject(parent),
+    m_trq(nullptr),
+    m_trp(nullptr),
+    m_trl(nullptr)
 {
     ResetDefaults();
     ReadSettings();
@@ -347,6 +350,60 @@ int Settings::helpWindowFontSize() const
 void Settings::setHelpWindowFontSize(int newHelpWindowFontSize)
 {
     m_helpWindowFontSize = newHelpWindowFontSize;
+}
+
+void Settings::loadTranslations()
+{
+    QLocale loc;
+    QString lang = language();
+    if (!lang.isEmpty()) {
+        loc = QLocale(lang);
+    }
+    if (m_trq) {
+        QCoreApplication::removeTranslator(m_trq);
+        delete m_trq;
+    }
+    if (m_trp) {
+        QCoreApplication::removeTranslator(m_trp);
+        delete m_trp;
+    }
+    if (m_trl) {
+        QCoreApplication::removeTranslator(m_trl);
+        delete m_trl;
+    }
+    if (loc.language() != QLocale::C && loc.language() != QLocale::English) {
+        bool ok = false;
+        m_trq = new QTranslator(this);
+        if (m_trq->load(loc, "qt", "_", Settings::systemLocales())) {
+            ok = QCoreApplication::installTranslator(m_trq);
+        }
+        if(!ok) {
+            qWarning() << "Failure loading Qt system translations for" << lang
+                       << "from" << Settings::systemLocales();
+            delete m_trq;
+        }
+        ok = false;
+        m_trp = new QTranslator(this);
+        if (m_trp->load(loc, "dmidiplayer", "_", Settings::localeDirectory())) {
+            ok = QCoreApplication::installTranslator(m_trp);
+        }
+        if (!ok) {
+            qWarning() << "Failure loading application translations for" << lang
+                       << "from" << Settings::localeDirectory();
+            delete m_trp;
+        }
+        ok = false;
+        m_trl = new QTranslator(this);
+        if (m_trl->load(loc, "drumstick-widgets", "_", Settings::drumstickLocales())) {
+            ok = QCoreApplication::installTranslator(m_trl);
+        }
+        if (!ok) {
+            qWarning() << "Failure loading widgets library translations for" << lang
+                       << "from" << Settings::drumstickLocales();
+            delete m_trl;
+        }
+    }
+    retranslatePalettes();
 }
 
 const QByteArray &Settings::pianoWindowState() const

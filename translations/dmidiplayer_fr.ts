@@ -114,159 +114,159 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>GUIPlayer</name>
     <message>
-        <location filename="../guiplayer.cpp" line="300"/>
+        <location filename="../guiplayer.cpp" line="281"/>
         <source>Please, load a song</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="310"/>
+        <location filename="../guiplayer.cpp" line="291"/>
         <source>Playing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="319"/>
+        <location filename="../guiplayer.cpp" line="300"/>
         <source>Paused</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="332"/>
+        <location filename="../guiplayer.cpp" line="313"/>
         <source>Stopped</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="335"/>
+        <location filename="../guiplayer.cpp" line="316"/>
         <source>Not initialized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="383"/>
+        <location filename="../guiplayer.cpp" line="364"/>
         <source>Loading %1 file...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="457"/>
+        <location filename="../guiplayer.cpp" line="438"/>
         <source>file %1 couldn&apos;t be opened</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="473"/>
+        <location filename="../guiplayer.cpp" line="454"/>
         <source>Open MIDI File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="474"/>
+        <location filename="../guiplayer.cpp" line="455"/>
         <source>All files (*.kar *.mid *.midi *.rmi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;RIFF MIDI Files (*.rmi);;Cakewalk files (*.wrk)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1039"/>
+        <location filename="../guiplayer.cpp" line="1010"/>
         <source>File: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1042"/>
+        <location filename="../guiplayer.cpp" line="1013"/>
         <source>Format: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1046"/>
+        <location filename="../guiplayer.cpp" line="1017"/>
         <source>Copyright: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1050"/>
+        <location filename="../guiplayer.cpp" line="1021"/>
         <source>Karaoke type: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1054"/>
+        <location filename="../guiplayer.cpp" line="1025"/>
         <source>Karaoke version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1058"/>
+        <location filename="../guiplayer.cpp" line="1029"/>
         <source>Karaoke info: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1062"/>
+        <location filename="../guiplayer.cpp" line="1033"/>
         <source>Karaoke language: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1066"/>
+        <location filename="../guiplayer.cpp" line="1037"/>
         <source>Karaoke title: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1070"/>
+        <location filename="../guiplayer.cpp" line="1041"/>
         <source>Karaoke things: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="687"/>
+        <location filename="../guiplayer.cpp" line="668"/>
         <source>Jump to Bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="688"/>
+        <location filename="../guiplayer.cpp" line="669"/>
         <source>Bar number:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="784"/>
+        <location filename="../guiplayer.cpp" line="765"/>
         <source>Dropped file %1 is not supported</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="972"/>
+        <location filename="../guiplayer.cpp" line="960"/>
         <source>&lt;p&gt;This program is developed and translated thanks to the volunteer work of many people from around the world. If you want to join the team or have any question, please visit the web site at &lt;a href=&apos;http://sourceforge.net/projects/dmidiplayer/&apos;&gt;SourceForge&lt;/a&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="977"/>
+        <location filename="../guiplayer.cpp" line="965"/>
         <source>Translation Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1018"/>
+        <location filename="../guiplayer.cpp" line="989"/>
         <source>Language Changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1019"/>
+        <location filename="../guiplayer.cpp" line="990"/>
         <source>The language for this application is going to change to %1. Do you want to continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1037"/>
+        <location filename="../guiplayer.cpp" line="1008"/>
         <source>&lt;b&gt;No file loaded&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1044"/>
-        <location filename="../guiplayer.cpp" line="1048"/>
-        <location filename="../guiplayer.cpp" line="1052"/>
-        <location filename="../guiplayer.cpp" line="1056"/>
-        <location filename="../guiplayer.cpp" line="1060"/>
-        <location filename="../guiplayer.cpp" line="1064"/>
-        <location filename="../guiplayer.cpp" line="1068"/>
-        <location filename="../guiplayer.cpp" line="1076"/>
+        <location filename="../guiplayer.cpp" line="1015"/>
+        <location filename="../guiplayer.cpp" line="1019"/>
+        <location filename="../guiplayer.cpp" line="1023"/>
+        <location filename="../guiplayer.cpp" line="1027"/>
+        <location filename="../guiplayer.cpp" line="1031"/>
+        <location filename="../guiplayer.cpp" line="1035"/>
+        <location filename="../guiplayer.cpp" line="1039"/>
+        <location filename="../guiplayer.cpp" line="1047"/>
         <source>&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1077"/>
+        <location filename="../guiplayer.cpp" line="1048"/>
         <source>SMF Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1084"/>
+        <location filename="../guiplayer.cpp" line="1055"/>
         <source>Playlist not saved</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1085"/>
+        <location filename="../guiplayer.cpp" line="1056"/>
         <source>The current playlist has changed, but it is not saved. The changes will be lost when closing the program.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -664,31 +664,31 @@ p, li { white-space: pre-wrap; }
     <name>HelpWindow</name>
     <message>
         <location filename="../helpwindow.cpp" line="55"/>
-        <location filename="../helpwindow.cpp" line="182"/>
+        <location filename="../helpwindow.cpp" line="186"/>
         <source>&amp;Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../helpwindow.cpp" line="56"/>
-        <location filename="../helpwindow.cpp" line="183"/>
+        <location filename="../helpwindow.cpp" line="187"/>
         <source>&amp;Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../helpwindow.cpp" line="57"/>
-        <location filename="../helpwindow.cpp" line="184"/>
+        <location filename="../helpwindow.cpp" line="188"/>
         <source>Close</source>
         <translation>Fermer</translation>
     </message>
     <message>
         <location filename="../helpwindow.cpp" line="58"/>
-        <location filename="../helpwindow.cpp" line="185"/>
+        <location filename="../helpwindow.cpp" line="189"/>
         <source>Zoom In</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../helpwindow.cpp" line="59"/>
-        <location filename="../helpwindow.cpp" line="186"/>
+        <location filename="../helpwindow.cpp" line="190"/>
         <source>Zoom Out</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1609,11 +1609,6 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PrefsDialog</name>
     <message>
-        <location filename="../prefsdialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../prefsdialog.ui" line="28"/>
         <source>General</source>
         <translation>Général</translation>
@@ -1651,6 +1646,11 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="47"/>
         <source>MIDI System Exclusive Reset:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../prefsdialog.ui" line="14"/>
+        <source>Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1778,23 +1778,33 @@ under certain conditions; see the LICENSE for details.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="65"/>
+        <location filename="../playermain.cpp" line="67"/>
         <source>Portable settings mode.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="66"/>
+        <location filename="../playermain.cpp" line="68"/>
         <source>Portable settings file name.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="69"/>
+        <location filename="../playermain.cpp" line="71"/>
         <source>MIDI Out Driver.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="71"/>
+        <location filename="../playermain.cpp" line="73"/>
         <source>MIDI Out Connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playermain.cpp" line="75"/>
+        <source>Input SMF/KAR/WRK file name.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playermain.cpp" line="109"/>
+        <source>File not found:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1815,17 +1825,17 @@ under certain conditions; see the LICENSE for details.</source>
 <context>
     <name>Sequence</name>
     <message>
-        <location filename="../sequence.cpp" line="627"/>
+        <location filename="../sequence.cpp" line="628"/>
         <source> in RIFF container of type %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sequence.cpp" line="690"/>
+        <location filename="../sequence.cpp" line="691"/>
         <source>SMF type %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sequence.cpp" line="959"/>
+        <location filename="../sequence.cpp" line="960"/>
         <source>WRK file version v%1.%2</source>
         <translation type="unfinished"></translation>
     </message>
