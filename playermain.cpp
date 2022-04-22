@@ -52,6 +52,7 @@ int main(int argc, char *argv[])
 #if defined(Q_OS_WINDOWS)
     QApplication::setStyle("fusion");
 #endif
+    QGuiApplication::setDesktopFileName("net.sourceforge.dmidiplayer");
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon(":/dmidiplayer.png"));
 
