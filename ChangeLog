@@ -1,3 +1,8 @@
+2022-04-30
+    * Bumped required drumstick version to 2.6
+    * Better compatibility with Qt6
+    * Bumped version to 1.5.4
+
 2022-04-22
     * Using QGuiApplication::setDesktopFileName to fix the wrong icon in KDE+Wayland
 
