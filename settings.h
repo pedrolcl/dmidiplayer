@@ -22,6 +22,7 @@
 #include <QObject>
 #include <QString>
 #include <QSettings>
+#include <QTranslator>
 #include <drumstick/backendmanager.h>
 #include <drumstick/pianopalette.h>
 #include <drumstick/pianokeybd.h>
@@ -159,6 +160,8 @@ public:
     int helpWindowFontSize() const;
     void setHelpWindowFontSize(int newHelpWindowFontSize);
 
+    void loadTranslations();
+
 signals:
     void ValuesChanged();
 
@@ -226,6 +229,7 @@ private:
 
     QStringList m_toolbarActions;
     int m_toolbarButtonStyle;
+    QPointer<QTranslator> m_trq, m_trp, m_trl;
 };
 
 #endif // PORTABLESETTINGS_H

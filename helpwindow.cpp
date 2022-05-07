@@ -174,8 +174,12 @@ void HelpWindow::showEvent(QShowEvent *event)
 
 void HelpWindow::retranslateUi()
 {
+    QString lang = Settings::instance()->language();
+    if (lang == "C") {
+        lang = "en";
+    }
     m_path = QStringLiteral(":/help");
-    m_page = QStringLiteral("%1/index.html").arg(Settings::instance()->language());
+    m_page = QStringLiteral("%1/index.html").arg(lang);
     m_textBrowser->setSearchPaths({m_path,":/help/en",":/"});
     m_textBrowser->setSource(m_page);
     updateWindowTitle();

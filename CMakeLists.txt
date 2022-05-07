@@ -18,7 +18,7 @@ cmake_minimum_required(VERSION 3.14)
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.13" CACHE STRING "Minimum OS X deployment version")
 
 project ( dmidiplayer
-    VERSION 1.5.3
+    VERSION 1.5.4
     LANGUAGES CXX
     DESCRIPTION "Drumstick MIDI File Player Multiplatform Program"
     HOMEPAGE_URL "https://sourceforge.net/p/dmidiplayer/"
@@ -49,13 +49,12 @@ else()
     find_package(QT NAMES Qt5 Qt6)
 endif()
 
-if(QT_VERSION VERSION_LESS 6.0.0)
-    find_package (Qt5 COMPONENTS Gui Widgets PrintSupport LinguistTools REQUIRED)
-else()
-    find_package (Qt6 COMPONENTS Gui Widgets PrintSupport LinguistTools Core5Compat REQUIRED)
+find_package (Qt${QT_VERSION_MAJOR} COMPONENTS Gui Widgets PrintSupport LinguistTools REQUIRED)
+if(QT_VERSION VERSION_GREATER_EQUAL 6.0.0)
+    find_package (Qt6Core5Compat REQUIRED)
 endif()
 
-find_package (Drumstick 2.5 COMPONENTS File RT Widgets REQUIRED)
+find_package (Drumstick 2.6 COMPONENTS File RT Widgets REQUIRED)
 
 find_package ( PkgConfig )
 pkg_check_modules( UCHARDET REQUIRED IMPORTED_TARGET uchardet )
@@ -271,7 +270,7 @@ if(UNIX AND NOT APPLE)
         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME})
     install(FILES "net.sourceforge.dmidiplayer.desktop"
         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
-    install(FILES "net.sourceforge.dmidiplayer.appdata.xml"
+    install(FILES "net.sourceforge.dmidiplayer.metainfo.xml"
         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo)
 
     # uninstall target

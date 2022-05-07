@@ -1,5 +1,19 @@
+2022-04-30
+    * Bumped required drumstick version to 2.6
+    * Better compatibility with Qt6
+    * Bumped version to 1.5.4
+
 2022-04-22
     * Using QGuiApplication::setDesktopFileName to fix the wrong icon in KDE+Wayland
+
+2022-02-05
+    * Load translations earlier, for command line options
+
+2022-01-27
+    * Avoid loading translations for English
+
+2022-01-15
+    * AppStream MetaInfo renamed.
 
 2021-12-22
     * Release 1.5.3

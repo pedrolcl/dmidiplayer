@@ -64,30 +64,11 @@ GUIPlayer::GUIPlayer(QWidget *parent)
     m_midiOut(nullptr),
     m_player(nullptr),
     m_ui(new Ui::GUIPlayerClass),
-    m_pd(nullptr)
+    m_pd(nullptr),
+    m_currentLang(nullptr)
 {
-    m_trq = new QTranslator(this);
-    m_trp = new QTranslator(this);
-    m_trl = new QTranslator(this);
-    QString lang = Settings::instance()->language();
-    if (!m_trq->load("qt_" + lang, Settings::systemLocales()) && !lang.startsWith("en")) {
-        qWarning() << "Failure loading Qt5 system translations for" << lang
-                   << "from" << Settings::systemLocales();
-    }
-    if (!m_trp->load("dmidiplayer_" + lang, Settings::localeDirectory()) && !lang.startsWith("en")) {
-        qWarning() << "Failure loading application translations for" << lang
-                   << "from" << Settings::localeDirectory();
-    }
-    if (!m_trl->load("drumstick-widgets_" + lang, Settings::drumstickLocales()) && !lang.startsWith("en")) {
-        qWarning() << "Failure loading widgets library translations for" << lang
-                   << "from" << Settings::drumstickLocales();
-    }
-    QCoreApplication::installTranslator(m_trq);
-    QCoreApplication::installTranslator(m_trp);
-    QCoreApplication::installTranslator(m_trl);
-    Settings::instance()->retranslatePalettes();
-	m_ui->setupUi(this);
-	setAcceptDrops(true);
+    m_ui->setupUi(this);
+    setAcceptDrops(true);
     connect(m_ui->actionAbout, &QAction::triggered, this, &GUIPlayer::about);
     connect(m_ui->actionAboutQt, &QAction::triggered, qApp, &QApplication::aboutQt);
     connect(m_ui->actionPlay, &QAction::triggered, this, &GUIPlayer::play);
@@ -934,13 +915,20 @@ void GUIPlayer::showEvent(QShowEvent *event)
 void GUIPlayer::createLanguageMenu()
 {
     QString currentLang = Settings::instance()->language();
+    if (currentLang.isEmpty()) {
+        QLocale locale;
+        if (locale.language() == QLocale::C || locale.language() == QLocale::English)
+            currentLang = "C";
+        else
+            currentLang = locale.name().left(2);
+    }
     QActionGroup *languageGroup = new QActionGroup(this);
     languageGroup->setExclusive(true);
     connect(languageGroup, &QActionGroup::triggered, this, &GUIPlayer::slotSwitchLanguage);
     QDir dir(Settings::localeDirectory());
-    QStringList fileNames = dir.entryList({"*.qm"}, QDir::NoFilter, QDir::NoSort);
+    QStringList fileNames = dir.entryList({"dmidiplayer*.qm"}, QDir::NoFilter, QDir::NoSort);
     QStringList locales;
-    locales << "en";
+    locales << "C";
     foreach (const QString& fileName, fileNames) {
         QFileInfo f(fileName);
         QString locale = f.fileName();
@@ -954,7 +942,7 @@ void GUIPlayer::createLanguageMenu()
     m_ui->menuLanguage->clear();
     foreach (const QString& loc, locales) {
         QLocale qlocale(loc);
-        QString localeName = loc == "en" ? QLocale::languageToString(qlocale.language()) : qlocale.nativeLanguageName();
+        QString localeName = loc == "C" ? QLocale::languageToString(QLocale::English) : qlocale.nativeLanguageName();
         QAction *action = new QAction(localeName.section(" ", 0, 0), this);
         action->setCheckable(true);
         action->setData(loc);
@@ -979,24 +967,7 @@ void GUIPlayer::slotAboutTranslation()
 
 void GUIPlayer::retranslateUi()
 {
-    bool loadOk;
-    QString lang = Settings::instance()->language();
-    loadOk = m_trq->load("qt_" + lang, Settings::systemLocales());
-    if (!loadOk && !lang.startsWith("en")) {
-        qWarning() << "Failure loading Qt5 system translations for" << lang
-                   << "from" << Settings::systemLocales();
-    }
-    loadOk = m_trp->load("dmidiplayer_" + lang, Settings::localeDirectory());
-    if (!loadOk && !lang.startsWith("en")) {
-        qWarning() << "Failure loading application translations for" << lang
-                   << "from" << Settings::localeDirectory();
-    }
-    loadOk = m_trl->load("drumstick-widgets_" + lang, Settings::drumstickLocales());
-    if (!loadOk && !lang.startsWith("en")) {
-        qWarning() << "Failure loading widgets library translations for" << lang
-                   << "from" << Settings::drumstickLocales();
-    }
-    Settings::instance()->retranslatePalettes();
+    Settings::instance()->loadTranslations();
     m_ui->retranslateUi(this);
     m_connections->retranslateUi();
     m_pianola->retranslateUi();
@@ -1014,10 +985,10 @@ void GUIPlayer::slotSwitchLanguage(QAction *action)
 {
     QString lang = action->data().toString();
     QLocale qlocale(lang);
-    QString localeName = qlocale.nativeLanguageName();
+    QString langName = lang == "C" ? QLocale::languageToString(QLocale::English) : qlocale.nativeLanguageName();
     if ( QMessageBox::question (this, tr("Language Changed"),
             tr("The language for this application is going to change to %1. "
-               "Do you want to continue?").arg(localeName),
+               "Do you want to continue?").arg(langName),
             QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes )
     {
         Settings::instance()->setLanguage(lang);
@@ -1116,8 +1087,12 @@ void GUIPlayer::slotPlaylistRepeat(QAction *action)
 
 void GUIPlayer::slotHelp()
 {
+    QString lang = Settings::instance()->language();
+    if (lang == "C") {
+        lang = "en";
+    }
     QDir hdir(":/help");
-    QString hname = QStringLiteral("%1/index.html").arg(Settings::instance()->language());
+    QString hname = QStringLiteral("%1/index.html").arg(lang);
     QFileInfo finfo(hdir, hname);
     if (!finfo.exists()) {
         hname = "en/index.html";

@@ -52,7 +52,7 @@ function(ADD_QT_TRANSLATIONS_RESOURCE res_file)
     set(_languages ${ARGN})
     set(_res_file ${CMAKE_CURRENT_BINARY_DIR}/qt_translations.qrc)
     set(_patterns qtbase qtmultimedia qtscript qtxmlpatterns)
-    get_filename_component(_srcdir "${Qt5_DIR}/../../../translations" ABSOLUTE)
+    get_filename_component(_srcdir "${Qt${QT_VERSION_MAJOR}_DIR}/../../../translations" ABSOLUTE)
     set(_outfiles)
     foreach(_lang ${_languages})
         set(_infiles)
@@ -84,7 +84,7 @@ endfunction()
 function(ADD_QT_TRANSLATIONS out_files)
     set(_languages ${ARGN})
     set(_patterns qtbase qtmultimedia qtscript qtxmlpatterns)
-    get_filename_component(_srcdir "${Qt5_DIR}/../../../translations" ABSOLUTE)
+    get_filename_component(_srcdir "${Qt${QT_VERSION_MAJOR}_DIR}/../../../translations" ABSOLUTE)
     set(_outfiles)
     foreach(_lang ${_languages})
         set(_infiles)
@@ -109,7 +109,7 @@ endfunction()
 
 file(GLOB TRANSLATION_FILES ${PROJECT_SOURCE_DIR}/translations/*.ts)
 add_custom_target(lupdate
-    COMMAND ${Qt5_LUPDATE_EXECUTABLE} -recursive . -ts ${TRANSLATION_FILES}
+    COMMAND ${Qt${QT_VERSION_MAJOR}_LUPDATE_EXECUTABLE} -recursive ${PROJECT_SOURCE_DIR} -ts ${TRANSLATION_FILES}
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
     COMMENT "Updating translations"
     VERBATIM
