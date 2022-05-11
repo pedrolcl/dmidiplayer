@@ -24,6 +24,7 @@
 #include <QMap>
 #include <QTextCodec>
 
+#include "framelesswindow.h"
 #if defined(Q_OS_WINDOWS)
 #include "winsnap.h"
 #endif
@@ -37,7 +38,7 @@ class QToolButton;
 class QTextEdit;
 class Sequence;
 
-class Lyrics : public QMainWindow
+class Lyrics : public FramelessWindow
 {
     Q_OBJECT
 public:

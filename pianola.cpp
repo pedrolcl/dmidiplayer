@@ -44,7 +44,7 @@
 using namespace drumstick::rt;
 using namespace drumstick::widgets;
 
-Pianola::Pianola( QWidget* parent ) : QMainWindow(parent),
+Pianola::Pianola( QWidget* parent ) : FramelessWindow(parent),
     m_song(nullptr)
 {
     setObjectName("PlayerPianoWindow");
@@ -62,7 +62,13 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent),
     tbar->setMovable(false);
     tbar->setFloatable(false);
     tbar->setIconSize(QSize(22,22));
+    m_title = new QLabel(tr("Player Piano"), this);
+    tbar->addWidget(m_title);
+    QWidget* spacer = new QWidget(this);
+    spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    tbar->addWidget(spacer);
     addToolBar(tbar);
+    setPseudoCaption(tbar);
     m_a4 = new QAction(this); // Full Screen
     m_a4->setShortcut(QKeySequence::FullScreen);
     connect(m_a4, &QAction::triggered, this, &Pianola::toggleFullScreen);
@@ -82,7 +88,7 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent),
     m_chmenu->addSeparator();
     QVBoxLayout *vlayout = new QVBoxLayout;
     vlayout->setSpacing(0);
-    vlayout->setContentsMargins(0,0,0,0);
+    vlayout->setContentsMargins(5,5,5,5);
     vlayout->setSizeConstraint(QLayout::SetNoConstraint);
     QWidget* centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
@@ -132,7 +138,11 @@ Pianola::Pianola( QWidget* parent ) : QMainWindow(parent),
     m_toolBtn->setMenu(m_chmenu);
     m_toolBtn->setPopupMode(QToolButton::InstantPopup);
     m_toolBtn->setIcon(IconUtils::GetIcon("application-menu"));
+    auto closeBtn = new QToolButton(this);
+    closeBtn->setIcon(IconUtils::GetIcon("window-close"));
+    connect(closeBtn, &QToolButton::clicked, this, &Pianola::close);
     tbar->addWidget(m_toolBtn);
+    tbar->addWidget(closeBtn);
     tbar->show();
     setMinimumSize(640,200);
     adjustSize();
@@ -147,7 +157,7 @@ Pianola::~Pianola()
 
 void Pianola::retranslateUi()
 {
-    setWindowTitle(tr("Player Piano"));
+    m_title->setText(tr("Player Piano"));
     m_a1->setText(tr("Show all channels"));
     m_a2->setText(tr("Hide all channels"));
     m_a3->setText(tr("Tighten the number of keys"));

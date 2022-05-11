@@ -24,6 +24,7 @@
 #include <QComboBox>
 #include <QLineEdit>
 #include <QCloseEvent>
+#include <QToolBar>
 #if QT_VERSION < QT_VERSION_CHECK(5,14,0)
 #include <QDesktopWidget>
 #else
@@ -41,14 +42,32 @@
 using namespace drumstick::rt;
 
 Channels::Channels( QWidget* parent ) :
-    QMainWindow(parent),
+    FramelessWindow(parent),
     m_timerId(0),
     m_volumeFactor(1.0)
 {
     setObjectName("ChannelsWindow");
     setWindowFlag(Qt::Tool, true);
     setAttribute(Qt::WA_DeleteOnClose, false);
+    QToolBar* tbar = new QToolBar(this);
+    tbar->setObjectName("toolbar");
+    tbar->setMovable(false);
+    tbar->setFloatable(false);
+    tbar->setIconSize(QSize(22,22));
+    m_title = new QLabel(tr("MIDI Channels"), this);
+    tbar->addWidget(m_title);
+    QWidget* spacer = new QWidget(this);
+    spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    tbar->addWidget(spacer);
+    auto closeBtn = new QToolButton(this);
+    closeBtn->setIcon(IconUtils::GetIcon("window-close"));
+    connect(closeBtn, &QToolButton::clicked, this, &Channels::close);
+    tbar->addWidget(closeBtn);
+    addToolBar(tbar);
+    setPseudoCaption(tbar);
+    tbar->show();
     QGridLayout *layout = new QGridLayout;
+    layout->setContentsMargins(5,5,5,5);
     layout->setHorizontalSpacing(10);
     QWidget* centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
@@ -127,7 +146,8 @@ Channels::~Channels()
 
 void Channels::retranslateUi()
 {
-    setWindowTitle(tr("MIDI Channels"));
+    //setWindowTitle(tr("MIDI Channels"));
+    m_title->setText(tr("MIDI Channels"));
     m_lbl1->setText(tr( "Channel"));
     m_lbl2->setText(tr( "Mute"));
     m_lbl3->setText(tr( "Solo"));

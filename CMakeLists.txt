@@ -49,7 +49,7 @@ else()
     find_package(QT NAMES Qt5 Qt6)
 endif()
 
-find_package (Qt${QT_VERSION_MAJOR} COMPONENTS Gui Widgets PrintSupport LinguistTools REQUIRED)
+find_package (Qt${QT_VERSION_MAJOR} 5.15 COMPONENTS Gui Widgets PrintSupport LinguistTools REQUIRED)
 if(QT_VERSION VERSION_GREATER_EQUAL 6.0.0)
     find_package (Qt6Core5Compat REQUIRED)
 endif()
@@ -74,6 +74,8 @@ SET(SOURCES
     helpwindow.cpp
     helpwindow.h
     docs/help.qrc
+    framelesswindow.cpp
+    framelesswindow.h
     iconutils.cpp
     iconutils.h
     instrumentset.cpp

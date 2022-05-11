@@ -53,7 +53,7 @@
 #include "lyrics.h"
 #include "sequence.h"
 
-Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
+Lyrics::Lyrics(QWidget *parent) : FramelessWindow(parent),
     m_track(0),
     m_mib(0),
     m_type(0),
@@ -75,6 +75,7 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     tbar->setFloatable(false);
     tbar->setIconSize(QSize(22,22));
     addToolBar(tbar);
+    setPseudoCaption(tbar);
     m_actionCopy = new QAction(this);
     m_actionCopy->setObjectName(QString::fromUtf8("actionCopy"));
     m_actionSave = new QAction(this);
@@ -133,6 +134,14 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     m_toolButton->setPopupMode(QToolButton::InstantPopup);
     m_toolButton->setIcon(IconUtils::GetIcon("application-menu"));
     tbar->addWidget(m_toolButton);
+    auto closeBtn = new QToolButton(this);
+    closeBtn->setIcon(IconUtils::GetIcon("window-close"));
+    connect(closeBtn, &QToolButton::clicked, this, &Lyrics::close);
+    tbar->addWidget(closeBtn);
+    QVBoxLayout *vlayout = new QVBoxLayout;
+    vlayout->setContentsMargins(5,5,5,5);
+    QWidget *centralWidget = new QWidget(this);
+    centralWidget->setLayout(vlayout);
     m_textViewer = new QTextEdit(this);
     m_textViewer->setObjectName(QString::fromUtf8("textViewer"));
     m_textViewer->setFont(Settings::instance()->lyricsFont());
@@ -140,13 +149,14 @@ Lyrics::Lyrics(QWidget *parent) : QMainWindow(parent),
     m_textViewer->setTextInteractionFlags(Qt::NoTextInteraction);
     m_normalColor = Settings::instance()->getFutureColor();
     m_otherColor = Settings::instance()->getPastColor();
-    this->setCentralWidget(m_textViewer);
+    vlayout->addWidget(m_textViewer);
+    this->setCentralWidget(centralWidget);
 #ifndef QT_NO_SHORTCUT
     m_label1->setBuddy(m_comboTrack);
     m_label2->setBuddy(m_comboType);
     m_label3->setBuddy(m_comboCodec);
 #endif // QT_NO_SHORTCUT
-    setWindowTitle(tr("Lyrics Viewer"));
+    // setWindowTitle(tr("Lyrics Viewer"));
     // Populate the codecs combobox
     populateCodecsCombo();
     // connect combos
@@ -194,7 +204,7 @@ void Lyrics::writeSettings()
 
 void Lyrics::retranslateUi()
 {
-    setWindowTitle(QApplication::translate("Lyrics", "Lyrics", nullptr));
+    //setWindowTitle(QApplication::translate("Lyrics", "Lyrics", nullptr));
     m_label1->setText(QApplication::translate("Lyrics", "Track:", nullptr));
     m_label2->setText(QApplication::translate("Lyrics", "Type:", nullptr));
     m_comboType->setItemText(0, QApplication::translate("Lyrics", "All Types", nullptr));
@@ -377,7 +387,7 @@ void Lyrics::initSong( Sequence *song )
     //qDebug() << Q_FUNC_INFO;
     m_song = song;
     if (m_song != nullptr) {
-        setWindowTitle(tr("Lyrics Viewer (%1)").arg(m_song->currentFile()));
+        //setWindowTitle(tr("Lyrics Viewer (%1)").arg(m_song->currentFile()));
         populateTracksCombo();
         m_mib = m_song->detectedUchardetMIB();
         m_track = m_song->trackMaxPoints();

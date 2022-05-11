@@ -22,6 +22,7 @@
 #include <QMainWindow>
 #include <drumstick/rtmidioutput.h>
 
+#include "framelesswindow.h"
 #if defined(Q_OS_WINDOWS)
 #include "winsnap.h"
 #endif
@@ -35,7 +36,7 @@ namespace drumstick { namespace widgets {
     class PianoKeybd;
 }}
 
-class Pianola : public QMainWindow {
+class Pianola : public FramelessWindow {
     Q_OBJECT
 
 public:
@@ -84,6 +85,7 @@ private:
     Sequence *m_song;
     drumstick::widgets::PianoKeybd* m_piano[drumstick::rt::MIDI_STD_CHANNELS];
     QMenu *m_chmenu;
+    QLabel *m_title;
     QToolButton* m_toolBtn;
     QAction *m_a1, *m_a2, *m_a3, *m_a4;
     QFrame* m_frame[drumstick::rt::MIDI_STD_CHANNELS];

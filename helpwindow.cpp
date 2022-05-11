@@ -19,6 +19,8 @@
 #include <QDebug>
 #include <QApplication>
 #include <QToolBar>
+#include <QVBoxLayout>
+
 #if QT_VERSION < QT_VERSION_CHECK(5,14,0)
 #include <QDesktopWidget>
 #else
@@ -31,7 +33,7 @@
 #include "helpwindow.h"
 
 HelpWindow::HelpWindow(QWidget *parent):
-    QMainWindow(parent)
+    FramelessWindow(parent)
 {
     setObjectName(QString::fromUtf8("HelpWindow"));
     setWindowIcon(QIcon(":/dmidiplayer.png"));
@@ -50,7 +52,9 @@ HelpWindow::HelpWindow(QWidget *parent):
     tbar->setIconSize(QSize(22,22));
     tbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     addToolBar(tbar);
-
+    setPseudoCaption(tbar);
+    
+    m_titleLabel = new QLabel(this);
     m_textBrowser = new QTextBrowser(this);
     m_home = new QAction(tr("&Home"), this);
     m_back = new QAction(tr("&Back"), this);
@@ -60,20 +64,28 @@ HelpWindow::HelpWindow(QWidget *parent):
     QWidget* spacer = new QWidget(this);
     spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
+    tbar->addWidget(m_titleLabel);
     tbar->addAction(m_home);
     tbar->addAction(m_back);
     tbar->addAction(m_zoomIn);
     tbar->addAction(m_zoomOut);
     tbar->addWidget(spacer);
     tbar->addAction(m_close);
-
-    setCentralWidget(m_textBrowser);
+    
+    QVBoxLayout *vlayout = new QVBoxLayout;
+    vlayout->setSpacing(0);
+    vlayout->setContentsMargins(5,5,5,5);
+    vlayout->setSizeConstraint(QLayout::SetNoConstraint);
+    vlayout->addWidget(m_textBrowser);
+    QWidget* centralWidget = new QWidget(this);
+    centralWidget->setLayout(vlayout);
+    setCentralWidget(centralWidget);
 
     connect(m_home, &QAction::triggered, m_textBrowser, &QTextBrowser::home);
     connect(m_back, &QAction::triggered, m_textBrowser, &QTextBrowser::backward);
     connect(m_zoomIn, &QAction::triggered, this, [=]{ m_textBrowser->zoomIn(); });
     connect(m_zoomOut, &QAction::triggered, this, [=]{ m_textBrowser->zoomOut(); });
-    connect(m_close, &QAction::triggered, this, &QWidget::close);
+    connect(m_close, &QAction::triggered, this, &HelpWindow::close);
     connect(m_textBrowser, &QTextBrowser::sourceChanged, this, &HelpWindow::updateWindowTitle);
 
     m_textBrowser->setOpenExternalLinks(true);
@@ -149,7 +161,8 @@ bool HelpWindow::nativeEvent(const QByteArray &eventType, void *message,
 
 void HelpWindow::updateWindowTitle()
 {
-    setWindowTitle(tr("Help: %1").arg(m_textBrowser->documentTitle()));
+    //setWindowTitle(m_textBrowser->documentTitle());
+    m_titleLabel->setText(m_textBrowser->documentTitle());
 }
 
 void HelpWindow::showPage(const QString &path, const QString &page)

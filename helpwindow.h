@@ -25,12 +25,14 @@
 #include <QCloseEvent>
 #include <QByteArray>
 #include <QString>
+#include <QLabel>
 
+#include "framelesswindow.h"
 #if defined(Q_OS_WINDOWS)
 #include "winsnap.h"
 #endif
 
-class HelpWindow : public QMainWindow
+class HelpWindow : public FramelessWindow
 {
     Q_OBJECT
 public:
@@ -56,6 +58,7 @@ private slots:
     void updateWindowTitle();
 
 private:
+    QLabel *m_titleLabel;
     QTextBrowser *m_textBrowser;
     QAction *m_home;
     QAction *m_back;

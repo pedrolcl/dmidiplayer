@@ -22,6 +22,7 @@
 #include <QMainWindow>
 #include <drumstick/rtmidioutput.h>
 #include "instrumentset.h"
+#include "framelesswindow.h"
 
 #if defined(Q_OS_WINDOWS)
 #include "winsnap.h"
@@ -34,7 +35,7 @@ class Vumeter;
 class QLineEdit;
 class Sequence;
 
-class Channels : public QMainWindow {
+class Channels : public FramelessWindow {
     Q_OBJECT
 
 public:
@@ -102,6 +103,7 @@ private:
     int m_voices[drumstick::rt::MIDI_STD_CHANNELS];
     qreal m_level[drumstick::rt::MIDI_STD_CHANNELS];
     qreal m_factor[drumstick::rt::MIDI_STD_CHANNELS];
+    QLabel* m_title;
     QLabel* m_lbl1, *m_lbl2, *m_lbl3, *m_lbl4, *m_lbl5, *m_lbl6;
     QLabel* m_lbl[drumstick::rt::MIDI_STD_CHANNELS];
     QToolButton* m_mute[drumstick::rt::MIDI_STD_CHANNELS];
