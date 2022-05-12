@@ -55,6 +55,7 @@ HelpWindow::HelpWindow(QWidget *parent):
     setPseudoCaption(tbar);
     
     m_titleLabel = new QLabel(this);
+    m_titleLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
     m_textBrowser = new QTextBrowser(this);
     m_home = new QAction(tr("&Home"), this);
     m_back = new QAction(tr("&Back"), this);
@@ -62,7 +63,7 @@ HelpWindow::HelpWindow(QWidget *parent):
     m_zoomIn = new QAction(tr("Zoom In"), this);
     m_zoomOut = new QAction(tr("Zoom Out"), this);
     QWidget* spacer = new QWidget(this);
-    spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
     tbar->addWidget(m_titleLabel);
     tbar->addAction(m_home);

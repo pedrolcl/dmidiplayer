@@ -119,6 +119,9 @@ Lyrics::Lyrics(QWidget *parent) : FramelessWindow(parent),
     m_comboCodec->setMaxVisibleItems(10);
     m_comboCodec->setStyleSheet("combobox-popup: 0;");
     tbar->addWidget(m_comboCodec);
+    QWidget *spacer = new QWidget(this);
+    spacer->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+    tbar->addWidget(spacer);
     m_chmenu = new QMenu(this);
     m_chmenu->addAction(m_actionCopy);
     m_chmenu->addAction(m_actionSave);

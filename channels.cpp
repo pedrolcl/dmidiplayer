@@ -25,6 +25,7 @@
 #include <QLineEdit>
 #include <QCloseEvent>
 #include <QToolBar>
+#include <QMenu>
 #if QT_VERSION < QT_VERSION_CHECK(5,14,0)
 #include <QDesktopWidget>
 #else
@@ -55,10 +56,15 @@ Channels::Channels( QWidget* parent ) :
     tbar->setFloatable(false);
     tbar->setIconSize(QSize(22,22));
     m_title = new QLabel(tr("MIDI Channels"), this);
+    m_title->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
     tbar->addWidget(m_title);
-    QWidget* spacer = new QWidget(this);
-    spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    tbar->addWidget(spacer);
+    auto chmenu = new QMenu(this);
+    //FIXME: add menu options
+    auto toolBtn = new QToolButton(this);
+    toolBtn->setMenu(chmenu);
+    toolBtn->setPopupMode(QToolButton::InstantPopup);
+    toolBtn->setIcon(IconUtils::GetIcon("application-menu"));
+    tbar->addWidget(toolBtn);
     auto closeBtn = new QToolButton(this);
     closeBtn->setIcon(IconUtils::GetIcon("window-close"));
     connect(closeBtn, &QToolButton::clicked, this, &Channels::close);
@@ -72,18 +78,27 @@ Channels::Channels( QWidget* parent ) :
     QWidget* centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
     centralWidget->setLayout(layout);
+    QWidget *spacer = new QWidget(this);
+    spacer->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+    layout->addWidget(spacer, 0, 0, 1, 7);
     m_lbl1 = new QLabel(this);
-    layout->addWidget(m_lbl1, 0, 0, 1, 2);
+    m_lbl1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    layout->addWidget(m_lbl1, 1, 0, 1, 2);
     m_lbl2 = new QLabel(this);
-    layout->addWidget(m_lbl2, 0, 2);
+    m_lbl2->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    layout->addWidget(m_lbl2, 1, 2);
     m_lbl3 = new QLabel(this);
-    layout->addWidget(m_lbl3, 0, 3);
+    m_lbl3->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    layout->addWidget(m_lbl3, 1, 3);
     m_lbl4 = new QLabel(this);
-    layout->addWidget(m_lbl4, 0, 4);
+    m_lbl4->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    layout->addWidget(m_lbl4, 1, 4);
     m_lbl5 = new QLabel(this);
-    layout->addWidget(m_lbl5, 0, 5);
+    m_lbl5->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    layout->addWidget(m_lbl5, 1, 5);
     m_lbl6 = new QLabel(this);
-    layout->addWidget(m_lbl6, 0, 6);
+    m_lbl6->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    layout->addWidget(m_lbl6, 1, 6);
     layout->setColumnStretch(1,1);
     QSize ledSize(12,12);
     QPixmap pixMuteOn(ledSize);
@@ -101,7 +116,7 @@ Channels::Channels( QWidget* parent ) :
     soloIcon.addPixmap(pixSoloOn, QIcon::Normal, QIcon::On);
     soloIcon.addPixmap(pixSoloOff,QIcon::Normal, QIcon::Off);
     for (int i = 0; i < MIDI_STD_CHANNELS; ++i) {
-        int row = i + 1;
+        int row = i + 2;
         m_lbl[i] = new QLabel(this);
         m_lbl[i]->setNum(row);
         layout->addWidget(m_lbl[i], row, 0, Qt::AlignRight | Qt::AlignVCenter);

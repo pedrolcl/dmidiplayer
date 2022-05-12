@@ -56,19 +56,17 @@ Pianola::Pianola( QWidget* parent ) : FramelessWindow(parent),
 #endif
     setAttribute(Qt::WA_DeleteOnClose, false);
     setContextMenuPolicy(Qt::CustomContextMenu); // prevent default ctx
-    m_chmenu = new QMenu(this);
     QToolBar* tbar = new QToolBar(this);
     tbar->setObjectName("toolbar");
     tbar->setMovable(false);
     tbar->setFloatable(false);
     tbar->setIconSize(QSize(22,22));
     m_title = new QLabel(tr("Player Piano"), this);
+    m_title->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
     tbar->addWidget(m_title);
-    QWidget* spacer = new QWidget(this);
-    spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    tbar->addWidget(spacer);
     addToolBar(tbar);
     setPseudoCaption(tbar);
+    m_chmenu = new QMenu(this);
     m_a4 = new QAction(this); // Full Screen
     m_a4->setShortcut(QKeySequence::FullScreen);
     connect(m_a4, &QAction::triggered, this, &Pianola::toggleFullScreen);
