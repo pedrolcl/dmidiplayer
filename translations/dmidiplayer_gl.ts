@@ -6,12 +6,12 @@
     <message>
         <location filename="../playerabout.cpp" line="31"/>
         <source>Revision</source>
-        <translation type="unfinished"></translation>
+        <translation>Revisión</translation>
     </message>
     <message>
         <location filename="../playerabout.cpp" line="36"/>
         <source>Drumstick MIDI File Player Multiplatform</source>
-        <translation type="unfinished"></translation>
+        <translation>Reprodutor de ficheiros MIDI multiplataforma de Drumstick</translation>
     </message>
 </context>
 <context>
@@ -19,12 +19,12 @@
     <message>
         <location filename="../playerabout.ui" line="14"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Acerca de</translation>
     </message>
     <message>
         <location filename="../playerabout.ui" line="26"/>
         <source>About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Acerca de Qt</translation>
     </message>
     <message>
         <location filename="../playerabout.ui" line="48"/>
@@ -39,7 +39,17 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;You should have received a copy of the GNU General Public License along with this program; if not, &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;see &amp;lt;&lt;/span&gt;&lt;a href=&quot;https://www.gnu.org/licenses/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;https://www.gnu.org/licenses/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;&amp;gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Noto Sans&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:20px; margin-bottom:20px; margin-left:20px; margin-right:20px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/dmidiplayer128.png&quot; style=&quot;float: left;&quot; /&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600;&quot;&gt;%PROJECT_DESCRIPTION%&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600;&quot;&gt;Version %VERSION%&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Using &lt;/span&gt;&lt;a href=&quot;https://drumstick.sourceforge.io&quot;&gt;&lt;span style=&quot; font-family:&apos;DejaVu Sans&apos;; text-decoration: underline; color:#0057ae;&quot;&gt;Drumstick MIDI C++ libraries &lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;v%DRUMSTICK_VERSION%&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Copyright © 2006-2022, Pedro Lopez-Cabanillas &amp;lt;&lt;/span&gt;&lt;a href=&quot;mailto:plcl@users.sf.net?subject=dmidiplayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;plcl@users.sf.net&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;You should have received a copy of the GNU General Public License along with this program; if not, &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;see &amp;lt;&lt;/span&gt;&lt;a href=&quot;https://www.gnu.org/licenses/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;https://www.gnu.org/licenses/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;&amp;gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -93,7 +103,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../channels.cpp" line="187"/>
         <source>View Full Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver pantalla completa</translation>
     </message>
     <message>
         <location filename="../channels.cpp" line="193"/>
@@ -106,7 +116,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../connections.cpp" line="79"/>
         <source>MIDI Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Saída MIDI</translation>
     </message>
 </context>
 <context>
@@ -114,22 +124,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../connections.ui" line="14"/>
         <source>Connections</source>
-        <translation type="unfinished"></translation>
+        <translation>Conexións</translation>
     </message>
     <message>
         <location filename="../connections.ui" line="20"/>
         <source>Show advanced connections</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar conexións avanzadas</translation>
     </message>
     <message>
         <location filename="../connections.ui" line="27"/>
         <source>MIDI OUT</source>
-        <translation type="unfinished"></translation>
+        <translation>MIDI OUT</translation>
     </message>
     <message>
         <location filename="../connections.ui" line="40"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
 </context>
 <context>
@@ -137,97 +147,97 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.cpp" line="281"/>
         <source>Please, load a song</source>
-        <translation type="unfinished"></translation>
+        <translation>Por favor, carga unha canción</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="291"/>
         <source>Playing</source>
-        <translation type="unfinished"></translation>
+        <translation>Reproducindo</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="300"/>
         <source>Paused</source>
-        <translation type="unfinished"></translation>
+        <translation>Pausado</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="313"/>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>Parado</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="316"/>
         <source>Not initialized</source>
-        <translation type="unfinished"></translation>
+        <translation>Non iniciado</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="364"/>
         <source>Loading %1 file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Cargando ficheiro %1...</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="438"/>
         <source>file %1 couldn&apos;t be opened</source>
-        <translation type="unfinished"></translation>
+        <translation>ficheiro %1 non se puido abrir</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="454"/>
         <source>Open MIDI File</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir ficheiro MIDI</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="455"/>
         <source>All files (*.kar *.mid *.midi *.rmi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;RIFF MIDI Files (*.rmi);;Cakewalk files (*.wrk)</source>
-        <translation type="unfinished"></translation>
+        <translation>Todos os ficheiros(*.kar *.mid *.midi *.rmi *.wrk);;Ficheiros Karaoke (*.kar);;Ficheiros MIDI (*.mid *.midi);;Ficheiros RIFF MIDI (*.rmi);;Ficheiros Cakewalk (*.wrk)</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="668"/>
         <source>Jump to Bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Saltar ao compás</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="669"/>
         <source>Bar number:</source>
-        <translation type="unfinished"></translation>
+        <translation>Compás número</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="765"/>
         <source>Dropped file %1 is not supported</source>
-        <translation type="unfinished"></translation>
+        <translation>Ficheiro soltado %1 non está soportado</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="960"/>
         <source>&lt;p&gt;This program is developed and translated thanks to the volunteer work of many people from around the world. If you want to join the team or have any question, please visit the web site at &lt;a href=&apos;http://sourceforge.net/projects/dmidiplayer/&apos;&gt;SourceForge&lt;/a&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;Este program está desenvolvido e traducido gracias ao traballo voluntario de moita xente de todo o mundo. Si queres participar ou tes preguntas, visita &lt;a href=&apos;http://sourceforge.net/projects/dmidiplayer/&apos;&gt;SourceForge&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="965"/>
         <source>Translation Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Información da traducción</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="989"/>
         <source>Language Changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Idioma cambiado</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="990"/>
         <source>The language for this application is going to change to %1. Do you want to continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>O linguaxe de esta aplicación vai cambiar a %1. ¿Quere continuar?</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1008"/>
         <source>&lt;b&gt;No file loaded&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Ficheiro non cargado&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1010"/>
         <source>File: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ficheiro: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1013"/>
         <source>Format: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Formato: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1015"/>
@@ -239,57 +249,57 @@ p, li { white-space: pre-wrap; }
         <location filename="../guiplayer.cpp" line="1039"/>
         <location filename="../guiplayer.cpp" line="1047"/>
         <source>&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1017"/>
         <source>Copyright: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1021"/>
         <source>Karaoke type: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo de Karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1025"/>
         <source>Karaoke version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Versión de Karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1029"/>
         <source>Karaoke info: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Info de Karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1033"/>
         <source>Karaoke language: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Lingua de Karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1037"/>
         <source>Karaoke title: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Título de Karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1041"/>
         <source>Karaoke things: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Outro Karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1048"/>
         <source>SMF Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Información SMF</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1055"/>
         <source>Playlist not saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista de reprodución non gardada</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1056"/>
         <source>The current playlist has changed, but it is not saved. The changes will be lost when closing the program.</source>
-        <translation type="unfinished"></translation>
+        <translation>A lista de reprodución actual cambiou, pero non está gardada. Os cambios se perderán cando se peche o programa.</translation>
     </message>
 </context>
 <context>
@@ -297,22 +307,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="14"/>
         <source>Drumstick MIDI File Player Multiplatform</source>
-        <translation type="unfinished"></translation>
+        <translation>Reprodutor de ficheiros MIDI multiplataforma de Drumstick</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="25"/>
         <source>Drumstick MIDI Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Reprodutor MIDI de Drumstick</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="41"/>
         <source>Playback time and current levels</source>
-        <translation type="unfinished"></translation>
+        <translation>Tempo de reprodución e niveis actuais</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="77"/>
         <source>00:00:00</source>
-        <translation type="unfinished"></translation>
+        <translation>00:00:00</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="84"/>
@@ -322,127 +332,127 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="107"/>
         <source>Volume:</source>
-        <translation type="unfinished"></translation>
+        <translation>Volume:</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="121"/>
         <source>Pitch:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tono:</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="137"/>
         <source>Pitch Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Control de ton</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="140"/>
         <source>Pitch transpose between -12 and +12 semitones</source>
-        <translation type="unfinished"></translation>
+        <translation>Traspoñer o ton entre -12 e +12 semitóns</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="168"/>
         <source>Tempo Slider</source>
-        <translation type="unfinished"></translation>
+        <translation>Escorregador de tempo</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="208"/>
         <source>Volume Slider</source>
-        <translation type="unfinished"></translation>
+        <translation>Escorregador de volume</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="235"/>
         <source>File Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome de ficheiro:</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="248"/>
         <source>Currently loaded MIDI file name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome de ficheiro MIDI cargado</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="295"/>
         <source>Reset Tempo</source>
-        <translation type="unfinished"></translation>
+        <translation>Reiniciar tempo</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="298"/>
         <source>Reset Tempo to 100%</source>
-        <translation type="unfinished"></translation>
+        <translation>Reiniciar tempo a 100%</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="301"/>
         <source>tempo=100%</source>
-        <translation type="unfinished"></translation>
+        <translation>tempo=100%</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="308"/>
         <source>Reset Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Reiniciar volume</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="311"/>
         <source>Reset Volume to 100%</source>
-        <translation type="unfinished"></translation>
+        <translation>Reiniciar volume a 100%</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="337"/>
         <source>File</source>
-        <translation type="unfinished"></translation>
+        <translation>Ficheiro</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="341"/>
         <source>Open Recent Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir ficheiros recentes</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="346"/>
         <source>Playlist Repeat</source>
-        <translation type="unfinished"></translation>
+        <translation>Repetir lista de reprodución</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="371"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>A&amp;xuda</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="375"/>
         <source>&amp;Language</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Linguaxe</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="387"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuracións</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="395"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="412"/>
         <source>Tool Bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Barra de ferramentas</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="442"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="445"/>
         <source>Open a MIDI file</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir ficheiro MIDI</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="453"/>
         <source>Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>Saír</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="456"/>
         <source>Quit the application</source>
-        <translation type="unfinished"></translation>
+        <translation>Pechar a aplicación</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="464"/>
@@ -452,17 +462,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="467"/>
         <source>Start playing the current MIDI file</source>
-        <translation type="unfinished"></translation>
+        <translation>Iniciar reprodución do ficheiro MIDI</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="484"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pausar</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="487"/>
         <source>Pause  playback</source>
-        <translation type="unfinished"></translation>
+        <translation>Pausar a reprodución</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="498"/>
@@ -472,69 +482,69 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="501"/>
         <source>Stop playback</source>
-        <translation type="unfinished"></translation>
+        <translation>Parar a reprodución</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="512"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Acerca de</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="515"/>
         <source>Show the about box</source>
-        <translation type="unfinished"></translation>
+        <translation>Amosar a caixa acerca de</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="523"/>
         <source>About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Acerca de Qt</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="526"/>
         <source>Show the about Qt dialog box</source>
-        <translation type="unfinished"></translation>
+        <translation>Amosar o diálogo acerca de Qt</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="534"/>
         <source>MIDI Setup</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuración MIDI</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="537"/>
         <source>Select a connection for the MIDI output port</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccionar unha conexión para a saída MIDI</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="551"/>
         <location filename="../guiplayer.ui" line="554"/>
         <source>Show Tool Bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Amosar a barra de ferramentas</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="557"/>
         <source>Show or hide the tool bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Amosar ou ocultar a barra de ferramentas</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="571"/>
         <source>Show Status Bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Amosar a barra de estado</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="574"/>
         <source>Show or hide the status bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Amosar ou ocultar a barra de estado</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="585"/>
         <source>Lyrics and Texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Letras e textos</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="588"/>
         <location filename="../guiplayer.ui" line="591"/>
         <source>Show or Hide Lyrics and Texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Amosar ou ocultar Letras e textos</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="605"/>
@@ -545,18 +555,18 @@ p, li { white-space: pre-wrap; }
         <location filename="../guiplayer.ui" line="608"/>
         <location filename="../guiplayer.ui" line="611"/>
         <source>Show or Hide Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Amosar ou ocultar canles</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="625"/>
         <source>Piano Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Pianola</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="628"/>
         <location filename="../guiplayer.ui" line="631"/>
         <source>Show or Hide Piano Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Amosar ou ocultar pianola</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="645"/>
@@ -567,47 +577,47 @@ p, li { white-space: pre-wrap; }
         <location filename="../guiplayer.ui" line="648"/>
         <location filename="../guiplayer.ui" line="651"/>
         <source>Show or Hide Rhythm</source>
-        <translation type="unfinished"></translation>
+        <translation>Amosar ou ocultar ritmo</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="662"/>
         <source>File Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Información do ficheiro</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="670"/>
         <source>Preferences ...</source>
-        <translation type="unfinished"></translation>
+        <translation>Preferencias ...</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="678"/>
         <source>Play List ...</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista de reprodución ...</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="681"/>
         <source>Show Play List Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Amosar editor da lista de reprodución</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="689"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Seguinte</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="692"/>
         <source>Next File</source>
-        <translation type="unfinished"></translation>
+        <translation>Seguinte ficheiro</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="700"/>
         <source>Prev</source>
-        <translation type="unfinished"></translation>
+        <translation>Previo</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="703"/>
         <source>Previous File</source>
-        <translation type="unfinished"></translation>
+        <translation>Ficheiro previo</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="711"/>
@@ -617,68 +627,68 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="714"/>
         <source>Move play position to the next bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover a posición de reprodución ao seguinte compás</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="722"/>
         <source>Backward</source>
-        <translation type="unfinished"></translation>
+        <translation>Atrás</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="725"/>
         <source>Move play position to the previous bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover a posición de reprodución ao compás anterior</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="733"/>
         <source>Jump...</source>
-        <translation type="unfinished"></translation>
+        <translation>Saltar...</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="736"/>
         <source>Move play position to any bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover a posición de reprodución a calquera compás</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="744"/>
         <source>Customize Tool Bar...</source>
-        <translation type="unfinished"></translation>
+        <translation>Personalizar a barra de ferramentas...</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="758"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>Nada</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="769"/>
         <source>Current Song</source>
-        <translation type="unfinished"></translation>
+        <translation>Canción actual</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="780"/>
         <source>Whole Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista de reprodución enteira</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="791"/>
         <location filename="../guiplayer.ui" line="794"/>
         <source>Loop</source>
-        <translation type="unfinished"></translation>
+        <translation>Bucle</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="797"/>
         <source>Loop between two bars</source>
-        <translation type="unfinished"></translation>
+        <translation>Bucle entre dous compases</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="802"/>
         <source>Contents</source>
-        <translation type="unfinished"></translation>
+        <translation>Contidos</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="807"/>
         <source>Web Site</source>
-        <translation type="unfinished"></translation>
+        <translation>Sitio web</translation>
     </message>
 </context>
 <context>
@@ -687,31 +697,31 @@ p, li { white-space: pre-wrap; }
         <location filename="../helpwindow.cpp" line="53"/>
         <location filename="../helpwindow.cpp" line="172"/>
         <source>&amp;Home</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Inicio</translation>
     </message>
     <message>
         <location filename="../helpwindow.cpp" line="54"/>
         <location filename="../helpwindow.cpp" line="173"/>
         <source>&amp;Back</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Volver</translation>
     </message>
     <message>
         <location filename="../helpwindow.cpp" line="55"/>
         <location filename="../helpwindow.cpp" line="174"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Pechar</translation>
     </message>
     <message>
         <location filename="../helpwindow.cpp" line="56"/>
         <location filename="../helpwindow.cpp" line="175"/>
         <source>Zoom In</source>
-        <translation type="unfinished"></translation>
+        <translation>Achegar</translation>
     </message>
     <message>
         <location filename="../helpwindow.cpp" line="57"/>
         <location filename="../helpwindow.cpp" line="176"/>
         <source>Zoom Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Desachegar</translation>
     </message>
 </context>
 <context>
@@ -1367,27 +1377,27 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../loopdialog.ui" line="14"/>
         <source>Loop Start and End bars</source>
-        <translation type="unfinished"></translation>
+        <translation>Compás inicial e final do bucle</translation>
     </message>
     <message>
         <location filename="../loopdialog.ui" line="34"/>
         <source>Loop Start:</source>
-        <translation type="unfinished"></translation>
+        <translation>Inicio do bucle:</translation>
     </message>
     <message>
         <location filename="../loopdialog.ui" line="57"/>
         <source>Loop End:</source>
-        <translation type="unfinished"></translation>
+        <translation>Final do bucle:</translation>
     </message>
     <message>
         <location filename="../loopdialog.cpp" line="66"/>
         <source>Input Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Erro de entrada</translation>
     </message>
     <message>
         <location filename="../loopdialog.cpp" line="66"/>
         <source>%1 is not greater than %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 non e mais grande que %2</translation>
     </message>
 </context>
 <context>
@@ -1395,97 +1405,97 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../lyrics.cpp" line="203"/>
         <source>Track:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pista:</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="204"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo:</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="205"/>
         <source>All Types</source>
-        <translation type="unfinished"></translation>
+        <translation>Todos os tipos</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="206"/>
         <source>Texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Textos</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="207"/>
         <source>Copyright Notice</source>
-        <translation type="unfinished"></translation>
+        <translation>Nota de Copyright</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="208"/>
         <source>Sequence Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome de secuencia</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="209"/>
         <source>Instrument Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome de instrumento</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="210"/>
         <source>Lyric Events</source>
-        <translation type="unfinished"></translation>
+        <translation>Eventos de letra</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="211"/>
         <source>Marker</source>
-        <translation type="unfinished"></translation>
+        <translation>Marcador</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="212"/>
         <source>Cue Point</source>
-        <translation type="unfinished"></translation>
+        <translation>Punto de sinal</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="214"/>
         <source>Encoding:</source>
-        <translation type="unfinished"></translation>
+        <translation>Codificación:</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="215"/>
         <source>Font...</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte...</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="216"/>
         <source>Full Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Pantalla enteira</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="217"/>
         <source>Copy to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Copiar ao portapapeis</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="218"/>
         <source>Save to file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Gardar a ficheiro...</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="219"/>
         <source>Print...</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimir...</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="265"/>
         <source>Default (latin1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Por defecto (latin1)</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="275"/>
         <source>All Tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>Tódalas pistas</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="280"/>
         <source>Track %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Pista %1</translation>
     </message>
 </context>
 <context>
@@ -1533,25 +1543,25 @@ p, li { white-space: pre-wrap; }
         <location filename="../playlist.cpp" line="48"/>
         <location filename="../playlist.cpp" line="355"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Engadir</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="52"/>
         <location filename="../playlist.cpp" line="356"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminar</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="56"/>
         <location filename="../playlist.cpp" line="357"/>
         <source>Move Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Arriba</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="60"/>
         <location filename="../playlist.cpp" line="358"/>
         <source>Move Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Abaixo</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="64"/>
@@ -1562,50 +1572,50 @@ p, li { white-space: pre-wrap; }
         <location filename="../playlist.cpp" line="68"/>
         <location filename="../playlist.cpp" line="359"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Limpar</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="72"/>
         <location filename="../playlist.cpp" line="360"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="76"/>
         <location filename="../playlist.cpp" line="361"/>
         <source>Save As</source>
-        <translation type="unfinished"></translation>
+        <translation>Gardar como</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="127"/>
         <source>Open Playlist file</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir ficheiro de lista</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="128"/>
         <location filename="../playlist.cpp" line="137"/>
         <source>Playlist (*.lst)</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista de reprodución (*.lst)</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="139"/>
         <source>Save Playlist file</source>
-        <translation type="unfinished"></translation>
+        <translation>Gardar ficheiro de lista</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="171"/>
         <source>Manage Playlist: %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Xestionar lista: %1 %2</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="180"/>
         <source>Add MIDI File</source>
-        <translation type="unfinished"></translation>
+        <translation>Engadir ficheiro MIDI</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="181"/>
         <source>All files (*.kar *.mid *.midi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;Cakewalk files (*.wrk)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tódolos ficheiros (*.kar *.mid *.midi *.wrk);;Ficheiros Karaoke (*.kar);;Ficheiros MIDI (*.mid *.midi);;Ficheiros Cakewalk (*.wrk)</translation>
     </message>
 </context>
 <context>
