@@ -79,6 +79,7 @@ public slots:
     void slotLockChannel(int channel);
     void slotNameChannel(int channel);
     void allNotesOff();
+	void toggleFullScreen(bool enabled);
 
 protected:
     void showEvent(QShowEvent *event) override;
@@ -98,6 +99,10 @@ private:
     QToolButton* m_mute[drumstick::rt::MIDI_STD_CHANNELS];
     QToolButton* m_solo[drumstick::rt::MIDI_STD_CHANNELS];
     QToolButton* m_lock[drumstick::rt::MIDI_STD_CHANNELS];
+	QToolButton* m_tools;
+	QMenu *m_chmenu;
+	QAction *m_a1, *m_a2, *m_a4;
+	QAction *m_action[drumstick::rt::MIDI_STD_CHANNELS];
     Vumeter* m_vumeter[drumstick::rt::MIDI_STD_CHANNELS];
     QComboBox* m_patch[drumstick::rt::MIDI_STD_CHANNELS];
     QLineEdit* m_name[drumstick::rt::MIDI_STD_CHANNELS];

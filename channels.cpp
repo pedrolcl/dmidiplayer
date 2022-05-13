@@ -56,13 +56,23 @@ Channels::Channels( QWidget* parent ) :
     m_title = new QLabel(tr("MIDI Channels"), this);
     m_title->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
     tbar->addWidget(m_title);
-    auto chmenu = new QMenu(this);
-    //FIXME: add menu options
-    auto toolBtn = new QToolButton(this);
-    toolBtn->setMenu(chmenu);
-    toolBtn->setPopupMode(QToolButton::InstantPopup);
-    toolBtn->setIcon(IconUtils::GetIcon("application-menu"));
-    tbar->addWidget(toolBtn);
+	m_chmenu = new QMenu(this);
+    m_a4 = new QAction(this); // Full Screen
+    m_a4->setShortcut(QKeySequence::FullScreen);
+    connect(m_a4, &QAction::triggered, this, &Channels::toggleFullScreen);
+    m_chmenu->addAction(m_a4);
+    m_a1 = new QAction(this); // Show all channels
+    connect(m_a1, &QAction::triggered, this, &Channels::slotEnableAllChannels);
+    m_chmenu->addAction(m_a1);
+    m_a2 = new QAction(this); // Hide all channels
+    connect(m_a2, &QAction::triggered, this, &Channels::slotDisableAllChannels);
+    m_chmenu->addAction(m_a2);
+    m_chmenu->addSeparator();
+    m_tools = new QToolButton(this);
+    m_tools->setMenu(m_chmenu);
+    m_tools->setPopupMode(QToolButton::InstantPopup);
+    m_tools->setIcon(IconUtils::GetIcon("application-menu"));
+    tbar->addWidget(m_tools);
     auto closeBtn = new QToolButton(this);
     closeBtn->setIcon(IconUtils::GetIcon("window-close"));
     connect(closeBtn, &QToolButton::clicked, this, &Channels::close);
@@ -116,7 +126,7 @@ Channels::Channels( QWidget* parent ) :
     for (int i = 0; i < MIDI_STD_CHANNELS; ++i) {
         int row = i + 2;
         m_lbl[i] = new QLabel(this);
-        m_lbl[i]->setNum(row);
+        m_lbl[i]->setNum(i + 1);
         layout->addWidget(m_lbl[i], row, 0, Qt::AlignRight | Qt::AlignVCenter);
         m_name[i] = new QLineEdit(this);
         layout->addWidget(m_name[i], row, 1);
@@ -146,6 +156,11 @@ Channels::Channels( QWidget* parent ) :
         m_voices[i] = 0;
         m_level[i] = 0.0;
         m_factor[i] = m_volumeFactor;
+		//FIXME: add menu channel options
+		m_action[i] = new QAction(this);
+        m_action[i]->setCheckable(true);
+        connect(m_action[i], &QAction::triggered, this, [=]{ enableChannel(i, m_action[i]->isChecked()); });
+        m_chmenu->addAction(m_action[i]);
     }
     adjustSize();
     retranslateUi();
@@ -160,18 +175,22 @@ void Channels::retranslateUi()
 {
     //setWindowTitle(tr("MIDI Channels"));
     m_title->setText(tr("MIDI Channels"));
-    m_lbl1->setText(tr( "Channel"));
-    m_lbl2->setText(tr( "Mute"));
-    m_lbl3->setText(tr( "Solo"));
-    m_lbl4->setText(tr( "Level"));
-    m_lbl5->setText(tr( "Lock"));
+    m_lbl1->setText(tr("Channel"));
+    m_lbl2->setText(tr("Mute"));
+    m_lbl3->setText(tr("Solo"));
+    m_lbl4->setText(tr("Level"));
+    m_lbl5->setText(tr("Lock"));
     m_lbl6->setText(tr("Patch (sound setting)"));
     m_instSet.reloadNames();
+	m_a1->setText(tr("Show all channels"));
+    m_a2->setText(tr("Hide all channels"));
+    m_a4->setText(tr("View Full Screen"));
     for (int i = 0; i < MIDI_STD_CHANNELS; ++i) {
         int curr = m_patch[i]->currentIndex();
         m_patch[i]->clear();
         m_patch[i]->addItems(m_instSet.names(i == MIDI_GM_STD_DRUM_CHANNEL));
         m_patch[i]->setCurrentIndex(curr);
+		m_action[i]->setText(tr("Channel %1").arg(i+1));
     }
 }
 
@@ -192,11 +211,14 @@ void Channels::initSong(Sequence *song)
 
 void Channels::applySettings()
 {
-
+#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+    m_chmenu->setPalette(qApp->palette());
+#endif
     QIcon locked(IconUtils::GetIcon("object-locked"));
     QIcon unlocked(IconUtils::GetIcon("object-unlocked"));
     QIcon lockIcon;
     QSize lockSize(16,16);
+	m_tools->setIcon(IconUtils::GetIcon("application-menu"));
     lockIcon.addPixmap(locked.pixmap(lockSize), QIcon::Normal, QIcon::On);
     lockIcon.addPixmap(unlocked.pixmap(lockSize), QIcon::Normal, QIcon::Off);
     for (int i = 0; i < MIDI_STD_CHANNELS; ++i) {
@@ -247,6 +269,7 @@ void Channels::closeEvent(QCloseEvent *event)
 
 void Channels::enableChannel(int channel, bool enable)
 {
+	m_action[channel]->setChecked(enable);
     m_mute[channel]->setChecked(false);
     m_mute[channel]->setEnabled(enable);
     m_solo[channel]->setChecked(false);
@@ -267,22 +290,31 @@ void Channels::enableChannel(int channel, bool enable)
     m_patch[channel]->setVisible(enable);
     m_name[channel]->setVisible(enable);
     m_lock[channel]->setVisible(enable);
+	update();
 }
 
 void Channels::slotDisableAllChannels()
 {
     for ( int channel = 0; channel < MIDI_STD_CHANNELS; ++channel ) {
+		if (m_action[channel]->isEnabled() && m_action[channel]->isChecked()) {
+            m_action[channel]->setChecked(false);
+		}
         enableChannel(channel, false);
     }
+	centralWidget()->adjustSize();
     adjustSize();
 }
 
 void Channels::slotEnableAllChannels()
 {
     for ( int channel = 0; channel < MIDI_STD_CHANNELS; ++channel ) {
+		if (m_action[channel]->isEnabled() && !m_action[channel]->isChecked()) {
+            m_action[channel]->setChecked(true);
+		}
         enableChannel(channel, true);
     }
-    adjustSize();
+    centralWidget()->adjustSize();
+	adjustSize();
 }
 
 void Channels::slotPatch(int channel, int value)
@@ -455,3 +487,44 @@ void Channels::slotNameChannel(int channel)
 {
     emit name(channel, m_name[channel]->text());
 }
+
+void Channels::toggleFullScreen(bool /*enabled*/)
+{
+    if (isFullScreen()) {
+        showNormal();
+    } else {
+        showFullScreen();
+    }
+}
+
+/*
+void Channels::slotShowAllChannels()
+{
+    for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+        if (m_action[i]->isEnabled() && !m_action[i]->isChecked()) {
+            m_action[i]->setChecked(true);
+            slotShowChannel(i);
+        }
+    }
+    centralWidget()->adjustSize();
+    adjustSize();
+}
+
+void Channels::slotHideAllChannels()
+{
+    for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+        if (m_action[i]->isEnabled() && m_action[i]->isChecked()) {
+            m_action[i]->setChecked(false);
+            slotShowChannel(i);
+        }
+    }
+    centralWidget()->adjustSize();
+    adjustSize();
+}
+
+void Channels::slotShowChannel(int chan)
+{
+    m_frame[chan]->setVisible(m_action[chan]->isChecked());
+    update();
+}
+*/
