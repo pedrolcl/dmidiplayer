@@ -1,6 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file alias="dmidiplayer.png">icons/dmidiplayer_64x64.png</file>
+        <file alias="dmidiplayer128.png">icons/dmidiplayer_128x128.png</file>
+        <file alias="splash.png">icons/splash.png</file>
+        <file alias="splash_gl.png">icons/splash_gl.png</file>
         <file>icons/edit-clear.png</file>
         <file>icons/go-down.png</file>
         <file>icons/go-jump.png</file>
@@ -38,10 +41,8 @@
         <file>icons/edit-delete.png</file>
         <file>icons/preferences-desktop-locale.png</file>
         <file>icons/application-menu.png</file>
-        <file alias="dmidiplayer128.png">icons/dmidiplayer_128x128.png</file>
         <file>icons/go-next.png</file>
         <file>icons/go-previous.png</file>
-        <file alias="splash.png">icons/splash.png</file>
         <file>icons/looping.png</file>
         <file>icons/help-contents.png</file>
         <file>icons/viewhtml.png</file>

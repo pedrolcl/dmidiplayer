@@ -76,7 +76,14 @@ int main(int argc, char *argv[])
     parser.addPositionalArgument("file", QCoreApplication::tr("Input SMF/KAR/WRK file name."), "[file]");
     parser.process(app);
 
-    QPixmap px(":/splash.png");
+    QPixmap px;
+    if ( (Settings::instance()->language() == "gl") &&
+         (QDate::currentDate().month() == 5) )
+    {
+        px = QPixmap(":/splash_gl.png");
+    } else {
+        px = QPixmap(":/splash.png");
+    }
     QSplashScreen splash(px);
     QFont sf = QApplication::font();
 #if defined(Q_OS_WINDOWS)
