@@ -61,13 +61,6 @@ Lyrics::Lyrics(QWidget *parent) : FramelessWindow(parent),
     m_codec(nullptr)
 {
     setObjectName(QString::fromUtf8("Lyrics"));
-#if defined(Q_OS_MACOS)
-    setUnifiedTitleAndToolBarOnMac(true);
-    setAttribute(Qt::WA_MacMiniSize, true);
-#else
-    setWindowFlag(Qt::Tool, true);
-#endif
-    setAttribute(Qt::WA_DeleteOnClose, false);
     setContextMenuPolicy(Qt::CustomContextMenu); // prevent default ctx
     QToolBar* tbar = new QToolBar(this);
     tbar->setObjectName("toolbar");
@@ -174,7 +167,6 @@ Lyrics::Lyrics(QWidget *parent) : FramelessWindow(parent),
     setMinimumSize(640,200);
     adjustSize();
     retranslateUi();
-    applySettings();
 }
 
 void Lyrics::readSettings()
@@ -242,23 +234,6 @@ void Lyrics::closeEvent(QCloseEvent *event)
     writeSettings();
     emit closed();
     event->accept();
-}
-
-bool Lyrics::nativeEvent(const QByteArray &eventType, void *message,
- #if QT_VERSION < QT_VERSION_CHECK(6,0,0)
-                          long *result
- #else
-                          qintptr *result
- #endif
-                         )
-{
-#if defined(Q_OS_WINDOWS)
-    if (m_snapper.HandleMessage(message)) {
-        result = 0;
-        return true;
-    }
-#endif
-    return QWidget::nativeEvent(eventType, message, result);
 }
 
 void Lyrics::populateCodecsCombo()
@@ -430,9 +405,7 @@ void Lyrics::applySettings()
             w->setPalette(qApp->palette());
         }
     }
-#if defined(Q_OS_WINDOWS)
-    m_snapper.SetEnabled(Settings::instance()->winSnap());
-#endif
+	FramelessWindow::applySettings();
 }
 
 QString Lyrics::sanitizeText(const QByteArray& data)

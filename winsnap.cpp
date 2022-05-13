@@ -1,6 +1,6 @@
 /*
  *  Sticky Window Snapper Class
- *  Copyright (C) 2021 Pedro López-Cabanillas <plcl@users.sourceforge.net>
+ *  Copyright (C) 2021-2022 Pedro López-Cabanillas <plcl@users.sourceforge.net>
  *  Copyright (C) 2014 mmbob (Nicholas Cook)
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -110,7 +110,7 @@ bool WinSnap::HandleEnterSizeMove()
             return true;
 
 		int styles = (int) GetWindowLongPtr(windowHandle, GWL_STYLE);
-		if ((styles & WS_CHILD) != 0 || (styles & WS_CAPTION) == 0)
+		if ((styles & WS_CHILD) != 0) // || (styles & WS_CAPTION) == 0) FramelessWindows don't have caption
             return true;
 		int extendedStyles = (int) GetWindowLongPtr(windowHandle, GWL_EXSTYLE);
         if (/*(extendedStyles & WS_EX_TOOLWINDOW) != 0 ||*/ (extendedStyles & WS_EX_NOACTIVATE) != 0)

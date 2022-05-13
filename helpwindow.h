@@ -28,9 +28,6 @@
 #include <QLabel>
 
 #include "framelesswindow.h"
-#if defined(Q_OS_WINDOWS)
-#include "winsnap.h"
-#endif
 
 class HelpWindow : public FramelessWindow
 {
@@ -40,20 +37,12 @@ public:
     void readSettings();
     void writeSettings();
     void retranslateUi();
-    void applySettings();
+    void applySettings() override;
     void showPage(const QString &path, const QString &page);
 
 protected:
     void showEvent(QShowEvent *event) override;
     void closeEvent( QCloseEvent *event)  override;
-    bool nativeEvent( const QByteArray &eventType, void *message,
-#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
-                  long *result
-#else
-                  qintptr *result
-#endif
-    ) override;
-
 private slots:
     void updateWindowTitle();
 
@@ -66,9 +55,6 @@ private:
     QAction *m_zoomIn;
     QAction *m_zoomOut;
     QString m_path, m_page;
-#if defined(Q_OS_WINDOWS)
-    WinSnap m_snapper;
-#endif
 };
 
 #endif // HELPWINDOW_H

@@ -37,13 +37,6 @@ HelpWindow::HelpWindow(QWidget *parent):
 {
     setObjectName(QString::fromUtf8("HelpWindow"));
     setWindowIcon(QIcon(":/dmidiplayer.png"));
-#if defined(Q_OS_MACOS)
-    setUnifiedTitleAndToolBarOnMac(true);
-    setAttribute(Qt::WA_MacMiniSize, true);
-#else
-    setWindowFlag(Qt::Tool, true);
-#endif
-    setAttribute(Qt::WA_DeleteOnClose, false);
 
     QToolBar* tbar = new QToolBar(this);
     tbar->setObjectName("toolbar");
@@ -92,10 +85,6 @@ HelpWindow::HelpWindow(QWidget *parent):
     m_textBrowser->setOpenExternalLinks(true);
 
     retranslateUi();
-    applySettings();
-#if defined(Q_OS_WINDOWS)
-    m_snapper.SetEnabled(Settings::instance()->winSnap());
-#endif
 }
 
 void HelpWindow::readSettings()
@@ -141,23 +130,6 @@ void HelpWindow::closeEvent(QCloseEvent *event)
 {
     writeSettings();
     event->accept();
-}
-
-bool HelpWindow::nativeEvent(const QByteArray &eventType, void *message,
- #if QT_VERSION < QT_VERSION_CHECK(6,0,0)
-                          long *result
- #else
-                          qintptr *result
- #endif
-                         )
-{
-#if defined(Q_OS_WINDOWS)
-    if (m_snapper.HandleMessage(message)) {
-        result = 0;
-        return true;
-    }
-#endif
-    return QWidget::nativeEvent(eventType, message, result);
 }
 
 void HelpWindow::updateWindowTitle()
@@ -211,4 +183,5 @@ void HelpWindow::applySettings()
     m_close->setIcon(IconUtils::GetIcon("window-close"));
     m_zoomIn->setIcon(IconUtils::GetIcon("format-font-size-more"));
     m_zoomOut->setIcon(IconUtils::GetIcon("format-font-size-less"));
+	FramelessWindow::applySettings();
 }

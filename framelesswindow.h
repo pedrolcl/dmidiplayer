@@ -21,6 +21,10 @@
 
 #include <QMainWindow>
 
+#if defined(Q_OS_WINDOWS)
+#include "winsnap.h"
+#endif
+
 class FramelessWindow : public QMainWindow
 {
     Q_OBJECT
@@ -30,11 +34,22 @@ public:
     void setPseudoCaption(QWidget *widget);
 
 protected:
+	virtual void applySettings();
     void updateCursor(Qt::Edges edges);
     bool event(QEvent* ev) override;
+	bool nativeEvent( const QByteArray &eventType, void *message,
+#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
+                      long *result
+#else
+                      qintptr *result
+#endif
+    ) override;
 
 private:
     QWidget *m_pseudoCaption;
+#if defined(Q_OS_WINDOWS)
+    WinSnap m_snapper;
+#endif
 };
 
 #endif

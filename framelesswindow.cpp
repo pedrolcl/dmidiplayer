@@ -22,12 +22,21 @@
 #include <QEvent>
 #include <QHoverEvent>
 #include <QStyle>
+#include "settings.h"
 #include "framelesswindow.h"
 
 FramelessWindow::FramelessWindow(QWidget *parent)
     : QMainWindow(parent, Qt::FramelessWindowHint),
       m_pseudoCaption(nullptr)
-{ }
+{ 
+#if defined(Q_OS_MACOS)
+    //setUnifiedTitleAndToolBarOnMac(true);
+    setAttribute(Qt::WA_MacMiniSize, true);
+#else
+    setWindowFlag(Qt::Tool, true);
+#endif
+    setAttribute(Qt::WA_DeleteOnClose, false);
+}
 
 void FramelessWindow::updateCursor(Qt::Edges edges)
 {
@@ -122,5 +131,29 @@ QWidget *FramelessWindow::pseudoCaption() const
 
 void FramelessWindow::setPseudoCaption(QWidget *widget)
 {
-    m_pseudoCaption = widget;
+	m_pseudoCaption = widget;
+}
+
+void FramelessWindow::applySettings()
+{
+#if defined(Q_OS_WINDOWS)
+    m_snapper.SetEnabled(Settings::instance()->winSnap());
+#endif
+}
+
+bool FramelessWindow::nativeEvent(const QByteArray &eventType, void *message,
+#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
+                            long *result
+#else
+                            qintptr *result
+#endif
+                          )
+{
+#if defined(Q_OS_WINDOWS)
+    if (m_snapper.HandleMessage(message)) {
+        result = 0;
+        return true;
+    }
+#endif
+    return QMainWindow::nativeEvent(eventType, message, result);
 }

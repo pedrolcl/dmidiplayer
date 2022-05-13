@@ -48,13 +48,6 @@ Pianola::Pianola( QWidget* parent ) : FramelessWindow(parent),
     m_song(nullptr)
 {
     setObjectName("PlayerPianoWindow");
-#if defined (Q_OS_MACOS)
-    setUnifiedTitleAndToolBarOnMac(true);
-    setAttribute(Qt::WA_MacMiniSize, true);
-#else
-    setWindowFlag(Qt::Tool, true);
-#endif
-    setAttribute(Qt::WA_DeleteOnClose, false);
     setContextMenuPolicy(Qt::CustomContextMenu); // prevent default ctx
     QToolBar* tbar = new QToolBar(this);
     tbar->setObjectName("toolbar");
@@ -145,7 +138,6 @@ Pianola::Pianola( QWidget* parent ) : FramelessWindow(parent),
     setMinimumSize(640,200);
     adjustSize();
     retranslateUi();
-    applySettings();
 }
 
 Pianola::~Pianola()
@@ -185,9 +177,7 @@ void Pianola::applySettings()
             m_piano[i]->setHighlightPalette(pal);
         }
     }
-#if defined(Q_OS_WINDOWS)
-    m_snapper.SetEnabled(Settings::instance()->winSnap());
-#endif
+	FramelessWindow::applySettings();
 }
 
 void Pianola::initSong(Sequence *song)
@@ -411,21 +401,4 @@ void Pianola::toggleFullScreen(bool /*enabled*/)
     } else {
         showFullScreen();
     }
-}
-
-bool Pianola::nativeEvent(const QByteArray &eventType, void *message,
-#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
-                          long *result
-#else
-                          qintptr *result
-#endif
-                         )
-{
-#if defined(Q_OS_WINDOWS)
-    if (m_snapper.HandleMessage(message)) {
-        result = 0;
-        return true;
-    }
-#endif
-    return QWidget::nativeEvent(eventType, message, result);
 }

@@ -23,9 +23,6 @@
 #include <drumstick/rtmidioutput.h>
 
 #include "framelesswindow.h"
-#if defined(Q_OS_WINDOWS)
-#include "winsnap.h"
-#endif
 
 class QFrame;
 class QLabel;
@@ -48,7 +45,7 @@ public:
     void readSettings();
     void writeSettings();
     void retranslateUi();
-    void applySettings();
+    void applySettings() override;
     void initSong( Sequence *song );
 
 signals:
@@ -73,13 +70,6 @@ public slots:
 protected:
     void closeEvent( QCloseEvent *event ) override;
     void showEvent( QShowEvent * event ) override;
-    bool nativeEvent( const QByteArray &eventType, void *message,
-#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
-                  long *result
-#else
-                  qintptr *result
-#endif
-    ) override;
 
 private:
     Sequence *m_song;
@@ -94,9 +84,6 @@ private:
     bool m_tightenKeys;
     int m_lowerNote;
     int m_upperNote;
-#if defined(Q_OS_WINDOWS)
-    WinSnap m_snapper;
-#endif
 };
 
 #endif /* PIANOLA_H */

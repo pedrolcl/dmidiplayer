@@ -23,11 +23,7 @@
 #include <QObject>
 #include <QMap>
 #include <QTextCodec>
-
 #include "framelesswindow.h"
-#if defined(Q_OS_WINDOWS)
-#include "winsnap.h"
-#endif
 
 class QGridLayout;
 class QFrame;
@@ -47,7 +43,7 @@ public:
     void writeSettings();
     void retranslateUi();
     void initSong( Sequence *song );
-    void applySettings();
+    void applySettings() override;
 
 public slots:
     void slotMidiText(const int track, const int type, int ticks, const QByteArray &text);
@@ -67,13 +63,6 @@ signals:
 protected:
     void showEvent(QShowEvent *event) override;
     void closeEvent( QCloseEvent *event)  override;
-    bool nativeEvent( const QByteArray &eventType, void *message,
-#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
-                  long *result
-#else
-                  qintptr *result
-#endif
-    ) override;
 
 private: // methods
     void populateCodecsCombo();
@@ -103,10 +92,6 @@ private: // member vars
     QTextEdit *m_textViewer;
     QMenu *m_chmenu;
     QMap<int,int> m_textPos;
-
-#if defined(Q_OS_WINDOWS)
-    WinSnap m_snapper;
-#endif
 };
 
 #endif // LYRICS_H

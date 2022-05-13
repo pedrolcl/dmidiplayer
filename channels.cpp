@@ -48,8 +48,6 @@ Channels::Channels( QWidget* parent ) :
     m_volumeFactor(1.0)
 {
     setObjectName("ChannelsWindow");
-    setWindowFlag(Qt::Tool, true);
-    setAttribute(Qt::WA_DeleteOnClose, false);
     QToolBar* tbar = new QToolBar(this);
     tbar->setObjectName("toolbar");
     tbar->setMovable(false);
@@ -151,7 +149,6 @@ Channels::Channels( QWidget* parent ) :
     }
     adjustSize();
     retranslateUi();
-    applySettings();
 }
 
 Channels::~Channels()
@@ -211,9 +208,7 @@ void Channels::applySettings()
             w->setPalette(qApp->palette());
         }
     }
-#if defined(Q_OS_WINDOWS)
-    m_snapper.SetEnabled(Settings::instance()->winSnap());
-#endif
+	FramelessWindow::applySettings();
 }
 
 void Channels::readSettings()
@@ -459,21 +454,4 @@ void Channels::setLockChannel(int channel, bool lock)
 void Channels::slotNameChannel(int channel)
 {
     emit name(channel, m_name[channel]->text());
-}
-
-bool Channels::nativeEvent(const QByteArray &eventType, void *message,
-#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
-                            long *result
-#else
-                            qintptr *result
-#endif
-                          )
-{
-#if defined(Q_OS_WINDOWS)
-    if (m_snapper.HandleMessage(message)) {
-        result = 0;
-        return true;
-    }
-#endif
-    return QWidget::nativeEvent(eventType, message, result);
 }

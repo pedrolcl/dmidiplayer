@@ -24,10 +24,6 @@
 #include "instrumentset.h"
 #include "framelesswindow.h"
 
-#if defined(Q_OS_WINDOWS)
-#include "winsnap.h"
-#endif
-
 class QLabel;
 class QToolButton;
 class QComboBox;
@@ -49,7 +45,7 @@ public:
     void writeSettings();
     void retranslateUi();
     void initSong( Sequence *song );
-    void applySettings();
+    void applySettings() override;
 
     QString channelName(int channel) const;
     bool isChannelMuted(int channel) const;
@@ -88,13 +84,6 @@ protected:
     void showEvent(QShowEvent *event) override;
     void closeEvent( QCloseEvent *event)  override;
     void timerEvent( QTimerEvent *event ) override;
-    bool nativeEvent( const QByteArray &eventType, void *message,
-#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
-                      long *result
-#else
-                      qintptr *result
-#endif
-    ) override;
 
 private:
     int m_timerId;
@@ -112,9 +101,6 @@ private:
     Vumeter* m_vumeter[drumstick::rt::MIDI_STD_CHANNELS];
     QComboBox* m_patch[drumstick::rt::MIDI_STD_CHANNELS];
     QLineEdit* m_name[drumstick::rt::MIDI_STD_CHANNELS];
-#if defined(Q_OS_WINDOWS)
-    WinSnap m_snapper;
-#endif
 };
 
 #endif /* CHANNELS_H */
