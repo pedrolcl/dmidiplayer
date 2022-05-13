@@ -18,6 +18,16 @@ Some key features:
 * Lyrics, Piano Player and MIDI Channels views
 * Supports MID/KAR/RMI (Standard MIDI Files) and WRK (Cakewalk) file formats
 
+New in v1.6.0:
+* Release dedicated to the Galician Literature Day.
+* New Galician translation and help page.
+* New sample song: Negra Sombra.
+* New Splash screen shown during May for Galician language users
+  Using this file: https://commons.wikimedia.org/wiki/File:Bandeira_de_Galicia_no_Pazo_de_Raxoi.jpg
+  Author: Contando Estrelas from Vigo, España / Spain
+  License: CC-BY-SA-2.0
+* CSD tool windows (channels, player piano, lyrics, help).
+
 New in v1.5.3:
 * After drumstick ticket #37: WRK format markers are supported.
 * Replaced deprecated signals from drumstick-file when building with Qt6.
@@ -107,8 +117,8 @@ This multiplatform version offers equivalent functionality replacing Drumstick::
 Alright, these are the build requirements:
 
 * C++11 compiler
-* [Qt 5](https://www.qt.io/download) >= 5.9 or Qt6 >= 6.2 (experimental)
-* [Drumstick 2.4](https://sourceforge.net/projects/drumstick/)
+* [Qt 5](https://www.qt.io/download) >= 5.15 or Qt6 >= 6.2
+* [Drumstick 2.6](https://sourceforge.net/projects/drumstick/)
 * [Uchardet 0.0.7](https://www.freedesktop.org/wiki/Software/uchardet/)
 * [pandoc](https://pandoc.org/)
 * [CMake 3.14](https://cmake.org/)

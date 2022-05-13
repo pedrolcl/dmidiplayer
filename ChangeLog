@@ -1,7 +1,15 @@
+2022-05-13
+    * New Galician translation and help page.
+    * New sample song: Negra Sombra.
+    * New Splash screen shown during May for Galician language users
+      Using this file: https://commons.wikimedia.org/wiki/File:Bandeira_de_Galicia_no_Pazo_de_Raxoi.jpg
+      Author: Contando Estrelas from Vigo, España / Spain
+      License: CC-BY-SA-2.0 Generic.
+    * Frameless tool windows (channels, player piano, lyrics, help).
+
 2022-04-30
     * Bumped required drumstick version to 2.6
     * Better compatibility with Qt6
-    * Bumped version to 1.5.4
 
 2022-04-22
     * Using QGuiApplication::setDesktopFileName to fix the wrong icon in KDE+Wayland

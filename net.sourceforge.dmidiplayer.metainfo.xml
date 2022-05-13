@@ -30,6 +30,19 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.6.0" date="2022-05-17">
+            <description>
+                <p>Release dedicated to the Galician Literature Day.</p>
+                <p>Includes the following changes</p>
+                <ul>
+                    <li>New Galician translation and help page.</li>
+                    <li>New sample song: Negra Sombra.</li>
+                    <li>New Splash screen during May for Galician language users.</li>
+                    <li>Frameless tool windows (channels, player piano, lyrics, help).</li>
+                    <li>Requires: drumstick-2.6.</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.5.3" date="2021-12-22">
             <description>
                 <p>This release includes the following changes</p>
