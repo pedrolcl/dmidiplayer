@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Índice de axuda</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Índice de axuda</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#introdución">Introdución</a></li>
+<li><a href="#saída-midi">Saída MIDI</a></li>
+<li><a href="#controis-de-reprodución">Controis de reprodución</a><ul>
+<li><a href="#transpoñer">Transpoñer</a></li>
+<li><a href="#nivel-de-volume">Nivel de volume</a></li>
+<li><a href="#tempo">Tempo</a></li>
+<li><a href="#salto-bucle-e-posicionamento">Salto, bucle e posicionamento</a></li>
+</ul></li>
+<li><a href="#vistas">Vistas</a><ul>
+<li><a href="#canles">Canles</a></li>
+<li><a href="#pianista">Pianista</a></li>
+<li><a href="#letras">Letras</a></li>
+</ul></li>
+<li><a href="#listas-de-reprodución">Listas de reprodución</a></li>
+<li><a href="#apertura-de-ficheiros-midi">Apertura de ficheiros MIDI</a></li>
+<li><a href="#personalización">Personalización</a><ul>
+<li><a href="#preferencias">Preferencias</a></li>
+<li><a href="#personalización-da-barra-de-ferramentas">Personalización da barra de ferramentas</a></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="introdución">Introdución</h2>
+<p>Esta aplicación é un reprodutor de ficheiros MIDI multiplataforma para Linux, Windows e macOS. Le .MID (Arquivos MIDI estándar), .KAR (Karaoke) e .WRK (Cakewalk) formatos de ficheiro e envía eventos MIDI a portos MIDI de hardware e tamén ao software sintetizadores.</p>
+<p><a href="https://drumstick.sourceforge.io">Drumstick</a> é un conxunto de GPLv3 bibliotecas C++/Qt con licenza para aplicacións MIDI. O proxecto inclúe varios ferramentas como exemplos, e entre elas está a utilidade drumstick-guiplayer que aproveita a biblioteca Drumstick::ALSA, polo que só está dispoñible para Linux (porque o secuenciador ALSA é unha tecnoloxía só para Linux). Algunhas persoas teñen solicitou un programa coas mesmas funcionalidades en Windows e macOS, e aquí está. Pero este programa é moito máis que iso, e tamén funciona Linux...</p>
+<p>Algunhas características clave:</p>
+<ul>
+<li>Saída MIDI a portos MIDI de hardware ou a calquera outro backend de Drumstick como soft sintetizadores</li>
+<li><a href="https://en.wikipedia.org/wiki/Transposition_(music)">Transpose</a> tonalidade da canción entre -12 e +12 semitonos</li>
+<li>Cambiar o nivel de volume MIDI (usando MIDI CC7)</li>
+<li>Escala a velocidade da canción entre a metade e o dobre <a href="https://en.wikipedia.org/wiki/Tempo">tempo</a></li>
+<li>Vistas de letras, reprodutor de piano e canles MIDI</li>
+<li>Admite formatos de ficheiros MID/KAR (Arquivos MIDI estándar) e WRK (Cakewalk)</li>
+</ul>
+<h2 id="saída-midi">Saída MIDI</h2>
+<p>Calquera reprodutor MIDI só produce eventos MIDI, pero non son. Para producir son, un MIDI Precísase un sintetizador para renderizar os eventos en audio dixital que pode ser reproducida polos altofalantes do ordenador (ou externos). Os eventos tamén poden ser representado por un instrumento musical MIDI externo conectado ao ordenador, por exemplo, un órgano MIDI, un piano ou un sintetizador cunha interface USB. Se iso opción non está dispoñible, outra alternativa habitual é un sintetizador de software (un programa).</p>
+<p>Hai sintetizadores de software incluídos nos sistemas operativos do ordenador, por exemplo, Microsoft Windows inclúe o &quot;Microsoft GS Wavetable Synth&quot; e Apple macOS inclúe o &quot;Apple DLS Synthesizer&quot;. Para usalos, cómpre abrilos o diálogo &quot;Configuración MIDI&quot; e despois:</p>
+<ul>
+<li>En <strong>Windows</strong>, seleccione a opción &quot;Windows MM&quot; na primeira caixa de lista e &quot;Microsoft GS Wavetable Synth&quot; na segunda caixa de lista. En lugar deste sintetizador, que é moi básico e limitado, pode preferir unha alternativa mellor/gratis como <a href="https://coolsoft.altervista.org/en/virtualmidisynth">Sintetizador MIDI virtual</a> que se mostrará como &quot;VirtualMIDISynth #n&quot; na segunda caixa de lista ao executarse. Se tes un instrumento MIDI externo conectado ao ordenador, o seu nome debería aparecer tamén na segunda caixa de lista.</li>
+<li>En <strong>macOS</strong>, seleccione &quot;DLS Synth&quot; tanto na primeira como na segunda caixa de lista. Este sintetizador ten unha opción de configuración para usar ficheiros de fontes de son DLS ou SF2 se ti queres. Para usar outro dispositivo MIDI ou sintetizador de software conectado, cómpre seleccionar &quot;CoreMIDI&quot; na primeira caixa de lista e o nome do seu sintetizador no segundo.</li>
+<li>En <strong>Linux</strong> e noutros sistemas operativos <strong>Unix</strong>, &quot;SonivoxEAS&quot; é un sintetizador listo para ser usado. É un sintetizador GM moi básico que non usa ficheiros e depende só do sistema de son PulseAudio. Para dispositivos externos conectados ao ordenador ou a sintetizadores suaves arbitrarios, cómpre seleccionar &quot;ALSA&quot; (ou &quot;OSS&quot;) no primeiro cadro de lista.</li>
+<li><strong>FluidSynth</strong> é outro sintetizador de software aberto incluído que é multiplataforma e dispoñible en todos os sistemas operativos. É moi configurable, aceptando ficheiros soundfont e moitos sistemas de son de audio dixital. Seleccione <a href="https://github.com/FluidSynth/fluidsynth">FluidSynth</a> en ambas caixas de lista para usalo.</li>
+<li><strong>Rede</strong> é unha saída multiplataforma UDP Multicast, que se pode usar para enviar Eventos MIDI como paquetes de rede a outros ordenadores e dispositivos no mesmo rede de área local. É compatible con <a href="https://www.nerds.de/en/ipmidi.html">ipMIDI</a>, <a href="https://qmidinet.sourceforge.io/">QmidiNet</a>, e <a href="https://llg.cubic.org/tools/multimidicast/">multimidicast</a> entre outros programas.</li>
+</ul>
+<h2 id="controis-de-reprodución">Controis de reprodución</h2>
+<p>As seguintes accións estándar están dispoñibles no menú <code>Ficheiro</code> e tamén no menú barra de ferramentas, coas funcionalidades convencionais de calquera reprodutor multimedia:</p>
+<ul>
+<li><code>Xogar</code></li>
+<li>&quot;Pausa&quot; (e continúa)</li>
+<li>'Parar'</li>
+<li>&quot;Avance rápido&quot; (1 barra)</li>
+<li>&quot;Rebobinar&quot; (1 barra)</li>
+</ul>
+<p>Por defecto, <code>Reproducir</code> actívase automaticamente ao cargar un ficheiro MIDI excepto cando esta función está desactivada no diálogo de configuración.</p>
+<p>Móstrase a &quot;barra de estado&quot;, situada opcionalmente na parte inferior da xanela principal o estado actual da reprodución como &quot;Reproducindo&quot;, &quot;Detido&quot;, &quot;En pausa&quot;, etc.</p>
+<h3 id="transpoñer">Transpoñer</h3>
+<p>O <code>Control de ton</code> está situado na xanela principal. É unha caixa xiratoria inicializada a cero, cun rango válido de -12 a +12 semitonos. Os límites son equivalentes a unha oitava arriba ou abaixo do ton orixinal. Isto debería ser suficiente para os cantantes ou instrumentistas que necesitan axustar a tonalidade para a súa comodidade.</p>
+<p>Todas as canles MIDI transpóñense cromáticamente, excepto a canle de percusión (Canle 10 de GM por defecto).</p>
+<h3 id="nivel-de-volume">Nivel de volume</h3>
+<p>O <code>Control de volume</code> está situado na xanela principal. É un control deslizante, inicializado ao 100%, cun rango válido do 0% ao 200%. O efecto límite superior pode ser inferior porque o MIDI CC 7 ten un rango válido de 0 a 127. Tamén hai un botón para &quot;Restablecer volume&quot;.</p>
+<h3 id="tempo">Tempo</h3>
+<p>O <code>Control Tempo</code> está situado na xanela principal. É un control deslizante inicializado ao 100% cun rango válido do 50% ao 200%. Hai un botón para &quot;Reset Tempo&quot;. e tamén unha pantalla de tempo, que mostra o tempo efectivo en pulsacións por minuto un valor inicial de 120 bpm. Este é o tempo predeterminado para un ficheiro MIDI non contén un cambio de tempo. Este valor actualízase ao cambiar o control de tempo, e tamén mentres se reproduce un ficheiro MIDI que contén cambios de tempo.</p>
+<h3 id="salto-bucle-e-posicionamento">Salto, bucle e posicionamento</h3>
+<p>A acción <code>Saltar</code> (situada no menú <code>Ficheiro</code> e na barra de ferramentas predeterminada), solicita un número de compás, entre o 1 e o último compás da canción cargada, para cambiar posición actual da canción na barra indicada.</p>
+<p>A acción <code>Loop</code> (situada no menú <code>Ficheiro</code> e na barra de ferramentas predeterminada), solicita dous números de barra. A canción tocarase entre os dous compases indicados cando sexa activado. Podes desactivar o bucle en calquera momento seleccionando a acción de novo.</p>
+<p>O <code>Control de posicionamento</code> está situado na xanela principal. É un control deslizante que móvese mentres cambia a posición de reprodución actual e pódese mover a man cambiar a posición a calquera punto arbitrario dentro da canción.</p>
+<h2 id="vistas">Vistas</h2>
+<p>No menú &quot;Ver&quot; están habilitadas as seguintes opcións:</p>
+<p>Tres vistas son fiestras independentes que podes abrir e pechar no teu comodidade: canles, letras e reprodutor de piano.</p>
+<p>Por outra banda, tamén pode ocultar ou mostrar tres vistas máis que están incrustadas na xanela principal: barra de ferramentas, barra de estado e ritmo.</p>
+<h3 id="canles">Canles</h3>
+<p>Esta xanela mostra ata 16 filas, unha por cada canle MIDI utilizada pola actual Ficheiro MIDI. As columnas son:</p>
+<ul>
+<li>Número e texto da canle MIDI (editable). Normalmente o nome do instrumento, ou a Breve descrición extraída dos metadatos do ficheiro.</li>
+<li>Botón de silencio. Con esta opción pódese silenciar a canle actual.</li>
+<li>Botón Solo. Aumenta o volume da canle actual mentres baixa outras canles.</li>
+<li>Nivel. Indicador da actividade na canle actual.</li>
+<li>Botarlle o ferrollo. Este botón corrixe o parche na canle actual, evitando cambios almacenado no ficheiro.</li>
+<li>Parche. Corresponde aos eventos de cambio de programa MIDI segundo o Xeral Lista MIDI de nomes de instrumentos.</li>
+</ul>
+<h3 id="pianista">Pianista</h3>
+<p>Esta xanela mostra ata 16 filas, unha por cada canle MIDI utilizada pola actual Ficheiro MIDI. Cada fila contén:</p>
+<ul>
+<li>Un número de canle e texto (os mesmos datos que a xanela Canles)</li>
+<li>Un teclado de piano. As teclas serán resaltadas cunha cor, que pode ser totalmente personalizado, polos eventos de nota MIDI reproducidos polo ficheiro MIDI actual. Pode tamén, opcionalmente, mostrar os nomes das notas. As teclas poden estar activadas manualmente utilizando o teclado e o rato do ordenador</li>
+</ul>
+<p>Hai un menú de xanela, coas seguintes opcións:</p>
+<ul>
+<li>Ver pantalla completa. Amplía a fiestra enchendo o monitor actual</li>
+<li>Mostrar todas as canles</li>
+<li>Ocultar todas as canles</li>
+<li>Apretar o número de chaves. Por defecto, cada teclado mostra 88 teclas, dende A0 ao C8. Usando esta opción, os teclados só usan realmente o número de oitavas usado polo ficheiro MIDI, que adoita ser un número menor</li>
+<li>Ata 16 opcións de canle, para ocultar ou mostrar cada canle individualmente. Por por defecto todas as canles MIDI utilizadas no ficheiro MIDI actual están seleccionadas</li>
+</ul>
+<h3 id="letras">Letras</h3>
+<p>Esta xanela mostra os metadatos de texto do ficheiro MIDI cargado, filtrando o datos cunha serie de controis situados na barra de ferramentas da xanela:</p>
+<ul>
+<li>Pista: unha caixa de lista para escoller entre &quot;Todas as pistas&quot; ou un elemento correspondente cada pista utilizada no ficheiro MIDI cargado. Este número de pista substitúe ao concepto de canle MIDI nesta xanela, porque os metadatos do texto non teñen un atributo de canle, pero sempre pertence a algunha pista. Por defecto, o selecciónase automaticamente a pista que contén máis datos</li>
+<li>Tipo: unha caixa de lista para escoller un dos tipos de texto de metadatos ou todos. O O tipo &quot;Lyric Events&quot; é a opción máis probable</li>
+<li>Codificación: a codificación do texto detéctase automaticamente, pero nalgúns casos a a detección pode ser incorrecta, polo que a correcta pódese seleccionar manualmente</li>
+</ul>
+<p>Hai un menú de xanela, coas seguintes opcións:</p>
+<ul>
+<li>Copiar no portapapeis: copia os metadatos que a xanela mostra actualmente</li>
+<li>Gardar no ficheiro... Despois de abrir un diálogo Gardar ficheiro, esta opción crea un texto ficheiro no disco, co texto mostrado pola xanela e a codificación seleccionada</li>
+<li>Imprimir... Despois de abrir un diálogo de impresión, esta opción imprime o texto mostrado por a xanela da impresora seleccionada</li>
+<li>Pantalla completa: amplía a xanela enchendo o monitor actual</li>
+<li>Fonte... Abre unha xanela de selección de fontes para escoller a tipografía e o tamaño os textos da fiestra</li>
+</ul>
+<h2 id="listas-de-reprodución">Listas de reprodución</h2>
+<p>As listas de reprodución son coleccións de nomes de ficheiros que se poden usar para reproducir unha serie de pezas MIDI, como un &quot;repertorio&quot; musical.</p>
+<p>A acción <code>Ficheiro</code>-&gt;<code>Lista de reprodución...</code> xestiona a creación, modificación, ordenación, abrir e gardar ficheiros da lista de reprodución. Esta xanela mostra a lista de reprodución actual nome do ficheiro no título da xanela.</p>
+<p>As accións <code>Ficheiro</code>-&gt;<code>Seguinte</code> e <code>Ficheiro</code>-&gt;<code>Anterior</code> úsanse para navegar pola lista de reprodución manualmente cara adiante e cara atrás. Hai opcións de configuración para iniciar a reprodución automaticamente despois de cargar ficheiros MIDI e avanzar automaticamente ao seguinte elemento da lista de reprodución cando remate de reproducir o elemento actual. Ambas opcións de configuración están activados por defecto.</p>
+<p>A lista de reprodución predeterminada inicial contén unha colección de exemplos de ficheiros MIDI. Se prefires comezar cunha lista baleira, deberías usar o botón <code>Borrar</code> e despois garda a lista de reprodución baleira cun nome significativo. Esta será a nova lista de reprodución inicial no futuro.</p>
+<p>O último ficheiro de lista de reprodución aberto ou gardado lembrarase a próxima vez iníciase o programa, pero as listas de reprodución non se gardan automaticamente.</p>
+<p>As listas de reprodución son ficheiros de texto sinxelos, cun nome de ficheiro en cada liña de texto. O arquivo os nomes poden ser relativos á localización do propio ficheiro da lista de reprodución (polo que o fan non ten unha ruta absoluta anteposta) ou cada ficheiro pode ter unha ruta absoluta activada o seu propio.</p>
+<p>Podes ter varias listas de reprodución que se poden crear facilmente fóra de programa, por exemplo, na liña de comandos de Linux, este comando crea unha lista de reprodución ficheiro chamado &quot;my_playlist.lst&quot; con todos os ficheiros MIDI situados no traballo directorio:</p>
+<pre><code>$ ls -1 *.mid &gt; my_playlist.lst</code></pre>
+<h2 id="apertura-de-ficheiros-midi">Apertura de ficheiros MIDI</h2>
+<p>Podes abrir ficheiros individuais...</p>
+<ul>
+<li>Usando a acción estándar <code>Ficheiro</code>-&gt;<code>Abrir</code></li>
+<li>Usando o menú <code>Ficheiro</code>-&gt;<code>Abrir ficheiros recentes</code>, que lembra ata dez ficheiros aberto recentemente.</li>
+<li>Proporcionando o(s) nome(s) do ficheiro na liña de comandos. O conxunto de ficheiros pasa a ser a lista de reprodución temporal. Isto permite unha fácil integración do programa co ficheiro xestores que usan accións &quot;Abrir con...&quot;.</li>
+<li>Arrastrar e soltar ficheiros desde un xestor de ficheiros á xanela principal. O conxunto de ficheiros convértese nunha lista de reprodución temporal.</li>
+</ul>
+<h2 id="personalización">Personalización</h2>
+<h3 id="preferencias">Preferencias</h3>
+<p>Hai un botón &quot;Restaurar valores predeterminados&quot; para inicializar todas as opcións neste diálogo aos seus valores predeterminados.</p>
+<p>Hai tres pestanas que agrupan os axustes de configuración</p>
+<h4 id="xeral">Xeral</h4>
+<ul>
+<li>Canle MIDI de percusión: Número do 1 ao 16. Por defecto 10, correspondente ao Canal de percusión estándar MIDI xeral</li>
+<li>Inicia a reprodución automaticamente despois da carga. Activado por defecto</li>
+<li>Avanza automaticamente ao seguinte elemento da lista de reprodución. Activado por defecto</li>
+<li>Forzar o modo escuro. Pode ser útil en Windows. En Linux e macOS o modo escuro é aplicado automaticamente cando se configura no sistema operativo</li>
+<li>Usa o tema da icona interna. Esta configuración é necesaria en Windows e macOS.</li>
+<li>Estilo de widgets Qt. Dependendo do sistema operativo, afecta ao visual integración con outros programas</li>
+<li>Restablecemento exclusivo do sistema MIDI. O xogador envía esta mensaxe xusto antes de comezar reproducindo cada ficheiro MIDI</li>
+</ul>
+<h4 id="letras-1">Letras</h4>
+<ul>
+<li>Fonte do texto. Abre unha xanela de selección de fontes para escoller a tipografía e o tamaño os textos da fiestra. Esta configuración tamén está dispoñible no menú da xanela Letras</li>
+<li>Cor do texto futuro. Esta configuración aplícase ao texto que non se reproduciu</li>
+<li>Cor do texto anterior. Esta configuración aplícase ao texto que xa se reproduciu</li>
+</ul>
+<h4 id="tocador-de-piano">Tocador de piano</h4>
+<ul>
+<li>Resaltar notas. Hai algunhas paletas de resaltado dispoñibles</li>
+<li>Unha única cor de resaltado. Cando se selecciona a paleta de resaltado dunha soa cor, esta configuración é a cor de resaltado da nota</li>
+<li>Observe a velocidade ao matiz da cor. Con esta opción, a velocidade dos eventos de nota MIDI utilízase para darlle á cor de resaltado un ton máis claro ou escuro</li>
+<li>Anota os nomes da fonte. Abre unha xanela de selección de fontes para escoller a tipografía e tamaño dos nomes das notas</li>
+<li>Mostrar os nomes das notas: as opcións dispoñibles son Nunca, Mínima, Cando está activada, sempre. A opción Mínimo mostra só os nomes das teclas C.</li>
+</ul>
+<h3 id="personalización-da-barra-de-ferramentas">Personalización da barra de ferramentas</h3>
+<p>A barra de ferramentas está situada na xanela principal, que normalmente é moi pequena espazo dispoñible e pódese mover á parte superior ou á parte inferior da xanela, e tamén fóra dela. As accións dispoñibles como botóns de ferramenta pódense configurar en esta xanela de diálogo. Todas as accións tamén son elementos do menú principal.</p>
+<ul>
+<li>Accións dispoñibles: mostra a lista de accións que non se mostran actualmente botóns da ferramenta</li>
+<li>Accións seleccionadas: é a lista dos botóns das ferramentas actualmente seleccionados</li>
+</ul>
+<p>Para seleccionar unha acción da lista Dispoñible, primeiro selecciónaa co rato e a continuación, prema o botón &quot;engadir&quot;. A acción elimínase da lista Dispoñible e colocado ao final da lista seleccionada.</p>
+<p>Para eliminar un botón da barra de ferramentas, selecciónao co rato na sección Seleccionado lista e, a continuación, prema o botón &quot;eliminar&quot;.</p>
+<p>Para reorganizar a orde dos botóns na barra de ferramentas, use as teclas &quot;arriba&quot; e &quot;abaixo&quot;. botóns despois de seleccionar un elemento da lista Seleccionado.</p>
+<p>Estilo dos botóns da ferramenta: contén as seguintes opcións que se aplican a todos os botóns da barra de ferramentas</p>
+<ul>
+<li>Só icona</li>
+<li>Só texto</li>
+<li>Texto a carón da icona</li>
+<li>Texto baixo a icona</li>
+<li>Seguir estilo: a configuración está determinada pola configuración &quot;Qt Widgets Style&quot;. no diálogo de Preferencias.</li>
+</ul>
+</body>
+</html>

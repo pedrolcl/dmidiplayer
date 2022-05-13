@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = dmidiplayer
-VERSION = 1.5.0
+VERSION = 1.6.0
 QT += gui widgets printsupport
 CONFIG += qt thread exceptions c++11 link_pkgconfig
 INCLUDEPATH += $$(DRUMSTICKINCLUDES)
@@ -18,6 +18,7 @@ HEADERS += \
     channels.h \
     connections.h \
     events.h \
+    framelesswindow.h \
     guiplayer.h \
     helpwindow.h \
     iconutils.h \
@@ -39,6 +40,7 @@ SOURCES += \
     channels.cpp \
     connections.cpp \
     events.cpp \
+    framelesswindow.cpp \
     guiplayer.cpp \
     helpwindow.cpp \
     iconutils.cpp \
@@ -70,5 +72,6 @@ TRANSLATIONS += \
   translations/dmidiplayer_en.ts \
   translations/dmidiplayer_es.ts \
   translations/dmidiplayer_fr.ts \
+  translations/dmidiplayer_gl.ts \
   translations/dmidiplayer_it.ts \
   translations/dmidiplayer_ru.ts

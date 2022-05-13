@@ -45,39 +45,60 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>Channels</name>
     <message>
-        <location filename="../channels.cpp" line="130"/>
+        <location filename="../channels.cpp" line="56"/>
+        <location filename="../channels.cpp" line="177"/>
         <source>MIDI Channels</source>
         <translation>Canaux MIDI</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="131"/>
+        <location filename="../channels.cpp" line="178"/>
         <source>Channel</source>
         <translation>Canal</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="132"/>
+        <location filename="../channels.cpp" line="179"/>
         <source>Mute</source>
         <translation>Muet</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="133"/>
+        <location filename="../channels.cpp" line="180"/>
         <source>Solo</source>
         <translation>Solo</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="134"/>
+        <location filename="../channels.cpp" line="181"/>
         <source>Level</source>
         <translation>Niveau</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="135"/>
+        <location filename="../channels.cpp" line="182"/>
         <source>Lock</source>
         <translation>Verrou</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="136"/>
+        <location filename="../channels.cpp" line="183"/>
         <source>Patch (sound setting)</source>
         <translation>Correctif (paramètre de son)</translation>
+    </message>
+    <message>
+        <location filename="../channels.cpp" line="185"/>
+        <source>Show all channels</source>
+        <translation type="unfinished">Afficher tous les canaux</translation>
+    </message>
+    <message>
+        <location filename="../channels.cpp" line="186"/>
+        <source>Hide all channels</source>
+        <translation type="unfinished">Cacher tous les canaux</translation>
+    </message>
+    <message>
+        <location filename="../channels.cpp" line="187"/>
+        <source>View Full Screen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../channels.cpp" line="193"/>
+        <source>Channel %1</source>
+        <translation type="unfinished">Canal %1</translation>
     </message>
 </context>
 <context>
@@ -663,38 +684,33 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>HelpWindow</name>
     <message>
-        <location filename="../helpwindow.cpp" line="55"/>
-        <location filename="../helpwindow.cpp" line="186"/>
+        <location filename="../helpwindow.cpp" line="53"/>
+        <location filename="../helpwindow.cpp" line="172"/>
         <source>&amp;Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../helpwindow.cpp" line="56"/>
-        <location filename="../helpwindow.cpp" line="187"/>
+        <location filename="../helpwindow.cpp" line="54"/>
+        <location filename="../helpwindow.cpp" line="173"/>
         <source>&amp;Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../helpwindow.cpp" line="57"/>
-        <location filename="../helpwindow.cpp" line="188"/>
+        <location filename="../helpwindow.cpp" line="55"/>
+        <location filename="../helpwindow.cpp" line="174"/>
         <source>Close</source>
         <translation>Fermer</translation>
     </message>
     <message>
-        <location filename="../helpwindow.cpp" line="58"/>
-        <location filename="../helpwindow.cpp" line="189"/>
+        <location filename="../helpwindow.cpp" line="56"/>
+        <location filename="../helpwindow.cpp" line="175"/>
         <source>Zoom In</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../helpwindow.cpp" line="59"/>
-        <location filename="../helpwindow.cpp" line="190"/>
+        <location filename="../helpwindow.cpp" line="57"/>
+        <location filename="../helpwindow.cpp" line="176"/>
         <source>Zoom Out</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../helpwindow.cpp" line="152"/>
-        <source>Help: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1377,119 +1393,109 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>Lyrics</name>
     <message>
-        <location filename="../lyrics.cpp" line="149"/>
-        <source>Lyrics Viewer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lyrics.cpp" line="197"/>
         <source>Lyrics</source>
-        <translation>Paroles</translation>
+        <translation type="vanished">Paroles</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="198"/>
+        <location filename="../lyrics.cpp" line="203"/>
         <source>Track:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="199"/>
+        <location filename="../lyrics.cpp" line="204"/>
         <source>Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="200"/>
+        <location filename="../lyrics.cpp" line="205"/>
         <source>All Types</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="201"/>
+        <location filename="../lyrics.cpp" line="206"/>
         <source>Texts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="202"/>
+        <location filename="../lyrics.cpp" line="207"/>
         <source>Copyright Notice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="203"/>
+        <location filename="../lyrics.cpp" line="208"/>
         <source>Sequence Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="204"/>
+        <location filename="../lyrics.cpp" line="209"/>
         <source>Instrument Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="205"/>
+        <location filename="../lyrics.cpp" line="210"/>
         <source>Lyric Events</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="206"/>
+        <location filename="../lyrics.cpp" line="211"/>
         <source>Marker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="207"/>
+        <location filename="../lyrics.cpp" line="212"/>
         <source>Cue Point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="209"/>
+        <location filename="../lyrics.cpp" line="214"/>
         <source>Encoding:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="210"/>
+        <location filename="../lyrics.cpp" line="215"/>
         <source>Font...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="211"/>
+        <location filename="../lyrics.cpp" line="216"/>
         <source>Full Screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="212"/>
+        <location filename="../lyrics.cpp" line="217"/>
         <source>Copy to clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="213"/>
+        <location filename="../lyrics.cpp" line="218"/>
         <source>Save to file...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="214"/>
+        <location filename="../lyrics.cpp" line="219"/>
         <source>Print...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="277"/>
+        <location filename="../lyrics.cpp" line="265"/>
         <source>Default (latin1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="287"/>
+        <location filename="../lyrics.cpp" line="275"/>
         <source>All Tracks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="292"/>
+        <location filename="../lyrics.cpp" line="280"/>
         <source>Track %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lyrics.cpp" line="380"/>
-        <source>Lyrics Viewer (%1)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Pianola</name>
     <message>
+        <location filename="../pianola.cpp" line="57"/>
         <location filename="../pianola.cpp" line="150"/>
         <source>Player Piano</source>
         <translation>Piano lecteur</translation>
@@ -1778,32 +1784,32 @@ under certain conditions; see the LICENSE for details.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="67"/>
+        <location filename="../playermain.cpp" line="68"/>
         <source>Portable settings mode.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="68"/>
+        <location filename="../playermain.cpp" line="69"/>
         <source>Portable settings file name.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="71"/>
+        <location filename="../playermain.cpp" line="72"/>
         <source>MIDI Out Driver.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="73"/>
+        <location filename="../playermain.cpp" line="74"/>
         <source>MIDI Out Connection.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="75"/>
+        <location filename="../playermain.cpp" line="76"/>
         <source>Input SMF/KAR/WRK file name.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="109"/>
+        <location filename="../playermain.cpp" line="110"/>
         <source>File not found:</source>
         <translation type="unfinished"></translation>
     </message>

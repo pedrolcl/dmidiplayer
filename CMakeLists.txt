@@ -18,13 +18,13 @@ cmake_minimum_required(VERSION 3.14)
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.13" CACHE STRING "Minimum OS X deployment version")
 
 project ( dmidiplayer
-    VERSION 1.5.4
+    VERSION 1.6.0
     LANGUAGES CXX
     DESCRIPTION "Drumstick MIDI File Player Multiplatform Program"
     HOMEPAGE_URL "https://sourceforge.net/p/dmidiplayer/"
 )
 
-#set(PROJECT_RELEASE_DATE "December 22, 2021")
+set(PROJECT_RELEASE_DATE "May 17, 2022")
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -130,6 +130,7 @@ set ( TRANSLATIONS
    translations/${PROJECT_NAME}_de.ts
    translations/${PROJECT_NAME}_es.ts
    translations/${PROJECT_NAME}_fr.ts
+   translations/${PROJECT_NAME}_gl.ts
    translations/${PROJECT_NAME}_it.ts
    translations/${PROJECT_NAME}_ru.ts
 )

@@ -7,5 +7,6 @@
         <file>fr/index.html</file>
         <file>it/index.html</file>
         <file>ru/index.html</file>
+        <file>gl/index.html</file>
     </qresource>
 </RCC>

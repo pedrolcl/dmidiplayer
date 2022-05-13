@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="it">
+<TS version="2.1" language="gl_ES">
 <context>
     <name>About</name>
     <message>
@@ -19,7 +19,7 @@
     <message>
         <location filename="../playerabout.ui" line="14"/>
         <source>About</source>
-        <translation>Informazioni su</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playerabout.ui" line="26"/>
@@ -48,47 +48,47 @@ p, li { white-space: pre-wrap; }
         <location filename="../channels.cpp" line="56"/>
         <location filename="../channels.cpp" line="177"/>
         <source>MIDI Channels</source>
-        <translation>Canali MIDI</translation>
+        <translation>Canles MIDI</translation>
     </message>
     <message>
         <location filename="../channels.cpp" line="178"/>
         <source>Channel</source>
-        <translation>Canale</translation>
+        <translation>Canle</translation>
     </message>
     <message>
         <location filename="../channels.cpp" line="179"/>
         <source>Mute</source>
-        <translation>Muto</translation>
+        <translation>Sen son</translation>
     </message>
     <message>
         <location filename="../channels.cpp" line="180"/>
         <source>Solo</source>
-        <translation>Assolo</translation>
+        <translation>Solo</translation>
     </message>
     <message>
         <location filename="../channels.cpp" line="181"/>
         <source>Level</source>
-        <translation>Livello</translation>
+        <translation>Nivel</translation>
     </message>
     <message>
         <location filename="../channels.cpp" line="182"/>
         <source>Lock</source>
-        <translation>Blocco</translation>
+        <translation>Bloqueo</translation>
     </message>
     <message>
         <location filename="../channels.cpp" line="183"/>
         <source>Patch (sound setting)</source>
-        <translation>Patch (impostazione suono)</translation>
+        <translation>Patch (configuración do son)</translation>
     </message>
     <message>
         <location filename="../channels.cpp" line="185"/>
         <source>Show all channels</source>
-        <translation type="unfinished">Mostra tutti i canali</translation>
+        <translation>Mostrar todas as canles</translation>
     </message>
     <message>
         <location filename="../channels.cpp" line="186"/>
         <source>Hide all channels</source>
-        <translation type="unfinished">Nascondi tutti i canali</translation>
+        <translation>Acochar todas as canles</translation>
     </message>
     <message>
         <location filename="../channels.cpp" line="187"/>
@@ -98,7 +98,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../channels.cpp" line="193"/>
         <source>Channel %1</source>
-        <translation type="unfinished">Canale %1</translation>
+        <translation>Canle %1</translation>
     </message>
 </context>
 <context>
@@ -180,51 +180,6 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1010"/>
-        <source>File: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../guiplayer.cpp" line="1013"/>
-        <source>Format: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../guiplayer.cpp" line="1017"/>
-        <source>Copyright: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../guiplayer.cpp" line="1021"/>
-        <source>Karaoke type: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../guiplayer.cpp" line="1025"/>
-        <source>Karaoke version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../guiplayer.cpp" line="1029"/>
-        <source>Karaoke info: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../guiplayer.cpp" line="1033"/>
-        <source>Karaoke language: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../guiplayer.cpp" line="1037"/>
-        <source>Karaoke title: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../guiplayer.cpp" line="1041"/>
-        <source>Karaoke things: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../guiplayer.cpp" line="668"/>
         <source>Jump to Bar</source>
         <translation type="unfinished"></translation>
@@ -265,6 +220,16 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../guiplayer.cpp" line="1010"/>
+        <source>File: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="1013"/>
+        <source>Format: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../guiplayer.cpp" line="1015"/>
         <location filename="../guiplayer.cpp" line="1019"/>
         <location filename="../guiplayer.cpp" line="1023"/>
@@ -274,6 +239,41 @@ p, li { white-space: pre-wrap; }
         <location filename="../guiplayer.cpp" line="1039"/>
         <location filename="../guiplayer.cpp" line="1047"/>
         <source>&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="1017"/>
+        <source>Copyright: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="1021"/>
+        <source>Karaoke type: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="1025"/>
+        <source>Karaoke version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="1029"/>
+        <source>Karaoke info: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="1033"/>
+        <source>Karaoke language: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="1037"/>
+        <source>Karaoke title: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.cpp" line="1041"/>
+        <source>Karaoke things: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -340,13 +340,8 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="308"/>
-        <source>Reset Volume</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../guiplayer.ui" line="311"/>
-        <source>Reset Volume to 100%</source>
+        <location filename="../guiplayer.ui" line="168"/>
+        <source>Tempo Slider</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -355,8 +350,13 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="168"/>
-        <source>Tempo Slider</source>
+        <location filename="../guiplayer.ui" line="235"/>
+        <source>File Name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.ui" line="248"/>
+        <source>Currently loaded MIDI file name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -375,19 +375,19 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="235"/>
-        <source>File Name:</source>
+        <location filename="../guiplayer.ui" line="308"/>
+        <source>Reset Volume</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiplayer.ui" line="248"/>
-        <source>Currently loaded MIDI file name</source>
+        <location filename="../guiplayer.ui" line="311"/>
+        <source>Reset Volume to 100%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="337"/>
         <source>File</source>
-        <translation>File</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="341"/>
@@ -412,12 +412,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="387"/>
         <source>Settings</source>
-        <translation>Impostazioni</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="395"/>
         <source>View</source>
-        <translation>Visualizza</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="412"/>
@@ -427,7 +427,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="442"/>
         <source>Open</source>
-        <translation>Apri</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="445"/>
@@ -447,7 +447,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="464"/>
         <source>Play</source>
-        <translation>Riproduci</translation>
+        <translation>Reproducir</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="467"/>
@@ -457,17 +457,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="484"/>
         <source>Pause</source>
-        <translation>Interrompi</translation>
-    </message>
-    <message>
-        <location filename="../guiplayer.ui" line="498"/>
-        <source>Stop</source>
-        <translation>Ferma</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="487"/>
         <source>Pause  playback</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../guiplayer.ui" line="498"/>
+        <source>Stop</source>
+        <translation>Parar</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="501"/>
@@ -477,7 +477,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="512"/>
         <source>About</source>
-        <translation>Informazioni su</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="515"/>
@@ -539,7 +539,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="605"/>
         <source>Channels</source>
-        <translation>Canali</translation>
+        <translation>Canles</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="608"/>
@@ -592,7 +592,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="689"/>
         <source>Next</source>
-        <translation>Avanti</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="692"/>
@@ -612,7 +612,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="711"/>
         <source>Forward</source>
-        <translation>Avanti</translation>
+        <translation>Avanzar</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="714"/>
@@ -699,7 +699,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../helpwindow.cpp" line="55"/>
         <location filename="../helpwindow.cpp" line="174"/>
         <source>Close</source>
-        <translation>Chiudi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../helpwindow.cpp" line="56"/>
@@ -719,647 +719,647 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="33"/>
         <source>Acoustic Grand Piano</source>
-        <translation type="unfinished"></translation>
+        <translation>Piano de cola acústico</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="34"/>
         <source>Bright Acoustic Piano</source>
-        <translation type="unfinished"></translation>
+        <translation>Piano acústico brillante</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="35"/>
         <source>Electric Grand Piano</source>
-        <translation type="unfinished"></translation>
+        <translation>Piano de cola eléctrico</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="36"/>
         <source>Honky-Tonk</source>
-        <translation type="unfinished"></translation>
+        <translation>Honky-Tonk</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="37"/>
         <source>Rhodes Piano</source>
-        <translation type="unfinished"></translation>
+        <translation>Piano Rhodes</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="38"/>
         <source>Chorused Piano</source>
-        <translation type="unfinished"></translation>
+        <translation>Piano con coros</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="39"/>
         <source>Harpsichord</source>
-        <translation type="unfinished"></translation>
+        <translation>Clavecín</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="40"/>
         <source>Clavinet</source>
-        <translation type="unfinished"></translation>
+        <translation>Clavinet</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="41"/>
         <source>Celesta</source>
-        <translation type="unfinished"></translation>
+        <translation>Celesta</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="42"/>
         <source>Glockenspiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Carillón</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="43"/>
         <source>Music Box</source>
-        <translation type="unfinished"></translation>
+        <translation>Caixa de música</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="44"/>
         <source>Vibraphone</source>
-        <translation type="unfinished"></translation>
+        <translation>Vibráfono</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="45"/>
         <source>Marimba</source>
-        <translation type="unfinished"></translation>
+        <translation>Marimba</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="46"/>
         <source>Xylophone</source>
-        <translation type="unfinished"></translation>
+        <translation>Xilófono</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="47"/>
         <source>Tubular Bells</source>
-        <translation type="unfinished"></translation>
+        <translation>Campás tubulares</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="48"/>
         <source>Dulcimer</source>
-        <translation type="unfinished"></translation>
+        <translation>Dulzaina</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="49"/>
         <source>Hammond Organ</source>
-        <translation type="unfinished"></translation>
+        <translation>Órgano Hammond</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="50"/>
         <source>Percussive Organ</source>
-        <translation type="unfinished"></translation>
+        <translation>Órgano percusivo</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="51"/>
         <source>Rock Organ</source>
-        <translation type="unfinished"></translation>
+        <translation>Órgano de Rock</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="52"/>
         <source>Church Organ</source>
-        <translation type="unfinished"></translation>
+        <translation>Órgano de igrexa</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="53"/>
         <source>Reed Organ</source>
-        <translation type="unfinished"></translation>
+        <translation>Harmonio</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="54"/>
         <source>Accordion</source>
-        <translation type="unfinished"></translation>
+        <translation>Acordeón</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="55"/>
         <source>Harmonica</source>
-        <translation type="unfinished"></translation>
+        <translation>Harmónica</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="56"/>
         <source>Tango Accordion</source>
-        <translation type="unfinished"></translation>
+        <translation>Bandoneón</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="57"/>
         <source>Acoustic Guitar (Nylon)</source>
-        <translation type="unfinished"></translation>
+        <translation>Guitarra acústica (nailon)</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="58"/>
         <source>Acoustic Guitar (Steel)</source>
-        <translation type="unfinished"></translation>
+        <translation>Guitarra acústica (metal)</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="59"/>
         <source>Electric Guitar (Jazz)</source>
-        <translation type="unfinished"></translation>
+        <translation>Guitarra eléctrica (jazz)</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="60"/>
         <source>Electric Guitar (Clean)</source>
-        <translation type="unfinished"></translation>
+        <translation>Guitarra eléctrica (limpa)</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="61"/>
         <source>Electric Guitar (Muted)</source>
-        <translation type="unfinished"></translation>
+        <translation>Guitarra eléctrica (Apagada)</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="62"/>
         <source>Overdriven Guitar</source>
-        <translation type="unfinished"></translation>
+        <translation>Guitarra saturada</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="63"/>
         <source>Distortion Guitar</source>
-        <translation type="unfinished"></translation>
+        <translation>Guitarra distorsionada</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="64"/>
         <source>Guitar Harmonics</source>
-        <translation type="unfinished"></translation>
+        <translation>Harmónicos de guitarra</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="65"/>
         <source>Acoustic Bass</source>
-        <translation type="unfinished"></translation>
+        <translation>Baixo acústico</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="66"/>
         <source>Electric Bass (Finger)</source>
-        <translation type="unfinished"></translation>
+        <translation>Baixo eléctrico (pulsado)</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="67"/>
         <source>Electric Bass (Pick)</source>
-        <translation type="unfinished"></translation>
+        <translation>Baixo eléctrico (Punteado)</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="68"/>
         <source>Fretless Bass</source>
-        <translation type="unfinished"></translation>
+        <translation>Baixo sen trastes</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="69"/>
         <source>Slap Bass 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Baixo golpeado 1</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="70"/>
         <source>Slap Bass 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Baixo golpeado 2</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="71"/>
         <source>Synth Bass 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Baixo sintetizado 1</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="72"/>
         <source>Synth Bass 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Baixo sintetizado 2</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="73"/>
         <source>Violin</source>
-        <translation type="unfinished"></translation>
+        <translation>Violín</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="74"/>
         <source>Viola</source>
-        <translation type="unfinished"></translation>
+        <translation>Viola</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="75"/>
         <source>Cello</source>
-        <translation type="unfinished"></translation>
+        <translation>Violonchelo</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="76"/>
         <source>Contrabass</source>
-        <translation type="unfinished"></translation>
+        <translation>Contrabaixo</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="77"/>
         <source>Tremolo Strings</source>
-        <translation type="unfinished"></translation>
+        <translation>Trémolo de cordas</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="78"/>
         <source>Pizzicato Strings</source>
-        <translation type="unfinished"></translation>
+        <translation>Cordas en pizzicatto</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="79"/>
         <source>Orchestral Harp</source>
-        <translation type="unfinished"></translation>
+        <translation>Harpa orquestral</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="80"/>
         <source>Timpani</source>
-        <translation type="unfinished"></translation>
+        <translation>Timbal</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="81"/>
         <source>String Ensemble 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Conxunto de cordas 1</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="82"/>
         <source>String Ensemble 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Conxunto de cordas 2</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="83"/>
         <source>Synth Strings 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Cordas sintetizadas 1</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="84"/>
         <source>Synth Strings 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Cordas sintetizadas 2</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="85"/>
         <source>Choir Aahs</source>
-        <translation type="unfinished"></translation>
+        <translation>Coro Aahs</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="86"/>
         <source>Voice Oohs</source>
-        <translation type="unfinished"></translation>
+        <translation>Voz Oohs</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="87"/>
         <source>Synth Voice</source>
-        <translation type="unfinished"></translation>
+        <translation>Voz sintetizada</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="88"/>
         <source>Orchestra Hit</source>
-        <translation type="unfinished"></translation>
+        <translation>Golpe de orquestra</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="89"/>
         <source>Trumpet</source>
-        <translation type="unfinished"></translation>
+        <translation>Trompeta</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="90"/>
         <source>Trombone</source>
-        <translation type="unfinished"></translation>
+        <translation>Trombón</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="91"/>
         <source>Tuba</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuba</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="92"/>
         <source>Muted Trumpet</source>
-        <translation type="unfinished"></translation>
+        <translation>Trompeta con sordina</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="93"/>
         <source>French Horn</source>
-        <translation type="unfinished"></translation>
+        <translation>Trompa</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="94"/>
         <source>Brass Section</source>
-        <translation type="unfinished"></translation>
+        <translation>Sección de metal</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="95"/>
         <source>Synth Brass 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Metais sintetizados 1</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="96"/>
         <source>Synth Brass 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Metais sintetizados 2</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="97"/>
         <source>Soprano Sax</source>
-        <translation type="unfinished"></translation>
+        <translation>Saxo soprano</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="98"/>
         <source>Alto Sax</source>
-        <translation type="unfinished"></translation>
+        <translation>Saxo alto</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="99"/>
         <source>Tenor Sax</source>
-        <translation type="unfinished"></translation>
+        <translation>Saxo tenor</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="100"/>
         <source>Baritone Sax</source>
-        <translation type="unfinished"></translation>
+        <translation>Saxo barítono</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="101"/>
         <source>Oboe</source>
-        <translation type="unfinished"></translation>
+        <translation>Óboe</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="102"/>
         <source>English Horn</source>
-        <translation type="unfinished"></translation>
+        <translation>Corno inglés</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="103"/>
         <source>Bassoon</source>
-        <translation type="unfinished"></translation>
+        <translation>Fagot</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="104"/>
         <source>Clarinet</source>
-        <translation type="unfinished"></translation>
+        <translation>Clarinete</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="105"/>
         <source>Piccolo</source>
-        <translation type="unfinished"></translation>
+        <translation>Frautín</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="106"/>
         <source>Flute</source>
-        <translation type="unfinished"></translation>
+        <translation>Frauta travesa</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="107"/>
         <source>Recorder</source>
-        <translation type="unfinished"></translation>
+        <translation>Frauta doce</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="108"/>
         <source>Pan Flute</source>
-        <translation type="unfinished"></translation>
+        <translation>Frauta de pan</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="109"/>
         <source>Blown Bottle</source>
-        <translation type="unfinished"></translation>
+        <translation>Sopro de botella</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="110"/>
         <source>Shakuhachi</source>
-        <translation type="unfinished"></translation>
+        <translation>Shakuhachi</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="111"/>
         <source>Whistle</source>
-        <translation type="unfinished"></translation>
+        <translation>Whistle</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="112"/>
         <source>Ocarina</source>
-        <translation type="unfinished"></translation>
+        <translation>Ocarina</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="113"/>
         <source>Lead 1 - Square Wave</source>
-        <translation type="unfinished"></translation>
+        <translation>Melodía 1 - onda cadrada</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="114"/>
         <source>Lead 2 - Saw Tooth</source>
-        <translation type="unfinished"></translation>
+        <translation>Melodía 2 - onda dentada</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="115"/>
         <source>Lead 3 - Calliope</source>
-        <translation type="unfinished"></translation>
+        <translation>Melodía 3 - órgano de vapor</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="116"/>
         <source>Lead 4 - Chiflead</source>
-        <translation type="unfinished"></translation>
+        <translation>Melodía 4 - siseo órgano</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="117"/>
         <source>Lead 5 - Charang</source>
-        <translation type="unfinished"></translation>
+        <translation>Melodía 5 - charanga</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="118"/>
         <source>Lead 6 - Voice</source>
-        <translation type="unfinished"></translation>
+        <translation>Melodía 6 - voz</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="119"/>
         <source>Lead 7 - Fifths</source>
-        <translation type="unfinished"></translation>
+        <translation>Melodía 7 - quintas</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="120"/>
         <source>Lead 8 - Bass+Lead</source>
-        <translation type="unfinished"></translation>
+        <translation>Melodía 8 - baixo+melodía</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="121"/>
         <source>Pad 1 - New Age</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad 1 - New Age</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="122"/>
         <source>Pad 2 - Warm</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad 2 - cálido</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="123"/>
         <source>Pad 3 - Polysynth</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad 3 - polisinte</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="124"/>
         <source>Pad 4 - Choir</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad 4 - coro</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="125"/>
         <source>Pad 5 - Bow</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad 5 - arco</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="126"/>
         <source>Pad 6 - Metallic</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad 6 - metálico</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="127"/>
         <source>Pad 7 - Halo</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad 7 - celestial</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="128"/>
         <source>Pad 8 - Sweep</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad 8 - varrido</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="129"/>
         <source>FX 1 - Rain</source>
-        <translation type="unfinished"></translation>
+        <translation>FX 1 - chuvia</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="130"/>
         <source>FX 2 - Soundtrack</source>
-        <translation type="unfinished"></translation>
+        <translation>FX 2 - pista de son</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="131"/>
         <source>FX 3 - Crystal</source>
-        <translation type="unfinished"></translation>
+        <translation>FX 3 - cristais</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="132"/>
         <source>FX 4 - Atmosphere</source>
-        <translation type="unfinished"></translation>
+        <translation>FX 4 - atmosfera</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="133"/>
         <source>FX 5 - Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>FX 5 - brillante</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="134"/>
         <source>FX 6 - Goblins</source>
-        <translation type="unfinished"></translation>
+        <translation>FX 6 - trasnos</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="135"/>
         <source>FX 7 - Echoes</source>
-        <translation type="unfinished"></translation>
+        <translation>FX 7 - ecos</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="136"/>
         <source>FX 8 - Sci-fi</source>
-        <translation type="unfinished"></translation>
+        <translation>FX 8 - ciencia ficción</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="137"/>
         <source>Sitar</source>
-        <translation type="unfinished"></translation>
+        <translation>Sitar</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="138"/>
         <source>Banjo</source>
-        <translation type="unfinished"></translation>
+        <translation>Banxo</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="139"/>
         <source>Shamisen</source>
-        <translation type="unfinished"></translation>
+        <translation>Shamisen</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="140"/>
         <source>Koto</source>
-        <translation type="unfinished"></translation>
+        <translation>Koto</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="141"/>
         <source>Kalimba</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalimba</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="142"/>
         <source>Bagpipe</source>
-        <translation type="unfinished"></translation>
+        <translation>Gaita</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="143"/>
         <source>Fiddle</source>
-        <translation type="unfinished"></translation>
+        <translation>Violín 2</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="144"/>
         <source>Shannai</source>
-        <translation type="unfinished"></translation>
+        <translation>Shannai</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="145"/>
         <source>Tinkle Bell</source>
-        <translation type="unfinished"></translation>
+        <translation>Campaíña</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="146"/>
         <source>Agogo</source>
-        <translation type="unfinished"></translation>
+        <translation>Agogo</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="147"/>
         <source>Steel Drum</source>
-        <translation type="unfinished"></translation>
+        <translation>Timbal de aceiro</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="148"/>
         <source>Wood Block</source>
-        <translation type="unfinished"></translation>
+        <translation>Caixa chinesa</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="149"/>
         <source>Taiko Drum</source>
-        <translation type="unfinished"></translation>
+        <translation>Taiko</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="150"/>
         <source>Melodic Tom</source>
-        <translation type="unfinished"></translation>
+        <translation>Timbal melódico</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="151"/>
         <source>Synth Drum</source>
-        <translation type="unfinished"></translation>
+        <translation>Caixa sintetizada</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="152"/>
         <source>Reverse Cymbal</source>
-        <translation type="unfinished"></translation>
+        <translation>Prato investido</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="153"/>
         <source>Guitar Fret Noise</source>
-        <translation type="unfinished"></translation>
+        <translation>Trasteo de guitarra</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="154"/>
         <source>Breath Noise</source>
-        <translation type="unfinished"></translation>
+        <translation>Son de respiración</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="155"/>
         <source>Seashore</source>
-        <translation type="unfinished"></translation>
+        <translation>Costa mariña</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="156"/>
         <source>Bird Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Trino paxaro</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="157"/>
         <source>Telephone</source>
-        <translation type="unfinished"></translation>
+        <translation>Teléfono</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="158"/>
         <source>Helicopter</source>
-        <translation type="unfinished"></translation>
+        <translation>Helicóptero</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="159"/>
         <source>Applause</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplauso</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="160"/>
         <source>Gunshot</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiro</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="164"/>
         <source>Percussion %1</source>
-        <translation>Percussione %1</translation>
+        <translation>Percusión %1</translation>
     </message>
 </context>
 <context>
@@ -1392,10 +1392,6 @@ p, li { white-space: pre-wrap; }
 </context>
 <context>
     <name>Lyrics</name>
-    <message>
-        <source>Lyrics</source>
-        <translation type="vanished">Testo</translation>
-    </message>
     <message>
         <location filename="../lyrics.cpp" line="203"/>
         <source>Track:</source>
@@ -1498,32 +1494,32 @@ p, li { white-space: pre-wrap; }
         <location filename="../pianola.cpp" line="57"/>
         <location filename="../pianola.cpp" line="150"/>
         <source>Player Piano</source>
-        <translation>Tastiera di riproduzione</translation>
+        <translation>Pianola</translation>
     </message>
     <message>
         <location filename="../pianola.cpp" line="151"/>
         <source>Show all channels</source>
-        <translation>Mostra tutti i canali</translation>
+        <translation>Mostrar todas as canles</translation>
     </message>
     <message>
         <location filename="../pianola.cpp" line="152"/>
         <source>Hide all channels</source>
-        <translation>Nascondi tutti i canali</translation>
+        <translation>Acochar todas as canles</translation>
     </message>
     <message>
         <location filename="../pianola.cpp" line="153"/>
         <source>Tighten the number of keys</source>
-        <translation type="unfinished"></translation>
+        <translation>Reducir o número de teclas</translation>
     </message>
     <message>
         <location filename="../pianola.cpp" line="154"/>
         <source>View Full Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver a pantalla completa</translation>
     </message>
     <message>
         <location filename="../pianola.cpp" line="156"/>
         <source>Channel %1</source>
-        <translation>Canale %1</translation>
+        <translation>Canle %1</translation>
     </message>
 </context>
 <context>
@@ -1531,7 +1527,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../playlist.cpp" line="42"/>
         <source>Manage Playlist</source>
-        <translation>Gestisci scaletta</translation>
+        <translation>Xestionar a lista de reprodución</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="48"/>
@@ -1560,7 +1556,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../playlist.cpp" line="64"/>
         <source>Shuffle</source>
-        <translation>Casuale</translation>
+        <translation>Distribuír ao azar</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="68"/>
@@ -1572,7 +1568,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../playlist.cpp" line="72"/>
         <location filename="../playlist.cpp" line="360"/>
         <source>Open</source>
-        <translation>Apri</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="76"/>
@@ -1615,6 +1611,11 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PrefsDialog</name>
     <message>
+        <location filename="../prefsdialog.ui" line="14"/>
+        <source>Preferences</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../prefsdialog.ui" line="28"/>
         <source>General</source>
         <translation type="unfinished"></translation>
@@ -1625,38 +1626,13 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="57"/>
-        <source>Start Playback Automatically After Loading</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../prefsdialog.ui" line="110"/>
-        <source>Use Internal Icon Theme</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../prefsdialog.ui" line="124"/>
-        <source>Sticky Window Snapping</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../prefsdialog.ui" line="117"/>
-        <source>Forced Dark Mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../prefsdialog.ui" line="97"/>
-        <source>Percussion MIDI Channel:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../prefsdialog.ui" line="47"/>
         <source>MIDI System Exclusive Reset:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="14"/>
-        <source>Preferences</source>
+        <location filename="../prefsdialog.ui" line="57"/>
+        <source>Start Playback Automatically After Loading</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1665,9 +1641,29 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../prefsdialog.ui" line="97"/>
+        <source>Percussion MIDI Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../prefsdialog.ui" line="110"/>
+        <source>Use Internal Icon Theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../prefsdialog.ui" line="117"/>
+        <source>Forced Dark Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../prefsdialog.ui" line="124"/>
+        <source>Sticky Window Snapping</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../prefsdialog.ui" line="154"/>
         <source>Lyrics</source>
-        <translation>Testo</translation>
+        <translation>Letra</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="163"/>
@@ -1696,7 +1692,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="262"/>
         <source>Player Piano</source>
-        <translation>Tastiera di riproduzione</translation>
+        <translation>Pianola</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="268"/>

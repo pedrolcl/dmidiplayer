@@ -77,6 +77,22 @@ p, li { white-space: pre-wrap; }
         <source>Patch (sound setting)</source>
         <translation>Programa (sonido)</translation>
     </message>
+    <message>
+        <source>Show all channels</source>
+        <translation>Mostrar todos los canales</translation>
+    </message>
+    <message>
+        <source>Hide all channels</source>
+        <translation>Ocultar todos los canales</translation>
+    </message>
+    <message>
+        <source>View Full Screen</source>
+        <translation>Ver en pantalla completa</translation>
+    </message>
+    <message>
+        <source>Channel %1</source>
+        <translation>Canal %1</translation>
+    </message>
 </context>
 <context>
     <name>Connections</name>
@@ -619,7 +635,7 @@ Versión de karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <source>Help: %1</source>
-        <translation>Ayuda: %1</translation>
+        <translation type="vanished">Ayuda: %1</translation>
     </message>
 </context>
 <context>
@@ -1168,11 +1184,11 @@ Versión de karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     <name>Lyrics</name>
     <message>
         <source>Lyrics Viewer</source>
-        <translation>Visor de letras</translation>
+        <translation type="vanished">Visor de letras</translation>
     </message>
     <message>
         <source>Lyrics</source>
-        <translation>Letras</translation>
+        <translation type="vanished">Letras</translation>
     </message>
     <message>
         <source>Track:</source>
@@ -1236,7 +1252,7 @@ Versión de karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <source>Lyrics Viewer (%1)</source>
-        <translation>Visor de letra (%1)</translation>
+        <translation type="vanished">Visor de letra (%1)</translation>
     </message>
     <message>
         <source>Font</source>
