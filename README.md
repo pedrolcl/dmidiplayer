@@ -22,10 +22,9 @@ New in v1.6.0:
 * Release dedicated to the Galician Literature Day.
 * New Galician translation and help page.
 * New sample song: Negra Sombra.
-* New Splash screen shown during May for Galician language users
-  Using this file: https://commons.wikimedia.org/wiki/File:Bandeira_de_Galicia_no_Pazo_de_Raxoi.jpg
-  Author: Contando Estrelas from Vigo, España / Spain
-  License: CC-BY-SA-2.0
+* New Splash screen during May for Galician language users, 
+  showing [this file](https://commons.wikimedia.org/wiki/File:Bandeira_de_Galicia_no_Pazo_de_Raxoi.jpg)
+  by "Contando Estrelas" from Vigo, España / Spain, under the license: [CC-BY-SA-2.0-Generic](https://creativecommons.org/licenses/by-sa/2.0/deed.en).
 * CSD tool windows (channels, player piano, lyrics, help).
 
 New in v1.5.3:
