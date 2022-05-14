@@ -270,7 +270,7 @@ Hai tres pestanas que agrupan os axustes de configuración
 * Usa o tema de iconas interno. Esta configuración é necesaria en Windows e macOS.
 * Estilo de widgets Qt. Dependendo do sistema operativo, afecta a integración
   visual con outros programas
-* Restablecemento exclusivo do sistema MIDI. O reproductor envía esta mensaxe xusto 
+* Restablecemento do sistema exclusivo MIDI. O reproductor envía esta mensaxe xusto 
   antes de comezar reproducindo cada ficheiro MIDI
 
 #### Letras

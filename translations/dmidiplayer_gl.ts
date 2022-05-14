@@ -44,12 +44,12 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Noto Sans&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:20px; margin-bottom:20px; margin-left:20px; margin-right:20px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/dmidiplayer128.png&quot; style=&quot;float: left;&quot; /&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600;&quot;&gt;%PROJECT_DESCRIPTION%&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600;&quot;&gt;Version %VERSION%&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Using &lt;/span&gt;&lt;a href=&quot;https://drumstick.sourceforge.io&quot;&gt;&lt;span style=&quot; font-family:&apos;DejaVu Sans&apos;; text-decoration: underline; color:#0057ae;&quot;&gt;Drumstick MIDI C++ libraries &lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;v%DRUMSTICK_VERSION%&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600;&quot;&gt;Versión %VERSION%&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Usando &lt;/span&gt;&lt;a href=&quot;https://drumstick.sourceforge.io&quot;&gt;&lt;span style=&quot; font-family:&apos;DejaVu Sans&apos;; text-decoration: underline; color:#0057ae;&quot;&gt;Bibliotecas C++ Drumstick MIDI &lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;v%DRUMSTICK_VERSION%&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Copyright © 2006-2022, Pedro Lopez-Cabanillas &amp;lt;&lt;/span&gt;&lt;a href=&quot;mailto:plcl@users.sf.net?subject=dmidiplayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;plcl@users.sf.net&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;You should have received a copy of the GNU General Public License along with this program; if not, &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;see &amp;lt;&lt;/span&gt;&lt;a href=&quot;https://www.gnu.org/licenses/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;https://www.gnu.org/licenses/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;&amp;gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Este programa é software libre: vostede pode redistribuílo e/ou modificalo conforme os termos da licenza pública xeral de GNU publicada pola Fundación para o Software Libre, xa sexa a versión 3 desta licenza ou (á súa elección) calquera versión posterior.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Este programa distribúese co desexo de que lle resulte útil, pero SEN GARANTÍAS DE NINGÚN TIPO; nin sequera coas garantías implícitas de VALOR COMERCIAL OU APTITUDE PARA UN PROPÓSITO DETERMINADO. Para máis información, consulte a licenza pública xeral de GNU.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Xunto con este programa, debérase incluír unha copia da licenza pública xeral de GNU. De non ser así, &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;vexa &amp;lt;&lt;/span&gt;&lt;a href=&quot;https://www.gnu.org/licenses/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;https://www.gnu.org/licenses/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;&amp;gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -197,7 +197,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.cpp" line="669"/>
         <source>Bar number:</source>
-        <translation>Compás número</translation>
+        <translation>Compás número:</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="765"/>
@@ -337,7 +337,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="121"/>
         <source>Pitch:</source>
-        <translation>Tono:</translation>
+        <translation>Ton:</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="137"/>
@@ -1623,52 +1623,52 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="14"/>
         <source>Preferences</source>
-        <translation type="unfinished"></translation>
+        <translation>Preferencias</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="28"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Xeral</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="34"/>
         <source>Qt Widgets Style:</source>
-        <translation type="unfinished"></translation>
+        <translation>Estilo de widgets Qt:</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="47"/>
         <source>MIDI System Exclusive Reset:</source>
-        <translation type="unfinished"></translation>
+        <translation>Restablecemento do sistema exclusivo MIDI:</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="57"/>
         <source>Start Playback Automatically After Loading</source>
-        <translation type="unfinished"></translation>
+        <translation>Inicia a reprodución automaticamente despois da carga</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="77"/>
         <source>Advance Automatically to the Next Playlist item</source>
-        <translation type="unfinished"></translation>
+        <translation>Avanza automaticamente ao seguinte elemento da lista de reprodución</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="97"/>
         <source>Percussion MIDI Channel:</source>
-        <translation type="unfinished"></translation>
+        <translation>Canle MIDI de percusión:</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="110"/>
         <source>Use Internal Icon Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa o tema de iconas interno</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="117"/>
         <source>Forced Dark Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Forzar o modo escuro</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="124"/>
         <source>Sticky Window Snapping</source>
-        <translation type="unfinished"></translation>
+        <translation>Xanelas pegañentas divisibles</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="154"/>
@@ -1682,22 +1682,22 @@ p, li { white-space: pre-wrap; }
         <location filename="../prefsdialog.ui" line="322"/>
         <location filename="../prefsdialog.ui" line="332"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="177"/>
         <source>Future Text Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Cor do texto futuro</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="194"/>
         <source>Text Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte do texto</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="231"/>
         <source>Past Text Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Cor do texto anterior</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="262"/>
@@ -1707,71 +1707,71 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="268"/>
         <source>Single Highlight Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Unha única cor de resaltado</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="282"/>
         <source>Note Highlighting</source>
-        <translation type="unfinished"></translation>
+        <translation>Resaltado de notas</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="292"/>
         <source>Show Note Names</source>
-        <translation type="unfinished"></translation>
+        <translation>Amosar nomes de notas</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="299"/>
         <source>Note Names Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte de nomes de notas</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="342"/>
         <source>Note Velocity to Color Tint</source>
-        <translation type="unfinished"></translation>
+        <translation>Velocidade ao matiz da cor</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="357"/>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Nunca</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="362"/>
         <source>Minimal</source>
-        <translation type="unfinished"></translation>
+        <translation>Mínimo</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="367"/>
         <source>When Activated</source>
-        <translation type="unfinished"></translation>
+        <translation>Cando está activada</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="372"/>
         <source>Always</source>
-        <translation type="unfinished"></translation>
+        <translation>Sempre</translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="52"/>
         <location filename="../prefsdialog.cpp" line="271"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Ningún</translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="53"/>
         <location filename="../prefsdialog.cpp" line="272"/>
         <source>GM</source>
-        <translation type="unfinished"></translation>
+        <translation>GM</translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="54"/>
         <location filename="../prefsdialog.cpp" line="273"/>
         <source>GS</source>
-        <translation type="unfinished"></translation>
+        <translation>GS</translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="55"/>
         <location filename="../prefsdialog.cpp" line="274"/>
         <source>XG</source>
-        <translation type="unfinished"></translation>
+        <translation>XG</translation>
     </message>
 </context>
 <context>
@@ -1782,42 +1782,44 @@ p, li { white-space: pre-wrap; }
 This program comes with ABSOLUTELY NO WARRANTY;
 This is free software, and you are welcome to redistribute it
 under certain conditions; see the LICENSE for details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright (C) 2006-2022 Pedro Lopez-Cabanillas
+Este programa ven con ABSOLUTAMENTE NINGUNHA GARANTIA;
+Isto é software libre, e pódese redistribuir baixo certas condicións; ver a LICENZA para detalles.</translation>
     </message>
     <message>
         <location filename="../playermain.cpp" line="36"/>
         <source>Fatal error from the Operating System. This usually happens when the OS doesn&apos;t have MIDI support, or the MIDI support is not enabled. Please check your OS/MIDI configuration.</source>
-        <translation type="unfinished"></translation>
+        <translation>Erro fatal do Sistema Operativo. Isto normalmente acontece cando o SO non ten soporte MIDI, ou o soporte MIDI non é habilitado. Comprobe a configuración MIDI do seu SO.</translation>
     </message>
     <message>
         <location filename="../playermain.cpp" line="68"/>
         <source>Portable settings mode.</source>
-        <translation type="unfinished"></translation>
+        <translation>Modo de axustes portátil.</translation>
     </message>
     <message>
         <location filename="../playermain.cpp" line="69"/>
         <source>Portable settings file name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome de ficheiro de axustes portátil.</translation>
     </message>
     <message>
         <location filename="../playermain.cpp" line="72"/>
         <source>MIDI Out Driver.</source>
-        <translation type="unfinished"></translation>
+        <translation>Controlador de saída MIDI.</translation>
     </message>
     <message>
         <location filename="../playermain.cpp" line="74"/>
         <source>MIDI Out Connection.</source>
-        <translation type="unfinished"></translation>
+        <translation>Conexión de saída MIDI.</translation>
     </message>
     <message>
         <location filename="../playermain.cpp" line="76"/>
         <source>Input SMF/KAR/WRK file name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome de ficheiro SMF/KAR/WRK de entrada.</translation>
     </message>
     <message>
         <location filename="../playermain.cpp" line="110"/>
         <source>File not found:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ficheiro non atopado:</translation>
     </message>
 </context>
 <context>
@@ -1826,12 +1828,12 @@ under certain conditions; see the LICENSE for details.</source>
         <location filename="../recentfileshelper.cpp" line="38"/>
         <location filename="../recentfileshelper.cpp" line="116"/>
         <source>Clear recent files</source>
-        <translation type="unfinished"></translation>
+        <translation>Borrar ficheiros recentes</translation>
     </message>
     <message>
         <location filename="../recentfileshelper.cpp" line="88"/>
         <source>&amp;%1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;%1 %2</translation>
     </message>
 </context>
 <context>
@@ -1839,17 +1841,17 @@ under certain conditions; see the LICENSE for details.</source>
     <message>
         <location filename="../sequence.cpp" line="628"/>
         <source> in RIFF container of type %1</source>
-        <translation type="unfinished"></translation>
+        <translation> en envase RIFF de tipo %1</translation>
     </message>
     <message>
         <location filename="../sequence.cpp" line="691"/>
         <source>SMF type %1</source>
-        <translation type="unfinished"></translation>
+        <translation>tipo SMF %1</translation>
     </message>
     <message>
         <location filename="../sequence.cpp" line="960"/>
         <source>WRK file version v%1.%2</source>
-        <translation type="unfinished"></translation>
+        <translation>ficheiro WRK version v%1.%2</translation>
     </message>
 </context>
 <context>
@@ -1857,72 +1859,72 @@ under certain conditions; see the LICENSE for details.</source>
     <message>
         <location filename="../toolbareditdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Diálogo</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="25"/>
         <source>remove</source>
-        <translation type="unfinished"></translation>
+        <translation>eliminar</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="39"/>
         <source>add</source>
-        <translation type="unfinished"></translation>
+        <translation>engadir</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="53"/>
         <source>up</source>
-        <translation type="unfinished"></translation>
+        <translation>arriba</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="67"/>
         <source>down</source>
-        <translation type="unfinished"></translation>
+        <translation>abaixo</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="81"/>
         <source>Icon Only</source>
-        <translation type="unfinished"></translation>
+        <translation>Só icona</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="86"/>
         <source>Text Only</source>
-        <translation type="unfinished"></translation>
+        <translation>Só texto</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="91"/>
         <source>Text Beside Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto a carón da icona</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="96"/>
         <source>Text Under Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto baixo a icona</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="101"/>
         <source>Follow Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Seguir estilo</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="119"/>
         <source>Style of the Tool Buttons</source>
-        <translation type="unfinished"></translation>
+        <translation>Estilo dos botóns de ferramenta</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="132"/>
         <source>Available Actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Accións dispoñibles</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="139"/>
         <source>Selected Actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Accións seleccionadas</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.cpp" line="48"/>
         <source>Customize %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Personalizar %1</translation>
     </message>
 </context>
 </TS>
