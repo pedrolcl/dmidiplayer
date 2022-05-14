@@ -1892,12 +1892,12 @@ za určitých podmínek; podrobnosti viz LICENCE.</translation>
     <message>
         <location filename="../playermain.cpp" line="76"/>
         <source>Input SMF/KAR/WRK file name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nzev souboru vstupu SMF/KAR/WRK.</translation>
     </message>
     <message>
         <location filename="../playermain.cpp" line="110"/>
         <source>File not found:</source>
-        <translation type="unfinished">Nenalezeno</translation>
+        <translation>Soubor nenalezen:</translation>
     </message>
 </context>
 <context>
