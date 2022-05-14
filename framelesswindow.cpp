@@ -16,7 +16,6 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QDebug>
 #include <QFlags>
 #include <QWindow>
 #include <QEvent>
@@ -75,15 +74,15 @@ bool FramelessWindow::event(QEvent* ev)
     case QEvent::MouseButtonPress:
         updateCursor(edges);
         if ((m_pseudoCaption != nullptr) && m_pseudoCaption->underMouse()) {
-            auto ok = windowHandle()->startSystemMove();
-            qDebug() << "startSystemMove()" << (ok ? "succeeded" : "failed");
+            /*auto ok =*/ windowHandle()->startSystemMove();
+            //qDebug() << "startSystemMove()" << (ok ? "succeeded" : "failed");
         } else if (edges != 0) {
-            auto ok = windowHandle()->startSystemResize(edges);
-            qDebug() << "startSystemResize()" << (ok ? "succeeded" : "failed");
+            /*auto ok =*/ windowHandle()->startSystemResize(edges);
+            //qDebug() << "startSystemResize()" << (ok ? "succeeded" : "failed");
         }
         break;
     case QEvent::MouseButtonRelease:
-        qDebug() << Q_FUNC_INFO << ev;
+        //qDebug() << Q_FUNC_INFO << ev;
         edges = Qt::Edges();
         updateCursor(edges);
         setFocus();

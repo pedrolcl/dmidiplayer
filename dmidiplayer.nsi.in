@@ -137,14 +137,20 @@ VIAddVersionKey /LANG=0 CompanyName "${COMPANY}"
 VIAddVersionKey /LANG=0 CompanyWebsite "${URL}"
 VIAddVersionKey /LANG=0 FileVersion ${VERSION}
 VIAddVersionKey /LANG=0 FileDescription "@PROJECT_DESCRIPTION@"
-VIAddVersionKey /LANG=0 LegalCopyright "Copyright (C) 2021, Pedro Lopez-Cabanillas <plcl@users.sf.net>"
+VIAddVersionKey /LANG=0 LegalCopyright "Copyright (C) 2021-2022, Pedro Lopez-Cabanillas <plcl@users.sf.net>"
 InstallDirRegKey HKLM "${REGKEY}" Path
 ShowUninstDetails show
 Icon ${SOURCE_FILES}\icons\${PROGNAME}.ico
 UninstallIcon ${SOURCE_FILES}\icons\${PROGNAME}.ico
 
+Section # hidden section
+    DetailPrint "Removing previous installation."
+    ExecWait '"$INSTDIR\uninstall.exe" /S _?=$INSTDIR'
+SectionEnd
+
 # Installer sections
 Section -Main SEC0000
+   
     CreateDirectory $INSTDIR\bearer
     CreateDirectory $INSTDIR\iconengines
     CreateDirectory $INSTDIR\imageformats
@@ -165,23 +171,27 @@ Section -Main SEC0000
     File ${SOURCE_FILES}\examples\mozart_konigdernacht.mid
     File ${SOURCE_FILES}\examples\schubert_avemaria.mid
     File ${SOURCE_FILES}\examples\test.mid
+    File ${SOURCE_FILES}\examples\Negra_Sombra.kar
     SetOutPath $INSTDIR\translations
     File ${BINARY_FILES}\${PROGNAME}_cs.qm
     File ${BINARY_FILES}\${PROGNAME}_de.qm
     File ${BINARY_FILES}\${PROGNAME}_es.qm
     File ${BINARY_FILES}\${PROGNAME}_fr.qm
+    File ${BINARY_FILES}\${PROGNAME}_gl.qm
     File ${BINARY_FILES}\${PROGNAME}_it.qm
     File ${BINARY_FILES}\${PROGNAME}_ru.qm
     File ${BINARY_FILES}\translations\qt_cs.qm
     File ${BINARY_FILES}\translations\qt_de.qm
     File ${BINARY_FILES}\translations\qt_es.qm
     File ${BINARY_FILES}\translations\qt_fr.qm
+    File ${BINARY_FILES}\translations\qt_gl.qm
     File ${BINARY_FILES}\translations\qt_it.qm
     File ${BINARY_FILES}\translations\qt_ru.qm
     File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_cs.qm
     File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_de.qm
     File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_es.qm
     File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_fr.qm
+    File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_gl.qm
     File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_it.qm
     File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_ru.qm
 
@@ -195,7 +205,7 @@ Section -Main SEC0000
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\libdrumstick-rt-win-out.dll $INSTDIR\drumstick2\libdrumstick-rt-win-out.dll $INSTDIR
 	
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libfluidsynth-3.dll $INSTDIR\libfluidsynth-3.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libFLAC-8.dll $INSTDIR\libFLAC-8.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libFLAC.dll $INSTDIR\libFLAC.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libglib-2.0-0.dll $INSTDIR\libglib-2.0-0.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libgomp-1.dll $INSTDIR\libgomp-1.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libiconv-2.dll $INSTDIR\libiconv-2.dll $INSTDIR
@@ -211,32 +221,24 @@ Section -Main SEC0000
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libvorbisenc-2.dll $INSTDIR\libvorbisenc-2.dll $INSTDIR
 
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${UCHARDET_FILES}\bin\libuchardet.dll $INSTDIR\libuchardet.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Core.dll $INSTDIR\Qt5Core.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Gui.dll $INSTDIR\Qt5Gui.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Network.dll $INSTDIR\Qt5Network.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5PrintSupport.dll $INSTDIR\Qt5PrintSupport.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Svg.dll $INSTDIR\Qt5Svg.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt5Widgets.dll $INSTDIR\Qt5Widgets.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\libGLESv2.dll $INSTDIR\libGLESv2.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\libEGL.dll $INSTDIR\libEGL.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt6Core.dll $INSTDIR\Qt6Core.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt6Gui.dll $INSTDIR\Qt6Gui.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt6Network.dll $INSTDIR\Qt6Network.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt6PrintSupport.dll $INSTDIR\Qt6PrintSupport.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt6Svg.dll $INSTDIR\Qt6Svg.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt6Widgets.dll $INSTDIR\Qt6Widgets.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt6Core5Compat.dll $INSTDIR\Qt6Core5Compat.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\D3Dcompiler_47.dll $INSTDIR\D3Dcompiler_47.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\opengl32sw.dll $INSTDIR\opengl32sw.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\libgcc_s_seh-1.dll $INSTDIR\libgcc_s_seh-1.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\libstdc++-6.dll $INSTDIR\libstdc++-6.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\libwinpthread-1.dll $INSTDIR\libwinpthread-1.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\bearer\qgenericbearer.dll $INSTDIR\bearer\qgenericbearer.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\iconengines\qsvgicon.dll $INSTDIR\iconengines\qsvgicon.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\imageformats\qgif.dll $INSTDIR\imageformats\qgif.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\imageformats\qicns.dll $INSTDIR\imageformats\qicns.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\imageformats\qico.dll $INSTDIR\imageformats\qico.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\imageformats\qjpeg.dll $INSTDIR\imageformats\qjpeg.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\imageformats\qsvg.dll $INSTDIR\imageformats\qsvg.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\imageformats\qtga.dll $INSTDIR\imageformats\qtga.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\imageformats\qtiff.dll $INSTDIR\imageformats\qtiff.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\imageformats\qwbmp.dll $INSTDIR\imageformats\qwbmp.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\imageformats\qwebp.dll $INSTDIR\imageformats\qwebp.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\platforms\qwindows.dll $INSTDIR\platforms\qwindows.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\printsupport\windowsprintersupport.dll $INSTDIR\printsupport\windowsprintersupport.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\styles\qwindowsvistastyle.dll $INSTDIR\styles\qwindowsvistastyle.dll $INSTDIR
 
     WriteRegStr HKLM "${REGKEY}\Components" Main 1
@@ -280,18 +282,21 @@ Section /o -un.Main UNSEC0000
     Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_de.qm
     Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_es.qm
     Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_fr.qm
+    Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_gl.qm
     Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_it.qm
     Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_ru.qm
     Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_cs.qm
     Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_de.qm
     Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_es.qm
     Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_fr.qm
+    Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_gl.qm
     Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_it.qm
     Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_ru.qm
     Delete /REBOOTOK $INSTDIR\translations\qt_cs.qm
     Delete /REBOOTOK $INSTDIR\translations\qt_de.qm
     Delete /REBOOTOK $INSTDIR\translations\qt_es.qm
     Delete /REBOOTOK $INSTDIR\translations\qt_fr.qm
+    Delete /REBOOTOK $INSTDIR\translations\qt_gl.qm
     Delete /REBOOTOK $INSTDIR\translations\qt_it.qm
     Delete /REBOOTOK $INSTDIR\translations\qt_ru.qm
     Delete /REBOOTOK $INSTDIR\${PROGNAME}.exe
@@ -304,6 +309,7 @@ Section /o -un.Main UNSEC0000
     Delete /REBOOTOK $INSTDIR\mozart_konigdernacht.mid
     Delete /REBOOTOK $INSTDIR\schubert_avemaria.mid
     Delete /REBOOTOK $INSTDIR\test.mid
+    Delete /REBOOTOK $INSTDIR\Negra_Sombra.kar
 
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libdrumstick-file.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libdrumstick-rt.dll
@@ -315,7 +321,7 @@ Section /o -un.Main UNSEC0000
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick2\libdrumstick-rt-win-out.dll
 
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libfluidsynth-3.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libFLAC-8.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libFLAC.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libglib-2.0-0.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libgomp-1.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libiconv-2.dll
@@ -331,32 +337,24 @@ Section /o -un.Main UNSEC0000
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libvorbisenc-2.dll
 	
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libuchardet.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt5Core.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt5Gui.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt5Network.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt5PrintSupport.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt5Svg.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt5Widgets.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libGLESv2.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libEGL.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt6Core.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt6Gui.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt6Network.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt6PrintSupport.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt6Svg.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt6Widgets.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt6Core5Compat.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\D3Dcompiler_47.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\opengl32sw.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libgcc_s_seh-1.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libstdc++-6.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libwinpthread-1.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\bearer\qgenericbearer.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\iconengines\qsvgicon.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qgif.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qicns.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qico.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qjpeg.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qsvg.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qtga.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qtiff.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qwbmp.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qwebp.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\platforms\qwindows.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\printsupport\windowsprintersupport.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\styles\qwindowsvistastyle.dll
     RMDir /REBOOTOK $INSTDIR\translations
     RMDir /REBOOTOK $INSTDIR\styles
