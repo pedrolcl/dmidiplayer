@@ -1,8 +1,8 @@
-file(GLOB MIDI_FILES *.mid)
 file(GLOB KAR_FILES *.kar)
+file(GLOB MIDI_FILES *.mid)
 
 set(contents "")
-foreach(fullfile ${MIDI_FILES};${KAR_FILES})
+foreach(fullfile ${KAR_FILES};${MIDI_FILES})
     get_filename_component(filename ${fullfile} NAME)
     set(contents "${contents}${filename}\n")
 endforeach()
