@@ -150,12 +150,9 @@ SectionEnd
 
 # Installer sections
 Section -Main SEC0000
-   
-    CreateDirectory $INSTDIR\bearer
     CreateDirectory $INSTDIR\iconengines
     CreateDirectory $INSTDIR\imageformats
     CreateDirectory $INSTDIR\platforms
-    CreateDirectory $INSTDIR\printsupport
     CreateDirectory $INSTDIR\styles
     CreateDirectory $INSTDIR\translations
     CreateDirectory $INSTDIR\drumstick2
@@ -203,7 +200,7 @@ Section -Main SEC0000
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\libdrumstick-rt-net-out.dll $INSTDIR\drumstick2\libdrumstick-rt-net-out.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\libdrumstick-rt-win-in.dll $INSTDIR\drumstick2\libdrumstick-rt-win-in.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\libdrumstick-rt-win-out.dll $INSTDIR\drumstick2\libdrumstick-rt-win-out.dll $INSTDIR
-	
+
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libfluidsynth-3.dll $INSTDIR\libfluidsynth-3.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libFLAC.dll $INSTDIR\libFLAC.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libglib-2.0-0.dll $INSTDIR\libglib-2.0-0.dll $INSTDIR
@@ -335,7 +332,7 @@ Section /o -un.Main UNSEC0000
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libtermcap-0.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libvorbis-0.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libvorbisenc-2.dll
-	
+
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libuchardet.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt6Core.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt6Gui.dll
@@ -359,10 +356,8 @@ Section /o -un.Main UNSEC0000
     RMDir /REBOOTOK $INSTDIR\translations
     RMDir /REBOOTOK $INSTDIR\styles
     RMDir /REBOOTOK $INSTDIR\platforms
-    RMDir /REBOOTOK $INSTDIR\printsupport
     RMDir /REBOOTOK $INSTDIR\iconengines
     RMDir /REBOOTOK $INSTDIR\imageformats
-    RMDir /REBOOTOK $INSTDIR\bearer
     RMDir /REBOOTOK $INSTDIR\drumstick2
     DeleteRegValue HKLM "${REGKEY}\Components" Main
 SectionEnd
