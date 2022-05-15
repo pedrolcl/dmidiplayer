@@ -252,7 +252,7 @@ if (APPLE)
     MACOSX_BUNDLE_LONG_VERSION_STRING "${PROJECT_VERSION}"
     MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
     MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION}"
-    MACOSX_BUNDLE_COPYRIGHT "Copyright © 2021, Pedro López-Cabanillas &lt;plcl@users.sf.net&gt;")
+    MACOSX_BUNDLE_COPYRIGHT "Copyright © 2021-2022, Pedro López-Cabanillas &lt;plcl@users.sf.net&gt;")
     target_link_libraries(${PROJECT_NAME} PRIVATE "-framework CoreFoundation -framework Cocoa")
 endif ()
 
