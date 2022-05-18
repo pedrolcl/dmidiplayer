@@ -29,6 +29,7 @@ class QToolButton;
 class QComboBox;
 class Vumeter;
 class QLineEdit;
+class QSlider;
 class Sequence;
 
 class Channels : public FramelessWindow {
@@ -80,6 +81,7 @@ public slots:
     void slotNameChannel(int channel);
     void allNotesOff();
 	void toggleFullScreen(bool enabled);
+    void slotSlider(int channel, int value);
 
 protected:
     void showEvent(QShowEvent *event) override;
@@ -106,6 +108,7 @@ private:
     Vumeter* m_vumeter[drumstick::rt::MIDI_STD_CHANNELS];
     QComboBox* m_patch[drumstick::rt::MIDI_STD_CHANNELS];
     QLineEdit* m_name[drumstick::rt::MIDI_STD_CHANNELS];
+    QSlider* m_slider[drumstick::rt::MIDI_STD_CHANNELS];
 };
 
 #endif /* CHANNELS_H */

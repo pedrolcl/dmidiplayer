@@ -25,6 +25,7 @@
 #include <QLineEdit>
 #include <QCloseEvent>
 #include <QToolBar>
+#include <QSlider>
 #include <QMenu>
 #if QT_VERSION < QT_VERSION_CHECK(5,14,0)
 #include <QDesktopWidget>
@@ -143,6 +144,14 @@ Channels::Channels( QWidget* parent ) :
         connect( m_solo[i], &QToolButton::clicked, this, [=]{ slotSoloChannel(i); } );
         m_vumeter[i] = new Vumeter(this);
         layout->addWidget(m_vumeter[i], row, 4);
+        m_slider[i] = new QSlider(Qt::Horizontal, this);
+        m_slider[i]->setRange(0, 200);
+        m_slider[i]->setSingleStep(1);
+        m_slider[i]->setPageStep(10);
+        m_slider[i]->setValue(100);
+        m_slider[i]->setTracking(false);
+        connect( m_slider[i], &QSlider::valueChanged, this, [=](int v){ slotSlider(i, v); } );
+        layout->addWidget(m_slider[i], row, 4);
         m_lock[i] = new QToolButton(this);
         m_lock[i]->setCheckable(true);
         layout->addWidget(m_lock[i], row, 5);
@@ -156,7 +165,8 @@ Channels::Channels( QWidget* parent ) :
         m_voices[i] = 0;
         m_level[i] = 0.0;
         m_factor[i] = m_volumeFactor;
-		//FIXME: add menu channel options
+        m_slider[i]->setValue( m_volumeFactor * 100.0 );
+
 		m_action[i] = new QAction(this);
         m_action[i]->setCheckable(true);
         connect(m_action[i], &QAction::triggered, this, [=]{ enableChannel(i, m_action[i]->isChecked()); });
@@ -276,8 +286,10 @@ void Channels::enableChannel(int channel, bool enable)
     m_solo[channel]->setEnabled(enable);
     m_vumeter[channel]->setValue(0);
     m_vumeter[channel]->setEnabled(enable);
-    if (!m_lock[channel]->isChecked())
+    m_slider[channel]->setEnabled(enable);
+    if (!m_lock[channel]->isChecked()) {
         m_patch[channel]->setCurrentIndex(-1);
+    }
     m_patch[channel]->setEnabled(enable);
     m_name[channel]->clear();
     m_name[channel]->setEnabled(enable);
@@ -287,6 +299,7 @@ void Channels::enableChannel(int channel, bool enable)
     m_mute[channel]->setVisible(enable);
     m_solo[channel]->setVisible(enable);
     m_vumeter[channel]->setVisible(enable);
+    m_slider[channel]->setVisible(enable);
     m_patch[channel]->setVisible(enable);
     m_name[channel]->setVisible(enable);
     m_lock[channel]->setVisible(enable);
@@ -356,6 +369,12 @@ void Channels::slotMuteChannel(int channel)
 {
     //qDebug() << Q_FUNC_INFO << channel << m_mute[channel]->isChecked();
     emit mute(channel, m_mute[channel]->isChecked());
+    if (m_mute[channel]->isChecked()) {
+        m_level[channel] = 0;
+        m_slider[channel]->setValue(0);
+    } else {
+        m_slider[channel]->setValue(m_volumeFactor * 100.0);
+    }
 }
 
 void Channels::slotSoloChannel(int channel)
@@ -365,12 +384,13 @@ void Channels::slotSoloChannel(int channel)
     for ( int ch = 0; ch < MIDI_STD_CHANNELS; ++ch ) {
         if (channel != ch) {
             m_solo[ch]->setChecked(false);
-            m_factor[ch] = enable ? m_volumeFactor * 0.5 : m_volumeFactor;
-            emit volume(ch, m_factor[ch]);
+            double factor = enable ? m_volumeFactor * 0.5 : m_volumeFactor;
+            m_slider[ch]->setValue( factor * 100.0 );
+            //emit volume(ch, m_factor[ch]);
         }
     }
-    m_factor[channel] = m_volumeFactor;
-    emit volume(channel, m_volumeFactor);
+    m_slider[channel]->setValue( m_volumeFactor * 100.0 );
+    //emit volume(channel, m_volumeFactor);
 }
 
 void Channels::timerEvent(QTimerEvent *event)
@@ -406,7 +426,8 @@ void Channels::setVolumeFactor(qreal factor)
     m_volumeFactor = factor;
     for ( int ch = 0; ch < MIDI_STD_CHANNELS; ++ch ) {
         m_solo[ch]->setChecked(false);
-        m_factor[ch] = m_volumeFactor;
+        //m_factor[ch] = m_volumeFactor;
+        m_slider[ch]->setValue( m_volumeFactor * 100.0 );
     }
 }
 
@@ -497,34 +518,9 @@ void Channels::toggleFullScreen(bool /*enabled*/)
     }
 }
 
-/*
-void Channels::slotShowAllChannels()
+void Channels::slotSlider(int ch, int value)
 {
-    for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
-        if (m_action[i]->isEnabled() && !m_action[i]->isChecked()) {
-            m_action[i]->setChecked(true);
-            slotShowChannel(i);
-        }
-    }
-    centralWidget()->adjustSize();
-    adjustSize();
+    qDebug() << Q_FUNC_INFO << ch << value;
+    m_factor[ch] = value / 100.0;
+    emit volume(ch, m_factor[ch]);
 }
-
-void Channels::slotHideAllChannels()
-{
-    for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
-        if (m_action[i]->isEnabled() && m_action[i]->isChecked()) {
-            m_action[i]->setChecked(false);
-            slotShowChannel(i);
-        }
-    }
-    centralWidget()->adjustSize();
-    adjustSize();
-}
-
-void Channels::slotShowChannel(int chan)
-{
-    m_frame[chan]->setVisible(m_action[chan]->isChecked());
-    update();
-}
-*/
