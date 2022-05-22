@@ -177,6 +177,7 @@ void Settings::internalRead(QSettings &settings)
     settings.beginGroup("ChannelsWindow");
     m_channelsWindowGeometry = settings.value("Geometry", QByteArray()).toByteArray();
     m_channelsWindowState = settings.value("State", QByteArray()).toByteArray();
+    m_soloVolumeReduction = settings.value("SoloReduction", 50).toInt();
     settings.endGroup();
 
     settings.beginGroup("HelpWindow");
@@ -332,6 +333,7 @@ void Settings::internalSave(QSettings &settings)
     settings.beginGroup("ChannelsWindow");
     settings.setValue("Geometry", m_channelsWindowGeometry);
     settings.setValue("State", m_channelsWindowState);
+    settings.setValue("SoloReduction", m_soloVolumeReduction);
     settings.endGroup();
 
     settings.sync();
@@ -344,6 +346,16 @@ void Settings::forceSettings(QSettings &settings)
     settings.setValue("reverb_dls", true);
     settings.endGroup();
 #endif
+}
+
+int Settings::soloVolumeReduction() const
+{
+    return m_soloVolumeReduction;
+}
+
+void Settings::setSoloVolumeReduction(int newSoloVolumeReduction)
+{
+    m_soloVolumeReduction = newSoloVolumeReduction;
 }
 
 int Settings::helpWindowFontSize() const

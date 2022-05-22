@@ -162,6 +162,9 @@ public:
 
     void loadTranslations();
 
+    int soloVolumeReduction() const;
+    void setSoloVolumeReduction(int newSoloVolumeReduction);
+
 signals:
     void ValuesChanged();
 
@@ -207,6 +210,7 @@ private:
     bool m_internalIcons;
     int m_sysexResetMessage;
     int m_helpWindowFontSize;
+    int m_soloVolumeReduction;
     LabelVisibility m_namesVisibility;
     QFont m_notesFont;
     QFont m_lyricsFont;

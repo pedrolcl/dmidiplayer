@@ -27,6 +27,7 @@
 #include <QToolBar>
 #include <QSlider>
 #include <QMenu>
+#include <QToolTip>
 #if QT_VERSION < QT_VERSION_CHECK(5,14,0)
 #include <QDesktopWidget>
 #else
@@ -149,6 +150,7 @@ Channels::Channels( QWidget* parent ) :
         m_slider[i]->setSingleStep(1);
         m_slider[i]->setPageStep(10);
         m_slider[i]->setValue(100);
+        m_slider[i]->setToolTip("100%");
         m_slider[i]->setTracking(false);
         connect( m_slider[i], &QSlider::valueChanged, this, [=](int v){ slotSlider(i, v); } );
         layout->addWidget(m_slider[i], row, 4);
@@ -381,12 +383,11 @@ void Channels::slotSoloChannel(int channel)
 {
     //qDebug() << Q_FUNC_INFO << channel << m_solo[channel]->isChecked();
     bool enable = m_solo[channel]->isChecked();
+    double factor = enable ? m_volumeFactor * Settings::instance()->soloVolumeReduction() : m_volumeFactor * 100.0;
     for ( int ch = 0; ch < MIDI_STD_CHANNELS; ++ch ) {
         if (channel != ch) {
             m_solo[ch]->setChecked(false);
-            double factor = enable ? m_volumeFactor * 0.5 : m_volumeFactor;
-            m_slider[ch]->setValue( factor * 100.0 );
-            //emit volume(ch, m_factor[ch]);
+            m_slider[ch]->setValue(factor);
         }
     }
     m_slider[channel]->setValue( m_volumeFactor * 100.0 );
@@ -520,7 +521,12 @@ void Channels::toggleFullScreen(bool /*enabled*/)
 
 void Channels::slotSlider(int ch, int value)
 {
-    qDebug() << Q_FUNC_INFO << ch << value;
     m_factor[ch] = value / 100.0;
     emit volume(ch, m_factor[ch]);
+    // tooltip
+    QString tip = QString::number(value) + "%";
+    m_slider[ch]->setToolTip(tip);
+    if (m_slider[ch]->underMouse()) {
+        QToolTip::showText(QCursor::pos(), tip, this);
+    }
 }

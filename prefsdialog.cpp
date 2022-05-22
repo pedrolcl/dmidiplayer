@@ -90,6 +90,7 @@ void PrefsDialog::restoreDefaults()
     ui->cboStyle->setCurrentText(style);
     ui->cboReset->setCurrentIndex(0); //none
     ui->spinPercChannel->setValue(MIDI_GM_STD_DRUM_CHANNEL+1);
+    ui->spinSoloVol->setValue(50);
     ui->editTextFont->setText("Sans Serif,36");
     setFutureColor(futureColor);
     setPastColor(pastColor);
@@ -175,6 +176,7 @@ void PrefsDialog::showEvent ( QShowEvent *event )
         ui->chkInternalIcons->setChecked( Settings::instance()->useInternalIcons() );
         ui->cboStyle->setCurrentText( Settings::instance()->getStyle() );
         ui->spinPercChannel->setValue( Settings::instance()->drumsChannel() );
+        ui->spinSoloVol->setValue( Settings::instance()->soloVolumeReduction() );
         ui->chkAutoPlay->setChecked( Settings::instance()->getAutoPlay() );
         ui->chkAutoAdvance->setChecked( Settings::instance()->autoAdvance() );
         ui->cboReset->setCurrentIndex( Settings::instance()->getSysexResetMessage() );
@@ -211,6 +213,7 @@ void PrefsDialog::showEvent ( QShowEvent *event )
 void PrefsDialog::apply()
 {
     Settings::instance()->setDrumsChannel(ui->spinPercChannel->value());
+    Settings::instance()->setSoloVolumeReduction(ui->spinSoloVol->value());
     Settings::instance()->setDarkMode(ui->chkDarkMode->isChecked());
     Settings::instance()->setAutoPlay(ui->chkAutoPlay->isChecked());
     Settings::instance()->setAutoAdvance(ui->chkAutoAdvance->isChecked());

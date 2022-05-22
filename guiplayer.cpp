@@ -623,6 +623,10 @@ void GUIPlayer::positionSliderMoved(int value)
         m_newSliderPosition = value;
         m_player->beatByTickPosition(m_newSliderPosition);
         m_ui->lblPos->setText(m_player->currentBeatStr());
+        // tooltip
+        QString tip = m_player->currentBeatStr();
+        m_ui->positionSlider->setToolTip(tip);
+        QToolTip::showText(QCursor::pos(), tip, this);
     }
 }
 
@@ -631,6 +635,10 @@ void GUIPlayer::positionSliderReleased()
     m_player->setPosition(m_newSliderPosition);
     m_player->beatByTickPosition(m_newSliderPosition);
     m_ui->lblPos->setText(m_player->currentBeatStr());
+    // tooltip
+    QString tip = m_player->currentBeatStr();
+    m_ui->positionSlider->setToolTip(tip);
+    QToolTip::showText(QCursor::pos(), tip, this);
     if (m_state == PausedState) {
         QTimer::singleShot(0, this, &GUIPlayer::play);
     }
