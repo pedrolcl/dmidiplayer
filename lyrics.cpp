@@ -165,8 +165,8 @@ Lyrics::Lyrics(QWidget *parent) : FramelessWindow(parent),
     connect(m_actionSave, &QAction::triggered, this, &Lyrics::slotSave);
     connect(m_actionPrint, &QAction::triggered, this, &Lyrics::slotPrint);
     setMinimumSize(640,200);
-    adjustSize();
     retranslateUi();
+    emit sizeAdjustNeeded();
 }
 
 void Lyrics::readSettings()

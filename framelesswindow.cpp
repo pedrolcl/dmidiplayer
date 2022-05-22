@@ -35,6 +35,7 @@ FramelessWindow::FramelessWindow(QWidget *parent)
     setWindowFlag(Qt::Tool, true);
 #endif
     setAttribute(Qt::WA_DeleteOnClose, false);
+    connect(this, &FramelessWindow::sizeAdjustNeeded, this, &FramelessWindow::performAdjustSize, Qt::QueuedConnection);
 }
 
 void FramelessWindow::updateCursor(Qt::Edges edges)
@@ -130,7 +131,13 @@ QWidget *FramelessWindow::pseudoCaption() const
 
 void FramelessWindow::setPseudoCaption(QWidget *widget)
 {
-	m_pseudoCaption = widget;
+    m_pseudoCaption = widget;
+}
+
+void FramelessWindow::performAdjustSize()
+{
+    centralWidget()->adjustSize();
+    adjustSize();
 }
 
 void FramelessWindow::applySettings()

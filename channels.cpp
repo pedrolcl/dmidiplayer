@@ -174,9 +174,8 @@ Channels::Channels( QWidget* parent ) :
         connect(m_action[i], &QAction::triggered, this, [=]{ enableChannel(i, m_action[i]->isChecked()); });
         m_chmenu->addAction(m_action[i]);
     }
-    adjustSize();
     retranslateUi();
-    //qDebug() << Q_FUNC_INFO << geometry();
+    emit sizeAdjustNeeded();
 }
 
 Channels::~Channels()
@@ -217,9 +216,7 @@ void Channels::initSong(Sequence *song)
             enableChannel(i, song->channelUsed(i));
             setChannelName(i, song->channelLabel(i));
         }
-        centralWidget()->adjustSize();
-        adjustSize();
-        //qDebug() << Q_FUNC_INFO << geometry();
+        emit sizeAdjustNeeded();
     }
 }
 
@@ -318,8 +315,7 @@ void Channels::slotDisableAllChannels()
 		}
         enableChannel(channel, false);
     }
-	centralWidget()->adjustSize();
-    adjustSize();
+    emit sizeAdjustNeeded();
 }
 
 void Channels::slotEnableAllChannels()
@@ -330,8 +326,7 @@ void Channels::slotEnableAllChannels()
 		}
         enableChannel(channel, true);
     }
-    centralWidget()->adjustSize();
-	adjustSize();
+    emit sizeAdjustNeeded();
 }
 
 void Channels::slotPatch(int channel, int value)

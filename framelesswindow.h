@@ -33,6 +33,12 @@ public:
     QWidget *pseudoCaption() const;
     void setPseudoCaption(QWidget *widget);
 
+signals:
+    void sizeAdjustNeeded();
+
+public slots:
+    void performAdjustSize();
+
 protected:
 	virtual void applySettings();
     void updateCursor(Qt::Edges edges);

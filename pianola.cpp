@@ -136,8 +136,8 @@ Pianola::Pianola( QWidget* parent ) : FramelessWindow(parent),
     tbar->addWidget(closeBtn);
     tbar->show();
     setMinimumSize(640,200);
-    adjustSize();
     retranslateUi();
+    emit sizeAdjustNeeded();
 }
 
 Pianola::~Pianola()
@@ -192,8 +192,7 @@ void Pianola::initSong(Sequence *song)
             slotLabel(i, m_song->channelLabel(i));
             m_piano[i]->setLabelAlterations(LabelAlteration::ShowSharps);
         }
-        centralWidget()->adjustSize();
-        adjustSize();
+        emit sizeAdjustNeeded();
     }
 }
 
@@ -345,8 +344,7 @@ void Pianola::slotShowAllChannels()
             slotShowChannel(i);
         }
     }
-    centralWidget()->adjustSize();
-    adjustSize();
+    emit sizeAdjustNeeded();
 }
 
 void Pianola::slotHideAllChannels()
@@ -357,8 +355,7 @@ void Pianola::slotHideAllChannels()
             slotShowChannel(i);
         }
     }
-    centralWidget()->adjustSize();
-    adjustSize();
+    emit sizeAdjustNeeded();
 }
 
 void Pianola::slotLabel(int channel, const QString& text)
@@ -374,8 +371,7 @@ void Pianola::tightenKeys(bool enabled)
         m_tightenKeys = enabled;
         setNoteRange(m_lowerNote, m_upperNote);
     }
-    centralWidget()->adjustSize();
-    adjustSize();
+    emit sizeAdjustNeeded();
 }
 
 void Pianola::slotKeySignature(int track, int alt, bool /*minor*/)
