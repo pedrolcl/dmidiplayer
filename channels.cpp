@@ -176,6 +176,7 @@ Channels::Channels( QWidget* parent ) :
     }
     adjustSize();
     retranslateUi();
+    //qDebug() << Q_FUNC_INFO << geometry();
 }
 
 Channels::~Channels()
@@ -218,6 +219,7 @@ void Channels::initSong(Sequence *song)
         }
         centralWidget()->adjustSize();
         adjustSize();
+        //qDebug() << Q_FUNC_INFO << geometry();
     }
 }
 

@@ -37,6 +37,11 @@ PrefsDialog::PrefsDialog(QWidget *parent) :
     ui->tabWidget->setTabIcon(0, IconUtils::GetIcon("settings"));
     ui->tabWidget->setTabIcon(1, IconUtils::GetIcon("view-media-lyrics"));
     ui->tabWidget->setTabIcon(2, IconUtils::GetIcon("audio-midi"));
+    ui->btnFutureColor->setIcon( IconUtils::GetIcon("wrench") );
+    ui->btnNoteFont->setIcon( IconUtils::GetIcon("wrench") );
+    ui->btnPastColor->setIcon( IconUtils::GetIcon("wrench") );
+    ui->btnSingleColor->setIcon( IconUtils::GetIcon("wrench") );
+    ui->btnTextFont->setIcon( IconUtils::GetIcon("wrench") );
 #if !defined(Q_OS_WINDOWS)
     ui->chkSnapping->setVisible(false);
 #endif
@@ -160,6 +165,11 @@ void PrefsDialog::iconThemeChanged(bool state)
     ui->tabWidget->setTabIcon(0, IconUtils::GetIcon("settings"));
     ui->tabWidget->setTabIcon(1, IconUtils::GetIcon("view-media-lyrics"));
     ui->tabWidget->setTabIcon(2, IconUtils::GetIcon("audio-midi"));
+    ui->btnFutureColor->setIcon( IconUtils::GetIcon("wrench") );
+    ui->btnNoteFont->setIcon( IconUtils::GetIcon("wrench") );
+    ui->btnPastColor->setIcon( IconUtils::GetIcon("wrench") );
+    ui->btnSingleColor->setIcon( IconUtils::GetIcon("wrench") );
+    ui->btnTextFont->setIcon( IconUtils::GetIcon("wrench") );
 }
 
 void PrefsDialog::accept()

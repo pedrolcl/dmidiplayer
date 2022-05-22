@@ -20,6 +20,7 @@
 #include <drumstick/settingsfactory.h>
 #include <drumstick/configurationdialogs.h>
 #include "connections.h"
+#include "iconutils.h"
 
 using namespace drumstick::rt;
 using namespace drumstick::widgets;
@@ -32,6 +33,7 @@ Connections::Connections(QWidget *parent)
       m_savedOut(nullptr)
 {
     ui.setupUi(this);
+    ui.btnOutputDriverCfg->setIcon(IconUtils::GetIcon("wrench"));
     connect(ui.m_advanced, &QCheckBox::clicked, this, &Connections::clickedAdvanced);
     connect(ui.m_outputBackends, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Connections::refreshOutputs);
     connect(ui.btnOutputDriverCfg, &QToolButton::clicked, this, &Connections::configureOutputDriver);

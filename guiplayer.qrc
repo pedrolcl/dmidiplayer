@@ -50,5 +50,6 @@
         <file>icons/go-home.png</file>
         <file>icons/format-font-size-less.png</file>
         <file>icons/format-font-size-more.png</file>
+        <file>icons/wrench.png</file>
     </qresource>
 </RCC>
