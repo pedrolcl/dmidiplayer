@@ -121,7 +121,7 @@
        <item row="4" column="0">
         <widget class="QCheckBox" name="chkSnapping">
          <property name="text">
-          <string>Sticky Window Snapping</string>
+          <string>Sticky Window Borders</string>
          </property>
          <property name="checked">
           <bool>true</bool>
@@ -150,7 +150,7 @@
        <item row="1" column="0">
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>Solo % Volume Reduction:</string>
+          <string>Solo Button % Volume Reduction:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
