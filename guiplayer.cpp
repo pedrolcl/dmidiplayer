@@ -27,6 +27,7 @@
 #include <QMimeData>
 #include <QtMath>
 #include <QActionGroup>
+#include <QStandardPaths>
 #include <QDesktopServices>
 #if QT_VERSION < QT_VERSION_CHECK(5,14,0)
 #include <QDesktopWidget>
