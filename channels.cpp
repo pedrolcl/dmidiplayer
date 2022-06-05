@@ -492,9 +492,19 @@ int Channels::channelPatch(int channel) const
     return m_patch[channel]->currentIndex();
 }
 
+int Channels::channelLevel(int channel) const
+{
+    return m_slider[channel]->value();
+}
+
 void Channels::setPatchChannel(int channel, int patch)
 {
     m_patch[channel]->setCurrentIndex(patch);
+}
+
+void Channels::setLevelChannel(int channel, int level)
+{
+    m_slider[channel]->setValue(level);
 }
 
 void Channels::setLockChannel(int channel, bool lock)

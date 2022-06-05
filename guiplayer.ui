@@ -349,7 +349,15 @@ selection-background-color: blue;</string>
      <addaction name="actionCurrentSong"/>
      <addaction name="actionWholePlaylist"/>
     </widget>
+    <widget class="QMenu" name="menuSong_Settings">
+     <property name="title">
+      <string>Song Settings</string>
+     </property>
+     <addaction name="actionLoadSongSettings"/>
+     <addaction name="actionSaveSongSettings"/>
+    </widget>
     <addaction name="actionOpen"/>
+    <addaction name="menuSong_Settings"/>
     <addaction name="actionFileInfo"/>
     <addaction name="menuRecentFiles"/>
     <addaction name="menuPlaylistRepeat"/>
@@ -805,6 +813,28 @@ selection-background-color: blue;</string>
   <action name="actionWebSite">
    <property name="text">
     <string>Web Site</string>
+   </property>
+  </action>
+  <action name="actionLoadSongSettings">
+   <property name="text">
+    <string>Load</string>
+   </property>
+   <property name="statusTip">
+    <string>Load the stored settings for the current song</string>
+   </property>
+   <property name="whatsThis">
+    <string>Load the stored settings for the current song</string>
+   </property>
+  </action>
+  <action name="actionSaveSongSettings">
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="statusTip">
+    <string>Save the settings of the current song</string>
+   </property>
+   <property name="whatsThis">
+    <string>Save the settings of the current song</string>
    </property>
   </action>
  </widget>

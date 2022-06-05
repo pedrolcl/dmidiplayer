@@ -189,6 +189,7 @@ void PrefsDialog::showEvent ( QShowEvent *event )
         ui->spinSoloVol->setValue( Settings::instance()->soloVolumeReduction() );
         ui->chkAutoPlay->setChecked( Settings::instance()->getAutoPlay() );
         ui->chkAutoAdvance->setChecked( Settings::instance()->autoAdvance() );
+        ui->chkAutoSongSettings->setChecked( Settings::instance()->autoSongSettings() );
         ui->cboReset->setCurrentIndex( Settings::instance()->getSysexResetMessage() );
 #if defined(Q_OS_WINDOWS)
         ui->chkSnapping->setChecked( Settings::instance()->winSnap() );
@@ -227,6 +228,7 @@ void PrefsDialog::apply()
     Settings::instance()->setDarkMode(ui->chkDarkMode->isChecked());
     Settings::instance()->setAutoPlay(ui->chkAutoPlay->isChecked());
     Settings::instance()->setAutoAdvance(ui->chkAutoAdvance->isChecked());
+    Settings::instance()->setAutoSongSettings(ui->chkAutoSongSettings->isChecked());
     Settings::instance()->setInternalIcons(ui->chkInternalIcons->isChecked());
     Settings::instance()->setStyle(ui->cboStyle->currentText());
     Settings::instance()->setSysexResetMessage(ui->cboReset->currentIndex());

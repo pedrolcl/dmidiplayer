@@ -165,6 +165,9 @@ public:
     int soloVolumeReduction() const;
     void setSoloVolumeReduction(int newSoloVolumeReduction);
 
+    bool autoSongSettings() const;
+    void setAutoSongSettings(bool newAutoSongSettings);
+
 signals:
     void ValuesChanged();
 
@@ -211,6 +214,7 @@ private:
     int m_sysexResetMessage;
     int m_helpWindowFontSize;
     int m_soloVolumeReduction;
+    bool m_autoSongSettings;
     LabelVisibility m_namesVisibility;
     QFont m_notesFont;
     QFont m_lyricsFont;

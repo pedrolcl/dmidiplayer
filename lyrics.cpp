@@ -367,7 +367,7 @@ void Lyrics::initSong( Sequence *song )
     if (m_song != nullptr) {
         //setWindowTitle(tr("Lyrics Viewer (%1)").arg(m_song->currentFile()));
         populateTracksCombo();
-        m_mib = m_song->detectedUchardetMIB();
+        m_mib = m_song->currentMIB();
         m_track = m_song->trackMaxPoints();
         m_type = m_song->typeMaxPoints();
     }

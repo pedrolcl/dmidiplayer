@@ -163,6 +163,9 @@ public slots:
     void slotLocked(int channel, bool lock);
     void slotPatch(int channel, int patch);
 
+    void slotLoadSongSettings();
+    void slotSaveSongSettings();
+
 private:
     void createLanguageMenu();
     void retranslateUi();

@@ -103,6 +103,8 @@ GUIPlayer::GUIPlayer(QWidget *parent)
     connect(m_ui->actionLoop, &QAction::triggered, this, &GUIPlayer::loop);
     connect(m_ui->actionContents, &QAction::triggered, this, &GUIPlayer::slotHelp);
     connect(m_ui->actionWebSite, &QAction::triggered, this, &GUIPlayer::slotOpenWebSite);
+    connect(m_ui->actionLoadSongSettings, &QAction::triggered, this, &GUIPlayer::slotLoadSongSettings);
+    connect(m_ui->actionSaveSongSettings, &QAction::triggered, this, &GUIPlayer::slotSaveSongSettings);
 
     m_ui->actionPlay->setShortcut( Qt::Key_MediaPlay );
     m_ui->actionStop->setShortcut( Qt::Key_MediaStop );
@@ -348,7 +350,7 @@ void GUIPlayer::pause()
 
 void GUIPlayer::stop()
 {
-    //qDebug() << Q_FUNC_INFO;
+    qDebug() << Q_FUNC_INFO;
     if (m_state == PlayingState || m_state == PausedState || m_player->isRunning()) {
         m_player->stop();
         m_playerThread.wait();
@@ -428,6 +430,10 @@ void GUIPlayer::openFile(const QString& fileName)
 
             if (m_lyrics != nullptr) {
                 m_lyrics->initSong( m_player->song() );
+            }
+
+            if (Settings::instance()->autoSongSettings()) {
+                slotLoadSongSettings();
             }
 
             if ( Settings::instance()->getAutoPlay() ) {
@@ -519,6 +525,8 @@ void GUIPlayer::applySettings()
     m_ui->actionLoop->setIcon(IconUtils::GetIcon("looping"));
     m_ui->actionContents->setIcon(IconUtils::GetIcon("help-contents"));
     m_ui->actionWebSite->setIcon(IconUtils::GetIcon("viewhtml"));
+    m_ui->actionLoadSongSettings->setIcon(IconUtils::GetIcon("document-open"));
+    m_ui->actionSaveSongSettings->setIcon(IconUtils::GetIcon("document-save"));
 
 #if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
     foreach(QMenu *mnu, m_ui->menuBar->findChildren<QMenu*>()) {
@@ -540,10 +548,13 @@ void GUIPlayer::preferences()
 
 void GUIPlayer::playerFinished()
 {
-    //qDebug() << Q_FUNC_INFO;
+    qDebug() << Q_FUNC_INFO;
     m_player->resetPosition();
     updateTimeLabel(0);
     updatePositionWidgets();
+    if (Settings::instance()->autoSongSettings()) {
+        slotSaveSongSettings();
+    }
     if (m_repeat == CurrentSong) {
         QTimer::singleShot(0, this, &GUIPlayer::play);
     } else if ( Settings::instance()->autoAdvance()) {
@@ -561,7 +572,7 @@ void GUIPlayer::playerFinished()
 
 void GUIPlayer::playerStopped()
 {
-    //qDebug() << Q_FUNC_INFO;
+    qDebug() << Q_FUNC_INFO;
     m_playerThread.wait();
     m_player->allNotesOff();
     if (m_pianola != nullptr) {
@@ -574,6 +585,9 @@ void GUIPlayer::playerStopped()
         updateState(StoppedState);
     }
     updatePositionWidgets();
+    if (Settings::instance()->autoSongSettings()) {
+        slotSaveSongSettings();
+    }
 }
 
 void GUIPlayer::updateTempoLabel(float ftempo)
@@ -1132,4 +1146,90 @@ void GUIPlayer::slotLocked(int channel, bool lock)
 void GUIPlayer::slotPatch(int channel, int patch)
 {
     m_player->setPatch(channel, patch);
+}
+
+void GUIPlayer::slotSaveSongSettings()
+{
+    QString songName = m_player->song()->currentFile();
+    qDebug() << Q_FUNC_INFO << songName;
+    if (!songName.isEmpty()) {
+        QDir dataDir(QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.dmidiplayer");
+        QString fileName = QString("%1/%2.cfg").arg(dataDir.absolutePath(), songName);
+        QSettings songSettings(fileName, QSettings::IniFormat);
+        songSettings.beginGroup("Global");
+        songSettings.setValue("file", m_player->song()->currentFullFileName());
+        songSettings.setValue("encoding", QString::fromLatin1(m_player->song()->currentCharset()));
+        songSettings.setValue("volume", m_ui->volumeSlider->value());
+        songSettings.setValue("pitch", m_ui->spinPitch->value());
+        songSettings.setValue("timeskew", m_ui->sliderTempo->value());
+        songSettings.endGroup();
+        for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+            if ( m_player->song()->channelUsed(i) ) {
+                songSettings.beginGroup(QString("MIDI Channel %1").arg(i+1,2));
+                songSettings.setValue("name", m_channels->channelName(i));
+                songSettings.setValue("muted", m_channels->isChannelMuted(i));
+                songSettings.setValue("solo", m_channels->isChannelSoloed(i));
+                songSettings.setValue("locked", m_channels->isChannelLocked(i));
+                songSettings.setValue("patch", m_channels->channelPatch(i));
+                songSettings.setValue("level", m_channels->channelLevel(i));
+                songSettings.endGroup();
+            }
+        }
+        songSettings.sync();
+    }
+}
+
+void GUIPlayer::slotLoadSongSettings()
+{
+    int vol, pitch, skew, pgm;
+    bool locked, muted, solo;
+    QString songName = m_player->song()->currentFile();
+    qDebug() << Q_FUNC_INFO << songName;
+    if (!songName.isEmpty()) {
+        QDir dataDir(QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.dmidiplayer");
+        QString fileName = QString("%1/%2.cfg").arg(dataDir.absolutePath(), songName);
+        QSettings songSettings(fileName, QSettings::IniFormat);
+        songSettings.beginGroup("Global");
+        //QString songfile = songSettings.value("file").toString();
+        //qDebug() << Q_FUNC_INFO << songfile;
+        QString encoding = songSettings.value("encoding").toString();
+        if (!encoding.isEmpty()) {
+            m_player->song()->setCurrentCharset(encoding.toLatin1());
+            m_lyrics->initSong(m_player->song());
+        }
+        vol = songSettings.value("volume", 100).toInt();
+        m_ui->volumeSlider->setValue(vol);
+        volumeSlider(vol);
+        pitch = songSettings.value("pitch", 0).toInt();
+        m_ui->spinPitch->setValue(pitch);
+        pitchShift(pitch);
+        skew = songSettings.value("timeskew", 100).toInt();
+        m_ui->sliderTempo->setValue(skew);
+        tempoSlider(skew);
+        songSettings.endGroup();
+        for(int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
+            QString grpName = QString("MIDI Channel %1").arg(i+1,2);
+            if ( songSettings.childGroups().contains(grpName) ) {
+                songSettings.beginGroup(grpName);
+                QString name = songSettings.value("name").toString();
+                if (name.isEmpty())
+                    name =  m_player->song()->channelLabel(i);
+                if (!name.isEmpty()) {
+                    m_channels->setChannelName(i, name);
+                    m_pianola->slotLabel(i, name);
+                }
+                muted = songSettings.value("muted", false).toBool();
+                m_channels->setMuteChannel(i, muted);
+                solo = songSettings.value("solo", false).toBool();
+                m_channels->setSoloChannel(i, solo);
+                pgm = songSettings.value("patch", -1).toInt();
+                m_channels->setPatchChannel(i, pgm);
+                locked = songSettings.value("locked", false).toBool();
+                m_channels->setLockChannel(i, locked);
+                vol = songSettings.value("level", 100).toInt();
+                m_channels->setLevelChannel(i, vol);
+                songSettings.endGroup();
+            }
+        }
+    }
 }

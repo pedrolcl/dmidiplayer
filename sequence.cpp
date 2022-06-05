@@ -305,6 +305,8 @@ void Sequence::clear()
     m_typScore.clear();
     m_trkName.clear();
     m_trkChannel.clear();
+    m_currentFile.clear();
+    m_currentFileFull.clear();
     while (!m_list.isEmpty()) {
         delete m_list.takeFirst();
     }
@@ -343,9 +345,9 @@ void Sequence::loadFile(const QString& fileName)
                 sort();
                 m_lblName = finfo.fileName();
                 m_currentFile = finfo.fileName();
+                m_currentFileFull = finfo.absoluteFilePath();
             }
             m_charset = QByteArray(uchardet_get_charset(m_handle));
-            //qDebug() << Q_FUNC_INFO << "Detected charset:" << m_charset;
             findCodec();
         } catch (...) {
             qWarning() << "corrupted file";
@@ -359,19 +361,32 @@ int Sequence::numUchardetErrors()
     return m_uchardetErrors;
 }
 
-int Sequence::detectedUchardetMIB() const
+int Sequence::currentMIB() const
 {
     return m_mib;
 }
 
-QByteArray Sequence::detectedCharset() const
+QByteArray Sequence::currentCharset() const
 {
+    //qDebug() << Q_FUNC_INFO << "Current charset:" << m_charset;
     return m_charset;
+}
+
+void Sequence::setCurrentCharset(const QByteArray &charset)
+{
+    m_charset = charset;
+    //qDebug() << Q_FUNC_INFO << "Current charset:" << m_charset;
+    findCodec();
 }
 
 QString Sequence::currentFile() const
 {
     return m_currentFile;
+}
+
+QString Sequence::currentFullFileName() const
+{
+    return m_currentFileFull;
 }
 
 int Sequence::getNumTracks() const
@@ -398,6 +413,7 @@ QTextCodec *Sequence::codec() const
 void Sequence::setCodec(QTextCodec *newCodec)
 {
     m_codec = newCodec;
+    m_charset = m_codec->name();
 }
 
 QString Sequence::getFileFormat() const

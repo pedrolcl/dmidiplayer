@@ -85,8 +85,9 @@ public:
     int highestMidiNote();
 
     int numUchardetErrors();
-    int detectedUchardetMIB() const;
-    QByteArray detectedCharset() const;
+    int currentMIB() const;
+    QByteArray currentCharset() const;
+    void setCurrentCharset(const QByteArray& charset);
 
     int getNumTracks() const;
     int trackMaxPoints();
@@ -95,6 +96,7 @@ public:
     int trackChannel(int track) const;
 
     QString currentFile() const;
+    QString currentFullFileName() const;
     QList<QPair<int,QByteArray>> getRawText(const int track, const TextType type);
     QStringList getText(const TextType type);
 
@@ -258,6 +260,7 @@ private: // members
     QList<TextRec> m_textEvents;
 
     QString m_currentFile;
+    QString m_currentFileFull;
     QString m_fileFormat;
     QByteArray m_trackLabel;
     bool m_channelUsed[drumstick::rt::MIDI_STD_CHANNELS];

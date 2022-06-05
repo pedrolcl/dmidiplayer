@@ -214,6 +214,7 @@ void Settings::internalRead(QSettings &settings)
     m_darkMode = settings.value("DarkMode", false).toBool();
     m_autoPlay = settings.value("AutoPlay", true).toBool();
     m_autoAdvance = settings.value("AutoAdvance", true).toBool();
+    m_autoSongSettings = settings.value("AutoSongSettings", true).toBool();
     QDir defDir(dataDirectory());
     m_lastPlayList = settings.value("LastPlaylist", defDir.absoluteFilePath("examples.lst")).toString();
     bool internalIcons = false;
@@ -295,6 +296,7 @@ void Settings::internalSave(QSettings &settings)
     settings.setValue("DarkMode", m_darkMode);
     settings.setValue("AutoPlay", m_autoPlay);
     settings.setValue("AutoAdvance", m_autoAdvance);
+    settings.setValue("AutoSongSettings", m_autoSongSettings);
     settings.setValue("LastPlaylist", m_lastPlayList);
 #if defined(Q_OS_WINDOWS)
     settings.setValue("WindowSnapping", m_winSnap);
@@ -346,6 +348,16 @@ void Settings::forceSettings(QSettings &settings)
     settings.setValue("reverb_dls", true);
     settings.endGroup();
 #endif
+}
+
+bool Settings::autoSongSettings() const
+{
+    return m_autoSongSettings;
+}
+
+void Settings::setAutoSongSettings(bool newAutoSongSettings)
+{
+    m_autoSongSettings = newAutoSongSettings;
 }
 
 int Settings::soloVolumeReduction() const

@@ -53,12 +53,14 @@ public:
     bool isChannelSoloed(int channel) const;
     bool isChannelLocked(int channel) const;
     int channelPatch(int channel) const;
+    int channelLevel(int channel) const;
 
     void setChannelName(int channel, const QString& name);
     void setMuteChannel(int channel, bool mute);
     void setSoloChannel(int channel, bool solo);
     void setLockChannel(int channel, bool lock);
     void setPatchChannel(int channel, int patch);
+    void setLevelChannel(int channel, int level);
 
 signals:
     void closed();
