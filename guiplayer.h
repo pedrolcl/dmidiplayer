@@ -165,6 +165,7 @@ public slots:
 
     void slotLoadSongSettings();
     void slotSaveSongSettings();
+    void slotSearch();
 
 private:
     void createLanguageMenu();

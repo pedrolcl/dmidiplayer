@@ -106,6 +106,7 @@ GUIPlayer::GUIPlayer(QWidget *parent)
     connect(m_ui->actionWebSite, &QAction::triggered, this, &GUIPlayer::slotOpenWebSite);
     connect(m_ui->actionLoadSongSettings, &QAction::triggered, this, &GUIPlayer::slotLoadSongSettings);
     connect(m_ui->actionSaveSongSettings, &QAction::triggered, this, &GUIPlayer::slotSaveSongSettings);
+    connect(m_ui->actionSearch, &QAction::triggered, this, &GUIPlayer::slotSearch);
 
     m_ui->actionPlay->setShortcut( Qt::Key_MediaPlay );
     m_ui->actionStop->setShortcut( Qt::Key_MediaStop );
@@ -528,6 +529,7 @@ void GUIPlayer::applySettings()
     m_ui->actionWebSite->setIcon(IconUtils::GetIcon("viewhtml"));
     m_ui->actionLoadSongSettings->setIcon(IconUtils::GetIcon("document-open"));
     m_ui->actionSaveSongSettings->setIcon(IconUtils::GetIcon("document-save"));
+    m_ui->actionSearch->setIcon(IconUtils::GetIcon("edit-find"));
 
 #if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
     foreach(QMenu *mnu, m_ui->menuBar->findChildren<QMenu*>()) {
@@ -1233,4 +1235,15 @@ void GUIPlayer::slotLoadSongSettings()
             }
         }
     }
+}
+
+void GUIPlayer::slotSearch()
+{
+    QString site = QLatin1String("http://www.vanbasco.com/midisearch.html");
+    QString lang = Settings::instance()->language();
+    if (lang == QLatin1String("es") || lang == QLatin1String("it")) {
+        site = QLatin1String("http://www.vanbasco.com/") + lang + QLatin1String("/midisearch.html");
+    }
+    //qDebug() << Q_FUNC_INFO << site;
+    QDesktopServices::openUrl(QUrl(site));
 }

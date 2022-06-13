@@ -389,6 +389,8 @@ selection-background-color: blue;</string>
     <addaction name="separator"/>
     <addaction name="actionAbout"/>
     <addaction name="actionAboutQt"/>
+    <addaction name="separator"/>
+    <addaction name="actionSearch"/>
    </widget>
    <widget class="QMenu" name="menuSettings">
     <property name="title">
@@ -835,6 +837,11 @@ selection-background-color: blue;</string>
    </property>
    <property name="whatsThis">
     <string>Save the settings of the current song</string>
+   </property>
+  </action>
+  <action name="actionSearch">
+   <property name="text">
+    <string>Search MIDI files</string>
    </property>
   </action>
  </widget>

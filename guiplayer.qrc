@@ -4,6 +4,8 @@
         <file alias="dmidiplayer128.png">icons/dmidiplayer_128x128.png</file>
         <file alias="splash.png">icons/splash.png</file>
         <file>icons/edit-clear.png</file>
+        <file>icons/edit-delete.png</file>
+        <file>icons/edit-find.png</file>
         <file>icons/go-down.png</file>
         <file>icons/go-jump.png</file>
         <file>icons/go-up.png</file>
@@ -37,7 +39,6 @@
         <file>icons/view-media-playlist.png</file>
         <file>icons/dialog-information.png</file>
         <file>icons/document-open-recent.png</file>
-        <file>icons/edit-delete.png</file>
         <file>icons/preferences-desktop-locale.png</file>
         <file>icons/application-menu.png</file>
         <file>icons/go-next.png</file>
