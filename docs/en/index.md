@@ -130,6 +130,32 @@ The `Positioning control` is located in the main window. It is a slider that
 moves while the current played position changes, and can be moved by hand to
 change the position to any arbitrary point within the song.
 
+## Song Settings
+
+The song settings are stored at the $HOME/.dmidiplayer subdirectory with the 
+same name as the songs and the ".cfg" suffix. When a song file is loaded, their
+song settings can be automatically loaded, and also saved when the song stopped.
+See the corresponding setting in the Preferences/General dialog.
+
+The song settings can also be manually loaded and saved from the corresponding 
+"File"->"Song Settings" menu items.
+
+Each song settings .cfg file is a text file where the following data is stored:
+
+- The song's text encoding, detected or selected by the user in the Lyrics view.
+- The full file path and name of the song.
+- The pitch alteration in semitones, as indicated in the main window.
+- The tempo variation, as indicated in the main window.
+- The global volume variation, as indicated in the main window.
+
+For each MIDI channel used by the song, the following data coming from the 
+Channels view is stored:
+
+- The channel volume variation.
+- The channel label.
+- The channel patch (MIDI program number).
+- The channel's solo, mute and locked buttons state.
+
 ## Views
 
 The following options are enable in the `View` menu:
@@ -150,7 +176,8 @@ MIDI file. The columns are:
 * Mute button. With this option the current channel may be muted.
 * Solo button. Raises the volume of the current channel, while lowering the 
   other channels.
-* Level. Indicator of the activity on the current channel.
+* Level. Indicator of the activity on the current channel, and also a slider
+  to adjust the volume level of the channel.
 * Lock. This button fixes the Patch on the current channel, preventing changes 
   stored on the file.
 * Patch. Corresponds to the MIDI Program Change events according to the General 
@@ -267,8 +294,14 @@ There are three tabs, grouping the configuration settings
 
 * Percussion MIDI Channel: Number from 1 to 16. Default 10, corresponding to the
   General MIDI standard percussion channel
+* Solo Button % Volume Reduction. Default 50. The volume of other MIDI channels
+  is reduced by this percentage when a channel has the "solo" button pressed.
 * Start Playback Automatically After Loading. Enabled by default
-* Advance Automatically to the Next PlayList Item. Enabled by default
+* Advance Automatically to the Next PlayList Item. Enabled by default.
+* Automatically Load and Save Song Settings. Not enabled by default. The song
+  settings are stored at the $HOME/.dmidiplayer subdirectory with the same name 
+  as the songs and the ".cfg" suffix.
+* Sticky Window Borders. Only for MS Windows. Enabled by default. 
 * Force Dark Mode. May be useful on Windows. On Linux and macOS the dark mode is
   automatically applied when configured in the Operating System
 * Use Internal Icon Theme. This setting is needed on Windows and macOS.
@@ -295,6 +328,8 @@ There are three tabs, grouping the configuration settings
   size of the note names
 * Show note names: available choices are Never, Minimal, When activated, always.
   The Minimal option shows only the names of the C keys.
+* Octave subscript designation. Deactivated, the central C MIDI note #60 is 
+  presented as "C4", but when activated is presented as "C<sub>4</sub>".
 
 ### Toolbar Customization
 
