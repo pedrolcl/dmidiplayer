@@ -610,6 +610,30 @@ Versión de karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
         <source>Web Site</source>
         <translation>Sitio web</translation>
     </message>
+    <message>
+        <source>Song Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Load</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Load the stored settings for the current song</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save the settings of the current song</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search MIDI files</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>HelpWindow</name>
@@ -1393,7 +1417,7 @@ Versión de karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <source>Sticky Window Snapping</source>
-        <translation>Acoplamiento de ventanas pegajosas</translation>
+        <translation type="vanished">Acoplamiento de ventanas pegajosas</translation>
     </message>
     <message>
         <source>Forced Dark Mode</source>
@@ -1503,6 +1527,22 @@ Versión de karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
         <source>Preferences</source>
         <translation>Preferencias</translation>
     </message>
+    <message>
+        <source>Solo Button % Volume Reduction:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sticky Window Borders</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatically Load and Save Song Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Octave Subscript Designation</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QCoreApplication</name>
@@ -1575,7 +1615,7 @@ bajo ciertas condiciones; vea LICENSE para detalles.</translation>
     <name>ToolBarEditDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Diálogo</translation>
+        <translation type="vanished">Diálogo</translation>
     </message>
     <message>
         <source>remove</source>
@@ -1628,6 +1668,10 @@ bajo ciertas condiciones; vea LICENSE para detalles.</translation>
     <message>
         <source>Customize %1</source>
         <translation>Personalizar %1</translation>
+    </message>
+    <message>
+        <source>Tool Bar Editor</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
