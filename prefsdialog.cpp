@@ -106,6 +106,7 @@ void PrefsDialog::restoreDefaults()
     ui->cboHighlight->setCurrentIndex(0);
     ui->cboNoteNames->setCurrentIndex(0);
     ui->editNoteFont->setText("Sans Serif,50");
+    ui->chkOctaveSubscript->setChecked(false);
 
     PianoPalette p = Settings::instance()->getPalette(PAL_SINGLE);
     setSingleColor(p.getColor(0));
@@ -216,6 +217,7 @@ void PrefsDialog::showEvent ( QShowEvent *event )
         ui->editNoteFont->setText( Settings::instance()->notesFont().toString() );
         ui->cboNoteNames->setCurrentIndex(static_cast<int>(Settings::instance()->namesVisibility()));
         setSingleColor( Settings::instance()->getSingleColor() );
+        ui->chkOctaveSubscript->setChecked( Settings::instance()->octaveSubscript() );
 
         ui->tabWidget->setCurrentIndex(0);
     }
@@ -250,6 +252,7 @@ void PrefsDialog::apply()
         Settings::instance()->setNotesFont(noteFont);
     }
     Settings::instance()->setNamesVisibility(static_cast<LabelVisibility>(ui->cboNoteNames->currentIndex()));
+    Settings::instance()->setOctaveSubscript(ui->chkOctaveSubscript->isChecked());
 }
 
 void PrefsDialog::setFutureColor(QColor c)

@@ -168,6 +168,9 @@ public:
     bool autoSongSettings() const;
     void setAutoSongSettings(bool newAutoSongSettings);
 
+    bool octaveSubscript() const;
+    void setOctaveSubscript(bool newOctaveSubscript);
+
 signals:
     void ValuesChanged();
 
@@ -215,6 +218,7 @@ private:
     int m_helpWindowFontSize;
     int m_soloVolumeReduction;
     bool m_autoSongSettings;
+    bool m_octaveSubscript;
     LabelVisibility m_namesVisibility;
     QFont m_notesFont;
     QFont m_lyricsFont;

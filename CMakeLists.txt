@@ -54,7 +54,7 @@ if(QT_VERSION VERSION_GREATER_EQUAL 6.0.0)
     find_package (Qt6Core5Compat REQUIRED)
 endif()
 
-find_package (Drumstick 2.6 COMPONENTS File RT Widgets REQUIRED)
+find_package (Drumstick 2.7 COMPONENTS File RT Widgets REQUIRED)
 
 find_package ( PkgConfig )
 pkg_check_modules( UCHARDET REQUIRED IMPORTED_TARGET uchardet )

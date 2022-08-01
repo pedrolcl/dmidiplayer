@@ -215,6 +215,7 @@ void Settings::internalRead(QSettings &settings)
     m_autoPlay = settings.value("AutoPlay", true).toBool();
     m_autoAdvance = settings.value("AutoAdvance", true).toBool();
     m_autoSongSettings = settings.value("AutoSongSettings", true).toBool();
+    m_octaveSubscript = settings.value("OctaveSubscript", false).toBool();
     QDir defDir(dataDirectory());
     m_lastPlayList = settings.value("LastPlaylist", defDir.absoluteFilePath("examples.lst")).toString();
     bool internalIcons = false;
@@ -297,6 +298,7 @@ void Settings::internalSave(QSettings &settings)
     settings.setValue("AutoPlay", m_autoPlay);
     settings.setValue("AutoAdvance", m_autoAdvance);
     settings.setValue("AutoSongSettings", m_autoSongSettings);
+    settings.setValue("OctaveSubscript", m_octaveSubscript);
     settings.setValue("LastPlaylist", m_lastPlayList);
 #if defined(Q_OS_WINDOWS)
     settings.setValue("WindowSnapping", m_winSnap);
@@ -348,6 +350,16 @@ void Settings::forceSettings(QSettings &settings)
     settings.setValue("reverb_dls", true);
     settings.endGroup();
 #endif
+}
+
+bool Settings::octaveSubscript() const
+{
+    return m_octaveSubscript;
+}
+
+void Settings::setOctaveSubscript(bool newOctaveSubscript)
+{
+    m_octaveSubscript = newOctaveSubscript;
 }
 
 bool Settings::autoSongSettings() const

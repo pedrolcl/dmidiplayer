@@ -184,10 +184,13 @@ GUIPlayer::GUIPlayer(QWidget *parent)
         BackendManager man;
         man.refresh(Settings::instance()->settingsMap());
         QList<MIDIOutput*> outputs = man.availableOutputs();
+        if (outputs.isEmpty()) {
+            qWarning() << "MIDI OUT drivers missing. Perhaps you need to set a DRUMSTICKRT environment variable?";
+        }
 
         m_midiOut = man.findOutput(Settings::instance()->lastOutputBackend());
         if (m_midiOut == nullptr) {
-            qWarning() << "MIDI OUT driver not found";
+            qWarning() << "MIDI OUT driver not found. Perhaps you need to set a DRUMSTICKRT environment variable?";
         }
 
         SettingsFactory settings;
@@ -223,7 +226,7 @@ GUIPlayer::GUIPlayer(QWidget *parent)
             m_player->setPort(m_midiOut);
             connectOutPort();
         } else {
-            qWarning() << "MIDI Output is not connected";
+            qWarning() << "MIDI Output is not connected. Playback is not possible.";
         }
 
         tempoReset();
@@ -486,10 +489,12 @@ void GUIPlayer::setup()
             m_player->setPort(m_midiOut);
             connectOutPort();
         }
-        conn = m_midiOut->currentConnection();
-        Settings::instance()->setAdvanced(m_connections->advanced());
-        Settings::instance()->setLastOutputBackend(m_midiOut->backendName());
-        Settings::instance()->setLastOutputConnection(conn.first);
+        if (m_midiOut != nullptr) {
+            conn = m_midiOut->currentConnection();
+            Settings::instance()->setAdvanced(m_connections->advanced());
+            Settings::instance()->setLastOutputBackend(m_midiOut->backendName());
+            Settings::instance()->setLastOutputConnection(conn.first);
+        }
     }
 }
 

@@ -43,7 +43,9 @@ Connections::Connections(QWidget *parent)
 void Connections::setOutput(drumstick::rt::MIDIOutput *out)
 {
     m_savedOut = m_midiOut = out;
-    m_connOut = out->currentConnection();
+    if (out != nullptr) {
+        m_connOut = out->currentConnection();
+    }
 }
 
 void Connections::setOutputs(QList<MIDIOutput *> outs)

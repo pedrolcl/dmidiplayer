@@ -110,6 +110,7 @@ Pianola::Pianola( QWidget* parent ) : FramelessWindow(parent),
         } else {
             m_piano[i]->setHighlightPalette(pal);
         }
+        m_piano[i]->setOctaveSubscript(Settings::instance()->octaveSubscript());
         m_piano[i]->setShowLabels(Settings::instance()->namesVisibility());
         m_piano[i]->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         m_piano[i]->setMinimumSize(220,30);
@@ -171,6 +172,7 @@ void Pianola::applySettings()
         m_piano[i]->setVelocityTint(Settings::instance()->velocityColor());
         m_piano[i]->setKeyPressedColor(Qt::red);
         m_piano[i]->setShowLabels(Settings::instance()->namesVisibility());
+        m_piano[i]->setOctaveSubscript(Settings::instance()->octaveSubscript());
         if (palId == PAL_SINGLE) {
             m_piano[i]->setKeyPressedColor(Settings::instance()->getSingleColor());
         } else {
