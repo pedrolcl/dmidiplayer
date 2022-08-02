@@ -7,7 +7,7 @@ This application is a multiplatform MIDI file player for Linux, Windows and macO
 
 ![Screenshot](https://dmidiplayer.sourceforge.io/screenshot.png "main window")
 
-[![Screencast at YouTube](https://img.youtube.com/vi/rQiWuQkMqsw/0.jpg)](https://www.youtube.com/watch?v=rQiWuQkMqsw)
+[![Screencast at YouTube](https://img.youtube.com/vi/WgwxFmAsicc/0.jpg)](https://www.youtube.com/watch?v=WgwxFmAsicc)
 
 Some key features:
 
@@ -18,13 +18,19 @@ Some key features:
 * Lyrics, Piano Player and MIDI Channels views
 * Supports MID/KAR/RMI (Standard MIDI Files) and WRK (Cakewalk) file formats
 
+New in v1.7.0:
+* Persistent song configuration. Stored song settings like volume, pitch, tempo,
+  text encoding and channel settings into song configuration files, either
+  automatically or when requested explicitly.
+* MIDI Mixer: channel volumes can be adjusted individually.
+* New MIDI file online search link in the Help menu.
+* Other minor features: octave subscript designation, new in Drumstick v2.7.0.
+
 New in v1.6.0:
 * Release dedicated to the Galician Literature Day.
 * New Galician translation and help page.
 * New sample song: Negra Sombra.
-* New Splash screen during May for Galician language users, 
-  showing [this file](https://commons.wikimedia.org/wiki/File:Bandeira_de_Galicia_no_Pazo_de_Raxoi.jpg)
-  by "Contando Estrelas" from Vigo, España / Spain, under the license: [CC-BY-SA-2.0-Generic](https://creativecommons.org/licenses/by-sa/2.0/deed.en).
+* New Splash screen during May for Galician language users.
 * CSD tool windows (channels, player piano, lyrics, help).
 
 New in v1.5.3:
@@ -133,7 +139,8 @@ $ cmake .. -DCMAKE_PREFIX_PATH="$HOME/Qt5;$HOME/drumstick2;$HOME/uchardet"
 $ make
 $ make install
 ```
-You need to replace the contents of the parameter CMAKE_PREFIX_PATH with the actual paths in your system. There are x86_64 precompiled packages for Linux, Windows and macOS at Sourceforge.
+
+You probably don't need to use the CMake variable CMAKE_PREFIX_PATH at all, if your dependencies are installed on some standard prefix like "/usr" on Linux. Otherwise, you need to replace the contents of the parameter CMAKE_PREFIX_PATH with the actual paths in your system (in the example, each dependency was installed on a subdirectory under the $HOME directory). If you don't want to compile the program yourself, there are x86_64 precompiled packages for Linux, Windows and macOS at Sourceforge.
 
 [![Download Drumstick Multiplatform MIDI File Player](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/dmidiplayer/files/latest/download)
 

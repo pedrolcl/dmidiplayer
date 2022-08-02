@@ -26,10 +26,23 @@
     <screenshots>
         <screenshot type="default">
             <image>https://dmidiplayer.sourceforge.io/screenshot.png</image>
-            <caption>All Windows in v1.3</caption>
+            <caption>All Windows Screenshot</caption>
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.7.0" date="2022-08-07">
+            <description>
+                <p>This release includes the following changes</p>
+                <ul>
+                    <li>Persistent song configuration. Stored song settings like volume, pitch, tempo, text encoding and channel settings into song  configuration files, either automatically or when requested explicitly.</li>
+                    <li>MIDI Mixer: channel volumes can be adjusted individually.</li>
+                    <li>New MIDI file online search link in the Help menu.</li>
+                    <li>Other minor features: octave subscript designation, new in Drumstick v2.7.0.</li>
+                    <li>Requires: drumstick-2.7.</li>
+                </ul>
+            </description>
+            <url>https://sourceforge.net/p/dmidiplayer/blog/2022/05/drumstick-multiplatform-midi-file-player-170-released/</url>
+        </release>
         <release version="1.6.0" date="2022-05-15">
             <description>
                 <p>Release dedicated to the Galician Literature Day.</p>
