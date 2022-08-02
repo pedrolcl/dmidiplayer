@@ -127,6 +127,32 @@ O `Control de posicionamento` está situado na xanela principal. É un control d
 móvese mentres cambia a posición de reprodución actual e pódese mover a man para
 cambiar a posición a calquera punto arbitrario dentro da canción.
 
+## Configuración da canción
+
+A configuración das cancións gárdase no subdirectorio $HOME/.dmidiplayer co
+mesmo nome que as cancións e o sufixo ".cfg". Cando se carga un ficheiro de canción,
+a sua configuración pódese cargar automaticamente e tamén gardarse cando a canción se detivo.
+Consulte a configuración correspondente no diálogo Preferencias/Xeral.
+
+A configuración das cancións tamén se pode cargar e gardar manualmente desde o correspondente
+elemento do menú "Ficheiro"->"Configuración da canción".
+
+Cada ficheiro .cfg de configuración de canción é un ficheiro de texto onde se almacenan os seguintes datos:
+
+- Codificación de texto da canción, detectada ou seleccionada polo usuario na vista Letras.
+- O camiño completo do ficheiro e o nome da canción.
+- A alteración da altura en semitonos, tal e como se indica na xanela principal.
+- A variación do tempo, tal e como se indica na xanela principal.
+- A variación global do volume, tal e como se indica na xanela principal.
+
+Para cada canle MIDI utilizada pola canción almacénanse os seguintes datos 
+procedentes da vista de canles:
+
+- A variación do volume da canle.
+- A etiqueta da canle.
+- O parche da canle (número de programa MIDI).
+- Estado dos botóns de solo, silencio e bloqueado da canle.
+
 ## Vistas
 
 No menú "Ver" están habilitadas as seguintes opcións:
@@ -261,10 +287,16 @@ Hai tres pestanas que agrupan os axustes de configuración
 
 #### Xeral
 
-* Canle MIDI de percusión: Número do 1 ao 16. Por defecto 10, correspondente ao
-  Canal de percusión estándar MIDI xeral
+* Canle MIDI de percusión: Número do 1 ao 16. Por defecto 10, correspondente á
+  canle de percusión estándar MIDI xeral
+* Redución de volume % do botón Solo. Predeterminado 50. O volume doutras canles MIDI
+  redúcese nesta porcentaxe cando unha canle ten o botón "solo" pulsado.
 * Inicia a reprodución automaticamente despois da carga. Activado por defecto
 * Avanza automaticamente ao seguinte elemento da lista de reprodución. Activado por defecto
+* Carga e garda automaticamente a configuración da canción. Non está activado por defecto. 
+  As configuracións gárdanse no subdirectorio $HOME/.dmidiplayer co mesmo nome 
+  das cancións e o sufixo ".cfg".
+* Bordes apegadizos da fiestra. Só para MS Windows. Activado por defecto.
 * Forzar o modo escuro. Pode ser útil en Windows. En Linux e macOS o modo escuro é
   aplicado automaticamente cando se configura no sistema operativo
 * Usa o tema de iconas interno. Esta configuración é necesaria en Windows e macOS.
@@ -291,7 +323,9 @@ Hai tres pestanas que agrupan os axustes de configuración
   tamaño dos nomes das notas
 * Mostrar os nomes das notas: as opcións dispoñibles son Nunca, Mínima, Cando está activada, sempre.
   A opción Mínimo mostra só os nomes das teclas Do.
-
+* Designación do subíndice de oitava. Desactivada, a nota Do central MIDI #60 
+  preséntase como "Do4", pero cando está activado preséntase como "Do<sub>4</sub>".
+  
 ### Personalizar a barra de ferramentas
 
 A barra de ferramentas está situada na xanela principal, que normalmente ten moi pouco

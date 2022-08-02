@@ -135,6 +135,32 @@ control deslizante que se mueve mientras cambia la posición actual de
 reproducción, y se puede mover manualmente para cambiar la posición a cualquier 
 punto arbitrario dentro de la canción.
 
+## Configuración de la canción
+
+Los ajustes de la canción se almacenan en el subdirectorio $HOME/.dmidiplayer con el
+mismo nombre que las canciones y el sufijo ".cfg". Cuando se carga un archivo de canción, 
+sus ajustes se pueden cargar automáticamente y también guardar cuando la canción se detiene.
+Consulte la configuración correspondiente en el cuadro de diálogo Preferencias/General.
+
+Los ajustes de la canción también se pueden cargar y guardar manualmente desde el correspondiente
+elemento del menú "Archivo" -> "Configuración de canción".
+
+Cada archivo de configuración de canción .cfg es un archivo de texto donde se almacenan los siguientes datos:
+
+- La codificación del texto de la canción, detectada o seleccionada por el usuario en la vista de Letras.
+- La ruta completa del archivo y el nombre de la canción.
+- La alteración del tono en semitonos, como se indica en la ventana principal.
+- La variación de tempo, tal y como se indica en la ventana principal.
+- La variación de volumen global, como se indica en la ventana principal.
+
+Para cada canal MIDI usado por la canción, se almacenan los siguientes datos 
+provenientes de la vista de canales:
+
+- La variación del volumen del canal.
+- La etiqueta del canal.
+- El parche del canal (número de programa MIDI).
+- El estado de los botones de solo, silencio y bloqueo del canal.
+
 ## Vistas
 
 Las siguientes opciones están habilitadas en el menú `Ver`:
@@ -287,10 +313,17 @@ Hay tres pestañas que agrupan los ajustes de configuración
 
 * Canal MIDI de percusión: número del 1 al 16. Por defecto 10, correspondiente 
   al canal de percusión estándar General MIDI
+* Reducción de volumen % del botón Solo. Predeterminado 50. El volumen de otros 
+  canales MIDI se reduce en este porcentaje cuando un canal tiene presionado el 
+  botón "solo".
 * Iniciar la reproducción automáticamente después de la carga. Habilitado por 
   omisión
 * Avanzar automáticamente al siguiente elemento de la lista de reproducción. 
   Habilitado por omisión
+* Cargar y guardar automáticamente la configuración de la canción. No habilitado por defecto. La canción
+  la configuración se almacena en el subdirectorio $HOME/.dmidiplayer con el mismo nombre
+  como las canciones y el sufijo ".cfg".
+* Bordes de ventana adhesivos. Sólo para MS Windows. Habilitado por defecto.
 * Forzar el modo oscuro. Puede resultar útil en Windows. En Linux y macOS, el 
   modo oscuro se aplica automáticamente cuando está configurado en el sistema 
   operativo
@@ -299,7 +332,7 @@ Hay tres pestañas que agrupan los ajustes de configuración
 * Estilo de widgets de Qt. Dependiendo del sistema operativo, afecta a la 
   integración visual con otros programas
 * Restablecimiento por sistema exclusivo MIDI. El reproductor envía este mensaje 
-  justo antes de comenzar a reproducir cada archivo MIDI 
+  justo antes de comenzar a reproducir cada archivo MIDI
 
 #### Letra
 
@@ -324,7 +357,9 @@ Hay tres pestañas que agrupan los ajustes de configuración
 * Mostrar nombres de notas: las opciones disponibles son: Nunca, Mínimo, Cuando 
   se activa, y Siempre. La opción Mínimo muestra solo los nombres de las teclas 
   Do
-
+* Designación de subíndice de octava. Desactivada, la nota Do central MIDI #60
+  se presenta como "Do4", pero cuando se activa se presenta como "Do<sub>4</sub>".
+  
 ### Personalización de la barra de herramientas
 
 La barra de herramientas se encuentra en la ventana principal, que normalmente 
