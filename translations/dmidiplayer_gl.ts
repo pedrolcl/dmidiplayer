@@ -412,7 +412,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="354"/>
         <source>Song Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Axustes de canción</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="379"/>
@@ -698,29 +698,29 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="822"/>
         <source>Load</source>
-        <translation type="unfinished"></translation>
+        <translation>Cargar</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="825"/>
         <location filename="../guiplayer.ui" line="828"/>
         <source>Load the stored settings for the current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Cargar os axustes da canción actual</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="833"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Gardar</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="836"/>
         <location filename="../guiplayer.ui" line="839"/>
         <source>Save the settings of the current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Gardar os axustes da canción actual</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="844"/>
         <source>Search MIDI files</source>
-        <translation type="unfinished"></translation>
+        <translation>Procurar ficheiros MIDI</translation>
     </message>
 </context>
 <context>
@@ -1743,7 +1743,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="404"/>
         <source>Octave Subscript Designation</source>
-        <translation type="unfinished"></translation>
+        <translation>Nomeamento de subíndice de oitava</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="329"/>
@@ -1753,17 +1753,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="41"/>
         <source>Solo Button % Volume Reduction:</source>
-        <translation type="unfinished"></translation>
+        <translation>Redución de volume % do botón solo:</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="81"/>
         <source>Sticky Window Borders</source>
-        <translation type="unfinished"></translation>
+        <translation>Bordos apegadizos de fiestra</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="170"/>
         <source>Automatically Load and Save Song Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Cargar e gardar automaticamente os axustes da canción</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="312"/>
@@ -1914,7 +1914,7 @@ Isto é software libre, e pódese redistribuir baixo certas condicións; ver a L
     <message>
         <location filename="../toolbareditdialog.ui" line="14"/>
         <source>Tool Bar Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor da barra de ferramentas</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="25"/>

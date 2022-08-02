@@ -612,27 +612,27 @@ Versión de karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <source>Song Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajustes de canción</translation>
     </message>
     <message>
         <source>Load</source>
-        <translation type="unfinished"></translation>
+        <translation>Cargar</translation>
     </message>
     <message>
         <source>Load the stored settings for the current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Cargar los ajustes almacenados para la canción actual</translation>
     </message>
     <message>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Guardar</translation>
     </message>
     <message>
         <source>Save the settings of the current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Guardar los ajustes para la canción actual</translation>
     </message>
     <message>
         <source>Search MIDI files</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar archivos MIDI</translation>
     </message>
 </context>
 <context>
@@ -1529,19 +1529,19 @@ Versión de karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <source>Solo Button % Volume Reduction:</source>
-        <translation type="unfinished"></translation>
+        <translation>Reducción de volumen % del botón Solo:</translation>
     </message>
     <message>
         <source>Sticky Window Borders</source>
-        <translation type="unfinished"></translation>
+        <translation>Bordes de ventana pegajosos</translation>
     </message>
     <message>
         <source>Automatically Load and Save Song Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Cargar y guardar automáticamente los ajustes de canción</translation>
     </message>
     <message>
         <source>Octave Subscript Designation</source>
-        <translation type="unfinished"></translation>
+        <translation>Designación de octava como subíndice</translation>
     </message>
 </context>
 <context>
@@ -1671,7 +1671,7 @@ bajo ciertas condiciones; vea LICENSE para detalles.</translation>
     </message>
     <message>
         <source>Tool Bar Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor de barra de herramientas</translation>
     </message>
 </context>
 </TS>
