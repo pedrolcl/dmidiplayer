@@ -483,7 +483,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="354"/>
         <source>Song Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Settaggi del file musicale</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="511"/>
@@ -699,29 +699,29 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="822"/>
         <source>Load</source>
-        <translation type="unfinished"></translation>
+        <translation>Carica</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="825"/>
         <location filename="../guiplayer.ui" line="828"/>
         <source>Load the stored settings for the current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Carica i settaggi per il file musicale corrente</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="833"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Salva</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="836"/>
         <location filename="../guiplayer.ui" line="839"/>
         <source>Save the settings of the current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Salva i settaggi per il file musicale corrente</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="844"/>
         <source>Search MIDI files</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerca file MIDI</translation>
     </message>
 </context>
 <context>
@@ -812,7 +812,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="43"/>
         <source>Music Box</source>
-        <translation type="unfinished"></translation>
+        <translation>Scatola musicale</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="44"/>
@@ -1132,7 +1132,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="107"/>
         <source>Recorder</source>
-        <translation type="unfinished"></translation>
+        <translation>Registratore</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="108"/>
@@ -1700,12 +1700,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="41"/>
         <source>Solo Button % Volume Reduction:</source>
-        <translation type="unfinished"></translation>
+        <translation>Riduzione di volume quando &quot;Solo&quot; è attivo:</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="81"/>
         <source>Sticky Window Borders</source>
-        <translation type="unfinished"></translation>
+        <translation>Finestre agganciabili ai bordi</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="136"/>
@@ -1715,7 +1715,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="170"/>
         <source>Automatically Load and Save Song Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Carica e salva automaticamente settaggi file musicale</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="178"/>
@@ -1759,7 +1759,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="404"/>
         <source>Octave Subscript Designation</source>
-        <translation type="unfinished"></translation>
+        <translation>Indicazione dell&apos;Ottava come pedice</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="329"/>
@@ -1916,7 +1916,7 @@ sotto certe condizioni; vedere il file LICENSE per i dettagli.</translation>
     <message>
         <location filename="../toolbareditdialog.ui" line="14"/>
         <source>Tool Bar Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor delle Toolbar</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="25"/>
