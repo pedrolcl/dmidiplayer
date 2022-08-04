@@ -38,13 +38,14 @@ public:
     void writeSettings();
     void retranslateUi();
     void applySettings() override;
-    void showPage(const QString &path, const QString &page);
 
 protected:
     void showEvent(QShowEvent *event) override;
     void closeEvent( QCloseEvent *event)  override;
+
 private slots:
     void updateWindowTitle();
+    void setNewHome();
 
 private:
     QLabel *m_titleLabel;

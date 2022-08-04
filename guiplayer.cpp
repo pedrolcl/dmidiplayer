@@ -1116,17 +1116,7 @@ void GUIPlayer::slotPlaylistRepeat(QAction *action)
 
 void GUIPlayer::slotHelp()
 {
-    QString lang = Settings::instance()->language();
-    if (lang == "C") {
-        lang = "en";
-    }
-    QDir hdir(":/help");
-    QString hname = QStringLiteral("%1/index.html").arg(lang);
-    QFileInfo finfo(hdir, hname);
-    if (!finfo.exists()) {
-        hname = "en/index.html";
-    }
-    m_helpWindow->showPage(hdir.path(), hname);
+    m_helpWindow->show();
 }
 
 void GUIPlayer::slotOpenWebSite()

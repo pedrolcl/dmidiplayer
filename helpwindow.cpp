@@ -16,7 +16,6 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QDebug>
 #include <QApplication>
 #include <QToolBar>
 #include <QVBoxLayout>
@@ -81,6 +80,7 @@ HelpWindow::HelpWindow(QWidget *parent):
     connect(m_zoomOut, &QAction::triggered, this, [=]{ m_textBrowser->zoomOut(); });
     connect(m_close, &QAction::triggered, this, &HelpWindow::close);
     connect(m_textBrowser, &QTextBrowser::sourceChanged, this, &HelpWindow::updateWindowTitle);
+    connect(m_textBrowser, &QTextBrowser::backwardAvailable, m_back, &QAction::setEnabled);
 
     m_textBrowser->setOpenExternalLinks(true);
 
@@ -110,7 +110,6 @@ void HelpWindow::readSettings()
         restoreState(state);
     }
     if (fontSize > 0) {
-        //qDebug() << Q_FUNC_INFO << fontSize;
         auto font = m_textBrowser->font();
         font.setPointSize(fontSize);
         m_textBrowser->setFont(font);
@@ -123,7 +122,6 @@ void HelpWindow::writeSettings()
     Settings::instance()->setHelpWindowGeometry(saveGeometry());
     Settings::instance()->setHelpWindowState(saveState());
     Settings::instance()->setHelpWindowFontSize(fontSize);
-    //qDebug() << Q_FUNC_INFO << fontSize;
 }
 
 void HelpWindow::closeEvent(QCloseEvent *event)
@@ -134,18 +132,15 @@ void HelpWindow::closeEvent(QCloseEvent *event)
 
 void HelpWindow::updateWindowTitle()
 {
-    //setWindowTitle(m_textBrowser->documentTitle());
     m_titleLabel->setText(m_textBrowser->documentTitle());
 }
 
-void HelpWindow::showPage(const QString &path, const QString &page)
+void HelpWindow::setNewHome()
 {
-    //qDebug() << Q_FUNC_INFO << path << page;
     m_textBrowser->clear();
+    m_textBrowser->setSearchPaths({m_path,":/help/en",":/"});
+    m_textBrowser->setSource(m_page);
     m_textBrowser->clearHistory();
-    m_textBrowser->setSearchPaths({m_path = path,":/help/en",":/"});
-    m_textBrowser->setSource(m_page = page);
-    show();
 }
 
 void HelpWindow::showEvent(QShowEvent *event)
@@ -166,8 +161,7 @@ void HelpWindow::retranslateUi()
     }
     m_path = QStringLiteral(":/help");
     m_page = QStringLiteral("%1/index.html").arg(lang);
-    m_textBrowser->setSearchPaths({m_path,":/help/en",":/"});
-    m_textBrowser->setSource(m_page);
+    setNewHome();
     updateWindowTitle();
     m_home->setText(tr("&Home"));
     m_back->setText(tr("&Back"));
