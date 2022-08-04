@@ -1,5 +1,10 @@
+2022-08-03
+    * Italian translation updated. Thanks to Giovanni Mariani.
+    * Spanish and Galician translations updated.
+
 2022-08-01
-    * new configuration option: octave subscript designation.
+    * New configuration option: octave subscript designation.
+    * Program and help text updated.
 
 2022-06-13
     * ticket #14: Search MIDI files online, using vanbasco.com search engine

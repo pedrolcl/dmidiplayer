@@ -16,7 +16,6 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QDebug>
 #include <QFileDialog>
 #include <QToolTip>
 #include <QMessageBox>
@@ -355,7 +354,7 @@ void GUIPlayer::pause()
 
 void GUIPlayer::stop()
 {
-    qDebug() << Q_FUNC_INFO;
+    //qDebug() << Q_FUNC_INFO;
     if (m_state == PlayingState || m_state == PausedState || m_player->isRunning()) {
         m_player->stop();
         m_playerThread.wait();
@@ -556,7 +555,7 @@ void GUIPlayer::preferences()
 
 void GUIPlayer::playerFinished()
 {
-    qDebug() << Q_FUNC_INFO;
+    //qDebug() << Q_FUNC_INFO;
     m_player->resetPosition();
     updateTimeLabel(0);
     updatePositionWidgets();
@@ -580,7 +579,7 @@ void GUIPlayer::playerFinished()
 
 void GUIPlayer::playerStopped()
 {
-    qDebug() << Q_FUNC_INFO;
+    //qDebug() << Q_FUNC_INFO;
     m_playerThread.wait();
     m_player->allNotesOff();
     if (m_pianola != nullptr) {
@@ -1159,7 +1158,7 @@ void GUIPlayer::slotPatch(int channel, int patch)
 void GUIPlayer::slotSaveSongSettings()
 {
     QString songName = m_player->song()->currentFile();
-    qDebug() << Q_FUNC_INFO << songName;
+    //qDebug() << Q_FUNC_INFO << songName;
     if (!songName.isEmpty()) {
         QDir dataDir(QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.dmidiplayer");
         QString fileName = QString("%1/%2.cfg").arg(dataDir.absolutePath(), songName);
@@ -1192,7 +1191,7 @@ void GUIPlayer::slotLoadSongSettings()
     int vol, pitch, skew, pgm;
     bool locked, muted, solo;
     QString songName = m_player->song()->currentFile();
-    qDebug() << Q_FUNC_INFO << songName;
+    //qDebug() << Q_FUNC_INFO << songName;
     if (!songName.isEmpty()) {
         QDir dataDir(QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.dmidiplayer");
         QString fileName = QString("%1/%2.cfg").arg(dataDir.absolutePath(), songName);
