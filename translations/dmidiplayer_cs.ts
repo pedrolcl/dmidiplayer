@@ -147,7 +147,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.cpp" line="288"/>
         <source>Please, load a song</source>
-        <translation>Nahrajte, prosím, píseň</translation>
+        <translation>Nahrajte, prosím, skladbu</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="298"/>
@@ -452,7 +452,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="354"/>
         <source>Song Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení skladby</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="379"/>
@@ -715,7 +715,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="779"/>
         <source>Current Song</source>
-        <translation>Nynější píseň</translation>
+        <translation>Nynější skladba</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="790"/>
@@ -746,29 +746,29 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="822"/>
         <source>Load</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahrát</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="825"/>
         <location filename="../guiplayer.ui" line="828"/>
         <source>Load the stored settings for the current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahrát uložená nastavení pro nynější skladbu</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="833"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="836"/>
         <location filename="../guiplayer.ui" line="839"/>
         <source>Save the settings of the current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit nastavení nynější skladby</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="844"/>
         <source>Search MIDI files</source>
-        <translation type="unfinished"></translation>
+        <translation>Hledat soubory MIDI</translation>
     </message>
 </context>
 <context>
@@ -1775,12 +1775,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="41"/>
         <source>Solo Button % Volume Reduction:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tlačítko sólo % snížení hlasitosti:</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="81"/>
         <source>Sticky Window Borders</source>
-        <translation type="unfinished"></translation>
+        <translation>Lepivé okraje oken</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="136"/>
@@ -1790,7 +1790,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="170"/>
         <source>Automatically Load and Save Song Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatické nahrávání a ukládání nastavení skladeb</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="178"/>
@@ -1834,7 +1834,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="404"/>
         <source>Octave Subscript Designation</source>
-        <translation type="unfinished"></translation>
+        <translation>Označení indexu oktávy</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="329"/>
@@ -1992,7 +1992,7 @@ za určitých podmínek; podrobnosti viz LICENCE.</translation>
     <message>
         <location filename="../toolbareditdialog.ui" line="14"/>
         <source>Tool Bar Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor nástrojového pruhu</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="25"/>
