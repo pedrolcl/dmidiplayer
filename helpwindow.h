@@ -45,7 +45,6 @@ protected:
 
 private slots:
     void updateWindowTitle();
-    void setNewHome();
 
 private:
     QLabel *m_titleLabel;
@@ -55,7 +54,6 @@ private:
     QAction *m_close;
     QAction *m_zoomIn;
     QAction *m_zoomOut;
-    QString m_path, m_page;
 };
 
 #endif // HELPWINDOW_H

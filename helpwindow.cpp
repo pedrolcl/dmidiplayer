@@ -34,6 +34,8 @@
 HelpWindow::HelpWindow(QWidget *parent):
     FramelessWindow(parent)
 {
+    const QStringList SEARCHPATHS{QStringLiteral(":/help"),QStringLiteral(":/help/en"),QStringLiteral(":/")};
+
     setObjectName(QString::fromUtf8("HelpWindow"));
     setWindowIcon(QIcon(":/dmidiplayer.png"));
 
@@ -76,12 +78,13 @@ HelpWindow::HelpWindow(QWidget *parent):
 
     connect(m_home, &QAction::triggered, m_textBrowser, &QTextBrowser::home);
     connect(m_back, &QAction::triggered, m_textBrowser, &QTextBrowser::backward);
-    connect(m_zoomIn, &QAction::triggered, this, [=]{ m_textBrowser->zoomIn(); });
-    connect(m_zoomOut, &QAction::triggered, this, [=]{ m_textBrowser->zoomOut(); });
+    connect(m_zoomIn, &QAction::triggered, this, [this]{ m_textBrowser->zoomIn(); });
+    connect(m_zoomOut, &QAction::triggered, this, [this]{ m_textBrowser->zoomOut(); });
     connect(m_close, &QAction::triggered, this, &HelpWindow::close);
     connect(m_textBrowser, &QTextBrowser::sourceChanged, this, &HelpWindow::updateWindowTitle);
     connect(m_textBrowser, &QTextBrowser::backwardAvailable, m_back, &QAction::setEnabled);
 
+    m_textBrowser->setSearchPaths(SEARCHPATHS);
     m_textBrowser->setOpenExternalLinks(true);
 
     retranslateUi();
@@ -135,14 +138,6 @@ void HelpWindow::updateWindowTitle()
     m_titleLabel->setText(m_textBrowser->documentTitle());
 }
 
-void HelpWindow::setNewHome()
-{
-    m_textBrowser->clear();
-    m_textBrowser->setSearchPaths({m_path,":/help/en",":/"});
-    m_textBrowser->setSource(m_page);
-    m_textBrowser->clearHistory();
-}
-
 void HelpWindow::showEvent(QShowEvent *event)
 {
     static bool firstTime = true;
@@ -159,9 +154,10 @@ void HelpWindow::retranslateUi()
     if (lang == "C") {
         lang = "en";
     }
-    m_path = QStringLiteral(":/help");
-    m_page = QStringLiteral("%1/index.html").arg(lang);
-    setNewHome();
+    QString page = QStringLiteral("%1/index.html").arg(lang);
+    m_textBrowser->clear();
+    m_textBrowser->setSource(page);
+    m_textBrowser->clearHistory();
     updateWindowTitle();
     m_home->setText(tr("&Home"));
     m_back->setText(tr("&Back"));
