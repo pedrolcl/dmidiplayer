@@ -136,7 +136,6 @@ Pianola::Pianola( QWidget* parent ) : FramelessWindow(parent),
     tbar->addWidget(m_toolBtn);
     tbar->addWidget(closeBtn);
     tbar->show();
-    setMinimumSize(640,200);
     retranslateUi();
     emit sizeAdjustNeeded();
 }

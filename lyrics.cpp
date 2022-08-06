@@ -152,7 +152,6 @@ Lyrics::Lyrics(QWidget *parent) : FramelessWindow(parent),
     m_label2->setBuddy(m_comboType);
     m_label3->setBuddy(m_comboCodec);
 #endif // QT_NO_SHORTCUT
-    // setWindowTitle(tr("Lyrics Viewer"));
     // Populate the codecs combobox
     populateCodecsCombo();
     // connect combos
@@ -164,7 +163,6 @@ Lyrics::Lyrics(QWidget *parent) : FramelessWindow(parent),
     connect(m_actionCopy, &QAction::triggered, this, &Lyrics::slotCopy);
     connect(m_actionSave, &QAction::triggered, this, &Lyrics::slotSave);
     connect(m_actionPrint, &QAction::triggered, this, &Lyrics::slotPrint);
-    setMinimumSize(640,200);
     retranslateUi();
     emit sizeAdjustNeeded();
 }
@@ -199,7 +197,6 @@ void Lyrics::writeSettings()
 
 void Lyrics::retranslateUi()
 {
-    //setWindowTitle(QApplication::translate("Lyrics", "Lyrics", nullptr));
     m_label1->setText(QApplication::translate("Lyrics", "Track:", nullptr));
     m_label2->setText(QApplication::translate("Lyrics", "Type:", nullptr));
     m_comboType->setItemText(0, QApplication::translate("Lyrics", "All Types", nullptr));
@@ -365,7 +362,6 @@ void Lyrics::initSong( Sequence *song )
     //qDebug() << Q_FUNC_INFO;
     m_song = song;
     if (m_song != nullptr) {
-        //setWindowTitle(tr("Lyrics Viewer (%1)").arg(m_song->currentFile()));
         populateTracksCombo();
         m_mib = m_song->currentMIB();
         m_track = m_song->trackMaxPoints();
@@ -481,7 +477,7 @@ void Lyrics::changeFont()
     QFont font = QFontDialog::getFont(&ok, m_textViewer->font(), this);
     if (ok) {
         m_textViewer->setFont(font);
-        //Settings::instance()->setLyricsFont(font);
+        Settings::instance()->setLyricsFont(font);
         displayText();
     }
 }
