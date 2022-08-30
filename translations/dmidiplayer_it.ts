@@ -11,7 +11,7 @@
     <message>
         <location filename="../playerabout.cpp" line="36"/>
         <source>Drumstick MIDI File Player Multiplatform</source>
-        <translation>Riproduttore multipiattaforma di file-MIDI basato su Drumstick</translation>
+        <translation>Riproduttore MIDI multipiattaforma basato su Drumstick</translation>
     </message>
 </context>
 <context>
@@ -19,7 +19,7 @@
     <message>
         <location filename="../playerabout.ui" line="14"/>
         <source>About</source>
-        <translation>Informazioni su</translation>
+        <translation>Informazioni</translation>
     </message>
     <message>
         <location filename="../playerabout.ui" line="26"/>
@@ -44,11 +44,11 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Noto Sans&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:20px; margin-bottom:20px; margin-left:20px; margin-right:20px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/dmidiplayer128.png&quot; style=&quot;float: left;&quot; /&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600;&quot;&gt;%PROJECT_DESCRIPTION%&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600;&quot;&gt;Version %VERSION%&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600;&quot;&gt;Versione %VERSION%&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Using &lt;/span&gt;&lt;a href=&quot;https://drumstick.sourceforge.io&quot;&gt;&lt;span style=&quot; font-family:&apos;DejaVu Sans&apos;; text-decoration: underline; color:#0057ae;&quot;&gt;Drumstick MIDI C++ libraries &lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;v%DRUMSTICK_VERSION%&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Copyright © 2006-2022, Pedro Lopez-Cabanillas &amp;lt;&lt;/span&gt;&lt;a href=&quot;mailto:plcl@users.sf.net?subject=dmidiplayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;plcl@users.sf.net&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Questo programma è software libero; lo potete ridistribuire e/o modificare in base ai termini della GNU General Public License come pubblicata dalla Free Software Foundation; sia nella versione 3 della Licenza, o (a vostra scelta) in quanlunque versione successiva.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Questo programma è distribuito nella speranxa che sia utile, ma SENZA QUALUNQUE GARANZIA; e anche senza l&apos;implicita garanzia di COMMERCIABILTA&apos; o di adeguatezza ad un particolare scopo. Vedere la GNU General Public License per maggiori dettagli.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Questo programma è distribuito nella speranza che sia utile, ma SENZA QUALUNQUE GARANZIA; e anche senza l&apos;implicita garanzia di COMMERCIABILTA&apos; o di adeguatezza ad un particolare scopo. Vedere la GNU General Public License per maggiori dettagli.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Dovreste avere ricevuto una copia della GNU General Public License insieme con questo programma; se così non fosse, &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;vedere &amp;lt;&lt;/span&gt;&lt;a href=&quot;https://www.gnu.org/licenses/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;https://www.gnu.org/licenses/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;&amp;gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
@@ -182,7 +182,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.cpp" line="465"/>
         <source>Open MIDI File</source>
-        <translation>Apri file MIDI</translation>
+        <translation>Apri un file MIDI</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="466"/>
@@ -248,7 +248,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.cpp" line="795"/>
         <source>Dropped file %1 is not supported</source>
-        <translation>Il file %1 che è stato rimosso.non è supportato</translation>
+        <translation>Il file %1 che è stato rimosso non è supportato</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="990"/>
@@ -353,7 +353,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="308"/>
         <source>Reset Volume</source>
-        <translation>Ripristino del volume</translation>
+        <translation>Ripristina il volume</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="311"/>
@@ -403,7 +403,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="341"/>
         <source>Open Recent Files</source>
-        <translation>Arpri i-file recenti</translation>
+        <translation>Apri i-file recenti</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="346"/>
@@ -453,7 +453,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="466"/>
         <source>Quit the application</source>
-        <translation>Chiude l&apos;applicazione</translation>
+        <translation>Esci dall&apos;applicazione</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="474"/>
@@ -493,7 +493,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="522"/>
         <source>About</source>
-        <translation>Informazioni su</translation>
+        <translation>Informazioni</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="525"/>
@@ -658,7 +658,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="754"/>
         <source>Customize Tool Bar...</source>
-        <translation>Personalizza barra degli strumenti...</translation>
+        <translation>Personalizza la barra degli strumenti...</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="768"/>
@@ -668,7 +668,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.ui" line="779"/>
         <source>Current Song</source>
-        <translation>Canzone corrente</translation>
+        <translation>Musica corrente</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="790"/>
@@ -679,12 +679,12 @@ p, li { white-space: pre-wrap; }
         <location filename="../guiplayer.ui" line="801"/>
         <location filename="../guiplayer.ui" line="804"/>
         <source>Loop</source>
-        <translation>Ripetizione</translation>
+        <translation>Ripetizione continua</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="807"/>
         <source>Loop between two bars</source>
-        <translation>Ripeti tra due posizioni</translation>
+        <translation>Ripetizione continua tra due posizioni</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="812"/>
@@ -777,7 +777,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="36"/>
         <source>Honky-Tonk</source>
-        <translation>Honky-Tonk</translation>
+        <translation>Piano Honky-Tonk</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="37"/>
@@ -797,7 +797,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="40"/>
         <source>Clavinet</source>
-        <translation type="unfinished"></translation>
+        <translation>Clavicembalo</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="41"/>
@@ -847,7 +847,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="50"/>
         <source>Percussive Organ</source>
-        <translation type="unfinished"></translation>
+        <translation>Organo a percussione</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="51"/>
@@ -862,12 +862,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="53"/>
         <source>Reed Organ</source>
-        <translation>Organo Reed</translation>
+        <translation>Organo ad ancia</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="54"/>
         <source>Accordion</source>
-        <translation>Accordion</translation>
+        <translation>Fisarmonica</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="55"/>
@@ -882,12 +882,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="57"/>
         <source>Acoustic Guitar (Nylon)</source>
-        <translation>Chitarra Acustica (Nylon)</translation>
+        <translation>Chitarra Acustica (corde in nylon)</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="58"/>
         <source>Acoustic Guitar (Steel)</source>
-        <translation>Chitarra Acustica (Acciaio)</translation>
+        <translation>Chitarra Acustica (corde in acciaio)</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="59"/>
@@ -907,17 +907,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="62"/>
         <source>Overdriven Guitar</source>
-        <translation>Chitarra amplificata</translation>
+        <translation>Chitarra con overdrive</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="63"/>
         <source>Distortion Guitar</source>
-        <translation>Chitarra con Distorsore</translation>
+        <translation>Chitarra con distorsione</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="64"/>
         <source>Guitar Harmonics</source>
-        <translation>Accordi di chitarra</translation>
+        <translation>Armoniche di chitarra</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="65"/>
@@ -927,27 +927,27 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="66"/>
         <source>Electric Bass (Finger)</source>
-        <translation>Basso Elettrico (Dito)</translation>
+        <translation>Basso Elettrico (pizzicato)</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="67"/>
         <source>Electric Bass (Pick)</source>
-        <translation>Basso Elettrico (Pizzicato)</translation>
+        <translation>Basso Elettrico (a plettro)</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="68"/>
         <source>Fretless Bass</source>
-        <translation type="unfinished"></translation>
+        <translation>Basso senza tasti</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="69"/>
         <source>Slap Bass 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Basso a schiaffo 1</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="70"/>
         <source>Slap Bass 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Basso a schiaffo 2</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="71"/>
@@ -1002,12 +1002,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="81"/>
         <source>String Ensemble 1</source>
-        <translation>Ensemble d&apos;archi 1</translation>
+        <translation>Insieme d&apos;archi 1</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="82"/>
         <source>String Ensemble 2</source>
-        <translation>Ensemble d&apos;archi 2</translation>
+        <translation>Insieme d&apos;archi 2</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="83"/>
@@ -1022,12 +1022,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="85"/>
         <source>Choir Aahs</source>
-        <translation>Coro Aah</translation>
+        <translation>Coro &quot;Aah&quot;</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="86"/>
         <source>Voice Oohs</source>
-        <translation>Voce Ooh</translation>
+        <translation>Voce &quot;Ooh&quot;</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="87"/>
@@ -1167,7 +1167,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="114"/>
         <source>Lead 2 - Saw Tooth</source>
-        <translation>Guida 2 - Dente di Sega</translation>
+        <translation>Guida 2 - Onda a dente di sega</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="115"/>
@@ -1202,42 +1202,42 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="121"/>
         <source>Pad 1 - New Age</source>
-        <translation type="unfinished"></translation>
+        <translation>Sottofondo 1 - New age</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="122"/>
         <source>Pad 2 - Warm</source>
-        <translation type="unfinished"></translation>
+        <translation>Sottofondo 2 - Caldo</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="123"/>
         <source>Pad 3 - Polysynth</source>
-        <translation type="unfinished"></translation>
+        <translation>Sottofondo 3 - Polysynth</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="124"/>
         <source>Pad 4 - Choir</source>
-        <translation type="unfinished"></translation>
+        <translation>Sottofondo 4 - Coro</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="125"/>
         <source>Pad 5 - Bow</source>
-        <translation type="unfinished"></translation>
+        <translation>Sottofondo 5 - Arco</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="126"/>
         <source>Pad 6 - Metallic</source>
-        <translation type="unfinished"></translation>
+        <translation>Sottofondo 6 - Metallico</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="127"/>
         <source>Pad 7 - Halo</source>
-        <translation type="unfinished"></translation>
+        <translation>Sottofondo 7 - Alone</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="128"/>
         <source>Pad 8 - Sweep</source>
-        <translation type="unfinished"></translation>
+        <translation>Sottofondo 8 - Sweep</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="129"/>
@@ -1247,7 +1247,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="130"/>
         <source>FX 2 - Soundtrack</source>
-        <translation type="unfinished"></translation>
+        <translation>FX 2 - Colonna sonora</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="131"/>
@@ -1262,7 +1262,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="133"/>
         <source>FX 5 - Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>FX 5 - Luminosità</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="134"/>
@@ -1337,7 +1337,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="148"/>
         <source>Wood Block</source>
-        <translation>Blocco diLegno</translation>
+        <translation>Percussione di legno</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="149"/>
@@ -1347,7 +1347,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="150"/>
         <source>Melodic Tom</source>
-        <translation type="unfinished"></translation>
+        <translation>Tom da batteria</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="151"/>
@@ -1362,7 +1362,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="153"/>
         <source>Guitar Fret Noise</source>
-        <translation type="unfinished"></translation>
+        <translation>Rumore su chitarra</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="154"/>
@@ -1377,7 +1377,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../instrumentset.cpp" line="156"/>
         <source>Bird Tweet</source>
-        <translation>Cinguettio di uccello</translation>
+        <translation>Cinguettio di uccelli</translation>
     </message>
     <message>
         <location filename="../instrumentset.cpp" line="157"/>
@@ -1720,7 +1720,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="178"/>
         <source>Lyrics</source>
-        <translation>Testo</translation>
+        <translation>Testi</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="187"/>
@@ -1916,7 +1916,7 @@ sotto certe condizioni; vedere il file LICENSE per i dettagli.</translation>
     <message>
         <location filename="../toolbareditdialog.ui" line="14"/>
         <source>Tool Bar Editor</source>
-        <translation>Editor delle Toolbar</translation>
+        <translation>Editor della Toolbar</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="25"/>
