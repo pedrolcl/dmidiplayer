@@ -17,6 +17,7 @@
 */
 
 #include <QApplication>
+#include <QScreen>
 #include <QMessageBox>
 #include <QCommandLineParser>
 #include <QFileInfo>
@@ -77,7 +78,9 @@ int main(int argc, char *argv[])
     parser.process(app);
 
     QPixmap px(":/splash.png");
-    QSplashScreen splash(px);
+    qreal scale = app.primaryScreen()->logicalDotsPerInch() / app.primaryScreen()->physicalDotsPerInch();
+    QSize newsize = px.size() * scale;
+    QSplashScreen splash(px.scaled(newsize, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
     QFont sf = QApplication::font();
 #if defined(Q_OS_WINDOWS)
         sf.setPointSize(14);

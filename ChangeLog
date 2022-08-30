@@ -1,5 +1,6 @@
 2022-08-30
     * Italian translation updated. Thanks to Giovanni Mariani.
+    * Splash screen scaled (by logicalDPI / physicalDPI).
 
 2022-08-07
     * Release 1.7.0
