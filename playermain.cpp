@@ -82,11 +82,7 @@ int main(int argc, char *argv[])
     QSize newsize = px.size() * scale;
     QSplashScreen splash(px.scaled(newsize, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
     QFont sf = QApplication::font();
-#if defined(Q_OS_WINDOWS)
-        sf.setPointSize(14);
-#else
-        sf.setPointSize(20);
-#endif
+	sf.setPointSize(20);
     splash.setFont(sf);
     splash.show();
     app.processEvents();
