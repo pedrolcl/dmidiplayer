@@ -77,22 +77,23 @@ int main(int argc, char *argv[])
     parser.addPositionalArgument("file", QCoreApplication::tr("Input SMF/KAR/WRK file name."), "[file]");
     parser.process(app);
 
-    QPixmap px(":/splash.png");
+    QSplashScreen *pSplash = nullptr;
     if (app.platformName() != "wayland") {
+        QPixmap px(":/splash.png");
         qreal scale = app.primaryScreen()->logicalDotsPerInch() / app.primaryScreen()->physicalDotsPerInch();
         QSize newsize = px.size() * scale;
         px = px.scaled(newsize, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
+        QSplashScreen splash(px);
+        pSplash = &splash;
+        QFont sf = QApplication::font();
+        sf.setPointSize(20);
+        splash.setFont(sf);
+        splash.show();
+        app.processEvents();
+        splash.showMessage(QSTR_APPNAME + " v" + strVersion,
+                           Qt::AlignBottom | Qt::AlignHCenter, Qt::white);
+        app.processEvents();
     }
-    QSplashScreen splash(px);
-    QFont sf = QApplication::font();
-	sf.setPointSize(20);
-    splash.setFont(sf);
-    splash.show();
-    app.processEvents();
-    splash.showMessage(QSTR_APPNAME + " v" + strVersion,
-                       Qt::AlignBottom | Qt::AlignHCenter, Qt::white);
-    app.processEvents();
-
     if (parser.isSet(portableOption) || parser.isSet(portableFileName)) {
         QString portableFile;
         if (parser.isSet(portableFileName)) {
@@ -114,7 +115,9 @@ int main(int argc, char *argv[])
 
     try {
         GUIPlayer w;
-        splash.finish(&w);
+        if (pSplash != nullptr) {
+            pSplash->finish(&w);
+        }
         w.setAttribute(Qt::WA_QuitOnClose);
         if(parser.isSet(portOption) && parser.isSet(driverOption)) {
             w.connectOutput(parser.value(driverOption), parser.value(portOption));
