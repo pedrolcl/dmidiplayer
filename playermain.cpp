@@ -77,21 +77,20 @@ int main(int argc, char *argv[])
     parser.addPositionalArgument("file", QCoreApplication::tr("Input SMF/KAR/WRK file name."), "[file]");
     parser.process(app);
 
-    QSplashScreen *pSplash = nullptr;
+    QScopedPointer<QSplashScreen> pSplash;
     if (app.platformName() != "wayland") {
         QPixmap px(":/splash.png");
         qreal scale = app.primaryScreen()->logicalDotsPerInch() / app.primaryScreen()->physicalDotsPerInch();
         QSize newsize = px.size() * scale;
         px = px.scaled(newsize, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
-        QSplashScreen splash(px);
-        pSplash = &splash;
+        pSplash.reset(new QSplashScreen(px));
         QFont sf = QApplication::font();
         sf.setPointSize(20);
-        splash.setFont(sf);
-        splash.show();
+        pSplash->setFont(sf);
+        pSplash->show();
         app.processEvents();
-        splash.showMessage(QSTR_APPNAME + " v" + strVersion,
-                           Qt::AlignBottom | Qt::AlignHCenter, Qt::white);
+        pSplash->showMessage(QSTR_APPNAME + " v" + strVersion,
+                             Qt::AlignBottom | Qt::AlignHCenter, Qt::white);
         app.processEvents();
     }
     if (parser.isSet(portableOption) || parser.isSet(portableFileName)) {
@@ -115,7 +114,7 @@ int main(int argc, char *argv[])
 
     try {
         GUIPlayer w;
-        if (pSplash != nullptr) {
+        if (!pSplash.isNull()) {
             pSplash->finish(&w);
         }
         w.setAttribute(Qt::WA_QuitOnClose);
