@@ -18,6 +18,10 @@ Some key features:
 * Lyrics, Piano Player and MIDI Channels views
 * Supports MID/KAR/RMI (Standard MIDI Files) and WRK (Cakewalk) file formats
 
+New in v1.7.1:
+* Splash screen excluded in Wayland and fixed in other systems
+* Italian translation updated. Thanks to Giovanni Mariani
+
 New in v1.7.0:
 * Persistent song configuration. Stored song settings like volume, pitch, tempo,
   text encoding and channel settings into song configuration files, either

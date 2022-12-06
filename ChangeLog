@@ -1,3 +1,14 @@
+2022-12-06
+    * Release 1.7.1
+
+2022-11-06
+    * Fixed splash
+    * Don't show splash in wayland
+
+2022-08-31 
+    * Exclude scaling for wayland
+    * Use the same font for the splash screen on all platforms
+
 2022-08-30
     * Italian translation updated. Thanks to Giovanni Mariani.
     * Splash screen scaled (by logicalDPI / physicalDPI).

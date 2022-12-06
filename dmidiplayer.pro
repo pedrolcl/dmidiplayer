@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = dmidiplayer
-VERSION = 1.6.0
+VERSION = 1.7.1
 QT += gui widgets printsupport
 CONFIG += qt thread exceptions c++11 link_pkgconfig
 INCLUDEPATH += $$(DRUMSTICKINCLUDES)

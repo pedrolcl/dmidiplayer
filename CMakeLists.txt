@@ -23,7 +23,7 @@ project ( dmidiplayer
     HOMEPAGE_URL "https://sourceforge.net/p/dmidiplayer/"
 )
 
-#set(PROJECT_RELEASE_DATE "Aug 7, 2022")
+set(PROJECT_RELEASE_DATE "Dec 6, 2022")
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)

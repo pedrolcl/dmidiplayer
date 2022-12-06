@@ -30,6 +30,16 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.7.1" date="2022-12-06">
+            <description>
+                <p>This release includes the following changes</p>
+                <ul>
+                    <li>Splash screen excluded in Wayland and fixed in other systems.</li>
+                    <li>Italian translation updated. Thanks to Giovanni Mariani.</li>
+                </ul>
+            </description>
+            <url>https://sourceforge.net/p/dmidiplayer/blog/2022/12/drumstick-multiplatform-midi-file-player-171-released/</url>
+        </release>
         <release version="1.7.0" date="2022-08-07">
             <description>
                 <p>This release includes the following changes</p>
