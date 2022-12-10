@@ -55,7 +55,7 @@ else()
 endif()
 
 find_package ( Drumstick 2.7 COMPONENTS File RT Widgets REQUIRED )
-find_package ( uchardet COMPONENTS uchardet::libuchardet REQUIRED )
+find_package ( uchardet 0.0.8 COMPONENTS libuchardet REQUIRED )
 
 SET(SOURCES
     channels.cpp
