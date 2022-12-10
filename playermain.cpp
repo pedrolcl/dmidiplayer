@@ -80,8 +80,7 @@ int main(int argc, char *argv[])
     QScopedPointer<QSplashScreen> pSplash;
     if (app.platformName() != "wayland") {
         QPixmap px(":/splash.png");
-        qreal scale = app.primaryScreen()->logicalDotsPerInch() / app.primaryScreen()->physicalDotsPerInch();
-        QSize newsize = px.size() * scale;
+        QSize newsize = px.size() * app.primaryScreen()->devicePixelRatio();
         px = px.scaled(newsize, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
         pSplash.reset(new QSplashScreen(px));
         QFont sf = QApplication::font();

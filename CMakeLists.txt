@@ -17,13 +17,13 @@
 cmake_minimum_required(VERSION 3.14)
 
 project ( dmidiplayer
-    VERSION 1.7.1
+    VERSION 1.7.2
     LANGUAGES CXX
     DESCRIPTION "Drumstick MIDI File Player Multiplatform Program"
     HOMEPAGE_URL "https://sourceforge.net/p/dmidiplayer/"
 )
 
-set(PROJECT_RELEASE_DATE "Dec 6, 2022")
+#set(PROJECT_RELEASE_DATE "Dec 6, 2022")
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -43,20 +43,19 @@ if (USE_QT)
     if (NOT (USE_QT EQUAL 5 OR USE_QT EQUAL 6))
         message(FATAL_ERROR "Wrong Qt major version. Only 5 and 6 are valid options")
     endif()
-    find_package(QT NAMES Qt${USE_QT})
+    find_package( QT NAMES Qt${USE_QT} )
 else()
-    find_package(QT NAMES Qt5 Qt6)
+    find_package( QT NAMES Qt5 Qt6 )
 endif()
 
-find_package (Qt${QT_VERSION_MAJOR} 5.15 COMPONENTS Gui Widgets PrintSupport LinguistTools REQUIRED)
-if(QT_VERSION VERSION_GREATER_EQUAL 6.0.0)
-    find_package (Qt6Core5Compat REQUIRED)
+if(QT_VERSION VERSION_LESS 6.0.0)
+    find_package ( Qt5 5.15 COMPONENTS Gui Widgets PrintSupport LinguistTools REQUIRED )
+else()
+    find_package ( Qt6 6.2 COMPONENTS Gui Widgets PrintSupport LinguistTools Core5Compat REQUIRED )
 endif()
 
-find_package (Drumstick 2.7 COMPONENTS File RT Widgets REQUIRED)
-
-find_package ( PkgConfig )
-pkg_check_modules( UCHARDET REQUIRED IMPORTED_TARGET uchardet )
+find_package ( Drumstick 2.7 COMPONENTS File RT Widgets REQUIRED )
+find_package ( uchardet COMPONENTS uchardet::libuchardet REQUIRED )
 
 SET(SOURCES
     channels.cpp
@@ -213,7 +212,7 @@ message (STATUS "Drumstick MIDI File Player v${PROJECT_VERSION}
      Processor: ${CMAKE_SYSTEM_PROCESSOR}
      Qt Version: ${QT_VERSION}
      Drumstick Version: ${Drumstick_VERSION}
-     Uchardet Version: ${UCHARDET_VERSION}"
+     Uchardet Version: ${uchardet_VERSION}"
 )
 
 add_executable ( ${PROJECT_NAME} ${SOURCES} )
@@ -227,7 +226,7 @@ target_link_libraries ( ${PROJECT_NAME} PRIVATE
     Drumstick::File
     Drumstick::RT
     Drumstick::Widgets
-    PkgConfig::UCHARDET
+    uchardet::libuchardet
 )
 
 if (QT_VERSION VERSION_GREATER_EQUAL 6.0.0)
