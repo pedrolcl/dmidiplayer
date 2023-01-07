@@ -137,7 +137,7 @@ VIAddVersionKey /LANG=0 CompanyName "${COMPANY}"
 VIAddVersionKey /LANG=0 CompanyWebsite "${URL}"
 VIAddVersionKey /LANG=0 FileVersion ${VERSION}
 VIAddVersionKey /LANG=0 FileDescription "@PROJECT_DESCRIPTION@"
-VIAddVersionKey /LANG=0 LegalCopyright "Copyright (C) 2021-2022, Pedro Lopez-Cabanillas <plcl@users.sf.net>"
+VIAddVersionKey /LANG=0 LegalCopyright "Copyright (C) 2021-2023, Pedro Lopez-Cabanillas <plcl@users.sf.net>"
 InstallDirRegKey HKLM "${REGKEY}" Path
 ShowUninstDetails show
 Icon ${SOURCE_FILES}\icons\${PROGNAME}.ico
