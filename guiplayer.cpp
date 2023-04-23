@@ -399,6 +399,9 @@ void GUIPlayer::openFile(const QString& fileName)
         } else if (ext == "mid" || ext == "midi" || ext == "kar") {
             progressDialogInit("MIDI", finfo.size());
         }
+        if (m_state == PlayingState) {
+            stop();
+        }
         m_player->loadFile(fileName);
         if (m_player->song()->isEmpty()) {
             m_ui->lblName->clear();
@@ -612,9 +615,6 @@ void GUIPlayer::playerEcho(long millis, long ticks)
 
 void GUIPlayer::nextSong()
 {
-    if (m_state == PlayingState) {
-        stop();
-    }
     if (m_playList->selectNextItem()) {
         openFile(m_playList->currentItem());
     }
@@ -622,9 +622,6 @@ void GUIPlayer::nextSong()
 
 void GUIPlayer::prevSong()
 {
-    if (m_state == PlayingState) {
-        stop();
-    }
     if (m_playList->selectPrevItem()) {
         openFile(m_playList->currentItem());
     }
@@ -1087,9 +1084,6 @@ void GUIPlayer::slotPlayList()
         }
         auto current = m_playList->currentItem();
         if (!current.isEmpty()) {
-            if (m_state == PlayingState) {
-                stop();
-            }
             openFile(current);
         }
     }
