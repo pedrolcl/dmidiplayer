@@ -699,10 +699,10 @@ void Sequence::appendSMFEvent(MIDIEvent *ev)
     smfUpdateLoadProgress();
 }
 
-void Sequence::smfHeaderEvent(int format, int ntrks, int division)
+void Sequence::smfHeaderEvent(int format, int /*ntrks*/, int division)
 {
     m_format = format;
-    m_numTracks = ntrks;
+    m_numTracks = 0; // ntrks must not be trusted;
     m_division = division;
     m_fileFormat = tr("SMF type %1").arg(format);
     m_beatLength = m_division;
@@ -901,6 +901,7 @@ void Sequence::smfTrackStartEvent()
     if (tick > m_ticksDuration) {
         m_ticksDuration = tick;
     }
+    m_numTracks++;
     m_curTrack++;
     m_trackLabel.clear();
     for(int i=0; i<MIDI_STD_CHANNELS; ++i) {
