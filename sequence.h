@@ -118,6 +118,9 @@ public:
     QString getFileFormat() const;
     QString getMetadataInfo() const;
 
+    QString loadingErrors() const;
+    int errorsCount() const;
+
 signals:
     void loadingStart(int size);
     void loadingProgress(int pos);
@@ -272,6 +275,7 @@ private: // members
     QMap<int, int> m_typScore;
     QMap<int, int> m_trkChannel;
     QMap<QString, QString> m_infoMap;
+    QList<QString> m_loadingErrors;
 };
 
 #endif // SEQUENCE_H

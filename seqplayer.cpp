@@ -25,8 +25,11 @@
 #include <typeinfo>
 
 #include <QAbstractEventDispatcher>
+#include <QApplication>
+#include <QMessageBox>
 #include <QThread>
 #include <QtMath>
+
 #include "events.h"
 #include "seqplayer.h"
 #include "settings.h"
@@ -383,6 +386,11 @@ void SequencePlayer::loadFile(QString fileName)
     m_loopStart = 1;
     m_loopEnd = m_song.lastBar();
     m_loopEnabled = false;
+    if (m_song.errorsCount() > 0) {
+        QString loadingMessages = tr("Warning, this file may be non-standard or damaged.<br/>");
+        loadingMessages.append(m_song.loadingErrors());
+        QMessageBox::warning(QApplication::activeWindow(), Settings::QSTR_APPNAME, loadingMessages);
+    }
 }
 
 void SequencePlayer::pause()
@@ -622,7 +630,7 @@ void SequencePlayer::setLocked(int channel, bool lock)
 
 void SequencePlayer::setPatch(int channel, int patch)
 {
-    //qDebug() << Q_FUNC_INFO << channel << patch;
+    qDebug() << Q_FUNC_INFO << channel << patch;
     if (channel >= 0 && channel < MIDI_STD_CHANNELS) {
         m_lastpgm[channel] = patch;
         if (m_locked[channel]) {

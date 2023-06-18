@@ -310,6 +310,7 @@ void Sequence::clear()
     while (!m_list.isEmpty()) {
         delete m_list.takeFirst();
     }
+    m_loadingErrors.clear();
 }
 
 bool Sequence::isEmpty()
@@ -396,13 +397,26 @@ int Sequence::getNumTracks() const
 
 void Sequence::appendStringToList(QStringList &list, QString &s, TextType type)
 {
+    static const QRegularExpression karRex("@[IKLTVW]");
+    static const QRegularExpression txtRex("[/\\\\]+");
+    static const QRegularExpression genRex("[\r\n]+");
     if (type == Text || type >= KarFileType)
-        s.replace(QRegularExpression("@[IKLTVW]"), "\n");
+        s.replace(karRex, "\n");
     if (type == Text || type == Lyric)
-        s.replace(QRegularExpression("[/\\\\]+"), "\n");
-    s.replace(QRegularExpression("[\r\n]+"), "\n");
+        s.replace(txtRex, "\n");
+    s.replace(genRex, "\n");
     s.replace('\0', QChar::Space);
     list.append(s);
+}
+
+QString Sequence::loadingErrors() const
+{
+    return m_loadingErrors.join("<br/>");
+}
+
+int Sequence::errorsCount() const
+{
+    return m_loadingErrors.size();
 }
 
 QTextCodec *Sequence::codec() const
@@ -933,7 +947,7 @@ void Sequence::smfTrackEnd()
 
 void Sequence::smfErrorHandler(const QString& errorStr)
 {
-    qWarning() << QString("%1 at file offset %2").arg(errorStr).arg(m_smf->getFilePos());
+    m_loadingErrors << QString("%1 at file offset %2").arg(errorStr).arg(m_smf->getFilePos());
 }
 
 /* ********************************* *
@@ -960,8 +974,7 @@ void Sequence::appendWRKEvent(long ticks, MIDIEvent* ev)
 
 void Sequence::wrkErrorHandler(const QString& errorStr)
 {
-    qWarning() << QString("%1 at file offset %2<br>")
-        .arg(errorStr).arg(m_wrk->getFilePos());
+    m_loadingErrors << QString("%1 at file offset %2<br>").arg(errorStr).arg(m_wrk->getFilePos());
 }
 
 void Sequence::wrkFileHeader(int verh, int verl)

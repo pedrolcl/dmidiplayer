@@ -448,7 +448,9 @@ void GUIPlayer::openFile(const QString& fileName)
             }
         }
     } else {
-        QMessageBox::warning(this, QSTR_APPNAME, tr("file %1 couldn't be opened").arg(finfo.fileName()));
+        QMessageBox::warning(this,
+                             Settings::QSTR_APPNAME,
+                             tr("file %1 couldn't be opened").arg(finfo.fileName()));
     }
 }
 
@@ -787,8 +789,9 @@ void GUIPlayer::dropEvent( QDropEvent * event )
             if ( isSupported(localFileName) ) {
                 list.append(localFileName);
             } else {
-                QMessageBox::warning(this, QSTR_APPNAME,
-                    tr("Dropped file %1 is not supported").arg(fileName));
+                QMessageBox::warning(this,
+                                     Settings::QSTR_APPNAME,
+                                     tr("Dropped file %1 is not supported").arg(fileName));
             }
         }
         if (!list.isEmpty()) {
@@ -1136,6 +1139,7 @@ void GUIPlayer::slotLocked(int channel, bool lock)
 
 void GUIPlayer::slotPatch(int channel, int patch)
 {
+    qDebug() << Q_FUNC_INFO << channel << patch;
     m_player->setPatch(channel, patch);
 }
 
@@ -1175,14 +1179,13 @@ void GUIPlayer::slotLoadSongSettings()
     int vol, pitch, skew, pgm;
     bool locked, muted, solo;
     QString songName = m_player->song()->currentFile();
-    //qDebug() << Q_FUNC_INFO << songName;
+    qDebug() << Q_FUNC_INFO << songName;
     if (!songName.isEmpty()) {
         QDir dataDir(QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.dmidiplayer");
         QString fileName = QString("%1/%2.cfg").arg(dataDir.absolutePath(), songName);
         QSettings songSettings(fileName, QSettings::IniFormat);
         songSettings.beginGroup("Global");
-        //QString songfile = songSettings.value("file").toString();
-        //qDebug() << Q_FUNC_INFO << songfile;
+        qDebug() << Q_FUNC_INFO << songSettings.value("file").toString();
         QString encoding = songSettings.value("encoding").toString();
         if (!encoding.isEmpty()) {
             m_player->song()->setCurrentCharset(encoding.toLatin1());
@@ -1211,14 +1214,18 @@ void GUIPlayer::slotLoadSongSettings()
                 }
                 muted = songSettings.value("muted", false).toBool();
                 m_channels->setMuteChannel(i, muted);
+                //m_player->setMuted(i, muted);
                 solo = songSettings.value("solo", false).toBool();
                 m_channels->setSoloChannel(i, solo);
                 pgm = songSettings.value("patch", -1).toInt();
                 m_channels->setPatchChannel(i, pgm);
+                //m_player->setPatch(i, pgm);
                 locked = songSettings.value("locked", false).toBool();
                 m_channels->setLockChannel(i, locked);
+                //m_player->setLocked(i, locked);
                 vol = songSettings.value("level", 100).toInt();
                 m_channels->setLevelChannel(i, vol);
+                //m_player->setVolume(i, vol);
                 songSettings.endGroup();
             }
         }

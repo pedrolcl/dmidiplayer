@@ -47,9 +47,9 @@ int main(int argc, char *argv[])
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
     QApplication app(argc, argv);
-    QCoreApplication::setOrganizationName(QSTR_DOMAIN);
-    QCoreApplication::setOrganizationDomain(QSTR_DOMAIN);
-    QCoreApplication::setApplicationName(QSTR_APPNAME);
+    QCoreApplication::setOrganizationName(Settings::QSTR_DOMAIN);
+    QCoreApplication::setOrganizationDomain(Settings::QSTR_DOMAIN);
+    QCoreApplication::setApplicationName(Settings::QSTR_APPNAME);
     QCoreApplication::setApplicationVersion(strVersion);
 #if defined(Q_OS_WINDOWS)
     QApplication::setStyle("fusion");
@@ -88,8 +88,9 @@ int main(int argc, char *argv[])
         pSplash->setFont(sf);
         pSplash->show();
         app.processEvents();
-        pSplash->showMessage(QSTR_APPNAME + " v" + strVersion,
-                             Qt::AlignBottom | Qt::AlignHCenter, Qt::white);
+        pSplash->showMessage(Settings::QSTR_APPNAME + " v" + strVersion,
+                             Qt::AlignBottom | Qt::AlignHCenter,
+                             Qt::white);
         app.processEvents();
     }
     if (parser.isSet(portableOption) || parser.isSet(portableFileName)) {

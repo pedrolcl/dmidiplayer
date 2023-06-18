@@ -20,12 +20,12 @@
 #define PORTABLESETTINGS_H
 
 #include <QObject>
-#include <QString>
 #include <QSettings>
+#include <QString>
 #include <QTranslator>
 #include <drumstick/backendmanager.h>
-#include <drumstick/pianopalette.h>
 #include <drumstick/pianokeybd.h>
+#include <drumstick/pianopalette.h>
 
 using namespace drumstick::widgets;
 
@@ -126,7 +126,11 @@ public:
     void setToolbarButtonStyle(int newToolbarButtonStyle);
 
     // static methods
-    static Settings* instance();
+    inline static const QString QSTR_DOMAIN = QStringLiteral("drumstick.sourceforge.net");
+    inline static const QString QSTR_APPNAME = QStringLiteral(
+        "Drumstick Multiplatform MIDI File Player");
+
+    static Settings *instance();
     static void setPortableConfig(const QString fileName = QString());
     static QString dataDirectory();
     static QString localeDirectory();

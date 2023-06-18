@@ -360,7 +360,7 @@ void Channels::slotPatchChanged(int channel)
     int p = m_patch[channel]->currentIndex();
     if (p > -1) {
         emit patch(channel, p);
-        //qDebug() << Q_FUNC_INFO << channel << p;
+        qDebug() << Q_FUNC_INFO << channel << p;
     }
 }
 
@@ -378,17 +378,18 @@ void Channels::slotMuteChannel(int channel)
 
 void Channels::slotSoloChannel(int channel)
 {
-    //qDebug() << Q_FUNC_INFO << channel << m_solo[channel]->isChecked();
+    qDebug() << Q_FUNC_INFO << channel << m_solo[channel]->isChecked();
     bool enable = m_solo[channel]->isChecked();
     double factor = enable ? m_volumeFactor * Settings::instance()->soloVolumeReduction() : m_volumeFactor * 100.0;
     for ( int ch = 0; ch < MIDI_STD_CHANNELS; ++ch ) {
         if (channel != ch) {
             m_solo[ch]->setChecked(false);
             m_slider[ch]->setValue(factor);
+            emit volume(ch, factor);
         }
     }
     m_slider[channel]->setValue( m_volumeFactor * 100.0 );
-    //emit volume(channel, m_volumeFactor);
+    emit volume(channel, m_volumeFactor);
 }
 
 void Channels::timerEvent(QTimerEvent *event)
@@ -458,7 +459,7 @@ QString Channels::channelName(int channel) const
 
 void Channels::slotLockChannel(int channel)
 {
-    //qDebug() << Q_FUNC_INFO << channel << m_lock[channel]->isChecked();
+    qDebug() << Q_FUNC_INFO << channel << m_lock[channel]->isChecked();
     emit lock(channel, m_lock[channel]->isChecked());
 }
 
@@ -472,9 +473,10 @@ bool Channels::isChannelMuted(int channel) const
     return m_mute[channel]->isChecked();
 }
 
-void Channels::setMuteChannel(int channel, bool mute)
+void Channels::setMuteChannel(int channel, bool m)
 {
-    m_mute[channel]->setChecked(mute);
+    m_mute[channel]->setChecked(m);
+    emit mute(channel, m);
 }
 
 bool Channels::isChannelSoloed(int channel) const
@@ -482,9 +484,10 @@ bool Channels::isChannelSoloed(int channel) const
     return m_solo[channel]->isChecked();
 }
 
-void Channels::setSoloChannel(int channel, bool solo)
+void Channels::setSoloChannel(int channel, bool s)
 {
-    m_solo[channel]->setChecked(solo);
+    qDebug() << Q_FUNC_INFO << s;
+    m_solo[channel]->setChecked(s);
 }
 
 int Channels::channelPatch(int channel) const
@@ -497,19 +500,24 @@ int Channels::channelLevel(int channel) const
     return m_slider[channel]->value();
 }
 
-void Channels::setPatchChannel(int channel, int patch)
+void Channels::setPatchChannel(int channel, int p)
 {
-    m_patch[channel]->setCurrentIndex(patch);
+    qDebug() << Q_FUNC_INFO << channel << p;
+    m_patch[channel]->setCurrentIndex(p);
+    emit patch(channel, p);
 }
 
 void Channels::setLevelChannel(int channel, int level)
 {
     m_slider[channel]->setValue(level);
+    emit volume(channel, level);
 }
 
-void Channels::setLockChannel(int channel, bool lock)
+void Channels::setLockChannel(int channel, bool lck)
 {
-    m_lock[channel]->setChecked(lock);
+    qDebug() << Q_FUNC_INFO << channel << lck;
+    m_lock[channel]->setChecked(lck);
+    emit lock(channel, lck);
 }
 
 void Channels::slotNameChannel(int channel)

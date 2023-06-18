@@ -55,9 +55,6 @@ namespace Ui {
 class SequencePlayer;
 class About;
 
-const QString QSTR_DOMAIN("drumstick.sourceforge.net");
-const QString QSTR_APPNAME("Drumstick Multiplatform MIDI File Player");
-
 class GUIPlayer : public QMainWindow
 {
     Q_OBJECT
