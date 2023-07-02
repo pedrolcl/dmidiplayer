@@ -150,7 +150,7 @@ You probably don't need to use the CMake variable CMAKE_PREFIX_PATH at all, if y
 
 In addition to the released AppImage for Linux, you may find a [Flatpak at FlatHub](https://flathub.org/apps/details/net.sourceforge.dmidiplayer)
 
-[<img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/>](https://flathub.org/apps/details/net.sourceforge.dmidiplayer)
+[<img width='240' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/>](https://flathub.org/apps/details/net.sourceforge.dmidiplayer)
 
 And binary packages for several Linux distributions:
 
