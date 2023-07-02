@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file alias="dmidiplayer.png">icons/dmidiplayer_64x64.png</file>
         <file alias="dmidiplayer128.png">icons/dmidiplayer_128x128.png</file>
-        <file alias="splash.png">icons/splash.png</file>
         <file>icons/edit-clear.png</file>
         <file>icons/edit-delete.png</file>
         <file>icons/edit-find.png</file>

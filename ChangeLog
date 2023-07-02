@@ -1,3 +1,7 @@
+2023-07-02
+    * Fixed GH ticket #9: Retain Locked Patches when replaying Midi File
+    * Fixed SF ticket #17: Removed splash screen
+
 2023-04-23
     * Fixed crash when loading a song from File->Open Recent Files (GH ticket #8).
 
@@ -17,7 +21,7 @@
     * Fixed splash
     * Don't show splash in wayland
 
-2022-08-31 
+2022-08-31
     * Exclude scaling for wayland
     * Use the same font for the splash screen on all platforms
 
