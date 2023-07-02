@@ -1124,6 +1124,7 @@ void GUIPlayer::slotOpenWebSite()
 
 void GUIPlayer::slotVolume(int channel, qreal vol)
 {
+    //qDebug() << Q_FUNC_INFO << channel << vol;
     m_player->setVolume(channel, vol);
 }
 
@@ -1139,7 +1140,7 @@ void GUIPlayer::slotLocked(int channel, bool lock)
 
 void GUIPlayer::slotPatch(int channel, int patch)
 {
-    qDebug() << Q_FUNC_INFO << channel << patch;
+    //qDebug() << Q_FUNC_INFO << channel << patch;
     m_player->setPatch(channel, patch);
 }
 
@@ -1179,13 +1180,13 @@ void GUIPlayer::slotLoadSongSettings()
     int vol, pitch, skew, pgm;
     bool locked, muted, solo;
     QString songName = m_player->song()->currentFile();
-    qDebug() << Q_FUNC_INFO << songName;
+    //qDebug() << Q_FUNC_INFO << songName;
     if (!songName.isEmpty()) {
         QDir dataDir(QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.dmidiplayer");
         QString fileName = QString("%1/%2.cfg").arg(dataDir.absolutePath(), songName);
         QSettings songSettings(fileName, QSettings::IniFormat);
         songSettings.beginGroup("Global");
-        qDebug() << Q_FUNC_INFO << songSettings.value("file").toString();
+        //qDebug() << Q_FUNC_INFO << songSettings.value("file").toString();
         QString encoding = songSettings.value("encoding").toString();
         if (!encoding.isEmpty()) {
             m_player->song()->setCurrentCharset(encoding.toLatin1());
@@ -1213,20 +1214,16 @@ void GUIPlayer::slotLoadSongSettings()
                     m_pianola->slotLabel(i, name);
                 }
                 muted = songSettings.value("muted", false).toBool();
-                m_channels->setMuteChannel(i, muted);
-                //m_player->setMuted(i, muted);
                 solo = songSettings.value("solo", false).toBool();
-                m_channels->setSoloChannel(i, solo);
                 pgm = songSettings.value("patch", -1).toInt();
-                m_channels->setPatchChannel(i, pgm);
-                //m_player->setPatch(i, pgm);
                 locked = songSettings.value("locked", false).toBool();
-                m_channels->setLockChannel(i, locked);
-                //m_player->setLocked(i, locked);
                 vol = songSettings.value("level", 100).toInt();
-                m_channels->setLevelChannel(i, vol);
-                //m_player->setVolume(i, vol);
                 songSettings.endGroup();
+                m_channels->setMuteChannel(i, muted);
+                m_channels->setSoloChannel(i, solo);
+                m_channels->setLockChannel(i, locked);
+                m_channels->setPatchChannel(i, pgm);
+                m_channels->setLevelChannel(i, vol);
             }
         }
     }

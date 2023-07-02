@@ -48,6 +48,18 @@ void SequencePlayer::initChannels()
     }
 }
 
+int SequencePlayer::boundedFloor(const int initial, const qreal factor) const
+{
+    int temp = qFloor(initial * factor);
+    if (temp < 0) {
+        temp = 0;
+    }
+    if (temp > 127) {
+        temp = 127;
+    }
+    return temp;
+}
+
 bool SequencePlayer::isLoopEnabled() const
 {
     return m_loopEnabled;
@@ -179,9 +191,7 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
                 int val = event->value();
                 if (par == ControllerEvent::MIDI_CTL_MSB_MAIN_VOLUME) {
                     m_volume[chan] = val;
-                    val = qFloor(val * m_volumeShift[chan]);
-                    if (val < 0) val = 0;
-                    if (val > 127) val = 127;
+                    val = boundedFloor(val, m_volumeShift[chan] / 100.0);
                 }
                 m_port->sendController(chan, par, val);
                 //qDebug() << m_songPosition << event->tick() << " CtrlChg: " << chan << par << val;
@@ -426,14 +436,12 @@ void SequencePlayer::setPitchShift(unsigned int pitch)
 
 void SequencePlayer::setVolumeFactor(unsigned int vol)
 {
-    //qDebug() << Q_FUNC_INFO;
+    //qDebug() << Q_FUNC_INFO << vol;
     m_volumeFactor = vol;
     if (m_port != nullptr) {
         for(int chan = 0; chan < MIDI_STD_CHANNELS; ++chan) {
             int value = m_volume[chan];
-            value = qFloor(value * m_volumeFactor / 100.0);
-            if (value < 0) value = 0;
-            if (value > 127) value = 127;
+            value = boundedFloor(value, m_volumeFactor / 100.0);
             m_port->sendController(chan, ControllerEvent::MIDI_CTL_MSB_MAIN_VOLUME, value);
         }
     }
@@ -582,17 +590,13 @@ void SequencePlayer::setVolume(int channel, qreal value)
     //qDebug() << Q_FUNC_INFO << channel << value;
     if (channel >= 0 && channel < MIDI_STD_CHANNELS) {
         m_volumeShift[channel] = value;
-        int volume = qFloor(m_volume[channel] * value);
-        if (volume < 0) volume = 0;
-        if (volume > 127) volume = 127;
+        int volume = boundedFloor(m_volume[channel], value / 100.0);
         m_port->sendController(channel, MIDI_CONTROL_MSB_MAIN_VOLUME, volume);
         emit volumeChanged( channel, value );
     } else if ( channel == -1 ) {
         for (int chan = 0; chan < MIDI_STD_CHANNELS; ++chan) {
             m_volumeShift[chan] = value;
-            int volume = qFloor(m_volume[chan] * value);
-            if (volume < 0) volume = 0;
-            if (volume > 127) volume = 127;
+            int volume = boundedFloor(m_volume[chan], value / 100.0);
             m_port->sendController(chan, MIDI_CONTROL_MSB_MAIN_VOLUME, volume);
             emit volumeChanged( chan, value );
         }
@@ -630,7 +634,7 @@ void SequencePlayer::setLocked(int channel, bool lock)
 
 void SequencePlayer::setPatch(int channel, int patch)
 {
-    qDebug() << Q_FUNC_INFO << channel << patch;
+    //qDebug() << Q_FUNC_INFO << channel << patch;
     if (channel >= 0 && channel < MIDI_STD_CHANNELS) {
         m_lastpgm[channel] = patch;
         if (m_locked[channel]) {
@@ -638,4 +642,3 @@ void SequencePlayer::setPatch(int channel, int patch)
         }
     }
 }
-

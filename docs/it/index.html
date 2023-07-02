@@ -5,7 +5,145 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <title>Indice di aiuto</title>
-  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
 </head>
 <body>
 <div id="header">
@@ -14,22 +152,25 @@
 <div id="TOC">
 <ul>
 <li><a href="#introduzione">Introduzione</a></li>
-<li><a href="#selezionare-luscita-midi">Selezionare l'uscita MIDI</a></li>
-<li><a href="#controlli-di-riproduzione">Controlli di riproduzione</a><ul>
+<li><a href="#selezionare-luscita-midi">Selezionare l’uscita MIDI</a></li>
+<li><a href="#controlli-di-riproduzione">Controlli di riproduzione</a>
+<ul>
 <li><a href="#trasposizione">Trasposizione</a></li>
 <li><a href="#livello-del-volume">Livello del volume</a></li>
 <li><a href="#tempo">Tempo</a></li>
 <li><a href="#salto-ripetizione-e-posizionamento">Salto, Ripetizione e Posizionamento</a></li>
 </ul></li>
 <li><a href="#settaggi-musiche">Settaggi Musiche</a></li>
-<li><a href="#visualizzazioni">Visualizzazioni</a><ul>
+<li><a href="#visualizzazioni">Visualizzazioni</a>
+<ul>
 <li><a href="#canali">Canali</a></li>
 <li><a href="#tastiera">Tastiera</a></li>
 <li><a href="#testi">Testi</a></li>
 </ul></li>
 <li><a href="#playlist">Playlist</a></li>
 <li><a href="#apertura-di-file-midi">Apertura di file MIDI</a></li>
-<li><a href="#personalizzazione">Personalizzazione</a><ul>
+<li><a href="#personalizzazione">Personalizzazione</a>
+<ul>
 <li><a href="#preferenze">Preferenze</a></li>
 <li><a href="#personalizzazione-della-barra-degli-strumenti">Personalizzazione della barra degli strumenti</a></li>
 </ul></li>
@@ -37,69 +178,69 @@
 </div>
 <h2 id="introduzione">Introduzione</h2>
 <p>Questa applicazione è un riproduttore di file MIDI multi piattaforma per Linux, Windows e MacOS. Legge i formati di file .MID (file MIDI standard), .KAR (Karaoke) e .WRK (Cakewalk) e invia gli eventi MIDI alle porte MIDI hardware e anche a sintetizzatori software.</p>
-<p><a href="https://drumstick.sourceforge.io">Drumstick</a> è un set di librerie C++/Qt con licenza GPLv3 per applicazioni MIDI. Il progetto include diversi strumenti come esempi, e tra questi c'è l'utility drumstick-guiplayer che sfrutta la libreria Drumstick::ALSA; l'utility è quindi disponibile solo per Linux (perché il sequencer ALSA è una tecnologia presente solo su Linux). Alcune persone hanno richiesto un programma per Windows e MacOS con le stesse funzionalità di drumstick-guiplayer, ed eccolo qui. Tuttavia dmidiplayer è molto di più dell'utility compresa in Drumstick e funziona anche su Linux...</p>
+<p><a href="https://drumstick.sourceforge.io">Drumstick</a> è un set di librerie C++/Qt con licenza GPLv3 per applicazioni MIDI. Il progetto include diversi strumenti come esempi, e tra questi c’è l’utility drumstick-guiplayer che sfrutta la libreria Drumstick::ALSA; l’utility è quindi disponibile solo per Linux (perché il sequencer ALSA è una tecnologia presente solo su Linux). Alcune persone hanno richiesto un programma per Windows e MacOS con le stesse funzionalità di drumstick-guiplayer, ed eccolo qui. Tuttavia dmidiplayer è molto di più dell’utility compresa in Drumstick e funziona anche su Linux…</p>
 <p>Alcune caratteristiche chiave: * Uscita MIDI su porte MIDI hardware, o su qualsiasi altro backend Drumstick, come ad esempio un sintetizzatore software. * <a href="https://it.wikipedia.org/wiki/Trasposizione_(musica)">Trasposizione</a> della tonalità della musica tra -12 e +12 semitoni. * Cambio del livello del volume MIDI (usando il comando MIDI CC7). * Variazione della velocità della musica tra la metà e il doppio del <a href="https://it.wikipedia.org/wiki/Tempo_(musica)">tempo</a>. * Visualizzazione dei testi, della tastiera e dei canali MIDI. * Supporto dei formati di file MID/KAR (file MIDI standard) e WRK (Cakewalk).</p>
-<h2 id="selezionare-luscita-midi">Selezionare l'uscita MIDI</h2>
-<p>Ogni riproduttore MIDI emette solo eventi MIDI, non suoni ascoltabili. Per produrre un suono effettivo, è necessario un sintetizzatore MIDI: esso trasforma gli eventi MIDI in ingresso in audio digitale che può essere riprodotto dagli altoparlanti del computer (o esterni). Questo ruolo può essere svolto o da uno strumento musicale MIDI esterno collegato al computer (ad esempio un organo, un pianoforte o un sintetizzatore MIDI con un'interfaccia USB) oppure, se l'opzione precedente non è disponibile, da un sintetizzatore software (cioè da un programma).</p>
-<p>Vi sono sintetizzatori software già inclusi nel sistema operativo del computer: ad esempio Microsoft Windows include &quot;Microsoft GS Wavetable Synth&quot; e Apple MacOS include &quot;Apple DLS Synthesizer&quot;. Per usare uno di questi, bisogna aprire la finestra di dialogo &quot;Impostazione MIDI&quot; di dmidiplayer e quindi:</p>
+<h2 id="selezionare-luscita-midi">Selezionare l’uscita MIDI</h2>
+<p>Ogni riproduttore MIDI emette solo eventi MIDI, non suoni ascoltabili. Per produrre un suono effettivo, è necessario un sintetizzatore MIDI: esso trasforma gli eventi MIDI in ingresso in audio digitale che può essere riprodotto dagli altoparlanti del computer (o esterni). Questo ruolo può essere svolto o da uno strumento musicale MIDI esterno collegato al computer (ad esempio un organo, un pianoforte o un sintetizzatore MIDI con un’interfaccia USB) oppure, se l’opzione precedente non è disponibile, da un sintetizzatore software (cioè da un programma).</p>
+<p>Vi sono sintetizzatori software già inclusi nel sistema operativo del computer: ad esempio Microsoft Windows include “Microsoft GS Wavetable Synth” e Apple MacOS include “Apple DLS Synthesizer”. Per usare uno di questi, bisogna aprire la finestra di dialogo “Impostazione MIDI” di dmidiplayer e quindi:</p>
 <ul>
-<li><p>In <strong>Windows</strong>, selezionare l'opzione &quot;Windows MM&quot; nella prima casella di riepilogo e &quot;Microsoft GS Wavetable Synth&quot; nella seconda. A questo programma, che è molto semplice e con limitate capacità, è preferibile un'alternativa migliore e gratuita come <a href="https://coolsoft.altervista.org/it/virtualmidisynth">Virtual MIDI Synth</a>; se installato, esso verrà visualizzato come &quot;VirtualMIDISynth #n&quot; nella seconda casella di riepilogo. Se invece si ha disposizione uno strumento MIDI esterno collegato al computer, anche il suo nome dovrebbe apparire stessa casella.</p></li>
-<li><p>In <strong>MacOS</strong>, selezionare &quot;DLS Synth&quot; sia nella prima che nella seconda casella di riepilogo. Questo programma ha un'opzione di configurazione per l'utilizzo di file sound font DLS o SF2 che, se lo si vuole, può essere utilizzata. Invece, per utilizzare un dispositivo MIDI esterno collegato, oppure un sintetizzatore software, basta selezionare &quot;CoreMIDI&quot; nella prima casella di riepilogo e il nome del tuo hardware o del programma sintetizzatore nel secondo.</p></li>
-<li><p><strong>Linux</strong> e altri sistemi operativi <strong>Unix</strong> non dispongono di sintetizzatori software di default; è tuttavia possibile installarli. Tra i tanti disponibili si possono segnalare: &quot;SonivoxEAS&quot;: un sintetizzatore GM pronto per essere utilizzato, subito dopo l'installazione; è molto semplice, non usa file e dipende solo dal server audio di sistema PulseAudio. Per utilizzarlo (come pure per usare dispositivi esterni collegati al computer o sintetizzatori software arbitrari) è necessario selezionare &quot;ALSA&quot; (o &quot;OSS&quot;) nella prima casella di riepilogo.</p></li>
-<li><p><a href="https://github.com/FluidSynth/fluidsynth"><strong>FluidSynth</strong></a> è un altro sintetizzatore open software, multi piattaforma e disponibile su tutti i sistemi operativi. È molto configurabile, accetta file sound font e può dialogare con molti sistemi audio digitali. Per utilizzarlo bisogna selezionare &quot;FluidSynth&quot; in entrambe le caselle di riepilogo.</p></li>
-<li><p><strong>Network</strong>: dmidiplayer dispone anche di un'uscita UDP Multicast multi piattaforma, che può essere utilizzata per inviare eventi MIDI come pacchetti di rete verso altri computer e dispositivi nella stessa rete locale. È compatibile con <a href="https://www.nerds.de/en/ipmidi.html">&quot;ipMIDI&quot;</a>, <a href="https://qmidinet.sourceforge.io/">&quot;QmidiNet&quot;</a> e <a href="https://llg.cubic.org/tools/multimidicast/">&quot;multimidicast&quot;</a>.</p></li>
+<li><p>In <strong>Windows</strong>, selezionare l’opzione “Windows MM” nella prima casella di riepilogo e “Microsoft GS Wavetable Synth” nella seconda. A questo programma, che è molto semplice e con limitate capacità, è preferibile un’alternativa migliore e gratuita come <a href="https://coolsoft.altervista.org/it/virtualmidisynth">Virtual MIDI Synth</a>; se installato, esso verrà visualizzato come “VirtualMIDISynth #n” nella seconda casella di riepilogo. Se invece si ha disposizione uno strumento MIDI esterno collegato al computer, anche il suo nome dovrebbe apparire stessa casella.</p></li>
+<li><p>In <strong>MacOS</strong>, selezionare “DLS Synth” sia nella prima che nella seconda casella di riepilogo. Questo programma ha un’opzione di configurazione per l’utilizzo di file sound font DLS o SF2 che, se lo si vuole, può essere utilizzata. Invece, per utilizzare un dispositivo MIDI esterno collegato, oppure un sintetizzatore software, basta selezionare “CoreMIDI” nella prima casella di riepilogo e il nome del tuo hardware o del programma sintetizzatore nel secondo.</p></li>
+<li><p><strong>Linux</strong> e altri sistemi operativi <strong>Unix</strong> non dispongono di sintetizzatori software di default; è tuttavia possibile installarli. Tra i tanti disponibili si possono segnalare: “SonivoxEAS”: un sintetizzatore GM pronto per essere utilizzato, subito dopo l’installazione; è molto semplice, non usa file e dipende solo dal server audio di sistema PulseAudio. Per utilizzarlo (come pure per usare dispositivi esterni collegati al computer o sintetizzatori software arbitrari) è necessario selezionare “ALSA” (o “OSS”) nella prima casella di riepilogo.</p></li>
+<li><p><a href="https://github.com/FluidSynth/fluidsynth"><strong>FluidSynth</strong></a> è un altro sintetizzatore open software, multi piattaforma e disponibile su tutti i sistemi operativi. È molto configurabile, accetta file sound font e può dialogare con molti sistemi audio digitali. Per utilizzarlo bisogna selezionare “FluidSynth” in entrambe le caselle di riepilogo.</p></li>
+<li><p><strong>Network</strong>: dmidiplayer dispone anche di un’uscita UDP Multicast multi piattaforma, che può essere utilizzata per inviare eventi MIDI come pacchetti di rete verso altri computer e dispositivi nella stessa rete locale. È compatibile con <a href="https://www.nerds.de/en/ipmidi.html">“ipMIDI”</a>, <a href="https://qmidinet.sourceforge.io/">“QmidiNet”</a> e <a href="https://llg.cubic.org/tools/multimidicast/">“multimidicast”</a>.</p></li>
 </ul>
 <h2 id="controlli-di-riproduzione">Controlli di riproduzione</h2>
 <p>Le seguenti azioni standard sono disponibili nel menù <code>File</code>, ed anche nella barra degli strumenti, che contiene le funzionalità convenzionali su qualsiasi lettore multimediale: * <code>Riproduci</code> * <code>Pausa</code> (e continua) * <code>Ferma</code> * <code>Avanti veloce</code> (di 1 posizione) * <code>Riavvolgi</code> (di 1 posizione)</p>
-<p>Per impostazione predefinita, &quot;Riproduci&quot; viene attivato automaticamente al caricamento di un file MIDI tranne quando questa funzione è stata disabilitata nella finestra di dialogo di configurazione.</p>
-<p>La <code>barra di stato</code>, facoltativamente situata nella parte inferiore della finestra principale, mostra lo stato di riproduzione corrente come &quot;Riproduzione&quot;, &quot;Interrotto&quot;, &quot;In pausa&quot;, ecc.</p>
+<p>Per impostazione predefinita, “Riproduci” viene attivato automaticamente al caricamento di un file MIDI tranne quando questa funzione è stata disabilitata nella finestra di dialogo di configurazione.</p>
+<p>La <code>barra di stato</code>, facoltativamente situata nella parte inferiore della finestra principale, mostra lo stato di riproduzione corrente come “Riproduzione”, “Interrotto”, “In pausa”, ecc.</p>
 <h3 id="trasposizione">Trasposizione</h3>
-<p>Il <code>Controllo del passo</code> si trova nella finestra principale. È una casella di selezione inizializzata a zero, con un range valido da -12 a +12 semitoni. I limiti sono equivalenti ad un'ottava sopra o sotto il tono originale. Questo dovrebbe essere sufficiente per cantanti o strumentisti che abbiano bisogno di regolare la tonalità per il loro comfort.</p>
+<p>Il <code>Controllo del passo</code> si trova nella finestra principale. È una casella di selezione inizializzata a zero, con un range valido da -12 a +12 semitoni. I limiti sono equivalenti ad un’ottava sopra o sotto il tono originale. Questo dovrebbe essere sufficiente per cantanti o strumentisti che abbiano bisogno di regolare la tonalità per il loro comfort.</p>
 <p>Tutti i canali MIDI sono trasposti cromaticamente, eccetto il canale percussioni (canale GM 10 per impostazione predefinita).</p>
 <h3 id="livello-del-volume">Livello del volume</h3>
-<p>Il <code>Controllo del volume</code> si trova nella finestra principale. È un cursore, inizializzato al 100%, con un intervallo valido che va da 0% a 200%. L'effetto del limite superiore potrebbe essere inferiore perché il MIDI CC 7 ha un range valido da 0 a 127. C'è anche un pulsante per &quot;Ripristina volume&quot;.</p>
+<p>Il <code>Controllo del volume</code> si trova nella finestra principale. È un cursore, inizializzato al 100%, con un intervallo valido che va da 0% a 200%. L’effetto del limite superiore potrebbe essere inferiore perché il MIDI CC 7 ha un range valido da 0 a 127. C’è anche un pulsante per “Ripristina volume”.</p>
 <h3 id="tempo">Tempo</h3>
-<p>Il <code>Controllo del tempo</code> si trova nella finestra principale. È un cursore inizializzato al 100%, con un intervallo valido che va dal 50% al 200%. Ci sono inoltre un pulsante per &quot;Ripristina tempo&quot; ed un display, che mostra il tempo effettivo in battiti al minuto con un valore iniziale di 120 bpm. Questo è il tempo predefinito per un file MIDI (se non contiene un cambio di tempo). Il valore mostrato viene aggiornato quando si cambia il controllo del tempo e anche durante la riproduzione di un file MIDI contenente cambiamenti di tempo.</p>
+<p>Il <code>Controllo del tempo</code> si trova nella finestra principale. È un cursore inizializzato al 100%, con un intervallo valido che va dal 50% al 200%. Ci sono inoltre un pulsante per “Ripristina tempo” ed un display, che mostra il tempo effettivo in battiti al minuto con un valore iniziale di 120 bpm. Questo è il tempo predefinito per un file MIDI (se non contiene un cambio di tempo). Il valore mostrato viene aggiornato quando si cambia il controllo del tempo e anche durante la riproduzione di un file MIDI contenente cambiamenti di tempo.</p>
 <h3 id="salto-ripetizione-e-posizionamento">Salto, Ripetizione e Posizionamento</h3>
-<p>L'azione <code>Salta</code> (che si trova nel menù <code>File</code> e nella barra degli strumenti predefinita), richiede un numero di posizione, compreso tra 1 e l'ultima battuta del brano caricato, per cambiare la posizione del brano da quella corrente a quella della battuta indicata.</p>
-<p>L'azione <code>Ripetizione</code> (che si trova nel menù <code>File</code> e nella barra degli strumenti predefinita), richiede due numeri di posizione. La musica verrà riprodotta tra le due posizioni indicate quando il Loop è attivato. Si può disattivarlo in qualsiasi momento selezionando nuovamente l'azione.</p>
-<p>Il <code>Controllo del posizionamento</code> si trova nella finestra principale. È un cursore che si muove mentre cambia la posizione di riproduzione corrente e può essere spostato manualmente per cambiare la posizione in qualsiasi punto arbitrario all'interno della musica.</p>
+<p>L’azione <code>Salta</code> (che si trova nel menù <code>File</code> e nella barra degli strumenti predefinita), richiede un numero di posizione, compreso tra 1 e l’ultima battuta del brano caricato, per cambiare la posizione del brano da quella corrente a quella della battuta indicata.</p>
+<p>L’azione <code>Ripetizione</code> (che si trova nel menù <code>File</code> e nella barra degli strumenti predefinita), richiede due numeri di posizione. La musica verrà riprodotta tra le due posizioni indicate quando il Loop è attivato. Si può disattivarlo in qualsiasi momento selezionando nuovamente l’azione.</p>
+<p>Il <code>Controllo del posizionamento</code> si trova nella finestra principale. È un cursore che si muove mentre cambia la posizione di riproduzione corrente e può essere spostato manualmente per cambiare la posizione in qualsiasi punto arbitrario all’interno della musica.</p>
 <h2 id="settaggi-musiche">Settaggi Musiche</h2>
-<p>I settaggi per un file musicale sono salvati in $HOME/.dmidiplayer, in una sotto-cartella con il lo stesso nome del file e il suffisso &quot;.cfg&quot;. Quando un file musicale viene caricato, i corrispondenti settaggi possono essere automaticamente caricati, mentre quando la riproduzione del file viene arrestata, allo stesso modo possono essere salvati. Vedere &quot;Settaggi musiche&quot; nella finestra di dialogo &quot;Preferenze/Generale&quot;</p>
-<p>I settaggi per un file musicale possono anche essere caricati o salvati manualmente dal menù &quot;File -&gt; Settaggi Musiche&quot;.</p>
-<p>Ogni file .cfg è un file di testo, nel quale sono contenuti i seguenti dati: - La codifica del testo musicale, automaticamente determinata oppure specificata dall'utente nella finestra &quot;Testo&quot;. - Il nome e il percorso completo del file musicale. - La variazione di altezza della musica in semitoni, come indicato nella finestra principale. - La variazione del volume globale, come indicato nella finestra principale.</p>
+<p>I settaggi per un file musicale sono salvati in $HOME/.dmidiplayer, in una sotto-cartella con il lo stesso nome del file e il suffisso “.cfg”. Quando un file musicale viene caricato, i corrispondenti settaggi possono essere automaticamente caricati, mentre quando la riproduzione del file viene arrestata, allo stesso modo possono essere salvati. Vedere “Settaggi musiche” nella finestra di dialogo “Preferenze/Generale”</p>
+<p>I settaggi per un file musicale possono anche essere caricati o salvati manualmente dal menù “File -&gt; Settaggi Musiche”.</p>
+<p>Ogni file .cfg è un file di testo, nel quale sono contenuti i seguenti dati: - La codifica del testo musicale, automaticamente determinata oppure specificata dall’utente nella finestra “Testo”. - Il nome e il percorso completo del file musicale. - La variazione di altezza della musica in semitoni, come indicato nella finestra principale. - La variazione del volume globale, come indicato nella finestra principale.</p>
 <p>Per ogni canale MIDI usato nel file musicale, sono inoltre contenuti i seguenti dati, derivati dalla finestra Canali: - La variazione del suo volume. - Il suo nome identificativo. - Il suo patch (numero di programma MIDI). - Lo stato dei pulsanti solo, muto e blocca.</p>
 <h2 id="visualizzazioni">Visualizzazioni</h2>
 <p>Le seguenti opzioni sono abilitate nel menù <code>Visualizza</code>:</p>
-<p>Tre sono finestre indipendenti che si possono aprire e chiudere a piacimento: Canali, Testi e Tastiera. Vi sono poi altre tre, incorporate nella finestra principale: Barra degli strumenti, Barra di stato e Ritmo. Anch'esse possono essere nascoste o mostrate a piacere.</p>
+<p>Tre sono finestre indipendenti che si possono aprire e chiudere a piacimento: Canali, Testi e Tastiera. Vi sono poi altre tre, incorporate nella finestra principale: Barra degli strumenti, Barra di stato e Ritmo. Anch’esse possono essere nascoste o mostrate a piacere.</p>
 <h3 id="canali">Canali</h3>
-<p>Questa finestra mostra fino a 16 righe, una per ogni canale MIDI utilizzato dal corrente File MIDI. Le colonne sono: * Numero di canale MIDI e del testo (modificabile). Di solito il nome dello strumento, o una breve descrizione tratta dai meta dati del file. * Pulsante &quot;Muto&quot;&quot;. Con questa opzione il canale correntemente selezionato può essere silenziato. * Pulsante &quot;Solo&quot;. Alza il volume del canale selezionato, mentre abbassa quello di tutti gli altri canali. * Livello. Indicatore dell'attività sul canale correntemente selezionato ed anche un cursore per modificare il suo livello di volume. * Pulsante &quot;Blocca&quot;. Questo pulsante corregge la Patch sul canale corrente, impedendo modifiche eventualmente memorizzate nel file. * Patch. Corrisponde agli eventi di Program Change MIDI secondo l'Elenco Generale dei nomi degli strumenti MIDI.</p>
+<p>Questa finestra mostra fino a 16 righe, una per ogni canale MIDI utilizzato dal corrente File MIDI. Le colonne sono: * Numero di canale MIDI e del testo (modificabile). Di solito il nome dello strumento, o una breve descrizione tratta dai meta dati del file. * Pulsante “Muto”“. Con questa opzione il canale correntemente selezionato può essere silenziato. * Pulsante”Solo”. Alza il volume del canale selezionato, mentre abbassa quello di tutti gli altri canali. * Livello. Indicatore dell’attività sul canale correntemente selezionato ed anche un cursore per modificare il suo livello di volume. * Pulsante “Blocca”. Questo pulsante corregge la Patch sul canale corrente, impedendo modifiche eventualmente memorizzate nel file. * Patch. Corrisponde agli eventi di Program Change MIDI secondo l’Elenco Generale dei nomi degli strumenti MIDI.</p>
 <h3 id="tastiera">Tastiera</h3>
 <p>Questa finestra mostra fino a 16 righe, una per ogni canale MIDI utilizzato dal corrente file MIDI. Ogni riga contiene: * Un numero di canale e del testo (gli stessi dati della finestra Canali). * Una tastiera di pianoforte interattiva. I tasti saranno evidenziati con un colore, che può essere completamente personalizzato, a partire dagli eventi di nota MIDI suonati dal file MIDI corrente. La tastiera può facoltativamente anche i nomi delle note suonate. I tasti possono inoltre essere attivati manualmente utilizzando la tastiera del computer e il mouse.</p>
 <p>La finestra ha anche un menù, contenente le seguenti opzioni: * Visualizza a schermo intero. Ingrandisce la finestra riempiendo completamente il monitor corrente. * Mostra tutti i canali. * Nascondi tutti i canali. * Riduci il numero di tasti. Per impostazione predefinita, ogni tastiera mostra 88 tasti, da A0 a C8. Usando questa opzione le tastiere usano solo il numero di ottave realmente utilizzato dal file MIDI, che di solito è più piccolo. * Fino a 16 Opzioni di canale, per nascondere o mostrare ogni canale individualmente. Di default tutti i canali MIDI utilizzati nel file MIDI corrente sono selezionati.</p>
 <h3 id="testi">Testi</h3>
-<p>Questa finestra mostra i meta dati di testo dal file MIDI caricato, filtrando i dati con una serie di controlli posti sulla barra degli strumenti della finestra: * Traccia: una casella di riepilogo per scegliere tra &quot;Tutte le tracce&quot; o un elemento corrispondente ad una traccia fra quelle utilizzate nel file MIDI caricato. In questa finestra il numero di traccia sostituisce il concetto di canale MIDI, perché i meta dati di testo non hanno un attributo di canale, pur appartenendo sempre a qualche traccia. Per impostazione predefinita, la traccia contenente più dati viene selezionata automaticamente. * Tipo: una casella di riepilogo per scegliere uno dei tipi di testo presenti nei meta dati, oppure tutti. Il tipo &quot;Lyric Events&quot; è la scelta più probabile. * Codifica: la codifica del testo viene rilevata automaticamente, ma in alcuni casi il rilevamento potrebbe rivelarsi errato, quindi quello corretto può essere selezionato manualmente qui.</p>
-<p>Anche questa finestra ha un menù, con le seguenti opzioni: * Copia negli appunti: copia i meta dati attualmente mostrati nella finestra * Salva nel file...: Dopo aver aperto una finestra di dialogo Salva file, questa opzione crea un file di testo sul disco, contenente il testo mostrato nella finestra e la codifica selezionata. * Stampa...: Dopo aver aperto una finestra di dialogo Stampa, questa opzione stampa il testo mostrato nella finestra sulla stampante selezionata. * Schermo intero: ingrandisce la finestra riempiendo completamente il monitor corrente. * Carattere...: Apre una finestra di selezione dei caratteri per scegliere la tipo e la dimensione dei caratteri per i testi della finestra.</p>
+<p>Questa finestra mostra i meta dati di testo dal file MIDI caricato, filtrando i dati con una serie di controlli posti sulla barra degli strumenti della finestra: * Traccia: una casella di riepilogo per scegliere tra “Tutte le tracce” o un elemento corrispondente ad una traccia fra quelle utilizzate nel file MIDI caricato. In questa finestra il numero di traccia sostituisce il concetto di canale MIDI, perché i meta dati di testo non hanno un attributo di canale, pur appartenendo sempre a qualche traccia. Per impostazione predefinita, la traccia contenente più dati viene selezionata automaticamente. * Tipo: una casella di riepilogo per scegliere uno dei tipi di testo presenti nei meta dati, oppure tutti. Il tipo “Lyric Events” è la scelta più probabile. * Codifica: la codifica del testo viene rilevata automaticamente, ma in alcuni casi il rilevamento potrebbe rivelarsi errato, quindi quello corretto può essere selezionato manualmente qui.</p>
+<p>Anche questa finestra ha un menù, con le seguenti opzioni: * Copia negli appunti: copia i meta dati attualmente mostrati nella finestra * Salva nel file…: Dopo aver aperto una finestra di dialogo Salva file, questa opzione crea un file di testo sul disco, contenente il testo mostrato nella finestra e la codifica selezionata. * Stampa…: Dopo aver aperto una finestra di dialogo Stampa, questa opzione stampa il testo mostrato nella finestra sulla stampante selezionata. * Schermo intero: ingrandisce la finestra riempiendo completamente il monitor corrente. * Carattere…: Apre una finestra di selezione dei caratteri per scegliere la tipo e la dimensione dei caratteri per i testi della finestra.</p>
 <h2 id="playlist">Playlist</h2>
-<p>Le playlist sono raccolte di nomi di file che possono essere utilizzate per riprodurre una serie di brani MIDI, come un &quot;repertorio&quot; musicale: sono semplici file di testo, con il nome di un file MIDI su ogni riga. I nomi dei file da riprodurre possono essere relativi alla posizione del file della playlist (in questo caso non iniziano con un percorso assoluto), oppure ognuno può avere un proprio percorso assoluto.</p>
-<p>L'azione <code>File</code>-&gt;<code>Play List...</code> gestisce la creazione, la modifica, l'ordinamento, l'apertura e il salvataggio dei file dell'elenco di riproduzione. Questa finestra mostra il nome del file della playlist attuale nel suo titolo.</p>
-<p>Le azioni <code>File</code>-&gt;<code>Successivo</code> e <code>File</code>-&gt;<code>Prec</code> sono utilizzate per navigare manualmente avanti e indietro nella playlist corrente. Vi sono opzioni di configurazione per avviare automaticamente la riproduzione della playlist, dopo aver caricato i file MIDI, e per avanzare automaticamente al successivo elemento della playlist al termine della riproduzione dell'elemento corrente. Entrambe le opzioni sono abilitate per impostazione predefinita.</p>
+<p>Le playlist sono raccolte di nomi di file che possono essere utilizzate per riprodurre una serie di brani MIDI, come un “repertorio” musicale: sono semplici file di testo, con il nome di un file MIDI su ogni riga. I nomi dei file da riprodurre possono essere relativi alla posizione del file della playlist (in questo caso non iniziano con un percorso assoluto), oppure ognuno può avere un proprio percorso assoluto.</p>
+<p>L’azione <code>File</code>-&gt;<code>Play List...</code> gestisce la creazione, la modifica, l’ordinamento, l’apertura e il salvataggio dei file dell’elenco di riproduzione. Questa finestra mostra il nome del file della playlist attuale nel suo titolo.</p>
+<p>Le azioni <code>File</code>-&gt;<code>Successivo</code> e <code>File</code>-&gt;<code>Prec</code> sono utilizzate per navigare manualmente avanti e indietro nella playlist corrente. Vi sono opzioni di configurazione per avviare automaticamente la riproduzione della playlist, dopo aver caricato i file MIDI, e per avanzare automaticamente al successivo elemento della playlist al termine della riproduzione dell’elemento corrente. Entrambe le opzioni sono abilitate per impostazione predefinita.</p>
 <p>La playlist predefinita iniziale contiene una raccolta di file MIDI di esempio. Se si preferisce iniziare con un elenco vuoto, si deve usare il pulsante <code>Cancella</code> e quindi salvare la playlist vuota con un nome differente. Questa sarà la nuova playlist iniziale in futuro.</p>
-<p>L'ultimo file di playlist aperto o salvato verrà ricordato la prossima volta che il programma viene avviato; tuttavia, le playlist come tali non vengono salvate automaticamente.</p>
-<p>Si possono avere diverse playlist da caricare; esse possono essere create facilmente anche al di fuori del programma. Ad esempio in una finestra terminale di Linux il seguente comando crea un file di playlist, denominato &quot;my_playlist.lst&quot;, che contiene tutti i file MIDI che si trovano nella directory corrente: <sub>~</sub> $ ls -1 *.mid &gt; mia_playlist.lst <sub>~</sub></p>
+<p>L’ultimo file di playlist aperto o salvato verrà ricordato la prossima volta che il programma viene avviato; tuttavia, le playlist come tali non vengono salvate automaticamente.</p>
+<p>Si possono avere diverse playlist da caricare; esse possono essere create facilmente anche al di fuori del programma. Ad esempio in una finestra terminale di Linux il seguente comando crea un file di playlist, denominato “my_playlist.lst”, che contiene tutti i file MIDI che si trovano nella directory corrente: ~~~ $ ls -1 *.mid &gt; mia_playlist.lst ~~~</p>
 <h2 id="apertura-di-file-midi">Apertura di file MIDI</h2>
-<p>Si possono aprire singoli file in vari modi: * Usando l'azione standard <code>File</code>-&gt;<code>Apri</code>. * Usando il menù <code>File</code>-&gt;<code>Apri file recenti</code>, che ricorda fino a dieci file aperti di recente. * Fornendo dei nomi di file nella riga di comando. L'insieme di file così indicati diventa una playlist temporanea. Ciò consente una facile integrazione del programma con file manager che utilizzano le azioni &quot;Apri con...&quot;. * Trascinando e rilasciando uno o più file da un file manager nella finestra principale del programma. Il set di file diventa una playlist temporanea.</p>
+<p>Si possono aprire singoli file in vari modi: * Usando l’azione standard <code>File</code>-&gt;<code>Apri</code>. * Usando il menù <code>File</code>-&gt;<code>Apri file recenti</code>, che ricorda fino a dieci file aperti di recente. * Fornendo dei nomi di file nella riga di comando. L’insieme di file così indicati diventa una playlist temporanea. Ciò consente una facile integrazione del programma con file manager che utilizzano le azioni “Apri con…”. * Trascinando e rilasciando uno o più file da un file manager nella finestra principale del programma. Il set di file diventa una playlist temporanea.</p>
 <h2 id="personalizzazione">Personalizzazione</h2>
 <h3 id="preferenze">Preferenze</h3>
-<p>C'è un pulsante &quot;Ripristina impostazioni predefinite&quot; per inizializzare tutte le opzioni di questa finestra di dialogo ai loro valori predefiniti.</p>
+<p>C’è un pulsante “Ripristina impostazioni predefinite” per inizializzare tutte le opzioni di questa finestra di dialogo ai loro valori predefiniti.</p>
 <p>Ci sono tre schede, che raggruppano le impostazioni di configurazione.</p>
 <h4 id="generale">Generale</h4>
 <ul>
 <li>Canale MIDI delle percussioni: numero da 1 a 16. Di default 10, corrispondente al Canale di percussioni standard MIDI generale.</li>
-<li>Percentuale di riduzione del volume in modalià &quot;Solo&quot;: default 50. Riduce della percentuale indicata il volume di tutti gli altri canali, quando viene usato il pulsante &quot;Solo&quot; per un canale MIDI.</li>
+<li>Percentuale di riduzione del volume in modalià “Solo”: default 50. Riduce della percentuale indicata il volume di tutti gli altri canali, quando viene usato il pulsante “Solo” per un canale MIDI.</li>
 <li>Avvia la riproduzione automaticamente dopo il caricamento. Abilitato per impostazione predefinita.</li>
-<li>Avanza automaticamente all'elemento successivo della playlist. Abilitato per impostazione predefinita.</li>
-<li>Carica e salva automaticamente i settaggi per i file musicali. I dati vengono salvati in $HOME/.dmidiplayer, in una sotto-cartella con il lo stesso nome del file e il suffisso &quot;.cfg&quot;. Non abilitato per impostazione predefinita.</li>
+<li>Avanza automaticamente all’elemento successivo della playlist. Abilitato per impostazione predefinita.</li>
+<li>Carica e salva automaticamente i settaggi per i file musicali. I dati vengono salvati in $HOME/.dmidiplayer, in una sotto-cartella con il lo stesso nome del file e il suffisso “.cfg”. Non abilitato per impostazione predefinita.</li>
 <li>Forza Dark Mode. Può essere utile su Windows. Su Linux e MacOS questa modalità visuale è applicata automaticamente quando essa è configurata nel sistema operativo.</li>
 <li>Finestre agganciabili ai bordi. Solo su Windows. Abilitato per impostazione predefinita.</li>
 <li>Usa tema interno per le icone. Questa impostazione è necessaria su Windows e MacOS.</li>
@@ -118,14 +259,14 @@
 <li>Colore di evidenziazione singolo. Quando è selezionata la tavolozza di evidenziazione a colore singolo, questa impostazione governa il colore di evidenziazione della nota riprodotta.</li>
 <li>Tinta di colore secondo la velocità della nota. Con questa opzione la tinta viene utilizzata per conferire al colore di evidenziazione un tono più chiaro o più scuro, in funzione della la velocità degli eventi delle note MIDI.</li>
 <li>Carattere del nome delle note. Apre una finestra di selezione dei caratteri per scegliere il tipo e la dimensione dei nomi dei font usati per i nomi delle note.</li>
-<li>Mostra il nome delle note: le scelte disponibili sono Mai, Minimo, Quando attivato, Sempre. L'opzione Minimo mostra solo i nomi dei tasti Do (C).</li>
-<li>Indicazione dell'Ottava in pedice. Se questa opzione è disattivata, il Do centrale (nota MIDI #60) è presentato come Do4 (C4), altrimenti come &quot;Do<sub>4</sub>&quot; (C<sub>4</sub>).</li>
+<li>Mostra il nome delle note: le scelte disponibili sono Mai, Minimo, Quando attivato, Sempre. L’opzione Minimo mostra solo i nomi dei tasti Do (C).</li>
+<li>Indicazione dell’Ottava in pedice. Se questa opzione è disattivata, il Do centrale (nota MIDI #60) è presentato come Do4 (C4), altrimenti come “Do<sub>4</sub>” (C<sub>4</sub>).</li>
 </ul>
 <h3 id="personalizzazione-della-barra-degli-strumenti">Personalizzazione della barra degli strumenti</h3>
-<p>La barra degli strumenti si trova nella finestra principale, che in genere ha molto poco spazio disponibile, e per questo può essere spostata nella sua parte superiore o inferiore, od anche al di fuori di essa. Le azioni disponibili come pulsanti-strumento possono essere configurate in questa finestra di dialogo. Tutte le azioni sono anche voci del menù principale. * Azioni Disponibili: mostra l'elenco delle azioni attualmente non visualizzate come pulsanti-strumento. * Azioni Selezionate: è l'elenco dei pulsanti-strumento attualmente selezionati e visualizzati nella barra degli strumenti.</p>
-<p>Per aggiungere un'azione alla barra degli strumenti, bisogna prima selezionarla con il mouse nell'elenco Disponibili, e quindi premere il pulsante &quot;Aggiungi&quot;. L'azione verrà rimossa dall'elenco Disponibili e posta alla fine dell'elenco Selezionate.</p>
-<p>Per rimuovere un pulsante dalla barra degli strumenti, bisogna selezionarlo con il mouse nel riquadro Selezionati e quindi premere il pulsante &quot;Rimuovi&quot;.</p>
-<p>Per riorganizzare l'ordine dei pulsanti nella barra degli strumenti, si utilizzano i pulsanti &quot;su&quot; e &quot;giù&quot;, dopo aver selezionato un elemento nell'elenco Selezionati.</p>
-<p>Stile dei pulsanti degli strumenti: contiene le seguenti opzioni, che si applicano a tutti i pulsanti nella barra degli strumenti. * Solo icona. * Solo testo. * Testo accanto all'icona. * Testo sotto l'icona. * Segui stile: segue l'impostazione &quot;Stile widget Qt&quot; nella finestra di dialogo Preferenze.</p>
+<p>La barra degli strumenti si trova nella finestra principale, che in genere ha molto poco spazio disponibile, e per questo può essere spostata nella sua parte superiore o inferiore, od anche al di fuori di essa. Le azioni disponibili come pulsanti-strumento possono essere configurate in questa finestra di dialogo. Tutte le azioni sono anche voci del menù principale. * Azioni Disponibili: mostra l’elenco delle azioni attualmente non visualizzate come pulsanti-strumento. * Azioni Selezionate: è l’elenco dei pulsanti-strumento attualmente selezionati e visualizzati nella barra degli strumenti.</p>
+<p>Per aggiungere un’azione alla barra degli strumenti, bisogna prima selezionarla con il mouse nell’elenco Disponibili, e quindi premere il pulsante “Aggiungi”. L’azione verrà rimossa dall’elenco Disponibili e posta alla fine dell’elenco Selezionate.</p>
+<p>Per rimuovere un pulsante dalla barra degli strumenti, bisogna selezionarlo con il mouse nel riquadro Selezionati e quindi premere il pulsante “Rimuovi”.</p>
+<p>Per riorganizzare l’ordine dei pulsanti nella barra degli strumenti, si utilizzano i pulsanti “su” e “giù”, dopo aver selezionato un elemento nell’elenco Selezionati.</p>
+<p>Stile dei pulsanti degli strumenti: contiene le seguenti opzioni, che si applicano a tutti i pulsanti nella barra degli strumenti. * Solo icona. * Solo testo. * Testo accanto all’icona. * Testo sotto l’icona. * Segui stile: segue l’impostazione “Stile widget Qt” nella finestra di dialogo Preferenze.</p>
 </body>
 </html>

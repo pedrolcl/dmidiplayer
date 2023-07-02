@@ -5,7 +5,145 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <title>Index nápovědy</title>
-  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
 </head>
 <body>
 <div id="header">
@@ -15,20 +153,23 @@
 <ul>
 <li><a href="#úvod">Úvod</a></li>
 <li><a href="#výstup-midi">Výstup MIDI</a></li>
-<li><a href="#ovládání-přehrávání">Ovládání přehrávání</a><ul>
+<li><a href="#ovládání-přehrávání">Ovládání přehrávání</a>
+<ul>
 <li><a href="#transponování">Transponování</a></li>
 <li><a href="#úroveň-hlasitosti">Úroveň hlasitosti</a></li>
 <li><a href="#tempo">Tempo</a></li>
 <li><a href="#skok-přehrávání-ve-smyčce-a-polohování">Skok, přehrávání ve smyčce a polohování</a></li>
 </ul></li>
-<li><a href="#zobrazení">Zobrazení</a><ul>
+<li><a href="#zobrazení">Zobrazení</a>
+<ul>
 <li><a href="#kanály">Kanály</a></li>
 <li><a href="#přehrávač-klavíru">Přehrávač klavíru</a></li>
 <li><a href="#zpěvní-texty">Zpěvní texty</a></li>
 </ul></li>
 <li><a href="#seznamy-skladeb">Seznamy skladeb</a></li>
 <li><a href="#otevírání-souborů-midi">Otevírání souborů MIDI</a></li>
-<li><a href="#přizpůsobení">Přizpůsobení</a><ul>
+<li><a href="#přizpůsobení">Přizpůsobení</a>
+<ul>
 <li><a href="#nastavení">Nastavení</a></li>
 <li><a href="#přizpůsobení-panelu-nástrojů">Přizpůsobení panelu nástrojů</a></li>
 </ul></li>
@@ -36,7 +177,7 @@
 </div>
 <h2 id="úvod">Úvod</h2>
 <p>Tato aplikace je multiplatformní MIDI přehrávač souborů pro operační systémy Linux, Windows a macOS. Čte formáty souborů .MID (standardní MIDI soubory), .KAR (Karaoke) a .WRK (Cakewalk), a dělá výstup událostí MIDI do hardwarových přípojek MIDI (portů) a také softwarových syntezátorů.</p>
-<p><a href="https://drumstick.sourceforge.io">Drumstick</a> je sada GPLv3 licencovaných C ++/Qt knihoven pro programy MIDI. Projekt zahrnuje několik nástrojů jako příkladů. Mezi nimi je i nástroj drumstick-guiplayer, který využívá knihovnu Drumstick::ALSA, takže je dostupný pouze pro Linux (protože sekvencer ALSA je technologie pouze pro Linux). Někteří lidé požadovali program se stejnými funkcemi ve Windows a macOS. A toto je ten program. Ale tento program je mnohem víc než to, a také funguje v Linuxu...</p>
+<p><a href="https://drumstick.sourceforge.io">Drumstick</a> je sada GPLv3 licencovaných C ++/Qt knihoven pro programy MIDI. Projekt zahrnuje několik nástrojů jako příkladů. Mezi nimi je i nástroj drumstick-guiplayer, který využívá knihovnu Drumstick::ALSA, takže je dostupný pouze pro Linux (protože sekvencer ALSA je technologie pouze pro Linux). Někteří lidé požadovali program se stejnými funkcemi ve Windows a macOS. A toto je ten program. Ale tento program je mnohem víc než to, a také funguje v Linuxu…</p>
 <p>Některé klíčové vlastnosti:</p>
 <ul>
 <li>MIDI výstup do hardwarových přípojek MIDI (portů) nebo do jakékoli jiné podpůrné vrstvy Drumstick, jako jsou softwarové syntetizátory syntezátory</li>
@@ -117,10 +258,10 @@ Kanály, zpěvní texty a přehrávání klavíru.</p>
 <p>Okenní nabídka obsahuje následující volby:</p>
 <ul>
 <li>Kopírovat do schránky: Zkopíruje popisná data nyní zobrazená v okně</li>
-<li>Uložit do souboru... Po otevření dialogového okna pro uložení souboru tato volba na disku vytvoří textový soubor s textem zobrazeným oknem a zvoleným kódováním</li>
-<li>Tisk... Po otevření dialogového okna pro tisk tato volba vytiskne text zobrazený v okně na vybrané tiskárně</li>
+<li>Uložit do souboru… Po otevření dialogového okna pro uložení souboru tato volba na disku vytvoří textový soubor s textem zobrazeným oknem a zvoleným kódováním</li>
+<li>Tisk… Po otevření dialogového okna pro tisk tato volba vytiskne text zobrazený v okně na vybrané tiskárně</li>
 <li>Celá obrazovka: Zvětší okno vyplňující nynější obrazovku</li>
-<li>Písmo ... Otevírá okno pro výběr písma, kde můžete vybrat písmo a jeho velikost v textech oken</li>
+<li>Písmo … Otevírá okno pro výběr písma, kde můžete vybrat písmo a jeho velikost v textech oken</li>
 </ul>
 <h2 id="seznamy-skladeb">Seznamy skladeb</h2>
 <p>Seznamy skladeb jsou sbírky názvů souborů, které lze použít k přehrání řady skladeb MIDI, jako hudební „zásobu“.</p>
@@ -129,7 +270,7 @@ Kanály, zpěvní texty a přehrávání klavíru.</p>
 <p>Počáteční výchozí seznam skladeb obsahuje sbírku ukázkových souborů MIDI. Pokud dáváte přednost zahájení s prázdným seznamem, použijte tlačítko <code>Vyprázdnit</code>, a poté prázdný seznam skladeb uložte se smysluplným názvem. Teno bude v budoucnosti novým počátečním seznamem skladeb.</p>
 <p>Poslední otevřený nebo uložený soubor se seznamem skladeb si program bude pamatovat, až se příště spustí, ale seznamy skladeb se automaticky neukládají.</p>
 <p>Seznamy skladeb jsou jednoduché textové soubory s názvem souboru na každém textovém řádku. Souborové názvy mohou být relativní k umístění samotného souboru seznamu skladeb (takže nemají předpřipravenou absolutní cestu) nebo může mít každý soubor zapnutou vlastní absolutní cestu.</p>
-<p>Můžete mít několik seznamů skladeb, které lze snadno vytvořit mimo program, například v příkazovém řádku Linuxu příkaz níže vytvoří seznam skladeb soubor s názvem &quot;my_playlist.lst&quot; se všemi soubory MIDI umístěnými v pracovním adresáři:</p>
+<p>Můžete mít několik seznamů skladeb, které lze snadno vytvořit mimo program, například v příkazovém řádku Linuxu příkaz níže vytvoří seznam skladeb soubor s názvem “my_playlist.lst” se všemi soubory MIDI umístěnými v pracovním adresáři:</p>
 <pre><code>$ ls -1 *.mid&gt; my_playlist.lst</code></pre>
 <h2 id="otevírání-souborů-midi">Otevírání souborů MIDI</h2>
 <p>Jednotlivé soubory můžete otevřít:</p>

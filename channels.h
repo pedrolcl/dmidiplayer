@@ -47,6 +47,7 @@ public:
     void retranslateUi();
     void initSong( Sequence *song );
     void applySettings() override;
+    bool channelUsed(const int channel) const;
 
     QString channelName(int channel) const;
     bool isChannelMuted(int channel) const;
@@ -91,6 +92,17 @@ protected:
     void timerEvent( QTimerEvent *event ) override;
 
 private:
+    template<typename Function>
+    void forEachUsedChannel(Function func)
+    {
+        for (int i = 0; i < drumstick::rt::MIDI_STD_CHANNELS; ++i) {
+            if (channelUsed(i)) {
+                func(i);
+            }
+        }
+    }
+
+private:
     int m_timerId;
     qreal m_volumeFactor;
     InstrumentSet m_instSet;
@@ -102,15 +114,18 @@ private:
     QLabel* m_lbl[drumstick::rt::MIDI_STD_CHANNELS];
     QToolButton* m_mute[drumstick::rt::MIDI_STD_CHANNELS];
     QToolButton* m_solo[drumstick::rt::MIDI_STD_CHANNELS];
-    QToolButton* m_lock[drumstick::rt::MIDI_STD_CHANNELS];
-	QToolButton* m_tools;
-	QMenu *m_chmenu;
-	QAction *m_a1, *m_a2, *m_a4;
-	QAction *m_action[drumstick::rt::MIDI_STD_CHANNELS];
+    QToolButton *m_lock[drumstick::rt::MIDI_STD_CHANNELS];
+    QToolButton *m_tools;
+    QMenu *m_chmenu;
+    QAction *m_showAllChannelsAction;
+    QAction *m_hideAllChannelsAction;
+    QAction *m_fullScreenAction;
+    QAction *m_enableAction[drumstick::rt::MIDI_STD_CHANNELS];
     Vumeter* m_vumeter[drumstick::rt::MIDI_STD_CHANNELS];
     QComboBox* m_patch[drumstick::rt::MIDI_STD_CHANNELS];
     QLineEdit* m_name[drumstick::rt::MIDI_STD_CHANNELS];
     QSlider* m_slider[drumstick::rt::MIDI_STD_CHANNELS];
+    Sequence *m_song;
 };
 
 #endif /* CHANNELS_H */

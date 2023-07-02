@@ -5,7 +5,145 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <title>Índice de ayuda</title>
-  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
 </head>
 <body>
 <div id="header">
@@ -15,21 +153,24 @@
 <ul>
 <li><a href="#introducción">Introducción</a></li>
 <li><a href="#salida-midi">Salida MIDI</a></li>
-<li><a href="#controles-de-reproducción">Controles de reproducción</a><ul>
+<li><a href="#controles-de-reproducción">Controles de reproducción</a>
+<ul>
 <li><a href="#transporte">Transporte</a></li>
 <li><a href="#nivel-de-volumen">Nivel de volumen</a></li>
 <li><a href="#tempo">Tempo</a></li>
 <li><a href="#salto-bucle-y-posicionamiento">Salto, bucle y posicionamiento</a></li>
 </ul></li>
 <li><a href="#configuración-de-la-canción">Configuración de la canción</a></li>
-<li><a href="#vistas">Vistas</a><ul>
+<li><a href="#vistas">Vistas</a>
+<ul>
 <li><a href="#canales">Canales</a></li>
 <li><a href="#pianola">Pianola</a></li>
 <li><a href="#letra">Letra</a></li>
 </ul></li>
 <li><a href="#listas-de-reproducción">Listas de reproducción</a></li>
 <li><a href="#abrir-archivos-midi">Abrir archivos MIDI</a></li>
-<li><a href="#personalización">Personalización</a><ul>
+<li><a href="#personalización">Personalización</a>
+<ul>
 <li><a href="#preferencias">Preferencias</a></li>
 <li><a href="#personalización-de-la-barra-de-herramientas">Personalización de la barra de herramientas</a></li>
 </ul></li>
@@ -37,7 +178,7 @@
 </div>
 <h2 id="introducción">Introducción</h2>
 <p>Esta aplicación es un reproductor de archivos MIDI multiplataforma para Linux, Windows y macOS. Lee formatos de archivo .MID (archivos MIDI estándar), .KAR (Karaoke) y .WRK (Cakewalk) y produce eventos MIDI en puertos MIDI de hardware y también sintetizadores software.</p>
-<p><a href="https://drumstick.sourceforge.io">Drumstick</a> es un conjunto de bibliotecas C ++ / Qt con licencia GPLv3 para aplicaciones MIDI. El proyecto incluye varias herramientas como ejemplos, y entre ellas se encuentra la utilidad drumstick-guiplayer que aprovecha la biblioteca Drumstick::ALSA, por lo que solo está disponible para Linux (porque el secuenciador ALSA es una tecnología exclusiva de Linux). Algunas personas han pedido un programa con las mismas funcionalidades en Windows y macOS, y aquí está. Pero este programa es mucho más que eso y también funciona en Linux ...</p>
+<p><a href="https://drumstick.sourceforge.io">Drumstick</a> es un conjunto de bibliotecas C ++ / Qt con licencia GPLv3 para aplicaciones MIDI. El proyecto incluye varias herramientas como ejemplos, y entre ellas se encuentra la utilidad drumstick-guiplayer que aprovecha la biblioteca Drumstick::ALSA, por lo que solo está disponible para Linux (porque el secuenciador ALSA es una tecnología exclusiva de Linux). Algunas personas han pedido un programa con las mismas funcionalidades en Windows y macOS, y aquí está. Pero este programa es mucho más que eso y también funciona en Linux …</p>
 <p>Algunas características clave:</p>
 <ul>
 <li>Salida MIDI a puertos MIDI de hardware, o cualquier otro backend de Drumstick como sintetizadores software</li>
@@ -49,11 +190,11 @@
 </ul>
 <h2 id="salida-midi">Salida MIDI</h2>
 <p>Cualquier reproductor MIDI solo emite eventos MIDI, pero no sonido. Para producir sonido, se necesita un sintetizador para convertir los eventos MIDI en audio digital que puede ser reproducido por los altavoces de la computadora (o externos). Los eventos también pueden ser renderizados por un instrumento musical MIDI externo conectado a la computadora, por ejemplo, un órgano MIDI, piano o sintetizador con una interfaz USB. Si esa opción no está disponible, otra alternativa habitual es un sintetizador de software (un programa).</p>
-<p>Hay sintetizadores de software incluidos en los sistemas operativos de la computadora, por ejemplo, Microsoft Windows incluye &quot;Microsoft GS Wavetable Synth&quot;, y Apple macOS incluye el &quot;Apple DLS Synthesizer&quot;. Para usarlos, debe abrir el cuadro de diálogo &quot;Configuración MIDI&quot; y luego:</p>
+<p>Hay sintetizadores de software incluidos en los sistemas operativos de la computadora, por ejemplo, Microsoft Windows incluye “Microsoft GS Wavetable Synth”, y Apple macOS incluye el “Apple DLS Synthesizer”. Para usarlos, debe abrir el cuadro de diálogo “Configuración MIDI” y luego:</p>
 <ul>
-<li>En <strong>Windows</strong>, seleccione la opción &quot;Windows MM&quot; en el primer cuadro de lista y &quot;Microsoft GS Wavetable Synth&quot; en el segundo cuadro de lista. En lugar de este sintetizador, que es muy básico y limitado, es posible que prefiera una alternativa mejor / gratuita como <a href="https://coolsoft.altervista.org/en/virtualmidisynth">Sintetizador MIDI virtual</a> que se mostrará como &quot;VirtualMIDISynth #n&quot; en el segundo cuadro de lista cuando se ejecute. Si tiene un instrumento MIDI externo conectado a la computadora, su nombre también debería aparecer en el segundo cuadro de lista.</li>
-<li>En <strong>macOS</strong>, seleccione &quot;DLS Synth&quot; en el primer y segundo cuadro de lista. Este sintetizador tiene una opción de configuración para usar archivos de fuente de sonido DLS o SF2 si quieres. Para usar otro dispositivo MIDI o sintetizador de software conectado, debe seleccionar &quot;CoreMIDI&quot; en el primer cuadro de lista, y el nombre de su sintetizador en el segundo.</li>
-<li>En <strong>Linux</strong> y otros sistemas operativos <strong>Unix</strong>, &quot;SonivoxEAS&quot; es un software sintetizador listo para ser utilizado. Es un sintetizador GM muy básico que no usa archivos y depende únicamente del sistema de sonido PulseAudio. Para dispositivos externos conectados a la computadora o sintetizadores de software arbitrarios, debe seleccionar &quot;ALSA&quot; (o &quot;OSS&quot;) en el primer cuadro de lista.</li>
+<li>En <strong>Windows</strong>, seleccione la opción “Windows MM” en el primer cuadro de lista y “Microsoft GS Wavetable Synth” en el segundo cuadro de lista. En lugar de este sintetizador, que es muy básico y limitado, es posible que prefiera una alternativa mejor / gratuita como <a href="https://coolsoft.altervista.org/en/virtualmidisynth">Sintetizador MIDI virtual</a> que se mostrará como “VirtualMIDISynth #n” en el segundo cuadro de lista cuando se ejecute. Si tiene un instrumento MIDI externo conectado a la computadora, su nombre también debería aparecer en el segundo cuadro de lista.</li>
+<li>En <strong>macOS</strong>, seleccione “DLS Synth” en el primer y segundo cuadro de lista. Este sintetizador tiene una opción de configuración para usar archivos de fuente de sonido DLS o SF2 si quieres. Para usar otro dispositivo MIDI o sintetizador de software conectado, debe seleccionar “CoreMIDI” en el primer cuadro de lista, y el nombre de su sintetizador en el segundo.</li>
+<li>En <strong>Linux</strong> y otros sistemas operativos <strong>Unix</strong>, “SonivoxEAS” es un software sintetizador listo para ser utilizado. Es un sintetizador GM muy básico que no usa archivos y depende únicamente del sistema de sonido PulseAudio. Para dispositivos externos conectados a la computadora o sintetizadores de software arbitrarios, debe seleccionar “ALSA” (o “OSS”) en el primer cuadro de lista.</li>
 <li><strong>FluidSynth</strong> es otro sintetizador de software abierto incluido que es multiplataforma y disponible en todos los sistemas operativos. Es muy configurable, aceptando archivos de fuente de sonido y muchos sistemas de sonido de audio digital. Seleccione <a href="https://github.com/FluidSynth/fluidsynth">FluidSynth</a> en ambos cuadros de lista para usarlo.</li>
 <li><strong>Network</strong> es una salida de multidifusión UDP multiplataforma, que se puede utilizar para enviar Eventos MIDI como paquetes de red a otras computadoras y dispositivos en la misma red de área local. Es compatible con <a href="https://www.nerds.de/en/ipmidi.html">ipMIDI</a>, <a href="https://qmidinet.sourceforge.io/">QmidiNet</a> y <a href="https://llg.cubic.org/tools/multimidicast/">multimidicast</a> entre otro software.</li>
 </ul>
@@ -67,21 +208,21 @@
 <li><code>Retroceder</code> (1 compás)</li>
 </ul>
 <p>Por defecto, <code>Reproducir</code> se activa automáticamente al cargar un archivo MIDI, excepto cuando esta función está desactivada en el cuadro de diálogo de configuración.</p>
-<p>La <code>barra de estado</code>, ubicada opcionalmente en la parte inferior de la ventana principal, muestra el estado de reproducción actual como &quot;Reproduciendo&quot;, &quot;Detenido&quot;, &quot;En pausa&quot;, etc.</p>
+<p>La <code>barra de estado</code>, ubicada opcionalmente en la parte inferior de la ventana principal, muestra el estado de reproducción actual como “Reproduciendo”, “Detenido”, “En pausa”, etc.</p>
 <h3 id="transporte">Transporte</h3>
-<p>El &quot;Control de tono&quot; se encuentra en la ventana principal. Es un cuadro de giro inicializado a cero, con un rango válido de -12 a +12 semitonos. Los límites son equivalentes a una octava hacia arriba o hacia abajo del tono original. Esto debería ser suficiente para los cantantes o instrumentistas que necesitan ajustar la tonalidad para su comodidad.</p>
+<p>El “Control de tono” se encuentra en la ventana principal. Es un cuadro de giro inicializado a cero, con un rango válido de -12 a +12 semitonos. Los límites son equivalentes a una octava hacia arriba o hacia abajo del tono original. Esto debería ser suficiente para los cantantes o instrumentistas que necesitan ajustar la tonalidad para su comodidad.</p>
 <p>Todos los canales MIDI se transponen cromáticamente, excepto el canal de percusión (Canal GM 10 por omisión).</p>
 <h3 id="nivel-de-volumen">Nivel de volumen</h3>
-<p>El &quot;Control de volumen&quot; se encuentra en la ventana principal. Es un control deslizante, inicializado al 100%, con un rango válido de 0% a 200%. El límite superior efectivo puede ser menor porque el MIDI CC 7 tiene un rango válido desde 0 a 127. También hay un botón para <code>Restablecer volumen</code>.</p>
+<p>El “Control de volumen” se encuentra en la ventana principal. Es un control deslizante, inicializado al 100%, con un rango válido de 0% a 200%. El límite superior efectivo puede ser menor porque el MIDI CC 7 tiene un rango válido desde 0 a 127. También hay un botón para <code>Restablecer volumen</code>.</p>
 <h3 id="tempo">Tempo</h3>
 <p>El <code>Control de tempo</code> se encuentra en la ventana principal. Es un control deslizante inicializado al 100% con un rango válido del 50% al 200%. Hay un botón para <code>Restablecer Tempo</code> y también una etiqueta de tempo, que muestra el tempo efectivo en pulsos por minuto con un valor inicial de 120 bpm. Este es el tempo predeterminado para un archivo MIDI si no contiene un cambio de tempo. Este valor se actualiza al cambiar el control de tempo, y también mientras se reproduce un archivo MIDI que contiene cambios de tempo.</p>
 <h3 id="salto-bucle-y-posicionamiento">Salto, bucle y posicionamiento</h3>
 <p>La acción <code>Salto</code> (ubicada en el menú <code>Archivo</code> y en la barra de herramientas predeterminada), solicita un número de compás, entre 1 y el último compás de la canción cargada, para cambiar la posición actual de reproducción en la canción.</p>
 <p>La acción <code>Bucle</code> (ubicada en el menú <code>Archivo</code> y la barra de herramientas predeterminada), solicita dos números de compás. La canción se reproducirá entre los dos compases dados cuando esté activado. Puede apagar el bucle en cualquier momento seleccionando la acción nuevamente.</p>
-<p>El &quot;Control de posicionamiento&quot; se encuentra en la ventana principal. Es un control deslizante que se mueve mientras cambia la posición actual de reproducción, y se puede mover manualmente para cambiar la posición a cualquier punto arbitrario dentro de la canción.</p>
+<p>El “Control de posicionamiento” se encuentra en la ventana principal. Es un control deslizante que se mueve mientras cambia la posición actual de reproducción, y se puede mover manualmente para cambiar la posición a cualquier punto arbitrario dentro de la canción.</p>
 <h2 id="configuración-de-la-canción">Configuración de la canción</h2>
-<p>Los ajustes de la canción se almacenan en el subdirectorio $HOME/.dmidiplayer con el mismo nombre que las canciones y el sufijo &quot;.cfg&quot;. Cuando se carga un archivo de canción, sus ajustes se pueden cargar automáticamente y también guardar cuando la canción se detiene. Consulte la configuración correspondiente en el cuadro de diálogo Preferencias/General.</p>
-<p>Los ajustes de la canción también se pueden cargar y guardar manualmente desde el correspondiente elemento del menú &quot;Archivo&quot; -&gt; &quot;Configuración de canción&quot;.</p>
+<p>Los ajustes de la canción se almacenan en el subdirectorio $HOME/.dmidiplayer con el mismo nombre que las canciones y el sufijo “.cfg”. Cuando se carga un archivo de canción, sus ajustes se pueden cargar automáticamente y también guardar cuando la canción se detiene. Consulte la configuración correspondiente en el cuadro de diálogo Preferencias/General.</p>
+<p>Los ajustes de la canción también se pueden cargar y guardar manualmente desde el correspondiente elemento del menú “Archivo” -&gt; “Configuración de canción”.</p>
 <p>Cada archivo de configuración de canción .cfg es un archivo de texto donde se almacenan los siguientes datos:</p>
 <ul>
 <li>La codificación del texto de la canción, detectada o seleccionada por el usuario en la vista de Letras.</li>
@@ -106,7 +247,7 @@
 <ul>
 <li>Número de canal MIDI y texto (editable). Por lo general, contiene el nombre del instrumento o una breve descripción extraída de los metadatos del archivo.</li>
 <li>Botón de silencio. Con esta opción, el canal actual puede silenciarse.</li>
-<li>Botón &quot;Solo&quot;. Sube el volumen del canal actual, mientras baja el de los otros canales.</li>
+<li>Botón “Solo”. Sube el volumen del canal actual, mientras baja el de los otros canales.</li>
 <li>Nivel. Indicador de la actividad en el canal actual.</li>
 <li>Bloquear. Este botón fija el Patch en el canal actual, evitando los cambios almacenados en el archivo.</li>
 <li>Parche. Corresponde a los eventos de cambio de programa MIDI de acuerdo con las Lista MIDI de nombres de instrumentos.</li>
@@ -128,17 +269,17 @@
 <h3 id="letra">Letra</h3>
 <p>Esta ventana muestra los metadatos de texto del archivo MIDI cargado, filtrando los datos con una serie de controles ubicados en la barra de herramientas de la ventana:</p>
 <ul>
-<li>Pista: un cuadro de lista para elegir entre &quot;Todas las pistas&quot;, o un elemento correspondiente a cada pista utilizada en el archivo MIDI cargado. Este número de pista reemplaza al concepto de canal MIDI en esta ventana, porque los metadatos de texto no tienen un atributo de canal, pero siempre pertenecen a alguna pista. Por defecto, la pista que contiene más datos se selecciona automáticamente</li>
-<li>Tipo: un cuadro de lista para elegir uno de los tipos de texto de metadatos o todos ellos. El tipo &quot;Eventos de letra&quot; es la opción más probable</li>
+<li>Pista: un cuadro de lista para elegir entre “Todas las pistas”, o un elemento correspondiente a cada pista utilizada en el archivo MIDI cargado. Este número de pista reemplaza al concepto de canal MIDI en esta ventana, porque los metadatos de texto no tienen un atributo de canal, pero siempre pertenecen a alguna pista. Por defecto, la pista que contiene más datos se selecciona automáticamente</li>
+<li>Tipo: un cuadro de lista para elegir uno de los tipos de texto de metadatos o todos ellos. El tipo “Eventos de letra” es la opción más probable</li>
 <li>Codificación: la codificación del texto se detecta automáticamente, pero en algunos casos la detección puede ser incorrecta por lo que es posible seleccionar manualmente la correcta</li>
 </ul>
 <p>Hay un menú de ventana con las siguientes opciones:</p>
 <ul>
 <li>Copiar al portapapeles: copia los metadatos que se muestran actualmente en la ventana.</li>
-<li>Guardar en archivo... Después de abrir un cuadro de diálogo Guardar archivo, esta opción crea un archivo de texto en el disco, con el texto mostrado por la ventana y la codificación seleccionada</li>
-<li>Imprimir... Después de abrir un cuadro de diálogo Imprimir, esta opción imprime el texto mostrado por la ventana de la impresora seleccionada</li>
+<li>Guardar en archivo… Después de abrir un cuadro de diálogo Guardar archivo, esta opción crea un archivo de texto en el disco, con el texto mostrado por la ventana y la codificación seleccionada</li>
+<li>Imprimir… Después de abrir un cuadro de diálogo Imprimir, esta opción imprime el texto mostrado por la ventana de la impresora seleccionada</li>
 <li>Pantalla completa: agranda la ventana para llenar el monitor actual</li>
-<li>Fuente... Abre una ventana de Selección de fuente para elegir tipografía y tamaño para los textos de la ventana</li>
+<li>Fuente… Abre una ventana de Selección de fuente para elegir tipografía y tamaño para los textos de la ventana</li>
 </ul>
 <h2 id="listas-de-reproducción">Listas de reproducción</h2>
 <p>Las listas de reproducción son colecciones de nombres de archivos que se pueden usar para reproducir una serie de piezas MIDI, como un repertorio musical.</p>
@@ -147,27 +288,27 @@
 <p>La lista de reproducción predeterminada inicial contiene una colección de archivos MIDI de ejemplo. Si prefiere comenzar con una lista vacía, debe usar el botón <code>Borrar</code> y luego guardar la lista de reproducción vacía con un nombre significativo. Esta sera la nueva lista de reproducción inicial en el futuro.</p>
 <p>El último archivo de lista de reproducción abierto o guardado se recordará la próxima vez que se inicie el programa, pero las listas de reproducción no se guardan automáticamente.</p>
 <p>Las listas de reproducción son archivos de texto simples, con un nombre de archivo en cada línea de texto. Los nombres de archivo pueden ser relativos a la ubicación del archivo de la lista de reproducción en sí (por lo que no llevan una ruta absoluta antepuesta) o cada archivo puede tener su propia ruta absoluta.</p>
-<p>Puede tener varias listas de reproducción que se pueden crear fácilmente fuera del programa, por ejemplo: en la línea de comandos de Linux, este comando crea una lista de reproducción en un archivo llamado &quot;my_playlist.lst&quot; con todos los archivos MIDI ubicados en el directorio de trabajo:</p>
+<p>Puede tener varias listas de reproducción que se pueden crear fácilmente fuera del programa, por ejemplo: en la línea de comandos de Linux, este comando crea una lista de reproducción en un archivo llamado “my_playlist.lst” con todos los archivos MIDI ubicados en el directorio de trabajo:</p>
 <pre><code>$ ls -1 *.mid &gt; my_playlist.lst</code></pre>
 <h2 id="abrir-archivos-midi">Abrir archivos MIDI</h2>
-<p>Puede abrir archivos individuales ...</p>
+<p>Puede abrir archivos individuales …</p>
 <ul>
 <li>Usando la acción estándar <code>Archivo</code>-&gt;<code>Abrir</code></li>
 <li>Usando el menú <code>Archivo</code>-&gt;<code>Abrir archivos recientes</code>, que recuerda hasta diez archivos abiertos recientemente</li>
-<li>Proporcionar nombre(s) de archivo en la línea de comando. El conjunto de archivos se convierte en una lista de reproducción temporal. Esto permite una fácil integración del programa con los administradores de archivos que utilizan acciones de tipo &quot;Abrir con...&quot;</li>
+<li>Proporcionar nombre(s) de archivo en la línea de comando. El conjunto de archivos se convierte en una lista de reproducción temporal. Esto permite una fácil integración del programa con los administradores de archivos que utilizan acciones de tipo “Abrir con…”</li>
 <li>Arrastrar y soltar archivos desde un administrador de archivos a la ventana principal. El conjunto de archivos se convierte en una lista de reproducción temporal.</li>
 </ul>
 <h2 id="personalización">Personalización</h2>
 <h3 id="preferencias">Preferencias</h3>
-<p>Hay un botón &quot;Restaurar valores predeterminados&quot; para inicializar todas las opciones en este cuadro de diálogo a sus valores predeterminados.</p>
+<p>Hay un botón “Restaurar valores predeterminados” para inicializar todas las opciones en este cuadro de diálogo a sus valores predeterminados.</p>
 <p>Hay tres pestañas que agrupan los ajustes de configuración</p>
 <h4 id="general">General</h4>
 <ul>
 <li>Canal MIDI de percusión: número del 1 al 16. Por defecto 10, correspondiente al canal de percusión estándar General MIDI</li>
-<li>Reducción de volumen % del botón Solo. Predeterminado 50. El volumen de otros canales MIDI se reduce en este porcentaje cuando un canal tiene presionado el botón &quot;solo&quot;.</li>
+<li>Reducción de volumen % del botón Solo. Predeterminado 50. El volumen de otros canales MIDI se reduce en este porcentaje cuando un canal tiene presionado el botón “solo”.</li>
 <li>Iniciar la reproducción automáticamente después de la carga. Habilitado por omisión</li>
 <li>Avanzar automáticamente al siguiente elemento de la lista de reproducción. Habilitado por omisión</li>
-<li>Cargar y guardar automáticamente la configuración de la canción. No habilitado por defecto. La canción la configuración se almacena en el subdirectorio $HOME/.dmidiplayer con el mismo nombre como las canciones y el sufijo &quot;.cfg&quot;.</li>
+<li>Cargar y guardar automáticamente la configuración de la canción. No habilitado por defecto. La canción la configuración se almacena en el subdirectorio $HOME/.dmidiplayer con el mismo nombre como las canciones y el sufijo “.cfg”.</li>
 <li>Bordes de ventana adhesivos. Sólo para MS Windows. Habilitado por defecto.</li>
 <li>Forzar el modo oscuro. Puede resultar útil en Windows. En Linux y macOS, el modo oscuro se aplica automáticamente cuando está configurado en el sistema operativo</li>
 <li>Utilizar el tema de iconos interno. Esta configuración es necesaria en Windows y macOS.</li>
@@ -187,7 +328,7 @@
 <li>Trasladar la velocidad MIDI a tono de color. Con esta opción, la velocidad de los eventos de nota MIDI se utiliza para dar al color de resaltado un tono más claro o más oscuro</li>
 <li>Fuente de nombres de notas. Abre una ventana de selección de fuente para elegir la tipografía y tamaño de los nombres de las notas</li>
 <li>Mostrar nombres de notas: las opciones disponibles son: Nunca, Mínimo, Cuando se activa, y Siempre. La opción Mínimo muestra solo los nombres de las teclas Do</li>
-<li>Designación de subíndice de octava. Desactivada, la nota Do central MIDI #60 se presenta como &quot;Do4&quot;, pero cuando se activa se presenta como &quot;Do<sub>4</sub>&quot;.</li>
+<li>Designación de subíndice de octava. Desactivada, la nota Do central MIDI #60 se presenta como “Do4”, pero cuando se activa se presenta como “Do<sub>4</sub>”.</li>
 </ul>
 <h3 id="personalización-de-la-barra-de-herramientas">Personalización de la barra de herramientas</h3>
 <p>La barra de herramientas se encuentra en la ventana principal, que normalmente tiene un espacio disponible muy reducido, y se puede mover a la parte superior o inferior de la ventana, y también fuera de ella. Las acciones disponibles como botones de herramientas se pueden configurar en esta ventana de diálogo. Todas las acciones también son elementos del menú principal.</p>
@@ -195,16 +336,16 @@
 <li>Acciones disponibles: muestra la lista de acciones que no se muestran actualmente como botones de herramientas</li>
 <li>Acciones seleccionadas: es la lista de botones de herramientas seleccionados actualmente</li>
 </ul>
-<p>Para seleccionar una acción de la lista Disponible, primero selecciónela con el ratón y luego presione el botón &quot;agregar&quot;. La acción se elimina de la lista Disponible y se coloca al final de la lista seleccionada.</p>
-<p>Para eliminar un botón de la barra de herramientas, selecciónelo con el ratón en la lista Seleccionada y luego presione el botón &quot;eliminar&quot;.</p>
-<p>Para reorganizar el orden de los botones en la barra de herramientas, use los botones &quot;arriba&quot; y &quot;abajo&quot; después de seleccionar un elemento en la lista Seleccionada.</p>
+<p>Para seleccionar una acción de la lista Disponible, primero selecciónela con el ratón y luego presione el botón “agregar”. La acción se elimina de la lista Disponible y se coloca al final de la lista seleccionada.</p>
+<p>Para eliminar un botón de la barra de herramientas, selecciónelo con el ratón en la lista Seleccionada y luego presione el botón “eliminar”.</p>
+<p>Para reorganizar el orden de los botones en la barra de herramientas, use los botones “arriba” y “abajo” después de seleccionar un elemento en la lista Seleccionada.</p>
 <p>Estilo de los botones de herramientas: contiene las siguientes opciones que se aplican a todos los botones de la barra de herramientas</p>
 <ul>
 <li>Solo icono</li>
 <li>Solo texto</li>
 <li>Texto junto al icono</li>
 <li>Texto bajo el icono</li>
-<li>Seguir estilo: la configuración está determinada por la configuración del &quot;Estilo de widgets de Qt&quot; en el cuadro de diálogo Preferencias</li>
+<li>Seguir estilo: la configuración está determinada por la configuración del “Estilo de widgets de Qt” en el cuadro de diálogo Preferencias</li>
 </ul>
 </body>
 </html>

@@ -112,6 +112,7 @@ private slots:
 
 private:
     void initChannels();
+    int boundedFloor(const int initial, const qreal factor) const;
 
     Sequence m_song;
     drumstick::rt::MIDIOutput* m_port;
