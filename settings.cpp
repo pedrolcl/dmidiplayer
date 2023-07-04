@@ -206,7 +206,14 @@ void Settings::internalRead(QSettings &settings)
     settings.endGroup();
 
     QLocale loc;
-    QString defLang = QLocale::languageToCode(loc.language());
+    QString defLang;
+#if QT_VERSION < QT_VERSION_CHECK(6, 3, 0)
+    QString tmp = loc.name();
+    auto lst = tmp.split('_');
+    defLang = lst.first();
+#else
+    defLang = QLocale::languageToCode(loc.language());
+#endif
     if (defLang.isEmpty() || defLang == "en") {
         defLang = "C";
     }
