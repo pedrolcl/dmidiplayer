@@ -588,6 +588,9 @@ QString SequencePlayer::currentBeatStr()
 void SequencePlayer::setVolume(int channel, qreal value)
 {
     //qDebug() << Q_FUNC_INFO << channel << value;
+    if (m_port == nullptr) {
+        return;
+    }
     if (channel >= 0 && channel < MIDI_STD_CHANNELS) {
         m_volumeShift[channel] = value;
         int volume = boundedFloor(m_volume[channel], value / 100.0);

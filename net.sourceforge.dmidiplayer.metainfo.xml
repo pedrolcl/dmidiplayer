@@ -30,6 +30,20 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.7.2" date="2023-07-08">
+            <description>
+                <p>This release includes the following changes</p>
+                <ul>
+                    <li>Fixed SF ticket #17: splash screen removed.</li>
+                    <li>Fixed GH ticket #9: retain Locked Patches when replaying Midi File.</li>
+                    <li>Fixed GH ticket #8: crash when loading a song from File->Open Recent Files.</li>
+                    <li>Fixed GH ticket #7: detect default language setting.</li>
+                    <li>Upgraded: uchardet v0.0.8.</li>
+                    <li>Upgraded: drumstick-2.8.</li>
+                </ul>
+            </description>
+            <url>https://sourceforge.net/p/dmidiplayer/blog/2022/12/drumstick-multiplatform-midi-file-player-171-released/</url>
+        </release>
         <release version="1.7.1" date="2022-12-06">
             <description>
                 <p>This release includes the following changes</p>
