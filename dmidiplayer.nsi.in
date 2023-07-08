@@ -209,13 +209,14 @@ Section -Main SEC0000
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libintl-8.dll	$INSTDIR\libintl-8.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libogg-0.dll $INSTDIR\libogg-0.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libopus-0.dll $INSTDIR\libopus-0.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libpcre-1.dll $INSTDIR\libpcre-1.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libpcre2-8-0.dll $INSTDIR\libpcre2-8-0.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libreadline8.dll $INSTDIR\libreadline8.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libsndfile-1.dll $INSTDIR\libsndfile-1.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libssp-0.dll $INSTDIR\libssp-0.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libtermcap-0.dll $INSTDIR\libtermcap-0.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libvorbis-0.dll $INSTDIR\libvorbis-0.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libvorbisenc-2.dll $INSTDIR\libvorbisenc-2.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libmp3lame-0.dll $INSTDIR\libmp3lame-0.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libmpg123-0.dll $INSTDIR\libmpg123-0.dll $INSTDIR
 
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${UCHARDET_FILES}\bin\libuchardet.dll $INSTDIR\libuchardet.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt6Core.dll $INSTDIR\Qt6Core.dll $INSTDIR
@@ -325,13 +326,14 @@ Section /o -un.Main UNSEC0000
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libintl-8.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libogg-0.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libopus-0.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libpcre-1.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libpcre2-8-0.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libreadline8.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libsndfile-1.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libssp-0.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libtermcap-0.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libvorbis-0.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libvorbisenc-2.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libmp3lame-0.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libmpg123-0.dll
 
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libuchardet.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt6Core.dll

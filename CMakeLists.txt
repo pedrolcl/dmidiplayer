@@ -145,6 +145,10 @@ get_target_property(DRUMSTICK_LOCATION Drumstick::Widgets LOCATION)
 get_filename_component(DRUMSTICK_PREFIX ${DRUMSTICK_LOCATION} DIRECTORY)
 get_filename_component(DRUMSTICK_PREFIX ${DRUMSTICK_PREFIX} DIRECTORY)
 
+get_target_property(UCHARDET_LOCATION uchardet::libuchardet LOCATION)
+get_filename_component(UCHARDET_PREFIX ${UCHARDET_LOCATION} DIRECTORY)
+get_filename_component(UCHARDET_PREFIX ${UCHARDET_PREFIX} DIRECTORY)
+
 if (EXISTS ${DRUMSTICK_PREFIX}/share/drumstick/)
     file(GLOB WIDGETS_TRANS "${DRUMSTICK_PREFIX}/share/drumstick/drumstick-widgets_*.qm")
 elseif (EXISTS ${DRUMSTICK_PREFIX}/library/widgets/)
