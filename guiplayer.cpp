@@ -1239,3 +1239,19 @@ void GUIPlayer::slotSearch()
     //qDebug() << Q_FUNC_INFO << site;
     QDesktopServices::openUrl(QUrl(site));
 }
+
+void GUIPlayer::moveEvent(QMoveEvent *event)
+{
+    auto delta = event->pos() - event->oldPos();
+    auto moveWin = [&delta](FramelessWindow *win) {
+        if (win && win->isVisible() && win->isSnapped() && !win->isFullScreen()) {
+            win->move(win->pos() + delta);
+        }
+    };
+    if (!(delta.isNull() || event->pos().isNull() || event->oldPos().isNull())) {
+        moveWin(m_lyrics);
+        moveWin(m_channels);
+        moveWin(m_pianola);
+        moveWin(m_helpWindow);
+    }
+}

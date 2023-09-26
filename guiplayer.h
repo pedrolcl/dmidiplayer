@@ -106,6 +106,7 @@ protected:
 #endif
     ) override;
     void showEvent(QShowEvent *event) override;
+    void moveEvent(QMoveEvent *event) override;
 
 public slots:
     void about();

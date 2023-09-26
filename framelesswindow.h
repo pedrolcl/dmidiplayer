@@ -32,6 +32,7 @@ public:
     explicit FramelessWindow(QWidget *parent = nullptr);
     QWidget *pseudoCaption() const;
     void setPseudoCaption(QWidget *widget);
+    bool isSnapped() const { return m_snapped; }
 
 signals:
     void sizeAdjustNeeded();
@@ -42,6 +43,7 @@ public slots:
 protected:
 	virtual void applySettings();
     void updateCursor(Qt::Edges edges);
+    void moveEvent(QMoveEvent *event) override;
     bool event(QEvent* ev) override;
 	bool nativeEvent( const QByteArray &eventType, void *message,
 #if QT_VERSION < QT_VERSION_CHECK(6,0,0)
@@ -53,6 +55,7 @@ protected:
 
 private:
     QWidget *m_pseudoCaption;
+    bool m_snapped;
 #if defined(Q_OS_WINDOWS)
     WinSnap m_snapper;
 #endif

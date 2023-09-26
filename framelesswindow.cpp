@@ -25,8 +25,9 @@
 #include "framelesswindow.h"
 
 FramelessWindow::FramelessWindow(QWidget *parent)
-    : QMainWindow(parent, Qt::FramelessWindowHint),
-      m_pseudoCaption(nullptr)
+    : QMainWindow(parent, Qt::FramelessWindowHint)
+    , m_pseudoCaption(nullptr)
+    , m_snapped{false}
 { 
 #if defined(Q_OS_MACOS)
     //setUnifiedTitleAndToolBarOnMac(true);
@@ -162,4 +163,17 @@ bool FramelessWindow::nativeEvent(const QByteArray &eventType, void *message,
     }
 #endif
     return QMainWindow::nativeEvent(eventType, message, result);
+}
+
+void FramelessWindow::moveEvent(QMoveEvent *event)
+{
+    QMainWindow::moveEvent(event);
+    auto p = dynamic_cast<QMainWindow *>(parent());
+    if (p) {
+        auto joined = [](int a, int b) { return qAbs(b - a) < 2; };
+        m_snapped = joined(frameGeometry().top(), p->frameGeometry().bottom())
+                    || joined(frameGeometry().bottom(), p->frameGeometry().top())
+                    || joined(frameGeometry().left(), p->frameGeometry().right())
+                    || joined(frameGeometry().right(), p->frameGeometry().left());
+    }
 }
