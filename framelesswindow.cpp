@@ -170,7 +170,7 @@ void FramelessWindow::moveEvent(QMoveEvent *event)
     QMainWindow::moveEvent(event);
     auto p = dynamic_cast<QMainWindow *>(parent());
     if (p) {
-        auto joined = [](int a, int b) { return qAbs(b - a) < 2; };
+        auto joined = [](int a, int b) { return qAbs(b - a) < 3; };
         m_snapped = joined(frameGeometry().top(), p->frameGeometry().bottom())
                     || joined(frameGeometry().bottom(), p->frameGeometry().top())
                     || joined(frameGeometry().left(), p->frameGeometry().right())
