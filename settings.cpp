@@ -241,6 +241,7 @@ void Settings::internalRead(QSettings &settings)
 #if defined (Q_OS_MACOS)
     internalIcons = true;
 #endif
+    m_snappedTogether = settings.value("SnappedTogether", true).toBool();
     m_internalIcons =settings.value("InternalIcons", internalIcons).toBool();
     m_style = settings.value("Style", style).toString();
     m_sysexResetMessage = settings.value("SysexReset", 0).toInt();
@@ -316,6 +317,7 @@ void Settings::internalSave(QSettings &settings)
 #if defined(Q_OS_WINDOWS)
     settings.setValue("WindowSnapping", m_winSnap);
 #endif
+    settings.setValue("SnappedTogether", m_snappedTogether);
     settings.setValue("InternalIcons", m_internalIcons);
     settings.setValue("Style", m_style);
     settings.setValue("SysexReset", m_sysexResetMessage);
@@ -363,6 +365,16 @@ void Settings::forceSettings(QSettings &settings)
     settings.setValue("reverb_dls", true);
     settings.endGroup();
 #endif
+}
+
+bool Settings::snappedTogether() const
+{
+    return m_snappedTogether;
+}
+
+void Settings::setSnappedTogether(bool newSnappedTogether)
+{
+    m_snappedTogether = newSnappedTogether;
 }
 
 bool Settings::octaveSubscript() const

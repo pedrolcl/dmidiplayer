@@ -28,12 +28,59 @@
        <string>General</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_3" columnstretch="1,0">
-       <item row="1" column="1">
-        <widget class="QSpinBox" name="spinSoloVol">
-         <property name="value">
-          <number>50</number>
+       <item row="4" column="0" colspan="2">
+        <widget class="QCheckBox" name="chkAutoSongSettings">
+         <property name="text">
+          <string>Automatically Load and Save Song Settings</string>
          </property>
         </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QCheckBox" name="chkSnapping">
+         <property name="text">
+          <string>Sticky Window Borders</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="1">
+        <widget class="QComboBox" name="cboStyle">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QCheckBox" name="chkAutoAdvance">
+         <property name="text">
+          <string>Advance Automatically to the Next Playlist item</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0">
+        <widget class="QLabel" name="lblReset">
+         <property name="text">
+          <string>MIDI System Exclusive Reset:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0" colspan="2">
+        <widget class="QCheckBox" name="chkDarkMode">
+         <property name="text">
+          <string>Forced Dark Mode</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="1">
+        <widget class="QComboBox" name="cboReset"/>
        </item>
        <item row="1" column="0">
         <widget class="QLabel" name="label">
@@ -42,6 +89,19 @@
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="lblPercChannel">
+         <property name="text">
+          <string>Percussion MIDI Channel:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>spinPercChannel</cstring>
          </property>
         </widget>
        </item>
@@ -58,35 +118,18 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="0" colspan="2">
-        <widget class="QCheckBox" name="chkInternalIcons">
-         <property name="text">
-          <string>Use Internal Icon Theme</string>
-         </property>
-        </widget>
-       </item>
        <item row="9" column="0">
-        <widget class="QLabel" name="lblReset">
+        <widget class="QLabel" name="lblQtStyle">
          <property name="text">
-          <string>MIDI System Exclusive Reset:</string>
+          <string>Qt Widgets Style:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QCheckBox" name="chkSnapping">
-         <property name="text">
-          <string>Sticky Window Borders</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
+         <property name="buddy">
+          <cstring>cboStyle</cstring>
          </property>
         </widget>
-       </item>
-       <item row="9" column="1">
-        <widget class="QComboBox" name="cboReset"/>
        </item>
        <item row="5" column="1">
         <widget class="QLabel" name="lblHidden">
@@ -107,40 +150,17 @@
          </property>
         </widget>
        </item>
-       <item row="8" column="1">
-        <widget class="QComboBox" name="cboStyle">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+       <item row="8" column="0" colspan="2">
+        <widget class="QCheckBox" name="chkInternalIcons">
+         <property name="text">
+          <string>Use Internal Icon Theme</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="lblPercChannel">
-         <property name="text">
-          <string>Percussion MIDI Channel:</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy">
-          <cstring>spinPercChannel</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" colspan="2">
-        <widget class="QCheckBox" name="chkAutoAdvance">
-         <property name="text">
-          <string>Advance Automatically to the Next Playlist item</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0" colspan="2">
-        <widget class="QCheckBox" name="chkDarkMode">
-         <property name="text">
-          <string>Forced Dark Mode</string>
+       <item row="1" column="1">
+        <widget class="QSpinBox" name="spinSoloVol">
+         <property name="value">
+          <number>50</number>
          </property>
         </widget>
        </item>
@@ -151,23 +171,13 @@
          </property>
         </widget>
        </item>
-       <item row="8" column="0">
-        <widget class="QLabel" name="lblQtStyle">
+       <item row="6" column="0" colspan="2">
+        <widget class="QCheckBox" name="chkKeepSnapped">
          <property name="text">
-          <string>Qt Widgets Style:</string>
+          <string>Keep Snapped Child Windows Together</string>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy">
-          <cstring>cboStyle</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0" colspan="2">
-        <widget class="QCheckBox" name="chkAutoSongSettings">
-         <property name="text">
-          <string>Automatically Load and Save Song Settings</string>
+         <property name="checked">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -442,7 +452,6 @@
   <tabstop>editNoteFont</tabstop>
   <tabstop>btnNoteFont</tabstop>
   <tabstop>cboNoteNames</tabstop>
-  <tabstop>tabWidget</tabstop>
  </tabstops>
  <resources>
   <include location="guiplayer.qrc"/>

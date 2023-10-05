@@ -56,6 +56,7 @@ protected:
 private:
     QWidget *m_pseudoCaption;
     bool m_snapped;
+    bool m_keepSnapped;
 #if defined(Q_OS_WINDOWS)
     WinSnap m_snapper;
 #endif

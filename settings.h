@@ -175,6 +175,9 @@ public:
     bool octaveSubscript() const;
     void setOctaveSubscript(bool newOctaveSubscript);
 
+    bool snappedTogether() const;
+    void setSnappedTogether(bool newSnappedTogether);
+
 signals:
     void ValuesChanged();
 
@@ -213,6 +216,7 @@ private:
     bool m_showStatusBar;
     bool m_showToolBar;
     bool m_winSnap;
+    bool m_snappedTogether;
     bool m_darkMode;
     int m_drumsChannel;
     bool m_autoPlay;

@@ -28,6 +28,7 @@ FramelessWindow::FramelessWindow(QWidget *parent)
     : QMainWindow(parent, Qt::FramelessWindowHint)
     , m_pseudoCaption(nullptr)
     , m_snapped{false}
+    , m_keepSnapped{true}
 { 
 #if defined(Q_OS_MACOS)
     //setUnifiedTitleAndToolBarOnMac(true);
@@ -146,6 +147,7 @@ void FramelessWindow::applySettings()
 #if defined(Q_OS_WINDOWS)
     m_snapper.SetEnabled(Settings::instance()->winSnap());
 #endif
+    m_keepSnapped = Settings::instance()->snappedTogether();
 }
 
 bool FramelessWindow::nativeEvent(const QByteArray &eventType, void *message,
@@ -169,7 +171,7 @@ void FramelessWindow::moveEvent(QMoveEvent *event)
 {
     QMainWindow::moveEvent(event);
     auto p = dynamic_cast<QMainWindow *>(parent());
-    if (p) {
+    if (p && m_keepSnapped) {
         auto joined = [](int a, int b) { return qAbs(b - a) < 3; };
         m_snapped = joined(frameGeometry().top(), p->frameGeometry().bottom())
                     || joined(frameGeometry().bottom(), p->frameGeometry().top())

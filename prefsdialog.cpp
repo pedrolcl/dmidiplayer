@@ -198,6 +198,7 @@ void PrefsDialog::showEvent ( QShowEvent *event )
         ui->chkSnapping->hide();
         ui->lblHidden->hide();
 #endif
+        ui->chkKeepSnapped->setChecked(Settings::instance()->snappedTogether());
         ui->editTextFont->setText( Settings::instance()->lyricsFont().toString() );
         setFutureColor(Settings::instance()->getFutureColor());
         setPastColor( Settings::instance()->getPastColor());
@@ -237,6 +238,7 @@ void PrefsDialog::apply()
 #if defined(Q_OS_WINDOWS)
     Settings::instance()->setWinSnap( ui->chkSnapping->isChecked() );
 #endif
+    Settings::instance()->setSnappedTogether(ui->chkKeepSnapped->isChecked());
     QFont textFont;
     if (textFont.fromString(ui->editTextFont->text())) {
         Settings::instance()->setLyricsFont(textFont);
