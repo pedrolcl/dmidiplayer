@@ -1775,7 +1775,7 @@ Versión de karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     <message>
         <location filename="../prefsdialog.ui" line="177"/>
         <source>Keep Snapped Child Windows Together</source>
-        <translation type="unfinished"></translation>
+        <translation>Mantener juntas las ventanas hijas adosadas</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="188"/>
@@ -2017,7 +2017,7 @@ bajo ciertas condiciones; vea LICENSE para detalles.</translation>
     <message>
         <location filename="../seqplayer.cpp" line="400"/>
         <source>Warning, this file may be non-standard or damaged.&lt;br/&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Aviso: este archivo puede no ser estándar or estar dañado.&lt;br/&gt;</translation>
     </message>
 </context>
 <context>

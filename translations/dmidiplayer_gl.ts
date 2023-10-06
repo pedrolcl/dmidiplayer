@@ -1768,7 +1768,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="177"/>
         <source>Keep Snapped Child Windows Together</source>
-        <translation type="unfinished"></translation>
+        <translation>Manter xuntas as xanelas pegañentas</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="322"/>
@@ -1915,7 +1915,7 @@ Isto é software libre, e pódese redistribuir baixo certas condicións; ver a L
     <message>
         <location filename="../seqplayer.cpp" line="400"/>
         <source>Warning, this file may be non-standard or damaged.&lt;br/&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Aviso, este ficheiro pode non ser estándar ou estar estragado.&lt;br/&gt;</translation>
     </message>
 </context>
 <context>
