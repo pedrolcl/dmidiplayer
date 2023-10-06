@@ -241,7 +241,11 @@ void Settings::internalRead(QSettings &settings)
 #if defined (Q_OS_MACOS)
     internalIcons = true;
 #endif
-    m_snappedTogether = settings.value("SnappedTogether", true).toBool();
+    if (qApp->platformName() == "wayland") {
+        m_snappedTogether = false;
+    } else {
+        m_snappedTogether = settings.value("SnappedTogether", true).toBool();
+    }
     m_internalIcons =settings.value("InternalIcons", internalIcons).toBool();
     m_style = settings.value("Style", style).toString();
     m_sysexResetMessage = settings.value("SysexReset", 0).toInt();
@@ -374,7 +378,9 @@ bool Settings::snappedTogether() const
 
 void Settings::setSnappedTogether(bool newSnappedTogether)
 {
-    m_snappedTogether = newSnappedTogether;
+    if (qApp->platformName() != "wayland") {
+        m_snappedTogether = newSnappedTogether;
+    }
 }
 
 bool Settings::octaveSubscript() const

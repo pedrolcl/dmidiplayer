@@ -45,6 +45,9 @@ PrefsDialog::PrefsDialog(QWidget *parent) :
 #if !defined(Q_OS_WINDOWS)
     ui->chkSnapping->setVisible(false);
 #endif
+    if (qApp->platformName() == "wayland") {
+        ui->chkKeepSnapped->setVisible(false);
+    }
     QStringList styleNames = QStyleFactory::keys();
     ui->cboStyle->addItems(styleNames);
     QString currentStyle = qApp->style()->objectName();

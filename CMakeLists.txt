@@ -17,7 +17,7 @@
 cmake_minimum_required(VERSION 3.14)
 
 project ( dmidiplayer
-    VERSION 1.7.2
+    VERSION 1.7.3
     LANGUAGES CXX
     DESCRIPTION "Drumstick MIDI File Player Multiplatform Program"
     HOMEPAGE_URL "https://sourceforge.net/p/dmidiplayer/"
