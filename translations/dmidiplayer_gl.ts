@@ -55,58 +55,58 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>Channels</name>
     <message>
-        <location filename="../channels.cpp" line="58"/>
-        <location filename="../channels.cpp" line="189"/>
+        <location filename="../channels.cpp" line="59"/>
+        <location filename="../channels.cpp" line="192"/>
         <source>MIDI Channels</source>
         <translation>Canles MIDI</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="190"/>
+        <location filename="../channels.cpp" line="193"/>
         <source>Channel</source>
         <translation>Canle</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="191"/>
+        <location filename="../channels.cpp" line="194"/>
         <source>Mute</source>
         <translation>Sen son</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="192"/>
+        <location filename="../channels.cpp" line="195"/>
         <source>Solo</source>
         <translation>Solo</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="193"/>
+        <location filename="../channels.cpp" line="196"/>
         <source>Level</source>
         <translation>Nivel</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="194"/>
+        <location filename="../channels.cpp" line="197"/>
         <source>Lock</source>
         <translation>Bloqueo</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="195"/>
+        <location filename="../channels.cpp" line="198"/>
         <source>Patch (sound setting)</source>
         <translation>Patch (configuración do son)</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="197"/>
+        <location filename="../channels.cpp" line="200"/>
         <source>Show all channels</source>
         <translation>Mostrar todas as canles</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="198"/>
+        <location filename="../channels.cpp" line="201"/>
         <source>Hide all channels</source>
         <translation>Acochar todas as canles</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="199"/>
+        <location filename="../channels.cpp" line="202"/>
         <source>View Full Screen</source>
         <translation>Ver pantalla completa</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="205"/>
+        <location filename="../channels.cpp" line="207"/>
         <source>Channel %1</source>
         <translation>Canle %1</translation>
     </message>
@@ -145,159 +145,159 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>GUIPlayer</name>
     <message>
-        <location filename="../guiplayer.cpp" line="288"/>
+        <location filename="../guiplayer.cpp" line="287"/>
         <source>Please, load a song</source>
         <translation>Por favor, carga unha canción</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="298"/>
+        <location filename="../guiplayer.cpp" line="297"/>
         <source>Playing</source>
         <translation>Reproducindo</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="307"/>
+        <location filename="../guiplayer.cpp" line="306"/>
         <source>Paused</source>
         <translation>Pausado</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="320"/>
+        <location filename="../guiplayer.cpp" line="319"/>
         <source>Stopped</source>
         <translation>Parado</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="323"/>
+        <location filename="../guiplayer.cpp" line="322"/>
         <source>Not initialized</source>
         <translation>Non iniciado</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="371"/>
+        <location filename="../guiplayer.cpp" line="370"/>
         <source>Loading %1 file...</source>
         <translation>Cargando ficheiro %1...</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="449"/>
+        <location filename="../guiplayer.cpp" line="453"/>
         <source>file %1 couldn&apos;t be opened</source>
         <translation>ficheiro %1 non se puido abrir</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="465"/>
+        <location filename="../guiplayer.cpp" line="469"/>
         <source>Open MIDI File</source>
         <translation>Abrir ficheiro MIDI</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="466"/>
+        <location filename="../guiplayer.cpp" line="470"/>
         <source>All files (*.kar *.mid *.midi *.rmi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;RIFF MIDI Files (*.rmi);;Cakewalk files (*.wrk)</source>
         <translation>Todos os ficheiros(*.kar *.mid *.midi *.rmi *.wrk);;Ficheiros Karaoke (*.kar);;Ficheiros MIDI (*.mid *.midi);;Ficheiros RIFF MIDI (*.rmi);;Ficheiros Cakewalk (*.wrk)</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="698"/>
+        <location filename="../guiplayer.cpp" line="696"/>
         <source>Jump to Bar</source>
         <translation>Saltar ao compás</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="699"/>
+        <location filename="../guiplayer.cpp" line="697"/>
         <source>Bar number:</source>
         <translation>Compás número:</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="795"/>
+        <location filename="../guiplayer.cpp" line="794"/>
         <source>Dropped file %1 is not supported</source>
         <translation>Ficheiro soltado %1 non está soportado</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="990"/>
+        <location filename="../guiplayer.cpp" line="989"/>
         <source>&lt;p&gt;This program is developed and translated thanks to the volunteer work of many people from around the world. If you want to join the team or have any question, please visit the web site at &lt;a href=&apos;http://sourceforge.net/projects/dmidiplayer/&apos;&gt;SourceForge&lt;/a&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;Este program está desenvolvido e traducido gracias ao traballo voluntario de moita xente de todo o mundo. Si queres participar ou tes preguntas, visita &lt;a href=&apos;http://sourceforge.net/projects/dmidiplayer/&apos;&gt;SourceForge&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="995"/>
+        <location filename="../guiplayer.cpp" line="994"/>
         <source>Translation Information</source>
         <translation>Información da traducción</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1019"/>
+        <location filename="../guiplayer.cpp" line="1018"/>
         <source>Language Changed</source>
         <translation>Idioma cambiado</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1020"/>
+        <location filename="../guiplayer.cpp" line="1019"/>
         <source>The language for this application is going to change to %1. Do you want to continue?</source>
         <translation>O linguaxe de esta aplicación vai cambiar a %1. ¿Quere continuar?</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1038"/>
+        <location filename="../guiplayer.cpp" line="1037"/>
         <source>&lt;b&gt;No file loaded&lt;/b&gt;</source>
         <translation>&lt;b&gt;Ficheiro non cargado&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1040"/>
+        <location filename="../guiplayer.cpp" line="1039"/>
         <source>File: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Ficheiro: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1043"/>
+        <location filename="../guiplayer.cpp" line="1042"/>
         <source>Format: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Formato: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1045"/>
-        <location filename="../guiplayer.cpp" line="1049"/>
-        <location filename="../guiplayer.cpp" line="1053"/>
-        <location filename="../guiplayer.cpp" line="1057"/>
-        <location filename="../guiplayer.cpp" line="1061"/>
-        <location filename="../guiplayer.cpp" line="1065"/>
-        <location filename="../guiplayer.cpp" line="1069"/>
-        <location filename="../guiplayer.cpp" line="1077"/>
+        <location filename="../guiplayer.cpp" line="1044"/>
+        <location filename="../guiplayer.cpp" line="1048"/>
+        <location filename="../guiplayer.cpp" line="1052"/>
+        <location filename="../guiplayer.cpp" line="1056"/>
+        <location filename="../guiplayer.cpp" line="1060"/>
+        <location filename="../guiplayer.cpp" line="1064"/>
+        <location filename="../guiplayer.cpp" line="1068"/>
+        <location filename="../guiplayer.cpp" line="1076"/>
         <source>&lt;br&gt;</source>
         <translation>&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1047"/>
+        <location filename="../guiplayer.cpp" line="1046"/>
         <source>Copyright: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Copyright: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1051"/>
+        <location filename="../guiplayer.cpp" line="1050"/>
         <source>Karaoke type: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Tipo de Karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1055"/>
+        <location filename="../guiplayer.cpp" line="1054"/>
         <source>Karaoke version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Versión de Karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1059"/>
+        <location filename="../guiplayer.cpp" line="1058"/>
         <source>Karaoke info: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Info de Karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1063"/>
+        <location filename="../guiplayer.cpp" line="1062"/>
         <source>Karaoke language: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Lingua de Karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1067"/>
+        <location filename="../guiplayer.cpp" line="1066"/>
         <source>Karaoke title: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Título de Karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1071"/>
+        <location filename="../guiplayer.cpp" line="1070"/>
         <source>Karaoke things: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Outro Karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1078"/>
+        <location filename="../guiplayer.cpp" line="1077"/>
         <source>SMF Information</source>
         <translation>Información SMF</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1085"/>
+        <location filename="../guiplayer.cpp" line="1084"/>
         <source>Playlist not saved</source>
         <translation>Lista de reprodución non gardada</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1086"/>
+        <location filename="../guiplayer.cpp" line="1085"/>
         <source>The current playlist has changed, but it is not saved. The changes will be lost when closing the program.</source>
         <translation>A lista de reprodución actual cambiou, pero non está gardada. Os cambios se perderán cando se peche o programa.</translation>
     </message>
@@ -726,32 +726,32 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>HelpWindow</name>
     <message>
-        <location filename="../helpwindow.cpp" line="53"/>
-        <location filename="../helpwindow.cpp" line="172"/>
+        <location filename="../helpwindow.cpp" line="54"/>
+        <location filename="../helpwindow.cpp" line="162"/>
         <source>&amp;Home</source>
         <translation>&amp;Inicio</translation>
     </message>
     <message>
-        <location filename="../helpwindow.cpp" line="54"/>
-        <location filename="../helpwindow.cpp" line="173"/>
+        <location filename="../helpwindow.cpp" line="55"/>
+        <location filename="../helpwindow.cpp" line="163"/>
         <source>&amp;Back</source>
         <translation>&amp;Volver</translation>
     </message>
     <message>
-        <location filename="../helpwindow.cpp" line="55"/>
-        <location filename="../helpwindow.cpp" line="174"/>
+        <location filename="../helpwindow.cpp" line="56"/>
+        <location filename="../helpwindow.cpp" line="164"/>
         <source>Close</source>
         <translation>Pechar</translation>
     </message>
     <message>
-        <location filename="../helpwindow.cpp" line="56"/>
-        <location filename="../helpwindow.cpp" line="175"/>
+        <location filename="../helpwindow.cpp" line="57"/>
+        <location filename="../helpwindow.cpp" line="165"/>
         <source>Zoom In</source>
         <translation>Achegar</translation>
     </message>
     <message>
-        <location filename="../helpwindow.cpp" line="57"/>
-        <location filename="../helpwindow.cpp" line="176"/>
+        <location filename="../helpwindow.cpp" line="58"/>
+        <location filename="../helpwindow.cpp" line="166"/>
         <source>Zoom Out</source>
         <translation>Desachegar</translation>
     </message>
@@ -1435,97 +1435,97 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>Lyrics</name>
     <message>
-        <location filename="../lyrics.cpp" line="203"/>
+        <location filename="../lyrics.cpp" line="200"/>
         <source>Track:</source>
         <translation>Pista:</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="204"/>
+        <location filename="../lyrics.cpp" line="201"/>
         <source>Type:</source>
         <translation>Tipo:</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="205"/>
+        <location filename="../lyrics.cpp" line="202"/>
         <source>All Types</source>
         <translation>Todos os tipos</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="206"/>
+        <location filename="../lyrics.cpp" line="203"/>
         <source>Texts</source>
         <translation>Textos</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="207"/>
+        <location filename="../lyrics.cpp" line="204"/>
         <source>Copyright Notice</source>
         <translation>Nota de Copyright</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="208"/>
+        <location filename="../lyrics.cpp" line="205"/>
         <source>Sequence Name</source>
         <translation>Nome de secuencia</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="209"/>
+        <location filename="../lyrics.cpp" line="206"/>
         <source>Instrument Name</source>
         <translation>Nome de instrumento</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="210"/>
+        <location filename="../lyrics.cpp" line="207"/>
         <source>Lyric Events</source>
         <translation>Eventos de letra</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="211"/>
+        <location filename="../lyrics.cpp" line="208"/>
         <source>Marker</source>
         <translation>Marcador</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="212"/>
+        <location filename="../lyrics.cpp" line="209"/>
         <source>Cue Point</source>
         <translation>Punto de sinal</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="214"/>
+        <location filename="../lyrics.cpp" line="211"/>
         <source>Encoding:</source>
         <translation>Codificación:</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="215"/>
+        <location filename="../lyrics.cpp" line="212"/>
         <source>Font...</source>
         <translation>Fonte...</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="216"/>
+        <location filename="../lyrics.cpp" line="213"/>
         <source>Full Screen</source>
         <translation>Pantalla enteira</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="217"/>
+        <location filename="../lyrics.cpp" line="214"/>
         <source>Copy to clipboard</source>
         <translation>Copiar ao portapapeis</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="218"/>
+        <location filename="../lyrics.cpp" line="215"/>
         <source>Save to file...</source>
         <translation>Gardar a ficheiro...</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="219"/>
+        <location filename="../lyrics.cpp" line="216"/>
         <source>Print...</source>
         <translation>Imprimir...</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="265"/>
+        <location filename="../lyrics.cpp" line="262"/>
         <source>Default (latin1)</source>
         <translation>Por defecto (latin1)</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="275"/>
+        <location filename="../lyrics.cpp" line="272"/>
         <source>All Tracks</source>
         <translation>Tódalas pistas</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="280"/>
+        <location filename="../lyrics.cpp" line="277"/>
         <source>Track %1</source>
         <translation>Pista %1</translation>
     </message>
@@ -1534,32 +1534,32 @@ p, li { white-space: pre-wrap; }
     <name>Pianola</name>
     <message>
         <location filename="../pianola.cpp" line="57"/>
-        <location filename="../pianola.cpp" line="151"/>
+        <location filename="../pianola.cpp" line="150"/>
         <source>Player Piano</source>
         <translation>Pianola</translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="152"/>
+        <location filename="../pianola.cpp" line="151"/>
         <source>Show all channels</source>
         <translation>Mostrar todas as canles</translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="153"/>
+        <location filename="../pianola.cpp" line="152"/>
         <source>Hide all channels</source>
         <translation>Acochar todas as canles</translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="154"/>
+        <location filename="../pianola.cpp" line="153"/>
         <source>Tighten the number of keys</source>
         <translation>Reducir o número de teclas</translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="155"/>
+        <location filename="../pianola.cpp" line="154"/>
         <source>View Full Screen</source>
         <translation>Ver a pantalla completa</translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="157"/>
+        <location filename="../pianola.cpp" line="156"/>
         <source>Channel %1</source>
         <translation>Canle %1</translation>
     </message>
@@ -1663,37 +1663,37 @@ p, li { white-space: pre-wrap; }
         <translation>Xeral</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="157"/>
+        <location filename="../prefsdialog.ui" line="124"/>
         <source>Qt Widgets Style:</source>
         <translation>Estilo de widgets Qt:</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="71"/>
+        <location filename="../prefsdialog.ui" line="68"/>
         <source>MIDI System Exclusive Reset:</source>
         <translation>Restablecemento do sistema exclusivo MIDI:</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="150"/>
+        <location filename="../prefsdialog.ui" line="170"/>
         <source>Start Playback Automatically After Loading</source>
         <translation>Inicia a reprodución automaticamente despois da carga</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="136"/>
+        <location filename="../prefsdialog.ui" line="61"/>
         <source>Advance Automatically to the Next Playlist item</source>
         <translation>Avanza automaticamente ao seguinte elemento da lista de reprodución</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="123"/>
+        <location filename="../prefsdialog.ui" line="98"/>
         <source>Percussion MIDI Channel:</source>
         <translation>Canle MIDI de percusión:</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="64"/>
+        <location filename="../prefsdialog.ui" line="156"/>
         <source>Use Internal Icon Theme</source>
         <translation>Usa o tema de iconas interno</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="143"/>
+        <location filename="../prefsdialog.ui" line="78"/>
         <source>Forced Dark Mode</source>
         <translation>Forzar o modo escuro</translation>
     </message>
@@ -1702,125 +1702,130 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Xanelas pegañentas divisibles</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="178"/>
+        <location filename="../prefsdialog.ui" line="188"/>
         <source>Lyrics</source>
         <translation>Letra</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="187"/>
-        <location filename="../prefsdialog.ui" line="194"/>
-        <location filename="../prefsdialog.ui" line="228"/>
-        <location filename="../prefsdialog.ui" line="322"/>
-        <location filename="../prefsdialog.ui" line="353"/>
+        <location filename="../prefsdialog.ui" line="197"/>
+        <location filename="../prefsdialog.ui" line="204"/>
+        <location filename="../prefsdialog.ui" line="238"/>
+        <location filename="../prefsdialog.ui" line="332"/>
+        <location filename="../prefsdialog.ui" line="363"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="201"/>
+        <location filename="../prefsdialog.ui" line="211"/>
         <source>Future Text Color</source>
         <translation>Cor do texto futuro</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="218"/>
+        <location filename="../prefsdialog.ui" line="228"/>
         <source>Text Font</source>
         <translation>Fonte do texto</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="255"/>
+        <location filename="../prefsdialog.ui" line="265"/>
         <source>Past Text Color</source>
         <translation>Cor do texto anterior</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="286"/>
+        <location filename="../prefsdialog.ui" line="296"/>
         <source>Player Piano</source>
         <translation>Pianola</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="346"/>
+        <location filename="../prefsdialog.ui" line="356"/>
         <source>Single Highlight Color</source>
         <translation>Unha única cor de resaltado</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="404"/>
+        <location filename="../prefsdialog.ui" line="414"/>
         <source>Octave Subscript Designation</source>
         <translation>Nomeamento de subíndice de oitava</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="329"/>
+        <location filename="../prefsdialog.ui" line="339"/>
         <source>Note Highlighting</source>
         <translation>Resaltado de notas</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="41"/>
+        <location filename="../prefsdialog.ui" line="88"/>
         <source>Solo Button % Volume Reduction:</source>
         <translation>Redución de volume % do botón solo:</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="81"/>
+        <location filename="../prefsdialog.ui" line="41"/>
         <source>Sticky Window Borders</source>
         <translation>Bordos apegadizos de fiestra</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="170"/>
+        <location filename="../prefsdialog.ui" line="34"/>
         <source>Automatically Load and Save Song Settings</source>
         <translation>Cargar e gardar automaticamente os axustes da canción</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="312"/>
+        <location filename="../prefsdialog.ui" line="177"/>
+        <source>Keep Snapped Child Windows Together</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../prefsdialog.ui" line="322"/>
         <source>Show Note Names</source>
         <translation>Amosar nomes de notas</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="363"/>
+        <location filename="../prefsdialog.ui" line="373"/>
         <source>Note Names Font</source>
         <translation>Fonte de nomes de notas</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="397"/>
+        <location filename="../prefsdialog.ui" line="407"/>
         <source>Note Velocity to Color Tint</source>
         <translation>Velocidade ao matiz da cor</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="374"/>
+        <location filename="../prefsdialog.ui" line="384"/>
         <source>Never</source>
         <translation>Nunca</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="379"/>
+        <location filename="../prefsdialog.ui" line="389"/>
         <source>Minimal</source>
         <translation>Mínimo</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="384"/>
+        <location filename="../prefsdialog.ui" line="394"/>
         <source>When Activated</source>
         <translation>Cando está activada</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="389"/>
+        <location filename="../prefsdialog.ui" line="399"/>
         <source>Always</source>
         <translation>Sempre</translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="57"/>
-        <location filename="../prefsdialog.cpp" line="289"/>
+        <location filename="../prefsdialog.cpp" line="291"/>
         <source>None</source>
         <translation>Ningún</translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="58"/>
-        <location filename="../prefsdialog.cpp" line="290"/>
+        <location filename="../prefsdialog.cpp" line="292"/>
         <source>GM</source>
         <translation>GM</translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="59"/>
-        <location filename="../prefsdialog.cpp" line="291"/>
+        <location filename="../prefsdialog.cpp" line="293"/>
         <source>GS</source>
         <translation>GS</translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="60"/>
-        <location filename="../prefsdialog.cpp" line="292"/>
+        <location filename="../prefsdialog.cpp" line="294"/>
         <source>XG</source>
         <translation>XG</translation>
     </message>
@@ -1828,7 +1833,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>QCoreApplication</name>
     <message>
-        <location filename="../playermain.cpp" line="30"/>
+        <location filename="../playermain.cpp" line="31"/>
         <source>Copyright (C) 2006-2023 Pedro Lopez-Cabanillas
 This program comes with ABSOLUTELY NO WARRANTY;
 This is free software, and you are welcome to redistribute it
@@ -1838,37 +1843,37 @@ Este programa ven con ABSOLUTAMENTE NINGUNHA GARANTIA;
 Isto é software libre, e pódese redistribuir baixo certas condicións; ver a LICENZA para detalles.</translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="36"/>
+        <location filename="../playermain.cpp" line="37"/>
         <source>Fatal error from the Operating System. This usually happens when the OS doesn&apos;t have MIDI support, or the MIDI support is not enabled. Please check your OS/MIDI configuration.</source>
         <translation>Erro fatal do Sistema Operativo. Isto normalmente acontece cando o SO non ten soporte MIDI, ou o soporte MIDI non é habilitado. Comprobe a configuración MIDI do seu SO.</translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="68"/>
+        <location filename="../playermain.cpp" line="69"/>
         <source>Portable settings mode.</source>
         <translation>Modo de axustes portátil.</translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="69"/>
+        <location filename="../playermain.cpp" line="70"/>
         <source>Portable settings file name.</source>
         <translation>Nome de ficheiro de axustes portátil.</translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="72"/>
+        <location filename="../playermain.cpp" line="73"/>
         <source>MIDI Out Driver.</source>
         <translation>Controlador de saída MIDI.</translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="74"/>
+        <location filename="../playermain.cpp" line="75"/>
         <source>MIDI Out Connection.</source>
         <translation>Conexión de saída MIDI.</translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="76"/>
+        <location filename="../playermain.cpp" line="77"/>
         <source>Input SMF/KAR/WRK file name.</source>
         <translation>Nome de ficheiro SMF/KAR/WRK de entrada.</translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="110"/>
+        <location filename="../playermain.cpp" line="96"/>
         <source>File not found:</source>
         <translation>Ficheiro non atopado:</translation>
     </message>
@@ -1890,19 +1895,27 @@ Isto é software libre, e pódese redistribuir baixo certas condicións; ver a L
 <context>
     <name>Sequence</name>
     <message>
-        <location filename="../sequence.cpp" line="644"/>
+        <location filename="../sequence.cpp" line="658"/>
         <source> in RIFF container of type %1</source>
         <translation> en envase RIFF de tipo %1</translation>
     </message>
     <message>
-        <location filename="../sequence.cpp" line="707"/>
+        <location filename="../sequence.cpp" line="721"/>
         <source>SMF type %1</source>
         <translation>tipo SMF %1</translation>
     </message>
     <message>
-        <location filename="../sequence.cpp" line="976"/>
+        <location filename="../sequence.cpp" line="990"/>
         <source>WRK file version v%1.%2</source>
         <translation>ficheiro WRK version v%1.%2</translation>
+    </message>
+</context>
+<context>
+    <name>SequencePlayer</name>
+    <message>
+        <location filename="../seqplayer.cpp" line="400"/>
+        <source>Warning, this file may be non-standard or damaged.&lt;br/&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

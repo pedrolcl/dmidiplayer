@@ -55,58 +55,58 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>Channels</name>
     <message>
-        <location filename="../channels.cpp" line="58"/>
-        <location filename="../channels.cpp" line="189"/>
+        <location filename="../channels.cpp" line="59"/>
+        <location filename="../channels.cpp" line="192"/>
         <source>MIDI Channels</source>
         <translation>Kanály MIDI</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="190"/>
+        <location filename="../channels.cpp" line="193"/>
         <source>Channel</source>
         <translation>Kanál</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="191"/>
+        <location filename="../channels.cpp" line="194"/>
         <source>Mute</source>
         <translation>Ztlumit</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="192"/>
+        <location filename="../channels.cpp" line="195"/>
         <source>Solo</source>
         <translation>Sólo</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="193"/>
+        <location filename="../channels.cpp" line="196"/>
         <source>Level</source>
         <translation>Úroveň</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="194"/>
+        <location filename="../channels.cpp" line="197"/>
         <source>Lock</source>
         <translation>Zámek</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="195"/>
+        <location filename="../channels.cpp" line="198"/>
         <source>Patch (sound setting)</source>
         <translation>Zapojení (nastavení zvuku)</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="197"/>
+        <location filename="../channels.cpp" line="200"/>
         <source>Show all channels</source>
         <translation>Ukázat všechny kanály</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="198"/>
+        <location filename="../channels.cpp" line="201"/>
         <source>Hide all channels</source>
         <translation>Skrýt všechny kanály</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="199"/>
+        <location filename="../channels.cpp" line="202"/>
         <source>View Full Screen</source>
         <translation>Zobrazit na celou obrazovku</translation>
     </message>
     <message>
-        <location filename="../channels.cpp" line="205"/>
+        <location filename="../channels.cpp" line="207"/>
         <source>Channel %1</source>
         <translation>Kanál %1</translation>
     </message>
@@ -145,92 +145,92 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>GUIPlayer</name>
     <message>
-        <location filename="../guiplayer.cpp" line="288"/>
+        <location filename="../guiplayer.cpp" line="287"/>
         <source>Please, load a song</source>
         <translation>Nahrajte, prosím, skladbu</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="298"/>
+        <location filename="../guiplayer.cpp" line="297"/>
         <source>Playing</source>
         <translation>Přehrává se</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="307"/>
+        <location filename="../guiplayer.cpp" line="306"/>
         <source>Paused</source>
         <translation>Pozastaveno</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="320"/>
+        <location filename="../guiplayer.cpp" line="319"/>
         <source>Stopped</source>
         <translation>Zastaveno</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="323"/>
+        <location filename="../guiplayer.cpp" line="322"/>
         <source>Not initialized</source>
         <translation>Neinicializováno</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="371"/>
+        <location filename="../guiplayer.cpp" line="370"/>
         <source>Loading %1 file...</source>
         <translation>Nahrává se soubor %1...</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="449"/>
+        <location filename="../guiplayer.cpp" line="453"/>
         <source>file %1 couldn&apos;t be opened</source>
         <translation>Nepodařilo se otevřít soubor %1</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="465"/>
+        <location filename="../guiplayer.cpp" line="469"/>
         <source>Open MIDI File</source>
         <translation>Otevřít soubor MIDI</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="466"/>
+        <location filename="../guiplayer.cpp" line="470"/>
         <source>All files (*.kar *.mid *.midi *.rmi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;RIFF MIDI Files (*.rmi);;Cakewalk files (*.wrk)</source>
         <translation>Všechny soubory (*.kar *.mid *.midi *.wrk);;Soubory Karaoke (*.kar);;Soubory MIDI (*.mid *.midi);;Soubory MIDI RIFF (*.rmi);;Soubory Cakewalk (*.wrk)</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1040"/>
+        <location filename="../guiplayer.cpp" line="1039"/>
         <source>File: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Soubor: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1043"/>
+        <location filename="../guiplayer.cpp" line="1042"/>
         <source>Format: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Formát: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1047"/>
+        <location filename="../guiplayer.cpp" line="1046"/>
         <source>Copyright: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Kopírovací právo: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1051"/>
+        <location filename="../guiplayer.cpp" line="1050"/>
         <source>Karaoke type: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Typ karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1055"/>
+        <location filename="../guiplayer.cpp" line="1054"/>
         <source>Karaoke version: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Verze karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1059"/>
+        <location filename="../guiplayer.cpp" line="1058"/>
         <source>Karaoke info: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Informace o karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1063"/>
+        <location filename="../guiplayer.cpp" line="1062"/>
         <source>Karaoke language: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Jazyk karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1067"/>
+        <location filename="../guiplayer.cpp" line="1066"/>
         <source>Karaoke title: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Název karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1071"/>
+        <location filename="../guiplayer.cpp" line="1070"/>
         <source>Karaoke things: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</source>
         <translation>Věci karaoke: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
@@ -239,42 +239,42 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Všechny soubory (*.kar *.mid *.midi *.wrk);;Soubory Karaoke (*.kar);;Soubory MIDI (*.mid *.midi);;Soubory Cakewalk (*.wrk)</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="698"/>
+        <location filename="../guiplayer.cpp" line="696"/>
         <source>Jump to Bar</source>
         <translation>Skočit na takt</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="699"/>
+        <location filename="../guiplayer.cpp" line="697"/>
         <source>Bar number:</source>
         <translation>Číslo taktu:</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="795"/>
+        <location filename="../guiplayer.cpp" line="794"/>
         <source>Dropped file %1 is not supported</source>
         <translation>Zahozený soubor %1 není podporován</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="990"/>
+        <location filename="../guiplayer.cpp" line="989"/>
         <source>&lt;p&gt;This program is developed and translated thanks to the volunteer work of many people from around the world. If you want to join the team or have any question, please visit the web site at &lt;a href=&apos;http://sourceforge.net/projects/dmidiplayer/&apos;&gt;SourceForge&lt;/a&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;Tento program byl vyvinut a přeložen díky dobrovolnické práci mnoha lidí z celého světa. Pokud se chcete připojit k týmu nebo máte jakékoli dotazy, navštivte internetové stránky na adrese &lt;a href=&apos;http://sourceforge.net/projects/dmidiplayer/&apos;&gt;SourceForge&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="995"/>
+        <location filename="../guiplayer.cpp" line="994"/>
         <source>Translation Information</source>
         <translation>Informace o překladu</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1019"/>
+        <location filename="../guiplayer.cpp" line="1018"/>
         <source>Language Changed</source>
         <translation>Jazyk byl změněn</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1020"/>
+        <location filename="../guiplayer.cpp" line="1019"/>
         <source>The language for this application is going to change to %1. Do you want to continue?</source>
         <translation>Jazyk pro tento program bude změněn na %1. Chcete pokračovat?</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1038"/>
+        <location filename="../guiplayer.cpp" line="1037"/>
         <source>&lt;b&gt;No file loaded&lt;/b&gt;</source>
         <translation>&lt;b&gt;Nenahrán žádný soubor&lt;/b&gt;</translation>
     </message>
@@ -283,14 +283,14 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">&lt;b&gt;Soubor:&lt;/b&gt;&lt;br&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1045"/>
-        <location filename="../guiplayer.cpp" line="1049"/>
-        <location filename="../guiplayer.cpp" line="1053"/>
-        <location filename="../guiplayer.cpp" line="1057"/>
-        <location filename="../guiplayer.cpp" line="1061"/>
-        <location filename="../guiplayer.cpp" line="1065"/>
-        <location filename="../guiplayer.cpp" line="1069"/>
-        <location filename="../guiplayer.cpp" line="1077"/>
+        <location filename="../guiplayer.cpp" line="1044"/>
+        <location filename="../guiplayer.cpp" line="1048"/>
+        <location filename="../guiplayer.cpp" line="1052"/>
+        <location filename="../guiplayer.cpp" line="1056"/>
+        <location filename="../guiplayer.cpp" line="1060"/>
+        <location filename="../guiplayer.cpp" line="1064"/>
+        <location filename="../guiplayer.cpp" line="1068"/>
+        <location filename="../guiplayer.cpp" line="1076"/>
         <source>&lt;br&gt;</source>
         <translation>&lt;br&gt;</translation>
     </message>
@@ -323,17 +323,17 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">&lt;b&gt;Věci karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1078"/>
+        <location filename="../guiplayer.cpp" line="1077"/>
         <source>SMF Information</source>
         <translation>Informace SMF</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1085"/>
+        <location filename="../guiplayer.cpp" line="1084"/>
         <source>Playlist not saved</source>
         <translation>Seznam skladeb není uložen</translation>
     </message>
     <message>
-        <location filename="../guiplayer.cpp" line="1086"/>
+        <location filename="../guiplayer.cpp" line="1085"/>
         <source>The current playlist has changed, but it is not saved. The changes will be lost when closing the program.</source>
         <translation>Nynější seznam skladeb byl změněn, není však uložen. Změny budou při zavření programu ztraceny.</translation>
     </message>
@@ -774,32 +774,32 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>HelpWindow</name>
     <message>
-        <location filename="../helpwindow.cpp" line="53"/>
-        <location filename="../helpwindow.cpp" line="172"/>
+        <location filename="../helpwindow.cpp" line="54"/>
+        <location filename="../helpwindow.cpp" line="162"/>
         <source>&amp;Home</source>
         <translation>&amp;Domů</translation>
     </message>
     <message>
-        <location filename="../helpwindow.cpp" line="54"/>
-        <location filename="../helpwindow.cpp" line="173"/>
+        <location filename="../helpwindow.cpp" line="55"/>
+        <location filename="../helpwindow.cpp" line="163"/>
         <source>&amp;Back</source>
         <translation>&amp;Zpět</translation>
     </message>
     <message>
-        <location filename="../helpwindow.cpp" line="55"/>
-        <location filename="../helpwindow.cpp" line="174"/>
+        <location filename="../helpwindow.cpp" line="56"/>
+        <location filename="../helpwindow.cpp" line="164"/>
         <source>Close</source>
         <translation>Zavřít</translation>
     </message>
     <message>
-        <location filename="../helpwindow.cpp" line="56"/>
-        <location filename="../helpwindow.cpp" line="175"/>
+        <location filename="../helpwindow.cpp" line="57"/>
+        <location filename="../helpwindow.cpp" line="165"/>
         <source>Zoom In</source>
         <translation>Přiblížit</translation>
     </message>
     <message>
-        <location filename="../helpwindow.cpp" line="57"/>
-        <location filename="../helpwindow.cpp" line="176"/>
+        <location filename="../helpwindow.cpp" line="58"/>
+        <location filename="../helpwindow.cpp" line="166"/>
         <source>Zoom Out</source>
         <translation>Oddálit</translation>
     </message>
@@ -1495,62 +1495,62 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Zpěvní text</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="203"/>
+        <location filename="../lyrics.cpp" line="200"/>
         <source>Track:</source>
         <translation>Skladba:</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="204"/>
+        <location filename="../lyrics.cpp" line="201"/>
         <source>Type:</source>
         <translation>Typ:</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="205"/>
+        <location filename="../lyrics.cpp" line="202"/>
         <source>All Types</source>
         <translation>Všechny typy</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="206"/>
+        <location filename="../lyrics.cpp" line="203"/>
         <source>Texts</source>
         <translation>Texty</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="207"/>
+        <location filename="../lyrics.cpp" line="204"/>
         <source>Copyright Notice</source>
         <translation>Oznámení o autorských právech</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="208"/>
+        <location filename="../lyrics.cpp" line="205"/>
         <source>Sequence Name</source>
         <translation>Název sekvence</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="209"/>
+        <location filename="../lyrics.cpp" line="206"/>
         <source>Instrument Name</source>
         <translation>Název nástroje</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="210"/>
+        <location filename="../lyrics.cpp" line="207"/>
         <source>Lyric Events</source>
         <translation>Události zpěvního textu</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="211"/>
+        <location filename="../lyrics.cpp" line="208"/>
         <source>Marker</source>
         <translation>Značka</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="212"/>
+        <location filename="../lyrics.cpp" line="209"/>
         <source>Cue Point</source>
         <translation>Bod značky</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="214"/>
+        <location filename="../lyrics.cpp" line="211"/>
         <source>Encoding:</source>
         <translation>Kódování:</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="215"/>
+        <location filename="../lyrics.cpp" line="212"/>
         <source>Font...</source>
         <translation>Písmo...</translation>
     </message>
@@ -1559,37 +1559,37 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Písmo</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="216"/>
+        <location filename="../lyrics.cpp" line="213"/>
         <source>Full Screen</source>
         <translation>Celá obrazovka</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="217"/>
+        <location filename="../lyrics.cpp" line="214"/>
         <source>Copy to clipboard</source>
         <translation>Kopírovat do schránky</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="218"/>
+        <location filename="../lyrics.cpp" line="215"/>
         <source>Save to file...</source>
         <translation>Uložit do souboru...</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="219"/>
+        <location filename="../lyrics.cpp" line="216"/>
         <source>Print...</source>
         <translation>Tisk...</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="265"/>
+        <location filename="../lyrics.cpp" line="262"/>
         <source>Default (latin1)</source>
         <translation>Výchozí (latin1)</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="275"/>
+        <location filename="../lyrics.cpp" line="272"/>
         <source>All Tracks</source>
         <translation>Všechny skladby</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="280"/>
+        <location filename="../lyrics.cpp" line="277"/>
         <source>Track %1</source>
         <translation>Skladba %1</translation>
     </message>
@@ -1606,32 +1606,32 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../pianola.cpp" line="57"/>
-        <location filename="../pianola.cpp" line="151"/>
+        <location filename="../pianola.cpp" line="150"/>
         <source>Player Piano</source>
         <translation>Klaviatura přehrávače</translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="152"/>
+        <location filename="../pianola.cpp" line="151"/>
         <source>Show all channels</source>
         <translation>Ukázat všechny kanály</translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="153"/>
+        <location filename="../pianola.cpp" line="152"/>
         <source>Hide all channels</source>
         <translation>Skrýt všechny kanály</translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="154"/>
+        <location filename="../pianola.cpp" line="153"/>
         <source>Tighten the number of keys</source>
         <translation>Zmenšit počet kláves</translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="155"/>
+        <location filename="../pianola.cpp" line="154"/>
         <source>View Full Screen</source>
         <translation>Zobrazit na celou obrazovku</translation>
     </message>
     <message>
-        <location filename="../pianola.cpp" line="157"/>
+        <location filename="../pianola.cpp" line="156"/>
         <source>Channel %1</source>
         <translation>Kanál %1</translation>
     </message>
@@ -1734,17 +1734,17 @@ p, li { white-space: pre-wrap; }
         <translation>Obecné</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="157"/>
+        <location filename="../prefsdialog.ui" line="124"/>
         <source>Qt Widgets Style:</source>
         <translation>Styl grafických prvků Qt:</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="150"/>
+        <location filename="../prefsdialog.ui" line="170"/>
         <source>Start Playback Automatically After Loading</source>
         <translation>Zahájit přehrávání automaticky po nahrání</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="64"/>
+        <location filename="../prefsdialog.ui" line="156"/>
         <source>Use Internal Icon Theme</source>
         <translation>Použít vnitřní motiv ikon</translation>
     </message>
@@ -1753,17 +1753,17 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Lepivé přichytávání oken</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="143"/>
+        <location filename="../prefsdialog.ui" line="78"/>
         <source>Forced Dark Mode</source>
         <translation>Vynucený tmavý režim</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="123"/>
+        <location filename="../prefsdialog.ui" line="98"/>
         <source>Percussion MIDI Channel:</source>
         <translation>Kanál MIDI bicích:</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="71"/>
+        <location filename="../prefsdialog.ui" line="68"/>
         <source>MIDI System Exclusive Reset:</source>
         <translation>Obnovení výchozího nastavení MIDI System Exclusive:</translation>
     </message>
@@ -1773,130 +1773,135 @@ p, li { white-space: pre-wrap; }
         <translation>Nastavení</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="41"/>
+        <location filename="../prefsdialog.ui" line="88"/>
         <source>Solo Button % Volume Reduction:</source>
         <translation>Tlačítko sólo % snížení hlasitosti:</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="81"/>
+        <location filename="../prefsdialog.ui" line="41"/>
         <source>Sticky Window Borders</source>
         <translation>Lepivé okraje oken</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="136"/>
+        <location filename="../prefsdialog.ui" line="61"/>
         <source>Advance Automatically to the Next Playlist item</source>
         <translation>Automaticky přejít na další položku seznamu skladeb</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="170"/>
+        <location filename="../prefsdialog.ui" line="34"/>
         <source>Automatically Load and Save Song Settings</source>
         <translation>Automatické nahrávání a ukládání nastavení skladeb</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="178"/>
+        <location filename="../prefsdialog.ui" line="177"/>
+        <source>Keep Snapped Child Windows Together</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../prefsdialog.ui" line="188"/>
         <source>Lyrics</source>
         <translation>Zpěvní text</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="187"/>
-        <location filename="../prefsdialog.ui" line="194"/>
-        <location filename="../prefsdialog.ui" line="228"/>
-        <location filename="../prefsdialog.ui" line="322"/>
-        <location filename="../prefsdialog.ui" line="353"/>
+        <location filename="../prefsdialog.ui" line="197"/>
+        <location filename="../prefsdialog.ui" line="204"/>
+        <location filename="../prefsdialog.ui" line="238"/>
+        <location filename="../prefsdialog.ui" line="332"/>
+        <location filename="../prefsdialog.ui" line="363"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="201"/>
+        <location filename="../prefsdialog.ui" line="211"/>
         <source>Future Text Color</source>
         <translation>Barva budoucího textu</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="218"/>
+        <location filename="../prefsdialog.ui" line="228"/>
         <source>Text Font</source>
         <translation>Písmo textu</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="255"/>
+        <location filename="../prefsdialog.ui" line="265"/>
         <source>Past Text Color</source>
         <translation>Barva minulého textu</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="286"/>
+        <location filename="../prefsdialog.ui" line="296"/>
         <source>Player Piano</source>
         <translation>Klaviatura přehrávače</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="346"/>
+        <location filename="../prefsdialog.ui" line="356"/>
         <source>Single Highlight Color</source>
         <translation>Barva zvýraznění</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="404"/>
+        <location filename="../prefsdialog.ui" line="414"/>
         <source>Octave Subscript Designation</source>
         <translation>Označení indexu oktávy</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="329"/>
+        <location filename="../prefsdialog.ui" line="339"/>
         <source>Note Highlighting</source>
         <translation>Zvýraznění not</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="312"/>
+        <location filename="../prefsdialog.ui" line="322"/>
         <source>Show Note Names</source>
         <translation>Ukázat názvy not</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="363"/>
+        <location filename="../prefsdialog.ui" line="373"/>
         <source>Note Names Font</source>
         <translation>Písmo názvů not</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="397"/>
+        <location filename="../prefsdialog.ui" line="407"/>
         <source>Note Velocity to Color Tint</source>
         <translation>Dynamika MIDI (velocity) noty na barevný odstín</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="374"/>
+        <location filename="../prefsdialog.ui" line="384"/>
         <source>Never</source>
         <translation>Nikdy</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="379"/>
+        <location filename="../prefsdialog.ui" line="389"/>
         <source>Minimal</source>
         <translation>Minimální</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="384"/>
+        <location filename="../prefsdialog.ui" line="394"/>
         <source>When Activated</source>
         <translation>Při zapnutí</translation>
     </message>
     <message>
-        <location filename="../prefsdialog.ui" line="389"/>
+        <location filename="../prefsdialog.ui" line="399"/>
         <source>Always</source>
         <translation>Vždy</translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="57"/>
-        <location filename="../prefsdialog.cpp" line="289"/>
+        <location filename="../prefsdialog.cpp" line="291"/>
         <source>None</source>
         <translation>Žádný</translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="58"/>
-        <location filename="../prefsdialog.cpp" line="290"/>
+        <location filename="../prefsdialog.cpp" line="292"/>
         <source>GM</source>
         <translation>GM</translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="59"/>
-        <location filename="../prefsdialog.cpp" line="291"/>
+        <location filename="../prefsdialog.cpp" line="293"/>
         <source>GS</source>
         <translation>GS</translation>
     </message>
     <message>
         <location filename="../prefsdialog.cpp" line="60"/>
-        <location filename="../prefsdialog.cpp" line="292"/>
+        <location filename="../prefsdialog.cpp" line="294"/>
         <source>XG</source>
         <translation>XG</translation>
     </message>
@@ -1904,7 +1909,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>QCoreApplication</name>
     <message>
-        <location filename="../playermain.cpp" line="30"/>
+        <location filename="../playermain.cpp" line="31"/>
         <source>Copyright (C) 2006-2023 Pedro Lopez-Cabanillas
 This program comes with ABSOLUTELY NO WARRANTY;
 This is free software, and you are welcome to redistribute it
@@ -1916,37 +1921,37 @@ Toto je svobodný software a můžete jej dále šířit
 za určitých podmínek; podrobnosti viz LICENCE.</translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="36"/>
+        <location filename="../playermain.cpp" line="37"/>
         <source>Fatal error from the Operating System. This usually happens when the OS doesn&apos;t have MIDI support, or the MIDI support is not enabled. Please check your OS/MIDI configuration.</source>
         <translation>Závažná chyba operačního systému. K tomu obvykle dochází, když OS nemá podporu MIDI nebo není podpora MIDI povolena. Zkontrolujte nastavení svého OS/MIDI.</translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="68"/>
+        <location filename="../playermain.cpp" line="69"/>
         <source>Portable settings mode.</source>
         <translation>Režim přenositelného nastavení.</translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="69"/>
+        <location filename="../playermain.cpp" line="70"/>
         <source>Portable settings file name.</source>
         <translation>Název souboru přenositelného nastavení.</translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="72"/>
+        <location filename="../playermain.cpp" line="73"/>
         <source>MIDI Out Driver.</source>
         <translation>Ovladač výstupu MIDI.</translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="74"/>
+        <location filename="../playermain.cpp" line="75"/>
         <source>MIDI Out Connection.</source>
         <translation>Spojení výstupu MIDI.</translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="76"/>
+        <location filename="../playermain.cpp" line="77"/>
         <source>Input SMF/KAR/WRK file name.</source>
         <translation>Nzev souboru vstupu SMF/KAR/WRK.</translation>
     </message>
     <message>
-        <location filename="../playermain.cpp" line="110"/>
+        <location filename="../playermain.cpp" line="96"/>
         <source>File not found:</source>
         <translation>Soubor nenalezen:</translation>
     </message>
@@ -1968,19 +1973,27 @@ za určitých podmínek; podrobnosti viz LICENCE.</translation>
 <context>
     <name>Sequence</name>
     <message>
-        <location filename="../sequence.cpp" line="644"/>
+        <location filename="../sequence.cpp" line="658"/>
         <source> in RIFF container of type %1</source>
         <translation> v RIFF kontejneru typu %1</translation>
     </message>
     <message>
-        <location filename="../sequence.cpp" line="707"/>
+        <location filename="../sequence.cpp" line="721"/>
         <source>SMF type %1</source>
         <translation>Typ SMF %1</translation>
     </message>
     <message>
-        <location filename="../sequence.cpp" line="976"/>
+        <location filename="../sequence.cpp" line="990"/>
         <source>WRK file version v%1.%2</source>
         <translation>Verze souboru WRK v%1.%2</translation>
+    </message>
+</context>
+<context>
+    <name>SequencePlayer</name>
+    <message>
+        <location filename="../seqplayer.cpp" line="400"/>
+        <source>Warning, this file may be non-standard or damaged.&lt;br/&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

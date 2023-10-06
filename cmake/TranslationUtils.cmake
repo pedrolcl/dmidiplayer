@@ -33,7 +33,15 @@ if (NOT TARGET Qt${QT_VERSION_MAJOR}::lconvert)
     message(FATAL_ERROR "The package \"Qt${QT_VERSION_MAJOR}LinguistTools\" is required.")
 endif()
 
-set(Qt_LCONVERT_EXECUTABLE Qt${QT_VERSION_MAJOR}::lconvert)
+if (NOT Qt_LCONVERT_EXECUTABLE)
+    set(Qt_LCONVERT_EXECUTABLE Qt${QT_VERSION_MAJOR}::lconvert)
+    #message("lconvert: ${Qt_LCONVERT_EXECUTABLE}")
+endif()
+
+if (NOT Qt_LUPDATE_EXECUTABLE)
+    set(Qt_LUPDATE_EXECUTABLE Qt${QT_VERSION_MAJOR}::lupdate)
+    #message("lupdate: ${Qt_LUPDATE_EXECUTABLE}")
+endif()
 
 function(ADD_APP_TRANSLATIONS_RESOURCE res_file)
     set(_qm_files ${ARGN})
@@ -109,7 +117,7 @@ endfunction()
 
 file(GLOB TRANSLATION_FILES ${PROJECT_SOURCE_DIR}/translations/*.ts)
 add_custom_target(lupdate
-    COMMAND ${Qt${QT_VERSION_MAJOR}_LUPDATE_EXECUTABLE} -recursive ${PROJECT_SOURCE_DIR} -ts ${TRANSLATION_FILES}
+    COMMAND ${Qt_LUPDATE_EXECUTABLE} -recursive ${PROJECT_SOURCE_DIR} -ts ${TRANSLATION_FILES}
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
     COMMENT "Updating translations"
     VERBATIM
