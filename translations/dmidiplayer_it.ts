@@ -1720,7 +1720,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="177"/>
         <source>Keep Snapped Child Windows Together</source>
-        <translation type="unfinished"></translation>
+        <translation>Mantieni insieme le finestre agganciate</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="188"/>
@@ -1917,7 +1917,7 @@ sotto certe condizioni; vedere il file LICENSE per i dettagli.</translation>
     <message>
         <location filename="../seqplayer.cpp" line="400"/>
         <source>Warning, this file may be non-standard or damaged.&lt;br/&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Attenzione. questo file può essere non-standard o danneggiato.&lt;br/&gt;</translation>
     </message>
 </context>
 <context>
