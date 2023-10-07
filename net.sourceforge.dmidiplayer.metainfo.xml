@@ -30,177 +30,20 @@
         </screenshot>
     </screenshots>
     <releases>
-        <release version="1.7.2" date="2023-07-08">
-            <description>
-                <p>This release includes the following changes</p>
-                <ul>
-                    <li>Fixed SF ticket #17: splash screen removed.</li>
-                    <li>Fixed GH ticket #9: retain Locked Patches when replaying Midi File.</li>
-                    <li>Fixed GH ticket #8: crash when loading a song from File->Open Recent Files.</li>
-                    <li>Fixed GH ticket #7: detect default language setting.</li>
-                    <li>Upgraded: uchardet v0.0.8.</li>
-                    <li>Upgraded: drumstick-2.8.</li>
-                </ul>
-            </description>
-            <url>https://sourceforge.net/p/dmidiplayer/blog/2022/12/drumstick-multiplatform-midi-file-player-171-released/</url>
-        </release>
-        <release version="1.7.1" date="2022-12-06">
-            <description>
-                <p>This release includes the following changes</p>
-                <ul>
-                    <li>Splash screen excluded in Wayland and fixed in other systems.</li>
-                    <li>Italian translation updated. Thanks to Giovanni Mariani.</li>
-                </ul>
-            </description>
-            <url>https://sourceforge.net/p/dmidiplayer/blog/2022/12/drumstick-multiplatform-midi-file-player-171-released/</url>
-        </release>
-        <release version="1.7.0" date="2022-08-07">
-            <description>
-                <p>This release includes the following changes</p>
-                <ul>
-                    <li>Persistent song configuration. Stored song settings like volume, pitch, tempo, text encoding and channel settings into song  configuration files, either automatically or when requested explicitly.</li>
-                    <li>MIDI Mixer: channel volumes can be adjusted individually.</li>
-                    <li>New MIDI file online search link in the Help menu.</li>
-                    <li>Other minor features: octave subscript designation, new in Drumstick v2.7.0.</li>
-                    <li>Requires: drumstick-2.7.</li>
-                </ul>
-            </description>
-            <url>https://sourceforge.net/p/dmidiplayer/blog/2022/05/drumstick-multiplatform-midi-file-player-170-released/</url>
-        </release>
-        <release version="1.6.0" date="2022-05-15">
-            <description>
-                <p>Release dedicated to the Galician Literature Day.</p>
-                <p>Includes the following changes</p>
-                <ul>
-                    <li>New Galician translation and help page.</li>
-                    <li>New sample song: Negra Sombra.</li>
-                    <li>New Splash screen during May for Galician language users.</li>
-                    <li>Frameless tool windows (channels, player piano, lyrics, help).</li>
-                    <li>Requires: drumstick-2.6.</li>
-                </ul>
-            </description>
-            <url>https://sourceforge.net/p/dmidiplayer/blog/2022/05/drumstick-multiplatform-midi-file-player-160-released/</url>
-        </release>
-        <release version="1.5.3" date="2021-12-22">
-            <description>
-                <p>This release includes the following changes</p>
-                <ul>
-                    <li>After drumstick ticket #37: WRK format markers are supported.</li>
-                    <li>Replaced deprecated signals from drumstick-file when building with Qt6.</li>
-                    <li>Requires: drumstick-2.5.</li>
-                </ul>
-            </description>
-        </release>
-        <release version="1.5.2" date="2021-10-24">
-            <description>
-                <p>This release includes the following fixes and features</p>
-                <ul>
-                    <li>New build option USE_QT to choose among Qt major versions (5 or 6). By default (if not set) it uses whatever is found.</li>
-                    <li>Fix for crash in Linux when using the MIDI connections dialog, and there are not suitable MIDI ports available.</li>
-                    <li>Czech translation updated. Thanks to Pavel Fric.</li>
-                </ul>
-            </description>
-        </release>
-        <release version="1.5.1" date="2021-09-19">
-            <description>
-                <p>This release fixes the following issues:</p>
-                <ul>
-                    <li>GH ticket #6: The dependency target "update_helpfiles" of target "dmidiplayer" does not exist</li>
-                    <li>Error checking for DwmGetWindowAttribute() call. This caused a problem in Windows 7 running the "Windows Classic" theme</li>
-                    <li>Support for RIFF MIDI files, provided by Drumstick 2.4.0</li>
-                </ul>
-            </description>
-        </release>
-        <release version="1.5.0" date="2021-08-22">
-            <description>
-                <p>This release implements the following new features:</p>
-                <ul>
-                    <li>ticket #3: Song loop between bars</li>
-                    <li>ticket #7: Help window and user documentation</li>
-                    <li>ticket #10: Splash window</li>
-                    <li>ticket #11: Winsnap enable/disable</li>
-                    <li>More than one file in the command line, or dragged from a file manager</li>
-                    <li>Some rough edges softened</li>
-                    <li>Czech translation updated, thanks to Pavel Fric</li>
-                    <li>Italian help document translation, thanks to Giovanni Mariani</li>
-                </ul>
-            </description>
-            <url>https://sourceforge.net/p/dmidiplayer/blog/2021/08/drumstick-multiplatform-midi-file-player-150-released/</url>
-        </release>
-        <release version="1.4.0" date="2021-06-29">
-            <description>
-                <p>This release implements the following new features:</p>
-                <ul>
-                    <li>ticket #1: Playback Positioning
-                        <ul>
-                            <li>Replaced the progress bar by a slider, so the user can change the play position</li>
-                            <li>Added forward/backward actions to advance or go back one bar</li>
-                            <li>Added a Jump action to move the play position to some arbitrary bar</li>
-                        </ul>
-                    </li>
-                    <li>ticket #2: Playlist Repetition Options: Nothing, Last Song, Whole Playlist</li>
-                    <li>ticket #8: (Lyrics text) Copy to clipboard, Save to File, Print</li>
-                    <li>ticket #9: (after Drumstick ticket #31) Fallback Output Drivers</li>
-                    <li>Playlist Function Shuffle</li>
-                    <li>Toolbar Buttons Customizing Dialog</li>
-                </ul>
-            </description>
-            <url>https://sourceforge.net/p/dmidiplayer/blog/2021/06/drumstick-multiplatform-midi-file-player-140-released/</url>
-        </release>
-        <release version="1.3.1" date="2021-05-31">
-            <description>
-                <p>This release fixes the following tickets:</p>
-                <ul>
-                    <li>#4: crash if user tries to close the program's main window while playing</li>
-                    <li>#6: man page added</li>
-                    <li>Warn the user when the playlist has changed but not saved</li>
-                    <li>New setting for playlist auto advance</li>
-                </ul>
-            </description>
-            <url>https://sourceforge.net/p/dmidiplayer/blog/2021/05/drumstick-multiplatform-midi-file-player-131-released/</url>
-        </release>
-        <release version="1.3.0" date="2021-05-11">
-            <description>
-                <p>This release stabilizes the overall performance and implements some new features:</p>
-                <ul>
-                    <li>Playlist editor dialog, and previous/next song navigation</li>
-                    <li>Samples: several free MIDI/Karaoke classic pieces</li>
-                    <li>Preferences dialog with some General, Lyrics and Piano Player specific options</li>
-                    <li>Full screen option on Lyrics and Piano Player windows</li>
-                    <li>Better support for WRK files with lyrics and other metadata</li>
-                    <li>MIDI texts/lyrics encoding defaults to Latin1</li>
-                    <li>KeySignature MIDI meta-event processed</li>
-                    <li>Czech translation, thanks to Pavel Fric</li>
-                </ul>
-            </description>
-            <url>https://sourceforge.net/p/dmidiplayer/blog/2021/05/drumstick-midi-file-player---multiplatform-130-released/</url>
-        </release>
-        <release version="1.2.0" date="2021-03-31">
-            <description>
-                <p>This release implements the following new features:</p>
-                <ul>
-                    <li>Lyrics (Karaoke) view</li>
-                    <li>Character encoding detection</li>
-                    <li>File Info (metadata) dialog</li>
-                </ul>
-            </description>
-            <url>https://sourceforge.net/p/dmidiplayer/blog/2021/03/drumstick-midi-file-player---multiplatform-120-released/</url>
-        </release>
-        <release version="1.1.0" date="2021-03-20">
-            <description>
-                <p>This release implements the following new features:</p>
-                <ul>
-                    <li>Pianola, Channels and Rhythm views</li>
-                    <li>Sticky Window Snapping (Windows OS only)</li>
-                    <li>Russian translation (Thanks to Sergey Basalaev)</li>
-                    <li>Spanish translation updated</li>
-                    <li>Recent files menu options</li>
-                    <li>Language choice menu options</li>
-                    <li>Command line options: --portable and --file (for portable configuration)</li>
-                </ul>
-            </description>
-            <url>https://sourceforge.net/p/dmidiplayer/blog/2021/03/drumstick-midi-file-player---multiplatform-110-released/</url>
-        </release>
+        <release version="1.7.3" date="2023-10-12" />
+        <release version="1.7.2" date="2023-07-08" />
+        <release version="1.7.1" date="2022-12-06" />
+        <release version="1.7.0" date="2022-08-07" />
+        <release version="1.6.0" date="2022-05-15" />
+        <release version="1.5.3" date="2021-12-22" />
+        <release version="1.5.2" date="2021-10-24" />
+        <release version="1.5.1" date="2021-09-19" />
+        <release version="1.5.0" date="2021-08-22" />
+        <release version="1.4.0" date="2021-06-29" />
+        <release version="1.3.1" date="2021-05-31" />
+        <release version="1.3.0" date="2021-05-11" />
+        <release version="1.2.0" date="2021-03-31" />
+        <release version="1.1.0" date="2021-03-20" />
         <release version="1.0.0" date="2021-02-02" />
     </releases>
 </component>
