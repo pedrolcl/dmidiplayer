@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.0" language="cs_CZ">
 <context>
     <name>About</name>
     <message>
@@ -236,7 +236,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>All files (*.kar *.mid *.midi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;Cakewalk files (*.wrk)</source>
-        <translation type="vanished">Všechny soubory (*.kar *.mid *.midi *.wrk);;Soubory Karaoke (*.kar);;Soubory MIDI (*.mid *.midi);;Soubory Cakewalk (*.wrk)</translation>
+        <translation>Všechny soubory (*.kar *.mid *.midi *.wrk);;Soubory Karaoke (*.kar);;Soubory MIDI (*.mid *.midi);;Soubory Cakewalk (*.wrk)</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="696"/>
@@ -280,7 +280,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&lt;b&gt;File:&lt;/b&gt;&lt;br&gt;%1&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;Soubor:&lt;/b&gt;&lt;br&gt;%1&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Soubor:&lt;/b&gt;&lt;br&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1044"/>
@@ -296,31 +296,31 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&lt;b&gt;Copyright:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;Kopírovací právo:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Kopírovací právo:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke type:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;Typ karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Typ karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke version:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;Verze karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Verze karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke info:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;Informace o karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Informace o karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke language:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;Jazyk karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Jazyk karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke title:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;Název karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Název karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke things:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;Věci karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Věci karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1077"/>
@@ -402,7 +402,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Playback progress</source>
-        <translation type="vanished">Postup přehrávání</translation>
+        <translation>Postup přehrávání</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="168"/>
@@ -516,7 +516,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Pause the playback</source>
-        <translation type="vanished">Pozastavit přehrávání</translation>
+        <translation>Pozastavit přehrávání</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="508"/>
@@ -525,7 +525,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Stop the playback</source>
-        <translation type="vanished">Zastavit přehrávání</translation>
+        <translation>Zastavit přehrávání</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="497"/>
@@ -805,7 +805,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Help: %1</source>
-        <translation type="vanished">Nápověda: %1</translation>
+        <translation>Nápověda: %1</translation>
     </message>
 </context>
 <context>
@@ -1488,11 +1488,11 @@ p, li { white-space: pre-wrap; }
     <name>Lyrics</name>
     <message>
         <source>Lyrics Viewer</source>
-        <translation type="vanished">Prohlížeč zpěvního textu</translation>
+        <translation>Prohlížeč zpěvního textu</translation>
     </message>
     <message>
         <source>Lyrics</source>
-        <translation type="vanished">Zpěvní text</translation>
+        <translation>Zpěvní text</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="200"/>
@@ -1556,7 +1556,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Font</source>
-        <translation type="vanished">Písmo</translation>
+        <translation>Písmo</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="213"/>
@@ -1595,14 +1595,14 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Lyrics Viewer (%1)</source>
-        <translation type="vanished">Prohlížeč zpěvního textu (%1)</translation>
+        <translation>Prohlížeč zpěvního textu (%1)</translation>
     </message>
 </context>
 <context>
     <name>Pianola</name>
     <message>
         <source>MIDI Channels</source>
-        <translation type="vanished">Kanály MIDI</translation>
+        <translation>Kanály MIDI</translation>
     </message>
     <message>
         <location filename="../pianola.cpp" line="57"/>
@@ -1726,7 +1726,7 @@ p, li { white-space: pre-wrap; }
     <name>PrefsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation type="vanished">Dialog</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="28"/>
@@ -1750,7 +1750,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Sticky Window Snapping</source>
-        <translation type="vanished">Lepivé přichytávání oken</translation>
+        <translation>Lepivé přichytávání oken</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="78"/>
@@ -1795,7 +1795,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="177"/>
         <source>Keep Snapped Child Windows Together</source>
-        <translation type="unfinished"></translation>
+        <translation>Udržovat přichycená podřízená okna pohromadě</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="188"/>
@@ -1993,14 +1993,14 @@ za určitých podmínek; podrobnosti viz LICENCE.</translation>
     <message>
         <location filename="../seqplayer.cpp" line="400"/>
         <source>Warning, this file may be non-standard or damaged.&lt;br/&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozor, tento soubor může být nestandardní nebo poškozený.&lt;br/&gt;</translation>
     </message>
 </context>
 <context>
     <name>ToolBarEditDialog</name>
     <message>
         <source>Dialog</source>
-        <translation type="vanished">Dialog</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="14"/>
