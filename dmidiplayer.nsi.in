@@ -167,6 +167,7 @@ Section -Main SEC0000
     File ${SOURCE_FILES}\examples\mozart_diesirae.mid
     File ${SOURCE_FILES}\examples\mozart_konigdernacht.mid
     File ${SOURCE_FILES}\examples\schubert_avemaria.mid
+    File ${SOURCE_FILES}\examples\Schubert_Standchen.mid
     File ${SOURCE_FILES}\examples\test.mid
     File ${SOURCE_FILES}\examples\Negra_Sombra.kar
     SetOutPath $INSTDIR\translations
@@ -306,6 +307,7 @@ Section /o -un.Main UNSEC0000
     Delete /REBOOTOK $INSTDIR\mozart_diesirae.mid
     Delete /REBOOTOK $INSTDIR\mozart_konigdernacht.mid
     Delete /REBOOTOK $INSTDIR\schubert_avemaria.mid
+    Delete /REBOOTOK $INSTDIR\Schubert_Standchen.mid
     Delete /REBOOTOK $INSTDIR\test.mid
     Delete /REBOOTOK $INSTDIR\Negra_Sombra.kar
 
