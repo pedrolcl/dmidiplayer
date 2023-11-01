@@ -19,13 +19,14 @@
 #ifndef HELPWINDOW_H
 #define HELPWINDOW_H
 
-#include <QMainWindow>
-#include <QTextBrowser>
-#include <QPushButton>
-#include <QCloseEvent>
 #include <QByteArray>
-#include <QString>
+#include <QCloseEvent>
 #include <QLabel>
+#include <QMainWindow>
+#include <QPushButton>
+#include <QString>
+#include <QTextBrowser>
+#include <mutex>
 
 #include "framelesswindow.h"
 
@@ -54,6 +55,7 @@ private:
     QAction *m_close;
     QAction *m_zoomIn;
     QAction *m_zoomOut;
+    std::once_flag m_firstTime;
 };
 
 #endif // HELPWINDOW_H

@@ -17,13 +17,13 @@
 cmake_minimum_required(VERSION 3.14)
 
 project ( dmidiplayer
-    VERSION 1.7.3
+    VERSION 1.7.4
     LANGUAGES CXX
     DESCRIPTION "Drumstick MIDI File Player Multiplatform Program"
     HOMEPAGE_URL "https://sourceforge.net/p/dmidiplayer/"
 )
 
-set(PROJECT_RELEASE_DATE "October 12, 2023")
+#set(PROJECT_RELEASE_DATE "October 12, 2023")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)

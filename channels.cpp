@@ -454,12 +454,8 @@ void Channels::allNotesOff()
 
 void Channels::showEvent(QShowEvent *event)
 {
-    static bool firstTime = true;
     QMainWindow::showEvent(event);
-    if (firstTime) {
-        readSettings();
-        firstTime = false;
-    }
+    std::call_once(m_firstTime, &Channels::readSettings, this);
 }
 
 void Channels::setChannelName(int channel, const QString& name)
