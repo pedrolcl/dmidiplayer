@@ -21,6 +21,7 @@
 
 #include <QMainWindow>
 #include <drumstick/rtmidioutput.h>
+#include <mutex>
 
 #include "framelesswindow.h"
 
@@ -84,6 +85,7 @@ private:
     bool m_tightenKeys;
     int m_lowerNote;
     int m_upperNote;
+    std::once_flag m_firstTime;
 };
 
 #endif /* PIANOLA_H */

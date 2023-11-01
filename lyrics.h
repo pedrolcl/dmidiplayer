@@ -20,9 +20,11 @@
 #define LYRICS_H
 
 #include <QMainWindow>
-#include <QObject>
 #include <QMap>
+#include <QObject>
 #include <QTextCodec>
+#include <mutex>
+
 #include "framelesswindow.h"
 
 class QGridLayout;
@@ -92,6 +94,7 @@ private: // member vars
     QTextEdit *m_textViewer;
     QMenu *m_chmenu;
     QMap<int,int> m_textPos;
+    std::once_flag m_firstTime;
 };
 
 #endif // LYRICS_H

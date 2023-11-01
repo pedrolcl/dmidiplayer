@@ -218,12 +218,8 @@ void Lyrics::retranslateUi()
 
 void Lyrics::showEvent(QShowEvent *event)
 {
-    static bool firstTime = true;
     QMainWindow::showEvent(event);
-    if (firstTime) {
-        readSettings();
-        firstTime = false;
-    }
+    std::call_once(m_firstTime, &Lyrics::readSettings, this);
 }
 
 void Lyrics::closeEvent(QCloseEvent *event)

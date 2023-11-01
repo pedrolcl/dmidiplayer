@@ -21,8 +21,10 @@
 
 #include <QMainWindow>
 #include <drumstick/rtmidioutput.h>
-#include "instrumentset.h"
+#include <mutex>
+
 #include "framelesswindow.h"
+#include "instrumentset.h"
 
 class QLabel;
 class QToolButton;
@@ -126,6 +128,7 @@ private:
     QLineEdit* m_name[drumstick::rt::MIDI_STD_CHANNELS];
     QSlider* m_slider[drumstick::rt::MIDI_STD_CHANNELS];
     Sequence *m_song;
+    std::once_flag m_firstTime;
 };
 
 #endif /* CHANNELS_H */

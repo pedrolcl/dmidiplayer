@@ -318,11 +318,9 @@ void Pianola::playNoteOff(int note, int vel)
 
 void Pianola::showEvent( QShowEvent *event )
 {
-    static bool firstTime = true;
     QMainWindow::showEvent(event);
-    if (firstTime) {
+    std::call_once(m_firstTime, [=]() {
         readSettings();
-        firstTime = false;
         for (int i = 0; i < MIDI_STD_CHANNELS; ++i ) {
             if (m_action[i]->isChecked())
                 return;
@@ -334,7 +332,7 @@ void Pianola::showEvent( QShowEvent *event )
                 return;
             }
         }
-    }
+    });
 }
 
 void Pianola::slotShowAllChannels()
