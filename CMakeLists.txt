@@ -1,20 +1,22 @@
-# Drumstick MIDI File Player Multiplatform Program
-# Copyright (C) 2006-2023 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net>
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#[==========================================================================[
+Drumstick MIDI File Player Multiplatform Program
+Copyright (C) 2006-2023 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net>
 
-cmake_minimum_required(VERSION 3.14)
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+#]==========================================================================]
+
+cmake_minimum_required(VERSION 3.16)
 
 project ( dmidiplayer
     VERSION 1.7.4
@@ -35,17 +37,14 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 option(BUILD_DOCS "Process Markdown sources of man pages and help files" ON)
 option(EMBED_TRANSLATIONS "Embed translations instead of installing" OFF)
-option(USE_QT "Choose which Qt major version (5 or 6) to prefer. By default uses whatever is found")
+option(USE_QT5 "Choose to build with Qt5 instead of Qt6" OFF)
 
 include(SCMRevision)
 
-if (USE_QT)
-    if (NOT (USE_QT EQUAL 5 OR USE_QT EQUAL 6))
-        message(FATAL_ERROR "Wrong Qt major version. Only 5 and 6 are valid options")
-    endif()
-    find_package( QT NAMES Qt${USE_QT} )
+if (USE_QT5)
+    find_package( QT NAMES Qt5 REQUIRED)
 else()
-    find_package( QT NAMES Qt5 Qt6 )
+    find_package( QT NAMES Qt6 REQUIRED)
 endif()
 
 if(QT_VERSION VERSION_LESS 6.0.0)
@@ -54,7 +53,7 @@ else()
     find_package ( Qt6 6.2 COMPONENTS Gui Widgets PrintSupport LinguistTools Core5Compat REQUIRED )
 endif()
 
-find_package ( Drumstick 2.8 COMPONENTS File RT Widgets REQUIRED )
+find_package ( Drumstick 2.9 COMPONENTS File RT Widgets REQUIRED )
 find_package ( uchardet 0.0.8 COMPONENTS libuchardet REQUIRED )
 
 SET(SOURCES
