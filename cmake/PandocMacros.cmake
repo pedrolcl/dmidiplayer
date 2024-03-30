@@ -48,7 +48,7 @@ if (EXISTS ${PANDOC_EXECUTABLE})
         if (NOT PROJECT_RELEASE_DATE)
             unset(_date)
             execute_process (
-                COMMAND bash -c "LANG=C;date +'%B %d, %Y'"
+                COMMAND bash -c "LANG=en;date +'%B %d, %Y'"
                 OUTPUT_VARIABLE _date
                 OUTPUT_STRIP_TRAILING_WHITESPACE
             )
