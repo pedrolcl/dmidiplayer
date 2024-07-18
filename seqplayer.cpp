@@ -318,7 +318,9 @@ void SequencePlayer::playerLoop()
                 m_songPosition += deltaTime.count();
                 currentTime = Clock::now();
                 emit songEchoTime(m_songPosition, ev->tick());
-                //qDebug() << "echo:" << m_songPosition << ev->tick() << deltaTime.count();
+                if (ev->isChannel() && ev->status() == MIDI_STATUS_CONTROLCHANGE) {
+                    qDebug() << "echo:" << m_songPosition << ev->tick() << deltaTime.count();
+                }
             }
             playEvent(ev);
         }

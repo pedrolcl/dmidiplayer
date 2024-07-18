@@ -260,14 +260,14 @@ static inline bool eventLessThan(const MIDIEvent* s1, const MIDIEvent *s2)
 
 void Sequence::sort()
 {
-    //qDebug() << Q_FUNC_INFO;
+    qDebug() << Q_FUNC_INFO;
     std::stable_sort(m_list.begin(), m_list.end(), eventLessThan);
     // Calculate deltas
     long lastEventTicks = 0;
     foreach(MIDIEvent* ev, m_list) {
         ev->setDelta(ev->tick() - lastEventTicks);
         lastEventTicks = ev->tick();
-        //qDebug() << typeid (*ev).name() << ev->tick() << ev->delta();
+        qDebug() << typeid(*ev).name() << ev->tick() << ev->delta();
     }
 }
 

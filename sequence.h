@@ -253,8 +253,18 @@ private: // members
     QList<TimeSigRec> m_bars;
 
     struct TextRec {
-        TextRec(QByteArray data): m_tick(0), m_track(0), m_type(TextType::None), m_text(data) { };
-        TextRec(int tick, int track, TextType e, QByteArray data): m_tick(tick), m_track(track), m_type(e), m_text(data) { };
+        TextRec(QByteArray data)
+            : m_tick(0)
+            , m_track(0)
+            , m_type(TextType::None)
+            , m_text(data)
+        {}
+        TextRec(int tick, int track, TextType e, QByteArray data)
+            : m_tick(tick)
+            , m_track(track)
+            , m_type(e)
+            , m_text(data)
+        {}
         int m_tick;
         int m_track;
         TextType m_type;

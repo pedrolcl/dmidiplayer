@@ -263,3 +263,19 @@ BeatEvent::BeatEvent(const int bar, const int beat, const int max)
     : MIDIEvent(), m_bar(bar), m_beat(beat), m_max(max)
 { }
 
+#ifndef QT_NO_QDEBUG
+void NoteOnEvent::dump() {}
+void NoteOffEvent::dump() {}
+void KeyPressEvent::dump() {}
+void ControllerEvent::dump() {}
+void ProgramChangeEvent::dump() {}
+void PitchBendEvent::dump() {}
+void ChanPressEvent::dump() {}
+void SysExEvent::dump() {}
+void TextEvent::dump() {}
+void SystemEvent::dump() {}
+void TempoEvent::dump() {}
+void TimeSignatureEvent::dump() {}
+void KeySignatureEvent::dump() {}
+void BeatEvent::dump() {}
+#endif

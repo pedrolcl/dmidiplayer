@@ -584,7 +584,7 @@ void GUIPlayer::playerFinished()
 
 void GUIPlayer::playerStopped()
 {
-    //qDebug() << Q_FUNC_INFO;
+    qDebug() << Q_FUNC_INFO;
     m_playerThread.wait();
     m_player->allNotesOff();
     if (m_pianola != nullptr) {
