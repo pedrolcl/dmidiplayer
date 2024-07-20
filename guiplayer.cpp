@@ -819,6 +819,7 @@ void GUIPlayer::connectOutput(const QString &driver, const QString &connection)
 
 void GUIPlayer::closeEvent( QCloseEvent *event )
 {
+    stop();
     Settings::instance()->setShowStatusBar(m_ui->actionShowStatusbar->isChecked());
     Settings::instance()->setShowToolBar(m_ui->actionShowToolbar->isChecked());
     Settings::instance()->setMainWindowGeometry(saveGeometry());
