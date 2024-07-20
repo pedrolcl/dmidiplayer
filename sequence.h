@@ -121,6 +121,10 @@ public:
     QString loadingErrors() const;
     int errorsCount() const;
 
+#ifndef QT_NO_DEBUG
+    void dump();
+#endif
+
 signals:
     void loadingStart(int size);
     void loadingProgress(int pos);

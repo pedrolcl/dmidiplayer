@@ -16,10 +16,12 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QtMath>
 #include <QDebug>
 #include <QFileInfo>
 #include <QRegularExpression>
+#include <QtMath>
+#include <iostream>
+
 #include "sequence.h"
 
 using namespace drumstick::File;
@@ -260,14 +262,12 @@ static inline bool eventLessThan(const MIDIEvent* s1, const MIDIEvent *s2)
 
 void Sequence::sort()
 {
-    qDebug() << Q_FUNC_INFO;
     std::stable_sort(m_list.begin(), m_list.end(), eventLessThan);
     // Calculate deltas
     long lastEventTicks = 0;
     foreach(MIDIEvent* ev, m_list) {
         ev->setDelta(ev->tick() - lastEventTicks);
         lastEventTicks = ev->tick();
-        qDebug() << typeid(*ev).name() << ev->tick() << ev->delta();
     }
 }
 
@@ -418,6 +418,16 @@ int Sequence::errorsCount() const
 {
     return m_loadingErrors.size();
 }
+
+#ifndef QT_NO_QDEBUG
+void Sequence::dump()
+{
+    std::cout << "Delta_Time Event_________________ Ch _Data__" << std::endl;
+    foreach (auto ev, m_list) {
+        ev->dump();
+    }
+}
+#endif
 
 QTextCodec *Sequence::codec() const
 {

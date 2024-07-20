@@ -403,6 +403,9 @@ void SequencePlayer::loadFile(QString fileName)
         loadingMessages.append(m_song.loadingErrors());
         QMessageBox::warning(QApplication::activeWindow(), Settings::QSTR_APPNAME, loadingMessages);
     }
+#ifndef QT_NO_QDEBUG
+    m_song.dump();
+#endif
 }
 
 void SequencePlayer::pause()

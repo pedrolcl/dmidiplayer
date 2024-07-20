@@ -57,7 +57,8 @@ public:
     virtual bool isChannel() { return false; }
     virtual bool isMetaEvent() { return false; }
 #ifndef QT_NO_QDEBUG
-    virtual void dump() {}
+    virtual void dumpTime();
+    virtual void dump();
 #endif
 
 protected:
