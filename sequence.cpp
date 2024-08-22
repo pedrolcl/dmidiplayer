@@ -25,30 +25,31 @@
 using namespace drumstick::File;
 using namespace drumstick::rt;
 
-Sequence::Sequence(QObject *parent) : QObject(parent),
-    m_rmid(nullptr),
-    m_smf(nullptr),
-    m_wrk(nullptr),
-    m_uchardetErrors(0),
-    m_format(0),
-    m_numTracks(0),
-    m_ticksDuration(0),
-    m_division(-1),
-    m_pos(0),
-    m_curTrack(-1),
-    m_beatMax(0),
-    m_barCount(0),
-    m_beatCount(0),
-    m_lowestMidiNote(127),
-    m_highestMidiNote(0),
-    m_tempo(500000.0),
-    m_tempoFactor(1.0),
-    m_ticks2millis(0),
-    m_duration(0),
-    m_lastBeat(0),
-    m_beatLength(0),
-    m_tick(0),
-    m_codec(nullptr)
+Sequence::Sequence(QObject *parent)
+    : QObject(parent)
+    , m_rmid(nullptr)
+    , m_smf(nullptr)
+    , m_wrk(nullptr)
+    , m_uchardetErrors(0)
+    , m_format(0)
+    , m_numTracks(0)
+    , m_ticksDuration(0)
+    , m_division(-1)
+    , m_pos(0)
+    , m_curTrack(-1)
+    , m_beatMax(0)
+    , m_barCount(0)
+    , m_beatCount(0)
+    , m_lowestMidiNote(127)
+    , m_highestMidiNote(0)
+    , m_tempo(500000.0)
+    , m_tempoFactor(1.0)
+    , m_ticks2micros(0)
+    , m_duration(0)
+    , m_lastBeat(0)
+    , m_beatLength(0)
+    , m_tick(0)
+    , m_codec(nullptr)
 {
     m_rmid = new Rmidi(this);
     connect(m_rmid, &Rmidi::signalRiffData, this, &Sequence::dataHandler);
@@ -530,8 +531,9 @@ int Sequence::trackChannel(int track) const
 
 void Sequence::timeCalculations()
 {
-    m_ticks2millis = m_tempo / (1000.0 * m_division * m_tempoFactor);
-    //qDebug() << Q_FUNC_INFO << "tempo:" << m_tempo << "div:" << m_division << "ticks2millis:" << m_ticks2millis;
+    m_ticks2micros = m_tempo / (m_division * m_tempoFactor);
+    // qDebug() << Q_FUNC_INFO << "tempo:" << m_tempo << "div:" << m_division
+    //          << "ticks2micros:" << m_ticks2micros;
 }
 
 qreal Sequence::tempoFactor() const
@@ -557,14 +559,19 @@ MIDIEvent *Sequence::nextEvent()
     return 0;
 }
 
-std::chrono::milliseconds Sequence::deltaTimeOfEvent(MIDIEvent *ev) const
+std::chrono::microseconds Sequence::timeOfEvent(MIDIEvent *ev) const
 {
-    return std::chrono::milliseconds(std::lround(ev->delta() * m_ticks2millis));
+    return std::chrono::microseconds(static_cast<long>(ev->tick() * m_ticks2micros));
 }
 
-std::chrono::milliseconds Sequence::timeOfTicks(const int ticks) const
+std::chrono::microseconds Sequence::deltaTimeOfEvent(MIDIEvent *ev) const
 {
-    return std::chrono::milliseconds(std::lround(ticks * m_ticks2millis));
+    return std::chrono::microseconds(static_cast<long>(ev->delta() * m_ticks2micros));
+}
+
+std::chrono::microseconds Sequence::timeOfTicks(const int ticks) const
+{
+    return std::chrono::microseconds(static_cast<long>(ticks * m_ticks2micros));
 }
 
 bool Sequence::hasMoreEvents()
@@ -584,22 +591,6 @@ void Sequence::setTickPosition(long tick) {
             m_pos = i > 0 ? i -1 : 0;
             return;
         }
-    }
-    m_pos = m_list.count() -1 ;
-}
-
-void Sequence::setTimePosition(long time) {
-    long lastTime = 0;
-    for(int i=0; i<m_list.count(); ++i) {
-        MIDIEvent* ev = m_list[i];
-        long deltaTicks = ev->delta();
-        long deltaMillis = std::lround(m_ticks2millis * deltaTicks);
-        long eventMillis = lastTime + deltaMillis;
-        if (eventMillis > time) {
-            m_pos = i > 0 ? i -1 : 0;
-            return;
-        }
-        lastTime = eventMillis;
     }
     m_pos = m_list.count() -1 ;
 }

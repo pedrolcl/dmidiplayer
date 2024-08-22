@@ -64,20 +64,20 @@ public:
     void setTempoFactor(const qreal factor);
     MIDIEvent *nextEvent();
     int eventTime(MIDIEvent* ev) const;
-    std::chrono::milliseconds deltaTimeOfEvent(MIDIEvent* ev) const;
-    std::chrono::milliseconds timeOfTicks(const int ticks) const;
+    std::chrono::microseconds timeOfEvent(MIDIEvent *ev) const;
+    std::chrono::microseconds deltaTimeOfEvent(MIDIEvent *ev) const;
+    std::chrono::microseconds timeOfTicks(const int ticks) const;
     bool hasMoreEvents();
     int getFormat() const { return m_format; }
     int getDivision() const { return m_division; }
     bool isEmpty();
     void resetPosition();
     void setTickPosition(long tick);
-    void setTimePosition(long time);
     qreal currentTempo() const;
     QString getName() const { return m_lblName; }
     int songLengthTicks() const;
     void updateTempo(qreal newTempo);
-    qreal ticks2millis() const { return m_ticks2millis; }
+    qreal ticks2micros() const { return m_ticks2micros; }
 
     bool channelUsed(int channel);
     QString channelLabel(int channel);
@@ -220,7 +220,7 @@ private: // members
     int m_highestMidiNote;
     qreal m_tempo;
     qreal m_tempoFactor;
-    qreal m_ticks2millis;
+    qreal m_ticks2micros;
     qreal m_duration;
     qint64 m_lastBeat;
     qint64 m_beatLength;
