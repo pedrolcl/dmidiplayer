@@ -422,8 +422,11 @@ int Sequence::errorsCount() const
 #ifndef QT_NO_QDEBUG
 void Sequence::dump()
 {
-    std::cout << "Delta_Time Event_________________ Ch _Data__" << std::endl;
+    std::cout << "Name: " << std::quoted(getName().toStdString()) << " Format: " << m_format
+              << " Division: " << m_division << std::endl;
+    std::cout << "Time(ms)__ Tick_Time_ Event_________________ Ch _Data__" << std::endl;
     foreach (auto ev, m_list) {
+        std::cout << std::setw(10) << std::right << timeOfTicks(ev->tick()).count() << " ";
         ev->dump();
     }
 }

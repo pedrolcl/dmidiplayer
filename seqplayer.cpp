@@ -20,8 +20,10 @@
 #include <windows.h>
 #endif
 
-#include <thread>
 #include <chrono>
+#include <iomanip>
+#include <iostream>
+#include <thread>
 #include <typeinfo>
 
 #include <QAbstractEventDispatcher>
@@ -272,13 +274,14 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
 void SequencePlayer::playerLoop()
 {
     using namespace std::chrono;
-    typedef system_clock Clock;
+    typedef steady_clock Clock;
+    using TimePoint = time_point<Clock, milliseconds>;
     static const std::type_info& beatId = typeid(BeatEvent);
-    int currentBar{ 0 };
+    int currentBar{0}, currentBeat{0};
     long echoPosition{ 0 }, echoTicks{ 0 };
     milliseconds deltaTime{0}, echoDelta{ m_echoResolution };
-    Clock::time_point currentTime{ Clock::now() },
-        nextTime{ currentTime }, nextEcho{ currentTime };
+    Clock::time_point currentTime{Clock::now()}, nextTime{currentTime}, nextEcho{currentTime},
+        startTime{currentTime};
     emit songStarted();
     QAbstractEventDispatcher* dispatcher = thread()->eventDispatcher();
     QEventLoop::ProcessEventsFlags eventFilter = QEventLoop::ExcludeUserInputEvents;
@@ -293,6 +296,7 @@ void SequencePlayer::playerLoop()
             MIDIEvent* ev = m_song.nextEvent();
             if (typeid(*ev) == beatId) {
                 currentBar = static_cast<BeatEvent*>(ev)->bar();
+                currentBeat = static_cast<BeatEvent *>(ev)->beat();
                 if (isLoopEnabled() && (currentBar > loopEnd())) {
                     break;
                 }
@@ -318,11 +322,17 @@ void SequencePlayer::playerLoop()
                 m_songPosition += deltaTime.count();
                 currentTime = Clock::now();
                 emit songEchoTime(m_songPosition, ev->tick());
-                if (ev->isChannel() && ev->status() == MIDI_STATUS_CONTROLCHANGE) {
-                    qDebug() << "echo:" << m_songPosition << ev->tick() << deltaTime.count();
-                }
+                // if (ev->isChannel() && ev->status() == MIDI_STATUS_CONTROLCHANGE) {
+                //     qDebug() << "echo:" << m_songPosition << ev->tick() << deltaTime.count();
+                // }
             }
             playEvent(ev);
+            if (typeid(*ev) == beatId) {
+                std::cout << std::setw(10) << std::right
+                          << duration_cast<milliseconds>(currentTime - startTime).count()
+                          << std::left << " bar: " << currentBar << " beat: " << currentBeat
+                          << std::endl;
+            }
         }
         if (isLoopEnabled()) {
             jumpToBar(loopStart());

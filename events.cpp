@@ -325,7 +325,7 @@ void PitchBendEvent::dump()
     MIDIEvent::dump();
     std::cout << std::setw(23) << std::left << "pitch bend";
     std::cout << std::setw(2) << std::right << channel() << " ";
-    std::cout << std::setw(5) << value() << std::endl;
+    std::cout << std::setw(6) << value() << std::endl;
 }
 
 void ChanPressEvent::dump()
