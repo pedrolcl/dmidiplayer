@@ -16,10 +16,12 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QtMath>
 #include <QDebug>
 #include <QFileInfo>
 #include <QRegularExpression>
+#include <QtMath>
+#include <cstdint>
+
 #include "sequence.h"
 
 using namespace drumstick::File;
@@ -532,8 +534,8 @@ int Sequence::trackChannel(int track) const
 void Sequence::timeCalculations()
 {
     m_ticks2micros = m_tempo / (m_division * m_tempoFactor);
-    // qDebug() << Q_FUNC_INFO << "tempo:" << m_tempo << "div:" << m_division
-    //          << "ticks2micros:" << m_ticks2micros;
+    qDebug() << Q_FUNC_INFO << "tempo:" << m_tempo << "div:" << m_division
+             << "ticks2micros:" << m_ticks2micros;
 }
 
 qreal Sequence::tempoFactor() const
@@ -561,17 +563,17 @@ MIDIEvent *Sequence::nextEvent()
 
 std::chrono::microseconds Sequence::timeOfEvent(MIDIEvent *ev) const
 {
-    return std::chrono::microseconds(static_cast<long>(ev->tick() * m_ticks2micros));
+    return std::chrono::microseconds(static_cast<std::uint64_t>(ev->tick() * m_ticks2micros));
 }
 
 std::chrono::microseconds Sequence::deltaTimeOfEvent(MIDIEvent *ev) const
 {
-    return std::chrono::microseconds(static_cast<long>(ev->delta() * m_ticks2micros));
+    return std::chrono::microseconds(static_cast<std::uint64_t>(ev->delta() * m_ticks2micros));
 }
 
 std::chrono::microseconds Sequence::timeOfTicks(const int ticks) const
 {
-    return std::chrono::microseconds(static_cast<long>(ticks * m_ticks2micros));
+    return std::chrono::microseconds(static_cast<std::uint64_t>(ticks * m_ticks2micros));
 }
 
 bool Sequence::hasMoreEvents()
@@ -608,7 +610,7 @@ int Sequence::songLengthTicks() const
 void Sequence::updateTempo(qreal newTempo)
 {
     if (m_tempo != newTempo) {
-        //qDebug() << Q_FUNC_INFO << newTempo;
+        qDebug() << Q_FUNC_INFO << newTempo;
         m_tempo = newTempo;
         timeCalculations();
     }

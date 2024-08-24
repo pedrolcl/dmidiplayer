@@ -19,24 +19,25 @@
 #ifndef INCLUDED_GUIPLAYER_H
 #define INCLUDED_GUIPLAYER_H
 
-#include <QMainWindow>
-#include <QProgressDialog>
-#include <QObject>
-#include <QString>
-#include <QList>
 #include <QHash>
+#include <QList>
+#include <QMainWindow>
+#include <QObject>
 #include <QPointer>
+#include <QProgressDialog>
+#include <QString>
 #include <QThread>
+#include <chrono>
 
-#include "connections.h"
-#include "recentfileshelper.h"
-#include "pianola.h"
 #include "channels.h"
-#include "lyrics.h"
-#include "prefsdialog.h"
-#include "playlist.h"
-#include "toolbareditdialog.h"
+#include "connections.h"
 #include "helpwindow.h"
+#include "lyrics.h"
+#include "pianola.h"
+#include "playlist.h"
+#include "prefsdialog.h"
+#include "recentfileshelper.h"
+#include "toolbareditdialog.h"
 
 #if defined(Q_OS_WINDOWS)
 #include "winsnap.h"
@@ -83,7 +84,7 @@ public:
     void appendWRKEvent(unsigned long ticks, MIDIEvent* ev);
     void appendOVEEvent(unsigned long ticks, MIDIEvent* ev);
 
-    void updateTimeLabel(long milliseconds);
+    void updateTimeLabel(std::chrono::milliseconds millis);
     void updateTempoLabel(float ftempo);
     bool isSupported(QString fileName);
     void connectOutput(const QString &driver, const QString &connection);
@@ -124,7 +125,7 @@ public slots:
     void pitchShift(int value);
     void playerFinished();
     void playerStopped();
-    void playerEcho(long time, long ticks);
+    void playerEcho(std::chrono::milliseconds time, long ticks);
     void nextSong();
     void prevSong();
     void positionSliderPressed();

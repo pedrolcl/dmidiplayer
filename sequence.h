@@ -19,15 +19,18 @@
 #ifndef SEQUENCE_H
 #define SEQUENCE_H
 
-#include <QObject>
 #include <QList>
 #include <QMap>
+#include <QObject>
 #include <QTextCodec>
+#include <chrono>
+
 #include <drumstick/qsmf.h>
 #include <drumstick/rmid.h>
 #include <drumstick/qwrk.h>
 #include <drumstick/rtmidioutput.h>
 #include <uchardet.h>
+
 #include "events.h"
 
 class Sequence : public QObject
@@ -133,7 +136,6 @@ public slots:
 
     /* SMF slots */
     void appendSMFEvent(MIDIEvent *ev);
-    void appendWRKmetadata(int track, long time, TextType typ, const QByteArray &data);
     void smfHeaderEvent(int format, int ntrks, int division);
     void smfNoteOnEvent(int chan, int pitch, int vol);
     void smfNoteOffEvent(int chan, int pitch, int vol);
@@ -154,6 +156,7 @@ public slots:
 
     /* WRK slots */
     void appendWRKEvent(long ticks, MIDIEvent* ev);
+    void appendWRKmetadata(int track, long time, TextType typ, const QByteArray &data);
     void wrkUpdateLoadProgress();
     void wrkErrorHandler(const QString& errorStr);
     void wrkFileHeader(int verh, int verl);
@@ -253,8 +256,18 @@ private: // members
     QList<TimeSigRec> m_bars;
 
     struct TextRec {
-        TextRec(QByteArray data): m_tick(0), m_track(0), m_type(TextType::None), m_text(data) { };
-        TextRec(int tick, int track, TextType e, QByteArray data): m_tick(tick), m_track(track), m_type(e), m_text(data) { };
+        TextRec(QByteArray data)
+            : m_tick(0)
+            , m_track(0)
+            , m_type(TextType::None)
+            , m_text(data)
+        {}
+        TextRec(int tick, int track, TextType e, QByteArray data)
+            : m_tick(tick)
+            , m_track(track)
+            , m_type(e)
+            , m_text(data)
+        {}
         int m_tick;
         int m_track;
         TextType m_type;

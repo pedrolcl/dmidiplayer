@@ -20,6 +20,7 @@
 #define SEQPLAYER_H_
 
 #include <QObject>
+#include <chrono>
 #include <drumstick/backendmanager.h>
 
 #include "sequence.h"
@@ -49,7 +50,7 @@ public:
     int getPitchShift();
     int getVolumeFactor();
     void resetPosition();
-    void setPosition(long pos);
+    void setPosition(std::uint64_t ticks);
     void setPitchShift(unsigned int pitch);
     void setVolumeFactor(unsigned int vol);
     void allNotesOff();
@@ -83,7 +84,7 @@ signals:
     void songStarted();
     void songFinished();
     void songStopped();
-    void songEchoTime(long millis, long ticks);
+    void songEchoTime(std::chrono::milliseconds millis, std::uint64_t ticks);
     void volumeChanged(int channel, qreal newVolume);
     void mutedChanged(int channel, bool);
     void lockedChanged(int channel, bool);
@@ -116,7 +117,7 @@ private:
 
     Sequence m_song;
     drumstick::rt::MIDIOutput* m_port;
-    long m_songPosition;
+    std::uint64_t m_songPositionTicks;
     bool m_loopEnabled;
     int m_loopStart;
     int m_loopEnd;

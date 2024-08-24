@@ -246,9 +246,9 @@ GUIPlayer::~GUIPlayer()
     delete m_ui;
 }
 
-void GUIPlayer::updateTimeLabel(long milliseconds)
+void GUIPlayer::updateTimeLabel(std::chrono::milliseconds millis)
 {
-    double fracpart, intpart, seconds = milliseconds / 1000.0;
+    double fracpart, intpart, seconds = millis.count() / 1000.0;
     fracpart = modf(seconds, &intpart);
     QTime t = QTime(0,0).addSecs(intpart).addMSecs(ceil(fracpart*1000));
     m_ui->lblTime->setText(t.toString("mm:ss.zzz").left(8));
@@ -314,7 +314,7 @@ void GUIPlayer::updateState(PlayerState newState)
         m_ui->actionBackward->setEnabled(true);
         m_ui->actionJump->setEnabled(true);
         m_ui->actionLoop->setEnabled(true);
-        updateTimeLabel(0);
+        updateTimeLabel(std::chrono::milliseconds::zero());
         m_ui->positionSlider->setValue(0);
         statusBar()->showMessage(tr("Stopped"));
         break;
@@ -413,7 +413,7 @@ void GUIPlayer::openFile(const QString& fileName)
             m_recentFiles->setCurrentFile(finfo.absoluteFilePath());
             updNavButtons();
             updateState(StoppedState);
-            updateTimeLabel(0);
+            updateTimeLabel(std::chrono::milliseconds::zero());
             m_player->resetPosition();
             updateTempoLabel(m_player->currentBPM());
             updatePositionWidgets();
@@ -562,7 +562,7 @@ void GUIPlayer::playerFinished()
 {
     //qDebug() << Q_FUNC_INFO;
     m_player->resetPosition();
-    updateTimeLabel(0);
+    updateTimeLabel(std::chrono::milliseconds::zero());
     updatePositionWidgets();
     if (Settings::instance()->autoSongSettings()) {
         slotSaveSongSettings();
@@ -608,7 +608,7 @@ void GUIPlayer::updateTempoLabel(float ftempo)
     m_ui->lblOther->setText(stempo);
 }
 
-void GUIPlayer::playerEcho(long millis, long ticks)
+void GUIPlayer::playerEcho(std::chrono::milliseconds millis, long ticks)
 {
     updateTempoLabel(m_player->currentBPM());
     updateTimeLabel(millis);
