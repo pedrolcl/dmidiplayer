@@ -291,6 +291,9 @@ void Sequence::clear()
     m_lowestMidiNote = 127;
     m_highestMidiNote = 0;
     m_curTrack = 0;
+    m_duration = 0;
+    m_initialTempo = 0;
+    m_firstTime = true;
     m_codec = nullptr;
     m_infoMap.clear();
     for(int i=0; i<MIDI_STD_CHANNELS; ++i) {
@@ -420,6 +423,16 @@ QString Sequence::loadingErrors() const
 int Sequence::errorsCount() const
 {
     return m_loadingErrors.size();
+}
+
+QString Sequence::duration() const
+{
+    std::chrono::microseconds us = timeOfTicks(m_ticksDuration);
+    qreal seconds = us.count() / 1e6;
+    double fractpart, intpart;
+    fractpart = modf(seconds, &intpart);
+    QTime t = QTime(0, 0).addSecs(intpart).addMSecs(ceil(fractpart * 1000));
+    return t.toString("hh:mm:ss.zzz");
 }
 
 QTextCodec *Sequence::codec() const
@@ -613,6 +626,10 @@ void Sequence::updateTempo(qreal newTempo)
         //qDebug() << Q_FUNC_INFO << newTempo;
         m_tempo = newTempo;
         timeCalculations();
+        if (m_firstTime) {
+            m_initialTempo = newTempo;
+            m_firstTime = false;
+        };
     }
 }
 

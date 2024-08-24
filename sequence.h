@@ -124,6 +124,10 @@ public:
     QString loadingErrors() const;
     int errorsCount() const;
 
+    qsizetype size() const { return m_list.size(); }
+    qreal initialTempo() const { return m_initialTempo; }
+    QString duration() const;
+
 signals:
     void loadingStart(int size);
     void loadingProgress(int pos);
@@ -289,6 +293,8 @@ private: // members
     QMap<int, int> m_trkChannel;
     QMap<QString, QString> m_infoMap;
     QList<QString> m_loadingErrors;
+    bool m_firstTime{true};
+    qreal m_initialTempo{0};
 };
 
 #endif // SEQUENCE_H

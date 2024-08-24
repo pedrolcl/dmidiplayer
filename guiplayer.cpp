@@ -16,18 +16,18 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <QActionGroup>
+#include <QDesktopServices>
 #include <QFileDialog>
-#include <QToolTip>
-#include <QMessageBox>
-#include <QInputDialog>
 #include <QFileInfo>
+#include <QInputDialog>
+#include <QMessageBox>
+#include <QMimeData>
+#include <QStandardPaths>
 #include <QTime>
 #include <QTimer>
-#include <QMimeData>
+#include <QToolTip>
 #include <QtMath>
-#include <QActionGroup>
-#include <QStandardPaths>
-#include <QDesktopServices>
 #if QT_VERSION < QT_VERSION_CHECK(5,14,0)
 #include <QDesktopWidget>
 #else
@@ -1034,11 +1034,18 @@ void GUIPlayer::slotSwitchLanguage(QAction *action)
 void GUIPlayer::slotFileInfo()
 {
     QString infostr;
+    QLocale locale(Settings::instance()->language());
     if (m_player->song()->currentFile().isEmpty())
         infostr = tr("<b>No file loaded</b>");
     else {
         infostr = tr("File: <b>%1</b><br>").arg(m_player->song()->currentFile());
-        QString s = m_player->song()->getFileFormat();
+
+        QFileInfo finfo(m_player->song()->currentFullFileName());
+        QString s = locale.toString(finfo.lastModified(), QLocale::LongFormat);
+        if (!s.isEmpty())
+            infostr += tr("Date: <b>%1</b><br/>").arg(s);
+
+        s = m_player->song()->getFileFormat();
         if (!s.isEmpty())
             infostr += tr("Format: <b>%1</b><br>").arg(s);
 
@@ -1069,6 +1076,26 @@ void GUIPlayer::slotFileInfo()
         s = m_player->song()->getText(Sequence::KarWhatever).join(tr("<br>"));
         if (!s.isEmpty())
             infostr += tr("Karaoke things: <b>%1</b><br>").arg(s);
+
+        s = QString::number(m_player->song()->getNumTracks());
+        if (!s.isEmpty())
+            infostr += tr("Number of tracks: <b>%1</b><br/>").arg(s);
+
+        s = QString::number(m_player->song()->size());
+        if (!s.isEmpty())
+            infostr += tr("Number of events: <b>%1</b><br/>").arg(s);
+
+        s = QString::number(m_player->song()->getDivision());
+        if (!s.isEmpty())
+            infostr += tr("Division: <b>%1 ppqn</b><br/>").arg(s);
+
+        s = QString::number(m_player->initialBPM());
+        if (!s.isEmpty())
+            infostr += tr("Initial tempo: <b>%7 bpm</b><br/>").arg(s);
+
+        s = m_player->song()->duration();
+        if (!s.isEmpty())
+            infostr += tr("Duration: <b>%1</b><br/>").arg(s);
 
         s = m_player->song()->getMetadataInfo();
         if (!s.isEmpty())

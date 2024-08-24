@@ -48,6 +48,7 @@ public:
     drumstick::rt::MIDIOutput* port() const;
     qreal bpm(qreal tempo) const;
     qreal currentBPM() const;
+    qreal initialBPM() const;
     bool isRunning();
     Sequence *song();
     int getPosition();

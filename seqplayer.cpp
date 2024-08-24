@@ -338,8 +338,8 @@ void SequencePlayer::playerLoop()
 
     emit songStopped();
     if (!m_song.hasMoreEvents()) {
-        qDebug() << "Final Song Position:" << m_songPositionTicks
-                 << (currentTime - startTime).count() / 1e9;
+        // qDebug() << "Final Song Position:" << m_songPositionTicks
+        //          << (currentTime - startTime).count() / 1e9;
         emit songFinished();
     }
     dispatcher->processEvents(eventFilter);
@@ -364,6 +364,11 @@ qreal SequencePlayer::bpm(qreal tempo) const
 qreal SequencePlayer::currentBPM() const
 {
     return bpm(m_song.currentTempo());
+}
+
+qreal SequencePlayer::initialBPM() const
+{
+    return bpm(m_song.initialTempo());
 }
 
 Sequence *SequencePlayer::song()
