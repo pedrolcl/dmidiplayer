@@ -133,12 +133,12 @@ void SequencePlayer::shutupSound()
 
 void SequencePlayer::playEvent(MIDIEvent* ev)
 {
-    static const std::type_info& textId = typeid(TextEvent);
-    static const std::type_info& tempoId = typeid(TempoEvent);
-    static const std::type_info& timeSigId = typeid(TimeSignatureEvent);
-    static const std::type_info& keySigId = typeid(KeySignatureEvent);
-    static const std::type_info& beatId = typeid(BeatEvent);
-    static const std::type_info& sysexId = typeid (SysExEvent);
+    static const std::type_info &textId = typeid(TextEvent);
+    static const std::type_info &tempoId = typeid(TempoEvent);
+    static const std::type_info &timeSigId = typeid(TimeSignatureEvent);
+    static const std::type_info &keySigId = typeid(KeySignatureEvent);
+    static const std::type_info &beatId = typeid(BeatEvent);
+    static const std::type_info &sysexId = typeid(SysExEvent);
 
     if (m_port == nullptr)
         return;
@@ -274,12 +274,12 @@ void SequencePlayer::playEvent(MIDIEvent* ev)
 void SequencePlayer::playerLoop()
 {
     using namespace std::chrono;
-    typedef steady_clock Clock;
+    using Clock = steady_clock;
     using TimePoint = Clock::time_point;
-    static const std::type_info& beatId = typeid(BeatEvent);
+    static const std::type_info &beatId = typeid(BeatEvent);
     int currentBar{0}, currentBeat{0};
-    long echoPosition{ 0 }, echoTicks{ 0 };
-    microseconds echoDelta{m_echoResolution}, eventTime{0};
+    std::uint32_t echoPosition{0}, echoTicks{0};
+    microseconds echoDelta{m_echoResolution}, eventTime{0}, deltaTime{0};
     TimePoint currentTime{Clock::now()}, nextTime{currentTime}, nextEcho{currentTime},
         startTime{currentTime};
     emit songStarted();
@@ -303,8 +303,10 @@ void SequencePlayer::playerLoop()
             }
             if (ev->delta() > 0) {
                 eventTime = m_song.timeOfEvent(ev);
+                deltaTime = m_song.deltaTimeOfEvent(ev);
                 echoDelta = m_song.timeOfTicks(m_echoResolution);
-                nextTime = startTime + eventTime;
+                //nextTime = startTime + eventTime;
+                nextTime = currentTime + deltaTime;
                 nextEcho = currentTime + echoDelta;
                 echoPosition = m_songPosition;
                 while (nextEcho < nextTime) {
@@ -319,7 +321,8 @@ void SequencePlayer::playerLoop()
                 dispatcher->processEvents(eventFilter);
                 std::this_thread::sleep_until(nextTime);
                 echoTicks = ev->tick();
-                m_songPosition = eventTime.count();
+                //m_songPosition = eventTime.count();
+                m_songPosition += deltaTime.count();
                 currentTime = Clock::now();
                 emit songEchoTime(m_songPosition, echoTicks);
             }
