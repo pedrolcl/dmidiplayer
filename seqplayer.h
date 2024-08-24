@@ -26,6 +26,11 @@
 #include "sequence.h"
 #include "events.h"
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+Q_DECLARE_METATYPE(std::chrono::milliseconds)
+Q_DECLARE_METATYPE(std::uint64_t)
+#endif
+
 class SequencePlayer : public QObject
 {
     Q_OBJECT
@@ -118,10 +123,10 @@ private:
     Sequence m_song;
     drumstick::rt::MIDIOutput* m_port;
     std::uint64_t m_songPositionTicks;
+    std::uint64_t m_echoResolution;
     bool m_loopEnabled;
     int m_loopStart;
     int m_loopEnd;
-    int m_echoResolution;
     int m_pitchShift;
     int m_volumeFactor;
     int m_volume[drumstick::rt::MIDI_STD_CHANNELS];

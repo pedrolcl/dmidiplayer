@@ -90,15 +90,19 @@ int SequencePlayer::loopStart() const
 SequencePlayer::SequencePlayer()
     : m_port(nullptr)
     , m_songPositionTicks(0)
+    , m_echoResolution(50)
     , m_loopEnabled(false)
     , m_loopStart(0)
     , m_loopEnd(0)
-    , m_echoResolution(50)
     , m_pitchShift(0)
     , m_volumeFactor(100)
     , m_latestBeat(nullptr)
     , m_firstBeat(nullptr)
 {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+    qRegisterMetaType<std::chrono::milliseconds>();
+    qRegisterMetaType<std::uint64_t>();
+#endif
     initChannels();
 }
 
@@ -131,12 +135,12 @@ void SequencePlayer::shutupSound()
 
 void SequencePlayer::playEvent(MIDIEvent* ev)
 {
-    static const std::type_info& textId = typeid(TextEvent);
-    static const std::type_info& tempoId = typeid(TempoEvent);
-    static const std::type_info& timeSigId = typeid(TimeSignatureEvent);
-    static const std::type_info& keySigId = typeid(KeySignatureEvent);
-    static const std::type_info& beatId = typeid(BeatEvent);
-    static const std::type_info& sysexId = typeid (SysExEvent);
+    static const std::type_info &textId = typeid(TextEvent);
+    static const std::type_info &tempoId = typeid(TempoEvent);
+    static const std::type_info &timeSigId = typeid(TimeSignatureEvent);
+    static const std::type_info &keySigId = typeid(KeySignatureEvent);
+    static const std::type_info &beatId = typeid(BeatEvent);
+    static const std::type_info &sysexId = typeid(SysExEvent);
 
     if (m_port == nullptr)
         return;
@@ -274,10 +278,10 @@ void SequencePlayer::playerLoop()
     using namespace std::chrono;
     using Clock = steady_clock;
     using TimePoint = Clock::time_point;
-    static const std::type_info& beatId = typeid(BeatEvent);
+    static const std::type_info &beatId = typeid(BeatEvent);
     int currentBar{0};
     std::uint64_t echoTicks{0};
-    microseconds echoDelta{m_echoResolution}, eventTime{0};
+    microseconds deltaTime{microseconds::zero()}, echoDelta{m_echoResolution};
     TimePoint currentTime{Clock::now()}, nextTime{currentTime}, nextEcho{currentTime},
         startTime{currentTime};
     emit songStarted();
@@ -300,9 +304,9 @@ void SequencePlayer::playerLoop()
                 }
             }
             if (ev->delta() > 0) {
-                eventTime = m_song.timeOfEvent(ev);
+                deltaTime = m_song.deltaTimeOfEvent(ev);
                 echoDelta = m_song.timeOfTicks(m_echoResolution);
-                nextTime = startTime + eventTime;
+                nextTime = currentTime + deltaTime;
                 nextEcho = currentTime + echoDelta;
                 while (nextEcho < nextTime) {
                     dispatcher->processEvents(eventFilter);
@@ -318,7 +322,8 @@ void SequencePlayer::playerLoop()
                 echoTicks = ev->tick();
                 m_songPositionTicks = echoTicks;
                 currentTime = Clock::now();
-                emit songEchoTime(duration_cast<milliseconds>(eventTime), echoTicks);
+                emit songEchoTime(duration_cast<milliseconds>(m_song.timeOfTicks(echoTicks)),
+                                  echoTicks);
             }
             playEvent(ev);
         }
@@ -333,7 +338,8 @@ void SequencePlayer::playerLoop()
 
     emit songStopped();
     if (!m_song.hasMoreEvents()) {
-        //qDebug() << "Final Song Position:" << m_songPosition;
+        qDebug() << "Final Song Position:" << m_songPositionTicks
+                 << (currentTime - startTime).count() / 1e9;
         emit songFinished();
     }
     dispatcher->processEvents(eventFilter);

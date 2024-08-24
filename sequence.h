@@ -69,7 +69,7 @@ public:
     int eventTime(MIDIEvent* ev) const;
     std::chrono::microseconds timeOfEvent(MIDIEvent *ev) const;
     std::chrono::microseconds deltaTimeOfEvent(MIDIEvent *ev) const;
-    std::chrono::microseconds timeOfTicks(const int ticks) const;
+    std::chrono::microseconds timeOfTicks(const uint64_t ticks) const;
     bool hasMoreEvents();
     int getFormat() const { return m_format; }
     int getDivision() const { return m_division; }

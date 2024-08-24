@@ -534,8 +534,8 @@ int Sequence::trackChannel(int track) const
 void Sequence::timeCalculations()
 {
     m_ticks2micros = m_tempo / (m_division * m_tempoFactor);
-    qDebug() << Q_FUNC_INFO << "tempo:" << m_tempo << "div:" << m_division
-             << "ticks2micros:" << m_ticks2micros;
+    // qDebug() << Q_FUNC_INFO << "tempo:" << m_tempo << "div:" << m_division
+    //          << "ticks2micros:" << m_ticks2micros;
 }
 
 qreal Sequence::tempoFactor() const
@@ -571,7 +571,7 @@ std::chrono::microseconds Sequence::deltaTimeOfEvent(MIDIEvent *ev) const
     return std::chrono::microseconds(static_cast<std::uint64_t>(ev->delta() * m_ticks2micros));
 }
 
-std::chrono::microseconds Sequence::timeOfTicks(const int ticks) const
+std::chrono::microseconds Sequence::timeOfTicks(const std::uint64_t ticks) const
 {
     return std::chrono::microseconds(static_cast<std::uint64_t>(ticks * m_ticks2micros));
 }
@@ -610,7 +610,7 @@ int Sequence::songLengthTicks() const
 void Sequence::updateTempo(qreal newTempo)
 {
     if (m_tempo != newTempo) {
-        qDebug() << Q_FUNC_INFO << newTempo;
+        //qDebug() << Q_FUNC_INFO << newTempo;
         m_tempo = newTempo;
         timeCalculations();
     }
