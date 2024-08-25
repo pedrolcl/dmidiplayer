@@ -278,9 +278,10 @@ void SequencePlayer::playerLoop()
     using Clock = steady_clock;
     using TimePoint = Clock::time_point;
     static const std::type_info &beatId = typeid(BeatEvent);
+    bool useSimpleTimeProcess = m_song.simpleTimeProcess();
     int currentBar{0};
     quint64 echoTicks{0};
-    microseconds deltaTime{microseconds::zero()}, echoDelta{m_echoResolution};
+    microseconds echoDelta{m_echoResolution};
     TimePoint currentTime{Clock::now()}, nextTime{currentTime}, nextEcho{currentTime},
         startTime{currentTime};
     emit songStarted();
@@ -288,6 +289,7 @@ void SequencePlayer::playerLoop()
     QEventLoop::ProcessEventsFlags eventFilter = QEventLoop::ExcludeUserInputEvents;
     dispatcher->processEvents(eventFilter);
     m_songPositionTicks = 0;
+    //qDebug() << "using simple time process: " << useSimpleTimeProcess
 
 #ifdef WIN32
     timeBeginPeriod(1);
@@ -303,9 +305,12 @@ void SequencePlayer::playerLoop()
                 }
             }
             if (ev->delta() > 0) {
-                deltaTime = m_song.deltaTimeOfEvent(ev);
+                if (useSimpleTimeProcess) {
+                    nextTime = startTime + m_song.timeOfEvent(ev);
+                } else {
+                    nextTime = currentTime + m_song.deltaTimeOfEvent(ev);
+                }
                 echoDelta = m_song.timeOfTicks(m_echoResolution);
-                nextTime = currentTime + deltaTime;
                 nextEcho = currentTime + echoDelta;
                 while (nextEcho < nextTime) {
                     dispatcher->processEvents(eventFilter);

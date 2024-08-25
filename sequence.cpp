@@ -292,8 +292,8 @@ void Sequence::clear()
     m_highestMidiNote = 0;
     m_curTrack = 0;
     m_duration = 0;
-    m_initialTempo = 0;
-    m_firstTime = true;
+    m_initialTempo = 5e5;
+    m_numTempoChanges = 0;
     m_codec = nullptr;
     m_infoMap.clear();
     for(int i=0; i<MIDI_STD_CHANNELS; ++i) {
@@ -313,10 +313,9 @@ void Sequence::clear()
     m_trkChannel.clear();
     m_currentFile.clear();
     m_currentFileFull.clear();
-    while (!m_list.isEmpty()) {
-        delete m_list.takeFirst();
-    }
     m_loadingErrors.clear();
+    qDeleteAll(m_list);
+    m_list.clear();
 }
 
 bool Sequence::isEmpty()
@@ -423,6 +422,22 @@ QString Sequence::loadingErrors() const
 int Sequence::errorsCount() const
 {
     return m_loadingErrors.size();
+}
+
+qsizetype Sequence::size() const
+{
+    return m_list.size();
+}
+
+qreal Sequence::initialTempo() const
+{
+    return m_initialTempo;
+}
+
+bool Sequence::simpleTimeProcess() const
+{
+    //qDebug() << Q_FUNC_INFO << m_numTempoChanges;
+    return (m_numTempoChanges <= 1);
 }
 
 QString Sequence::duration() const
@@ -623,13 +638,8 @@ int Sequence::songLengthTicks() const
 void Sequence::updateTempo(qreal newTempo)
 {
     if (m_tempo != newTempo) {
-        //qDebug() << Q_FUNC_INFO << newTempo;
         m_tempo = newTempo;
         timeCalculations();
-        if (m_firstTime) {
-            m_initialTempo = newTempo;
-            m_firstTime = false;
-        };
     }
 }
 
@@ -896,6 +906,10 @@ void Sequence::smfTempoEvent(int tempo)
     if (ev->tick() == 0) {
         updateTempo(tempo);
     }
+    if (m_numTempoChanges == 0) {
+        m_initialTempo = tempo;
+    };
+    m_numTempoChanges++;
 }
 
 void Sequence::smfTimeSigEvent(int b0, int b1, int b2, int b3)
@@ -1231,6 +1245,10 @@ void Sequence::wrkTempoEvent(long time, int tempo)
     if (time == 0) {
         updateTempo(ev->tempo());
     }
+    if (m_numTempoChanges == 0) {
+        m_initialTempo = ev->tempo();
+    };
+    m_numTempoChanges++;
 }
 
 void Sequence::wrkTrackPatch(int track, int patch)
