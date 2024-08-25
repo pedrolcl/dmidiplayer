@@ -1259,12 +1259,7 @@ void GUIPlayer::slotLoadSongSettings()
 
 void GUIPlayer::slotSearch()
 {
-    QString site = QLatin1String("http://www.vanbasco.com/midisearch.html");
-    QString lang = Settings::instance()->language();
-    if (lang == QLatin1String("es") || lang == QLatin1String("it")) {
-        site = QLatin1String("http://www.vanbasco.com/") + lang + QLatin1String("/midisearch.html");
-    }
-    //qDebug() << Q_FUNC_INFO << site;
+    QString site = QLatin1String("http://midisite.co.uk");
     QDesktopServices::openUrl(QUrl(site));
 }
 
