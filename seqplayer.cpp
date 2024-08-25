@@ -101,7 +101,6 @@ SequencePlayer::SequencePlayer()
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     qRegisterMetaType<std::chrono::milliseconds>();
-    qRegisterMetaType<std::uint64_t>();
 #endif
     initChannels();
 }
@@ -280,7 +279,7 @@ void SequencePlayer::playerLoop()
     using TimePoint = Clock::time_point;
     static const std::type_info &beatId = typeid(BeatEvent);
     int currentBar{0};
-    std::uint64_t echoTicks{0};
+    quint64 echoTicks{0};
     microseconds deltaTime{microseconds::zero()}, echoDelta{m_echoResolution};
     TimePoint currentTime{Clock::now()}, nextTime{currentTime}, nextEcho{currentTime},
         startTime{currentTime};
@@ -430,7 +429,7 @@ void SequencePlayer::resetPosition()
     }
 }
 
-void SequencePlayer::setPosition(uint64_t ticks)
+void SequencePlayer::setPosition(quint64 ticks)
 {
     //qDebug() << Q_FUNC_INFO << pos;
     allNotesOff();

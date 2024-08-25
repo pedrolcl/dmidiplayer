@@ -28,7 +28,6 @@
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 Q_DECLARE_METATYPE(std::chrono::milliseconds)
-Q_DECLARE_METATYPE(std::uint64_t)
 #endif
 
 class SequencePlayer : public QObject
@@ -56,7 +55,7 @@ public:
     int getPitchShift();
     int getVolumeFactor();
     void resetPosition();
-    void setPosition(std::uint64_t ticks);
+    void setPosition(quint64 ticks);
     void setPitchShift(unsigned int pitch);
     void setVolumeFactor(unsigned int vol);
     void allNotesOff();
@@ -90,7 +89,7 @@ signals:
     void songStarted();
     void songFinished();
     void songStopped();
-    void songEchoTime(std::chrono::milliseconds millis, std::uint64_t ticks);
+    void songEchoTime(std::chrono::milliseconds millis, quint64 ticks);
     void volumeChanged(int channel, qreal newVolume);
     void mutedChanged(int channel, bool);
     void lockedChanged(int channel, bool);
@@ -123,8 +122,8 @@ private:
 
     Sequence m_song;
     drumstick::rt::MIDIOutput* m_port;
-    std::uint64_t m_songPositionTicks;
-    std::uint64_t m_echoResolution;
+    quint64 m_songPositionTicks;
+    quint64 m_echoResolution;
     bool m_loopEnabled;
     int m_loopStart;
     int m_loopEnd;
