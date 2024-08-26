@@ -238,7 +238,7 @@ Section -Main SEC0000
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\imageformats\qjpeg.dll $INSTDIR\imageformats\qjpeg.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\imageformats\qsvg.dll $INSTDIR\imageformats\qsvg.dll $INSTDIR
     !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\platforms\qwindows.dll $INSTDIR\platforms\qwindows.dll $INSTDIR
-    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\styles\qwindowsvistastyle.dll $INSTDIR\styles\qwindowsvistastyle.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\styles\qmodernwindowsstyle.dll $INSTDIR\styles\qmodernwindowsstyle.dll $INSTDIR
 
     WriteRegStr HKLM "${REGKEY}\Components" Main 1
 SectionEnd
@@ -356,7 +356,7 @@ Section /o -un.Main UNSEC0000
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qjpeg.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qsvg.dll
     !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\platforms\qwindows.dll
-    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\styles\qwindowsvistastyle.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\styles\qmodernwindowsstyle.dll
     RMDir /REBOOTOK $INSTDIR\translations
     RMDir /REBOOTOK $INSTDIR\styles
     RMDir /REBOOTOK $INSTDIR\platforms
