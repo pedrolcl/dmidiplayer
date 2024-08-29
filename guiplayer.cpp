@@ -336,7 +336,7 @@ void GUIPlayer::play()
             m_player->resetPrograms();
             m_player->sendVolumeEvents();
         }
-        m_playerThread.start(QThread::HighPriority);
+        m_playerThread.start(QThread::TimeCriticalPriority);
         updateState(PlayingState);
     }
 }
