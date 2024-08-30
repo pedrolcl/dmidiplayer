@@ -20,10 +20,15 @@
 #define SEQPLAYER_H_
 
 #include <QObject>
+#include <chrono>
 #include <drumstick/backendmanager.h>
 
 #include "sequence.h"
 #include "events.h"
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+Q_DECLARE_METATYPE(std::chrono::milliseconds)
+#endif
 
 class SequencePlayer : public QObject
 {
@@ -42,6 +47,7 @@ public:
     drumstick::rt::MIDIOutput* port() const;
     qreal bpm(qreal tempo) const;
     qreal currentBPM() const;
+    qreal initialBPM() const;
     bool isRunning();
     Sequence *song();
     int getPosition();
@@ -49,7 +55,7 @@ public:
     int getPitchShift();
     int getVolumeFactor();
     void resetPosition();
-    void setPosition(long pos);
+    void setPosition(quint64 ticks);
     void setPitchShift(unsigned int pitch);
     void setVolumeFactor(unsigned int vol);
     void allNotesOff();
@@ -83,7 +89,7 @@ signals:
     void songStarted();
     void songFinished();
     void songStopped();
-    void songEchoTime(long millis, long ticks);
+    void songEchoTime(std::chrono::milliseconds millis, quint64 ticks);
     void volumeChanged(int channel, qreal newVolume);
     void mutedChanged(int channel, bool);
     void lockedChanged(int channel, bool);
@@ -116,11 +122,11 @@ private:
 
     Sequence m_song;
     drumstick::rt::MIDIOutput* m_port;
-    long m_songPosition;
+    quint64 m_songPositionTicks;
+    quint64 m_echoResolution;
     bool m_loopEnabled;
     int m_loopStart;
     int m_loopEnd;
-    int m_echoResolution;
     int m_pitchShift;
     int m_volumeFactor;
     int m_volume[drumstick::rt::MIDI_STD_CHANNELS];

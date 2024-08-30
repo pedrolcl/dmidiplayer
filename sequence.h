@@ -19,15 +19,18 @@
 #ifndef SEQUENCE_H
 #define SEQUENCE_H
 
-#include <QObject>
 #include <QList>
 #include <QMap>
+#include <QObject>
 #include <QTextCodec>
+#include <chrono>
+
 #include <drumstick/qsmf.h>
 #include <drumstick/rmid.h>
 #include <drumstick/qwrk.h>
 #include <drumstick/rtmidioutput.h>
 #include <uchardet.h>
+
 #include "events.h"
 
 class Sequence : public QObject
@@ -124,6 +127,10 @@ public:
 #ifndef QT_NO_DEBUG
     void dump();
 #endif
+    qsizetype size() const;
+    qreal initialTempo() const;
+    bool simpleTimeProcess() const;
+    QString duration() const;
 
 signals:
     void loadingStart(int size);
@@ -137,7 +144,6 @@ public slots:
 
     /* SMF slots */
     void appendSMFEvent(MIDIEvent *ev);
-    void appendWRKmetadata(int track, long time, TextType typ, const QByteArray &data);
     void smfHeaderEvent(int format, int ntrks, int division);
     void smfNoteOnEvent(int chan, int pitch, int vol);
     void smfNoteOffEvent(int chan, int pitch, int vol);
@@ -158,6 +164,7 @@ public slots:
 
     /* WRK slots */
     void appendWRKEvent(long ticks, MIDIEvent* ev);
+    void appendWRKmetadata(int track, long time, TextType typ, const QByteArray &data);
     void wrkUpdateLoadProgress();
     void wrkErrorHandler(const QString& errorStr);
     void wrkFileHeader(int verh, int verl);
@@ -290,6 +297,8 @@ private: // members
     QMap<int, int> m_trkChannel;
     QMap<QString, QString> m_infoMap;
     QList<QString> m_loadingErrors;
+    int m_numTempoChanges{0};
+    qreal m_initialTempo{5e5};
 };
 
 #endif // SEQUENCE_H

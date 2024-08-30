@@ -16,18 +16,18 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <QActionGroup>
+#include <QDesktopServices>
 #include <QFileDialog>
-#include <QToolTip>
-#include <QMessageBox>
-#include <QInputDialog>
 #include <QFileInfo>
+#include <QInputDialog>
+#include <QMessageBox>
+#include <QMimeData>
+#include <QStandardPaths>
 #include <QTime>
 #include <QTimer>
-#include <QMimeData>
+#include <QToolTip>
 #include <QtMath>
-#include <QActionGroup>
-#include <QStandardPaths>
-#include <QDesktopServices>
 #if QT_VERSION < QT_VERSION_CHECK(5,14,0)
 #include <QDesktopWidget>
 #else
@@ -246,9 +246,9 @@ GUIPlayer::~GUIPlayer()
     delete m_ui;
 }
 
-void GUIPlayer::updateTimeLabel(long milliseconds)
+void GUIPlayer::updateTimeLabel(std::chrono::milliseconds millis)
 {
-    double fracpart, intpart, seconds = milliseconds / 1000.0;
+    double fracpart, intpart, seconds = millis.count() / 1000.0;
     fracpart = modf(seconds, &intpart);
     QTime t = QTime(0,0).addSecs(intpart).addMSecs(ceil(fracpart*1000));
     m_ui->lblTime->setText(t.toString("mm:ss.zzz").left(8));
@@ -314,7 +314,7 @@ void GUIPlayer::updateState(PlayerState newState)
         m_ui->actionBackward->setEnabled(true);
         m_ui->actionJump->setEnabled(true);
         m_ui->actionLoop->setEnabled(true);
-        updateTimeLabel(0);
+        updateTimeLabel(std::chrono::milliseconds::zero());
         m_ui->positionSlider->setValue(0);
         statusBar()->showMessage(tr("Stopped"));
         break;
@@ -336,7 +336,7 @@ void GUIPlayer::play()
             m_player->resetPrograms();
             m_player->sendVolumeEvents();
         }
-        m_playerThread.start(QThread::HighPriority);
+        m_playerThread.start(QThread::TimeCriticalPriority);
         updateState(PlayingState);
     }
 }
@@ -413,7 +413,7 @@ void GUIPlayer::openFile(const QString& fileName)
             m_recentFiles->setCurrentFile(finfo.absoluteFilePath());
             updNavButtons();
             updateState(StoppedState);
-            updateTimeLabel(0);
+            updateTimeLabel(std::chrono::milliseconds::zero());
             m_player->resetPosition();
             updateTempoLabel(m_player->currentBPM());
             updatePositionWidgets();
@@ -562,7 +562,7 @@ void GUIPlayer::playerFinished()
 {
     //qDebug() << Q_FUNC_INFO;
     m_player->resetPosition();
-    updateTimeLabel(0);
+    updateTimeLabel(std::chrono::milliseconds::zero());
     updatePositionWidgets();
     if (Settings::instance()->autoSongSettings()) {
         slotSaveSongSettings();
@@ -607,7 +607,7 @@ void GUIPlayer::updateTempoLabel(float ftempo)
     m_ui->lblOther->setText(stempo);
 }
 
-void GUIPlayer::playerEcho(long millis, long ticks)
+void GUIPlayer::playerEcho(std::chrono::milliseconds millis, long ticks)
 {
     updateTempoLabel(m_player->currentBPM());
     updateTimeLabel(millis);
@@ -1033,11 +1033,18 @@ void GUIPlayer::slotSwitchLanguage(QAction *action)
 void GUIPlayer::slotFileInfo()
 {
     QString infostr;
+    QLocale locale(Settings::instance()->language());
     if (m_player->song()->currentFile().isEmpty())
         infostr = tr("<b>No file loaded</b>");
     else {
         infostr = tr("File: <b>%1</b><br>").arg(m_player->song()->currentFile());
-        QString s = m_player->song()->getFileFormat();
+
+        QFileInfo finfo(m_player->song()->currentFullFileName());
+        QString s = locale.toString(finfo.lastModified(), QLocale::LongFormat);
+        if (!s.isEmpty())
+            infostr += tr("Date: <b>%1</b><br/>").arg(s);
+
+        s = m_player->song()->getFileFormat();
         if (!s.isEmpty())
             infostr += tr("Format: <b>%1</b><br>").arg(s);
 
@@ -1068,6 +1075,26 @@ void GUIPlayer::slotFileInfo()
         s = m_player->song()->getText(Sequence::KarWhatever).join(tr("<br>"));
         if (!s.isEmpty())
             infostr += tr("Karaoke things: <b>%1</b><br>").arg(s);
+
+        s = QString::number(m_player->song()->getNumTracks());
+        if (!s.isEmpty())
+            infostr += tr("Number of tracks: <b>%1</b><br/>").arg(s);
+
+        s = QString::number(m_player->song()->size());
+        if (!s.isEmpty())
+            infostr += tr("Number of events: <b>%1</b><br/>").arg(s);
+
+        s = QString::number(m_player->song()->getDivision());
+        if (!s.isEmpty())
+            infostr += tr("Division: <b>%1 ppqn</b><br/>").arg(s);
+
+        s = QString::number(m_player->initialBPM());
+        if (!s.isEmpty())
+            infostr += tr("Initial tempo: <b>%7 bpm</b><br/>").arg(s);
+
+        s = m_player->song()->duration();
+        if (!s.isEmpty())
+            infostr += tr("Duration: <b>%1</b><br/>").arg(s);
 
         s = m_player->song()->getMetadataInfo();
         if (!s.isEmpty())
@@ -1231,12 +1258,7 @@ void GUIPlayer::slotLoadSongSettings()
 
 void GUIPlayer::slotSearch()
 {
-    QString site = QLatin1String("http://www.vanbasco.com/midisearch.html");
-    QString lang = Settings::instance()->language();
-    if (lang == QLatin1String("es") || lang == QLatin1String("it")) {
-        site = QLatin1String("http://www.vanbasco.com/") + lang + QLatin1String("/midisearch.html");
-    }
-    //qDebug() << Q_FUNC_INFO << site;
+    QString site = QLatin1String("http://midisite.co.uk");
     QDesktopServices::openUrl(QUrl(site));
 }
 

@@ -89,18 +89,21 @@ int SequencePlayer::loopStart() const
     return m_loopStart;
 }
 
-SequencePlayer::SequencePlayer() :
-    m_port(nullptr),
-    m_songPosition(0),
-    m_loopEnabled(false),
-    m_loopStart(0),
-    m_loopEnd(0),
-    m_echoResolution(50),
-    m_pitchShift(0),
-    m_volumeFactor(100),
-    m_latestBeat(nullptr),
-    m_firstBeat(nullptr)
+SequencePlayer::SequencePlayer()
+    : m_port(nullptr)
+    , m_songPositionTicks(0)
+    , m_echoResolution(50)
+    , m_loopEnabled(false)
+    , m_loopStart(0)
+    , m_loopEnd(0)
+    , m_pitchShift(0)
+    , m_volumeFactor(100)
+    , m_latestBeat(nullptr)
+    , m_firstBeat(nullptr)
 {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+    qRegisterMetaType<std::chrono::milliseconds>();
+#endif
     initChannels();
 }
 
@@ -277,15 +280,20 @@ void SequencePlayer::playerLoop()
     using Clock = steady_clock;
     using TimePoint = Clock::time_point;
     static const std::type_info &beatId = typeid(BeatEvent);
+    bool useSimpleTimeProcess = m_song.simpleTimeProcess();
     int currentBar{0}, currentBeat{0};
-    std::uint32_t echoPosition{0}, echoTicks{0};
-    microseconds echoDelta{m_echoResolution}, eventTime{0}, deltaTime{0};
+    quint64 echoTicks{0};
+    microseconds echoDelta{m_echoResolution};
     TimePoint currentTime{Clock::now()}, nextTime{currentTime}, nextEcho{currentTime},
         startTime{currentTime};
     emit songStarted();
     QAbstractEventDispatcher* dispatcher = thread()->eventDispatcher();
     QEventLoop::ProcessEventsFlags eventFilter = QEventLoop::ExcludeUserInputEvents;
     dispatcher->processEvents(eventFilter);
+    m_songPositionTicks = 0;
+#ifndef QT_NO_QDEBUG
+    qDebug() << "using simple time process: " << useSimpleTimeProcess;
+#endif
 
 #ifdef WIN32
     timeBeginPeriod(1);
@@ -302,29 +310,29 @@ void SequencePlayer::playerLoop()
                 }
             }
             if (ev->delta() > 0) {
-                eventTime = m_song.timeOfEvent(ev);
-                deltaTime = m_song.deltaTimeOfEvent(ev);
+                if (useSimpleTimeProcess) {
+                    nextTime = startTime + m_song.timeOfEvent(ev);
+                } else {
+                    nextTime = currentTime + m_song.deltaTimeOfEvent(ev);
+                }
                 echoDelta = m_song.timeOfTicks(m_echoResolution);
-                //nextTime = startTime + eventTime;
-                nextTime = currentTime + deltaTime;
                 nextEcho = currentTime + echoDelta;
-                echoPosition = m_songPosition;
                 while (nextEcho < nextTime) {
                     dispatcher->processEvents(eventFilter);
                     std::this_thread::sleep_until(nextEcho);
-                    echoPosition += echoDelta.count();
                     echoTicks += m_echoResolution;
-                    emit songEchoTime(echoPosition, echoTicks);
+                    emit songEchoTime(duration_cast<milliseconds>(m_song.timeOfTicks(echoTicks)),
+                                      echoTicks);
                     currentTime = Clock::now();
                     nextEcho = currentTime + echoDelta;
                 }
                 dispatcher->processEvents(eventFilter);
                 std::this_thread::sleep_until(nextTime);
                 echoTicks = ev->tick();
-                //m_songPosition = eventTime.count();
-                m_songPosition += deltaTime.count();
+                m_songPositionTicks = echoTicks;
                 currentTime = Clock::now();
-                emit songEchoTime(m_songPosition, echoTicks);
+                emit songEchoTime(duration_cast<milliseconds>(m_song.timeOfTicks(echoTicks)),
+                                  echoTicks);
             }
             playEvent(ev);
 #ifndef QT_NO_QDEBUG
@@ -347,7 +355,10 @@ void SequencePlayer::playerLoop()
 
     emit songStopped();
     if (!m_song.hasMoreEvents()) {
-        //qDebug() << "Final Song Position:" << m_songPosition;
+#ifndef QT_NO_QDEBUG
+        qDebug() << "Final Song Position:" << m_songPositionTicks
+                 << (currentTime - startTime).count() / 1e9;
+#endif
         emit songFinished();
     }
     dispatcher->processEvents(eventFilter);
@@ -374,6 +385,11 @@ qreal SequencePlayer::currentBPM() const
     return bpm(m_song.currentTempo());
 }
 
+qreal SequencePlayer::initialBPM() const
+{
+    return bpm(m_song.initialTempo());
+}
+
 Sequence *SequencePlayer::song()
 {
     return &m_song;
@@ -382,7 +398,7 @@ Sequence *SequencePlayer::song()
 int SequencePlayer::getPosition()
 {
     //qDebug() << Q_FUNC_INFO << m_songPosition;
-    return m_songPosition;
+    return m_songPositionTicks;
 }
 
 int SequencePlayer::getEchoResolution()
@@ -404,7 +420,7 @@ void SequencePlayer::loadFile(QString fileName)
 {
     m_song.loadFile(fileName);
     m_echoResolution = 50; //m_song.getDivision() / 12;
-    m_songPosition = 0;
+    m_songPositionTicks = 0;
     m_firstBeat = m_song.firstBeat();
     m_latestBeat = m_firstBeat;
     m_loopStart = 1;
@@ -431,17 +447,17 @@ void SequencePlayer::resetPosition()
     //qDebug() << Q_FUNC_INFO;
     if (!m_song.isEmpty()) {
         m_song.resetPosition();
-        m_songPosition = 0;
+        m_songPositionTicks = 0;
         m_latestBeat = m_firstBeat;
     }
 }
 
-void SequencePlayer::setPosition(long pos)
+void SequencePlayer::setPosition(quint64 ticks)
 {
     //qDebug() << Q_FUNC_INFO << pos;
     allNotesOff();
-    m_song.setTickPosition(pos);
-    m_songPosition = pos;
+    m_song.setTickPosition(ticks);
+    m_songPositionTicks = ticks;
 }
 
 void SequencePlayer::setPitchShift(unsigned int pitch)
