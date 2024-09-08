@@ -1,11 +1,18 @@
+2024-08-31
+    * Release 1.7.4
+
 2024-08-25
     * Fix for GH ticket #25
+    * better sequence info dialog
 
 2024-08-23
     * Fix for GH ticket #20
 
 2024-08-20
     * Fix for GH ticket #22
+
+2024-03-30
+    * GH actions - workflows
 
 2023-12-06
     * Preparations for release 1.7.4
