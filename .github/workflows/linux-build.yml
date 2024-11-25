@@ -31,6 +31,7 @@ jobs:
         name: ${{env.DRUMSTICKNAME}}
         github_token: ${{secrets.GH_PAT}}
         repo: pedrolcl/drumstick
+        allow_forks: false
         workflow: cmake.yml
 
     - name: Extract downloaded files
@@ -41,6 +42,7 @@ jobs:
         name: ${{env.UCHARDETNAME}}
         github_token: ${{secrets.GH_PAT}}
         repo: pedrolcl/uchardet
+        allow_forks: false
         workflow: linux-build.yml
 
     - name: Extract downloaded files
