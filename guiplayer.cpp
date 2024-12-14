@@ -58,14 +58,15 @@ void GUIPlayer::connectOutPort()
 }
 
 GUIPlayer::GUIPlayer(QWidget *parent)
-    : QMainWindow(parent),
-    m_state(InvalidState),
-    m_repeat(Nothing),
-    m_midiOut(nullptr),
-    m_player(nullptr),
-    m_ui(new Ui::GUIPlayerClass),
-    m_pd(nullptr),
-    m_currentLang(nullptr)
+    : QMainWindow(parent)
+    , m_state(InvalidState)
+    , m_repeat(Nothing)
+    , m_manager{new BackendManager}
+    , m_midiOut{nullptr}
+    , m_player{nullptr}
+    , m_ui{new Ui::GUIPlayerClass}
+    , m_pd{nullptr}
+    , m_currentLang{nullptr}
 {
     m_ui->setupUi(this);
     setAcceptDrops(true);
@@ -180,14 +181,13 @@ GUIPlayer::GUIPlayer(QWidget *parent)
     m_ui->lblTime->setFont(lblTimeFont);
 
     try {
-        BackendManager man;
-        man.refresh(Settings::instance()->settingsMap());
-        QList<MIDIOutput*> outputs = man.availableOutputs();
+        m_manager->refresh(Settings::instance()->settingsMap());
+        QList<MIDIOutput *> outputs = m_manager->availableOutputs();
         if (outputs.isEmpty()) {
             qWarning() << "MIDI OUT drivers missing. Perhaps you need to set a DRUMSTICKRT environment variable?";
         }
 
-        m_midiOut = man.findOutput(Settings::instance()->lastOutputBackend());
+        m_midiOut = m_manager->findOutput(Settings::instance()->lastOutputBackend());
         if (m_midiOut == nullptr) {
             qWarning() << "MIDI OUT driver not found. Perhaps you need to set a DRUMSTICKRT environment variable?";
         }
@@ -244,6 +244,7 @@ GUIPlayer::~GUIPlayer()
         delete m_player;
     }
     delete m_ui;
+    delete m_manager;
 }
 
 void GUIPlayer::updateTimeLabel(std::chrono::milliseconds millis)

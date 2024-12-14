@@ -46,11 +46,12 @@
 class MIDIEvent;
 
 namespace drumstick { namespace rt {
-    class MIDIOutput;
+class BackendManager;
+class MIDIOutput;
 }}
 
 namespace Ui {
-    class GUIPlayerClass;
+class GUIPlayerClass;
 }
 
 class SequencePlayer;
@@ -173,8 +174,9 @@ private:
 
     PlayerState m_state;
     PlaylistRepetition m_repeat;
-    drumstick::rt::MIDIOutput* m_midiOut;
-    SequencePlayer* m_player;
+    drumstick::rt::BackendManager *m_manager;
+    drumstick::rt::MIDIOutput *m_midiOut;
+    SequencePlayer *m_player;
     Ui::GUIPlayerClass* m_ui;
     QPointer<QProgressDialog> m_pd;
     QThread m_playerThread;
