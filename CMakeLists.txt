@@ -168,8 +168,11 @@ else()
 endif()
 
 if (WIN32)
+    include (InstallRequiredSystemLibraries)
+    install (FILES ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS}
+             DESTINATION .)
     set(FLUIDSYNTH_PREFIX $ENV{FLUIDSYNTH})
-    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.nsi.in
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}_msvc.nsi.in
         ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.nsi IMMEDIATE @ONLY)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.rc.in
         ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.rc IMMEDIATE @ONLY)

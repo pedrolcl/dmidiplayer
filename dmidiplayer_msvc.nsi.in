@@ -1,0 +1,422 @@
+Name "@PROJECT_NAME@"
+SetCompressor /SOLID lzma
+Unicode true
+# BrandingText " "
+# Request application privileges for Windows Vista
+RequestExecutionLevel admin
+
+# Defines
+!define SOURCE_FILES "@CMAKE_SOURCE_DIR@"
+!define BINARY_FILES "@CMAKE_BINARY_DIR@"
+!define FUIDSYNTH_FILES "@FLUIDSYNTH_PREFIX@"
+!define DRUMSTICK_FILES "@Drumstick_DIR@"
+!define UCHARDET_FILES "@UCHARDET_PREFIX@"
+!define REGKEY "SOFTWARE\$(^Name)"
+!define VERSION @PROJECT_VERSION@
+!define PROGNAME "@PROJECT_NAME@"
+!define COMPANY "Drumstick"
+!define URL https://dmidiplayer.sourceforge.io
+!define CPU "@CMAKE_SYSTEM_PROCESSOR@"
+
+# Included files
+!include Sections.nsh
+!include MUI2.nsh
+!include Library.nsh
+!include x64.nsh
+
+# MUI defines
+!define MUI_ICON "${NSISDIR}\Contrib\Graphics\Icons\nsis3-install.ico"
+!define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\nsis3-uninstall.ico"
+!define MUI_STARTMENUPAGE_REGISTRY_ROOT HKLM
+!define MUI_STARTMENUPAGE_NODISABLE
+!define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
+!define MUI_STARTMENUPAGE_REGISTRY_VALUENAME StartMenuGroup
+!define MUI_STARTMENUPAGE_DEFAULTFOLDER "@PROJECT_NAME@"
+!define MUI_FINISHPAGE_NOAUTOCLOSE
+!define MUI_UNFINISHPAGE_NOAUTOCLOSE
+
+# Variables
+Var StartMenuGroup
+Var LibInstall
+
+# Installer pages
+!define MUI_WELCOMEPAGE_TITLE_3LINES
+!insertmacro MUI_PAGE_WELCOME
+!insertmacro MUI_PAGE_LICENSE ${SOURCE_FILES}/gpl-3.0.rtf
+!insertmacro MUI_PAGE_DIRECTORY
+!insertmacro MUI_PAGE_STARTMENU Application $StartMenuGroup
+!insertmacro MUI_PAGE_INSTFILES
+!define MUI_FINISHPAGE_TITLE_3LINES
+!insertmacro MUI_PAGE_FINISH
+
+!define MUI_WELCOMEPAGE_TITLE_3LINES
+!insertmacro MUI_UNPAGE_WELCOME
+!insertmacro MUI_UNPAGE_CONFIRM
+!insertmacro MUI_UNPAGE_INSTFILES
+!define MUI_FINISHPAGE_TITLE_3LINES
+!insertmacro MUI_UNPAGE_FINISH
+
+# Installer languages
+!insertmacro MUI_LANGUAGE "English" ; The first language is the default language
+!insertmacro MUI_LANGUAGE "French"
+!insertmacro MUI_LANGUAGE "German"
+!insertmacro MUI_LANGUAGE "Spanish"
+!insertmacro MUI_LANGUAGE "SpanishInternational"
+!insertmacro MUI_LANGUAGE "SimpChinese"
+!insertmacro MUI_LANGUAGE "TradChinese"
+!insertmacro MUI_LANGUAGE "Japanese"
+!insertmacro MUI_LANGUAGE "Korean"
+!insertmacro MUI_LANGUAGE "Italian"
+!insertmacro MUI_LANGUAGE "Dutch"
+!insertmacro MUI_LANGUAGE "Danish"
+!insertmacro MUI_LANGUAGE "Swedish"
+!insertmacro MUI_LANGUAGE "Norwegian"
+!insertmacro MUI_LANGUAGE "NorwegianNynorsk"
+!insertmacro MUI_LANGUAGE "Finnish"
+!insertmacro MUI_LANGUAGE "Greek"
+!insertmacro MUI_LANGUAGE "Russian"
+!insertmacro MUI_LANGUAGE "Portuguese"
+!insertmacro MUI_LANGUAGE "PortugueseBR"
+!insertmacro MUI_LANGUAGE "Polish"
+!insertmacro MUI_LANGUAGE "Ukrainian"
+!insertmacro MUI_LANGUAGE "Czech"
+!insertmacro MUI_LANGUAGE "Slovak"
+!insertmacro MUI_LANGUAGE "Croatian"
+!insertmacro MUI_LANGUAGE "Bulgarian"
+!insertmacro MUI_LANGUAGE "Hungarian"
+!insertmacro MUI_LANGUAGE "Thai"
+!insertmacro MUI_LANGUAGE "Romanian"
+!insertmacro MUI_LANGUAGE "Latvian"
+!insertmacro MUI_LANGUAGE "Macedonian"
+!insertmacro MUI_LANGUAGE "Estonian"
+!insertmacro MUI_LANGUAGE "Turkish"
+!insertmacro MUI_LANGUAGE "Lithuanian"
+!insertmacro MUI_LANGUAGE "Slovenian"
+!insertmacro MUI_LANGUAGE "Serbian"
+!insertmacro MUI_LANGUAGE "SerbianLatin"
+!insertmacro MUI_LANGUAGE "Arabic"
+!insertmacro MUI_LANGUAGE "Farsi"
+!insertmacro MUI_LANGUAGE "Hebrew"
+!insertmacro MUI_LANGUAGE "Indonesian"
+!insertmacro MUI_LANGUAGE "Mongolian"
+!insertmacro MUI_LANGUAGE "Luxembourgish"
+!insertmacro MUI_LANGUAGE "Albanian"
+!insertmacro MUI_LANGUAGE "Breton"
+!insertmacro MUI_LANGUAGE "Belarusian"
+!insertmacro MUI_LANGUAGE "Icelandic"
+!insertmacro MUI_LANGUAGE "Malay"
+!insertmacro MUI_LANGUAGE "Bosnian"
+!insertmacro MUI_LANGUAGE "Kurdish"
+!insertmacro MUI_LANGUAGE "Irish"
+!insertmacro MUI_LANGUAGE "Uzbek"
+!insertmacro MUI_LANGUAGE "Galician"
+!insertmacro MUI_LANGUAGE "Afrikaans"
+!insertmacro MUI_LANGUAGE "Catalan"
+!insertmacro MUI_LANGUAGE "Esperanto"
+!insertmacro MUI_LANGUAGE "Asturian"
+!insertmacro MUI_LANGUAGE "Basque"
+!insertmacro MUI_LANGUAGE "Pashto"
+!insertmacro MUI_LANGUAGE "ScotsGaelic"
+!insertmacro MUI_LANGUAGE "Georgian"
+!insertmacro MUI_LANGUAGE "Vietnamese"
+!insertmacro MUI_LANGUAGE "Welsh"
+!insertmacro MUI_LANGUAGE "Armenian"
+!insertmacro MUI_LANGUAGE "Corsican"
+!insertmacro MUI_LANGUAGE "Tatar"
+!insertmacro MUI_LANGUAGE "Hindi"
+
+# Installer attributes
+OutFile ${PROGNAME}-${VERSION}-win-${CPU}-setup.exe
+#InstallDir $PROGRAMFILES\${PROGNAME}
+CRCCheck on
+XPStyle on
+ShowInstDetails show
+VIProductVersion @PROJECT_VERSION@.0
+VIAddVersionKey /LANG=0 ProductName @PROJECT_NAME@
+VIAddVersionKey /LANG=0 ProductVersion ${VERSION}
+VIAddVersionKey /LANG=0 CompanyName "${COMPANY}"
+VIAddVersionKey /LANG=0 CompanyWebsite "${URL}"
+VIAddVersionKey /LANG=0 FileVersion ${VERSION}
+VIAddVersionKey /LANG=0 FileDescription "@PROJECT_DESCRIPTION@"
+VIAddVersionKey /LANG=0 LegalCopyright "Copyright (C) 2021-2024, Pedro Lopez-Cabanillas <plcl@users.sf.net>"
+InstallDirRegKey HKLM "${REGKEY}" Path
+ShowUninstDetails show
+Icon ${SOURCE_FILES}\icons\${PROGNAME}.ico
+UninstallIcon ${SOURCE_FILES}\icons\${PROGNAME}.ico
+
+Section # hidden section
+    DetailPrint "Removing previous installation."
+    ExecWait '"$INSTDIR\uninstall.exe" /S _?=$INSTDIR'
+SectionEnd
+
+# Installer sections
+Section -Main SEC0000
+    CreateDirectory $INSTDIR\iconengines
+    CreateDirectory $INSTDIR\imageformats
+    CreateDirectory $INSTDIR\platforms
+    CreateDirectory $INSTDIR\styles
+    CreateDirectory $INSTDIR\translations
+    CreateDirectory $INSTDIR\drumstick2
+    SetOutPath $INSTDIR
+    SetOverwrite on
+    File ${BINARY_FILES}\vc_redist.${CPU}.exe
+    File ${BINARY_FILES}\${PROGNAME}.exe
+    File ${BINARY_FILES}\examples\examples.lst
+    File ${SOURCE_FILES}\examples\twinkle.kar
+    File ${SOURCE_FILES}\examples\haendel_hallelujah.mid
+    File ${SOURCE_FILES}\examples\lindaamiga.mid
+    File ${SOURCE_FILES}\examples\mozart_aveverum.mid
+    File ${SOURCE_FILES}\examples\mozart_diesirae.mid
+    File ${SOURCE_FILES}\examples\mozart_konigdernacht.mid
+    File ${SOURCE_FILES}\examples\schubert_avemaria.mid
+    File ${SOURCE_FILES}\examples\Schubert_Standchen.mid
+    File ${SOURCE_FILES}\examples\test.mid
+    File ${SOURCE_FILES}\examples\Negra_Sombra.kar
+    SetOutPath $INSTDIR\translations
+    File ${BINARY_FILES}\${PROGNAME}_cs.qm
+    File ${BINARY_FILES}\${PROGNAME}_de.qm
+    File ${BINARY_FILES}\${PROGNAME}_es.qm
+    File ${BINARY_FILES}\${PROGNAME}_fr.qm
+    File ${BINARY_FILES}\${PROGNAME}_gl.qm
+    File ${BINARY_FILES}\${PROGNAME}_it.qm
+    File ${BINARY_FILES}\${PROGNAME}_ru.qm
+    File ${BINARY_FILES}\translations\qt_cs.qm
+    File ${BINARY_FILES}\translations\qt_de.qm
+    File ${BINARY_FILES}\translations\qt_es.qm
+    File ${BINARY_FILES}\translations\qt_fr.qm
+    File ${BINARY_FILES}\translations\qt_gl.qm
+    File ${BINARY_FILES}\translations\qt_it.qm
+    File ${BINARY_FILES}\translations\qt_ru.qm
+    File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_cs.qm
+    File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_de.qm
+    File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_es.qm
+    File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_fr.qm
+    File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_gl.qm
+    File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_it.qm
+    File ${DRUMSTICK_FILES}\library\widgets\drumstick-widgets_ru.qm
+
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick-file.dll $INSTDIR\drumstick-file.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick-rt.dll $INSTDIR\drumstick-rt.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick-widgets.dll $INSTDIR\drumstick-widgets.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\drumstick-rt-fluidsynth.dll $INSTDIR\drumstick2\drumstick-rt-fluidsynth.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\drumstick-rt-net-in.dll $INSTDIR\drumstick2\drumstick-rt-net-in.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\drumstick-rt-net-out.dll $INSTDIR\drumstick2\drumstick-rt-net-out.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\drumstick-rt-win-in.dll $INSTDIR\drumstick2\drumstick-rt-win-in.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${DRUMSTICK_FILES}\lib\drumstick2\drumstick-rt-win-out.dll $INSTDIR\drumstick2\drumstick-rt-win-out.dll $INSTDIR
+
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libfluidsynth-3.dll $INSTDIR\libfluidsynth-3.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\FLAC.dll $INSTDIR\FLAC.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\glib-2.0-0.dll $INSTDIR\glib-2.0-0.dll $INSTDIR
+#    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libgomp-1.dll $INSTDIR\libgomp-1.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\iconv-2.dll $INSTDIR\iconv-2.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\intl-8.dll $INSTDIR\intl-8.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\ogg.dll $INSTDIR\ogg.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\opus.dll $INSTDIR\opus.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\pcre2-8.dll $INSTDIR\pcre2-8.dll $INSTDIR
+#    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libreadline8.dll $INSTDIR\libreadline8.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\sndfile.dll $INSTDIR\sndfile.dll $INSTDIR
+#    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libtermcap-0.dll $INSTDIR\libtermcap-0.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\vorbis.dll $INSTDIR\vorbis.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\vorbisenc.dll $INSTDIR\vorbisenc.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\libmp3lame.dll $INSTDIR\libmp3lame.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${FUIDSYNTH_FILES}\bin\mpg123.dll $INSTDIR\mpg123.dll $INSTDIR
+
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${UCHARDET_FILES}\bin\uchardet.dll $INSTDIR\uchardet.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt6Core.dll $INSTDIR\Qt6Core.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt6Gui.dll $INSTDIR\Qt6Gui.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt6Network.dll $INSTDIR\Qt6Network.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt6PrintSupport.dll $INSTDIR\Qt6PrintSupport.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt6Svg.dll $INSTDIR\Qt6Svg.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt6Widgets.dll $INSTDIR\Qt6Widgets.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\Qt6Core5Compat.dll $INSTDIR\Qt6Core5Compat.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\dxcompiler.dll $INSTDIR\dxcompiler.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\dxil.dll $INSTDIR\dxil.dll $INSTDIR
+
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\iconengines\qsvgicon.dll $INSTDIR\iconengines\qsvgicon.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\imageformats\qgif.dll $INSTDIR\imageformats\qgif.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\imageformats\qico.dll $INSTDIR\imageformats\qico.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\imageformats\qjpeg.dll $INSTDIR\imageformats\qjpeg.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\imageformats\qsvg.dll $INSTDIR\imageformats\qsvg.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\platforms\qwindows.dll $INSTDIR\platforms\qwindows.dll $INSTDIR
+    !insertmacro InstallLib DLL NOTSHARED REBOOT_PROTECTED ${BINARY_FILES}\styles\qmodernwindowsstyle.dll $INSTDIR\styles\qmodernwindowsstyle.dll $INSTDIR
+
+    WriteRegStr HKLM "${REGKEY}\Components" Main 1
+SectionEnd
+
+Section -post SEC0001
+    WriteRegStr HKLM "${REGKEY}" Path $INSTDIR
+    SetOutPath $INSTDIR
+    WriteUninstaller $INSTDIR\uninstall.exe
+    !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
+    CreateDirectory $SMPROGRAMS\$StartMenuGroup
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall $(^Name).lnk" $INSTDIR\uninstall.exe
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk" $INSTDIR\$(^Name).exe
+    !insertmacro MUI_STARTMENU_WRITE_END
+    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayName "$(^Name)"
+    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayVersion "${VERSION}"
+    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" Publisher "${COMPANY}"
+    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" URLInfoAbout "${URL}"
+    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayIcon $INSTDIR\uninstall.exe
+    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" UninstallString $INSTDIR\uninstall.exe
+    WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoModify 1
+    WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoRepair 1
+    ;VS2022 Runtime
+    ;ReadRegStr $1 HKLM "SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\${CPU}" "Version"
+    ;StrCmp $1 "v14.42.34433.00" installed
+    ;not installed, so run the installer
+    ExecWait '"$INSTDIR\vc_redist.${CPU}.exe" /install /quiet /norestart'
+    ;installed:
+SectionEnd
+
+# Macro for selecting uninstaller sections
+!macro SELECT_UNSECTION SECTION_NAME UNSECTION_ID
+    Push $R0
+    ReadRegStr $R0 HKLM "${REGKEY}\Components" "${SECTION_NAME}"
+    StrCmp $R0 1 0 next${UNSECTION_ID}
+    !insertmacro SelectSection "${UNSECTION_ID}"
+    GoTo done${UNSECTION_ID}
+next${UNSECTION_ID}:
+    !insertmacro UnselectSection "${UNSECTION_ID}"
+done${UNSECTION_ID}:
+    Pop $R0
+!macroend
+
+# Uninstaller sections
+Section /o -un.Main UNSEC0000
+    Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_cs.qm
+    Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_de.qm
+    Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_es.qm
+    Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_fr.qm
+    Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_gl.qm
+    Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_it.qm
+    Delete /REBOOTOK $INSTDIR\translations\${PROGNAME}_ru.qm
+    Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_cs.qm
+    Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_de.qm
+    Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_es.qm
+    Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_fr.qm
+    Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_gl.qm
+    Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_it.qm
+    Delete /REBOOTOK $INSTDIR\translations\drumstick-widgets_ru.qm
+    Delete /REBOOTOK $INSTDIR\translations\qt_cs.qm
+    Delete /REBOOTOK $INSTDIR\translations\qt_de.qm
+    Delete /REBOOTOK $INSTDIR\translations\qt_es.qm
+    Delete /REBOOTOK $INSTDIR\translations\qt_fr.qm
+    Delete /REBOOTOK $INSTDIR\translations\qt_gl.qm
+    Delete /REBOOTOK $INSTDIR\translations\qt_it.qm
+    Delete /REBOOTOK $INSTDIR\translations\qt_ru.qm
+
+    Delete /REBOOTOK $INSTDIR\${PROGNAME}.exe
+    Delete /REBOOTOK $INSTDIR\vc_redist.${CPU}.exe
+    Delete /REBOOTOK $INSTDIR\examples.lst
+    Delete /REBOOTOK $INSTDIR\twinkle.kar
+    Delete /REBOOTOK $INSTDIR\haendel_hallelujah.mid
+    Delete /REBOOTOK $INSTDIR\lindaamiga.mid
+    Delete /REBOOTOK $INSTDIR\mozart_aveverum.mid
+    Delete /REBOOTOK $INSTDIR\mozart_diesirae.mid
+    Delete /REBOOTOK $INSTDIR\mozart_konigdernacht.mid
+    Delete /REBOOTOK $INSTDIR\schubert_avemaria.mid
+    Delete /REBOOTOK $INSTDIR\Schubert_Standchen.mid
+    Delete /REBOOTOK $INSTDIR\test.mid
+    Delete /REBOOTOK $INSTDIR\Negra_Sombra.kar
+
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick-file.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick-rt.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick-widgets.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick2\drumstick-rt-fluidsynth.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick2\drumstick-rt-net-in.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick2\drumstick-rt-net-out.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick2\drumstick-rt-win-in.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\drumstick2\drumstick-rt-win-out.dll
+
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libfluidsynth-3.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\FLAC.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\glib-2.0-0.dll
+#    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libgomp-1.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\iconv-2.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\intl-8.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\ogg.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\opus.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\pcre2-8.dll
+#    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libreadline8.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\sndfile.dll
+#    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libtermcap-0.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\vorbis.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\vorbisenc.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libmp3lame.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\mpg123.dll
+
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\uchardet.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt6Core.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt6Gui.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt6Network.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt6PrintSupport.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt6Svg.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt6Widgets.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\Qt6Core5Compat.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\D3Dcompiler_47.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\opengl32sw.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libgcc_s_seh-1.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libstdc++-6.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\libwinpthread-1.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\iconengines\qsvgicon.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qgif.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qico.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qjpeg.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\imageformats\qsvg.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\platforms\qwindows.dll
+    !insertmacro UnInstallLib DLL NOTSHARED REBOOT_PROTECTED $INSTDIR\styles\qmodernwindowsstyle.dll
+    RMDir /REBOOTOK $INSTDIR\translations
+    RMDir /REBOOTOK $INSTDIR\styles
+    RMDir /REBOOTOK $INSTDIR\platforms
+    RMDir /REBOOTOK $INSTDIR\iconengines
+    RMDir /REBOOTOK $INSTDIR\imageformats
+    RMDir /REBOOTOK $INSTDIR\drumstick2
+    DeleteRegValue HKLM "${REGKEY}\Components" Main
+SectionEnd
+
+Section -un.post UNSEC0001
+    DeleteRegKey HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
+    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Uninstall $(^Name).lnk"
+    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk"
+    Delete /REBOOTOK $INSTDIR\uninstall.exe
+    DeleteRegValue HKLM "${REGKEY}" StartMenuGroup
+    DeleteRegValue HKLM "${REGKEY}" Path
+    DeleteRegKey /IfEmpty HKLM "${REGKEY}\Components"
+    DeleteRegKey /IfEmpty HKLM "${REGKEY}"
+    RmDir /REBOOTOK $SMPROGRAMS\$StartMenuGroup
+    RmDir /REBOOTOK $INSTDIR
+SectionEnd
+
+# Installer functions
+Function .onInit
+    !insertmacro MUI_LANGDLL_DISPLAY
+    ${If} ${CPU} == "ARM64"
+        ${IfNot} ${IsNativeARM64}
+                MessageBox MB_OK|MB_ICONSTOP "Sorry, this setup package is for arm64 systems only."
+                Quit
+        ${EndIf}
+        StrCpy $INSTDIR "$PROGRAMFILES64\${PROGNAME}"
+    ${ElseIf} ${CPU} == "AMD64"
+        ${If} ${IsNativeAMD64}
+            StrCpy $INSTDIR "$PROGRAMFILES64\${PROGNAME}"
+        ${Else}
+            MessageBox MB_OK|MB_ICONSTOP "Sorry, this setup package is for x64 systems only."
+            Quit
+        ${EndIf}
+    ${EndIf}
+    InitPluginsDir
+    Push $0
+    ReadRegStr $0 HKLM "${REGKEY}" Path
+    ClearErrors
+    StrCmp $0 "" +2
+    StrCpy $LibInstall 1
+    Pop $0
+FunctionEnd
+
+# Uninstaller functions
+Function un.onInit
+    !insertmacro MUI_UNGETLANGUAGE
+    ReadRegStr $INSTDIR HKLM "${REGKEY}" Path
+    !insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuGroup
+    !insertmacro SELECT_UNSECTION Main ${UNSEC0000}
+FunctionEnd
