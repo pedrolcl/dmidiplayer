@@ -19,7 +19,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 cmake_minimum_required(VERSION 3.16)
 
 project ( dmidiplayer
-    VERSION 1.7.4
+    VERSION 1.7.5
     LANGUAGES CXX
     DESCRIPTION "Drumstick MIDI File Player Multiplatform Program"
     HOMEPAGE_URL "https://sourceforge.net/p/dmidiplayer/"
@@ -39,6 +39,12 @@ option(BUILD_DOCS "Process Markdown sources of man pages and help files" ON)
 option(EMBED_TRANSLATIONS "Embed translations instead of installing" OFF)
 option(USE_QT5 "Choose to build with Qt5 instead of Qt6" OFF)
 
+# CMAKE_SYSTEM_PROCESSOR is broken on Windows with MSVC
+# cmake bug https://gitlab.kitware.com/cmake/cmake/-/issues/15170 still open in 2024/12
+if(MSVC)
+    string(TOLOWER ${MSVC_CXX_ARCHITECTURE_ID} CMAKE_SYSTEM_PROCESSOR)
+endif()
+
 include(SCMRevision)
 
 if (USE_QT5)
@@ -53,7 +59,7 @@ else()
     find_package ( Qt6 6.2 COMPONENTS Gui Widgets PrintSupport LinguistTools Core5Compat REQUIRED )
 endif()
 
-find_package ( Drumstick 2.9 COMPONENTS File RT Widgets REQUIRED )
+find_package ( Drumstick 2.10 COMPONENTS File RT Widgets REQUIRED )
 find_package ( uchardet 0.0.8 COMPONENTS libuchardet REQUIRED )
 
 SET(SOURCES

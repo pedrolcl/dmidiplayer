@@ -390,13 +390,13 @@ SectionEnd
 # Installer functions
 Function .onInit
     !insertmacro MUI_LANGDLL_DISPLAY
-    ${If} ${CPU} == "ARM64"
+    ${If} ${CPU} == "arm64"
         ${IfNot} ${IsNativeARM64}
                 MessageBox MB_OK|MB_ICONSTOP "Sorry, this setup package is for arm64 systems only."
                 Quit
         ${EndIf}
         StrCpy $INSTDIR "$PROGRAMFILES64\${PROGNAME}"
-    ${ElseIf} ${CPU} == "AMD64"
+    ${ElseIf} ${CPU} == "x64"
         ${If} ${IsNativeAMD64}
             StrCpy $INSTDIR "$PROGRAMFILES64\${PROGNAME}"
         ${Else}
