@@ -145,6 +145,7 @@ Lyrics::Lyrics(QWidget *parent) : FramelessWindow(parent),
     m_textViewer->setTextInteractionFlags(Qt::NoTextInteraction);
     m_normalColor = Settings::instance()->getFutureColor();
     m_otherColor = Settings::instance()->getPastColor();
+    m_highlightColor = Settings::instance()->highlightColor();
     vlayout->addWidget(m_textViewer);
     this->setCentralWidget(centralWidget);
 #ifndef QT_NO_SHORTCUT
@@ -388,6 +389,12 @@ void Lyrics::applySettings()
     m_textViewer->setFont(Settings::instance()->lyricsFont());
     m_normalColor = Settings::instance()->getFutureColor();
     m_otherColor = Settings::instance()->getPastColor();
+    m_highlightColor = Settings::instance()->highlightColor();
+
+    QPalette p;
+    p.setColor(QPalette::Highlight, m_highlightColor);
+    m_textViewer->setPalette(p);
+
     if (!m_textViewer->document()->isEmpty()) {
         displayText();
     }

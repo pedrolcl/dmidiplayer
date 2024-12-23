@@ -79,6 +79,7 @@ private: // member vars
     QTextCodec *m_codec;
     QColor m_normalColor;
     QColor m_otherColor;
+    QColor m_highlightColor;
     QAction *m_actionCopy;
     QAction *m_actionSave;
     QAction *m_actionPrint;

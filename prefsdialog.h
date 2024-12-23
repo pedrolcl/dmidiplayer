@@ -36,6 +36,7 @@ public:
     void setFutureColor(QColor c);
     void setPastColor(QColor c);
     void setSingleColor(QColor c);
+    void setHighlightColor(QColor c);
     void retranslateUi();
 
 public slots:
@@ -45,6 +46,7 @@ public slots:
     void slotLyricsFont();
     void slotNotesFont();
     void slotSingleColor();
+    void slotHighlightColor();
     void darkModeChanged(bool state);
     void iconThemeChanged(bool state);
     void accept() override;

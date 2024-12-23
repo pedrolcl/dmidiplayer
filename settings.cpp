@@ -261,8 +261,16 @@ void Settings::internalRead(QSettings &settings)
     } else {
         m_lyricsFont = defTextFont;
     }
-    m_futureColor = QColor(settings.value("FutureColor", qApp->palette().color(QPalette::WindowText).name(QColor::HexRgb)).toString());
-    m_pastColor = QColor(settings.value("PastColor", QColor(Qt::gray).name(QColor::HexRgb)).toString());
+    m_futureColor = QColor(
+        settings
+            .value("FutureColor", qApp->palette().color(QPalette::WindowText).name(QColor::HexRgb))
+            .toString());
+    m_pastColor = QColor(
+        settings.value("PastColor", QColor(Qt::gray).name(QColor::HexRgb)).toString());
+    m_highlightColor = QColor(
+        settings
+            .value("HighlightColor", qApp->palette().color(QPalette::Highlight).name(QColor::HexRgb))
+            .toString());
     m_lyricsWindowGeometry = settings.value("Geometry", QByteArray()).toByteArray();
     m_lyricsWindowState = settings.value("State", QByteArray()).toByteArray();
     settings.endGroup();
@@ -333,6 +341,7 @@ void Settings::internalSave(QSettings &settings)
     settings.setValue("LyricsFont", m_lyricsFont.toString());
     settings.setValue("FutureColor", m_futureColor.name(QColor::HexRgb));
     settings.setValue("PastColor", m_pastColor.name(QColor::HexRgb));
+    settings.setValue("HighlightColor", m_highlightColor.name(QColor::HexRgb));
     settings.setValue("Geometry", m_lyricsWindowGeometry);
     settings.setValue("State", m_lyricsWindowState);
     settings.endGroup();
@@ -369,6 +378,16 @@ void Settings::forceSettings(QSettings &settings)
     settings.setValue("reverb_dls", true);
     settings.endGroup();
 #endif
+}
+
+QColor Settings::highlightColor() const
+{
+    return m_highlightColor;
+}
+
+void Settings::setHighlightColor(const QColor &newHighlightColor)
+{
+    m_highlightColor = newHighlightColor;
 }
 
 bool Settings::snappedTogether() const

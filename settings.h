@@ -178,6 +178,9 @@ public:
     bool snappedTogether() const;
     void setSnappedTogether(bool newSnappedTogether);
 
+    QColor highlightColor() const;
+    void setHighlightColor(const QColor &newHighlightColor);
+
 signals:
     void ValuesChanged();
 
@@ -233,6 +236,7 @@ private:
     QColor m_futureColor;
     QColor m_pastColor;
     QColor m_singleColor;
+    QColor m_highlightColor;
     QString m_language;
     QVariantMap m_settingsMap;
     QVariantMap m_defaultsMap;

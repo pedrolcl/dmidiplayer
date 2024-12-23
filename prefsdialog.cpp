@@ -42,6 +42,7 @@ PrefsDialog::PrefsDialog(QWidget *parent) :
     ui->btnPastColor->setIcon( IconUtils::GetIcon("wrench") );
     ui->btnSingleColor->setIcon( IconUtils::GetIcon("wrench") );
     ui->btnTextFont->setIcon( IconUtils::GetIcon("wrench") );
+    ui->btnHighlightColor->setIcon(IconUtils::GetIcon("wrench"));
 #if !defined(Q_OS_WINDOWS)
     ui->chkSnapping->setVisible(false);
 #endif
@@ -69,6 +70,7 @@ PrefsDialog::PrefsDialog(QWidget *parent) :
     connect(ui->btnNoteFont, &QToolButton::clicked, this, &PrefsDialog::slotNotesFont);
     connect(ui->btnTextFont, &QToolButton::clicked, this, &PrefsDialog::slotLyricsFont);
     connect(ui->btnSingleColor, &QToolButton::clicked, this, &PrefsDialog::slotSingleColor);
+    connect(ui->btnHighlightColor, &QToolButton::clicked, this, &PrefsDialog::slotHighlightColor);
     connect(ui->chkDarkMode, &QCheckBox::toggled, this, &PrefsDialog::darkModeChanged);
     connect(ui->chkInternalIcons, &QCheckBox::toggled, this, &PrefsDialog::iconThemeChanged);
 }
@@ -92,6 +94,7 @@ void PrefsDialog::restoreDefaults()
 #endif
     QColor futureColor = qApp->palette().color(QPalette::WindowText);
     QColor pastColor = QColor(Qt::gray);
+    QColor highlightColor = qApp->palette().color(QPalette::Highlight);
 
     ui->chkDarkMode->setChecked(false);
     ui->chkInternalIcons->setChecked(internalIcons);
@@ -102,6 +105,7 @@ void PrefsDialog::restoreDefaults()
     ui->editTextFont->setText("Sans Serif,36");
     setFutureColor(futureColor);
     setPastColor(pastColor);
+    setHighlightColor(highlightColor);
     ui->chkAutoPlay->setChecked(true);
     ui->chkAutoAdvance->setChecked(true);
 
@@ -157,6 +161,14 @@ void PrefsDialog::slotSingleColor()
     }
 }
 
+void PrefsDialog::slotHighlightColor()
+{
+    QColor color = QColorDialog::getColor(Settings::instance()->highlightColor(), this);
+    if (color.isValid()) {
+        setHighlightColor(color);
+    }
+}
+
 void PrefsDialog::darkModeChanged(bool state)
 {
     QColor future = QColor( state ? Qt::white : qApp->palette().color(QPalette::WindowText) );
@@ -174,6 +186,7 @@ void PrefsDialog::iconThemeChanged(bool state)
     ui->btnPastColor->setIcon( IconUtils::GetIcon("wrench") );
     ui->btnSingleColor->setIcon( IconUtils::GetIcon("wrench") );
     ui->btnTextFont->setIcon( IconUtils::GetIcon("wrench") );
+    ui->btnHighlightColor->setIcon(IconUtils::GetIcon("wrench"));
 }
 
 void PrefsDialog::accept()
@@ -205,6 +218,7 @@ void PrefsDialog::showEvent ( QShowEvent *event )
         ui->editTextFont->setText( Settings::instance()->lyricsFont().toString() );
         setFutureColor(Settings::instance()->getFutureColor());
         setPastColor( Settings::instance()->getPastColor());
+        setHighlightColor(Settings::instance()->highlightColor());
 
         ui->cboHighlight->clear();
         for(int i=0; i<Settings::instance()->availablePalettes(); ++i) {
@@ -248,6 +262,7 @@ void PrefsDialog::apply()
     }
     Settings::instance()->setFutureColor(ui->editFutureColor->text());
     Settings::instance()->setPastColor(ui->editPastColor->text());
+    Settings::instance()->setHighlightColor(ui->editHighlightColor->text());
 
     Settings::instance()->setHighlightPaletteId(ui->cboHighlight->currentData().toInt());
     Settings::instance()->setVelocityColor(ui->chkVelocityColor->isChecked());
@@ -285,6 +300,15 @@ void PrefsDialog::setSingleColor(QColor c)
     p.fill(c);
     ui->lblSingle->setPixmap(p);
     ui->editSingle->setText(c.name(QColor::HexRgb));
+}
+
+void PrefsDialog::setHighlightColor(QColor c)
+{
+    int x = ui->lblHigh->height();
+    QPixmap p(x, x);
+    p.fill(c);
+    ui->lblHigh->setPixmap(p);
+    ui->editHighlightColor->setText(c.name(QColor::HexRgb));
 }
 
 void PrefsDialog::retranslateUi()
