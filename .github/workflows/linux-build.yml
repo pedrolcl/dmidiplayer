@@ -46,6 +46,7 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:
+        arch: linux_gcc_64
         version: '6.8.*'
         modules: qt5compat
 
@@ -53,9 +54,9 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -yq pkg-config libasound2-dev
 
     - name: Configure CMake
-      run: cmake -B ${{github.workspace}}/build
-        -DBUILD_DOCS=OFF
-        -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+      run: cmake -B ${{github.workspace}}/build \
+        -DBUILD_DOCS=OFF \
+        -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
         -DCMAKE_PREFIX_PATH="${{env.DRUMSTICK_LOCATION}};${{env.UCHARDET_LOCATION}}"
 
     - name: Build
