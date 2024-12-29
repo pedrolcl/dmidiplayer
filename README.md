@@ -26,10 +26,10 @@ Alright, these are the build requirements:
 
 * C++11 compiler
 * [Qt 5](https://www.qt.io/download) >= 5.15 or Qt6 >= 6.2
-* [Drumstick 2.8](https://sourceforge.net/projects/drumstick/)
+* [Drumstick 2.10](https://sourceforge.net/projects/drumstick/)
 * [Uchardet 0.0.8](https://www.freedesktop.org/wiki/Software/uchardet/)
 * [pandoc](https://pandoc.org/)
-* [CMake 3.14](https://cmake.org/)
+* [CMake 3.16](https://cmake.org/)
 
 Build and deployment commands (for Linux)
 
@@ -37,10 +37,9 @@ Build and deployment commands (for Linux)
 $ tar -xvzf dmidiplayer-x.y.z.tar.gz
 $ cd dmidiplayer-x.y.z
 $ mkdir build
-$ cd build
-$ cmake .. -DCMAKE_PREFIX_PATH="$HOME/Qt5;$HOME/drumstick2;$HOME/uchardet"
-$ make
-$ make install
+$ cmake -S . -B build -DCMAKE_PREFIX_PATH="$HOME/Qt;$HOME/drumstick2;$HOME/uchardet"
+$ cmake --build build
+$ cmake --install build
 ```
 
 You probably don't need to use the CMake variable CMAKE_PREFIX_PATH at all, if your dependencies are installed on some standard prefix like "/usr" on Linux. Otherwise, you need to replace the contents of the parameter CMAKE_PREFIX_PATH with the actual paths in your system (in the example, each dependency was installed on a subdirectory under the $HOME directory). If you don't want to compile the program yourself, there are x86_64 precompiled packages for Linux, Windows and macOS at Sourceforge.
