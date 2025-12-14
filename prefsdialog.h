@@ -37,6 +37,7 @@ public:
     void setPastColor(QColor c);
     void setSingleColor(QColor c);
     void setHighlightColor(QColor c);
+    void setTextAlignment(int a);
     void retranslateUi();
 
 public slots:

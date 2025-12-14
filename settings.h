@@ -181,6 +181,10 @@ public:
     QColor highlightColor() const;
     void setHighlightColor(const QColor &newHighlightColor);
 
+    int textAlignment() const;
+    void setTextAlignment(int newTextAlignment);
+    Qt::Alignment getTextAlignment();
+
 signals:
     void ValuesChanged();
 
@@ -230,6 +234,7 @@ private:
     int m_soloVolumeReduction;
     bool m_autoSongSettings;
     bool m_octaveSubscript;
+    int m_textAlignment;
     LabelVisibility m_namesVisibility;
     QFont m_notesFont;
     QFont m_lyricsFont;

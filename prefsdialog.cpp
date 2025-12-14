@@ -108,6 +108,7 @@ void PrefsDialog::restoreDefaults()
     setHighlightColor(highlightColor);
     ui->chkAutoPlay->setChecked(true);
     ui->chkAutoAdvance->setChecked(true);
+    setTextAlignment(0); //Left
 
     ui->chkVelocityColor->setChecked(true);
     ui->cboHighlight->setCurrentIndex(0);
@@ -236,6 +237,7 @@ void PrefsDialog::showEvent ( QShowEvent *event )
         ui->cboNoteNames->setCurrentIndex(static_cast<int>(Settings::instance()->namesVisibility()));
         setSingleColor( Settings::instance()->getSingleColor() );
         ui->chkOctaveSubscript->setChecked( Settings::instance()->octaveSubscript() );
+        ui->cboTextAlignment->setCurrentIndex(Settings::instance()->textAlignment());
 
         ui->tabWidget->setCurrentIndex(0);
     }
@@ -273,6 +275,7 @@ void PrefsDialog::apply()
     }
     Settings::instance()->setNamesVisibility(static_cast<LabelVisibility>(ui->cboNoteNames->currentIndex()));
     Settings::instance()->setOctaveSubscript(ui->chkOctaveSubscript->isChecked());
+    Settings::instance()->setTextAlignment(ui->cboTextAlignment->currentIndex());
 }
 
 void PrefsDialog::setFutureColor(QColor c)
@@ -309,6 +312,11 @@ void PrefsDialog::setHighlightColor(QColor c)
     p.fill(c);
     ui->lblHigh->setPixmap(p);
     ui->editHighlightColor->setText(c.name(QColor::HexRgb));
+}
+
+void PrefsDialog::setTextAlignment(int a)
+{
+    ui->cboTextAlignment->setCurrentIndex(a);
 }
 
 void PrefsDialog::retranslateUi()

@@ -80,6 +80,7 @@ private: // member vars
     QColor m_normalColor;
     QColor m_otherColor;
     QColor m_highlightColor;
+    Qt::Alignment m_alignment{Qt::AlignLeft};
     QAction *m_actionCopy;
     QAction *m_actionSave;
     QAction *m_actionPrint;

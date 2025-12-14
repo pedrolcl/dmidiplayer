@@ -132,6 +132,7 @@ void Settings::ResetDefaults()
     m_velocityColor = true;
     m_showStatusBar = true;
     m_showToolBar = true;
+    m_textAlignment = 0; // Left
 #if defined(Q_OS_WINDOWS)
     m_winSnap = true;
 #endif
@@ -273,6 +274,7 @@ void Settings::internalRead(QSettings &settings)
             .toString());
     m_lyricsWindowGeometry = settings.value("Geometry", QByteArray()).toByteArray();
     m_lyricsWindowState = settings.value("State", QByteArray()).toByteArray();
+    m_textAlignment = settings.value("Alignment", 0).toInt();
     settings.endGroup();
 
     settings.beginGroup("PlayerPianoSettings");
@@ -344,6 +346,7 @@ void Settings::internalSave(QSettings &settings)
     settings.setValue("HighlightColor", m_highlightColor.name(QColor::HexRgb));
     settings.setValue("Geometry", m_lyricsWindowGeometry);
     settings.setValue("State", m_lyricsWindowState);
+    settings.setValue("Alignment", m_textAlignment);
     settings.endGroup();
 
     settings.beginGroup("PlayerPianoSettings");
@@ -378,6 +381,29 @@ void Settings::forceSettings(QSettings &settings)
     settings.setValue("reverb_dls", true);
     settings.endGroup();
 #endif
+}
+
+int Settings::textAlignment() const
+{
+    return m_textAlignment;
+}
+
+void Settings::setTextAlignment(int newTextAlignment)
+{
+    m_textAlignment = newTextAlignment;
+}
+
+Qt::Alignment Settings::getTextAlignment()
+{
+    const QList<Qt::Alignment> values{Qt::AlignLeft,
+                                      Qt::AlignRight,
+                                      Qt::AlignHCenter,
+                                      Qt::AlignJustify};
+    if (m_textAlignment >= 0 && m_textAlignment < values.size()) {
+        return values[m_textAlignment];
+    } else {
+        return Qt::AlignLeft;
+    }
 }
 
 QColor Settings::highlightColor() const
@@ -467,9 +493,9 @@ void Settings::loadTranslations()
         if (m_trq->load(loc, "qt", "_", Settings::systemLocales())) {
             ok = QCoreApplication::installTranslator(m_trq);
         }
-        if(!ok) {
-            qWarning() << "Failure loading Qt system translations for" << lang
-                       << "from" << Settings::systemLocales();
+        if (!ok) {
+            qWarning() << "Failure loading Qt system translations for" << lang << "from"
+                       << Settings::systemLocales();
             delete m_trq;
         }
         ok = false;
@@ -478,8 +504,8 @@ void Settings::loadTranslations()
             ok = QCoreApplication::installTranslator(m_trp);
         }
         if (!ok) {
-            qWarning() << "Failure loading application translations for" << lang
-                       << "from" << Settings::localeDirectory();
+            qWarning() << "Failure loading application translations for" << lang << "from"
+                       << Settings::localeDirectory();
             delete m_trp;
         }
         ok = false;
@@ -488,8 +514,8 @@ void Settings::loadTranslations()
             ok = QCoreApplication::installTranslator(m_trl);
         }
         if (!ok) {
-            qWarning() << "Failure loading widgets library translations for" << lang
-                       << "from" << Settings::drumstickLocales();
+            qWarning() << "Failure loading widgets library translations for" << lang << "from"
+                       << Settings::drumstickLocales();
             delete m_trl;
         }
     }
@@ -826,7 +852,7 @@ PianoPalette Settings::getPalette(int pal)
 QList<QString> Settings::availablePaletteNames(bool forHighlight)
 {
     QList<QString> tmp;
-    for (PianoPalette& p : m_paletteList) {
+    for (PianoPalette &p : m_paletteList) {
         if (forHighlight && !p.isHighLight()) {
             continue;
         }
@@ -842,7 +868,7 @@ int Settings::availablePalettes() const
 
 void Settings::retranslatePalettes()
 {
-    for (PianoPalette& pal : m_paletteList) {
+    for (PianoPalette &pal : m_paletteList) {
         pal.retranslateStrings();
     }
 }
