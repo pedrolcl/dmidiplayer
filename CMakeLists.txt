@@ -135,6 +135,7 @@ set ( TRANSLATIONS
    translations/${PROJECT_NAME}_fr.ts
    translations/${PROJECT_NAME}_gl.ts
    translations/${PROJECT_NAME}_it.ts
+   translations/${PROJECT_NAME}_ka.ts
    translations/${PROJECT_NAME}_ru.ts
 )
 
@@ -163,7 +164,7 @@ endif()
 if (EMBED_TRANSLATIONS)
     file(COPY ${WIDGETS_TRANS} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
     add_app_translations_resource(APP_RES ${QM_FILES} ${WIDGETS_TRANS})
-    add_qt_translations_resource(QT_RES cs de es fr gl it ru)
+    add_qt_translations_resource(QT_RES cs de es fr gl it ka ru)
     list(APPEND SOURCES ${APP_RES} ${QT_RES})
 else()
     if (APPLE)
