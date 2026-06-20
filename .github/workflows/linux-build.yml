@@ -19,9 +19,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
-    - uses: dawidd6/action-download-artifact@v7
+    - uses: dawidd6/action-download-artifact@v21
       with:
         name: ${{env.DRUMSTICKNAME}}
         github_token: ${{secrets.GH_PAT}}
@@ -32,7 +32,7 @@ jobs:
     - name: Extract downloaded files
       run: tar xvf ${{env.DRUMSTICKNAME}}.tar
 
-    - uses: dawidd6/action-download-artifact@v7
+    - uses: dawidd6/action-download-artifact@v21
       with:
         name: ${{env.UCHARDETNAME}}
         github_token: ${{secrets.GH_PAT}}
@@ -47,7 +47,7 @@ jobs:
       uses: jurplel/install-qt-action@v4
       with:
         arch: linux_gcc_64
-        version: '6.8.*'
+        version: '6.10.*'
         modules: qt5compat
 
     - name: Dependencies
