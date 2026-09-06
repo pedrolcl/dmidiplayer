@@ -19,8 +19,8 @@ jobs:
       matrix:
         arch: ["x86_64", "aarch64"]
         include:
-          - { icon: '🟥', arch: "x86_64", os: "ubuntu-24.04", triplet: "x64-linux-dynamic" }
-          - { icon: '🟩', arch: "aarch64", os: "ubuntu-24.04-arm", triplet: "arm64-linux-dynamic" }
+          - { icon: '🟥', arch: "x86_64", os: "ubuntu-24.04", triplet: "x64-linux-dynamic", qtarch: "linux_gcc_64" }
+          - { icon: '🟩', arch: "aarch64", os: "ubuntu-24.04-arm", triplet: "arm64-linux-dynamic", qtarch: "linux_gcc_arm64" }
     runs-on: ${{ matrix.os }}
     name: 'Linux ${{ matrix.arch }}'
 
@@ -43,7 +43,7 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:
-        arch: linux_gcc_64
+        arch: ${{matrix.qtarch}}
         version: '6.11.1'
         modules: qt5compat
 
