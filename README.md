@@ -1,7 +1,7 @@
 Drumstick Multiplatform MIDI File Player
 ========================================
 
-[![Build on Linux](https://github.com/pedrolcl/dmidiplayer/actions/workflows/linux-build.yml/badge.svg)](https://github.com/pedrolcl/dmidiplayer/actions/workflows/linux-build.yml)
+[![Linux CI](https://github.com/pedrolcl/dmidiplayer/actions/workflows/linux-ci.yml/badge.svg)](https://github.com/pedrolcl/dmidiplayer/actions/workflows/linux-ci.yml)
 
 This application is a multiplatform MIDI file player for Linux, Windows and macOS. It reads .MID (Standard MIDI Files), .KAR (Karaoke), and .WRK (Cakewalk) file formats, and outputs MIDI events to hardware MIDI ports and also software synths.
 
