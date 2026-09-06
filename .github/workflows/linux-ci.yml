@@ -1,0 +1,60 @@
+name: Linux CI
+
+on:
+  push:
+    branches: [ "devel", "master" ]
+  pull_request:
+    branches: [ "devel", "master" ]
+  workflow_dispatch:
+
+env:
+  BUILD_TYPE: RelWithDebInfo
+  DRUMSTICKNAME: DrumstickV2
+  DRUMSTICK_LOCATION: ${{github.workspace}}/DrumstickV2
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: ["x86_64", "aarch64"]
+        include:
+          - { icon: '🟥', arch: "x86_64", os: "ubuntu-24.04", triplet: "x64-linux-dynamic" }
+          - { icon: '🟩', arch: "aarch64", os: "ubuntu-24.04-arm", triplet: "arm64-linux-dynamic" }
+    runs-on: ${{ matrix.os }}
+    name: 'Linux ${{ matrix.arch }}'
+
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Download artifact
+      uses: dawidd6/action-download-artifact@v24
+      with:
+        name: ${{env.DRUMSTICKNAME}}-${{matrix.arch}}.tar.gz
+        github_token: ${{secrets.GH_PAT}}
+        repo: pedrolcl/drumstick
+        workflow: linux.yml
+        skip_unpack: true
+        allow_forks: false
+
+    - name: Extract downloaded artifact
+      run: tar xvzf ${{env.DRUMSTICKNAME}}-${{matrix.arch}}.tar.gz
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v4
+      with:
+        arch: linux_gcc_64
+        version: '6.11.1'
+        modules: qt5compat
+
+    - name: Dependencies
+      run: sudo apt-get update && sudo apt-get install -yq pkg-config libasound2-dev libuchardet-dev
+
+    - name: Configure CMake
+      run: cmake -B ${{github.workspace}}/build
+        -DBUILD_DOCS=OFF
+        -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+        -DCMAKE_PREFIX_PATH:STRING="${{env.DRUMSTICK_LOCATION}}"
+
+    - name: Build
+      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
