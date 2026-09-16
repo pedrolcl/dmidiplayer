@@ -1,3 +1,14 @@
+2026-09-16
+    * This change requires Drumstick 2.11
+    * implement default gain on Sonivox and Fluidsynth backends
+    * The default gain is an application policy. The real gain applied by the synthesizers may be adjusted by the user in the backend configuration dialogs.
+
+2026-06-18
+    * New Georgian translation by Ekaterine Papava. GH issue #40
+
+2025-12-14
+    * Implement text alignment setting on Lyrics view - GH issue #37
+
 2024-12-30
     * Release 1.7.5
 

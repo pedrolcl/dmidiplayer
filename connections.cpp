@@ -17,8 +17,12 @@
 */
 
 #include <QMessageBox>
+#include <QMetaObject>
+#include <QMetaProperty>
+
 #include <drumstick/settingsfactory.h>
 #include <drumstick/configurationdialogs.h>
+
 #include "connections.h"
 #include "iconutils.h"
 
@@ -165,5 +169,37 @@ void Connections::retranslateUi()
 void Connections::configureOutputDriver()
 {
     QString driver = ui.m_outputBackends->currentText();
-    m_settingsChanged |= drumstick::widgets::configureOutputDriver(driver, this);
+    if (drumstick::widgets::outputDriverIsConfigurable(driver)) {
+        configureOutputDriverDefaults();
+        m_settingsChanged |= drumstick::widgets::configureOutputDriver(driver, this);
+    }
+}
+
+void Connections::configureOutputDriverDefaults()
+{
+    const int DEF_SVOX_GAIN{90};
+    const double DEF_FLUID_GAIN{0.9};
+    if (m_midiOut != nullptr) {
+        bool ok = false;
+        auto metaObj = m_midiOut->metaObject();
+        auto idx = metaObj->indexOfProperty("defaultGain");
+        const QString cname = QString::fromLatin1(metaObj->className());
+        if (idx != -1) {
+            QMetaProperty prop = metaObj->property(idx);
+            if (cname == "drumstick::rt::SynthController") {
+                int retVal = prop.read(m_midiOut).toInt();
+                if (retVal != DEF_SVOX_GAIN) {
+                    ok = prop.write(m_midiOut, DEF_SVOX_GAIN);
+                }
+            } else if (cname == "drumstick::rt::FluidSynthOutput") {
+                double retVal = prop.read(m_midiOut).toInt();
+                if (retVal != DEF_FLUID_GAIN) {
+                    ok = prop.write(m_midiOut, DEF_FLUID_GAIN);
+                }
+            }
+            if (!ok) {
+                qWarning() << Q_FUNC_INFO << cname << "property" << prop.name() << "write failed";
+            }
+        }
+    }
 }

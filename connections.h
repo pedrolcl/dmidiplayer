@@ -46,6 +46,7 @@ public slots:
     void reopen();
     void accept() override;
     void reject() override;
+    void configureOutputDriverDefaults();
 
 private:
     bool m_advanced;

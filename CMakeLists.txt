@@ -59,7 +59,7 @@ else()
     find_package ( Qt6 6.2 COMPONENTS Gui Widgets PrintSupport LinguistTools Core5Compat REQUIRED )
 endif()
 
-find_package ( Drumstick 2.10 COMPONENTS File RT Widgets REQUIRED )
+find_package ( Drumstick 2.11 COMPONENTS File RT Widgets REQUIRED )
 find_package ( uchardet 0.0.8 COMPONENTS libuchardet REQUIRED )
 
 SET(SOURCES
