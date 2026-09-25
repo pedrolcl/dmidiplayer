@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #[==========================================================================[
 Drumstick MIDI File Player Multiplatform Program
 Copyright (C) 2006-2024 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net>
@@ -19,52 +20,99 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 cmake_minimum_required(VERSION 3.16)
 
 project ( dmidiplayer
-    VERSION 1.7.5
+    VERSION 1.7.6
     LANGUAGES CXX
     DESCRIPTION "Drumstick MIDI File Player Multiplatform Program"
-    HOMEPAGE_URL "https://sourceforge.net/p/dmidiplayer/"
+    HOMEPAGE_URL "https://dmidiplayer.sourceforge.io"
 )
 
-set(PROJECT_RELEASE_DATE "December 30, 2024")
+#set(PROJECT_RELEASE_DATE "December 30, 2024")
 set(CMAKE_CXX_STANDARD 17)
+=======
+# Drumstick MIDI File player graphic program
+# Copyright (C) 2006-2020 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+cmake_minimum_required(VERSION 3.10)
+project(drumstick-guiplayer VERSION 2.0.0)
+
+set(CMAKE_CXX_STANDARD 11)
+>>>>>>> a3aea9f (Initial commit)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
+<<<<<<< HEAD
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+include(SCMRevision)
 
 option(BUILD_DOCS "Process Markdown sources of man pages and help files" ON)
 option(EMBED_TRANSLATIONS "Embed translations instead of installing" OFF)
 option(USE_QT5 "Choose to build with Qt5 instead of Qt6" OFF)
+option(INSTALL_DEPENDENCIES "Deploy dependency libraries" OFF)
 
 # CMAKE_SYSTEM_PROCESSOR is broken on Windows with MSVC
 # cmake bug https://gitlab.kitware.com/cmake/cmake/-/issues/15170 still open in 2024/12
-if(MSVC)
-    string(TOLOWER ${MSVC_CXX_ARCHITECTURE_ID} CMAKE_SYSTEM_PROCESSOR)
+if(WIN32 AND (CMAKE_VERSION VERSION_GREATER_EQUAL 4.1))
+      string(TOLOWER ${CMAKE_CXX_COMPILER_ARCHITECTURE_ID} CMAKE_SYSTEM_PROCESSOR)
 endif()
 
-include(SCMRevision)
+if (WIN32)
+    # "flat" installation on Windows
+    set(CMAKE_INSTALL_BINDIR ".")
+    set(CMAKE_INSTALL_LIBDIR ".")
+    set(CMAKE_INSTALL_PLUGINS ".")
+else()
+    include(GNUInstallDirs)
+    set(CMAKE_INSTALL_PLUGINS "plugins")
+endif()
 
 if (USE_QT5)
     find_package( QT NAMES Qt5 REQUIRED)
-else()
-    find_package( QT NAMES Qt6 REQUIRED)
-endif()
-
-if(QT_VERSION VERSION_LESS 6.0.0)
     find_package ( Qt5 5.15 COMPONENTS Gui Widgets PrintSupport LinguistTools REQUIRED )
 else()
+    find_package( QT NAMES Qt6 REQUIRED)
     find_package ( Qt6 6.2 COMPONENTS Gui Widgets PrintSupport LinguistTools Core5Compat REQUIRED )
 endif()
 
 find_package ( Drumstick 2.11 COMPONENTS File RT Widgets REQUIRED )
 find_package ( uchardet 0.0.8 COMPONENTS libuchardet REQUIRED )
 
+message (STATUS "Drumstick MIDI File Player v${PROJECT_VERSION}
+     install prefix: ${CMAKE_INSTALL_PREFIX}
+     Build configuration: ${CMAKE_BUILD_TYPE}
+     Operating System: ${CMAKE_SYSTEM_NAME}
+     Processor: ${CMAKE_SYSTEM_PROCESSOR}
+     Compiler ID: ${CMAKE_CXX_COMPILER_ID}
+     Qt Version: ${QT_VERSION}
+     Drumstick Version: ${Drumstick_VERSION}
+     Uchardet Version: ${uchardet_VERSION}
+     CMake Version: ${CMAKE_VERSION}"
+)
+
 SET(SOURCES
     channels.cpp
     channels.h
+=======
+find_package(Qt5 5.12 COMPONENTS Widgets REQUIRED)
+find_package(Drumstick 2.0 COMPONENTS File RT Widgets REQUIRED)
+
+SET(guiplayer_SRCS
+>>>>>>> a3aea9f (Initial commit)
     connections.cpp
     connections.h
     connections.ui
@@ -74,6 +122,7 @@ SET(SOURCES
     guiplayer.h
     guiplayer.qrc
     guiplayer.ui
+<<<<<<< HEAD
     helpwindow.cpp
     helpwindow.h
     docs/help.qrc
@@ -93,10 +142,13 @@ SET(SOURCES
     playlist.cpp
     playlist.h
     playlist.ui
+=======
+>>>>>>> a3aea9f (Initial commit)
     playerabout.cpp
     playerabout.h
     playerabout.ui
     playermain.cpp
+<<<<<<< HEAD
     prefsdialog.cpp
     prefsdialog.h
     prefsdialog.ui
@@ -104,10 +156,13 @@ SET(SOURCES
     recentfileshelper.h
     rhythmview.cpp
     rhythmview.h
+=======
+>>>>>>> a3aea9f (Initial commit)
     seqplayer.cpp
     seqplayer.h
     sequence.cpp
     sequence.h
+<<<<<<< HEAD
     settings.cpp
     settings.h
     toolbareditdialog.cpp
@@ -195,7 +250,6 @@ if (WIN32)
     endif ()
 endif ()
 
-include(GNUInstallDirs)
 add_subdirectory(docs)
 add_subdirectory(examples)
 
@@ -217,16 +271,6 @@ if (APPLE)
         list (APPEND SOURCES ${QT_TRANSLATIONS})
     endif ()
 endif ()
-
-message (STATUS "Drumstick MIDI File Player v${PROJECT_VERSION}
-     install prefix: ${CMAKE_INSTALL_PREFIX}
-     Build configuration: ${CMAKE_BUILD_TYPE}
-     Operating System: ${CMAKE_SYSTEM_NAME}
-     Processor: ${CMAKE_SYSTEM_PROCESSOR}
-     Qt Version: ${QT_VERSION}
-     Drumstick Version: ${Drumstick_VERSION}
-     Uchardet Version: ${uchardet_VERSION}"
-)
 
 add_executable ( ${PROJECT_NAME} ${SOURCES} )
 if (BUILD_DOCS)
@@ -314,7 +358,196 @@ if(UNIX AND NOT APPLE)
             message(WARNING "Missing utilities for tarball creation")
         endif()
     endif()
-
-else()
-    include(DeploymentUtils)
 endif()
+
+if (INSTALL_DEPENDENCIES)
+    if (CMAKE_SYSTEM MATCHES "Linux")
+        find_package(sonivox 4.0 CONFIG REQUIRED shared)
+        if (sonivox_FOUND)
+            install(IMPORTED_RUNTIME_ARTIFACTS sonivox::sonivox
+                    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+        else()
+            message(WARNING "Sonivox package not found")
+        endif()
+        find_package(Drumstick 2.11 CONFIG REQUIRED ALSA)
+        if (Drumstick_FOUND)
+            install(IMPORTED_RUNTIME_ARTIFACTS Drumstick::ALSA
+                    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+        else()
+            message(WARNING "Drumstick::ALSA package not found")
+        endif()
+    endif()
+    find_package(FluidSynth CONFIG REQUIRED shared)
+    if (FluidSynth_FOUND)
+        install(IMPORTED_RUNTIME_ARTIFACTS FluidSynth::libfluidsynth
+                RUNTIME_DEPENDENCY_SET fluidsynth-dependencies
+                LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+        if(WIN32)
+          set(_pre_exclude api-ms ext-ms wpaxholder hvsi azureattest pdmutilities
+                           vcruntime msvcp concrt vccorlib ucrtbase )
+          set(_post_exclude [[.*(\\|/)system32(\\|/).*\.dll]])
+        elseif(APPLE)
+          set(_pre_exclude "/usr/lib" "/System/")
+          set(_post_exclude "")
+        else()
+          set(_pre_exclude "")
+          set(_post_exclude ".*/ld-linux-.*" ".*/linux-vdso.*" ".*/libm\\..*" ".*/libc\\..*" ".*/libpthread\\..*" ".*/libdl\\..*" ".*/libstdc\\+\\+\\..*" ".*/libgcc_s.*" ".*/libgomp\\..*" ".*/libQt6.*")
+        endif()
+        install(RUNTIME_DEPENDENCY_SET fluidsynth-dependencies
+                PRE_EXCLUDE_REGEXES ${_pre_exclude}
+                POST_EXCLUDE_REGEXES ${_post_exclude}
+                LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+    else()
+        message(WARNING "Fluidsynth package not found")
+    endif()
+
+    install(IMPORTED_RUNTIME_ARTIFACTS uchardet::libuchardet
+            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+
+    if (DEFINED Drumstick_DIR)
+        if (Drumstick_DIR MATCHES "cmake")
+            set(_drumstick_plugins ${Drumstick_DIR}/../../drumstick2)
+        else()
+            set(_drumstick_plugins ${Drumstick_DIR}/lib/drumstick2)
+        endif()
+        if (EXISTS ${_drumstick_plugins})
+            install(DIRECTORY ${_drumstick_plugins}
+                    DESTINATION ${CMAKE_INSTALL_PLUGINS})
+        else()
+            message(WARNING "${_drumstick_plugins} does not exists")
+        endif()
+    else()
+        message(WARNING "Drumstick_DIR is not defined")
+    endif()
+
+    if (WIN32)
+        install(IMPORTED_RUNTIME_ARTIFACTS Drumstick::File
+                LIBRARY DESTINATION ${CMAKE_INSTALL_BINDIR})
+        install(IMPORTED_RUNTIME_ARTIFACTS Drumstick::RT
+                LIBRARY DESTINATION ${CMAKE_INSTALL_BINDIR})
+        install(IMPORTED_RUNTIME_ARTIFACTS Drumstick::Widgets
+                LIBRARY DESTINATION ${CMAKE_INSTALL_BINDIR})
+        set(CMAKE_INSTALL_SYSTEM_RUNTIME_DESTINATION ${CMAKE_INSTALL_BINDIR})
+    else()
+        set(CMAKE_INSTALL_SYSTEM_RUNTIME_DESTINATION ${CMAKE_INSTALL_LIBDIR})
+    endif()
+
+    if (QT_VERSION VERSION_GREATER_EQUAL 6.3)
+
+        set(_deploy_tool_options_arg "")
+        if (WIN32)
+            set(_deploy_tool_options_arg "
+                --plugindir \".\"
+                --translationdir \".\"
+            ")
+        endif()
+
+        if(MSVC)
+            qt_generate_deploy_app_script(
+                TARGET ${PROJECT_NAME}
+                OUTPUT_SCRIPT deploy_script
+                NO_UNSUPPORTED_PLATFORM_ERROR
+                NO_COMPILER_RUNTIME
+                NO_TRANSLATIONS
+                DEPLOY_TOOL_OPTIONS ${_deploy_tool_options_arg}
+            )
+            include ( InstallRequiredSystemLibraries )
+        elseif(WIN32 AND NOT MSVC)
+            qt_generate_deploy_app_script(
+                TARGET ${PROJECT_NAME}
+                OUTPUT_SCRIPT deploy_script
+                NO_UNSUPPORTED_PLATFORM_ERROR
+                NO_TRANSLATIONS
+            )
+        elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+            qt_generate_deploy_app_script(
+                TARGET ${PROJECT_NAME}
+                OUTPUT_SCRIPT deploy_script
+                INCLUDE_PLUGINS xcb wayland
+                NO_UNSUPPORTED_PLATFORM_ERROR
+                NO_TRANSLATIONS
+            )
+        endif()
+        if (DEFINED deploy_script)
+            install(SCRIPT ${deploy_script})
+        endif()
+        # AppImage
+        if (UNIX AND NOT APPLE)
+            install( CODE
+              "include(${CMAKE_SOURCE_DIR}/cmake/CreateAppImage.cmake)
+               create_appimage(
+                    EXE \"${PROJECT_NAME}\"
+                    ICON \"${PROJECT_NAME}.png\"
+                    DESKTOP \"net.sourceforge.${PROJECT_NAME}.desktop\"
+                    WORKDIR \"${CMAKE_CURRENT_BINARY_DIR}\"
+                    APPDIR \"${PROJECT_NAME}-v${PROJECT_VERSION}-${CMAKE_SYSTEM_PROCESSOR}.AppDir\"
+                    ARCH \"${CMAKE_SYSTEM_PROCESSOR}\"
+               )"
+            )
+        endif()
+    endif()
+endif()
+
+if (DEFINED ENV{GITHUB_OUTPUT})
+    file(APPEND
+        "$ENV{GITHUB_OUTPUT}"
+        "config_version=${PROJECT_VERSION}\n"
+    )
+endif()
+
+# CPack support
+set (CPACK_SYSTEM_NAME ${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR})
+set (CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
+set (CPACK_PACKAGE_DESCRIPTION_SUMMARY "Drumstick MIDI File Player")
+set (CPACK_PACKAGE_VENDOR "${PROJECT_NAME}.sourceforge.net")
+set (CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
+set (CPACK_PACKAGE_VERSION_MAJOR ${CMAKE_PROJECT_VERSION_MAJOR})
+set (CPACK_PACKAGE_VERSION_MINOR ${CMAKE_PROJECT_VERSION_MINOR})
+set (CPACK_PACKAGE_VERSION_PATCH ${CMAKE_PROJECT_VERSION_PATCH})
+set (CPACK_PACKAGE_INSTALL_DIRECTORY "${PROJECT_NAME}-${PROJECT_VERSION}")
+set (CPACK_PACKAGE_EXECUTABLES "${PROJECT_NAME}" "Drumstick MIDI File Player")
+set (CPACK_PACKAGE_VERSION "v${PROJECT_VERSION}")
+set (CPACK_PACKAGE_NAME "${PROJECT_NAME}")
+set (CPACK_STRIP_FILES ON)
+
+set (CPACK_SOURCE_IGNORE_FILES "/.svn/;/build/;/share/;~$;.cproject;.project;.user;${CPACK_SOURCE_IGNORE_FILES}")
+set (CPACK_SOURCE_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}")
+set (CPACK_SOURCE_STRIP_FILES OFF)
+
+# Windows NSIS setup package
+if (WIN32)
+    set (CPACK_NSIS_DISPLAY_NAME "Drumstick MIDI File Player")
+    set (CPACK_NSIS_WELCOME_TITLE_3LINES ON)
+    set (CPACK_NSIS_FINISH_TITLE_3LINES ON)
+    set (CPACK_NSIS_HELP_LINK "https://${PROJECT_NAME}.sourceforge.io")
+    set (CPACK_NSIS_URL_INFO_ABOUT "https://${PROJECT_NAME}.sourceforge.io")
+    set (CPACK_NSIS_CONTACT "plcl@users.sourceforge.net")
+    set (CPACK_NSIS_EXECUTABLES_DIRECTORY ${CMAKE_INSTALL_BINDIR})
+    set (CPACK_NSIS_MODIFY_PATH OFF)
+endif()
+
+include(CPack)
+=======
+)
+
+add_executable(drumstick-guiplayer
+    ${guiplayer_SRCS}
+)
+
+target_link_libraries(drumstick-guiplayer
+    Qt5::Widgets
+    Drumstick::File
+    Drumstick::RT
+    Drumstick::Widgets
+)
+
+target_compile_definitions(drumstick-guiplayer PRIVATE
+    VERSION=${CMAKE_PROJECT_VERSION}
+)
+
+install(TARGETS drumstick-guiplayer
+        RUNTIME DESTINATION bin)
+
+install(FILES drumstick-guiplayer.desktop
+        DESTINATION share/applications)
+>>>>>>> a3aea9f (Initial commit)

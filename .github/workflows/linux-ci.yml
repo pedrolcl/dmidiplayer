@@ -21,39 +21,113 @@ jobs:
           - { icon: '🟥', arch: "x86_64", os: "ubuntu-24.04", triplet: "x64-linux-dynamic", qtarch: "linux_gcc_64" }
           - { icon: '🟩', arch: "aarch64", os: "ubuntu-24.04-arm", triplet: "arm64-linux-dynamic", qtarch: "linux_gcc_arm64" }
     runs-on: ${{ matrix.os }}
-    name: 'Linux ${{ matrix.arch }}'
+    name: 'Linux ${{ matrix.icon }} Linux ${{ matrix.arch }}'
 
     steps:
     - uses: actions/checkout@v7
 
-    - name: Download artifact
+    - name: '${{ matrix.icon }} Download Drumstick artifact'
       uses: dawidd6/action-download-artifact@v24
       with:
         name: ${{env.DRUMSTICKNAME}}-${{matrix.arch}}.tar.gz
         github_token: ${{secrets.GH_PAT}}
         repo: pedrolcl/drumstick
+        allow_forks: false
         workflow: linux.yml
         skip_unpack: true
-        allow_forks: false
 
-    - name: Extract downloaded artifact
-      run: tar xvzf ${{env.DRUMSTICKNAME}}-${{matrix.arch}}.tar.gz
+    - name: '${{ matrix.icon }} Extract Drumstick artifact'
+      run: |
+        if [ -f ${{env.DRUMSTICKNAME}}-${{matrix.arch}}.tar.gz.zip ]; then
+          mv ${{env.DRUMSTICKNAME}}-${{matrix.arch}}.tar.gz.zip ${{env.DRUMSTICKNAME}}-${{matrix.arch}}.tar.gz
+        fi
+        tar xvzf ${{env.DRUMSTICKNAME}}-${{matrix.arch}}.tar.gz
 
-    - name: Install Qt
+    - name: '${{ matrix.icon }} Install Dependencies'
+      run: |
+        sudo rm -rf /var/lib/apt/lists/*
+        sudo apt-get clean
+        sudo apt-get update -y -o Acquire::Retries=3
+        sudo apt-get install -yq --fix-missing \
+          autoconf \
+          autoconf-archive \
+          automake \
+          libtool \
+          pkg-config \
+          libasound2-dev \
+          libpulse-dev \
+          libsndfile1-dev \
+          libltdl-dev \
+          libuchardet-dev
+
+    - name: '${{ matrix.icon }} Set up CMake'
+      uses: jwlawson/actions-setup-cmake@v2
+      with:
+        cmake-version: '4.4.x' # https://github.com/microsoft/vcpkg/issues/53135
+
+    - name: '${{ matrix.icon }} VCPKG Build'
+      uses: johnwason/vcpkg-action@v8
+      id: vcpkg
+      with:
+        pkgs: zlib sonivox fluidsynth[pipewire,pulseaudio,sndfile]
+        triplet: ${{ matrix.triplet }}
+        token: ${{ github.token }}
+        revision: master
+
+    - name: '${{ matrix.icon }} Install Qt'
       uses: jurplel/install-qt-action@v4
       with:
         arch: ${{matrix.qtarch}}
         version: '6.11.1'
         modules: qt5compat
 
-    - name: Dependencies
-      run: sudo apt-get update && sudo apt-get install -yq pkg-config libasound2-dev libuchardet-dev
-
-    - name: Configure CMake
-      run: cmake -B ${{github.workspace}}/build
-        -DBUILD_DOCS=OFF
+    - name: '${{ matrix.icon }} Configure CMake'
+      id: configuration
+      run: >
+        cmake ${{ steps.vcpkg.outputs.vcpkg-cmake-config }}
+        -B ${{github.workspace}}/build
         -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
-        -DCMAKE_PREFIX_PATH:STRING="${{env.DRUMSTICK_LOCATION}}"
+        -DCMAKE_PREFIX_PATH="${{env.DRUMSTICK_LOCATION}}"
+        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_LIBDIR=lib
+        -DCMAKE_INSTALL_RPATH="\$ORIGIN/../lib"
+        -DBUILD_DOCS=OFF
+        -DINSTALL_DEPENDENCIES=ON
+        -DEMBED_TRANSLATIONS=ON
 
-    - name: Build
+    - name: '${{ matrix.icon }} Build'
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+
+    - name: '${{ matrix.icon }} Install'
+      env:
+        DESTDIR: ${{github.workspace}}/build/dmidiplayer-v${{steps.configuration.outputs.config_version}}-${{matrix.arch}}.AppDir
+      run: cmake --install ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+
+    - name: '${{ matrix.icon }} Archive'
+      env:
+        INSTALL_LOCATION: dmidiplayer-v${{steps.configuration.outputs.config_version}}-${{matrix.arch}}.AppDir
+      run: |
+        cd ${{github.workspace}}/build/
+        tar -cvzf ${{env.INSTALL_LOCATION}}.tar.gz ${{env.INSTALL_LOCATION}}
+
+    - name: '${{ matrix.icon }} Upload Archive'
+      env:
+        INSTALL_LOCATION: dmidiplayer-v${{steps.configuration.outputs.config_version}}-${{matrix.arch}}.AppDir
+      uses: actions/upload-artifact@v7
+      with:
+        name: ${{env.INSTALL_LOCATION}}
+        path: ${{github.workspace}}/build/${{env.INSTALL_LOCATION}}.tar.gz
+        retention-days: 90
+        overwrite: true
+        archive: false
+
+    - name: '${{ matrix.icon }} Upload AppImage'
+      env:
+        INSTALL_LOCATION: dmidiplayer-v${{steps.configuration.outputs.config_version}}-${{matrix.arch}}.AppImage
+      uses: actions/upload-artifact@v7
+      with:
+        name: ${{env.INSTALL_LOCATION}}
+        path: ${{github.workspace}}/build/${{env.INSTALL_LOCATION}}
+        retention-days: 90
+        overwrite: true
+        archive: false

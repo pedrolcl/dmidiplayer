@@ -18,5 +18,9 @@ install (FILES ${PROJECT_NAME}_128x128.png
          DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/128x128/apps
          RENAME ${PROJECT_NAME}.png)
 
+install (FILES ${PROJECT_NAME}_256x256.png
+         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/256x256/apps
+         RENAME ${PROJECT_NAME}.png)
+
 install (FILES ${PROJECT_NAME}.svgz
          DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/scalable/apps )
