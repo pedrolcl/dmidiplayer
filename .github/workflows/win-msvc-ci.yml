@@ -1,0 +1,105 @@
+name: Windows MSVC CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "master", "devel" ]
+  pull_request:
+    branches: [ "master", "devel" ]
+
+env:
+  BUILD_TYPE: RelWithDebInfo
+  INSTALL_LOCATION: ${{github.workspace}}/dmidiplayer
+  DRUMSTICK: DrumstickV2
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { icon: '🟦', arch: "win64", os: "windows-latest", triplet: "x64-windows", qtarch: 'win64_msvc2022_64' }
+          - { icon: '🟩', arch: "arm64", os: "windows-11-arm", triplet: "arm64-windows", qtarch: 'win64_msvc2022_arm64' }
+    runs-on: ${{ matrix.os }}
+    name: 🚧${{ matrix.icon }} msvc ${{ matrix.arch }}
+    defaults:
+      run:
+        shell: cmd
+
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: '${{ matrix.icon }} Download Drumstick'
+      uses: dawidd6/action-download-artifact@v24
+      with:
+        name: ${{env.DRUMSTICK}}-msvc-${{matrix.arch}}
+        github_token: ${{secrets.GH_PAT}}
+        repo: pedrolcl/drumstick
+        allow_forks: false
+        workflow: win-msvc.yml
+        branch: devel
+        path: ${{env.DRUMSTICK}}
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v4
+      with:
+        arch: ${{matrix.qtarch}}
+        version: '6.10.3'
+        modules: qt5compat
+
+    - name: '${{ matrix.icon }} Build vcpkg'
+      uses: johnwason/vcpkg-action@v8
+      id: vcpkg
+      with:
+        pkgs: uchardet fluidsynth[sndfile]
+        triplet: ${{ matrix.triplet }}
+        token: ${{ github.token }}
+
+    - name: '${{ matrix.icon }} Install NSIS'
+      uses: repolevedavaj/install-nsis@v1.3.0
+      with:
+        nsis-version: '3.12'
+
+    - name: '${{ matrix.icon }} Setup MSVC'
+      uses: TheMrMilchmann/setup-msvc-dev@v4
+      with:
+        arch: ${{ matrix.arch }}
+
+    - name: '${{ matrix.icon }} Configure CMake'
+      id: configuration
+      run: >
+        cmake ${{ steps.vcpkg.outputs.vcpkg-cmake-config }}
+        -G Ninja -B ${{github.workspace}}/build
+        -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+        -DCMAKE_PREFIX_PATH=${{github.workspace}}/${{env.DRUMSTICK}};${{github.workspace}}/vcpkg/installed/${{matrix.triplet}}
+        -DCMAKE_INSTALL_PREFIX=${{env.INSTALL_LOCATION}}
+        -DCPACK_SYSTEM_NAME=${{matrix.arch}}
+        -DBUILD_DOCS=OFF
+        -DINSTALL_DEPENDENCIES=ON
+        -DEMBED_TRANSLATIONS=ON
+
+    - name: '${{ matrix.icon }} Build'
+      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+
+    - name: '${{ matrix.icon }} Package'
+      run: cmake --build ${{github.workspace}}/build --target package
+
+    - name: '${{ matrix.icon }} Install'
+      run: cmake --install ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+
+    - name: '${{ matrix.icon }} Upload Artifacts'
+      uses: actions/upload-artifact@v7
+      with:
+        name: dmidiplayer-msvc-${{matrix.arch}}
+        path: ${{env.INSTALL_LOCATION}}
+        retention-days: 90
+        overwrite: true
+
+    - name: '${{ matrix.icon }} Upload Installer'
+      uses: actions/upload-artifact@v7
+      with:
+        name: dmidiplayer-msvc-installer-${{matrix.arch}}
+        path: ${{github.workspace}}/build/dmidiplayer-${{steps.configuration.outputs.config_version}}-Windows-*.exe
+        retention-days: 90
+        overwrite: true
+        archive: false
