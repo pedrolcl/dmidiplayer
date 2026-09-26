@@ -18,6 +18,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 cmake_minimum_required(VERSION 3.16)
 
+if(POLICY CMP0207)
+    cmake_policy(SET CMP0207 NEW)
+endif()
+
 project ( dmidiplayer
     VERSION 1.7.6
     LANGUAGES CXX
@@ -193,12 +197,6 @@ else()
 endif()
 
 if (WIN32)
-    include (InstallRequiredSystemLibraries)
-    install (FILES ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS}
-             DESTINATION .)
-    set(FLUIDSYNTH_PREFIX $ENV{FLUIDSYNTH})
-    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}_msvc.nsi.in
-        ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.nsi IMMEDIATE @ONLY)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.rc.in
         ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.rc IMMEDIATE @ONLY)
     set (RC_FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.rc)
@@ -283,10 +281,11 @@ if (DEFINED PROJECT_WC_REVISION)
         REVISION=${PROJECT_WC_REVISION} )
 endif()
 
+install(TARGETS ${PROJECT_NAME}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+
 if(UNIX AND NOT APPLE)
     add_subdirectory(icons)
-    install(TARGETS ${PROJECT_NAME}
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
     install(FILES ${QM_FILES}
         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME})
     install(FILES "net.sourceforge.dmidiplayer.desktop"
