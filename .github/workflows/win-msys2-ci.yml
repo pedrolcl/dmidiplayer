@@ -43,10 +43,11 @@ jobs:
           cmake:p
           ninja:p
           qt6-base:p
+          qt6-5compat:p
           qt6-tools:p
           qt6-translations:p
-          qt6-multimedia:p
           sonivox:p
+          fluidsynth:p
 
     - name: '${{ matrix.icon }} Install NSIS'
       uses: repolevedavaj/install-nsis@v1.3.0
@@ -109,7 +110,7 @@ jobs:
       uses: actions/upload-artifact@v7
       with:
         name: sonivoxeas-msys2-installer-${{matrix.sys}}
-        path: ${{github.workspace}}/build/sonivoxeas-${{steps.configuration.outputs.config_version}}-${{matrix.sys}}.exe
+        path: ${{github.workspace}}/build/sonivoxeas-v${{steps.configuration.outputs.config_version}}-Windows-*.exe
         retention-days: 90
         overwrite: true
-        archive: false
+        archive: true
