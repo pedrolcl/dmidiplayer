@@ -111,7 +111,7 @@ jobs:
     - name: '${{ matrix.icon }} Upload Installer'
       uses: actions/upload-artifact@v7
       with:
-        name: sonivoxeas-msys2-installer-${{matrix.sys}}
+        name: dmidiplayer-msys2-installer-${{matrix.sys}}
         path: ${{github.workspace}}/build/dmidiplayer-v${{steps.configuration.outputs.config_version}}-Windows-*.exe
         retention-days: 90
         overwrite: true
