@@ -48,6 +48,7 @@ jobs:
           qt6-translations:p
           sonivox:p
           fluidsynth:p
+          uchardet:p
 
     - name: '${{ matrix.icon }} Install NSIS'
       uses: repolevedavaj/install-nsis@v1.3.0
