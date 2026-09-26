@@ -85,7 +85,9 @@ jobs:
         -DCMAKE_INSTALL_PREFIX=${{env.INSTALL_LOCATION}}
         -DCPACK_SYSTEM_NAME=${{matrix.sys}}
         -DDEPENDENCY_DIRS="${{steps.cnv.outputs.dependencies}}"
+        -DBUILD_DOCS=OFF
         -DINSTALL_DEPENDENCIES=ON
+        -DEMBED_TRANSLATIONS=ON
 
     - name: '${{ matrix.icon }} Build'
       run: cmake --build build --config ${{env.BUILD_TYPE}}
