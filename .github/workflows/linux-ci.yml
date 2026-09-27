@@ -58,7 +58,8 @@ jobs:
           libpulse-dev \
           libsndfile1-dev \
           libltdl-dev \
-          libuchardet-dev
+          libuchardet-dev \
+          libkdsingleapplication-qt6-dev
 
     - name: '${{ matrix.icon }} Set up CMake'
       uses: jwlawson/actions-setup-cmake@v2
@@ -92,6 +93,7 @@ jobs:
         -DCMAKE_INSTALL_LIBDIR=lib
         -DCMAKE_INSTALL_RPATH="\$ORIGIN/../lib"
         -DBUILD_DOCS=OFF
+        -DSINGLE_INSTANCE=ON
         -DINSTALL_DEPENDENCIES=ON
         -DEMBED_TRANSLATIONS=ON
 
