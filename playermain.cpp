@@ -23,6 +23,11 @@
 #include <QFileInfo>
 #include <QSplashScreen>
 #include <QDebug>
+
+#if defined(SINGLE_INSTANCE)
+#include <kdsingleapplication.h>
+#endif
+
 #include "guiplayer.h"
 #include "settings.h"
 
@@ -56,6 +61,24 @@ int main(int argc, char *argv[])
 #endif
     QGuiApplication::setDesktopFileName("net.sourceforge.dmidiplayer");
     QApplication::setWindowIcon(QIcon(":/dmidiplayer.png"));
+
+#if defined(SINGLE_INSTANCE)
+    KDSingleApplication kdsa;
+
+    if (!kdsa.isPrimaryInstance()) {
+        QStringList args = app.arguments();
+        args.removeFirst();
+        foreach (const QString arg, args) {
+            QFileInfo f(arg);
+            if (f.exists()) {
+                qDebug() << "Secondary instance:" << f.canonicalFilePath();
+                kdsa.sendMessage(f.canonicalFilePath().toUtf8());
+                break;
+            }
+        }
+        return 0;
+    }
+#endif
 
     Settings::instance()->loadTranslations();
 
@@ -99,7 +122,13 @@ int main(int argc, char *argv[])
     try {
         GUIPlayer w;
         w.setAttribute(Qt::WA_QuitOnClose);
-        if(parser.isSet(portOption) && parser.isSet(driverOption)) {
+#if defined(SINGLE_INSTANCE)
+        QObject::connect(&kdsa,
+                         &KDSingleApplication::messageReceived,
+                         &w,
+                         &GUIPlayer::processMessage);
+#endif
+        if (parser.isSet(portOption) && parser.isSet(driverOption)) {
             w.connectOutput(parser.value(driverOption), parser.value(portOption));
         }
         if (!fileNames.isEmpty()) {

@@ -36,7 +36,8 @@ set(CMAKE_AUTOUIC ON)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 include(SCMRevision)
 
-option(BUILD_DOCS "Process Markdown sources of man pages and help files" ON)
+option(BUILD_DOCS "Process Markdown sources of man pages and help files" OFF)
+option(SINGLE_INSTANCE "Run only one instance of the application" ON)
 option(EMBED_TRANSLATIONS "Embed translations instead of installing" OFF)
 option(USE_QT5 "Choose to build with Qt5 instead of Qt6" OFF)
 option(INSTALL_DEPENDENCIES "Deploy dependency libraries" OFF)
@@ -58,11 +59,17 @@ else()
 endif()
 
 if (USE_QT5)
-    find_package( QT NAMES Qt5 REQUIRED)
+    find_package ( QT NAMES Qt5 REQUIRED)
     find_package ( Qt5 5.15 COMPONENTS Gui Widgets PrintSupport LinguistTools REQUIRED )
+    if (SINGLE_INSTANCE)
+        find_package ( KDSingleApplication-qt5 CONFIG REQUIRED)
+    endif()
 else()
-    find_package( QT NAMES Qt6 REQUIRED)
+    find_package ( QT NAMES Qt6 REQUIRED)
     find_package ( Qt6 6.2 COMPONENTS Gui Widgets PrintSupport LinguistTools Core5Compat REQUIRED )
+    if (SINGLE_INSTANCE)
+        find_package ( KDSingleApplication-qt6 CONFIG REQUIRED)
+    endif()
 endif()
 
 find_package ( Drumstick 2.11 COMPONENTS File RT Widgets REQUIRED )
@@ -71,6 +78,10 @@ find_package ( uchardet 0.0.8 COMPONENTS libuchardet REQUIRED )
 message (STATUS "Drumstick MIDI File Player v${PROJECT_VERSION}
      install prefix: ${CMAKE_INSTALL_PREFIX}
      Build configuration: ${CMAKE_BUILD_TYPE}
+     Process Markdown sources of man pages and help files: ${BUILD_DOCS}
+     Single instance policy: ${SINGLE_INSTANCE}
+     Embed translations: ${EMBED_TRANSLATIONS}
+     Install dependencies: ${INSTALL_DEPENDENCIES}
      Operating System: ${CMAKE_SYSTEM_NAME}
      Processor: ${CMAKE_SYSTEM_PROCESSOR}
      Compiler ID: ${CMAKE_CXX_COMPILER_ID}
@@ -255,6 +266,12 @@ if (QT_VERSION VERSION_GREATER_EQUAL 6.0.0)
     )
 endif()
 
+if(SINGLE_INSTANCE)
+    target_link_libraries ( ${PROJECT_NAME} PRIVATE
+        KDAB::kdsingleapplication
+    )
+endif()
+
 if (WIN32)
     set_target_properties ( ${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE true )
     target_link_libraries ( ${PROJECT_NAME} PRIVATE winmm dwmapi )
@@ -277,7 +294,9 @@ endif ()
 target_compile_definitions( ${PROJECT_NAME} PRIVATE
     VERSION=${PROJECT_VERSION}
     $<$<BOOL:${EMBED_TRANSLATIONS}>:TRANSLATIONS_EMBEDDED>
+    $<$<BOOL:${SINGLE_INSTANCE}>:SINGLE_INSTANCE>
 )
+
 if (DEFINED PROJECT_WC_REVISION)
     target_compile_definitions( ${PROJECT_NAME} PRIVATE
         REVISION=${PROJECT_WC_REVISION} )

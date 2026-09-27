@@ -95,7 +95,8 @@ public:
     void applySettings();
     void updNavButtons();
     void updatePositionWidgets();
-    
+    void processMessage(const QByteArray &message);
+
 protected:
     void dragEnterEvent( QDragEnterEvent* event ) override;
     void dropEvent( QDropEvent* event ) override;

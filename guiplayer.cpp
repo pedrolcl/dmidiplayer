@@ -271,6 +271,12 @@ void GUIPlayer::updatePositionWidgets()
     m_ui->positionSlider->setValue(m_player->getPosition());
 }
 
+void GUIPlayer::processMessage(const QByteArray &message)
+{
+    qDebug() << "Received from secondary instance:" << message;
+    openFile(QString::fromUtf8(message));
+}
+
 void GUIPlayer::updateState(PlayerState newState)
 {
     if (m_state == newState)
