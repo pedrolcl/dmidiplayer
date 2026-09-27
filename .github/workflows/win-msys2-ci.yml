@@ -18,7 +18,8 @@ jobs:
         fail-fast: false
         matrix:
           include:
-            - { icon: '🟦', sys: mingw64,    os: windows-latest }
+            # https://www.msys2.org/news/#2026-03-15-deprecating-the-mingw64-environment
+            # - { icon: '🟦', sys: mingw64,    os: windows-latest } # deprecated
             - { icon: '🟨', sys: ucrt64,     os: windows-latest }
             - { icon: '🟧', sys: clang64,    os: windows-latest }
             - { icon: '🟩', sys: clangarm64, os: windows-11-arm }
@@ -49,6 +50,7 @@ jobs:
           sonivox:p
           fluidsynth:p
           uchardet:p
+          kdsingleapplication:p
 
     - name: '${{ matrix.icon }} Install NSIS'
       uses: repolevedavaj/install-nsis@v1.3.0
@@ -85,6 +87,7 @@ jobs:
         -DCMAKE_INSTALL_PREFIX=${{env.INSTALL_LOCATION}}
         -DCPACK_SYSTEM_NAME=${{matrix.sys}}
         -DBUILD_DOCS=OFF
+        -DSINGLE_INSTANCE=ON
         -DINSTALL_DEPENDENCIES=ON
         -DEMBED_TRANSLATIONS=ON
 
