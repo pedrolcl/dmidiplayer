@@ -18,7 +18,8 @@ jobs:
         fail-fast: false
         matrix:
           include:
-            - { icon: '🟦', sys: mingw64,    os: windows-latest }
+            # https://www.msys2.org/news/#2026-03-15-deprecating-the-mingw64-environment
+            # - { icon: '🟦', sys: mingw64,    os: windows-latest } # deprecated
             - { icon: '🟨', sys: ucrt64,     os: windows-latest }
             - { icon: '🟧', sys: clang64,    os: windows-latest }
             - { icon: '🟩', sys: clangarm64, os: windows-11-arm }

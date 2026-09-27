@@ -51,7 +51,7 @@ jobs:
       uses: johnwason/vcpkg-action@v8
       id: vcpkg
       with:
-        pkgs: uchardet fluidsynth[sndfile] kdsingleapplication
+        pkgs: uchardet fluidsynth[sndfile]
         triplet: ${{ matrix.triplet }}
         token: ${{ github.token }}
 

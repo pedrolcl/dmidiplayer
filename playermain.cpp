@@ -71,7 +71,6 @@ int main(int argc, char *argv[])
         foreach (const QString arg, args) {
             QFileInfo f(arg);
             if (f.exists()) {
-                qDebug() << "Secondary instance:" << f.canonicalFilePath();
                 kdsa.sendMessage(f.canonicalFilePath().toUtf8());
                 break;
             }

@@ -273,7 +273,6 @@ void GUIPlayer::updatePositionWidgets()
 
 void GUIPlayer::processMessage(const QByteArray &message)
 {
-    qDebug() << "Received from secondary instance:" << message;
     openFile(QString::fromUtf8(message));
 }
 

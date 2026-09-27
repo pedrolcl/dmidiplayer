@@ -62,14 +62,24 @@ if (USE_QT5)
     find_package ( QT NAMES Qt5 REQUIRED)
     find_package ( Qt5 5.15 COMPONENTS Gui Widgets PrintSupport LinguistTools REQUIRED )
     if (SINGLE_INSTANCE)
-        find_package ( KDSingleApplication-qt5 CONFIG REQUIRED)
+        find_package ( KDSingleApplication-qt5 CONFIG)
     endif()
 else()
     find_package ( QT NAMES Qt6 REQUIRED)
     find_package ( Qt6 6.2 COMPONENTS Gui Widgets PrintSupport LinguistTools Core5Compat REQUIRED )
     if (SINGLE_INSTANCE)
-        find_package ( KDSingleApplication-qt6 CONFIG REQUIRED)
+        find_package ( KDSingleApplication-qt6 CONFIG)
     endif()
+endif()
+
+if (SINGLE_INSTANCE AND NOT (KDSingleApplication-qt5_FOUND OR KDSingleApplication-qt6_FOUND))
+    include(FetchContent)
+    FetchContent_Declare(
+        kdsingleapplication
+        GIT_REPOSITORY https://github.com/KDAB/KDSingleApplication.git
+        GIT_TAG        v1.2.1
+    )
+    FetchContent_MakeAvailable(kdsingleapplication)
 endif()
 
 find_package ( Drumstick 2.11 COMPONENTS File RT Widgets REQUIRED )
