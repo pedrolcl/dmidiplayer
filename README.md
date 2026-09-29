@@ -28,7 +28,7 @@ Alright, these are the build requirements:
 
 * C++11 compiler
 * [Qt 5](https://www.qt.io/download) >= 5.15 or Qt6 >= 6.2
-* [Drumstick 2.10](https://sourceforge.net/projects/drumstick/)
+* [Drumstick 2.11](https://sourceforge.net/projects/drumstick/)
 * [Uchardet 0.0.8](https://www.freedesktop.org/wiki/Software/uchardet/)
 * [pandoc](https://pandoc.org/)
 * [CMake 3.16](https://cmake.org/)

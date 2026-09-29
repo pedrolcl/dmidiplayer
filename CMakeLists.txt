@@ -22,6 +22,10 @@ if(POLICY CMP0207)
     cmake_policy(SET CMP0207 NEW)
 endif()
 
+if (POLICY CMP0153)
+    cmake_policy(SET CMP0153 NEW)
+endif()
+
 project ( dmidiplayer
     VERSION 1.7.6
     LANGUAGES CXX
@@ -66,7 +70,7 @@ if (USE_QT5)
     find_package ( QT NAMES Qt5 REQUIRED)
     find_package ( Qt5 5.15 COMPONENTS Gui Widgets PrintSupport LinguistTools REQUIRED )
     if (SINGLE_INSTANCE)
-        find_package ( KDSingleApplication-qt5 CONFIG)
+        find_package ( KDSingleApplication CONFIG)
     endif()
 else()
     find_package ( QT NAMES Qt6 REQUIRED)
@@ -76,7 +80,7 @@ else()
     endif()
 endif()
 
-if (SINGLE_INSTANCE AND NOT (KDSingleApplication-qt5_FOUND OR KDSingleApplication-qt6_FOUND))
+if (SINGLE_INSTANCE AND NOT (KDSingleApplication_FOUND OR KDSingleApplication-qt6_FOUND))
     include(FetchContent)
     FetchContent_Declare(
         kdsingleapplication
@@ -224,8 +228,7 @@ if (WIN32)
     set (RES_FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.res.obj)
     find_program (WINDRES_EXECUTABLE NAMES windres mingw32-windres i686-mingw32-windres)
     if (MINGW)
-        exec_program (${WINDRES_EXECUTABLE}
-            ARGS "-i ${RC_FILE} -o ${RES_FILE} --include-dir=${CMAKE_CURRENT_SOURCE_DIR}/icons")
+        execute_process ( COMMMAND ${WINDRES_EXECUTABLE} -i ${RC_FILE} -o ${RES_FILE} --include-dir=${CMAKE_CURRENT_SOURCE_DIR}/icons )
         list (APPEND SOURCES ${RES_FILE})
     else ()
         list (APPEND SOURCES ${RC_FILE})

@@ -78,7 +78,7 @@ jobs:
       uses: jurplel/install-qt-action@v4
       with:
         arch: ${{matrix.qtarch}}
-        version: '6.11.1'
+        version: '6.11.2'
         modules: qt5compat
 
     - name: '${{ matrix.icon }} Configure CMake'
