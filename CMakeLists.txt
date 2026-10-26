@@ -298,7 +298,7 @@ if (APPLE)
     MACOSX_BUNDLE_LONG_VERSION_STRING "${PROJECT_VERSION}"
     MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
     MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION}"
-    MACOSX_BUNDLE_COPYRIGHT "Copyright © 2021-2024, Pedro López-Cabanillas &lt;plcl@users.sf.net&gt;")
+    MACOSX_BUNDLE_COPYRIGHT "Copyright © 2021-2026, Pedro López-Cabanillas &lt;plcl@users.sf.net&gt;")
     target_link_libraries(${PROJECT_NAME} PRIVATE "-framework CoreFoundation -framework Cocoa")
 endif ()
 
@@ -314,6 +314,7 @@ if (DEFINED PROJECT_WC_REVISION)
 endif()
 
 install(TARGETS ${PROJECT_NAME}
+    BUNDLE DESTINATION .
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 if(UNIX AND NOT APPLE)
@@ -430,7 +431,6 @@ if (INSTALL_DEPENDENCIES AND QT_VERSION VERSION_GREATER_EQUAL 6.5)
     endif()
 
     if (QT_VERSION VERSION_GREATER_EQUAL 6.3)
-
         set(_deploy_tool_options_arg "")
         if (WIN32)
             set(_deploy_tool_options_arg "
@@ -438,7 +438,6 @@ if (INSTALL_DEPENDENCIES AND QT_VERSION VERSION_GREATER_EQUAL 6.5)
                 --translationdir \".\"
             ")
         endif()
-
         if(MSVC)
             qt_generate_deploy_app_script(
                 TARGET ${PROJECT_NAME}
