@@ -11,7 +11,6 @@ env:
   BUILD_TYPE: Release
   DRUMSTICKNAME: DrumstickV2
   DRUMSTICK_LOCATION: ${{github.workspace}}/DrumstickV2
-  (building static drumstick::file instead)
 
 jobs:
   build:
