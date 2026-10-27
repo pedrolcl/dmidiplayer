@@ -61,6 +61,9 @@ if (WIN32)
     set(CMAKE_INSTALL_BINDIR ".")
     set(CMAKE_INSTALL_LIBDIR ".")
     set(CMAKE_INSTALL_PLUGINS ".")
+elseif (APPLE)
+    set(CMAKE_INSTALL_LIBDIR "${PROJECT_NAME}.app/Contents/Frameworks")
+    set(CMAKE_INSTALL_PLUGINS "${PROJECT_NAME}.app/Contents/PlugIns")
 else()
     include(GNUInstallDirs)
     set(CMAKE_INSTALL_PLUGINS "plugins")
@@ -86,6 +89,7 @@ if (SINGLE_INSTANCE AND NOT (KDSingleApplication_FOUND OR KDSingleApplication-qt
         kdsingleapplication
         GIT_REPOSITORY https://github.com/KDAB/KDSingleApplication.git
         GIT_TAG        v1.2.1
+        EXCLUDE_FROM_ALL
     )
     FetchContent_MakeAvailable(kdsingleapplication)
 endif()
@@ -197,10 +201,6 @@ include(TranslationUtils)
 get_target_property(DRUMSTICK_LOCATION Drumstick::Widgets LOCATION)
 get_filename_component(DRUMSTICK_PREFIX ${DRUMSTICK_LOCATION} DIRECTORY)
 get_filename_component(DRUMSTICK_PREFIX ${DRUMSTICK_PREFIX} DIRECTORY)
-
-get_target_property(UCHARDET_LOCATION uchardet::libuchardet LOCATION)
-get_filename_component(UCHARDET_PREFIX ${UCHARDET_LOCATION} DIRECTORY)
-get_filename_component(UCHARDET_PREFIX ${UCHARDET_PREFIX} DIRECTORY)
 
 if (EXISTS ${DRUMSTICK_PREFIX}/share/drumstick/)
     file(GLOB WIDGETS_TRANS "${DRUMSTICK_PREFIX}/share/drumstick/drumstick-widgets_*.qm")
@@ -356,15 +356,24 @@ if(UNIX AND NOT APPLE)
 endif()
 
 if (INSTALL_DEPENDENCIES AND QT_VERSION VERSION_GREATER_EQUAL 6.5)
+    if (SINGLE_INSTANCE AND TARGET KDAB::kdsingleapplication)
+        get_target_property(_imported KDAB::kdsingleapplication IMPORTED)
+        if(_imported)
+            install(IMPORTED_RUNTIME_ARTIFACTS KDAB::kdsingleapplication
+                RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+                LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+        endif()
+    endif()
+
     if (CMAKE_SYSTEM MATCHES "Linux")
-        find_package(sonivox 4.0 CONFIG REQUIRED shared)
+        find_package(sonivox 4.0 CONFIG COMPONENTS shared)
         if (sonivox_FOUND)
             install(IMPORTED_RUNTIME_ARTIFACTS sonivox::sonivox
                     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
         else()
             message(WARNING "Sonivox package not found")
         endif()
-        find_package(Drumstick 2.11 CONFIG REQUIRED ALSA)
+        find_package(Drumstick 2.11 CONFIG COMPONENTS ALSA)
         if (Drumstick_FOUND)
             install(IMPORTED_RUNTIME_ARTIFACTS Drumstick::ALSA
                     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
@@ -372,8 +381,11 @@ if (INSTALL_DEPENDENCIES AND QT_VERSION VERSION_GREATER_EQUAL 6.5)
             message(WARNING "Drumstick::ALSA package not found")
         endif()
     endif()
-    find_package(FluidSynth CONFIG REQUIRED shared)
+    find_package(FluidSynth CONFIG COMPONENTS shared)
     if (FluidSynth_FOUND)
+        if (APPLE)
+            set_target_properties(FluidSynth::libfluidsynth PROPERTIES IMPORTED_SONAME_RELEASE "@rpath/libfluidsynth.3.dylib")
+        endif()
         install(IMPORTED_RUNTIME_ARTIFACTS FluidSynth::libfluidsynth
                 RUNTIME_DEPENDENCY_SET fluidsynth-dependencies
                 LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
@@ -418,13 +430,18 @@ if (INSTALL_DEPENDENCIES AND QT_VERSION VERSION_GREATER_EQUAL 6.5)
         message(WARNING "Drumstick_DIR is not defined")
     endif()
 
-    if (WIN32)
+    if (WIN32 OR APPLE)
         install(IMPORTED_RUNTIME_ARTIFACTS Drumstick::File
+                FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
                 LIBRARY DESTINATION ${CMAKE_INSTALL_BINDIR})
         install(IMPORTED_RUNTIME_ARTIFACTS Drumstick::RT
+                FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
                 LIBRARY DESTINATION ${CMAKE_INSTALL_BINDIR})
         install(IMPORTED_RUNTIME_ARTIFACTS Drumstick::Widgets
+                FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR}
                 LIBRARY DESTINATION ${CMAKE_INSTALL_BINDIR})
+    endif()
+    if (WIN32)
         set(CMAKE_INSTALL_SYSTEM_RUNTIME_DESTINATION ${CMAKE_INSTALL_BINDIR})
     else()
         set(CMAKE_INSTALL_SYSTEM_RUNTIME_DESTINATION ${CMAKE_INSTALL_LIBDIR})
