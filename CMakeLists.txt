@@ -18,6 +18,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 cmake_minimum_required(VERSION 3.16)
 
+if(POLICY CMP0077)
+    cmake_policy(SET CMP0077 NEW)
+endif()
+
 if(POLICY CMP0207)
     cmake_policy(SET CMP0207 NEW)
 endif()
@@ -91,6 +95,7 @@ if (SINGLE_INSTANCE AND NOT (KDSingleApplication_FOUND OR KDSingleApplication-qt
         GIT_TAG        v1.2.1
         EXCLUDE_FROM_ALL
     )
+    set(CACHE{KDSingleApplication_STATIC} TYPE BOOL VALUE 1)
     FetchContent_MakeAvailable(kdsingleapplication)
 endif()
 
@@ -356,12 +361,14 @@ if(UNIX AND NOT APPLE)
 endif()
 
 if (INSTALL_DEPENDENCIES AND QT_VERSION VERSION_GREATER_EQUAL 6.5)
-    if (SINGLE_INSTANCE AND TARGET KDAB::kdsingleapplication)
-        get_target_property(_imported KDAB::kdsingleapplication IMPORTED)
-        if(_imported)
-            install(IMPORTED_RUNTIME_ARTIFACTS KDAB::kdsingleapplication
-                RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-                LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+    if (SINGLE_INSTANCE AND NOT CMAKE_SYSTEM MATCHES "Linux")
+        if(TARGET KDAB::kdsingleapplication)
+            get_target_property(_imported KDAB::kdsingleapplication IMPORTED)
+            if(_imported)
+                install(IMPORTED_RUNTIME_ARTIFACTS KDAB::kdsingleapplication
+                    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+                    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+            endif()
         endif()
     endif()
 
@@ -541,6 +548,7 @@ endif()
 
 if(APPLE)
     set (CPACK_SYSTEM_NAME "macOS")
+    #set (CPACK_PRE_BUILD_SCRIPTS "${CMAKE_CURRENT_SOURCE_DIR}/cmake/ThinFrameworks.cmake")
     set (CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-v${PROJECT_VERSION}-macOS-${CMAKE_SYSTEM_PROCESSOR}")
     set (CPACK_BINARY_ZIP ON)
     set (CPACK_BINARY_TGZ OFF)
