@@ -1,6 +1,6 @@
 #[==========================================================================[
 Drumstick MIDI File Player Multiplatform Program
-Copyright (C) 2006-2024 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net>
+Copyright (C) 2006-2026 Pedro Lopez-Cabanillas <plcl@users.sourceforge.net>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
