@@ -18,25 +18,30 @@
     <name>AboutClass</name>
     <message>
         <location filename="../playerabout.ui" line="14"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_playerabout.h" line="79"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_playerabout.h" line="80"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_playerabout.h" line="80"/>
         <source>About</source>
         <translation>შესახებ</translation>
     </message>
     <message>
         <location filename="../playerabout.ui" line="26"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_playerabout.h" line="80"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_playerabout.h" line="81"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_playerabout.h" line="81"/>
         <source>About Qt</source>
         <translation>Qt-ის შესახებ</translation>
     </message>
     <message>
         <location filename="../playerabout.ui" line="48"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_playerabout.h" line="81"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_playerabout.h" line="82"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_playerabout.h" line="82"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Noto Sans&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:20px; margin-bottom:20px; margin-left:20px; margin-right:20px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/dmidiplayer128.png&quot; style=&quot;float: left;&quot; /&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600;&quot;&gt;%PROJECT_DESCRIPTION%&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600;&quot;&gt;Version %VERSION%&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Using &lt;/span&gt;&lt;a href=&quot;https://drumstick.sourceforge.io&quot;&gt;&lt;span style=&quot; font-family:&apos;DejaVu Sans&apos;; text-decoration: underline; color:#0057ae;&quot;&gt;Drumstick MIDI C++ libraries &lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;v%DRUMSTICK_VERSION%&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Copyright © 2006-2026, Pedro Lopez-Cabanillas &amp;lt;&lt;/span&gt;&lt;a href=&quot;mailto:plcl@users.sf.net?subject=dmidiplayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;plcl@users.sf.net&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;You should have received a copy of the GNU General Public License along with this program; if not, &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;see &amp;lt;&lt;/span&gt;&lt;a href=&quot;https://www.gnu.org/licenses/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;https://www.gnu.org/licenses/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;&amp;gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -48,7 +53,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;You should have received a copy of the GNU General Public License along with this program; if not, &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;see &amp;lt;&lt;/span&gt;&lt;a href=&quot;https://www.gnu.org/licenses/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;https://www.gnu.org/licenses/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;&amp;gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="vanished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Noto Sans&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -132,33 +137,21 @@ p, li { white-space: pre-wrap; }
     <name>ConnectionsClass</name>
     <message>
         <location filename="../connections.ui" line="14"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_connections.h" line="87"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_connections.h" line="88"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_connections.h" line="88"/>
         <source>Connections</source>
         <translation>კავშირები</translation>
     </message>
     <message>
         <location filename="../connections.ui" line="20"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_connections.h" line="88"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_connections.h" line="89"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_connections.h" line="89"/>
         <source>Show advanced connections</source>
         <translation>დამატებითი კავშირების ჩვენება</translation>
     </message>
     <message>
         <location filename="../connections.ui" line="27"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_connections.h" line="89"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_connections.h" line="90"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_connections.h" line="90"/>
         <source>MIDI OUT</source>
         <translation>MIDI გამოტანა</translation>
     </message>
     <message>
         <location filename="../connections.ui" line="40"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_connections.h" line="90"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_connections.h" line="91"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_connections.h" line="91"/>
         <source>...</source>
         <translation>...</translation>
     </message>
@@ -357,689 +350,419 @@ p, li { white-space: pre-wrap; }
     <name>GUIPlayerClass</name>
     <message>
         <location filename="../guiplayer.ui" line="14"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="485"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="485"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="485"/>
         <source>Drumstick MIDI File Player Multiplatform</source>
         <translation>MIDI ფაილების მრავალპლატფორმული დამკვრელი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="25"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="611"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="611"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="611"/>
         <source>Drumstick MIDI Player</source>
         <translation>დრამის ჯოხების MIDI დამკვრელი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="41"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="613"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="613"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="613"/>
         <source>Playback time and current levels</source>
         <translation>დაკვრის დრო და მიმდინარე დონეები</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="77"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="615"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="615"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="615"/>
         <source>00:00:00</source>
         <translation>00:00:00</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="84"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="616"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="616"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="616"/>
         <source>Tempo:</source>
         <translation>ტემპი:</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="107"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="617"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="617"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="617"/>
         <source>Volume:</source>
         <translation>ხმა:</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="121"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="619"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="619"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="619"/>
         <source>Pitch:</source>
         <translation>ხმის სიმაღლე:</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="137"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="621"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="621"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="621"/>
         <source>Pitch Control</source>
         <translation>ტონის კონტროლი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="140"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="624"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="624"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="624"/>
         <source>Pitch transpose between -12 and +12 semitones</source>
         <translation>ტონის ტრანსპოზიცია -12 და +12 ნახევარტონს შორის</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="308"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="644"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="644"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="644"/>
         <source>Reset Volume</source>
         <translation>ხმის ჩამოყრა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="311"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="647"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="647"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="647"/>
         <source>Reset Volume to 100%</source>
         <translation>ხმის ჩამოყრა 100%-ზე</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="208"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="630"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="630"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="630"/>
         <source>Volume Slider</source>
         <translation>ხმის რეგულატორი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="168"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="627"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="627"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="627"/>
         <source>Tempo Slider</source>
         <translation>ტემპის სლაიდერი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="295"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="637"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="637"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="637"/>
         <source>Reset Tempo</source>
         <translation>ტემპის ჩამოყრა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="298"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="640"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="640"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="640"/>
         <source>Reset Tempo to 100%</source>
         <translation>ტემპის ჩამოყრა 100%-ზე</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="301"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="642"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="642"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="642"/>
         <source>tempo=100%</source>
         <translation>ტემპი=100%</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="235"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="632"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="632"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="632"/>
         <source>File Name:</source>
         <translation>ფაილის სახელი:</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="248"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="634"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="634"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="634"/>
         <source>Currently loaded MIDI file name</source>
         <translation>ამჟამად ჩატვირთული MIDI ფაილის სახელი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="337"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="650"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="650"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="650"/>
         <source>File</source>
         <translation>ფაილი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="341"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="651"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="651"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="651"/>
         <source>Open Recent Files</source>
         <translation>უახლესი ფაილების გახსნა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="346"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="652"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="652"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="652"/>
         <source>Playlist Repeat</source>
         <translation>დასაკრავი სიის გამეორება</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="379"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="654"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="654"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="654"/>
         <source>&amp;Help</source>
         <translation>&amp;დახმარება</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="383"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="655"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="655"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="655"/>
         <source>&amp;Language</source>
         <translation>&amp;ენა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="397"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="656"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="656"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="656"/>
         <source>Settings</source>
         <translation>მორგება</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="405"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="657"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="657"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="657"/>
         <source>View</source>
         <translation>ხედი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="422"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="658"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="658"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="658"/>
         <source>Tool Bar</source>
         <translation>ხელსაწყოთა პანელი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="452"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="486"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="486"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="486"/>
         <source>Open</source>
         <translation>გახსნა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="455"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="488"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="488"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="488"/>
         <source>Open a MIDI file</source>
         <translation>MIDI ფაილის გახსნა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="463"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="490"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="490"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="490"/>
         <source>Quit</source>
         <translation>გასვლა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="466"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="492"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="492"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="492"/>
         <source>Quit the application</source>
         <translation>აპლიკაციიდან გასვლა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="474"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="494"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="494"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="494"/>
         <source>Play</source>
         <translation>დაკვრა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="477"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="496"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="496"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="496"/>
         <source>Start playing the current MIDI file</source>
         <translation>მიმდინარე MIDI ფაილის დაკვრის დაწყება</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="494"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="498"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="498"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="498"/>
         <source>Pause</source>
         <translation>შეჩერება</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="508"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="502"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="502"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="502"/>
         <source>Stop</source>
         <translation>გაჩერება</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="497"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="500"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="500"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="500"/>
         <source>Pause  playback</source>
         <translation>დაკვრის  შეჩერება</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="354"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="653"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="653"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="653"/>
         <source>Song Settings</source>
         <translation>სიმღერის პარამეტრები</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="511"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="504"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="504"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="504"/>
         <source>Stop playback</source>
         <translation>დაკვრის გაჩერება</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="522"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="506"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="506"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="506"/>
         <source>About</source>
         <translation>შესახებ</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="525"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="508"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="508"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="508"/>
         <source>Show the about box</source>
         <translation>&apos;შესახებ&apos; დიალოგის ჩვენება</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="533"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="510"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="510"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="510"/>
         <source>About Qt</source>
         <translation>Qt-ის შესახებ</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="536"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="512"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="512"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="512"/>
         <source>Show the about Qt dialog box</source>
         <translation>&apos;Qt-ის შესახებ&apos; დიალოგის ჩვენება</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="544"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="514"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="514"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="514"/>
         <source>MIDI Setup</source>
         <translation>MIDI-ის მორგება</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="547"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="516"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="516"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="516"/>
         <source>Select a connection for the MIDI output port</source>
         <translation>აირჩიეთ კავშირი MIDI-ის გამოტანის პორტისთვის</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="561"/>
         <location filename="../guiplayer.ui" line="564"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="518"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="520"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="518"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="520"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="518"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="520"/>
         <source>Show Tool Bar</source>
         <translation>ხელსაწყოების პანელის ჩვენება</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="567"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="523"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="523"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="523"/>
         <source>Show or hide the tool bar</source>
         <translation>ხელსაწყოთა ზოლის ჩვენება, ან დამალვა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="581"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="525"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="525"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="525"/>
         <source>Show Status Bar</source>
         <translation>მდგომარეობის ზოლის ჩვენება</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="584"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="527"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="527"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="527"/>
         <source>Show or hide the status bar</source>
         <translation>სტატუსის ზოლის დამალვა/ჩვენება</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="595"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="529"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="529"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="529"/>
         <source>Lyrics and Texts</source>
         <translation>ლირიკა და ტექსტი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="598"/>
         <location filename="../guiplayer.ui" line="601"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="531"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="534"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="531"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="534"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="531"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="534"/>
         <source>Show or Hide Lyrics and Texts</source>
         <translation>ლირიკის და ტექსტის ჩვენება, ან დამალვა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="615"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="536"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="536"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="536"/>
         <source>Channels</source>
         <translation>არხები</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="618"/>
         <location filename="../guiplayer.ui" line="621"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="538"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="541"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="538"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="541"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="538"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="541"/>
         <source>Show or Hide Channels</source>
         <translation>არხების ჩვენება, ან დამალვა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="635"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="543"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="543"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="543"/>
         <source>Piano Player</source>
         <translation>პიანინოს დამკვრელი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="638"/>
         <location filename="../guiplayer.ui" line="641"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="545"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="548"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="545"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="548"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="545"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="548"/>
         <source>Show or Hide Piano Player</source>
         <translation>პიანინოს დამკვრელის ჩვენება, ან დამალვა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="655"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="550"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="550"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="550"/>
         <source>Rhythm</source>
         <translation>რიტმი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="658"/>
         <location filename="../guiplayer.ui" line="661"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="552"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="555"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="552"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="555"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="552"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="555"/>
         <source>Show or Hide Rhythm</source>
         <translation>რითმის ჩვენება, ან დამალვა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="672"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="557"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="557"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="557"/>
         <source>File Info</source>
         <translation>ფაილის ინფორმაცია</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="680"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="558"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="558"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="558"/>
         <source>Preferences ...</source>
         <translation>მორგება ...</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="688"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="559"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="559"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="559"/>
         <source>Play List ...</source>
         <translation>დასაკრავი სია ...</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="691"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="561"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="561"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="561"/>
         <source>Show Play List Editor</source>
         <translation>დასაკრავი სიის რედაქტორის ჩვენება</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="699"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="563"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="563"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="563"/>
         <source>Next</source>
         <translation>შემდეგი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="702"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="565"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="565"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="565"/>
         <source>Next File</source>
         <translation>შემდეგი ფაილი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="710"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="567"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="567"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="567"/>
         <source>Prev</source>
         <translation>წინა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="713"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="569"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="569"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="569"/>
         <source>Previous File</source>
         <translation>წინა ფაილი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="721"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="571"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="571"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="571"/>
         <source>Forward</source>
         <translation>წინ</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="724"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="573"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="573"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="573"/>
         <source>Move play position to the next bar</source>
         <translation>დაკვრის პოზიციის გადატანა შემდეგ ტაქტზე</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="732"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="575"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="575"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="575"/>
         <source>Backward</source>
         <translation>უკან</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="735"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="577"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="577"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="577"/>
         <source>Move play position to the previous bar</source>
         <translation>დაკვრის პოზიციის გადატანა წინა ტაქტზე</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="743"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="579"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="579"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="579"/>
         <source>Jump...</source>
         <translation>გადახტომა...</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="746"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="581"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="581"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="581"/>
         <source>Move play position to any bar</source>
         <translation>დაკვრის პოზიციის გადატანა ნებისმიერ ტაქტზე</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="754"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="583"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="583"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="583"/>
         <source>Customize Tool Bar...</source>
         <translation>ხელსაწყოთა ზოლის მორგება...</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="768"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="584"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="584"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="584"/>
         <source>Nothing</source>
         <translation>არაფერი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="779"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="585"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="585"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="585"/>
         <source>Current Song</source>
         <translation>მიმდინარე სიმღერა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="790"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="586"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="586"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="586"/>
         <source>Whole Playlist</source>
         <translation>მთელი დასაკრავი სია</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="801"/>
         <location filename="../guiplayer.ui" line="804"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="587"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="589"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="587"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="589"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="587"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="589"/>
         <source>Loop</source>
         <translation>მარყუჟი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="807"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="592"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="592"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="592"/>
         <source>Loop between two bars</source>
         <translation>მარყუჟი ორ ზოლს შორის</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="812"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="594"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="594"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="594"/>
         <source>Contents</source>
         <translation>შემცველობა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="817"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="595"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="595"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="595"/>
         <source>Web Site</source>
         <translation>ვებგვერდი</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="822"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="596"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="596"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="596"/>
         <source>Load</source>
         <translation>ჩატვირთვა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="825"/>
         <location filename="../guiplayer.ui" line="828"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="598"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="601"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="598"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="601"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="598"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="601"/>
         <source>Load the stored settings for the current song</source>
         <translation>დამახსოვრებული პარამეტრების ჩატვირთვა მიმდინარე სიმღერისთვის</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="833"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="603"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="603"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="603"/>
         <source>Save</source>
         <translation>შენახვა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="836"/>
         <location filename="../guiplayer.ui" line="839"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="605"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="608"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="605"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="608"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="605"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="608"/>
         <source>Save the settings of the current song</source>
         <translation>მიმდინარე სიმღერის პარამეტრების შენახვა</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="844"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="610"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="610"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_guiplayer.h" line="610"/>
         <source>Search MIDI files</source>
         <translation>MIDI ფაილების ძებნა</translation>
     </message>
@@ -1729,25 +1452,16 @@ p, li { white-space: pre-wrap; }
     <name>LoopDialog</name>
     <message>
         <location filename="../loopdialog.ui" line="14"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_loopdialog.h" line="99"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_loopdialog.h" line="100"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_loopdialog.h" line="100"/>
         <source>Loop Start and End bars</source>
         <translation>ტაქტის დაწყების და დასრულების მარყუჟი</translation>
     </message>
     <message>
         <location filename="../loopdialog.ui" line="34"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_loopdialog.h" line="100"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_loopdialog.h" line="101"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_loopdialog.h" line="101"/>
         <source>Loop Start:</source>
         <translation>მარყუჟის დასაწყისი:</translation>
     </message>
     <message>
         <location filename="../loopdialog.ui" line="57"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_loopdialog.h" line="101"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_loopdialog.h" line="102"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_loopdialog.h" line="102"/>
         <source>Loop End:</source>
         <translation>მარყუჟის დასასრული:</translation>
     </message>
@@ -1984,113 +1698,71 @@ p, li { white-space: pre-wrap; }
     <name>PrefsDialog</name>
     <message>
         <location filename="../prefsdialog.ui" line="28"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="460"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="461"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="461"/>
         <source>General</source>
         <translation>ზოგადი</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="124"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="456"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="457"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="457"/>
         <source>Qt Widgets Style:</source>
         <translation>Qt-ის ვიჯეტების სტილი:</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="170"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="458"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="459"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="459"/>
         <source>Start Playback Automatically After Loading</source>
         <translation>დაკვრის ავტომატური დაწყება ჩატვირთვის შემდეგ</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="156"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="457"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="458"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="458"/>
         <source>Use Internal Icon Theme</source>
         <translation>ხატულების შიდა თემის გამოყენება</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="78"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="453"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="454"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="454"/>
         <source>Forced Dark Mode</source>
         <translation>ნაძალადევი მუქი რეჟიმი</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="98"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="455"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="456"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="456"/>
         <source>Percussion MIDI Channel:</source>
         <translation>პერკუსიის MIDI არხი:</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="68"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="452"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="453"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="453"/>
         <source>MIDI System Exclusive Reset:</source>
         <translation>MIDI სისტემის ექსკლუზიური ჩამოყრა:</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="14"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="448"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="449"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="449"/>
         <source>Preferences</source>
         <translation>მორგება</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="88"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="454"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="455"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="455"/>
         <source>Solo Button % Volume Reduction:</source>
         <translation>Solo ღილაკის % ხმის შემცირება:</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="41"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="450"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="451"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="451"/>
         <source>Sticky Window Borders</source>
         <translation>წებოვანი ფანჯრის საზღვრები</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="61"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="451"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="452"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="452"/>
         <source>Advance Automatically to the Next Playlist item</source>
         <translation>ავტომატური გადასვლა დასაკრავი სიის შემდეგ ელემენტზე</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="34"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="449"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="450"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="450"/>
         <source>Automatically Load and Save Song Settings</source>
         <translation>სიმღერის პარამეტრების ავტომატური შენახვა და ჩატვირთვა</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="177"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="459"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="460"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="460"/>
         <source>Keep Snapped Child Windows Together</source>
         <translation>მიმაგრებული შვილი ფანჯრების ერთად შენარჩუნება</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="188"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="476"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="477"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="477"/>
         <source>Lyrics</source>
         <translation>ლირიკა</translation>
     </message>
@@ -2101,188 +1773,110 @@ p, li { white-space: pre-wrap; }
         <location filename="../prefsdialog.ui" line="315"/>
         <location filename="../prefsdialog.ui" line="390"/>
         <location filename="../prefsdialog.ui" line="421"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="462"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="463"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="466"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="469"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="478"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="481"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="463"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="464"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="467"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="470"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="479"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="482"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="463"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="464"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="467"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="470"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="479"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="482"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="271"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="465"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="466"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="466"/>
         <source>Future Text Color</source>
         <translation>მომავალი ტექსტის ფერი</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="298"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="467"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="468"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="468"/>
         <source>Highlight Color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="305"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="468"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="469"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="469"/>
         <source>Text Font</source>
         <translation>ტექსტის ფონტი</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="197"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="461"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="462"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="462"/>
         <source>Past Text Color</source>
         <translation>წარსული ტექსტის ფერი</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="322"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="470"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="471"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="471"/>
         <source>Text Alignment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="330"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="471"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="472"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="472"/>
         <source>Left</source>
         <extracomment>Aligns with the left edge.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="335"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="472"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="473"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="473"/>
         <source>Right</source>
         <extracomment>Aligns with the right edge.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="340"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="473"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="474"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="474"/>
         <source>Center</source>
         <extracomment>Centers horizontally in the available space.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="345"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="474"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="475"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="475"/>
         <source>Justified</source>
         <extracomment>Justifies the text in the available space.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="354"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="490"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="491"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="491"/>
         <source>Player Piano</source>
         <translation>დამკვრელის კლავიატურა</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="414"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="480"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="481"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="481"/>
         <source>Single Highlight Color</source>
         <translation>ერთი გამოკვეთის ფერი</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="472"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="489"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="490"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="490"/>
         <source>Octave Subscript Designation</source>
         <translation>ოქტავის ინდექსის დანიშნულება</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="397"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="479"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="480"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="480"/>
         <source>Note Highlighting</source>
         <translation>შენიშვნის გამოკვეთა</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="380"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="477"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="478"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="478"/>
         <source>Show Note Names</source>
         <translation>შენიშვნების სახელების ჩვენება</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="431"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="482"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="483"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="483"/>
         <source>Note Names Font</source>
         <translation>შენიშვნების სახელების ფონტი</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="465"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="488"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="489"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="489"/>
         <source>Note Velocity to Color Tint</source>
         <translation>ნოტების დინამიკა თითოეული ელფერისთვის</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="442"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="483"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="484"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="484"/>
         <source>Never</source>
         <translation>არასდროს</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="447"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="484"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="485"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="485"/>
         <source>Minimal</source>
         <translation>მინიმალური</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="452"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="485"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="486"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="486"/>
         <source>When Activated</source>
         <translation>გააქტიურებისას</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="457"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="486"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="487"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_prefsdialog.h" line="487"/>
         <source>Always</source>
         <translation>ყოველთვის</translation>
     </message>
@@ -2312,32 +1906,24 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>PrimaryInstanceWidget</name>
-    <message>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/_deps/kdsingleapplication-src/examples/widgetsingleapplication/primaryinstancewidget.cpp" line="21"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/_deps/kdsingleapplication-src/examples/widgetsingleapplication/primaryinstancewidget.cpp" line="21"/>
-        <source>Primary instance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/_deps/kdsingleapplication-src/examples/widgetsingleapplication/primaryinstancewidget.cpp" line="22"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/_deps/kdsingleapplication-src/examples/widgetsingleapplication/primaryinstancewidget.cpp" line="22"/>
-        <source>&lt;b&gt;Primary instance.&lt;/b&gt; Messages received from secondaries:</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>QCoreApplication</name>
     <message>
-        <location filename="../playermain.cpp" line="36"/>
         <source>Copyright (C) 2006-2024 Pedro Lopez-Cabanillas
 This program comes with ABSOLUTELY NO WARRANTY;
 This is free software, and you are welcome to redistribute it
 under certain conditions; see the LICENSE for details.</source>
-        <translation>Copyright (C) 2006-2024 Pedro Lopez-Cabanillas
+        <translation type="vanished">Copyright (C) 2006-2024 Pedro Lopez-Cabanillas
 This program comes with ABSOLUTELY NO WARRANTY;
 This is free software, and you are welcome to redistribute it
 under certain conditions; see the LICENSE for details.</translation>
+    </message>
+    <message>
+        <location filename="../playermain.cpp" line="36"/>
+        <source>Copyright (C) 2006-2026 Pedro Lopez-Cabanillas
+This program comes with ABSOLUTELY NO WARRANTY;
+This is free software, and you are welcome to redistribute it
+under certain conditions; see the LICENSE for details.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playermain.cpp" line="42"/>
@@ -2390,45 +1976,6 @@ under certain conditions; see the LICENSE for details.</translation>
     </message>
 </context>
 <context>
-    <name>SecondaryInstanceWidget</name>
-    <message>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/_deps/kdsingleapplication-src/examples/widgetsingleapplication/secondaryinstancewidget.cpp" line="26"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/_deps/kdsingleapplication-src/examples/widgetsingleapplication/secondaryinstancewidget.cpp" line="26"/>
-        <source>Secondary instance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/_deps/kdsingleapplication-src/examples/widgetsingleapplication/secondaryinstancewidget.cpp" line="27"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/_deps/kdsingleapplication-src/examples/widgetsingleapplication/secondaryinstancewidget.cpp" line="27"/>
-        <source>&lt;b&gt;Secondary instance.&lt;/b&gt; Send message to primary:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/_deps/kdsingleapplication-src/examples/widgetsingleapplication/secondaryinstancewidget.cpp" line="29"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/_deps/kdsingleapplication-src/examples/widgetsingleapplication/secondaryinstancewidget.cpp" line="29"/>
-        <source>Type something here...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/_deps/kdsingleapplication-src/examples/widgetsingleapplication/secondaryinstancewidget.cpp" line="31"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/_deps/kdsingleapplication-src/examples/widgetsingleapplication/secondaryinstancewidget.cpp" line="31"/>
-        <source>&amp;Send</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/_deps/kdsingleapplication-src/examples/widgetsingleapplication/secondaryinstancewidget.cpp" line="54"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/_deps/kdsingleapplication-src/examples/widgetsingleapplication/secondaryinstancewidget.cpp" line="54"/>
-        <source>Error sending message</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/_deps/kdsingleapplication-src/examples/widgetsingleapplication/secondaryinstancewidget.cpp" line="55"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/_deps/kdsingleapplication-src/examples/widgetsingleapplication/secondaryinstancewidget.cpp" line="55"/>
-        <source>The message &apos;%1&apos; could not be sent to the primary.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Sequence</name>
     <message>
         <location filename="../sequence.cpp" line="678"/>
@@ -2458,105 +2005,66 @@ under certain conditions; see the LICENSE for details.</translation>
     <name>ToolBarEditDialog</name>
     <message>
         <location filename="../toolbareditdialog.ui" line="14"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="137"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="138"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="138"/>
         <source>Tool Bar Editor</source>
         <translation>ხელსაწყოთა ზოლის რედაქტორი</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="25"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="138"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="139"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="139"/>
         <source>remove</source>
         <translation>წაშლა</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="39"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="139"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="140"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="140"/>
         <source>add</source>
         <translation>დამატება</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="53"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="140"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="141"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="141"/>
         <source>up</source>
         <translation>ჩართულია</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="67"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="141"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="142"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="142"/>
         <source>down</source>
         <translation>დაბლა</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="81"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="142"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="143"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="143"/>
         <source>Icon Only</source>
         <translation>მხოლოდ ხატულა</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="86"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="143"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="144"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="144"/>
         <source>Text Only</source>
         <translation>მხოლოდ ტექსტი</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="91"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="144"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="145"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="145"/>
         <source>Text Beside Icon</source>
         <translation>ტექსტი ხატულის გვერდით</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="96"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="145"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="146"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="146"/>
         <source>Text Under Icon</source>
         <translation>ტექსტი ხატულის ქვეშ</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="101"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="146"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="147"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="147"/>
         <source>Follow Style</source>
         <translation>შემდეგი სტილი</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="119"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="148"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="149"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="149"/>
         <source>Style of the Tool Buttons</source>
         <translation>ხელსაწყოს ღილაკების სტილი</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="132"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="149"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="150"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="150"/>
         <source>Available Actions</source>
         <translation>ხელმისაწვდომი ქმედებები</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="139"/>
-        <location filename="../build/Desktop_Qt_5_15_18_System_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="150"/>
-        <location filename="../build/Desktop_Qt_6_11_2_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="151"/>
-        <location filename="../build/Desktop_Qt_6_12_0_Debug/dmidiplayer_autogen/include/ui_toolbareditdialog.h" line="151"/>
         <source>Selected Actions</source>
         <translation>არჩეული ქმედებები</translation>
     </message>
