@@ -1,5 +1,5 @@
 #=======================================================================
-# Copyright © 2021-2024 Pedro López-Cabanillas <plcl@users.sf.net>
+# Copyright © 2021-2026 Pedro López-Cabanillas <plcl@users.sf.net>
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
@@ -81,6 +81,6 @@ if (EXISTS ${PANDOC_EXECUTABLE})
                 VERBATIM)
             list(APPEND _outfiles ${_out})
         endforeach()
-        add_custom_target(update_helpfiles DEPENDS ${_outfiles})
+        add_custom_target(update_helpfiles ALL DEPENDS ${_outfiles})
     endmacro()
 endif()
