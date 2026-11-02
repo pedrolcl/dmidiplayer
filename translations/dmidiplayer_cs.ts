@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.0" language="cs_CZ">
 <context>
     <name>About</name>
     <message>
@@ -39,7 +39,17 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;You should have received a copy of the GNU General Public License along with this program; if not, &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;see &amp;lt;&lt;/span&gt;&lt;a href=&quot;https://www.gnu.org/licenses/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;https://www.gnu.org/licenses/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;&amp;gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Noto Sans&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:20px; margin-bottom:20px; margin-left:20px; margin-right:20px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/dmidiplayer128.png&quot; style=&quot;float: left;&quot; /&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600;&quot;&gt;%PROJECT_DESCRIPTION%&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:16pt; font-weight:600;&quot;&gt;Verze %VERSION%&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Používá &lt;/span&gt;&lt;a href=&quot;https://drumstick.sourceforge.io&quot;&gt;&lt;span style=&quot; font-family:&apos;DejaVu Sans&apos;; text-decoration: underline; color:#0057ae;&quot;&gt;Drumstick MIDI C++ libraries &lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;v%DRUMSTICK_VERSION%&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Kopírovací právo © 2006-2026, Pedro Lopez-Cabanillas &amp;lt;&lt;/span&gt;&lt;a href=&quot;mailto:plcl@users.sf.net?subject=dmidiplayer&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;plcl@users.sf.net&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Tento program je svobodným programem: můžete jej šířit a/nebo upravovat za podmínek GNU General Public License, jak jsou zveřejněny Free Software Foundation, buď ve verzi 3 povolení, nebo (podle své volby) v jakékoli pozdější verzi.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Tento program je šířen s nadějí, že bude užitečný, ale BEZ JAKÉKOLI ZÁRUKY;  dokonce bez předpokládané záruky PRODEJNOSTI nebo VHODNOSTI PRO ZVLÁŠTNÍ ÚČEL. Na podrobnosti se podívejte v GNU General Public License.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;Kopii GNU General Public License byste měl obdržet společně s tímto programem. A pokud ne &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;podívejte se na &amp;lt;&lt;/span&gt;&lt;a href=&quot;https://www.gnu.org/licenses/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;https://www.gnu.org/licenses/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;&amp;gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -53,7 +63,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;You should have received a copy of the GNU General Public License along with this program; if not, &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;see &amp;lt;&lt;/span&gt;&lt;a href=&quot;https://www.gnu.org/licenses/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;https://www.gnu.org/licenses/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:&apos;Hack&apos;;&quot;&gt;&amp;gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Noto Sans&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -211,7 +221,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.cpp" line="1052"/>
         <source>Date: &lt;b&gt;%1&lt;/b&gt;&lt;br/&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Datum: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1056"/>
@@ -256,31 +266,31 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../guiplayer.cpp" line="1088"/>
         <source>Number of tracks: &lt;b&gt;%1&lt;/b&gt;&lt;br/&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Počet skladeb: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1092"/>
         <source>Number of events: &lt;b&gt;%1&lt;/b&gt;&lt;br/&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Počet událostí: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1096"/>
         <source>Division: &lt;b&gt;%1 ppqn&lt;/b&gt;&lt;br/&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Časové dělení: &lt;b&gt;%1 ppqn&lt;/b&gt;&lt;br/&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1100"/>
         <source>Initial tempo: &lt;b&gt;%7 bpm&lt;/b&gt;&lt;br/&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Počáteční tempo: &lt;b&gt;%7 bpm&lt;/b&gt;&lt;br/&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1104"/>
         <source>Duration: &lt;b&gt;%1&lt;/b&gt;&lt;br/&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Doba trvání: &lt;b&gt;%1&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <source>All files (*.kar *.mid *.midi *.wrk);;Karaoke files (*.kar);;MIDI Files (*.mid *.midi);;Cakewalk files (*.wrk)</source>
-        <translation type="vanished">Všechny soubory (*.kar *.mid *.midi *.wrk);;Soubory Karaoke (*.kar);;Soubory MIDI (*.mid *.midi);;Soubory Cakewalk (*.wrk)</translation>
+        <translation>Všechny soubory (*.kar *.mid *.midi *.wrk);;Soubory Karaoke (*.kar);;Soubory MIDI (*.mid *.midi);;Soubory Cakewalk (*.wrk)</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="702"/>
@@ -324,7 +334,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&lt;b&gt;File:&lt;/b&gt;&lt;br&gt;%1&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;Soubor:&lt;/b&gt;&lt;br&gt;%1&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Soubor:&lt;/b&gt;&lt;br&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1058"/>
@@ -340,31 +350,31 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&lt;b&gt;Copyright:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;Kopírovací právo:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Kopírovací právo:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke type:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;Typ karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Typ karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke version:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;Verze karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Verze karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke info:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;Informace o karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Informace o karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke language:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;Jazyk karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Jazyk karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke title:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;Název karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Název karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Karaoke things:&lt;/b&gt;%1&lt;br&gt;</source>
-        <translation type="vanished">&lt;b&gt;Věci karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Věci karaoke:&lt;/b&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../guiplayer.cpp" line="1111"/>
@@ -446,7 +456,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Playback progress</source>
-        <translation type="vanished">Postup přehrávání</translation>
+        <translation>Postup přehrávání</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="168"/>
@@ -560,7 +570,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Pause the playback</source>
-        <translation type="vanished">Pozastavit přehrávání</translation>
+        <translation>Pozastavit přehrávání</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="508"/>
@@ -569,7 +579,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Stop the playback</source>
-        <translation type="vanished">Zastavit přehrávání</translation>
+        <translation>Zastavit přehrávání</translation>
     </message>
     <message>
         <location filename="../guiplayer.ui" line="497"/>
@@ -849,7 +859,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Help: %1</source>
-        <translation type="vanished">Nápověda: %1</translation>
+        <translation>Nápověda: %1</translation>
     </message>
 </context>
 <context>
@@ -1532,11 +1542,11 @@ p, li { white-space: pre-wrap; }
     <name>Lyrics</name>
     <message>
         <source>Lyrics Viewer</source>
-        <translation type="vanished">Prohlížeč zpěvního textu</translation>
+        <translation>Prohlížeč zpěvního textu</translation>
     </message>
     <message>
         <source>Lyrics</source>
-        <translation type="vanished">Zpěvní text</translation>
+        <translation>Zpěvní text</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="202"/>
@@ -1600,7 +1610,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Font</source>
-        <translation type="vanished">Písmo</translation>
+        <translation>Písmo</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="215"/>
@@ -1639,14 +1649,14 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Lyrics Viewer (%1)</source>
-        <translation type="vanished">Prohlížeč zpěvního textu (%1)</translation>
+        <translation>Prohlížeč zpěvního textu (%1)</translation>
     </message>
 </context>
 <context>
     <name>Pianola</name>
     <message>
         <source>MIDI Channels</source>
-        <translation type="vanished">Kanály MIDI</translation>
+        <translation>Kanály MIDI</translation>
     </message>
     <message>
         <location filename="../pianola.cpp" line="57"/>
@@ -1770,7 +1780,7 @@ p, li { white-space: pre-wrap; }
     <name>PrefsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation type="vanished">Dialog</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="28"/>
@@ -1794,7 +1804,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Sticky Window Snapping</source>
-        <translation type="vanished">Lepivé přichytávání oken</translation>
+        <translation>Lepivé přichytávání oken</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="78"/>
@@ -1864,7 +1874,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="298"/>
         <source>Highlight Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Barva zvýraznění</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="305"/>
@@ -1879,31 +1889,31 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../prefsdialog.ui" line="322"/>
         <source>Text Alignment</source>
-        <translation type="unfinished"></translation>
+        <translation>Zarovnání textu</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="330"/>
         <source>Left</source>
         <extracomment>Aligns with the left edge.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Vlevo</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="335"/>
         <source>Right</source>
         <extracomment>Aligns with the right edge.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Vpravo</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="340"/>
         <source>Center</source>
         <extracomment>Centers horizontally in the available space.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Na střed</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="345"/>
         <source>Justified</source>
         <extracomment>Justifies the text in the available space.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Do bloku</translation>
     </message>
     <message>
         <location filename="../prefsdialog.ui" line="354"/>
@@ -1992,7 +2002,7 @@ p, li { white-space: pre-wrap; }
 This program comes with ABSOLUTELY NO WARRANTY;
 This is free software, and you are welcome to redistribute it
 under certain conditions; see the LICENSE for details.</source>
-        <translation type="vanished">Virtual MIDI Piano Keyboard
+        <translation>Virtual MIDI Piano Keyboard
 Kopírovací právo (C) 2006-2021 Pedro Lopez-Cabanillas
 Tento program je dodáván BEZ ZÁRUKY;
 Toto je svobodný software a můžete jej dále šířit
@@ -2004,7 +2014,10 @@ za určitých podmínek; podrobnosti viz LICENCE.</translation>
 This program comes with ABSOLUTELY NO WARRANTY;
 This is free software, and you are welcome to redistribute it
 under certain conditions; see the LICENSE for details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopírovací právo (C) 2006-2026 Pedro Lopez-Cabanillas
+Tento program je dodáván BEZ ZÁRUKY;
+Toto je svobodný software a můžete jej dále šířit
+za určitých podmínek; podrobnosti viz LICENCE.</translation>
     </message>
     <message>
         <location filename="../playermain.cpp" line="42"/>
@@ -2086,7 +2099,7 @@ under certain conditions; see the LICENSE for details.</source>
     <name>ToolBarEditDialog</name>
     <message>
         <source>Dialog</source>
-        <translation type="vanished">Dialog</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../toolbareditdialog.ui" line="14"/>
