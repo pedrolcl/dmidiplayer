@@ -1,9 +1,16 @@
+2026-11-05
+    * Release 1.8.0
+
 2026-11-02
     * Czech translation updated. Thanks to Pavel Fric.
 
 2026-10-29
     * Spanish and Galician translations updated.
     * Georgian translation updated. Thanks to Ekaterine Papava.
+
+2026-09-27
+    * Single instance app implementation - GH issue #23
+    * using kdsingleapplication
 
 2026-09-16
     * This change requires Drumstick 2.11

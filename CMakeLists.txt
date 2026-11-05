@@ -31,13 +31,13 @@ if (POLICY CMP0153)
 endif()
 
 project ( dmidiplayer
-    VERSION 1.7.6
+    VERSION 1.8.0
     LANGUAGES CXX
     DESCRIPTION "Drumstick MIDI File Player Multiplatform Program"
     HOMEPAGE_URL "https://dmidiplayer.sourceforge.io"
 )
 
-#set(PROJECT_RELEASE_DATE "December 30, 2024")
+set(PROJECT_RELEASE_DATE "November 5, 2026")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)

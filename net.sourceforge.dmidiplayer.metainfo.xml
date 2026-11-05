@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2021-2024 dmidiplayer developers -->
+<!-- Copyright 2021-2026 dmidiplayer developers -->
 <component type="desktop-application">
     <id>net.sourceforge.dmidiplayer</id>
     <name>dmidiplayer</name>
@@ -19,7 +19,9 @@
     </description>
     <launchable type="desktop-id">net.sourceforge.dmidiplayer.desktop</launchable>
     <url type="homepage">https://sourceforge.net/p/dmidiplayer/</url>
-    <developer_name>Pedro López-Cabanillas</developer_name>
+    <developer id="net.sourceforge.plcl">
+      <name>Pedro López-Cabanillas</name>
+    </developer>
     <update_contact>plcl_AT_users.sourceforge.net</update_contact>
     <translation type="qt">dmidiplayer</translation>
     <content_rating type="oars-1.1" /> <!-- this is broken, validator fails -->
@@ -30,6 +32,7 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.8.0" date="2026-11-05" />
         <release version="1.7.5" date="2024-12-30" />
         <release version="1.7.4" date="2024-08-31" />
         <release version="1.7.3" date="2023-10-12" />

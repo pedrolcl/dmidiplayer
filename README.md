@@ -49,6 +49,10 @@ You probably don't need to use the CMake variable CMAKE_PREFIX_PATH at all, if y
 
 [![Download Drumstick Multiplatform MIDI File Player](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/dmidiplayer/files/latest/download)
 
+<a href='https://flathub.org/en/apps/net.sourceforge.dmidiplayer'>
+  <img width='240' alt='Get it on Flathub' src='https://flathub.org/api/badge?locale=en'/>
+</a>
+
 Binary packages for several Linux distributions:
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/dmidiplayer.svg)](https://repology.org/project/dmidiplayer/versions)
